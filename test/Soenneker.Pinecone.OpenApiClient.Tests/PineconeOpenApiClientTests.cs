@@ -1,12 +1,11 @@
-using Soenneker.TestHosts.Unit;
 using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Pinecone.OpenApiClient.Tests;
 
-[ClassDataSource<UnitTestHost>(Shared = SharedType.PerTestSession)]
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
 public sealed class PineconeOpenApiClientTests : HostedUnitTest
 {
-    public PineconeOpenApiClientTests(UnitTestHost host) : base(host)
+    public PineconeOpenApiClientTests(Host host) : base(host)
     {
     }
 
