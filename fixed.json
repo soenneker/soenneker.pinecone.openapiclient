@@ -44,7 +44,7 @@
     }
   ],
   "paths": {
-    "/admin_2026-04/admin/projects": {
+    "/admin/admin/projects": {
       "get": {
         "tags": [
           "Projects"
@@ -270,7 +270,7 @@
         }
       }
     },
-    "/admin_2026-04/admin/organizations": {
+    "/admin/admin/organizations": {
       "get": {
         "tags": [
           "Organizations"
@@ -358,7 +358,7 @@
         }
       }
     },
-    "/admin_2026-04/admin/projects/{project_id}": {
+    "/admin/admin/projects/{project_id}": {
       "get": {
         "tags": [
           "Projects"
@@ -720,7 +720,7 @@
         }
       }
     },
-    "/admin_2026-04/admin/organizations/{organization_id}": {
+    "/admin/admin/organizations/{organization_id}": {
       "get": {
         "tags": [
           "Organizations"
@@ -1079,7 +1079,7 @@
         }
       }
     },
-    "/admin_2026-04/admin/projects/{project_id}/api-keys": {
+    "/admin/admin/projects/{project_id}/api-keys": {
       "get": {
         "tags": [
           "API Keys"
@@ -1315,7 +1315,7 @@
         }
       }
     },
-    "/admin_2026-04/admin/api-keys/{api_key_id}": {
+    "/admin/admin/api-keys/{api_key_id}": {
       "get": {
         "tags": [
           "API Keys"
@@ -1667,7 +1667,7 @@
         }
       }
     },
-    "/assistant_control_2026-04/assistants": {
+    "/assistant_control/assistants": {
       "get": {
         "tags": [
           "Manage Assistants"
@@ -1881,7 +1881,7 @@
         }
       }
     },
-    "/assistant_control_2026-04/assistants/{assistant_name}": {
+    "/assistant_control/assistants/{assistant_name}": {
       "get": {
         "tags": [
           "Manage Assistants"
@@ -2140,7 +2140,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/files/{assistant_name}": {
+    "/assistant_data/files/{assistant_name}": {
       "get": {
         "tags": [
           "Manage Assistants"
@@ -2430,7 +2430,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/files/{assistant_name}/{assistant_file_id}": {
+    "/assistant_data/files/{assistant_name}/{assistant_file_id}": {
       "get": {
         "tags": [
           "Manage Assistants"
@@ -2844,7 +2844,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/operations/{assistant_name}": {
+    "/assistant_data/operations/{assistant_name}": {
       "get": {
         "tags": [
           "Manage Assistants"
@@ -3051,7 +3051,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/operations/{assistant_name}/{operation_id}": {
+    "/assistant_data/operations/{assistant_name}/{operation_id}": {
       "get": {
         "tags": [
           "Manage Assistants"
@@ -3209,7 +3209,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/chat/{assistant_name}/chat/completions": {
+    "/assistant_data/chat/{assistant_name}/chat/completions": {
       "post": {
         "tags": [
           "Manage Assistants"
@@ -3356,7 +3356,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/chat/{assistant_name}": {
+    "/assistant_data/chat/{assistant_name}": {
       "post": {
         "tags": [
           "Manage Assistants"
@@ -3503,7 +3503,7 @@
         }
       }
     },
-    "/assistant_data_2026-04/chat/{assistant_name}/context": {
+    "/assistant_data/chat/{assistant_name}/context": {
       "post": {
         "tags": [
           "Manage Assistants"
@@ -3645,7 +3645,7 @@
         }
       }
     },
-    "/assistant_evaluation_2026-04/evaluation/metrics/alignment": {
+    "/assistant_evaluation/evaluation/metrics/alignment": {
       "post": {
         "tags": [
           "Metrics"
@@ -3709,7 +3709,7 @@
         }
       }
     },
-    "/db_control_2026-04/indexes": {
+    "/db_control/indexes": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -4205,7 +4205,7 @@
         }
       }
     },
-    "/db_control_2026-04/indexes/{index_name}": {
+    "/db_control/indexes/{index_name}": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -4779,7 +4779,7 @@
         }
       }
     },
-    "/db_control_2026-04/indexes/{index_name}/backups": {
+    "/db_control/indexes/{index_name}/backups": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -5181,7 +5181,7 @@
         }
       }
     },
-    "/db_control_2026-04/collections": {
+    "/db_control/collections": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -5503,7 +5503,7 @@
         }
       }
     },
-    "/db_control_2026-04/indexes/create-for-model": {
+    "/db_control/indexes/create-for-model": {
       "post": {
         "tags": [
           "Manage Indexes"
@@ -5697,7 +5697,7 @@
         }
       }
     },
-    "/db_control_2026-04/backups": {
+    "/db_control/backups": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -5863,7 +5863,7 @@
         }
       }
     },
-    "/db_control_2026-04/backups/{backup_id}": {
+    "/db_control/backups/{backup_id}": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -6128,7 +6128,7 @@
         }
       }
     },
-    "/db_control_2026-04/backups/{backup_id}/create-index": {
+    "/db_control/backups/{backup_id}/create-index": {
       "post": {
         "tags": [
           "Manage Indexes"
@@ -6346,7 +6346,7 @@
         }
       }
     },
-    "/db_control_2026-04/restore-jobs": {
+    "/db_control/restore-jobs": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -6490,7 +6490,7 @@
         }
       }
     },
-    "/db_control_2026-04/restore-jobs/{job_id}": {
+    "/db_control/restore-jobs/{job_id}": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -6600,7 +6600,7 @@
         }
       }
     },
-    "/db_control_2026-04/collections/{collection_name}": {
+    "/db_control/collections/{collection_name}": {
       "get": {
         "tags": [
           "Manage Indexes"
@@ -6821,7 +6821,7 @@
         }
       }
     },
-    "/db_data_2026-04/bulk/imports": {
+    "/db_data/bulk/imports": {
       "get": {
         "tags": [
           "Bulk Operations"
@@ -6977,7 +6977,7 @@
         }
       }
     },
-    "/db_data_2026-04/bulk/imports/{id}": {
+    "/db_data/bulk/imports/{id}": {
       "get": {
         "tags": [
           "Bulk Operations"
@@ -7128,7 +7128,7 @@
         }
       }
     },
-    "/db_data_2026-04/describe_index_stats": {
+    "/db_data/describe_index_stats": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -7201,7 +7201,7 @@
         }
       }
     },
-    "/db_data_2026-04/query": {
+    "/db_data/query": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -7274,7 +7274,7 @@
         }
       }
     },
-    "/db_data_2026-04/vectors/delete": {
+    "/db_data/vectors/delete": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -7348,7 +7348,7 @@
         }
       }
     },
-    "/db_data_2026-04/vectors/fetch": {
+    "/db_data/vectors/fetch": {
       "get": {
         "tags": [
           "Vector Operations"
@@ -7432,7 +7432,7 @@
         }
       }
     },
-    "/db_data_2026-04/vectors/fetch_by_metadata": {
+    "/db_data/vectors/fetch_by_metadata": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -7505,7 +7505,7 @@
         }
       }
     },
-    "/db_data_2026-04/vectors/list": {
+    "/db_data/vectors/list": {
       "get": {
         "tags": [
           "Vector Operations"
@@ -7603,7 +7603,7 @@
         }
       }
     },
-    "/db_data_2026-04/vectors/update": {
+    "/db_data/vectors/update": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -7676,7 +7676,7 @@
         }
       }
     },
-    "/db_data_2026-04/vectors/upsert": {
+    "/db_data/vectors/upsert": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -7749,7 +7749,7 @@
         }
       }
     },
-    "/db_data_2026-04/namespaces": {
+    "/db_data/namespaces": {
       "get": {
         "tags": [
           "Namespace Operations"
@@ -7911,7 +7911,7 @@
         }
       }
     },
-    "/db_data_2026-04/namespaces/{namespace}": {
+    "/db_data/namespaces/{namespace}": {
       "get": {
         "tags": [
           "Namespace Operations"
@@ -8056,7 +8056,7 @@
         }
       }
     },
-    "/db_data_2026-04/records/namespaces/{namespace}/upsert": {
+    "/db_data/records/namespaces/{namespace}/upsert": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -8129,7 +8129,7 @@
         }
       }
     },
-    "/db_data_2026-04/records/namespaces/{namespace}/search": {
+    "/db_data/records/namespaces/{namespace}/search": {
       "post": {
         "tags": [
           "Vector Operations"
@@ -8211,7 +8211,7 @@
         }
       }
     },
-    "/db_metrics_2026-04/prometheus/projects/{project_id}/metrics/discover": {
+    "/db_metrics/prometheus/projects/{project_id}/metrics/discover": {
       "get": {
         "tags": [
           "Metrics"
@@ -8311,7 +8311,7 @@
         }
       }
     },
-    "/inference_2026-04/embed": {
+    "/inference/embed": {
       "post": {
         "tags": [
           "Inference"
@@ -8421,7 +8421,7 @@
         }
       }
     },
-    "/inference_2026-04/rerank": {
+    "/inference/rerank": {
       "post": {
         "tags": [
           "Inference"
@@ -8531,7 +8531,7 @@
         }
       }
     },
-    "/inference_2026-04/models": {
+    "/inference/models": {
       "get": {
         "tags": [
           "Inference"
@@ -8737,7 +8737,7 @@
         }
       }
     },
-    "/inference_2026-04/models/{model_name}": {
+    "/inference/models/{model_name}": {
       "get": {
         "tags": [
           "Inference"
@@ -8924,7 +8924,7 @@
         }
       }
     },
-    "/oauth_2026-04/oauth/token": {
+    "/oauth/oauth/token": {
       "post": {
         "tags": [
           "OAuth"

@@ -6,15 +6,15 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
-using Soenneker.Pinecone.OpenApiClient.Admin_202604;
-using Soenneker.Pinecone.OpenApiClient.Assistant_control_202604;
-using Soenneker.Pinecone.OpenApiClient.Assistant_data_202604;
-using Soenneker.Pinecone.OpenApiClient.Assistant_evaluation_202604;
-using Soenneker.Pinecone.OpenApiClient.Db_control_202604;
-using Soenneker.Pinecone.OpenApiClient.Db_data_202604;
-using Soenneker.Pinecone.OpenApiClient.Db_metrics_202604;
-using Soenneker.Pinecone.OpenApiClient.Inference_202604;
-using Soenneker.Pinecone.OpenApiClient.Oauth_202604;
+using Soenneker.Pinecone.OpenApiClient.Admin;
+using Soenneker.Pinecone.OpenApiClient.Assistant_control;
+using Soenneker.Pinecone.OpenApiClient.Assistant_data;
+using Soenneker.Pinecone.OpenApiClient.Assistant_evaluation;
+using Soenneker.Pinecone.OpenApiClient.Db_control;
+using Soenneker.Pinecone.OpenApiClient.Db_data;
+using Soenneker.Pinecone.OpenApiClient.Db_metrics;
+using Soenneker.Pinecone.OpenApiClient.Inference;
+using Soenneker.Pinecone.OpenApiClient.Oauth;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -27,50 +27,50 @@ namespace Soenneker.Pinecone.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PineconeOpenApiClient : BaseRequestBuilder
     {
-        /// <summary>The admin_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Admin_202604.Admin_202604RequestBuilder Admin_202604
+        /// <summary>The admin property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.AdminRequestBuilder Admin
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Admin_202604.Admin_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.AdminRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The assistant_control_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_control_202604.Assistant_control_202604RequestBuilder Assistant_control_202604
+        /// <summary>The assistant_control property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistant_controlRequestBuilder Assistant_control
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_control_202604.Assistant_control_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistant_controlRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The assistant_data_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data_202604.Assistant_data_202604RequestBuilder Assistant_data_202604
+        /// <summary>The assistant_data property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Assistant_dataRequestBuilder Assistant_data
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_data_202604.Assistant_data_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Assistant_dataRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The assistant_evaluation_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_evaluation_202604.Assistant_evaluation_202604RequestBuilder Assistant_evaluation_202604
+        /// <summary>The assistant_evaluation property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Assistant_evaluation.Assistant_evaluationRequestBuilder Assistant_evaluation
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_evaluation_202604.Assistant_evaluation_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_evaluation.Assistant_evaluationRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The db_control_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control_202604.Db_control_202604RequestBuilder Db_control_202604
+        /// <summary>The db_control property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Db_controlRequestBuilder Db_control
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control_202604.Db_control_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Db_controlRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The db_data_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_data_202604.Db_data_202604RequestBuilder Db_data_202604
+        /// <summary>The db_data property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_data.Db_dataRequestBuilder Db_data
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_data_202604.Db_data_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_data.Db_dataRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The db_metrics_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_metrics_202604.Db_metrics_202604RequestBuilder Db_metrics_202604
+        /// <summary>The db_metrics property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_metrics.Db_metricsRequestBuilder Db_metrics
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_metrics_202604.Db_metrics_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_metrics.Db_metricsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The inference_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Inference_202604.Inference_202604RequestBuilder Inference_202604
+        /// <summary>The inference property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Inference.InferenceRequestBuilder Inference
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Inference_202604.Inference_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Inference.InferenceRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The oauth_202604 property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Oauth_202604.Oauth_202604RequestBuilder Oauth_202604
+        /// <summary>The oauth property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Oauth.OauthRequestBuilder Oauth
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Oauth_202604.Oauth_202604RequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Oauth.OauthRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.PineconeOpenApiClient"/> and sets the default values.
