@@ -8090,7 +8090,10 @@
           "content": {
             "application/x-ndjson": {
               "schema": {
-                "$ref": "#/components/schemas/DbData202604UpsertRecordsNamespace"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UpsertRecord"
+                }
               }
             }
           }
@@ -8237,7 +8240,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PrometheusTargets"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PrometheusTargetsItem"
+                  },
+                  "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
                 }
               }
             }
@@ -13306,7 +13313,12 @@
         "type": "object",
         "properties": {
           "values": {
-            "$ref": "#/components/schemas/VectorValues"
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            },
+            "description": "This is the vector data included in the request."
           },
           "sparse_values": {
             "type": "array",
@@ -13926,7 +13938,12 @@
             "description": "The list of supported dimensions for the model (applies to dense embedding models only)."
           },
           "supported_metrics": {
-            "$ref": "#/components/schemas/ModelInfoSupportedMetrics"
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "\"A distance metric that the embedding model supports for similarity searches.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.\""
+            },
+            "description": "The distance metrics supported by the model for similarity search."
           },
           "supported_parameters": {
             "type": "array",
