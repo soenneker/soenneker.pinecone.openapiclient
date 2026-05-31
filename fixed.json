@@ -13512,7 +13512,10 @@
               "type": "object",
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/UnionBranch"
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
                 }
               ]
             },
@@ -13532,7 +13535,18 @@
             "type": "object",
             "anyOf": [
               {
-                "$ref": "#/components/schemas/UnionBranch"
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "format": "int32"
+              },
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "boolean"
               }
             ],
             "description": "The default value for the parameter when a parameter is optional.",
@@ -14826,17 +14840,6 @@
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
-      },
-      "UnionBranch": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
       }
     },
     "securitySchemes": {
