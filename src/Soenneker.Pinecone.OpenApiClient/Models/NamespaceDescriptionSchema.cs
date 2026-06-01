@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema_fields? Fields { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchemaFieldsProperty? Fields { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema_fields Fields { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchemaFieldsProperty Fields { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema_fields>(global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema_fields.CreateFromDiscriminatorValue); } },
+                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchemaFieldsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchemaFieldsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema_fields>("fields", Fields);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchemaFieldsProperty>("fields", Fields);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

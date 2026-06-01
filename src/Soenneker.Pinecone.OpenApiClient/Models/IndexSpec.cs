@@ -8,34 +8,34 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember1"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember2"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecByoc"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecPodBased"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecServerless"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IndexSpec : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecByoc"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember1? IndexSpecMember1 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecByoc? IndexSpecByoc { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember1 IndexSpecMember1 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecByoc IndexSpecByoc { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecPodBased"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember2? IndexSpecMember2 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecPodBased? IndexSpecPodBased { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember2 IndexSpecMember2 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecPodBased IndexSpecPodBased { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecServerless"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember3? IndexSpecMember3 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecServerless? IndexSpecServerless { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember3 IndexSpecMember3 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecServerless IndexSpecServerless { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,17 +47,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpec();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("IndexSpecByoc".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.IndexSpecMember1 = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember1();
+                result.IndexSpecByoc = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecByoc();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("IndexSpecPodBased".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.IndexSpecMember2 = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember2();
+                result.IndexSpecPodBased = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecPodBased();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("IndexSpecServerless".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.IndexSpecMember3 = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember3();
+                result.IndexSpecServerless = new global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecServerless();
             }
             return result;
         }
@@ -67,17 +67,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(IndexSpecMember1 != null)
+            if(IndexSpecByoc != null)
             {
-                return IndexSpecMember1.GetFieldDeserializers();
+                return IndexSpecByoc.GetFieldDeserializers();
             }
-            else if(IndexSpecMember2 != null)
+            else if(IndexSpecPodBased != null)
             {
-                return IndexSpecMember2.GetFieldDeserializers();
+                return IndexSpecPodBased.GetFieldDeserializers();
             }
-            else if(IndexSpecMember3 != null)
+            else if(IndexSpecServerless != null)
             {
-                return IndexSpecMember3.GetFieldDeserializers();
+                return IndexSpecServerless.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,17 +88,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(IndexSpecMember1 != null)
+            if(IndexSpecByoc != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember1>(null, IndexSpecMember1);
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecByoc>(null, IndexSpecByoc);
             }
-            else if(IndexSpecMember2 != null)
+            else if(IndexSpecPodBased != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember2>(null, IndexSpecMember2);
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecPodBased>(null, IndexSpecPodBased);
             }
-            else if(IndexSpecMember3 != null)
+            else if(IndexSpecServerless != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecMember3>(null, IndexSpecMember3);
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpecServerless>(null, IndexSpecServerless);
             }
         }
     }

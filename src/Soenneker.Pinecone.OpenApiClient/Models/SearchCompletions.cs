@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata-based filter to restrict which documents are retrieved for the assistant&apos;s response context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty Filter { get; set; }
 #endif
         /// <summary>The list of messages sent to the assistant, used for context retrieval and generating response with the LLM.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,7 +69,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty.CreateFromDiscriminatorValue); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>(global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
@@ -83,7 +83,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty>("filter", Filter);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>("messages", Messages);
             writer.WriteStringValue("model", Model);
             writer.WriteBoolValue("stream", Stream);

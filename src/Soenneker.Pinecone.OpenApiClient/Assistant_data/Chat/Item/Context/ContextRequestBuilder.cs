@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Context
 {
     /// <summary>
-    /// Builds and executes requests for operations under \assistant_data\chat\{assistant_name}\context
+    /// Builds and executes requests for operations under \assistant_data\chat\{assistantName}\context
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContextRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Context
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContextRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistant_name}/context", pathParameters)
+        public ContextRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistantName}/context", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Context
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContextRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistant_name}/context", rawUrl)
+        public ContextRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistantName}/context", rawUrl)
         {
         }
         /// <summary>

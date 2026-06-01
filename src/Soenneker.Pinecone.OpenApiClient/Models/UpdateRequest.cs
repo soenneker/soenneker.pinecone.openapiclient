@@ -20,10 +20,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>A metadata filter expression. When updating metadata across records in a namespace,  the update is applied to all records that match the filter.  See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>Vector&apos;s unique id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,10 +44,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Metadata to set for the record.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_setMetadata? SetMetadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestSetMetadataProperty? SetMetadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_setMetadata SetMetadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestSetMetadataProperty SetMetadata { get; set; }
 #endif
         /// <summary>Vector sparse data. Represented as a list of indices and a list of  corresponded values, which must be with the same length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -91,10 +91,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "dryRun", n => { DryRun = n.GetBoolValue(); } },
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
-                { "setMetadata", n => { SetMetadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_setMetadata>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_setMetadata.CreateFromDiscriminatorValue); } },
+                { "setMetadata", n => { SetMetadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestSetMetadataProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestSetMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "sparseValues", n => { SparseValues = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>(global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues.CreateFromDiscriminatorValue); } },
                 { "values", n => { Values = n.GetCollectionOfPrimitiveValues<float?>()?.AsList(); } },
             };
@@ -107,10 +107,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("dryRun", DryRun);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestFilterProperty>("filter", Filter);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("namespace", Namespace);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequest_setMetadata>("setMetadata", SetMetadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateRequestSetMetadataProperty>("setMetadata", SetMetadata);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>("sparseValues", SparseValues);
             writer.WriteCollectionOfPrimitiveValues<float?>("values", Values);
             writer.WriteAdditionalData(AdditionalData);

@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.inference.modelsRequests.item collection</summary>
         /// <param name="position">The name of the model to look up.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item.WithModel_nameItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item.WithModel_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item.WithModelNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item.WithModelNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("model_name", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item.WithModel_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("modelName", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item.WithModelNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

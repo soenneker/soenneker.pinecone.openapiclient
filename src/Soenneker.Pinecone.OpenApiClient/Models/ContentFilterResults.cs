@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Content filter results returned by the provider. The structure depend on the `spec` value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResults_results? Results { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResultsResults? Results { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResults_results Results { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResultsResults Results { get; set; }
 #endif
         /// <summary>Identifier of the model provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +56,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "results", n => { Results = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResults_results>(global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResults_results.CreateFromDiscriminatorValue); } },
+                { "results", n => { Results = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResultsResults>(global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResultsResults.CreateFromDiscriminatorValue); } },
                 { "spec", n => { Spec = n.GetStringValue(); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResults_results>("results", Results);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContentFilterResultsResults>("results", Results);
             writer.WriteStringValue("spec", Spec);
             writer.WriteAdditionalData(AdditionalData);
         }

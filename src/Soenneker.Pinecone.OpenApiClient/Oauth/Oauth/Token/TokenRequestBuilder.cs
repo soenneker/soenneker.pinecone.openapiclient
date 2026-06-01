@@ -40,13 +40,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Oauth.Oauth.Token
         /// <param name="body">A request to obtain an access token.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 501 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 501 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.TokenResponse?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.TokenRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -60,13 +60,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Oauth.Oauth.Token
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "501", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.Pinecone.OpenApiClient.Models.Oauth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "501", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202604ErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.TokenResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.TokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

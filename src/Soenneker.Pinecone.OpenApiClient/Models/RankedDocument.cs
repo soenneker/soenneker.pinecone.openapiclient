@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Document for reranking</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocument_document? Document { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocumentDocument? Document { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocument_document Document { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocumentDocument Document { get; set; }
 #endif
         /// <summary>The index position of the document from the original request.</summary>
         public int? Index { get; set; }
@@ -52,7 +52,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "document", n => { Document = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocument_document>(global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocument_document.CreateFromDiscriminatorValue); } },
+                { "document", n => { Document = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocumentDocument>(global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocumentDocument.CreateFromDiscriminatorValue); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "score", n => { Score = n.GetDoubleValue(); } },
             };
@@ -64,7 +64,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocument_document>("document", Document);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RankedDocumentDocument>("document", Document);
             writer.WriteIntValue("index", Index);
             writer.WriteDoubleValue("score", Score);
             writer.WriteAdditionalData(AdditionalData);

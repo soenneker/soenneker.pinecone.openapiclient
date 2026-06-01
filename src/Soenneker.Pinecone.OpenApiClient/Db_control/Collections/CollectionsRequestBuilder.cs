@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Collections
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.db_control.collections.item collection</summary>
         /// <param name="position">The name of the collection to be described.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.Item.WithCollection_nameItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.Item.WithCollection_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.Item.WithCollectionNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.Item.WithCollectionNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("collection_name", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.Item.WithCollection_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("collectionName", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.Item.WithCollectionNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

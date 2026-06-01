@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.Search
 {
     /// <summary>
-    /// Builds and executes requests for operations under \db_data\records\namespaces\{namespace}\search
+    /// Builds and executes requests for operations under \db_data\records\namespaces\{namespaceValue}\search
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SearchRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.Searc
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespace}/search", pathParameters)
+        public SearchRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespaceValue}/search", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.Searc
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespace}/search", rawUrl)
+        public SearchRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespaceValue}/search", rawUrl)
         {
         }
         /// <summary>

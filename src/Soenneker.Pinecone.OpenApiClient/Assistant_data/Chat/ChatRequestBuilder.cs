@@ -17,14 +17,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.assistant_data.chat.item collection</summary>
         /// <param name="position">The name of the assistant to be described.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.WithAssistant_nameItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.WithAssistant_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.WithAssistantNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.WithAssistantNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("assistant_name", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.WithAssistant_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("assistantName", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.WithAssistantNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

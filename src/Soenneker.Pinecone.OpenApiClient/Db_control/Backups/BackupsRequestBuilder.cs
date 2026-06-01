@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Backups
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.db_control.backups.item collection</summary>
         /// <param name="position">The ID of the backup to describe.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.WithBackup_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.WithBackup_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.WithBackupItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.WithBackupItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("backup_id", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.WithBackup_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("backupId", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.WithBackupItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

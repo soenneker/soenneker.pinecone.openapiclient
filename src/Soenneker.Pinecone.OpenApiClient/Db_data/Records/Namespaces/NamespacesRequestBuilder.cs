@@ -17,14 +17,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.db_data.records.namespaces.item collection</summary>
         /// <param name="position">The namespace to upsert records into.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.WithNamespaceItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.WithNamespaceItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.WithNamespaceValueItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.WithNamespaceValueItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("namespace", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.WithNamespaceItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("namespaceValue", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.WithNamespaceValueItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

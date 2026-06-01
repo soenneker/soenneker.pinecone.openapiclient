@@ -8,34 +8,34 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember1"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember2"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecByoc"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecPodBased"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecServerless"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConfigureIndexRequestSpec : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecByoc"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember1? ConfigureIndexRequestSpecMember1 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecByoc? ConfigureIndexRequestSpecByoc { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember1 ConfigureIndexRequestSpecMember1 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecByoc ConfigureIndexRequestSpecByoc { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecPodBased"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember2? ConfigureIndexRequestSpecMember2 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecPodBased? ConfigureIndexRequestSpecPodBased { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember2 ConfigureIndexRequestSpecMember2 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecPodBased ConfigureIndexRequestSpecPodBased { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecServerless"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember3? ConfigureIndexRequestSpecMember3 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecServerless? ConfigureIndexRequestSpecServerless { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember3 ConfigureIndexRequestSpecMember3 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecServerless ConfigureIndexRequestSpecServerless { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,17 +47,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpec();
-            if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ConfigureIndexRequestSpecByoc".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ConfigureIndexRequestSpecMember1 = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember1();
+                result.ConfigureIndexRequestSpecByoc = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecByoc();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ConfigureIndexRequestSpecPodBased".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ConfigureIndexRequestSpecMember2 = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember2();
+                result.ConfigureIndexRequestSpecPodBased = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecPodBased();
             }
-            else if("".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ConfigureIndexRequestSpecServerless".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ConfigureIndexRequestSpecMember3 = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember3();
+                result.ConfigureIndexRequestSpecServerless = new global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecServerless();
             }
             return result;
         }
@@ -67,17 +67,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ConfigureIndexRequestSpecMember1 != null)
+            if(ConfigureIndexRequestSpecByoc != null)
             {
-                return ConfigureIndexRequestSpecMember1.GetFieldDeserializers();
+                return ConfigureIndexRequestSpecByoc.GetFieldDeserializers();
             }
-            else if(ConfigureIndexRequestSpecMember2 != null)
+            else if(ConfigureIndexRequestSpecPodBased != null)
             {
-                return ConfigureIndexRequestSpecMember2.GetFieldDeserializers();
+                return ConfigureIndexRequestSpecPodBased.GetFieldDeserializers();
             }
-            else if(ConfigureIndexRequestSpecMember3 != null)
+            else if(ConfigureIndexRequestSpecServerless != null)
             {
-                return ConfigureIndexRequestSpecMember3.GetFieldDeserializers();
+                return ConfigureIndexRequestSpecServerless.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -88,17 +88,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ConfigureIndexRequestSpecMember1 != null)
+            if(ConfigureIndexRequestSpecByoc != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember1>(null, ConfigureIndexRequestSpecMember1);
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecByoc>(null, ConfigureIndexRequestSpecByoc);
             }
-            else if(ConfigureIndexRequestSpecMember2 != null)
+            else if(ConfigureIndexRequestSpecPodBased != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember2>(null, ConfigureIndexRequestSpecMember2);
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecPodBased>(null, ConfigureIndexRequestSpecPodBased);
             }
-            else if(ConfigureIndexRequestSpecMember3 != null)
+            else if(ConfigureIndexRequestSpecServerless != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecMember3>(null, ConfigureIndexRequestSpecMember3);
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpecServerless>(null, ConfigureIndexRequestSpecServerless);
             }
         }
     }

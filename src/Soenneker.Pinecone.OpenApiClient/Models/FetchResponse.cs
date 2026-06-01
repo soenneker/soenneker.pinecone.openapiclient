@@ -34,10 +34,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The vectors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponse_vectors? Vectors { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponseVectorsProperty? Vectors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponse_vectors Vectors { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponseVectorsProperty Vectors { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponse"/> and sets the default values.
@@ -66,7 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Usage>(global::Soenneker.Pinecone.OpenApiClient.Models.Usage.CreateFromDiscriminatorValue); } },
-                { "vectors", n => { Vectors = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponse_vectors>(global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponse_vectors.CreateFromDiscriminatorValue); } },
+                { "vectors", n => { Vectors = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponseVectorsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponseVectorsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("namespace", Namespace);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Usage>("usage", Usage);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponse_vectors>("vectors", Vectors);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchResponseVectorsProperty>("vectors", Vectors);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

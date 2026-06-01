@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat.Completions
 {
     /// <summary>
-    /// Builds and executes requests for operations under \assistant_data\chat\{assistant_name}\chat\completions
+    /// Builds and executes requests for operations under \assistant_data\chat\{assistantName}\chat\completions
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CompletionsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat.Complet
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CompletionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistant_name}/chat/completions", pathParameters)
+        public CompletionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistantName}/chat/completions", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat.Complet
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CompletionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistant_name}/chat/completions", rawUrl)
+        public CompletionsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistantName}/chat/completions", rawUrl)
         {
         }
         /// <summary>

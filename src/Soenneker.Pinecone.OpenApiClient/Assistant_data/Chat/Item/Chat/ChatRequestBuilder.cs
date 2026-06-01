@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat
 {
     /// <summary>
-    /// Builds and executes requests for operations under \assistant_data\chat\{assistant_name}\chat
+    /// Builds and executes requests for operations under \assistant_data\chat\{assistantName}\chat
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatRequestBuilder : BaseRequestBuilder
@@ -25,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChatRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistant_name}/chat", pathParameters)
+        public ChatRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistantName}/chat", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ChatRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistant_name}/chat", rawUrl)
+        public ChatRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/assistant_data/chat/{assistantName}/chat", rawUrl)
         {
         }
     }

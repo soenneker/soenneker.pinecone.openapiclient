@@ -26,10 +26,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequest_metadata? Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequestMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequest_metadata Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequestMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>The name of the assistant. Resource name must be 1-63 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or `-`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequest_metadata>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequest_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequestMetadataProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequestMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
             };
@@ -86,7 +86,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequest_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateAssistantRequestMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("region", Region);
             writer.WriteAdditionalData(AdditionalData);

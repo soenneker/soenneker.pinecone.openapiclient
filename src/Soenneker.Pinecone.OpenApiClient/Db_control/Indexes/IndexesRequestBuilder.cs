@@ -26,14 +26,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes
         }
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.db_control.indexes.item collection</summary>
         /// <param name="position">The name of the index to be described.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndex_nameItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndex_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("index_name", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndex_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("indexName", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

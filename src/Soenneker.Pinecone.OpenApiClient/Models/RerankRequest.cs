@@ -17,10 +17,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The documents to rerank.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_documents>? Documents { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestDocumentsItem>? Documents { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_documents> Documents { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestDocumentsItem> Documents { get; set; }
 #endif
         /// <summary>The [model](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) to use for reranking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -33,10 +33,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_parameters? Parameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_parameters Parameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestParametersProperty Parameters { get; set; }
 #endif
         /// <summary>The query to rerank documents against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,9 +83,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_documents>(global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_documents.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestDocumentsItem>(global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestDocumentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_parameters>(global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestParametersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestParametersProperty.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "rank_fields", n => { RankFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "return_documents", n => { ReturnDocuments = n.GetBoolValue(); } },
@@ -99,9 +99,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_documents>("documents", Documents);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestDocumentsItem>("documents", Documents);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequest_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RerankRequestParametersProperty>("parameters", Parameters);
             writer.WriteStringValue("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("rank_fields", RankFields);
             writer.WriteBoolValue("return_documents", ReturnDocuments);

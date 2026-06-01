@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
 {
     /// <summary>
-    /// Builds and executes requests for operations under \db_control\indexes\{index_name}\backups
+    /// Builds and executes requests for operations under \db_control\indexes\{indexName}\backups
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BackupsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BackupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{index_name}/backups{?limit*,paginationToken*}", pathParameters)
+        public BackupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}/backups{?limit*,paginationToken*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BackupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{index_name}/backups{?limit*,paginationToken*}", rawUrl)
+        public BackupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}/backups{?limit*,paginationToken*}", rawUrl)
         {
         }
         /// <summary>

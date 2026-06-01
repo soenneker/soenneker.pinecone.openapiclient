@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.admin.admin.projects.item collection</summary>
         /// <param name="position">Project ID</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.WithProject_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.WithProject_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.WithProjectItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.WithProjectItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("project_id", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.WithProject_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("projectId", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.WithProjectItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

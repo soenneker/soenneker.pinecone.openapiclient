@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>The unique ID of the vector to be used as a query vector. Each request can contain either the `vector` or `id` parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -99,7 +99,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "includeMetadata", n => { IncludeMetadata = n.GetBoolValue(); } },
                 { "includeValues", n => { IncludeValues = n.GetBoolValue(); } },
@@ -119,7 +119,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty>("filter", Filter);
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("includeMetadata", IncludeMetadata);
             writer.WriteBoolValue("includeValues", IncludeValues);

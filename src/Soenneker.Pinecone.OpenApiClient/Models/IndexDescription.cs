@@ -32,10 +32,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>A mapping for each namespace in the index from the namespace name to a summary of its contents. If a metadata filter expression is present, the summary will reflect only vectors matching that expression.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription_namespaces? Namespaces { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty? Namespaces { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription_namespaces Namespaces { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty Namespaces { get; set; }
 #endif
         /// <summary>The amount of storage used by a dedicated index</summary>
         public float? StorageFullness { get; set; }
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "indexFullness", n => { IndexFullness = n.GetFloatValue(); } },
                 { "memory_fullness", n => { MemoryFullness = n.GetFloatValue(); } },
                 { "metric", n => { Metric = n.GetStringValue(); } },
-                { "namespaces", n => { Namespaces = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription_namespaces>(global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription_namespaces.CreateFromDiscriminatorValue); } },
+                { "namespaces", n => { Namespaces = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty.CreateFromDiscriminatorValue); } },
                 { "storage_fullness", n => { StorageFullness = n.GetFloatValue(); } },
                 { "totalVectorCount", n => { TotalVectorCount = n.GetLongValue(); } },
                 { "vectorType", n => { VectorType = n.GetStringValue(); } },
@@ -95,7 +95,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteFloatValue("indexFullness", IndexFullness);
             writer.WriteFloatValue("memory_fullness", MemoryFullness);
             writer.WriteStringValue("metric", Metric);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription_namespaces>("namespaces", Namespaces);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty>("namespaces", Namespaces);
             writer.WriteFloatValue("storage_fullness", StorageFullness);
             writer.WriteLongValue("totalVectorCount", TotalVectorCount);
             writer.WriteStringValue("vectorType", VectorType);

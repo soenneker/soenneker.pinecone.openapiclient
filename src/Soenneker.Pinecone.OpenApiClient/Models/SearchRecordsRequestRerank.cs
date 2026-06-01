@@ -26,10 +26,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerank_parameters? Parameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerankParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerank_parameters Parameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerankParametersProperty Parameters { get; set; }
 #endif
         /// <summary>The query to rerank documents against. If a specific rerank query is specified,  it overwrites the query input that was provided at the top level.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,7 +75,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerank_parameters>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerank_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerankParametersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerankParametersProperty.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "rank_fields", n => { RankFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "top_n", n => { TopN = n.GetIntValue(); } },
@@ -89,7 +89,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerank_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestRerankParametersProperty>("parameters", Parameters);
             writer.WriteStringValue("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("rank_fields", RankFields);
             writer.WriteIntValue("top_n", TopN);

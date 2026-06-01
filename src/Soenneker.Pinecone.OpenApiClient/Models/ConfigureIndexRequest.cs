@@ -42,10 +42,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, &apos;_&apos;, or &apos;-&apos;.  Values must be alphanumeric, &apos;;&apos;, &apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;+&apos;, or &apos; &apos;. To unset a key, set the value to be an empty string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest_tags? Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest_tags Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags Tags { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest"/> and sets the default values.
@@ -75,7 +75,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "deletion_protection", n => { DeletionProtection = n.GetStringValue(); } },
                 { "embed", n => { Embed = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed.CreateFromDiscriminatorValue); } },
                 { "spec", n => { Spec = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpec>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpec.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest_tags>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest_tags.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -88,7 +88,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("deletion_protection", DeletionProtection);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed>("embed", Embed);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestSpec>("spec", Spec);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

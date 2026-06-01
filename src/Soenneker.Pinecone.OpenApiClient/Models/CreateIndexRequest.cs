@@ -52,10 +52,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, &apos;_&apos;, or &apos;-&apos;.  Values must be alphanumeric, &apos;;&apos;, &apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;+&apos;, or &apos; &apos;. To unset a key, set the value to be an empty string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest_tags? Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest_tags Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags Tags { get; set; }
 #endif
         /// <summary>The index vector type. You can use &apos;dense&apos; or &apos;sparse&apos;. If &apos;dense&apos;, the vector dimension must be specified.  If &apos;sparse&apos;, the vector dimension should not be specified.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,7 +96,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "metric", n => { Metric = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "spec", n => { Spec = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpec>(global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpec.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest_tags>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest_tags.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags.CreateFromDiscriminatorValue); } },
                 { "vector_type", n => { VectorType = n.GetStringValue(); } },
             };
         }
@@ -112,7 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("metric", Metric);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.IndexSpec>("spec", Spec);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags>("tags", Tags);
             writer.WriteStringValue("vector_type", VectorType);
             writer.WriteAdditionalData(AdditionalData);
         }

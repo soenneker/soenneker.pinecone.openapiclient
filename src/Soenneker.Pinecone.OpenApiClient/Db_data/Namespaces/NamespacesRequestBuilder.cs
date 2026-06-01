@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.db_data.namespaces.item collection</summary>
         /// <param name="position">The namespace to describe.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.WithNamespaceItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.WithNamespaceItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.WithNamespaceValueItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.WithNamespaceValueItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("namespace", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.WithNamespaceItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("namespaceValue", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.WithNamespaceValueItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

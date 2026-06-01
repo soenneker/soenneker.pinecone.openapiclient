@@ -26,10 +26,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequest_metadata? Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequestMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequest_metadata Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequestMetadata Metadata { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequest"/> and sets the default values.
@@ -57,7 +57,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequest_metadata>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequest_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequestMetadata>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequestMetadata.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequest_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantRequestMetadata>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

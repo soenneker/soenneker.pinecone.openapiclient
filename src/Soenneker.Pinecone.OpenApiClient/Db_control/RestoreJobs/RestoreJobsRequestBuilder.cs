@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.db_control.restoreJobs.item collection</summary>
         /// <param name="position">The ID of the restore job to describe.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item.WithJob_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item.WithJob_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item.WithJobItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item.WithJobItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("job_id", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item.WithJob_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("jobId", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item.WithJobItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

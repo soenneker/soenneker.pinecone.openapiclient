@@ -34,10 +34,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, &apos;_&apos;, or &apos;-&apos;.  Values must be alphanumeric, &apos;;&apos;, &apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;+&apos;, or &apos; &apos;. To unset a key, set the value to be an empty string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequest_tags? Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequest_tags Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags Tags { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequest"/> and sets the default values.
@@ -66,7 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "deletion_protection", n => { DeletionProtection = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequest_tags>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequest_tags.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("deletion_protection", DeletionProtection);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequest_tags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

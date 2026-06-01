@@ -26,10 +26,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The default value for the parameter when a parameter is optional.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default? Default { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault? Default { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default Default { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault Default { get; set; }
 #endif
         /// <summary>The maximum allowed value (inclusive) when the type is &apos;numeric_range&apos;.</summary>
         public double? Max { get; set; }
@@ -87,7 +87,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "allowed_values", n => { AllowedValues = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "default", n => { Default = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default.CreateFromDiscriminatorValue); } },
+                { "default", n => { Default = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault.CreateFromDiscriminatorValue); } },
                 { "max", n => { Max = n.GetDoubleValue(); } },
                 { "min", n => { Min = n.GetDoubleValue(); } },
                 { "parameter", n => { Parameter = n.GetStringValue(); } },
@@ -104,7 +104,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_values", AllowedValues);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default>("default", Default);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault>("default", Default);
             writer.WriteDoubleValue("max", Max);
             writer.WriteDoubleValue("min", Min);
             writer.WriteStringValue("parameter", Parameter);
@@ -112,86 +112,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("value_type", ValueType);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="bool"/>, <see cref="float"/>, <see cref="int"/>, <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class ModelInfoSupportedParameter_default : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="bool"/></summary>
-            public bool? Boolean { get; set; }
-            /// <summary>Composed type representation for type <see cref="float"/></summary>
-            public float? Float { get; set; }
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer { get; set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_default();
-                if(parseNode.GetBoolValue() is bool booleanValue)
-                {
-                    result.Boolean = booleanValue;
-                }
-                else if(parseNode.GetFloatValue() is float floatValue)
-                {
-                    result.Float = floatValue;
-                }
-                else if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(Boolean != null)
-                {
-                    writer.WriteBoolValue(null, Boolean);
-                }
-                else if(Float != null)
-                {
-                    writer.WriteFloatValue(null, Float);
-                }
-                else if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-            }
         }
     }
 }

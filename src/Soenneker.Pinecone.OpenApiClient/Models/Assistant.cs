@@ -36,10 +36,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Assistant_metadata? Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Assistant_metadata Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantMetadata Metadata { get; set; }
 #endif
         /// <summary>The name of the assistant. Resource name must be 1-63 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or `-`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,7 +95,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "host", n => { Host = n.GetStringValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Assistant_metadata>(global::Soenneker.Pinecone.OpenApiClient.Models.Assistant_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantMetadata>(global::Soenneker.Pinecone.OpenApiClient.Models.AssistantMetadata.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -112,7 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("host", Host);
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Assistant_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantMetadata>("metadata", Metadata);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("region", Region);
             writer.WriteStringValue("status", Status);

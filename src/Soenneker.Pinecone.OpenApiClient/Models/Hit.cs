@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The selected record fields associated with the search hit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Hit_fields? Fields { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.HitFieldsProperty? Fields { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Hit_fields Fields { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.HitFieldsProperty Fields { get; set; }
 #endif
         /// <summary>The record id of the search hit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -58,7 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Hit_fields>(global::Soenneker.Pinecone.OpenApiClient.Models.Hit_fields.CreateFromDiscriminatorValue); } },
+                { "fields", n => { Fields = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.HitFieldsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.HitFieldsProperty.CreateFromDiscriminatorValue); } },
                 { "_id", n => { Id = n.GetStringValue(); } },
                 { "_score", n => { Score = n.GetFloatValue(); } },
             };
@@ -70,7 +70,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Hit_fields>("fields", Fields);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.HitFieldsProperty>("fields", Fields);
             writer.WriteStringValue("_id", Id);
             writer.WriteFloatValue("_score", Score);
             writer.WriteAdditionalData(AdditionalData);

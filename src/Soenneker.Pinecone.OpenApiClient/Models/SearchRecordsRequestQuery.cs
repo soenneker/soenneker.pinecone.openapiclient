@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryFilterProperty Filter { get; set; }
 #endif
         /// <summary>The unique ID of the vector to be used as a query vector.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,10 +34,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_inputs? Inputs { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryInputs? Inputs { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_inputs Inputs { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryInputs Inputs { get; set; }
 #endif
         /// <summary>&quot;Specifies which terms must be present in the text of each search hit based on the specified strategy. The match is performedagainst the text field specified in the integrated index `field_map` configuration.Terms are normalized and tokenized into single tokens before matching, and order does not matter.Example:  `\&quot;match_terms\&quot;: {\&quot;terms\&quot;: [\&quot;animal\&quot;, \&quot;CHARACTER\&quot;, \&quot;donald Duck\&quot;], \&quot;strategy\&quot;: \&quot;all\&quot;}` will tokenize  to `[\&quot;animal\&quot;, \&quot;character\&quot;, \&quot;donald\&quot;, \&quot;duck\&quot;]`, and would match  `\&quot;Donald F. Duck is a funny animal character\&quot;` but would not match `\&quot;A duck is a funny animal\&quot;`.Match terms filtering is supported only for sparse indexes with [integrated embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding)configured to use the [pinecone-sparse-english-v0](https://docs.pinecone.io/models/pinecone-sparse-english-v0) model.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,9 +82,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryFilterProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_inputs>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_inputs.CreateFromDiscriminatorValue); } },
+                { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryInputs>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryInputs.CreateFromDiscriminatorValue); } },
                 { "match_terms", n => { MatchTerms = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchMatchTerms>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchMatchTerms.CreateFromDiscriminatorValue); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
                 { "vector", n => { Vector = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsVector>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsVector.CreateFromDiscriminatorValue); } },
@@ -97,9 +97,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryFilterProperty>("filter", Filter);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQuery_inputs>("inputs", Inputs);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsRequestQueryInputs>("inputs", Inputs);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchMatchTerms>("match_terms", MatchTerms);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsVector>("vector", Vector);

@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>If this parameter is present, the operation only returns statistics for vectors that satisfy the filter. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).Serverless indexes do not support filtering `describe_index_stats` by metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequest"/> and sets the default values.
@@ -48,7 +48,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequestFilterProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DescribeIndexStatsRequestFilterProperty>("filter", Filter);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

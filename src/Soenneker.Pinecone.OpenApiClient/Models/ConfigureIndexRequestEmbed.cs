@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Identifies the name of the text field from your document model that will be embedded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_field_map? FieldMap { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedFieldMapProperty? FieldMap { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_field_map FieldMap { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedFieldMapProperty FieldMap { get; set; }
 #endif
         /// <summary>The name of the embedding model to use with the index. The index dimension and model dimension must match, and the index similarity metric must be supported by the model. The index embedding model cannot be changed once set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -34,18 +34,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The read parameters for the embedding model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_read_parameters? ReadParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedReadParametersProperty? ReadParameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_read_parameters ReadParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedReadParametersProperty ReadParameters { get; set; }
 #endif
         /// <summary>The write parameters for the embedding model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_write_parameters? WriteParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedWriteParametersProperty? WriteParameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_write_parameters WriteParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedWriteParametersProperty WriteParameters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed"/> and sets the default values.
@@ -72,10 +72,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "field_map", n => { FieldMap = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_field_map>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_field_map.CreateFromDiscriminatorValue); } },
+                { "field_map", n => { FieldMap = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedFieldMapProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedFieldMapProperty.CreateFromDiscriminatorValue); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "read_parameters", n => { ReadParameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_read_parameters>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_read_parameters.CreateFromDiscriminatorValue); } },
-                { "write_parameters", n => { WriteParameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_write_parameters>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_write_parameters.CreateFromDiscriminatorValue); } },
+                { "read_parameters", n => { ReadParameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedReadParametersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedReadParametersProperty.CreateFromDiscriminatorValue); } },
+                { "write_parameters", n => { WriteParameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedWriteParametersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedWriteParametersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -85,10 +85,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_field_map>("field_map", FieldMap);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedFieldMapProperty>("field_map", FieldMap);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_read_parameters>("read_parameters", ReadParameters);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbed_write_parameters>("write_parameters", WriteParameters);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedReadParametersProperty>("read_parameters", ReadParameters);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestEmbedWriteParametersProperty>("write_parameters", WriteParameters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -25,10 +25,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>This is the metadata, if it is requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVector_metadata? Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVectorMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVector_metadata Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVectorMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>This is a measure of similarity between this vector and the query vector.  The higher the score, the more they are similar.</summary>
         public float? Score { get; set; }
@@ -74,7 +74,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVector_metadata>(global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVector_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVectorMetadataProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVectorMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "score", n => { Score = n.GetFloatValue(); } },
                 { "sparseValues", n => { SparseValues = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>(global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues.CreateFromDiscriminatorValue); } },
                 { "values", n => { Values = n.GetCollectionOfPrimitiveValues<float?>()?.AsList(); } },
@@ -88,7 +88,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVector_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVectorMetadataProperty>("metadata", Metadata);
             writer.WriteFloatValue("score", Score);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>("sparseValues", SparseValues);
             writer.WriteCollectionOfPrimitiveValues<float?>("values", Values);

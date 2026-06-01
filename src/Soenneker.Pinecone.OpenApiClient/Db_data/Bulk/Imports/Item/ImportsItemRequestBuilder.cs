@@ -36,18 +36,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item
         /// <summary>
         /// Cancel an import operation if it is not yet finished. It has no effect if the operation is already finished.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item.ImportsDeleteResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604CancelBulkImport200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item.ImportsDeleteResponse?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604CancelBulkImport200Response?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item.ImportsDeleteResponse> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604CancelBulkImport200Response> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
@@ -56,7 +56,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item.ImportsDeleteResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item.ImportsDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604CancelBulkImport200Response>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604CancelBulkImport200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return details of a specific import operation.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).

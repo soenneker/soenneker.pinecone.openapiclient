@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.assistant_control.assistants.item collection</summary>
         /// <param name="position">The name of the assistant to get a status on.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item.WithAssistant_nameItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item.WithAssistant_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item.WithAssistantNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item.WithAssistantNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("assistant_name", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item.WithAssistant_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("assistantName", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item.WithAssistantNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

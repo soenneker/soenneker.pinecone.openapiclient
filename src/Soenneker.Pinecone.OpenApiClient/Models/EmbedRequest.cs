@@ -17,10 +17,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>List of inputs to generate embeddings for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_inputs>? Inputs { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestInputsItem>? Inputs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_inputs> Inputs { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestInputsItem> Inputs { get; set; }
 #endif
         /// <summary>The [model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to use for embedding generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -33,10 +33,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_parameters? Parameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_parameters Parameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestParametersProperty Parameters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest"/> and sets the default values.
@@ -63,9 +63,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "inputs", n => { Inputs = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_inputs>(global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_inputs.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "inputs", n => { Inputs = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestInputsItem>(global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestInputsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_parameters>(global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestParametersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestParametersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -75,9 +75,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_inputs>("inputs", Inputs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestInputsItem>("inputs", Inputs);
             writer.WriteStringValue("model", Model);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequest_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedRequestParametersProperty>("parameters", Parameters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

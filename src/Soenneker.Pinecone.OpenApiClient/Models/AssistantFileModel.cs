@@ -28,10 +28,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata associated with the file. This metadata can be used to filter files when listing them or to restrict search results when querying the assistant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel_metadata? Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModelMetadata? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel_metadata Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModelMetadata Metadata { get; set; }
 #endif
         /// <summary>Indicates whether the file was processed as multimodal.</summary>
         public bool? Multimodal { get; set; }
@@ -90,7 +90,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "created_on", n => { CreatedOn = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel_metadata>(global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModelMetadata>(global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModelMetadata.CreateFromDiscriminatorValue); } },
                 { "multimodal", n => { Multimodal = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "signed_url", n => { SignedUrl = n.GetStringValue(); } },
@@ -108,7 +108,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_on", CreatedOn);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModelMetadata>("metadata", Metadata);
             writer.WriteBoolValue("multimodal", Multimodal);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("signed_url", SignedUrl);

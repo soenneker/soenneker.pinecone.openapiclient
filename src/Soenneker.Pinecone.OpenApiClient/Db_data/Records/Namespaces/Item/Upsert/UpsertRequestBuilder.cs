@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.Upsert
 {
     /// <summary>
-    /// Builds and executes requests for operations under \db_data\records\namespaces\{namespace}\upsert
+    /// Builds and executes requests for operations under \db_data\records\namespaces\{namespaceValue}\upsert
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpsertRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.Upser
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UpsertRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespace}/upsert", pathParameters)
+        public UpsertRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespaceValue}/upsert", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Records.Namespaces.Item.Upser
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UpsertRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespace}/upsert", rawUrl)
+        public UpsertRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_data/records/namespaces/{namespaceValue}/upsert", rawUrl)
         {
         }
         /// <summary>

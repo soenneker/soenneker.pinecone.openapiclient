@@ -17,14 +17,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.admin.admin.apiKeys.item collection</summary>
         /// <param name="position">API key ID</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item.WithApi_key_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item.WithApi_key_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item.WithApiKeyItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item.WithApiKeyItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("api_key_id", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item.WithApi_key_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("apiKeyId", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item.WithApiKeyItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

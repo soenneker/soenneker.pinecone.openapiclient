@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optionally filter which documents can be retrieved using the following metadata fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>If image-related context snippets are returned, this field determines whether or not they should include base64 image data. If `false`, only the image captions are returned. Only available when `multimodal=true`.</summary>
         public bool? IncludeBinaryContent { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "include_binary_content", n => { IncludeBinaryContent = n.GetBoolValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>(global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "multimodal", n => { Multimodal = n.GetBoolValue(); } },
@@ -88,7 +88,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextRequestFilterProperty>("filter", Filter);
             writer.WriteBoolValue("include_binary_content", IncludeBinaryContent);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>("messages", Messages);
             writer.WriteBoolValue("multimodal", Multimodal);

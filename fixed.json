@@ -51,7 +51,7 @@
         ],
         "summary": "List projects",
         "description": "List all projects in an organization.",
-        "operationId": "admin-2026-04-list-projects",
+        "operationId": "Admin202604ListProjects",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -137,7 +137,7 @@
         ],
         "summary": "Create a new project",
         "description": "Creates a new project.",
-        "operationId": "admin-2026-04-create-project",
+        "operationId": "Admin202604CreateProject",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -277,7 +277,7 @@
         ],
         "summary": "List organizations",
         "description": "List all organizations associated with an account.",
-        "operationId": "admin-2026-04-list-organizations",
+        "operationId": "Admin202604ListOrganizations",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -358,14 +358,14 @@
         }
       }
     },
-    "/admin/admin/projects/{project_id}": {
+    "/admin/admin/projects/{projectId}": {
       "get": {
         "tags": [
           "Projects"
         ],
         "summary": "Get project details",
         "description": "Get details about a project.",
-        "operationId": "admin-2026-04-fetch-project",
+        "operationId": "Admin202604FetchProject",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -378,7 +378,7 @@
             }
           },
           {
-            "name": "project_id",
+            "name": "projectId",
             "in": "path",
             "description": "Project ID",
             "required": true,
@@ -471,7 +471,7 @@
         ],
         "summary": "Delete a project",
         "description": "Delete a project and all its associated configuration.\nBefore deleting a project, you must delete all indexes, assistants, backups, and collections associated with the project. Other project resources, such as API keys, are automatically deleted when the project is deleted.\n",
-        "operationId": "admin-2026-04-delete-project",
+        "operationId": "Admin202604DeleteProject",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -484,7 +484,7 @@
             }
           },
           {
-            "name": "project_id",
+            "name": "projectId",
             "in": "path",
             "description": "Project ID",
             "required": true,
@@ -577,7 +577,7 @@
         ],
         "summary": "Update a project",
         "description": "Update a project's configuration details.\nYou can update the project's name, maximum number of Pods, or enable encryption with a customer-managed encryption key (CMEK).\n",
-        "operationId": "admin-2026-04-update-project",
+        "operationId": "Admin202604UpdateProject",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -590,7 +590,7 @@
             }
           },
           {
-            "name": "project_id",
+            "name": "projectId",
             "in": "path",
             "description": "Project ID",
             "required": true,
@@ -720,14 +720,14 @@
         }
       }
     },
-    "/admin/admin/organizations/{organization_id}": {
+    "/admin/admin/organizations/{organizationId}": {
       "get": {
         "tags": [
           "Organizations"
         ],
         "summary": "Get organization details",
         "description": "Get details about an organization.",
-        "operationId": "admin-2026-04-fetch-organization",
+        "operationId": "Admin202604FetchOrganization",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -740,7 +740,7 @@
             }
           },
           {
-            "name": "organization_id",
+            "name": "organizationId",
             "in": "path",
             "description": "Organization ID",
             "required": true,
@@ -832,7 +832,7 @@
         ],
         "summary": "Delete an organization",
         "description": "Delete an organization and all its associated configuration.\nBefore deleting an organization, you must delete all projects (including indexes, assistants, backups, and collections) associated with the organization.\n",
-        "operationId": "admin-2026-04-delete-organization",
+        "operationId": "Admin202604DeleteOrganization",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -845,7 +845,7 @@
             }
           },
           {
-            "name": "organization_id",
+            "name": "organizationId",
             "in": "path",
             "description": "Organization ID",
             "required": true,
@@ -937,7 +937,7 @@
         ],
         "summary": "Update an organization",
         "description": "Update an organization's name.\n",
-        "operationId": "admin-2026-04-update-organization",
+        "operationId": "Admin202604UpdateOrganization",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -950,7 +950,7 @@
             }
           },
           {
-            "name": "organization_id",
+            "name": "organizationId",
             "in": "path",
             "description": "Organization ID",
             "required": true,
@@ -1079,14 +1079,14 @@
         }
       }
     },
-    "/admin/admin/projects/{project_id}/api-keys": {
+    "/admin/admin/projects/{projectId}/api-keys": {
       "get": {
         "tags": [
           "API Keys"
         ],
         "summary": "List API keys",
         "description": "List all API keys in a project.",
-        "operationId": "admin-2026-04-list-project-api-keys",
+        "operationId": "Admin202604ListProjectApiKeys",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1099,7 +1099,7 @@
             }
           },
           {
-            "name": "project_id",
+            "name": "projectId",
             "in": "path",
             "description": "Project ID",
             "required": true,
@@ -1182,7 +1182,7 @@
         ],
         "summary": "Create an API key",
         "description": "Create a new API key for a project. Developers can use the API key to authenticate requests to Pinecone's Data Plane and Control Plane APIs.\n",
-        "operationId": "admin-2026-04-create-api-key",
+        "operationId": "Admin202604CreateApiKey",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1195,7 +1195,7 @@
             }
           },
           {
-            "name": "project_id",
+            "name": "projectId",
             "in": "path",
             "description": "Project ID",
             "required": true,
@@ -1210,7 +1210,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateAPIKeyRequest"
+                "$ref": "#/components/schemas/CreateApiKeyRequest"
               }
             }
           }
@@ -1221,7 +1221,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/APIKeyWithSecret"
+                  "$ref": "#/components/schemas/ApiKeyWithSecret"
                 }
               }
             }
@@ -1315,14 +1315,14 @@
         }
       }
     },
-    "/admin/admin/api-keys/{api_key_id}": {
+    "/admin/admin/api-keys/{apiKeyId}": {
       "get": {
         "tags": [
           "API Keys"
         ],
         "summary": "Get API key details",
         "description": "Get the details of an API key, excluding the API key secret.",
-        "operationId": "admin-2026-04-fetch-api-key",
+        "operationId": "Admin202604FetchApiKey",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1335,7 +1335,7 @@
             }
           },
           {
-            "name": "api_key_id",
+            "name": "apiKeyId",
             "in": "path",
             "description": "API key ID",
             "required": true,
@@ -1351,7 +1351,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/APIKey"
+                  "$ref": "#/components/schemas/ApiKey"
                 }
               }
             }
@@ -1428,7 +1428,7 @@
         ],
         "summary": "Delete an API key",
         "description": "Delete an API key from a project.",
-        "operationId": "admin-2026-04-delete-api-key",
+        "operationId": "Admin202604DeleteApiKey",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1441,7 +1441,7 @@
             }
           },
           {
-            "name": "api_key_id",
+            "name": "apiKeyId",
             "in": "path",
             "description": "API key ID",
             "required": true,
@@ -1534,7 +1534,7 @@
         ],
         "summary": "Update an API key",
         "description": "Update the name and roles of an API key.\n",
-        "operationId": "admin-2026-04-update-api-key",
+        "operationId": "Admin202604UpdateApiKey",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1547,7 +1547,7 @@
             }
           },
           {
-            "name": "api_key_id",
+            "name": "apiKeyId",
             "in": "path",
             "description": "API key ID",
             "required": true,
@@ -1562,7 +1562,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateAPIKeyRequest"
+                "$ref": "#/components/schemas/UpdateApiKeyRequest"
               }
             }
           }
@@ -1573,7 +1573,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/APIKey"
+                  "$ref": "#/components/schemas/ApiKey"
                 }
               }
             }
@@ -1674,7 +1674,7 @@
         ],
         "summary": "List assistants",
         "description": "List of all assistants in a project.\n\nFor guidance and examples, see [Manage assistants](https://docs.pinecone.io/guides/assistant/manage-assistants#list-assistants-for-a-project).",
-        "operationId": "assistant-control-2026-04-list-assistants",
+        "operationId": "AssistantControl202604ListAssistants",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1768,7 +1768,7 @@
         ],
         "summary": "Create an assistant",
         "description": "Create an assistant. This is where you specify the underlying training model, which cloud provider you would like to deploy with, and more.\n\nFor guidance and examples, see [Create an assistant](https://docs.pinecone.io/guides/assistant/create-assistant)",
-        "operationId": "assistant-control-2026-04-create-assistant",
+        "operationId": "AssistantControl202604CreateAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1881,14 +1881,14 @@
         }
       }
     },
-    "/assistant_control/assistants/{assistant_name}": {
+    "/assistant_control/assistants/{assistantName}": {
       "get": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "Check assistant status",
         "description": "Get the status of an assistant.\n\nFor guidance and examples, see [Manage assistants](https://docs.pinecone.io/guides/assistant/manage-assistants#get-the-status-of-an-assistant)",
-        "operationId": "assistant-control-2026-04-get-assistant",
+        "operationId": "AssistantControl202604GetAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -1901,7 +1901,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to get a status on.",
             "required": true,
@@ -1996,7 +1996,7 @@
         ],
         "summary": "Delete an assistant",
         "description": "Delete an existing assistant.\n\nFor guidance and examples, see [Manage assistants](https://docs.pinecone.io/guides/assistant/manage-assistants#delete-an-assistant)",
-        "operationId": "assistant-control-2026-04-delete-assistant",
+        "operationId": "AssistantControl202604DeleteAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2009,7 +2009,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to delete.",
             "required": true,
@@ -2094,7 +2094,7 @@
         ],
         "summary": "Update an assistant",
         "description": "Update an existing assistant. You can modify the assistant's instructions.\n\nFor guidance and examples, see [Manage assistants](https://docs.pinecone.io/guides/assistant/manage-assistants#add-instructions-to-an-assistant).",
-        "operationId": "assistant-control-2026-04-update-assistant",
+        "operationId": "AssistantControl202604UpdateAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2107,7 +2107,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to update.",
             "required": true,
@@ -2140,14 +2140,14 @@
         }
       }
     },
-    "/assistant_data/files/{assistant_name}": {
+    "/assistant_data/files/{assistantName}": {
       "get": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "List Files",
         "description": "List all files in an assistant, with an option to filter files with metadata.\n\nFor guidance and examples, see [Manage files](https://docs.pinecone.io/guides/assistant/manage-files#list-files-in-an-assistant).",
-        "operationId": "assistant-data-2026-04-list-files",
+        "operationId": "AssistantData202604ListFiles",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2160,7 +2160,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to list files for.",
             "required": true,
@@ -2283,7 +2283,7 @@
         ],
         "summary": "Upload a file",
         "description": "Upload a file to the specified assistant.\n\nAn identifier will be generated. To specify a file identifier or to replace file content, use the upsert endpoint (`PUT /files/{assistant_name}/{assistant_file_id}`).\n\nThis operation is asynchronous. The response includes an operation ID that can be used to poll for completion via the describe operation endpoint.\n\nFor guidance and examples, see [Manage files](https://docs.pinecone.io/guides/assistant/manage-files#upload-a-local-file).",
-        "operationId": "assistant-data-2026-04-upload-file",
+        "operationId": "AssistantData202604UploadFile",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2296,7 +2296,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to upload files to.",
             "required": true,
@@ -2430,14 +2430,14 @@
         }
       }
     },
-    "/assistant_data/files/{assistant_name}/{assistant_file_id}": {
+    "/assistant_data/files/{assistantName}/{assistantFileId}": {
       "get": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "Describe a file",
         "description": "[Get the current status and metadata of a file](https://docs.pinecone.io/guides/assistant/manage-files#get-the-status-of-a-file) uploaded to an assistant.",
-        "operationId": "assistant-data-2026-04-describe-file",
+        "operationId": "AssistantData202604DescribeFile",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2450,7 +2450,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant that contains the file.",
             "required": true,
@@ -2460,7 +2460,7 @@
             "example": "test-assistant"
           },
           {
-            "name": "assistant_file_id",
+            "name": "assistantFileId",
             "in": "path",
             "description": "The identifier of the file to be described.",
             "required": true,
@@ -2567,7 +2567,7 @@
         ],
         "summary": "Upsert a file",
         "description": "Create or replace a file in the specified assistant. If a file with the given `assistant_file_id` already exists, it will be replaced with the new file. If it doesn't exist, a new file will be created with that identifier.\n\nThis operation is asynchronous. The file processing will occur in the background.\n\nFor guidance and examples, see [Manage files](https://docs.pinecone.io/guides/assistant/manage-files#upload-a-local-file).",
-        "operationId": "assistant-data-2026-04-upsert-file",
+        "operationId": "AssistantData202604UpsertFile",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2580,7 +2580,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to upload files to.",
             "required": true,
@@ -2590,7 +2590,7 @@
             "example": "test-model"
           },
           {
-            "name": "assistant_file_id",
+            "name": "assistantFileId",
             "in": "path",
             "description": "The identifier of the file to be created or replaced. Must be 1-128 characters long and consist only of alphanumeric characters, hyphens (-), or underscores (_).",
             "required": true,
@@ -2731,7 +2731,7 @@
         ],
         "summary": "Delete a file",
         "description": "[Delete an uploaded file](https://docs.pinecone.io/guides/assistant/manage-files#delete-a-file) from an assistant.\n\nThis operation is asynchronous. The response includes an operation ID that can be used to poll for completion via the describe operation endpoint.",
-        "operationId": "assistant-data-2026-04-delete-file",
+        "operationId": "AssistantData202604DeleteFile",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2744,7 +2744,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant that contains the file.",
             "required": true,
@@ -2754,7 +2754,7 @@
             "example": "test-assistant"
           },
           {
-            "name": "assistant_file_id",
+            "name": "assistantFileId",
             "in": "path",
             "description": "The identifier of the file to be deleted.",
             "required": true,
@@ -2844,14 +2844,14 @@
         }
       }
     },
-    "/assistant_data/operations/{assistant_name}": {
+    "/assistant_data/operations/{assistantName}": {
       "get": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "List operations",
         "description": "List all operations for an assistant. Returns operations that are in progress, as well as recently completed or failed operations.\nBoth successful and failed operations are retained for 30 days after completion.\nUse the `operation_type` and `status` query parameters to filter results.\n",
-        "operationId": "assistant-data-2026-04-list-operations",
+        "operationId": "AssistantData202604ListOperations",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -2864,7 +2864,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to list operations for.",
             "required": true,
@@ -3051,14 +3051,14 @@
         }
       }
     },
-    "/assistant_data/operations/{assistant_name}/{operation_id}": {
+    "/assistant_data/operations/{assistantName}/{operationId}": {
       "get": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "Describe an operation",
         "description": "Get the status of an operation.\n",
-        "operationId": "assistant-data-2026-04-describe-operation",
+        "operationId": "AssistantData202604DescribeOperation",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -3071,7 +3071,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant.",
             "required": true,
@@ -3081,7 +3081,7 @@
             "example": "test-assistant"
           },
           {
-            "name": "operation_id",
+            "name": "operationId",
             "in": "path",
             "description": "The identifier of the operation to be described.",
             "required": true,
@@ -3209,14 +3209,14 @@
         }
       }
     },
-    "/assistant_data/chat/{assistant_name}/chat/completions": {
+    "/assistant_data/chat/{assistantName}/chat/completions": {
       "post": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "Chat through an OpenAI-compatible interface",
         "description": "Chat with an assistant. This endpoint is based on the OpenAI Chat Completion API, a commonly used and adopted API. \n\nIt is useful if you need inline citations or OpenAI-compatible responses, but has limited functionality compared to the standard chat interface.\n\nFor guidance and examples, see [Chat with an assistant](https://docs.pinecone.io/guides/assistant/chat-with-assistant).",
-        "operationId": "assistant-data-2026-04-chat-completion-assistant",
+        "operationId": "AssistantData202604ChatCompletionAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -3229,7 +3229,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to be described.",
             "required": true,
@@ -3356,14 +3356,14 @@
         }
       }
     },
-    "/assistant_data/chat/{assistant_name}": {
+    "/assistant_data/chat/{assistantName}": {
       "post": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "Chat with an assistant",
         "description": "Chat with an assistant and get back citations in structured form. \n\nThis is the recommended way to chat with an assistant, as it offers more functionality and control over the assistant's responses and references than the OpenAI-compatible chat interface.\n\nFor guidance and examples, see [Chat with an assistant](https://docs.pinecone.io/guides/assistant/chat-with-assistant).",
-        "operationId": "assistant-data-2026-04-chat-assistant",
+        "operationId": "AssistantData202604ChatAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -3376,7 +3376,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to be described.",
             "required": true,
@@ -3503,14 +3503,14 @@
         }
       }
     },
-    "/assistant_data/chat/{assistant_name}/context": {
+    "/assistant_data/chat/{assistantName}/context": {
       "post": {
         "tags": [
           "Manage Assistants"
         ],
         "summary": "Retrieve context from an assistant",
         "description": "Retrieve context snippets from an assistant to use as part of RAG or any agentic flow.\n\nFor guidance and examples, see [Retrieve context snippets](https://docs.pinecone.io/guides/assistant/retrieve-context-snippets).",
-        "operationId": "assistant-data-2026-04-context-assistant",
+        "operationId": "AssistantData202604ContextAssistant",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -3523,7 +3523,7 @@
             }
           },
           {
-            "name": "assistant_name",
+            "name": "assistantName",
             "in": "path",
             "description": "The name of the assistant to be described.",
             "required": true,
@@ -3652,7 +3652,7 @@
         ],
         "summary": "Evaluate an answer",
         "description": "Evaluate the correctness and completeness of a response from an assistant or a RAG system. The correctness and completeness are evaluated based on the precision and recall of the generated answer with respect to the ground truth answer facts. Alignment is the harmonic mean of correctness and completeness.\n\nFor guidance and examples, see [Evaluate answers](https://docs.pinecone.io/guides/assistant/evaluate-answers).",
-        "operationId": "assistant-evaluation-2026-04-metrics-alignment",
+        "operationId": "AssistantEvaluation202604MetricsAlignment",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -3716,7 +3716,7 @@
         ],
         "summary": "List indexes",
         "description": "List all indexes in a project.",
-        "operationId": "db-control-2026-04-list-indexes",
+        "operationId": "DbControl202604ListIndexes",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -3902,7 +3902,7 @@
         ],
         "summary": "Create an index",
         "description": "Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.\n  \nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).\n",
-        "operationId": "db-control-2026-04-create-index",
+        "operationId": "DbControl202604CreateIndex",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -4205,14 +4205,14 @@
         }
       }
     },
-    "/db_control/indexes/{index_name}": {
+    "/db_control/indexes/{indexName}": {
       "get": {
         "tags": [
           "Manage Indexes"
         ],
         "summary": "Describe an index",
         "description": "Get a description of an index.",
-        "operationId": "db-control-2026-04-describe-index",
+        "operationId": "DbControl202604DescribeIndex",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -4225,7 +4225,7 @@
             }
           },
           {
-            "name": "index_name",
+            "name": "indexName",
             "in": "path",
             "description": "The name of the index to be described.",
             "required": true,
@@ -4388,7 +4388,7 @@
         ],
         "summary": "Delete an index",
         "description": "Delete an existing index.",
-        "operationId": "db-control-2026-04-delete-index",
+        "operationId": "DbControl202604DeleteIndex",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -4401,7 +4401,7 @@
             }
           },
           {
-            "name": "index_name",
+            "name": "indexName",
             "in": "path",
             "description": "The name of the index to delete.",
             "required": true,
@@ -4530,7 +4530,7 @@
         ],
         "summary": "Configure an index",
         "description": "Configure an existing index. For guidance and examples, see [Manage indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).",
-        "operationId": "db-control-2026-04-configure-index",
+        "operationId": "DbControl202604ConfigureIndex",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -4543,7 +4543,7 @@
             }
           },
           {
-            "name": "index_name",
+            "name": "indexName",
             "in": "path",
             "description": "The name of the index to configure.",
             "required": true,
@@ -4779,14 +4779,14 @@
         }
       }
     },
-    "/db_control/indexes/{index_name}/backups": {
+    "/db_control/indexes/{indexName}/backups": {
       "get": {
         "tags": [
           "Manage Indexes"
         ],
         "summary": "List backups for an index",
         "description": "List all backups for an index.",
-        "operationId": "db-control-2026-04-list-index-backups",
+        "operationId": "DbControl202604ListIndexBackups",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -4799,7 +4799,7 @@
             }
           },
           {
-            "name": "index_name",
+            "name": "indexName",
             "in": "path",
             "description": "Name of the backed up index",
             "required": true,
@@ -4984,7 +4984,7 @@
         ],
         "summary": "Create a backup of an index",
         "description": "Create a backup of an index.\n",
-        "operationId": "db-control-2026-04-create-backup",
+        "operationId": "DbControl202604CreateBackup",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -4997,7 +4997,7 @@
             }
           },
           {
-            "name": "index_name",
+            "name": "indexName",
             "in": "path",
             "description": "Name of the index to backup",
             "required": true,
@@ -5188,7 +5188,7 @@
         ],
         "summary": "List collections",
         "description": "List all collections in a project.\nServerless indexes do not support collections.\n",
-        "operationId": "db-control-2026-04-list-collections",
+        "operationId": "DbControl202604ListCollections",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -5303,7 +5303,7 @@
         ],
         "summary": "Create a collection",
         "description": "Create a Pinecone collection.\n  \nServerless indexes do not support collections.\n",
-        "operationId": "db-control-2026-04-create-collection",
+        "operationId": "DbControl202604CreateCollection",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -5510,7 +5510,7 @@
         ],
         "summary": "Create an index with integrated embedding",
         "description": "Create an index with integrated embedding.\nWith this type of index, you provide source text, and  Pinecone uses a [hosted embedding model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)  to convert the text automatically during [upsert](https://docs.pinecone.io/reference/api/2026-04/data-plane/upsert_records)  and [search](https://docs.pinecone.io/reference/api/2026-04/data-plane/search_records).  \nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index#integrated-embedding).",
-        "operationId": "db-control-2026-04-create-index-for-model",
+        "operationId": "DbControl202604CreateIndexForModel",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -5704,7 +5704,7 @@
         ],
         "summary": "List backups for all indexes in a project",
         "description": "List all backups for a project.",
-        "operationId": "db-control-2026-04-list-project-backups",
+        "operationId": "DbControl202604ListProjectBackups",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -5863,14 +5863,14 @@
         }
       }
     },
-    "/db_control/backups/{backup_id}": {
+    "/db_control/backups/{backupId}": {
       "get": {
         "tags": [
           "Manage Indexes"
         ],
         "summary": "Describe a backup",
         "description": "Get a description of a backup.",
-        "operationId": "db-control-2026-04-describe-backup",
+        "operationId": "DbControl202604DescribeBackup",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -5883,7 +5883,7 @@
             }
           },
           {
-            "name": "backup_id",
+            "name": "backupId",
             "in": "path",
             "description": "The ID of the backup to describe.",
             "required": true,
@@ -6013,7 +6013,7 @@
         ],
         "summary": "Delete a backup",
         "description": "Delete a backup.",
-        "operationId": "db-control-2026-04-delete-backup",
+        "operationId": "DbControl202604DeleteBackup",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6026,7 +6026,7 @@
             }
           },
           {
-            "name": "backup_id",
+            "name": "backupId",
             "in": "path",
             "description": "The ID of the backup to delete.",
             "required": true,
@@ -6128,14 +6128,14 @@
         }
       }
     },
-    "/db_control/backups/{backup_id}/create-index": {
+    "/db_control/backups/{backupId}/create-index": {
       "post": {
         "tags": [
           "Manage Indexes"
         ],
         "summary": "Create an index from a backup",
         "description": "Create an index from a backup.",
-        "operationId": "db-control-2026-04-create-index-from-backup-operation",
+        "operationId": "DbControl202604CreateIndexFromBackupOperation",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6148,7 +6148,7 @@
             }
           },
           {
-            "name": "backup_id",
+            "name": "backupId",
             "in": "path",
             "description": "The ID of the backup to create an index from.",
             "required": true,
@@ -6353,7 +6353,7 @@
         ],
         "summary": "List restore jobs",
         "description": "List all restore jobs for a project.",
-        "operationId": "db-control-2026-04-list-restore-jobs",
+        "operationId": "DbControl202604ListRestoreJobs",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6490,14 +6490,14 @@
         }
       }
     },
-    "/db_control/restore-jobs/{job_id}": {
+    "/db_control/restore-jobs/{jobId}": {
       "get": {
         "tags": [
           "Manage Indexes"
         ],
         "summary": "Describe a restore job",
         "description": "Get a description of a restore job.",
-        "operationId": "db-control-2026-04-describe-restore-job",
+        "operationId": "DbControl202604DescribeRestoreJob",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6510,7 +6510,7 @@
             }
           },
           {
-            "name": "job_id",
+            "name": "jobId",
             "in": "path",
             "description": "The ID of the restore job to describe.",
             "required": true,
@@ -6600,14 +6600,14 @@
         }
       }
     },
-    "/db_control/collections/{collection_name}": {
+    "/db_control/collections/{collectionName}": {
       "get": {
         "tags": [
           "Manage Indexes"
         ],
         "summary": "Describe a collection",
         "description": "Get a description of a collection.\nServerless indexes do not support collections.\n",
-        "operationId": "db-control-2026-04-describe-collection",
+        "operationId": "DbControl202604DescribeCollection",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6620,7 +6620,7 @@
             }
           },
           {
-            "name": "collection_name",
+            "name": "collectionName",
             "in": "path",
             "description": "The name of the collection to be described.",
             "required": true,
@@ -6728,7 +6728,7 @@
         ],
         "summary": "Delete a collection",
         "description": "Delete an existing collection.\nServerless indexes do not support collections.\n",
-        "operationId": "db-control-2026-04-delete-collection",
+        "operationId": "DbControl202604DeleteCollection",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6741,7 +6741,7 @@
             }
           },
           {
-            "name": "collection_name",
+            "name": "collectionName",
             "in": "path",
             "description": "The name of the collection.",
             "required": true,
@@ -6828,7 +6828,7 @@
         ],
         "summary": "List imports",
         "description": "List all recent and ongoing import operations.\n\nBy default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list` returns up to that number of imports instead. Whenever there are additional IDs to return, the response also includes a `pagination_token` that you can use to get the next batch of imports. When the response does not include a `pagination_token`, there are no more imports to return.\n\nFor guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).",
-        "operationId": "db-data-2026-04-listBulkImports",
+        "operationId": "DbData202604ListBulkImports",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6911,7 +6911,7 @@
         ],
         "summary": "Start import",
         "description": "Start an asynchronous import of vectors from object storage into an index.\n\nFor guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).",
-        "operationId": "db-data-2026-04-startBulkImport",
+        "operationId": "DbData202604StartBulkImport",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -6984,7 +6984,7 @@
         ],
         "summary": "Describe an import",
         "description": "Return details of a specific import operation.\n\nFor guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).",
-        "operationId": "db-data-2026-04-describeBulkImport",
+        "operationId": "DbData202604DescribeBulkImport",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7058,7 +7058,7 @@
         ],
         "summary": "Cancel an import",
         "description": "Cancel an import operation if it is not yet finished. It has no effect if the operation is already finished.\n\nFor guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).",
-        "operationId": "db-data-2026-04-cancelBulkImport",
+        "operationId": "DbData202604CancelBulkImport",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7089,8 +7089,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "The response for the `cancel_import` operation."
+                  "$ref": "#/components/schemas/DbData202604CancelBulkImport200Response"
                 }
               }
             }
@@ -7135,7 +7134,7 @@
         ],
         "summary": "Get index stats",
         "description": "Return statistics about the contents of an index, including the vector count per namespace, the number of dimensions, and the index fullness.\n\nServerless indexes scale automatically as needed, so index fullness is relevant only for pod-based indexes.",
-        "operationId": "db-data-2026-04-describeIndexStats",
+        "operationId": "DbData202604DescribeIndexStats",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7208,7 +7207,7 @@
         ],
         "summary": "Search with a vector",
         "description": "Search a namespace using a query vector. It retrieves the ids of the most similar items in a namespace, along with their similarity scores.\n\nFor guidance, examples, and limits, see [Search](https://docs.pinecone.io/guides/search/search-overview).",
-        "operationId": "db-data-2026-04-queryVectors",
+        "operationId": "DbData202604QueryVectors",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7281,7 +7280,7 @@
         ],
         "summary": "Delete records",
         "description": "Delete records by id or by metadata from a single namespace.\n\nFor guidance and examples, see [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data).",
-        "operationId": "db-data-2026-04-deleteVectors",
+        "operationId": "DbData202604DeleteVectors",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7309,8 +7308,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "The response for the `delete` operation."
+                  "$ref": "#/components/schemas/DbData202604DeleteVectors200Response"
                 }
               }
             }
@@ -7355,7 +7353,7 @@
         ],
         "summary": "Fetch records",
         "description": "Look up and return records by ID from a single namespace. The returned records include the vector data and/or metadata.\nFor on-demand indexes, since vector values are retrieved from object storage, fetch operations may have increased latency. If you only need metadata or IDs, consider using the query operation with `includeValues` set to `false` instead.\nFor guidance and examples, see [Fetch data](https://docs.pinecone.io/guides/manage-data/fetch-data).",
-        "operationId": "db-data-2026-04-fetchVectors",
+        "operationId": "DbData202604FetchVectors",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7439,7 +7437,7 @@
         ],
         "summary": "Fetch records by metadata",
         "description": "Look up and return records by metadata from a single namespace. The returned records include the vector data and metadata.\nFor guidance and examples, see [Fetch data](https://docs.pinecone.io/guides/manage-data/fetch-data).",
-        "operationId": "db-data-2026-04-fetch-vectors-by-metadata",
+        "operationId": "DbData202604FetchVectorsByMetadata",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7512,7 +7510,7 @@
         ],
         "summary": "List record IDs",
         "description": "List the IDs of records in a single namespace of a serverless index. An optional prefix can be passed to limit the results to IDs with a common prefix.\n\nReturns up to 100 IDs at a time by default in sorted order (bitwise \"C\" collation). If the `limit` parameter is set, `list` returns up to that number of IDs instead. Whenever there are additional IDs to return, the response also includes a `pagination_token` that you can use to get the next batch of IDs. When the response does not include a `pagination_token`, there are no more IDs to return.\n\nFor guidance and examples, see [List record IDs](https://docs.pinecone.io/guides/manage-data/list-record-ids).\n\n**Note:** `list` is supported only for serverless indexes.",
-        "operationId": "db-data-2026-04-listVectors",
+        "operationId": "DbData202604ListVectors",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7610,7 +7608,7 @@
         ],
         "summary": "Update a record",
         "description": "Update records by ID or by metadata in a namespace. Updating by ID changes the vector and/or metadata of a single record. Updating by metadata changes metadata across multiple records using a metadata filter.\nIf a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.\nFor guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).",
-        "operationId": "db-data-2026-04-updateVector",
+        "operationId": "DbData202604UpdateVector",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7683,7 +7681,7 @@
         ],
         "summary": "Upsert records",
         "description": "Upsert records into a namespace. If a new value is upserted for an existing record ID, it will overwrite the previous value.\n\nFor guidance, examples, and limits, see [Upsert data](https://docs.pinecone.io/guides/index-data/upsert-data).",
-        "operationId": "db-data-2026-04-upsertVectors",
+        "operationId": "DbData202604UpsertVectors",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7756,7 +7754,7 @@
         ],
         "summary": "List namespaces",
         "description": "List all namespaces in a serverless index.\n\nUp to 100 namespaces are returned at a time by default, in sorted order (bitwise “C” collation). If the `limit` parameter is set, up to that number of namespaces are returned instead. Whenever there are additional namespaces to return, the response also includes a `pagination_token` that you can use to get the next batch of namespaces. When the response does not include a `pagination_token`, there are no more namespaces to return.\n\nFor guidance and examples, see [Manage namespaces](https://docs.pinecone.io/guides/manage-data/manage-namespaces).\n\n**Note:** This operation is not supported for pod-based indexes.",
-        "operationId": "db-data-2026-04-listNamespacesOperation",
+        "operationId": "DbData202604ListNamespacesOperation",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7835,7 +7833,7 @@
         ],
         "summary": "Create a namespace",
         "description": "Create a namespace in a serverless index.\n\nFor guidance and examples, see [Manage namespaces](https://docs.pinecone.io/guides/manage-data/manage-namespaces).\n\n**Note:** This operation is not supported for pod-based indexes.",
-        "operationId": "db-data-2026-04-createNamespace",
+        "operationId": "DbData202604CreateNamespace",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7911,14 +7909,14 @@
         }
       }
     },
-    "/db_data/namespaces/{namespace}": {
+    "/db_data/namespaces/{namespaceValue}": {
       "get": {
         "tags": [
           "Namespace Operations"
         ],
         "summary": "Describe a namespace",
         "description": "Describe a namespace in a serverless index, including the total number of vectors in the namespace.\n\nFor guidance and examples, see [Manage namespaces](https://docs.pinecone.io/guides/manage-data/manage-namespaces).\n\n**Note:** This operation is not supported for pod-based indexes.",
-        "operationId": "db-data-2026-04-describeNamespace",
+        "operationId": "DbData202604DescribeNamespace",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -7931,7 +7929,7 @@
             }
           },
           {
-            "name": "namespace",
+            "name": "namespaceValue",
             "in": "path",
             "description": "The namespace to describe.",
             "required": true,
@@ -7989,7 +7987,7 @@
         ],
         "summary": "Delete a namespace",
         "description": "Delete a namespace from a serverless index. Deleting a namespace is irreversible; all data in the namespace is permanently deleted.\n\nFor guidance and examples, see [Manage namespaces](https://docs.pinecone.io/guides/manage-data/manage-namespaces).\n\n**Note:** This operation is not supported for pod-based indexes.",
-        "operationId": "db-data-2026-04-deleteNamespace",
+        "operationId": "DbData202604DeleteNamespace",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8002,7 +8000,7 @@
             }
           },
           {
-            "name": "namespace",
+            "name": "namespaceValue",
             "in": "path",
             "description": "The namespace to delete.",
             "required": true,
@@ -8017,8 +8015,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "description": "The response for the `delete` operation."
+                  "$ref": "#/components/schemas/DbData202604DeleteNamespace200Response"
                 }
               }
             }
@@ -8056,14 +8053,14 @@
         }
       }
     },
-    "/db_data/records/namespaces/{namespace}/upsert": {
+    "/db_data/records/namespaces/{namespaceValue}/upsert": {
       "post": {
         "tags": [
           "Vector Operations"
         ],
         "summary": "Upsert text",
         "description": "Upsert text into a namespace. Pinecone converts the text to vectors automatically using the hosted embedding model associated with the index.\n\nUpserting text is supported only for [indexes with integrated embedding](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models).\n\nFor guidance, examples, and limits, see [Upsert data](https://docs.pinecone.io/guides/index-data/upsert-data).",
-        "operationId": "db-data-2026-04-upsertRecordsNamespace",
+        "operationId": "DbData202604UpsertRecordsNamespace",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8076,7 +8073,7 @@
             }
           },
           {
-            "name": "namespace",
+            "name": "namespaceValue",
             "in": "path",
             "description": "The namespace to upsert records into.",
             "required": true,
@@ -8090,10 +8087,7 @@
           "content": {
             "application/x-ndjson": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/UpsertRecord"
-                }
+                "$ref": "#/components/schemas/DbData202604UpsertRecordsNamespaceXNdjsonRequestRequestBody"
               }
             }
           }
@@ -8132,14 +8126,14 @@
         }
       }
     },
-    "/db_data/records/namespaces/{namespace}/search": {
+    "/db_data/records/namespaces/{namespaceValue}/search": {
       "post": {
         "tags": [
           "Vector Operations"
         ],
         "summary": "Search with text",
         "description": "Search a namespace with a query text, query vector, or record ID and return the most similar records, along with their similarity scores. Optionally, rerank the initial results based on their relevance to the query. \n\nSearching with text is supported only for indexes with [integrated embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding). Searching with a query vector or record ID is supported for all indexes. \n\nFor guidance and examples, see [Search](https://docs.pinecone.io/guides/search/search-overview).",
-        "operationId": "db-data-2026-04-searchRecordsNamespace",
+        "operationId": "DbData202604SearchRecordsNamespace",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8152,7 +8146,7 @@
             }
           },
           {
-            "name": "namespace",
+            "name": "namespaceValue",
             "in": "path",
             "description": "The namespace to search.",
             "required": true,
@@ -8214,17 +8208,17 @@
         }
       }
     },
-    "/db_metrics/prometheus/projects/{project_id}/metrics/discover": {
+    "/db_metrics/prometheus/projects/{projectId}/metrics/discover": {
       "get": {
         "tags": [
           "Metrics"
         ],
         "summary": "Prometheus HTTP Service Discovery",
         "description": "Get endpoints for Prometheus scraping.",
-        "operationId": "db-metrics-2026-04-fetch-prometheus-targets",
+        "operationId": "DbMetrics202604FetchPrometheusTargets",
         "parameters": [
           {
-            "name": "project_id",
+            "name": "projectId",
             "in": "path",
             "description": "Project ID",
             "required": true,
@@ -8240,11 +8234,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PrometheusTargetsItem"
-                  },
-                  "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
+                  "$ref": "#/components/schemas/DbMetrics202604FetchPrometheusTargets200Response"
                 }
               }
             }
@@ -8325,7 +8315,7 @@
         ],
         "summary": "Generate vectors",
         "description": "Generate vector embeddings for input data. This endpoint uses Pinecone's [hosted embedding models](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models).",
-        "operationId": "inference-2026-04-embed",
+        "operationId": "Inference202604Embed",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8435,7 +8425,7 @@
         ],
         "summary": "Rerank results",
         "description": "Rerank results according to their relevance to a query.\n\nFor guidance and examples, see [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
-        "operationId": "inference-2026-04-rerank",
+        "operationId": "Inference202604Rerank",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8545,7 +8535,7 @@
         ],
         "summary": "List available models",
         "description": "List the embedding and reranking models hosted by Pinecone. \n\nYou can use hosted models as an integrated part of Pinecone operations or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
-        "operationId": "inference-2026-04-list-models",
+        "operationId": "Inference202604ListModels",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8744,14 +8734,14 @@
         }
       }
     },
-    "/inference/models/{model_name}": {
+    "/inference/models/{modelName}": {
       "get": {
         "tags": [
           "Inference"
         ],
         "summary": "Describe a model",
         "description": "Get a description of a model hosted by Pinecone. \n\nYou can use hosted models as an integrated part of Pinecone operations or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
-        "operationId": "inference-2026-04-get-model",
+        "operationId": "Inference202604GetModel",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8764,7 +8754,7 @@
             }
           },
           {
-            "name": "model_name",
+            "name": "modelName",
             "in": "path",
             "description": "The name of the model to look up.",
             "required": true,
@@ -8938,7 +8928,7 @@
         ],
         "summary": "Create an access token",
         "description": "Obtain an access token for a service account using the OAuth2 client credentials flow. An access token is needed to authorize requests to the Pinecone Admin API.\nThe host domain for OAuth endpoints is `login.pinecone.io`.\n",
-        "operationId": "oauth-2026-04-get-token",
+        "operationId": "OAuth202604GetToken",
         "parameters": [
           {
             "name": "X-Pinecone-Api-Version",
@@ -8982,7 +8972,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -8992,7 +8982,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -9002,7 +8992,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -9012,7 +9002,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -9022,7 +9012,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -9032,7 +9022,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -9042,7 +9032,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Oauth202604ErrorResponse"
+                  "$ref": "#/components/schemas/OAuth202604ErrorResponse"
                 }
               }
             }
@@ -9053,7 +9043,7 @@
   },
   "components": {
     "schemas": {
-      "APIKeyWithSecret": {
+      "ApiKeyWithSecret": {
         "required": [
           "key",
           "value"
@@ -9061,7 +9051,7 @@
         "type": "object",
         "properties": {
           "key": {
-            "$ref": "#/components/schemas/APIKey"
+            "$ref": "#/components/schemas/ApiKey"
           },
           "value": {
             "type": "string",
@@ -9145,7 +9135,7 @@
           }
         }
       },
-      "APIKey": {
+      "ApiKey": {
         "required": [
           "id",
           "name",
@@ -9223,12 +9213,12 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/APIKey"
+              "$ref": "#/components/schemas/ApiKey"
             }
           }
         }
       },
-      "UpdateAPIKeyRequest": {
+      "UpdateApiKeyRequest": {
         "type": "object",
         "properties": {
           "name": {
@@ -9305,7 +9295,7 @@
           }
         }
       },
-      "CreateAPIKeyRequest": {
+      "CreateApiKeyRequest": {
         "required": [
           "name"
         ],
@@ -9411,12 +9401,7 @@
             "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
           },
           "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.",
-            "example": {
-              "role": "Customer Support Helper",
-              "team": "Operations"
-            }
+            "$ref": "#/components/schemas/UpdateAssistantResponseMetadataProperty"
           }
         }
       },
@@ -9440,12 +9425,7 @@
             "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
           },
           "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
-            "example": {
-              "role": "Customer Support Helper",
-              "team": "Operations"
-            }
+            "$ref": "#/components/schemas/CreateAssistantRequestMetadataProperty"
           },
           "region": {
             "type": "string",
@@ -9479,13 +9459,7 @@
             "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
           },
           "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.",
-            "nullable": true,
-            "example": {
-              "role": "Customer Support Helper",
-              "team": "Operations"
-            }
+            "$ref": "#/components/schemas/AssistantMetadata"
           },
           "status": {
             "type": "string",
@@ -9536,13 +9510,7 @@
             "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
           },
           "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
-            "nullable": true,
-            "example": {
-              "role": "Customer Support Helper",
-              "team": "Operations"
-            }
+            "$ref": "#/components/schemas/UpdateAssistantRequestMetadata"
           }
         },
         "description": "The configuration updates for the assistant."
@@ -9625,18 +9593,7 @@
             "example": 1048576
           },
           "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the file. This metadata can be used to filter files when listing them or to restrict search results when querying the assistant.",
-            "nullable": true,
-            "example": {
-              "created_by": "Jane Doe",
-              "published": "2025-10-01",
-              "tags": [
-                "report",
-                "Q4",
-                "analytics"
-              ]
-            }
+            "$ref": "#/components/schemas/AssistantFileModelMetadata"
           },
           "created_on": {
             "type": "string",
@@ -9779,13 +9736,7 @@
             "default": 0
           },
           "filter": {
-            "type": "object",
-            "description": "Optional metadata-based filter to restrict which documents are retrieved for the assistant's response context.",
-            "example": {
-              "genre": {
-                "$ne": "documentary"
-              }
-            }
+            "$ref": "#/components/schemas/ChatRequestFilterProperty"
           },
           "json_response": {
             "type": "boolean",
@@ -9972,8 +9923,7 @@
             ]
           },
           "results": {
-            "type": "object",
-            "description": "Content filter results returned by the provider. The structure depend on the `spec` value."
+            "$ref": "#/components/schemas/ContentFilterResultsResults"
           }
         },
         "description": "Content filter results provided by the LLM, describing safety-related classifications applied to the content. The structure may vary depending on the model and the content being filtered. The `spec` field identifies the provider, and determines the structure of `results`."
@@ -10036,13 +9986,7 @@
             "description": "The query that is used to generate the context. Exactly one of query or messages should be provided."
           },
           "filter": {
-            "type": "object",
-            "description": "Optionally filter which documents can be retrieved using the following metadata fields.",
-            "example": {
-              "genre": {
-                "$ne": "documentary"
-              }
-            }
+            "$ref": "#/components/schemas/ContextRequestFilterProperty"
           },
           "messages": {
             "type": "array",
@@ -10137,18 +10081,7 @@
             "format": "binary"
           },
           "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the file. This metadata can be used to filter files when listing them or to restrict search results when querying the assistant. Maximum size is 16KB.",
-            "nullable": true,
-            "example": {
-              "created_by": "Jane Doe",
-              "published": "2025-10-01",
-              "tags": [
-                "report",
-                "Q4",
-                "analytics"
-              ]
-            }
+            "$ref": "#/components/schemas/FileDataMetadata"
           }
         }
       },
@@ -10651,13 +10584,7 @@
             "default": 0
           },
           "filter": {
-            "type": "object",
-            "description": "Optional metadata-based filter to restrict which documents are retrieved for the assistant's response context.",
-            "example": {
-              "genre": {
-                "$ne": "documentary"
-              }
-            }
+            "$ref": "#/components/schemas/SearchCompletionsFilterProperty"
           }
         },
         "description": "Represents a request to chat with an assistant."
@@ -10934,18 +10861,37 @@
         },
         "description": "A basic error response that contains a message."
       },
-      "ContentChunkModelDelta": {
+      "ConfigureIndexRequestSpec": {
         "required": [
-          "content"
+          "type"
         ],
         "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecServerless"
+          },
+          {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecPodBased"
+          },
+          {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecByoc"
+          }
+        ],
         "properties": {
-          "content": {
+          "type": {
             "type": "string",
-            "description": "The text content of this partial message."
+            "description": "Union discriminator"
           }
         },
-        "description": "The format of this partial message. For example, if the response is \"Hello world\", the first chunk's `delta.content` might contain \"Hello\" and the second chunk's `delta.content` might contain \" world\"."
+        "description": "The spec object defines how the index should be deployed.  Only some attributes of an index's spec may be updated.  In general, you can modify settings related to scaling and  configuration but you cannot change the cloud or region  where the index is hosted.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ConfigureIndexRequestSpecServerless": "#/components/schemas/ConfigureIndexRequestSpecServerless",
+            "ConfigureIndexRequestSpecPodBased": "#/components/schemas/ConfigureIndexRequestSpecPodBased",
+            "ConfigureIndexRequestSpecByoc": "#/components/schemas/ConfigureIndexRequestSpecByoc"
+          }
+        }
       },
       "EvaluatedFact": {
         "title": "Evaluated fact",
@@ -11070,11 +11016,7 @@
             "example": "example-index"
           },
           "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+            "$ref": "#/components/schemas/CreateIndexFromBackupRequestTags"
           },
           "deletion_protection": {
             "type": "string",
@@ -11121,17 +11063,7 @@
         "type": "object",
         "properties": {
           "fields": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "filterable": {
-                  "type": "boolean",
-                  "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-                }
-              }
-            },
-            "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+            "$ref": "#/components/schemas/MetadataSchemaFieldsProperty"
           }
         },
         "description": "\"Schema for the behavior of Pinecone's internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.\"",
@@ -11156,43 +11088,13 @@
         "type": "object",
         "oneOf": [
           {
-            "title": "Serverless",
-            "required": [
-              "serverless"
-            ],
-            "type": "object",
-            "properties": {
-              "serverless": {
-                "$ref": "#/components/schemas/ServerlessSpec"
-              }
-            },
-            "additionalProperties": false
+            "$ref": "#/components/schemas/IndexSpecServerless"
           },
           {
-            "title": "Pod-based",
-            "required": [
-              "pod"
-            ],
-            "type": "object",
-            "properties": {
-              "pod": {
-                "$ref": "#/components/schemas/PodSpec"
-              }
-            },
-            "additionalProperties": false
+            "$ref": "#/components/schemas/IndexSpecPodBased"
           },
           {
-            "title": "BYOC",
-            "required": [
-              "byoc"
-            ],
-            "type": "object",
-            "properties": {
-              "byoc": {
-                "$ref": "#/components/schemas/ByocSpec"
-              }
-            },
-            "additionalProperties": false
+            "$ref": "#/components/schemas/IndexSpecByoc"
           }
         ],
         "properties": {
@@ -11203,7 +11105,12 @@
         },
         "description": "The spec object defines how the index should be deployed.\n\nFor serverless indexes, you define only the [cloud and region](http://docs.pinecone.io/guides/index-data/create-an-index#cloud-regions) where the index should be hosted. For pod-based indexes, you define the [environment](http://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes#pod-environments) where the index should be hosted, the [pod type and size](http://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes#pod-types) to use, and other index characteristics.\n",
         "discriminator": {
-          "propertyName": "type"
+          "propertyName": "type",
+          "mapping": {
+            "IndexSpecServerless": "#/components/schemas/IndexSpecServerless",
+            "IndexSpecPodBased": "#/components/schemas/IndexSpecPodBased",
+            "IndexSpecByoc": "#/components/schemas/IndexSpecByoc"
+          }
         }
       },
       "ConfigureIndexRequest": {
@@ -11217,11 +11124,7 @@
             "description": "\"Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: `disabled` or `enabled`.\""
           },
           "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+            "$ref": "#/components/schemas/ConfigureIndexRequestTags"
           },
           "embed": {
             "$ref": "#/components/schemas/ConfigureIndexRequestEmbed"
@@ -11461,11 +11364,7 @@
             "description": "\"Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: `disabled` or `enabled`.\""
           },
           "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+            "$ref": "#/components/schemas/IndexModelTags"
           },
           "embed": {
             "$ref": "#/components/schemas/ModelIndexEmbed"
@@ -11520,11 +11419,7 @@
             "description": "\"Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: `disabled` or `enabled`.\""
           },
           "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+            "$ref": "#/components/schemas/CreateIndexForModelRequestTags"
           },
           "schema": {
             "$ref": "#/components/schemas/MetadataSchema"
@@ -11611,11 +11506,7 @@
             "description": "\"Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: `disabled` or `enabled`.\""
           },
           "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+            "$ref": "#/components/schemas/CreateIndexRequestTags"
           },
           "spec": {
             "$ref": "#/components/schemas/IndexSpec"
@@ -11933,19 +11824,18 @@
         },
         "description": "The list of backups that exist in the project."
       },
-      "ChoiceChunkModelDelta": {
+      "IndexSpecByoc": {
+        "title": "BYOC",
+        "required": [
+          "byoc"
+        ],
         "type": "object",
         "properties": {
-          "role": {
-            "type": "string",
-            "description": "The role of the message author, it can be `user`, `assistant`, or `system`."
-          },
-          "content": {
-            "type": "string",
-            "description": "The textual content of this partial message."
+          "byoc": {
+            "$ref": "#/components/schemas/ByocSpec"
           }
         },
-        "description": "Chat completion message"
+        "additionalProperties": false
       },
       "ModelIndexEmbed": {
         "required": [
@@ -11981,19 +11871,13 @@
             "default": "dense"
           },
           "field_map": {
-            "type": "object",
-            "description": "Identifies the name of the text field from your document model that is embedded.",
-            "example": {
-              "text": "your-text-field"
-            }
+            "$ref": "#/components/schemas/ModelIndexEmbedFieldMapProperty"
           },
           "read_parameters": {
-            "type": "object",
-            "description": "The read parameters for the embedding model."
+            "$ref": "#/components/schemas/ModelIndexEmbedReadParametersProperty"
           },
           "write_parameters": {
-            "type": "object",
-            "description": "The write parameters for the embedding model."
+            "$ref": "#/components/schemas/ModelIndexEmbedWriteParametersProperty"
           }
         },
         "description": "The embedding model and document fields mapped to embedding inputs.",
@@ -12183,11 +12067,7 @@
             "example": 10000000
           },
           "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+            "$ref": "#/components/schemas/BackupModelTags"
           },
           "created_at": {
             "type": "string",
@@ -12402,8 +12282,7 @@
             "example": "example-namespace"
           },
           "filter": {
-            "type": "object",
-            "description": "If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with specifying ids to delete in the ids param or using delete_all=True. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata)."
+            "$ref": "#/components/schemas/DeleteRequestFilterProperty"
           }
         },
         "description": "The request for the `delete` operation."
@@ -12416,8 +12295,7 @@
         "type": "object",
         "properties": {
           "filter": {
-            "type": "object",
-            "description": "If this parameter is present, the operation only returns statistics for vectors that satisfy the filter. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).\n\nServerless indexes do not support filtering `describe_index_stats` by metadata."
+            "$ref": "#/components/schemas/DescribeIndexStatsRequestFilterProperty"
           }
         },
         "description": "The request for the `describe_index_stats` operation."
@@ -12426,11 +12304,7 @@
         "type": "object",
         "properties": {
           "namespaces": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/NamespaceSummary"
-            },
-            "description": "A mapping for each namespace in the index from the namespace name to a summary of its contents. If a metadata filter expression is present, the summary will reflect only vectors matching that expression."
+            "$ref": "#/components/schemas/IndexDescriptionNamespacesProperty"
           },
           "dimension": {
             "type": "integer",
@@ -12490,11 +12364,7 @@
         "type": "object",
         "properties": {
           "vectors": {
-            "title": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/Vector"
-            }
+            "$ref": "#/components/schemas/FetchResponseVectorsProperty"
           },
           "namespace": {
             "type": "string",
@@ -12667,20 +12537,7 @@
             "example": 10
           },
           "filter": {
-            "type": "object",
-            "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).",
-            "example": {
-              "genre": {
-                "$in": [
-                  "comedy",
-                  "documentary",
-                  "drama"
-                ]
-              },
-              "year": {
-                "$eq": 2019
-              }
-            }
+            "$ref": "#/components/schemas/QueryRequestFilterProperty"
           },
           "includeValues": {
             "type": "boolean",
@@ -12784,11 +12641,7 @@
             "description": "List of hostnames or IP addresses that are targets for monitoring."
           },
           "labels": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of labels to be attached to the scraped metrics from the targets."
+            "$ref": "#/components/schemas/PrometheusTargetsItemLabelsProperty"
           }
         }
       },
@@ -12826,12 +12679,7 @@
             "$ref": "#/components/schemas/SparseValues"
           },
           "metadata": {
-            "type": "object",
-            "description": "This is the metadata, if it is requested.",
-            "example": {
-              "genre": "documentary",
-              "year": 2019
-            }
+            "$ref": "#/components/schemas/ScoredVectorMetadataProperty"
           }
         }
       },
@@ -12913,12 +12761,7 @@
             "$ref": "#/components/schemas/SparseValues"
           },
           "setMetadata": {
-            "type": "object",
-            "description": "Metadata to set for the record.",
-            "example": {
-              "genre": "documentary",
-              "year": 2019
-            }
+            "$ref": "#/components/schemas/UpdateRequestSetMetadataProperty"
           },
           "namespace": {
             "type": "string",
@@ -12926,20 +12769,7 @@
             "example": "example-namespace"
           },
           "filter": {
-            "type": "object",
-            "description": "A metadata filter expression. When updating metadata across records in a namespace,  the update is applied to all records that match the filter.  See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).",
-            "example": {
-              "genre": {
-                "$in": [
-                  "comedy",
-                  "documentary",
-                  "drama"
-                ]
-              },
-              "year": {
-                "$eq": 2019
-              }
-            }
+            "$ref": "#/components/schemas/UpdateRequestFilterProperty"
           },
           "dryRun": {
             "type": "boolean",
@@ -13098,8 +12928,7 @@
             "format": "float"
           },
           "fields": {
-            "type": "object",
-            "description": "The selected record fields associated with the search hit."
+            "$ref": "#/components/schemas/HitFieldsProperty"
           }
         },
         "description": "A record whose vector values are similar to the provided search query.",
@@ -13203,12 +13032,7 @@
             "$ref": "#/components/schemas/SparseValues"
           },
           "metadata": {
-            "type": "object",
-            "description": "This is the metadata included in the request.",
-            "example": {
-              "genre": "documentary",
-              "year": 2019
-            }
+            "$ref": "#/components/schemas/VectorMetadataProperty"
           }
         }
       },
@@ -13221,20 +13045,7 @@
             "example": "example-namespace"
           },
           "filter": {
-            "type": "object",
-            "description": "Metadata filter expression to select vectors. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).",
-            "example": {
-              "genre": {
-                "$in": [
-                  "comedy",
-                  "documentary",
-                  "drama"
-                ]
-              },
-              "year": {
-                "$eq": 2019
-              }
-            }
+            "$ref": "#/components/schemas/FetchByMetadataRequestFilterProperty"
           },
           "limit": {
             "minimum": 1,
@@ -13256,11 +13067,7 @@
         "type": "object",
         "properties": {
           "vectors": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/Vector"
-            },
-            "description": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors"
+            "$ref": "#/components/schemas/FetchByMetadataResponseVectorsProperty"
           },
           "namespace": {
             "type": "string",
@@ -13429,53 +13236,18 @@
         },
         "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
       },
-      "AssistantControl202604ErrorResponseError": {
+      "IndexSpecPodBased": {
+        "title": "Pod-based",
         "required": [
-          "code",
-          "message"
+          "pod"
         ],
         "type": "object",
         "properties": {
-          "code": {
-            "type": "string",
-            "description": "The status code associated with the error.",
-            "x-enum": [
-              "OK",
-              "UNKNOWN",
-              "INVALID_ARGUMENT",
-              "DEADLINE_EXCEEDED",
-              "QUOTA_EXCEEDED",
-              "NOT_FOUND",
-              "ALREADY_EXISTS",
-              "PERMISSION_DENIED",
-              "UNAUTHENTICATED",
-              "RESOURCE_EXHAUSTED",
-              "FAILED_PRECONDITION",
-              "ABORTED",
-              "OUT_OF_RANGE",
-              "UNIMPLEMENTED",
-              "INTERNAL",
-              "UNAVAILABLE",
-              "DATA_LOSS",
-              "FORBIDDEN",
-              "TOO_MANY_REQUESTS"
-            ]
-          },
-          "message": {
-            "type": "string",
-            "description": "A message providing details about the error.",
-            "example": "Message content cannot be empty"
-          },
-          "details": {
-            "type": "object",
-            "description": "Additional information about the error. This field is not guaranteed to be present."
+          "pod": {
+            "$ref": "#/components/schemas/PodSpec"
           }
         },
-        "description": "Detailed information about the error that occurred.",
-        "example": {
-          "code": "INVALID_ARGUMENT",
-          "message": "Invalid region: Valid options are us, eu"
-        }
+        "additionalProperties": false
       },
       "ModelInfoSupportedParameter": {
         "required": [
@@ -13509,15 +13281,7 @@
           "allowed_values": {
             "type": "array",
             "items": {
-              "type": "object",
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
+              "$ref": "#/components/schemas/ModelInfoSupportedParameterAllowedValuesItem"
             },
             "description": "The allowed parameter values when the type is 'one_of'."
           },
@@ -13532,75 +13296,23 @@
             "example": 1
           },
           "default": {
-            "type": "object",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "format": "int32"
-              },
-              {
-                "type": "number",
-                "format": "float"
-              },
-              {
-                "type": "boolean"
-              }
-            ],
-            "description": "The default value for the parameter when a parameter is optional.",
-            "example": "END"
+            "$ref": "#/components/schemas/ModelInfoSupportedParameterDefault"
           }
         },
         "description": "Describes a parameter supported by the model, including parameter value constraints."
       },
-      "ErrorResponseError": {
+      "IndexSpecServerless": {
+        "title": "Serverless",
         "required": [
-          "code",
-          "message"
+          "serverless"
         ],
         "type": "object",
         "properties": {
-          "code": {
-            "type": "string",
-            "description": "\"The error code.\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, `FORBIDDEN`, or `UNPROCESSABLE_ENTITY`.        \"",
-            "x-enum": [
-              "OK",
-              "UNKNOWN",
-              "INVALID_ARGUMENT",
-              "DEADLINE_EXCEEDED",
-              "QUOTA_EXCEEDED",
-              "NOT_FOUND",
-              "ALREADY_EXISTS",
-              "PERMISSION_DENIED",
-              "UNAUTHENTICATED",
-              "RESOURCE_EXHAUSTED",
-              "FAILED_PRECONDITION",
-              "ABORTED",
-              "OUT_OF_RANGE",
-              "UNIMPLEMENTED",
-              "INTERNAL",
-              "UNAVAILABLE",
-              "DATA_LOSS",
-              "FORBIDDEN",
-              "UNPROCESSABLE_ENTITY"
-            ]
-          },
-          "message": {
-            "type": "string",
-            "example": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
-          },
-          "details": {
-            "type": "object",
-            "description": "Additional information about the error. This field is not guaranteed to be present."
+          "serverless": {
+            "$ref": "#/components/schemas/ServerlessSpec"
           }
         },
-        "description": "Detailed information about the error that occurred.",
-        "example": {
-          "code": "INVALID_ARGUMENT",
-          "message": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
-        }
+        "additionalProperties": false
       },
       "SparseEmbedding": {
         "title": "Sparse embedding",
@@ -13760,17 +13472,12 @@
           "documents": {
             "type": "array",
             "items": {
-              "type": "object",
-              "description": "Document for reranking"
+              "$ref": "#/components/schemas/RerankRequestDocumentsItem"
             },
             "description": "The documents to rerank."
           },
           "parameters": {
-            "type": "object",
-            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
-            "example": {
-              "truncate": "END"
-            }
+            "$ref": "#/components/schemas/RerankRequestParametersProperty"
           }
         }
       },
@@ -13857,24 +13564,12 @@
             "example": "multilingual-e5-large"
           },
           "parameters": {
-            "type": "object",
-            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters.",
-            "example": {
-              "input_type": "passage",
-              "truncate": "END"
-            }
+            "$ref": "#/components/schemas/EmbedRequestParametersProperty"
           },
           "inputs": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "text": {
-                  "type": "string",
-                  "description": "The text input to generate embeddings for.",
-                  "example": "The quick brown fox jumps over the lazy dog."
-                }
-              }
+              "$ref": "#/components/schemas/EmbedRequestInputsItem"
             },
             "description": "List of inputs to generate embeddings for."
           }
@@ -14009,8 +13704,7 @@
             "example": 0.5
           },
           "document": {
-            "type": "object",
-            "description": "Document for reranking"
+            "$ref": "#/components/schemas/RankedDocumentDocument"
           }
         },
         "description": "A ranked document with a relevance score and an index position."
@@ -14046,7 +13740,7 @@
           "token_type": "Bearer"
         }
       },
-      "Oauth202604ErrorResponse": {
+      "OAuth202604ErrorResponse": {
         "type": "object",
         "properties": {
           "error": {
@@ -14104,6 +13798,350 @@
           "grant_type": "client_credentials"
         }
       },
+      "IndexModelSpec": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/IndexModelSpecServerless"
+          },
+          {
+            "$ref": "#/components/schemas/IndexModelSpecPodBased"
+          },
+          {
+            "$ref": "#/components/schemas/IndexModelSpecByoc"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "The spec object defines how the index should be deployed.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "IndexModelSpecServerless": "#/components/schemas/IndexModelSpecServerless",
+            "IndexModelSpecPodBased": "#/components/schemas/IndexModelSpecPodBased",
+            "IndexModelSpecByoc": "#/components/schemas/IndexModelSpecByoc"
+          }
+        },
+        "example": {
+          "pod": {
+            "environment": "us-east-1-aws",
+            "metadata_config": {
+              "indexed": [
+                "genre",
+                "title",
+                "imdb_rating"
+              ]
+            },
+            "pod_type": "p1.x1",
+            "pods": 1,
+            "replicas": 1,
+            "shards": 1
+          }
+        }
+      },
+      "ModelInfoSupportedParameterAllowedValuesItem": {
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      },
+      "ModelInfoSupportedParameterDefault": {
+        "type": "object",
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "type": "boolean"
+          }
+        ],
+        "description": "The default value for the parameter when a parameter is optional.",
+        "example": "END"
+      },
+      "ConfigureIndexRequestSpecServerless": {
+        "title": "Serverless",
+        "required": [
+          "serverless"
+        ],
+        "type": "object",
+        "properties": {
+          "serverless": {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecServerlessServerless"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfigureIndexRequestSpecPodBased": {
+        "title": "Pod-based",
+        "required": [
+          "pod"
+        ],
+        "type": "object",
+        "properties": {
+          "pod": {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecPodBasedPod"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfigureIndexRequestSpecByoc": {
+        "title": "BYOC",
+        "required": [
+          "byoc"
+        ],
+        "type": "object",
+        "properties": {
+          "byoc": {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecByocByoc"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IndexModelSpecServerless": {
+        "title": "Serverless",
+        "required": [
+          "serverless"
+        ],
+        "type": "object",
+        "properties": {
+          "serverless": {
+            "$ref": "#/components/schemas/ServerlessSpecResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IndexModelSpecPodBased": {
+        "title": "Pod-based",
+        "required": [
+          "pod"
+        ],
+        "type": "object",
+        "properties": {
+          "pod": {
+            "$ref": "#/components/schemas/PodSpec"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IndexModelSpecByoc": {
+        "title": "BYOC",
+        "required": [
+          "byoc"
+        ],
+        "type": "object",
+        "properties": {
+          "byoc": {
+            "$ref": "#/components/schemas/ByocSpecResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ErrorResponseError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "\"The error code.\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, `FORBIDDEN`, or `UNPROCESSABLE_ENTITY`.        \"",
+            "x-enum": [
+              "OK",
+              "UNKNOWN",
+              "INVALID_ARGUMENT",
+              "DEADLINE_EXCEEDED",
+              "QUOTA_EXCEEDED",
+              "NOT_FOUND",
+              "ALREADY_EXISTS",
+              "PERMISSION_DENIED",
+              "UNAUTHENTICATED",
+              "RESOURCE_EXHAUSTED",
+              "FAILED_PRECONDITION",
+              "ABORTED",
+              "OUT_OF_RANGE",
+              "UNIMPLEMENTED",
+              "INTERNAL",
+              "UNAVAILABLE",
+              "DATA_LOSS",
+              "FORBIDDEN",
+              "UNPROCESSABLE_ENTITY"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "example": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
+          },
+          "details": {
+            "$ref": "#/components/schemas/ErrorResponseErrorDetailsProperty"
+          }
+        },
+        "description": "Detailed information about the error that occurred.",
+        "example": {
+          "code": "INVALID_ARGUMENT",
+          "message": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
+        }
+      },
+      "UpdateAssistantResponseMetadata": {
+        "type": "object",
+        "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.",
+        "example": {
+          "role": "Customer Support Helper",
+          "team": "Operations"
+        }
+      },
+      "CreateAssistantRequestMetadata": {
+        "type": "object",
+        "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
+        "example": {
+          "role": "Customer Support Helper",
+          "team": "Operations"
+        }
+      },
+      "AssistantMetadata": {
+        "type": "object",
+        "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.",
+        "nullable": true,
+        "example": {
+          "role": "Customer Support Helper",
+          "team": "Operations"
+        }
+      },
+      "UpdateAssistantRequestMetadata": {
+        "type": "object",
+        "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
+        "nullable": true,
+        "example": {
+          "role": "Customer Support Helper",
+          "team": "Operations"
+        }
+      },
+      "AssistantControl202604ErrorResponseError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The status code associated with the error.",
+            "x-enum": [
+              "OK",
+              "UNKNOWN",
+              "INVALID_ARGUMENT",
+              "DEADLINE_EXCEEDED",
+              "QUOTA_EXCEEDED",
+              "NOT_FOUND",
+              "ALREADY_EXISTS",
+              "PERMISSION_DENIED",
+              "UNAUTHENTICATED",
+              "RESOURCE_EXHAUSTED",
+              "FAILED_PRECONDITION",
+              "ABORTED",
+              "OUT_OF_RANGE",
+              "UNIMPLEMENTED",
+              "INTERNAL",
+              "UNAVAILABLE",
+              "DATA_LOSS",
+              "FORBIDDEN",
+              "TOO_MANY_REQUESTS"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "A message providing details about the error.",
+            "example": "Message content cannot be empty"
+          },
+          "details": {
+            "$ref": "#/components/schemas/AssistantControl202604ErrorResponseErrorDetailsProperty"
+          }
+        },
+        "description": "Detailed information about the error that occurred.",
+        "example": {
+          "code": "INVALID_ARGUMENT",
+          "message": "Invalid region: Valid options are us, eu"
+        }
+      },
+      "AssistantFileModelMetadata": {
+        "type": "object",
+        "description": "Optional metadata associated with the file. This metadata can be used to filter files when listing them or to restrict search results when querying the assistant.",
+        "nullable": true,
+        "example": {
+          "created_by": "Jane Doe",
+          "published": "2025-10-01",
+          "tags": [
+            "report",
+            "Q4",
+            "analytics"
+          ]
+        }
+      },
+      "ChatRequestFilter": {
+        "type": "object",
+        "description": "Optional metadata-based filter to restrict which documents are retrieved for the assistant's response context.",
+        "example": {
+          "genre": {
+            "$ne": "documentary"
+          }
+        }
+      },
+      "ChoiceChunkModelDelta": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "description": "The role of the message author, it can be `user`, `assistant`, or `system`."
+          },
+          "content": {
+            "type": "string",
+            "description": "The textual content of this partial message."
+          }
+        },
+        "description": "Chat completion message"
+      },
+      "ContentChunkModelDelta": {
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The text content of this partial message."
+          }
+        },
+        "description": "The format of this partial message. For example, if the response is \"Hello world\", the first chunk's `delta.content` might contain \"Hello\" and the second chunk's `delta.content` might contain \" world\"."
+      },
+      "ContextRequestFilter": {
+        "type": "object",
+        "description": "Optionally filter which documents can be retrieved using the following metadata fields.",
+        "example": {
+          "genre": {
+            "$ne": "documentary"
+          }
+        }
+      },
       "AssistantData202604ErrorResponseError": {
         "required": [
           "code",
@@ -14142,8 +14180,7 @@
             "example": "Message content cannot be empty"
           },
           "details": {
-            "type": "object",
-            "description": "Additional information about the error. This field is not guaranteed to be present."
+            "$ref": "#/components/schemas/AssistantData202604ErrorResponseErrorDetailsProperty"
           }
         },
         "description": "Detailed information about the error that occurred.",
@@ -14152,102 +14189,35 @@
           "message": "Invalid region: Valid options are us, eu"
         }
       },
+      "FileDataMetadata": {
+        "type": "object",
+        "description": "Optional metadata associated with the file. This metadata can be used to filter files when listing them or to restrict search results when querying the assistant. Maximum size is 16KB.",
+        "nullable": true,
+        "example": {
+          "created_by": "Jane Doe",
+          "published": "2025-10-01",
+          "tags": [
+            "report",
+            "Q4",
+            "analytics"
+          ]
+        }
+      },
+      "SearchCompletionsFilter": {
+        "type": "object",
+        "description": "Optional metadata-based filter to restrict which documents are retrieved for the assistant's response context.",
+        "example": {
+          "genre": {
+            "$ne": "documentary"
+          }
+        }
+      },
       "MetadataSchemaFields": {
         "type": "object",
         "additionalProperties": {
-          "type": "object",
-          "properties": {
-            "filterable": {
-              "type": "boolean",
-              "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-            }
-          }
+          "$ref": "#/components/schemas/MetadataSchemaFieldsAdditionalProperties"
         },
         "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
-      },
-      "ConfigureIndexRequestSpec": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "title": "Serverless",
-            "required": [
-              "serverless"
-            ],
-            "type": "object",
-            "properties": {
-              "serverless": {
-                "type": "object",
-                "properties": {
-                  "read_capacity": {
-                    "$ref": "#/components/schemas/ReadCapacity"
-                  }
-                },
-                "description": "Updated configuration for serverless indexes"
-              }
-            },
-            "additionalProperties": false
-          },
-          {
-            "title": "Pod-based",
-            "required": [
-              "pod"
-            ],
-            "type": "object",
-            "properties": {
-              "pod": {
-                "type": "object",
-                "properties": {
-                  "replicas": {
-                    "minimum": 1,
-                    "type": "integer",
-                    "description": "The number of replicas. Replicas duplicate your index. They provide higher availability and throughput. Replicas can be scaled up or down as your needs change.",
-                    "format": "int32",
-                    "default": 1
-                  },
-                  "pod_type": {
-                    "type": "string",
-                    "description": "The type of pod to use. One of `s1`, `p1`, or `p2` appended with `.` and one of `x1`, `x2`, `x4`, or `x8`.",
-                    "default": "p1.x1"
-                  }
-                },
-                "description": "Updated configuration for pod-based indexes"
-              }
-            },
-            "additionalProperties": false
-          },
-          {
-            "title": "BYOC",
-            "required": [
-              "byoc"
-            ],
-            "type": "object",
-            "properties": {
-              "byoc": {
-                "type": "object",
-                "properties": {
-                  "read_capacity": {
-                    "$ref": "#/components/schemas/ReadCapacity"
-                  }
-                },
-                "description": "Updated configuration for a BYOC index"
-              }
-            },
-            "additionalProperties": false
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The spec object defines how the index should be deployed.  Only some attributes of an index's spec may be updated.  In general, you can modify settings related to scaling and  configuration but you cannot change the cloud or region  where the index is hosted.",
-        "discriminator": {
-          "propertyName": "type"
-        }
       },
       "ConfigureIndexRequestEmbed": {
         "type": "object",
@@ -14258,19 +14228,13 @@
             "example": "multilingual-e5-large"
           },
           "field_map": {
-            "type": "object",
-            "description": "Identifies the name of the text field from your document model that will be embedded.",
-            "example": {
-              "text": "your-text-field"
-            }
+            "$ref": "#/components/schemas/ConfigureIndexRequestEmbedFieldMapProperty"
           },
           "read_parameters": {
-            "type": "object",
-            "description": "The read parameters for the embedding model."
+            "$ref": "#/components/schemas/ConfigureIndexRequestEmbedReadParametersProperty"
           },
           "write_parameters": {
-            "type": "object",
-            "description": "The write parameters for the embedding model."
+            "$ref": "#/components/schemas/ConfigureIndexRequestEmbedWriteParametersProperty"
           }
         },
         "description": "Configure the integrated inference embedding settings for this index.\n\nYou can convert an existing index to an integrated index by specifying the embedding model and field_map. The index vector type and dimension must match the model vector type and dimension, and the index similarity metric must be supported by the model. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.\n\nYou can later change the embedding configuration to update the field map, read parameters, or write parameters. Once set, the model cannot be changed.",
@@ -14327,87 +14291,13 @@
             "example": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
           },
           "details": {
-            "type": "object",
-            "description": "Additional information about the error. This field is not guaranteed to be present."
+            "$ref": "#/components/schemas/DbControl202604ErrorResponseErrorDetailsProperty"
           }
         },
         "description": "Detailed information about the error that occurred.",
         "example": {
           "code": "INVALID_ARGUMENT",
           "message": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
-        }
-      },
-      "IndexModelSpec": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "title": "Serverless",
-            "required": [
-              "serverless"
-            ],
-            "type": "object",
-            "properties": {
-              "serverless": {
-                "$ref": "#/components/schemas/ServerlessSpecResponse"
-              }
-            },
-            "additionalProperties": false
-          },
-          {
-            "title": "Pod-based",
-            "required": [
-              "pod"
-            ],
-            "type": "object",
-            "properties": {
-              "pod": {
-                "$ref": "#/components/schemas/PodSpec"
-              }
-            },
-            "additionalProperties": false
-          },
-          {
-            "title": "BYOC",
-            "required": [
-              "byoc"
-            ],
-            "type": "object",
-            "properties": {
-              "byoc": {
-                "$ref": "#/components/schemas/ByocSpecResponse"
-              }
-            },
-            "additionalProperties": false
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The spec object defines how the index should be deployed.",
-        "discriminator": {
-          "propertyName": "type"
-        },
-        "example": {
-          "pod": {
-            "environment": "us-east-1-aws",
-            "metadata_config": {
-              "indexed": [
-                "genre",
-                "title",
-                "imdb_rating"
-              ]
-            },
-            "pod_type": "p1.x1",
-            "pods": 1,
-            "replicas": 1,
-            "shards": 1
-          }
         }
       },
       "IndexModelStatus": {
@@ -14465,23 +14355,17 @@
             ]
           },
           "field_map": {
-            "type": "object",
-            "description": "Identifies the name of the text field from your document model that will be embedded.",
-            "example": {
-              "text": "your-text-field"
-            }
+            "$ref": "#/components/schemas/CreateIndexForModelRequestEmbedFieldMapProperty"
           },
           "dimension": {
             "type": "integer",
             "description": "The dimension of embedding vectors produced for the index."
           },
           "read_parameters": {
-            "type": "object",
-            "description": "The read parameters for the embedding model."
+            "$ref": "#/components/schemas/CreateIndexForModelRequestEmbedReadParametersProperty"
           },
           "write_parameters": {
-            "type": "object",
-            "description": "The write parameters for the embedding model."
+            "$ref": "#/components/schemas/CreateIndexForModelRequestEmbedWriteParametersProperty"
           }
         },
         "description": "Specify the integrated inference embedding configuration for the index.\n\nOnce set the model cannot be changed, but you can later update the embedding configuration for an integrated inference index including field map, read parameters, or write parameters.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.",
@@ -14520,6 +14404,43 @@
           ]
         }
       },
+      "ModelIndexEmbedFieldMap": {
+        "type": "object",
+        "description": "Identifies the name of the text field from your document model that is embedded.",
+        "example": {
+          "text": "your-text-field"
+        }
+      },
+      "ModelIndexEmbedReadParameters": {
+        "type": "object",
+        "description": "The read parameters for the embedding model."
+      },
+      "ModelIndexEmbedWriteParameters": {
+        "type": "object",
+        "description": "The write parameters for the embedding model."
+      },
+      "DeleteRequestFilter": {
+        "type": "object",
+        "description": "If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with specifying ids to delete in the ids param or using delete_all=True. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata)."
+      },
+      "DescribeIndexStatsRequestFilter": {
+        "type": "object",
+        "description": "If this parameter is present, the operation only returns statistics for vectors that satisfy the filter. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).\n\nServerless indexes do not support filtering `describe_index_stats` by metadata."
+      },
+      "IndexDescriptionNamespaces": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/NamespaceSummary"
+        },
+        "description": "A mapping for each namespace in the index from the namespace name to a summary of its contents. If a metadata filter expression is present, the summary will reflect only vectors matching that expression."
+      },
+      "FetchResponseVectors": {
+        "title": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors",
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Vector"
+        }
+      },
       "CreateNamespaceRequestSchema": {
         "required": [
           "fields"
@@ -14527,17 +14448,7 @@
         "type": "object",
         "properties": {
           "fields": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "filterable": {
-                  "type": "boolean",
-                  "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-                }
-              }
-            },
-            "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+            "$ref": "#/components/schemas/CreateNamespaceRequestSchemaFieldsProperty"
           }
         },
         "description": "\"Schema for the behavior of Pinecone's internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.\"",
@@ -14563,17 +14474,7 @@
         "type": "object",
         "properties": {
           "fields": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "filterable": {
-                  "type": "boolean",
-                  "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-                }
-              }
-            },
-            "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+            "$ref": "#/components/schemas/NamespaceDescriptionSchemaFieldsProperty"
           }
         },
         "description": "\"Schema for the behavior of Pinecone's internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.\"",
@@ -14604,12 +14505,60 @@
         },
         "description": "A list of all indexed metatadata fields in the namespace"
       },
+      "QueryRequestFilter": {
+        "type": "object",
+        "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).",
+        "example": {
+          "genre": {
+            "$in": [
+              "comedy",
+              "documentary",
+              "drama"
+            ]
+          },
+          "year": {
+            "$eq": 2019
+          }
+        }
+      },
       "PrometheusTargetsItemLabels": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         },
         "description": "Set of labels to be attached to the scraped metrics from the targets."
+      },
+      "ScoredVectorMetadata": {
+        "type": "object",
+        "description": "This is the metadata, if it is requested.",
+        "example": {
+          "genre": "documentary",
+          "year": 2019
+        }
+      },
+      "UpdateRequestSetMetadata": {
+        "type": "object",
+        "description": "Metadata to set for the record.",
+        "example": {
+          "genre": "documentary",
+          "year": 2019
+        }
+      },
+      "UpdateRequestFilter": {
+        "type": "object",
+        "description": "A metadata filter expression. When updating metadata across records in a namespace,  the update is applied to all records that match the filter.  See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).",
+        "example": {
+          "genre": {
+            "$in": [
+              "comedy",
+              "documentary",
+              "drama"
+            ]
+          },
+          "year": {
+            "$eq": 2019
+          }
+        }
       },
       "SearchRecordsRequestQuery": {
         "required": [
@@ -14624,11 +14573,10 @@
             "example": 10
           },
           "filter": {
-            "type": "object",
-            "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
+            "$ref": "#/components/schemas/SearchRecordsRequestQueryFilterProperty"
           },
           "inputs": {
-            "type": "object"
+            "$ref": "#/components/schemas/SearchRecordsRequestQueryInputs"
           },
           "vector": {
             "$ref": "#/components/schemas/SearchRecordsVector"
@@ -14671,11 +14619,7 @@
             "example": 5
           },
           "parameters": {
-            "type": "object",
-            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
-            "example": {
-              "truncate": "END"
-            }
+            "$ref": "#/components/schemas/SearchRecordsRequestRerankParametersProperty"
           },
           "query": {
             "type": "string",
@@ -14700,6 +14644,41 @@
           }
         }
       },
+      "HitFields": {
+        "type": "object",
+        "description": "The selected record fields associated with the search hit."
+      },
+      "VectorMetadata": {
+        "type": "object",
+        "description": "This is the metadata included in the request.",
+        "example": {
+          "genre": "documentary",
+          "year": 2019
+        }
+      },
+      "FetchByMetadataRequestFilter": {
+        "type": "object",
+        "description": "Metadata filter expression to select vectors. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).",
+        "example": {
+          "genre": {
+            "$in": [
+              "comedy",
+              "documentary",
+              "drama"
+            ]
+          },
+          "year": {
+            "$eq": 2019
+          }
+        }
+      },
+      "FetchByMetadataResponseVectors": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Vector"
+        },
+        "description": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors"
+      },
       "DbMetrics202604ErrorResponseError": {
         "required": [
           "code",
@@ -14722,8 +14701,7 @@
             "example": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
           },
           "details": {
-            "type": "object",
-            "description": "Additional information about the error. This field is not guaranteed to be present."
+            "$ref": "#/components/schemas/DbMetrics202604ErrorResponseErrorDetailsProperty"
           }
         },
         "description": "Detailed information about the error that occurred.",
@@ -14782,14 +14760,20 @@
             "example": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
           },
           "details": {
-            "type": "object",
-            "description": "Additional information about the error. This field is not guaranteed to be present."
+            "$ref": "#/components/schemas/Inference202604ErrorResponseErrorDetailsProperty"
           }
         },
         "description": "Detailed information about the error that occurred.",
         "example": {
           "code": "INVALID_ARGUMENT",
           "message": "Index name must contain only lowercase alphanumeric characters or hyphens, and must not begin or end with a hyphen."
+        }
+      },
+      "RerankRequestParameters": {
+        "type": "object",
+        "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
+        "example": {
+          "truncate": "END"
         }
       },
       "RerankResultUsage": {
@@ -14805,33 +14789,167 @@
         },
         "description": "Usage statistics for the model inference."
       },
+      "EmbedRequestParameters": {
+        "type": "object",
+        "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters.",
+        "example": {
+          "input_type": "passage",
+          "truncate": "END"
+        }
+      },
+      "EmbedRequestInputsItem": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The text input to generate embeddings for.",
+            "example": "The quick brown fox jumps over the lazy dog."
+          }
+        }
+      },
+      "ConfigureIndexRequestSpecServerlessServerless": {
+        "type": "object",
+        "properties": {
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacity"
+          }
+        },
+        "description": "Updated configuration for serverless indexes"
+      },
+      "ConfigureIndexRequestSpecPodBasedPod": {
+        "type": "object",
+        "properties": {
+          "replicas": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "The number of replicas. Replicas duplicate your index. They provide higher availability and throughput. Replicas can be scaled up or down as your needs change.",
+            "format": "int32",
+            "default": 1
+          },
+          "pod_type": {
+            "type": "string",
+            "description": "The type of pod to use. One of `s1`, `p1`, or `p2` appended with `.` and one of `x1`, `x2`, `x4`, or `x8`.",
+            "default": "p1.x1"
+          }
+        },
+        "description": "Updated configuration for pod-based indexes"
+      },
+      "ConfigureIndexRequestSpecByocByoc": {
+        "type": "object",
+        "properties": {
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacity"
+          }
+        },
+        "description": "Updated configuration for a BYOC index"
+      },
+      "ErrorResponseErrorDetails": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "AssistantControl202604ErrorResponseErrorDetails": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "AssistantData202604ErrorResponseErrorDetails": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "MetadataSchemaFieldsAdditionalProperties": {
+        "type": "object",
+        "properties": {
+          "filterable": {
+            "type": "boolean",
+            "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
+          }
+        }
+      },
+      "ConfigureIndexRequestEmbedFieldMap": {
+        "type": "object",
+        "description": "Identifies the name of the text field from your document model that will be embedded.",
+        "example": {
+          "text": "your-text-field"
+        }
+      },
+      "ConfigureIndexRequestEmbedReadParameters": {
+        "type": "object",
+        "description": "The read parameters for the embedding model."
+      },
+      "ConfigureIndexRequestEmbedWriteParameters": {
+        "type": "object",
+        "description": "The write parameters for the embedding model."
+      },
+      "DbControl202604ErrorResponseErrorDetails": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "CreateIndexForModelRequestEmbedFieldMap": {
+        "type": "object",
+        "description": "Identifies the name of the text field from your document model that will be embedded.",
+        "example": {
+          "text": "your-text-field"
+        }
+      },
+      "CreateIndexForModelRequestEmbedReadParameters": {
+        "type": "object",
+        "description": "The read parameters for the embedding model."
+      },
+      "CreateIndexForModelRequestEmbedWriteParameters": {
+        "type": "object",
+        "description": "The write parameters for the embedding model."
+      },
       "CreateNamespaceRequestSchemaFields": {
         "type": "object",
         "additionalProperties": {
-          "type": "object",
-          "properties": {
-            "filterable": {
-              "type": "boolean",
-              "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-            }
-          }
+          "$ref": "#/components/schemas/CreateNamespaceRequestSchemaFieldsAdditionalProperties"
         },
         "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
       },
       "NamespaceDescriptionSchemaFields": {
         "type": "object",
         "additionalProperties": {
-          "type": "object",
-          "properties": {
-            "filterable": {
-              "type": "boolean",
-              "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-            }
-          }
+          "$ref": "#/components/schemas/NamespaceDescriptionSchemaFieldsAdditionalProperties"
         },
         "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
       },
-      "DbData202604UpsertRecordsNamespace": {
+      "SearchRecordsRequestQueryFilter": {
+        "type": "object",
+        "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
+      },
+      "SearchRecordsRequestRerankParameters": {
+        "type": "object",
+        "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
+        "example": {
+          "truncate": "END"
+        }
+      },
+      "DbMetrics202604ErrorResponseErrorDetails": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "Inference202604ErrorResponseErrorDetails": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "CreateNamespaceRequestSchemaFieldsAdditionalProperties": {
+        "type": "object",
+        "properties": {
+          "filterable": {
+            "type": "boolean",
+            "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
+          }
+        }
+      },
+      "NamespaceDescriptionSchemaFieldsAdditionalProperties": {
+        "type": "object",
+        "properties": {
+          "filterable": {
+            "type": "boolean",
+            "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
+          }
+        }
+      },
+      "DbData202604UpsertRecordsNamespaceXNdjsonRequest": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/UpsertRecord"
@@ -14840,6 +14958,268 @@
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
+      },
+      "DbData202604CancelBulkImport200Response": {
+        "type": "object",
+        "description": "The response for the `cancel_import` operation."
+      },
+      "DbData202604DeleteVectors200Response": {
+        "type": "object",
+        "description": "The response for the `delete` operation."
+      },
+      "DbData202604DeleteNamespace200Response": {
+        "type": "object",
+        "description": "The response for the `delete` operation."
+      },
+      "DbData202604UpsertRecordsNamespaceXNdjsonRequestRequestBody": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/UpsertRecord"
+        }
+      },
+      "DbMetrics202604FetchPrometheusTargets200Response": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/PrometheusTargetsItem"
+        },
+        "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
+      },
+      "UpdateAssistantResponseMetadataProperty": {
+        "type": "object",
+        "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes."
+      },
+      "CreateAssistantRequestMetadataProperty": {
+        "type": "object",
+        "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB."
+      },
+      "ChatRequestFilterProperty": {
+        "type": "object",
+        "description": "Optional metadata-based filter to restrict which documents are retrieved for the assistant's response context."
+      },
+      "ContentFilterResultsResults": {
+        "type": "object",
+        "description": "Content filter results returned by the provider. The structure depend on the `spec` value."
+      },
+      "ContextRequestFilterProperty": {
+        "type": "object",
+        "description": "Optionally filter which documents can be retrieved using the following metadata fields."
+      },
+      "SearchCompletionsFilterProperty": {
+        "type": "object",
+        "description": "Optional metadata-based filter to restrict which documents are retrieved for the assistant's response context."
+      },
+      "CreateIndexFromBackupRequestTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+      },
+      "MetadataSchemaFieldsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/MetadataSchemaFieldsAdditionalProperties"
+        },
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+      },
+      "ConfigureIndexRequestTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+      },
+      "IndexModelTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+      },
+      "CreateIndexForModelRequestTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+      },
+      "CreateIndexRequestTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+      },
+      "ModelIndexEmbedFieldMapProperty": {
+        "type": "object",
+        "description": "Identifies the name of the text field from your document model that is embedded."
+      },
+      "ModelIndexEmbedReadParametersProperty": {
+        "type": "object",
+        "description": "The read parameters for the embedding model."
+      },
+      "ModelIndexEmbedWriteParametersProperty": {
+        "type": "object",
+        "description": "The write parameters for the embedding model."
+      },
+      "BackupModelTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string."
+      },
+      "DeleteRequestFilterProperty": {
+        "type": "object",
+        "description": "If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with specifying ids to delete in the ids param or using delete_all=True. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata)."
+      },
+      "DescribeIndexStatsRequestFilterProperty": {
+        "type": "object",
+        "description": "If this parameter is present, the operation only returns statistics for vectors that satisfy the filter. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).\n\nServerless indexes do not support filtering `describe_index_stats` by metadata."
+      },
+      "IndexDescriptionNamespacesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/NamespaceSummary"
+        },
+        "description": "A mapping for each namespace in the index from the namespace name to a summary of its contents. If a metadata filter expression is present, the summary will reflect only vectors matching that expression."
+      },
+      "FetchResponseVectorsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Vector"
+        }
+      },
+      "QueryRequestFilterProperty": {
+        "type": "object",
+        "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
+      },
+      "PrometheusTargetsItemLabelsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Set of labels to be attached to the scraped metrics from the targets."
+      },
+      "ScoredVectorMetadataProperty": {
+        "type": "object",
+        "description": "This is the metadata, if it is requested."
+      },
+      "UpdateRequestSetMetadataProperty": {
+        "type": "object",
+        "description": "Metadata to set for the record."
+      },
+      "UpdateRequestFilterProperty": {
+        "type": "object",
+        "description": "A metadata filter expression. When updating metadata across records in a namespace,  the update is applied to all records that match the filter.  See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
+      },
+      "HitFieldsProperty": {
+        "type": "object",
+        "description": "The selected record fields associated with the search hit."
+      },
+      "VectorMetadataProperty": {
+        "type": "object",
+        "description": "This is the metadata included in the request."
+      },
+      "FetchByMetadataRequestFilterProperty": {
+        "type": "object",
+        "description": "Metadata filter expression to select vectors. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
+      },
+      "FetchByMetadataResponseVectorsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Vector"
+        },
+        "description": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors"
+      },
+      "RerankRequestDocumentsItem": {
+        "type": "object",
+        "description": "Document for reranking"
+      },
+      "RerankRequestParametersProperty": {
+        "type": "object",
+        "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters."
+      },
+      "EmbedRequestParametersProperty": {
+        "type": "object",
+        "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters."
+      },
+      "RankedDocumentDocument": {
+        "type": "object",
+        "description": "Document for reranking"
+      },
+      "ErrorResponseErrorDetailsProperty": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "AssistantControl202604ErrorResponseErrorDetailsProperty": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "AssistantData202604ErrorResponseErrorDetailsProperty": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "ConfigureIndexRequestEmbedFieldMapProperty": {
+        "type": "object",
+        "description": "Identifies the name of the text field from your document model that will be embedded."
+      },
+      "ConfigureIndexRequestEmbedReadParametersProperty": {
+        "type": "object",
+        "description": "The read parameters for the embedding model."
+      },
+      "ConfigureIndexRequestEmbedWriteParametersProperty": {
+        "type": "object",
+        "description": "The write parameters for the embedding model."
+      },
+      "DbControl202604ErrorResponseErrorDetailsProperty": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "CreateIndexForModelRequestEmbedFieldMapProperty": {
+        "type": "object",
+        "description": "Identifies the name of the text field from your document model that will be embedded."
+      },
+      "CreateIndexForModelRequestEmbedReadParametersProperty": {
+        "type": "object",
+        "description": "The read parameters for the embedding model."
+      },
+      "CreateIndexForModelRequestEmbedWriteParametersProperty": {
+        "type": "object",
+        "description": "The write parameters for the embedding model."
+      },
+      "CreateNamespaceRequestSchemaFieldsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/CreateNamespaceRequestSchemaFieldsAdditionalProperties"
+        },
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+      },
+      "NamespaceDescriptionSchemaFieldsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/NamespaceDescriptionSchemaFieldsAdditionalProperties"
+        },
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+      },
+      "SearchRecordsRequestQueryFilterProperty": {
+        "type": "object",
+        "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
+      },
+      "SearchRecordsRequestQueryInputs": {
+        "type": "object"
+      },
+      "SearchRecordsRequestRerankParametersProperty": {
+        "type": "object",
+        "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters."
+      },
+      "DbMetrics202604ErrorResponseErrorDetailsProperty": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
+      },
+      "Inference202604ErrorResponseErrorDetailsProperty": {
+        "type": "object",
+        "description": "Additional information about the error. This field is not guaranteed to be present."
       }
     },
     "securitySchemes": {

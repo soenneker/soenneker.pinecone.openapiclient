@@ -20,14 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.admin.admin.organizations.item collection</summary>
         /// <param name="position">Organization ID</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item.WithOrganization_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item.WithOrganization_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item.WithOrganizationItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item.WithOrganizationItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("organization_id", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item.WithOrganization_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("organizationId", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item.WithOrganizationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

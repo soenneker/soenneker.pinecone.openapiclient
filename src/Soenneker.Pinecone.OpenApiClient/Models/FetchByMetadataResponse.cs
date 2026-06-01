@@ -42,10 +42,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The fetched vectors, in the form of a map between the fetched ids and the fetched vectors</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponse_vectors? Vectors { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponseVectorsProperty? Vectors { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponse_vectors Vectors { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponseVectorsProperty Vectors { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponse"/> and sets the default values.
@@ -75,7 +75,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Pagination>(global::Soenneker.Pinecone.OpenApiClient.Models.Pagination.CreateFromDiscriminatorValue); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Usage>(global::Soenneker.Pinecone.OpenApiClient.Models.Usage.CreateFromDiscriminatorValue); } },
-                { "vectors", n => { Vectors = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponse_vectors>(global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponse_vectors.CreateFromDiscriminatorValue); } },
+                { "vectors", n => { Vectors = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponseVectorsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponseVectorsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -88,7 +88,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("namespace", Namespace);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Pagination>("pagination", Pagination);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Usage>("usage", Usage);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponse_vectors>("vectors", Vectors);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataResponseVectorsProperty>("vectors", Vectors);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

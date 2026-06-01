@@ -17,10 +17,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Set of labels to be attached to the scraped metrics from the targets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem_labels? Labels { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItemLabelsProperty? Labels { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem_labels Labels { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItemLabelsProperty Labels { get; set; }
 #endif
         /// <summary>List of hostnames or IP addresses that are targets for monitoring.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem_labels>(global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem_labels.CreateFromDiscriminatorValue); } },
+                { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItemLabelsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItemLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "targets", n => { Targets = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem_labels>("labels", Labels);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItemLabelsProperty>("labels", Labels);
             writer.WriteCollectionOfPrimitiveValues<string>("targets", Targets);
             writer.WriteAdditionalData(AdditionalData);
         }

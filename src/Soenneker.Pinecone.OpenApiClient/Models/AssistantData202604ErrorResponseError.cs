@@ -26,10 +26,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Additional information about the error. This field is not guaranteed to be present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseError_details? Details { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseErrorDetailsProperty? Details { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseError_details Details { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseErrorDetailsProperty Details { get; set; }
 #endif
         /// <summary>A message providing details about the error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "details", n => { Details = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseError_details>(global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseError_details.CreateFromDiscriminatorValue); } },
+                { "details", n => { Details = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseErrorDetailsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseErrorDetailsProperty.CreateFromDiscriminatorValue); } },
                 { "message", n => { Message = n.GetStringValue(); } },
             };
         }
@@ -77,7 +77,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseError_details>("details", Details);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202604ErrorResponseErrorDetailsProperty>("details", Details);
             writer.WriteStringValue("message", Message);
             writer.WriteAdditionalData(AdditionalData);
         }

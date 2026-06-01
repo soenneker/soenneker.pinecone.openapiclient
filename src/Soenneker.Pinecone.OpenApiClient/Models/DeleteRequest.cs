@@ -20,10 +20,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with specifying ids to delete in the ids param or using delete_all=True. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>Vectors to delete.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,7 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deleteAll", n => { DeleteAll = n.GetBoolValue(); } },
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "ids", n => { Ids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
             };
@@ -80,7 +80,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("deleteAll", DeleteAll);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty>("filter", Filter);
             writer.WriteCollectionOfPrimitiveValues<string>("ids", Ids);
             writer.WriteStringValue("namespace", Namespace);
             writer.WriteAdditionalData(AdditionalData);

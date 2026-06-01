@@ -26,10 +26,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata-based filter to restrict which documents are retrieved for the assistant&apos;s response context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>If `true`, instructs the assistant to include highlights from the referenced documents that support its response.</summary>
         public bool? IncludeHighlights { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "context_options", n => { ContextOptions = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextOptionsModel>(global::Soenneker.Pinecone.OpenApiClient.Models.ContextOptionsModel.CreateFromDiscriminatorValue); } },
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "include_highlights", n => { IncludeHighlights = n.GetBoolValue(); } },
                 { "json_response", n => { JsonResponse = n.GetBoolValue(); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>(global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -99,7 +99,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextOptionsModel>("context_options", ContextOptions);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ChatRequestFilterProperty>("filter", Filter);
             writer.WriteBoolValue("include_highlights", IncludeHighlights);
             writer.WriteBoolValue("json_response", JsonResponse);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>("messages", Messages);

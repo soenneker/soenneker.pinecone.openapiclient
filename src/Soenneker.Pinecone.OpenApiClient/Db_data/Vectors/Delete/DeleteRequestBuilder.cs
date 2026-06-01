@@ -36,7 +36,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete
         /// <summary>
         /// Delete records by id or by metadata from a single namespace.For guidance and examples, see [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete.DeletePostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604DeleteVectors200Response"/></returns>
         /// <param name="body">The request for the `delete` operation.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -44,11 +44,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete.DeletePostResponse?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604DeleteVectors200Response?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete.DeletePostResponse> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604DeleteVectors200Response> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -58,7 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete.DeletePostResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Delete.DeletePostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604DeleteVectors200Response>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.DbData202604DeleteVectors200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete records by id or by metadata from a single namespace.For guidance and examples, see [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data).

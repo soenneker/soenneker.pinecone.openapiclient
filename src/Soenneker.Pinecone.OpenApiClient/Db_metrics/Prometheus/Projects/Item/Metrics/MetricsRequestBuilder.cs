@@ -10,7 +10,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Db_metrics.Prometheus.Projects.Item.Metrics
 {
     /// <summary>
-    /// Builds and executes requests for operations under \db_metrics\prometheus\projects\{project_id}\metrics
+    /// Builds and executes requests for operations under \db_metrics\prometheus\projects\{projectId}\metrics
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricsRequestBuilder : BaseRequestBuilder
@@ -25,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_metrics.Prometheus.Projects.Item.M
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MetricsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_metrics/prometheus/projects/{project_id}/metrics", pathParameters)
+        public MetricsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_metrics/prometheus/projects/{projectId}/metrics", pathParameters)
         {
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_metrics.Prometheus.Projects.Item.M
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MetricsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_metrics/prometheus/projects/{project_id}/metrics", rawUrl)
+        public MetricsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_metrics/prometheus/projects/{projectId}/metrics", rawUrl)
         {
         }
     }

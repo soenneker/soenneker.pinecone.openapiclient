@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
 {
     /// <summary>
-    /// Builds and executes requests for operations under \admin\admin\projects\{project_id}\api-keys
+    /// Builds and executes requests for operations under \admin\admin\projects\{projectId}\api-keys
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ApiKeysRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApiKeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/admin/projects/{project_id}/api-keys", pathParameters)
+        public ApiKeysRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/admin/projects/{projectId}/api-keys", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ApiKeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/admin/projects/{project_id}/api-keys", rawUrl)
+        public ApiKeysRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/admin/admin/projects/{projectId}/api-keys", rawUrl)
         {
         }
         /// <summary>
@@ -63,7 +63,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
         /// <summary>
         /// Create a new API key for a project. Developers can use the API key to authenticate requests to Pinecone&apos;s Data Plane and Control Plane APIs.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.APIKeyWithSecret"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ApiKeyWithSecret"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -74,11 +74,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.APIKeyWithSecret?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.CreateAPIKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.ApiKeyWithSecret?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.CreateApiKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.APIKeyWithSecret> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.CreateAPIKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.ApiKeyWithSecret> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.CreateApiKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -91,7 +91,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
                 { "4XX", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.APIKeyWithSecret>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.APIKeyWithSecret.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ApiKeyWithSecret>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ApiKeyWithSecret.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List all API keys in a project.
@@ -120,11 +120,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.CreateAPIKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.CreateApiKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.CreateAPIKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.CreateApiKeyRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

@@ -33,10 +33,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse_metadata? Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponseMetadataProperty? Metadata { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse_metadata Metadata { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponseMetadataProperty Metadata { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "assistant_name", n => { AssistantName = n.GetStringValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse_metadata>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse_metadata.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponseMetadataProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponseMetadataProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("assistant_name", AssistantName);
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse_metadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponseMetadataProperty>("metadata", Metadata);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

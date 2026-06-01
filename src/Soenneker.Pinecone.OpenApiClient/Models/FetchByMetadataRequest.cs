@@ -18,10 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Metadata filter expression to select vectors. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequest_filter? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequest_filter Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequestFilterProperty Filter { get; set; }
 #endif
         /// <summary>Max number of vectors to return.</summary>
         public long? Limit { get; set; }
@@ -66,7 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequest_filter>(global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequest_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "limit", n => { Limit = n.GetLongValue(); } },
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "paginationToken", n => { PaginationToken = n.GetStringValue(); } },
@@ -79,7 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequest_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.FetchByMetadataRequestFilterProperty>("filter", Filter);
             writer.WriteLongValue("limit", Limit);
             writer.WriteStringValue("namespace", Namespace);
             writer.WriteStringValue("paginationToken", PaginationToken);

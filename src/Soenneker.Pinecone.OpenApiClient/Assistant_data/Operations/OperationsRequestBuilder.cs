@@ -17,14 +17,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations
     {
         /// <summary>Gets an item from the Soenneker.Pinecone.OpenApiClient.assistant_data.operations.item collection</summary>
         /// <param name="position">The name of the assistant to list operations for.</param>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.WithAssistant_nameItemRequestBuilder"/></returns>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.WithAssistant_nameItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.WithAssistantNameItemRequestBuilder"/></returns>
+        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.WithAssistantNameItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("assistant_name", position);
-                return new global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.WithAssistant_nameItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("assistantName", position);
+                return new global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.WithAssistantNameItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
