@@ -61,7 +61,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public ChatRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            IncludeHighlights = false;
+            JsonResponse = false;
             Model = "gpt-4o";
+            Stream = false;
+            Temperature = 0f;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

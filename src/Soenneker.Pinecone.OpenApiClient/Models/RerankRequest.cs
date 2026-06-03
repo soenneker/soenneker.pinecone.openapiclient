@@ -64,6 +64,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public RerankRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            ReturnDocuments = true;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

@@ -32,6 +32,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             PodType = "p1.x1";
+            Replicas = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

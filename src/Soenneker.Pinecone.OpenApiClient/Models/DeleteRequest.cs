@@ -47,6 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public DeleteRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            DeleteAll = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

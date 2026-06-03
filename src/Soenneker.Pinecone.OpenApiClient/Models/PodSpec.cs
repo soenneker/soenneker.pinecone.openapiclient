@@ -59,7 +59,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public PodSpec()
         {
             AdditionalData = new Dictionary<string, object>();
+            Pods = 1;
             PodType = "p1.x1";
+            Replicas = 1;
+            Shards = 1;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

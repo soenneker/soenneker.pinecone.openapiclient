@@ -50,6 +50,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             Model = "gpt-4o";
+            Stream = false;
+            Temperature = 0f;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
