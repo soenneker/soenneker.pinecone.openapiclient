@@ -132,7 +132,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item.Item
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/assistant_data/files/{assistantName}/{assistantFileId}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -151,7 +151,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item.Item.WithAssistantFileItemRequestBuilder.WithAssistantFileItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/assistant_data/files/{assistantName}/{assistantFileId}{?include_url*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -172,7 +172,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item.Item
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.PUT, "{+baseurl}/assistant_data/files/{assistantName}/{assistantFileId}{?multimodal*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "multipart/form-data", body);

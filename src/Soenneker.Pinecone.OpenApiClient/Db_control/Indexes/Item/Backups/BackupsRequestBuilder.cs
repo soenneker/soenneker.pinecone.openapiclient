@@ -109,7 +109,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups.BackupsRequestBuilder.BackupsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/db_control/indexes/{indexName}/backups{?limit*,paginationToken*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -130,7 +130,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/db_control/indexes/{indexName}/backups", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

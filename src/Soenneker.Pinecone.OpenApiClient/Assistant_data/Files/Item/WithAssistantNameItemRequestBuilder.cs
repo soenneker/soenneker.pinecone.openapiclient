@@ -118,7 +118,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item.WithAssistantNameItemRequestBuilder.WithAssistantNameItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/assistant_data/files/{assistantName}{?filter*,limit*,pagination_token*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -139,7 +139,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Files.Item
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/assistant_data/files/{assistantName}{?multimodal*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "multipart/form-data", body);
