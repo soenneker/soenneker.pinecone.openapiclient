@@ -6428,15 +6428,13 @@
                           "target_index_id": "idx_456",
                           "target_index_name": "my-index"
                         }
-                      ],
-                      "pagination": null
+                      ]
                     }
                   },
                   "no-restore-jobs": {
                     "summary": "An empty list.",
                     "value": {
-                      "data": [ ],
-                      "pagination": null
+                      "data": [ ]
                     }
                   }
                 }
@@ -9835,7 +9833,6 @@
                 "file": {
                   "created_on": "2025-01-01T00:00:00Z",
                   "id": "ae79e447-b89e-4994-994b-3232ca52a654",
-                  "metadata": null,
                   "multimodal": false,
                   "name": "my_file.pdf",
                   "signed_url": "https://storage.googleapis.com/...",
