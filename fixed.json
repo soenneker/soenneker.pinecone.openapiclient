@@ -10858,37 +10858,18 @@
         },
         "description": "A basic error response that contains a message."
       },
-      "ConfigureIndexRequestSpec": {
+      "IndexSpecByoc": {
+        "title": "BYOC",
         "required": [
-          "type"
+          "byoc"
         ],
         "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ConfigureIndexRequestSpecServerless"
-          },
-          {
-            "$ref": "#/components/schemas/ConfigureIndexRequestSpecPodBased"
-          },
-          {
-            "$ref": "#/components/schemas/ConfigureIndexRequestSpecByoc"
-          }
-        ],
         "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
+          "byoc": {
+            "$ref": "#/components/schemas/ByocSpec"
           }
         },
-        "description": "The spec object defines how the index should be deployed.  Only some attributes of an index's spec may be updated.  In general, you can modify settings related to scaling and  configuration but you cannot change the cloud or region  where the index is hosted.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "ConfigureIndexRequestSpecServerless": "#/components/schemas/ConfigureIndexRequestSpecServerless",
-            "ConfigureIndexRequestSpecPodBased": "#/components/schemas/ConfigureIndexRequestSpecPodBased",
-            "ConfigureIndexRequestSpecByoc": "#/components/schemas/ConfigureIndexRequestSpecByoc"
-          }
-        }
+        "additionalProperties": false
       },
       "EvaluatedFact": {
         "title": "Evaluated fact",
@@ -11821,15 +11802,15 @@
         },
         "description": "The list of backups that exist in the project."
       },
-      "IndexSpecByoc": {
-        "title": "BYOC",
+      "IndexSpecPodBased": {
+        "title": "Pod-based",
         "required": [
-          "byoc"
+          "pod"
         ],
         "type": "object",
         "properties": {
-          "byoc": {
-            "$ref": "#/components/schemas/ByocSpec"
+          "pod": {
+            "$ref": "#/components/schemas/PodSpec"
           }
         },
         "additionalProperties": false
@@ -12553,7 +12534,7 @@
             "minLength": 1,
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/QueryVector"
             },
             "description": "DEPRECATED. Use `vector` or `id` instead.",
             "deprecated": true
@@ -12624,23 +12605,47 @@
         },
         "description": "The response for the `query` operation. These are the matches found for a particular query vector. The matches are ordered from most similar to least similar."
       },
-      "PrometheusTargetsItem": {
+      "QueryVector": {
         "required": [
-          "targets"
+          "values"
         ],
         "type": "object",
         "properties": {
-          "targets": {
+          "values": {
+            "maxLength": 20000,
+            "minLength": 1,
+            "required": [
+              "values"
+            ],
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "number",
+              "format": "float"
             },
-            "description": "List of hostnames or IP addresses that are targets for monitoring."
+            "description": "The query vector values. This should be the same length as the dimension of the index being queried."
           },
-          "labels": {
-            "$ref": "#/components/schemas/PrometheusTargetsItemLabelsProperty"
+          "sparseValues": {
+            "$ref": "#/components/schemas/SparseValues"
+          },
+          "topK": {
+            "maximum": 10000,
+            "minimum": 1,
+            "type": "integer",
+            "description": "An override for the number of results to return for this query vector.",
+            "format": "int64",
+            "example": 10
+          },
+          "namespace": {
+            "type": "string",
+            "description": "An override the namespace to search.",
+            "example": "example-namespace"
+          },
+          "filter": {
+            "$ref": "#/components/schemas/QueryVectorFilterProperty"
           }
-        }
+        },
+        "description": "A single query vector within a `QueryRequest`.",
+        "deprecated": true
       },
       "ScoredVector": {
         "required": [
@@ -13233,15 +13238,15 @@
         },
         "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
       },
-      "IndexSpecPodBased": {
-        "title": "Pod-based",
+      "IndexSpecServerless": {
+        "title": "Serverless",
         "required": [
-          "pod"
+          "serverless"
         ],
         "type": "object",
         "properties": {
-          "pod": {
-            "$ref": "#/components/schemas/PodSpec"
+          "serverless": {
+            "$ref": "#/components/schemas/ServerlessSpec"
           }
         },
         "additionalProperties": false
@@ -13298,18 +13303,23 @@
         },
         "description": "Describes a parameter supported by the model, including parameter value constraints."
       },
-      "IndexSpecServerless": {
-        "title": "Serverless",
+      "PrometheusTargetsItem": {
         "required": [
-          "serverless"
+          "targets"
         ],
         "type": "object",
         "properties": {
-          "serverless": {
-            "$ref": "#/components/schemas/ServerlessSpec"
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of hostnames or IP addresses that are targets for monitoring."
+          },
+          "labels": {
+            "$ref": "#/components/schemas/PrometheusTargetsItemLabelsProperty"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SparseEmbedding": {
         "title": "Sparse embedding",
@@ -13793,6 +13803,38 @@
           "client_id": "I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5",
           "client_secret": "EriX...j2ci",
           "grant_type": "client_credentials"
+        }
+      },
+      "ConfigureIndexRequestSpec": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecServerless"
+          },
+          {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecPodBased"
+          },
+          {
+            "$ref": "#/components/schemas/ConfigureIndexRequestSpecByoc"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "The spec object defines how the index should be deployed.  Only some attributes of an index's spec may be updated.  In general, you can modify settings related to scaling and  configuration but you cannot change the cloud or region  where the index is hosted.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ConfigureIndexRequestSpecServerless": "#/components/schemas/ConfigureIndexRequestSpecServerless",
+            "ConfigureIndexRequestSpecPodBased": "#/components/schemas/ConfigureIndexRequestSpecPodBased",
+            "ConfigureIndexRequestSpecByoc": "#/components/schemas/ConfigureIndexRequestSpecByoc"
+          }
         }
       },
       "IndexModelSpec": {
@@ -14518,12 +14560,21 @@
           }
         }
       },
-      "PrometheusTargetsItemLabels": {
+      "QueryVectorFilter": {
         "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Set of labels to be attached to the scraped metrics from the targets."
+        "description": "An override for the metadata filter to apply. This replaces the request-level filter.",
+        "example": {
+          "genre": {
+            "$in": [
+              "comedy",
+              "documentary",
+              "drama"
+            ]
+          },
+          "year": {
+            "$eq": 2019
+          }
+        }
       },
       "ScoredVectorMetadata": {
         "type": "object",
@@ -14706,6 +14757,13 @@
           "code": "UNKNOWN",
           "message": "Internal Server Error"
         }
+      },
+      "PrometheusTargetsItemLabels": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Set of labels to be attached to the scraped metrics from the targets."
       },
       "EmbeddingsListUsage": {
         "type": "object",
@@ -15091,12 +15149,9 @@
         "type": "object",
         "description": "The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata)."
       },
-      "PrometheusTargetsItemLabelsProperty": {
+      "QueryVectorFilterProperty": {
         "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Set of labels to be attached to the scraped metrics from the targets."
+        "description": "An override for the metadata filter to apply. This replaces the request-level filter."
       },
       "ScoredVectorMetadataProperty": {
         "type": "object",
@@ -15128,6 +15183,13 @@
           "$ref": "#/components/schemas/Vector"
         },
         "description": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors"
+      },
+      "PrometheusTargetsItemLabelsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Set of labels to be attached to the scraped metrics from the targets."
       },
       "RerankRequestDocumentsItem": {
         "type": "object",

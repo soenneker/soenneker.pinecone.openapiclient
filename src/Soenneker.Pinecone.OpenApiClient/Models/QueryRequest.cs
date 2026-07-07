@@ -49,10 +49,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Queries { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryVector>? Queries { get; set; }
 #nullable restore
 #else
-        public List<string> Queries { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryVector> Queries { get; set; }
 #endif
         /// <summary>&quot;An optimization parameter for IVF dense indexes in dedicated read node indexes. It adjusts how much of the index is scanned to find vector candidates. Range: 0.5 – 4 (default).Keep the default (4.0) for the best search results. If query latency is too high, try lowering this value incrementally (minimum 0.5) to speed up the search at the cost of slightly lower accuracy. This parameter is only supported for dedicated (DRN) dense indexes.&quot;</summary>
         public float? ScanFactor { get; set; }
@@ -107,7 +107,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "includeValues", n => { IncludeValues = n.GetBoolValue(); } },
                 { "maxCandidates", n => { MaxCandidates = n.GetLongValue(); } },
                 { "namespace", n => { Namespace = n.GetStringValue(); } },
-                { "queries", n => { Queries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "queries", n => { Queries = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryVector>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryVector.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scanFactor", n => { ScanFactor = n.GetFloatValue(); } },
                 { "sparseVector", n => { SparseVector = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>(global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues.CreateFromDiscriminatorValue); } },
                 { "topK", n => { TopK = n.GetLongValue(); } },
@@ -127,7 +127,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteBoolValue("includeValues", IncludeValues);
             writer.WriteLongValue("maxCandidates", MaxCandidates);
             writer.WriteStringValue("namespace", Namespace);
-            writer.WriteCollectionOfPrimitiveValues<string>("queries", Queries);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryVector>("queries", Queries);
             writer.WriteFloatValue("scanFactor", ScanFactor);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>("sparseVector", SparseVector);
             writer.WriteLongValue("topK", TopK);
