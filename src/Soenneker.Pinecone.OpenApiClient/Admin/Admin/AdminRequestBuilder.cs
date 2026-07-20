@@ -3,8 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys;
+using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects;
+using Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings;
+using Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts;
+using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -22,6 +26,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.ApiKeysRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The invites property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.InvitesRequestBuilder Invites
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.InvitesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The organizations property</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.OrganizationsRequestBuilder Organizations
         {
@@ -31,6 +40,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin
         public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.ProjectsRequestBuilder Projects
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.ProjectsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The roleBindings property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.RoleBindingsRequestBuilder RoleBindings
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.RoleBindingsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The serviceAccounts property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.ServiceAccountsRequestBuilder ServiceAccounts
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.ServiceAccountsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The users property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.UsersRequestBuilder Users
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.AdminRequestBuilder"/> and sets the default values.

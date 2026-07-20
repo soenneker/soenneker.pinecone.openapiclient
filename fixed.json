@@ -1667,6 +1667,2798 @@
         }
       }
     },
+    "/admin/admin/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List users in the organization",
+        "description": "List users who are members of the caller's organization. Results are paginated.\nOptional filters:\n- `email` — case-insensitive match on the user's email address.\nPagination tokens apply to the full query, including `email`. See query parameters for cursor rules.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.\n",
+        "operationId": "Admin202604ListUsers",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Case-insensitive filter on the user's email address. Malformed email returns `400 INVALID_ARGUMENT`.",
+            "schema": {
+              "maxLength": 254,
+              "type": "string",
+              "format": "email"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of users.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserList"
+                },
+                "examples": {
+                  "paginated-users": {
+                    "summary": "A page of users",
+                    "value": {
+                      "data": [
+                        {
+                          "email": "alice@example.com",
+                          "id": "e2e92523-85dc-4142-b8c2-e681be8b78df",
+                          "name": "Alice Example"
+                        }
+                      ],
+                      "pagination": {
+                        "next": "eyJsYXN0X2lkIjoiZTJlOTI1MjMifQ=="
+                      }
+                    }
+                  },
+                  "email-filter-match": {
+                    "summary": "Case-insensitive email filter, found",
+                    "value": {
+                      "data": [
+                        {
+                          "email": "alice@example.com",
+                          "id": "e2e92523-85dc-4142-b8c2-e681be8b78df",
+                          "name": "Alice Example"
+                        }
+                      ],
+                      "pagination": null
+                    }
+                  },
+                  "email-filter-empty": {
+                    "summary": "Case-insensitive email filter, no match",
+                    "value": {
+                      "data": [ ],
+                      "pagination": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/users/{userId}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user details",
+        "description": "Get a user by ID. Returns `404` if the user is not in your organization.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.\n",
+        "operationId": "Admin202604FetchUser",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Remove a user from the organization",
+        "description": "Remove a user from the organization and revoke their role bindings. Does not delete the user's Pinecone account.\nReturns `202`. The user's role bindings are revoked immediately, so the user no longer appears in get or list requests and instead returns `404`. A repeat request for the same user returns `404`.\nReturns `409` when removing the last `OrgOwner` in the organization.\n",
+        "operationId": "Admin202604DeleteUser",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The request conflicts with the persisted state of the resource. Common causes include invariant violations (e.g., removing the last `OrgOwner`), lifecycle-state mismatches (e.g., resending an invite that is not pending), and constraint violations checked against persisted data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "last-org-owner": {
+                    "summary": "Cannot delete the last OrgOwner",
+                    "value": {
+                      "error": {
+                        "code": "ABORTED",
+                        "message": "Cannot delete the last OrgOwner role binding for this organization."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-not-pending": {
+                    "summary": "Resend rejected: invite is not pending",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Invite has already been accepted and cannot be resent."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-already-pending": {
+                    "summary": "Invite rejected: pending invite already exists for this email",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "A pending invite already exists for this email."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "already-member": {
+                    "summary": "Invite rejected: email already belongs to an org member",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This email already belongs to a member of the organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/invites": {
+      "get": {
+        "tags": [
+          "Invites"
+        ],
+        "summary": "List invites",
+        "description": "List invites in the caller's organization. Results are paginated. Returns pending and expired invites (processed and deleted invites are excluded); use `status` to distinguish pending from expired. See query parameters for cursor rules.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.\n",
+        "operationId": "Admin202604ListInvites",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of invites.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Invites"
+        ],
+        "summary": "Invite a user to the organization",
+        "description": "\"Invite a user to join the organization. Sends an email with an acceptance link.\nGrant roles with `role_bindings`. Include at least one `organization`-scoped binding that grants organization membership (`OrgOwner`, `OrgManager`, `OrgBillingAdmin`, or `OrgMember`; omit `resource_id`); add `project`-scoped bindings (with a `resource_id`) to grant project roles. Bindings are not returned in the response.\nIf a pending or expired invite already exists for the email, returns `409` with the existing invite's ID in the error message. Use `POST /admin/invites/{invite_id}/resend` to resend the email, and the role-bindings endpoints to change the invite's bindings.\nIf the email already belongs to a member of the organization, returns `409` (see shared conflict response). Manage that user's roles with the role-bindings endpoints instead.\nAn invite's bindings are first-class role bindings: they appear in `GET /admin/role-bindings` with `principal_type=invite` and `principal_id` equal to the invite ID, and can be added or removed with the role-bindings endpoints.\n\"",
+        "operationId": "Admin202604CreateInvite",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The invite to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInviteRequest"
+              },
+              "examples": {
+                "invite-org-member": {
+                  "summary": "Invite as OrgMember",
+                  "value": {
+                    "email": "newhire@acme.com",
+                    "role_bindings": [
+                      {
+                        "resource_type": "organization",
+                        "role": "OrgMember"
+                      }
+                    ]
+                  }
+                },
+                "invite-org-and-project": {
+                  "summary": "Invite with org and project roles",
+                  "value": {
+                    "email": "newhire@acme.com",
+                    "role_bindings": [
+                      {
+                        "resource_type": "organization",
+                        "role": "OrgMember"
+                      },
+                      {
+                        "resource_id": "a2f7dddb-1597-4eff-9f71-535fde243f58",
+                        "resource_type": "project",
+                        "role": "ProjectMember"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Invite created and email sent.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invite"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The request conflicts with the persisted state of the resource. Common causes include invariant violations (e.g., removing the last `OrgOwner`), lifecycle-state mismatches (e.g., resending an invite that is not pending), and constraint violations checked against persisted data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "last-org-owner": {
+                    "summary": "Cannot delete the last OrgOwner",
+                    "value": {
+                      "error": {
+                        "code": "ABORTED",
+                        "message": "Cannot delete the last OrgOwner role binding for this organization."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-not-pending": {
+                    "summary": "Resend rejected: invite is not pending",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Invite has already been accepted and cannot be resent."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-already-pending": {
+                    "summary": "Invite rejected: pending invite already exists for this email",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "A pending invite already exists for this email."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "already-member": {
+                    "summary": "Invite rejected: email already belongs to an org member",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This email already belongs to a member of the organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/invites/{inviteId}": {
+      "get": {
+        "tags": [
+          "Invites"
+        ],
+        "summary": "Get invite details",
+        "description": "Get an invite by ID. Returns `404` if the invite is not in your organization.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.\n",
+        "operationId": "Admin202604FetchInvite",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "inviteId",
+            "in": "path",
+            "description": "Invite ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The invite details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invite"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Invites"
+        ],
+        "summary": "Delete an invite",
+        "description": "Delete a pending or expired invite and its role bindings, revoking the acceptance link. Returns `202`; the invite is then no longer returned by get requests (returns `404`).\nDeleting an already-accepted (processed) invite returns `409`; the underlying user is unaffected. To remove an accepted user, use `DELETE /admin/users/{user_id}` instead. Deleting an invite that does not exist in your organization returns `404`.\n",
+        "operationId": "Admin202604DeleteInvite",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "inviteId",
+            "in": "path",
+            "description": "Invite ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The request conflicts with the persisted state of the resource. Common causes include invariant violations (e.g., removing the last `OrgOwner`), lifecycle-state mismatches (e.g., resending an invite that is not pending), and constraint violations checked against persisted data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "last-org-owner": {
+                    "summary": "Cannot delete the last OrgOwner",
+                    "value": {
+                      "error": {
+                        "code": "ABORTED",
+                        "message": "Cannot delete the last OrgOwner role binding for this organization."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-not-pending": {
+                    "summary": "Resend rejected: invite is not pending",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Invite has already been accepted and cannot be resent."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-already-pending": {
+                    "summary": "Invite rejected: pending invite already exists for this email",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "A pending invite already exists for this email."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "already-member": {
+                    "summary": "Invite rejected: email already belongs to an org member",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This email already belongs to a member of the organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/invites/{inviteId}/resend": {
+      "post": {
+        "tags": [
+          "Invites"
+        ],
+        "summary": "Resend an invite email",
+        "description": "\"Resend the invite email and extend `expires_at` by 7 days.\nResending an expired invite is allowed: it extends `expires_at` by 7 days from now, returning the invite to `pending`.\nResending an already-accepted (processed) invite returns `409` (see shared conflict response).\nLimited to 100 invite emails per hour per organization. Returns `429` when exceeded.\nRepeat requests may send another email and extend expiry again.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.\n\"",
+        "operationId": "Admin202604ResendInvite",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "inviteId",
+            "in": "path",
+            "description": "Invite ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invite resent successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invite"
+                },
+                "examples": {
+                  "resent": {
+                    "summary": "Resend succeeded",
+                    "value": {
+                      "created_at": "2026-05-14T20:14:00Z",
+                      "email": "newhire@acme.com",
+                      "expires_at": "2026-05-28T20:14:00Z",
+                      "id": "9c8e3528-b9c0-4358-84ce-84c28e91b566",
+                      "processed_at": null,
+                      "status": "pending"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The request conflicts with the persisted state of the resource. Common causes include invariant violations (e.g., removing the last `OrgOwner`), lifecycle-state mismatches (e.g., resending an invite that is not pending), and constraint violations checked against persisted data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "last-org-owner": {
+                    "summary": "Cannot delete the last OrgOwner",
+                    "value": {
+                      "error": {
+                        "code": "ABORTED",
+                        "message": "Cannot delete the last OrgOwner role binding for this organization."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-not-pending": {
+                    "summary": "Resend rejected: invite is not pending",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Invite has already been accepted and cannot be resent."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-already-pending": {
+                    "summary": "Invite rejected: pending invite already exists for this email",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "A pending invite already exists for this email."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "already-member": {
+                    "summary": "Invite rejected: email already belongs to an org member",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This email already belongs to a member of the organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded. The org has sent the maximum number of invite emails for the current hour.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/service-accounts": {
+      "get": {
+        "tags": [
+          "Service Accounts"
+        ],
+        "summary": "List service accounts",
+        "description": "List service accounts in the caller's organization. Results are paginated. See query parameters for cursor rules.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.\n",
+        "operationId": "Admin202604ListServiceAccounts",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of service accounts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAccountList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Service Accounts"
+        ],
+        "summary": "Create a service account",
+        "description": "\"Create a service account with optional initial role bindings. The `client_secret` in the response is shown only once; store it securely.\nGrant roles with `role_bindings`: `organization`-scoped bindings omit `resource_id`, while `project`-scoped bindings include the project `resource_id`. Service accounts may receive any organization- or project-scoped role (see Role). Bindings are not returned in the response.\nRepeating the same request may create duplicate service accounts.\n\"",
+        "operationId": "Admin202604CreateServiceAccount",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The service account to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateServiceAccountRequest"
+              },
+              "examples": {
+                "ci-service-account": {
+                  "summary": "Service account with project bindings",
+                  "value": {
+                    "name": "ci-prod",
+                    "role_bindings": [
+                      {
+                        "resource_id": "a2f7dddb-1597-4eff-9f71-535fde243f58",
+                        "resource_type": "project",
+                        "role": "DataPlaneEditor"
+                      }
+                    ]
+                  }
+                },
+                "org-service-account": {
+                  "summary": "Service account with an organization binding",
+                  "value": {
+                    "name": "org-automation",
+                    "role_bindings": [
+                      {
+                        "resource_type": "organization",
+                        "role": "OrgManager"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Service account created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAccountWithSecret"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/service-accounts/{serviceAccountId}": {
+      "get": {
+        "tags": [
+          "Service Accounts"
+        ],
+        "summary": "Get service account details",
+        "description": "Get a service account by its ID. Returns `404` if the service account is not in your organization. The `client_secret` is not included.\nRole bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them. Secrets are returned only from create and rotate-secret requests.\n",
+        "operationId": "Admin202604FetchServiceAccount",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "serviceAccountId",
+            "in": "path",
+            "description": "The unique identifier of the service account.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The service account details (without the client secret).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAccount"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Service Accounts"
+        ],
+        "summary": "Delete a service account",
+        "description": "Delete a service account and its role bindings. Returns `202`; the service account is then no longer returned by get requests (returns `404`).\nOAuth tokens minted by the service account are revoked within a few seconds.\n",
+        "operationId": "Admin202604DeleteServiceAccount",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "serviceAccountId",
+            "in": "path",
+            "description": "The unique identifier of the service account.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Service Accounts"
+        ],
+        "summary": "Update a service account",
+        "description": "Update a service account's mutable metadata. Only `name` is supported as a mutable field; fields that are omitted are left unchanged.\nRole bindings cannot be updated here; use the role binding endpoints to create or delete bindings.\n",
+        "operationId": "Admin202604UpdateServiceAccount",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "serviceAccountId",
+            "in": "path",
+            "description": "The unique identifier of the service account.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated metadata for the service account.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateServiceAccountRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Service account updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAccount"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/service-accounts/{serviceAccountId}/rotate-secret": {
+      "post": {
+        "tags": [
+          "Service Accounts"
+        ],
+        "summary": "Rotate a service account's OAuth client secret",
+        "description": "Rotate the OAuth `client_secret` for a service account. The previous secret and tokens minted from it are revoked within a few seconds. The new secret is returned only in this response.\nRepeating the request may rotate again and invalidate the previous new secret.\n",
+        "operationId": "Admin202604RotateServiceAccountSecret",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "serviceAccountId",
+            "in": "path",
+            "description": "The unique identifier of the service account.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Secret rotated successfully. The new `client_secret` is in the response body and is returned exactly once.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAccountWithSecret"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/role-bindings": {
+      "get": {
+        "tags": [
+          "Role Bindings"
+        ],
+        "summary": "List role bindings",
+        "description": "List role bindings in the organization. Results are paginated.\nOptional filters are described in the query parameters. Filters are combined with AND. Pagination tokens apply to the full query (including all filters).\n",
+        "operationId": "Admin202604ListRoleBindings",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "principal_type",
+            "in": "query",
+            "description": "Filter by principal type. Required when `principal_id` is set.",
+            "schema": {
+              "type": "string",
+              "description": "\"The kind of principal that receives permissions from a role binding.\nPossible values: `user`, `service_account`, `api_key`, `invite`.\"",
+              "example": "service_account",
+              "x-enum": [
+                "user",
+                "service_account",
+                "api_key",
+                "invite"
+              ]
+            }
+          },
+          {
+            "name": "principal_id",
+            "in": "query",
+            "description": "Filter by principal ID. Requires `principal_type`. The ID is a UUID for all principal types (user, service account, or invite).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resource_type",
+            "in": "query",
+            "description": "Filter by resource type. Required when `resource_id` is set.",
+            "schema": {
+              "type": "string",
+              "description": "\"The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.\"",
+              "example": "project",
+              "x-enum": [
+                "organization",
+                "project"
+              ]
+            }
+          },
+          {
+            "name": "resource_id",
+            "in": "query",
+            "description": "Filter by resource ID. Requires `resource_type`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "description": "Filter by role.",
+            "schema": {
+              "type": "string",
+              "description": "A role assigned to a principal at a resource scope.",
+              "example": "ProjectOwner",
+              "x-enum": [
+                "OrgOwner",
+                "OrgManager",
+                "OrgMember",
+                "OrgBillingAdmin",
+                "ProjectOwner",
+                "ProjectManager",
+                "ProjectMember",
+                "ProjectEditor",
+                "ProjectViewer",
+                "ControlPlaneEditor",
+                "ControlPlaneViewer",
+                "DataPlaneEditor",
+                "DataPlaneViewer"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of role bindings.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleBindingList"
+                },
+                "examples": {
+                  "org-scope-bindings": {
+                    "summary": "Org-scoped bindings",
+                    "value": {
+                      "data": [
+                        {
+                          "created_at": "2026-04-10T15:23:00Z",
+                          "id": "5a86ed21-daf1-448d-a9ca-f92a0fd839d3",
+                          "principal_id": "e2e92523-85dc-4142-b8c2-e681be8b78df",
+                          "principal_type": "user",
+                          "resource_id": "-ExampleOrgId0000000",
+                          "resource_type": "organization",
+                          "role": "OrgMember"
+                        }
+                      ],
+                      "pagination": {
+                        "next": "eyJsYXN0X2lkIjoiNWE4NmVkMjEifQ=="
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Role Bindings"
+        ],
+        "summary": "Create a role binding",
+        "description": "Grant a role to a principal at an organization or project scope.\nSet `resource_type` to select the scope. For `project` scope, `resource_id` is required and must be the project UUID. For `organization` scope, omit `resource_id`; the binding applies to the caller's organization.\nReturns `409` if an identical binding already exists, or if the target principal is an invite that has already been accepted (processed).\n",
+        "operationId": "Admin202604CreateRoleBinding",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Principal, resource scope, and role to bind.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleBindingRequest"
+              },
+              "examples": {
+                "bind-org-member": {
+                  "summary": "Bind OrgMember to a user (organization scope)",
+                  "value": {
+                    "principal_id": "e2e92523-85dc-4142-b8c2-e681be8b78df",
+                    "principal_type": "user",
+                    "resource_type": "organization",
+                    "role": "OrgMember"
+                  }
+                },
+                "bind-org-member-to-invite": {
+                  "summary": "Bind OrgMember to an invite (organization scope)",
+                  "value": {
+                    "principal_id": "9c8e3528-b9c0-4358-84ce-84c28e91b566",
+                    "principal_type": "invite",
+                    "resource_type": "organization",
+                    "role": "OrgMember"
+                  }
+                },
+                "bind-data-plane-editor": {
+                  "summary": "Bind DataPlaneEditor to a service account (project scope)",
+                  "value": {
+                    "principal_id": "f8a3b2c1-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+                    "principal_type": "service_account",
+                    "resource_id": "a2f7dddb-1597-4eff-9f71-535fde243f58",
+                    "resource_type": "project",
+                    "role": "DataPlaneEditor"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Role binding created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleBinding"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The request conflicts with the persisted state of the resource. Common causes include invariant violations (e.g., removing the last `OrgOwner`), lifecycle-state mismatches (e.g., resending an invite that is not pending), and constraint violations checked against persisted data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "last-org-owner": {
+                    "summary": "Cannot delete the last OrgOwner",
+                    "value": {
+                      "error": {
+                        "code": "ABORTED",
+                        "message": "Cannot delete the last OrgOwner role binding for this organization."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-not-pending": {
+                    "summary": "Resend rejected: invite is not pending",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Invite has already been accepted and cannot be resent."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-already-pending": {
+                    "summary": "Invite rejected: pending invite already exists for this email",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "A pending invite already exists for this email."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "already-member": {
+                    "summary": "Invite rejected: email already belongs to an org member",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This email already belongs to a member of the organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/admin/role-bindings/{roleBindingId}": {
+      "get": {
+        "tags": [
+          "Role Bindings"
+        ],
+        "summary": "Get role binding details",
+        "description": "Get a role binding by ID. Returns `404` if the binding is not in your organization.\n",
+        "operationId": "Admin202604FetchRoleBinding",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "roleBindingId",
+            "in": "path",
+            "description": "Role binding ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The role binding.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleBinding"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role Bindings"
+        ],
+        "summary": "Delete a role binding",
+        "description": "Delete a role binding. Permissions are revoked when the deletion completes.\nReturns `202`. The binding is removed immediately, so it no longer appears in list or get requests and instead returns `404`. A repeat delete request for the same binding returns `404`.\nReturns `409` when deleting:\n- The last `OrgOwner` binding for a user in the organization.\n- The last organization-membership role binding for a user who still has\n\n  other role bindings.\n\n- The last organization-membership role binding for a pending invite\n\n  (delete the invite instead).\n",
+        "operationId": "Admin202604DeleteRoleBinding",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "roleBindingId",
+            "in": "path",
+            "description": "Role binding ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "\"Unauthorized. Possible causes: Invalid API key.\"",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The request conflicts with the persisted state of the resource. Common causes include invariant violations (e.g., removing the last `OrgOwner`), lifecycle-state mismatches (e.g., resending an invite that is not pending), and constraint violations checked against persisted data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "last-org-owner": {
+                    "summary": "Cannot delete the last OrgOwner",
+                    "value": {
+                      "error": {
+                        "code": "ABORTED",
+                        "message": "Cannot delete the last OrgOwner role binding for this organization."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-not-pending": {
+                    "summary": "Resend rejected: invite is not pending",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Invite has already been accepted and cannot be resent."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "invite-already-pending": {
+                    "summary": "Invite rejected: pending invite already exists for this email",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "A pending invite already exists for this email."
+                      },
+                      "status": 409
+                    }
+                  },
+                  "already-member": {
+                    "summary": "Invite rejected: email already belongs to an org member",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This email already belongs to a member of the organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/assistant_control/assistants": {
       "get": {
         "tags": [
@@ -9041,98 +11833,6 @@
   },
   "components": {
     "schemas": {
-      "ApiKeyWithSecret": {
-        "required": [
-          "key",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "key": {
-            "$ref": "#/components/schemas/ApiKey"
-          },
-          "value": {
-            "type": "string",
-            "description": "The value to use as an API key. New keys will have the format `\"pckey_<public-label>_<unique-key>\"`. The entire string should be used when authenticating.\n"
-          }
-        },
-        "description": "The details of an API key, including the secret. Only returned on API key creation.\n"
-      },
-      "Project": {
-        "required": [
-          "id",
-          "name",
-          "max_pods",
-          "force_encryption_with_cmek",
-          "organization_id"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique ID of the project.",
-            "format": "uuid"
-          },
-          "name": {
-            "maxLength": 512,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the project."
-          },
-          "max_pods": {
-            "type": "integer",
-            "description": "The maximum number of Pods that can be created in the project."
-          },
-          "force_encryption_with_cmek": {
-            "type": "boolean",
-            "description": "Whether to force encryption with a customer-managed encryption key (CMEK)."
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "The unique ID of the organization that the project belongs to."
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The date and time when the project was created.",
-            "format": "date-time"
-          }
-        },
-        "description": "The details of a project."
-      },
-      "OrganizationList": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Organization"
-            }
-          }
-        }
-      },
-      "UpdateProjectRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 512,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the new project.",
-            "example": "chatbot-prod"
-          },
-          "max_pods": {
-            "type": "integer",
-            "description": "The maximum number of Pods that can be created in the project.\n"
-          },
-          "force_encryption_with_cmek": {
-            "type": "boolean",
-            "description": "Whether to force encryption with a customer-managed encryption key (CMEK). Once enabled, CMEK encryption cannot be disabled.\n"
-          }
-        }
-      },
       "ApiKey": {
         "required": [
           "id",
@@ -9176,122 +11876,22 @@
         },
         "description": "The details of an API key, without the secret."
       },
-      "UpdateOrganizationRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 512,
-            "minLength": 1,
-            "type": "string",
-            "description": "The new name for the organization.",
-            "example": "organization-name"
-          }
-        }
-      },
-      "ProjectList": {
+      "ApiKeyWithSecret": {
         "required": [
-          "data"
+          "key",
+          "value"
         ],
         "type": "object",
         "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Project"
-            }
-          }
-        }
-      },
-      "ListApiKeysResponse": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ApiKey"
-            }
-          }
-        }
-      },
-      "UpdateApiKeyRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 80,
-            "minLength": 1,
-            "type": "string",
-            "description": "A new name for the API key. The name must be 1-80 characters long. If omitted, the name will not be updated.\n",
-            "example": "devkey"
+          "key": {
+            "$ref": "#/components/schemas/ApiKey"
           },
-          "roles": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "description": "\"A role that can be assigned to an API key.\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.\"",
-              "example": "ProjectEditor",
-              "x-enum": [
-                "ProjectEditor",
-                "ProjectViewer",
-                "ControlPlaneEditor",
-                "ControlPlaneViewer",
-                "DataPlaneEditor",
-                "DataPlaneViewer"
-              ]
-            },
-            "description": "A new set of roles for the API key. Existing roles will be removed if not included.\nIf this field is omitted, the roles will not be updated.\n"
-          }
-        }
-      },
-      "ErrorResponse": {
-        "required": [
-          "status",
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "integer",
-            "description": "The HTTP status code of the error.",
-            "example": 500
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorResponseError"
+          "value": {
+            "type": "string",
+            "description": "The value to use as an API key. New keys will have the format `\"pckey_<public-label>_<unique-key>\"`. The entire string should be used when authenticating.\n"
           }
         },
-        "description": "The response shape used for all error responses.",
-        "example": {
-          "error": {
-            "code": "QUOTA_EXCEEDED",
-            "message": "The index exceeds the project quota of 5 pods by 2 pods. Upgrade your account or change the project settings to increase the quota."
-          },
-          "status": 429
-        }
-      },
-      "CreateProjectRequest": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 512,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the new project.",
-            "example": "chatbot-prod"
-          },
-          "max_pods": {
-            "type": "integer",
-            "description": "The maximum number of Pods that can be created in the project. Default is `0` (serverless only).\n"
-          },
-          "force_encryption_with_cmek": {
-            "type": "boolean",
-            "description": "Whether to force encryption with a customer-managed encryption key (CMEK). Default is `false`.\n"
-          }
-        }
+        "description": "The details of an API key, including the secret. Only returned on API key creation.\n"
       },
       "CreateApiKeyRequest": {
         "required": [
@@ -9322,6 +11922,269 @@
               ]
             },
             "description": "The roles to create the API key with. Default is `[\"ProjectEditor\"]`.\n"
+          }
+        }
+      },
+      "CreateInviteRequest": {
+        "required": [
+          "email",
+          "role_bindings"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 254,
+            "type": "string",
+            "description": "The email address to invite.",
+            "format": "email",
+            "example": "newhire@acme.com"
+          },
+          "role_bindings": {
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleBindingInput"
+            },
+            "description": "Role bindings for the invitee. Must include at least one `organization`-scoped binding that grants organization membership (`OrgOwner`, `OrgManager`, `OrgBillingAdmin`, or `OrgMember`); `project`-scoped bindings are optional. Not returned in the response."
+          }
+        }
+      },
+      "CreateProjectRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the new project.",
+            "example": "chatbot-prod"
+          },
+          "max_pods": {
+            "type": "integer",
+            "description": "The maximum number of Pods that can be created in the project. Default is `0` (serverless only).\n"
+          },
+          "force_encryption_with_cmek": {
+            "type": "boolean",
+            "description": "Whether to force encryption with a customer-managed encryption key (CMEK). Default is `false`.\n"
+          }
+        }
+      },
+      "CreateRoleBindingRequest": {
+        "required": [
+          "principal_type",
+          "principal_id",
+          "resource_type",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "principal_type": {
+            "type": "string",
+            "description": "\"The kind of principal that receives permissions from a role binding.\nPossible values: `user`, `service_account`, `api_key`, `invite`.\"",
+            "example": "service_account",
+            "x-enum": [
+              "user",
+              "service_account",
+              "api_key",
+              "invite"
+            ]
+          },
+          "principal_id": {
+            "type": "string",
+            "description": "Principal ID. Format depends on `principal_type`.",
+            "example": "e2e92523-85dc-4142-b8c2-e681be8b78df"
+          },
+          "resource_type": {
+            "type": "string",
+            "description": "\"The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.\"",
+            "example": "project",
+            "x-enum": [
+              "organization",
+              "project"
+            ]
+          },
+          "resource_id": {
+            "type": "string",
+            "description": "Project UUID. Required when `resource_type` is `project`; omit for `organization` scope.",
+            "example": "a2f7dddb-1597-4eff-9f71-535fde243f58"
+          },
+          "role": {
+            "type": "string",
+            "description": "A role assigned to a principal at a resource scope.",
+            "example": "ProjectOwner",
+            "x-enum": [
+              "OrgOwner",
+              "OrgManager",
+              "OrgMember",
+              "OrgBillingAdmin",
+              "ProjectOwner",
+              "ProjectManager",
+              "ProjectMember",
+              "ProjectEditor",
+              "ProjectViewer",
+              "ControlPlaneEditor",
+              "ControlPlaneViewer",
+              "DataPlaneEditor",
+              "DataPlaneViewer"
+            ]
+          }
+        }
+      },
+      "CreateServiceAccountRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string",
+            "description": "The human-readable name of the service account.",
+            "example": "ci-prod"
+          },
+          "role_bindings": {
+            "maxItems": 100,
+            "minItems": 0,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleBindingInput"
+            },
+            "description": "Optional initial role bindings. Omitting the field or passing an empty array creates the service account with no role bindings; roles can be added later via the role binding endpoints. Not returned in the response."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "required": [
+          "status",
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "The HTTP status code of the error.",
+            "example": 500
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorResponseError"
+          }
+        },
+        "description": "The response shape used for all error responses.",
+        "example": {
+          "error": {
+            "code": "QUOTA_EXCEEDED",
+            "message": "The index exceeds the project quota of 5 pods by 2 pods. Upgrade your account or change the project settings to increase the quota."
+          },
+          "status": 429
+        }
+      },
+      "Invite": {
+        "required": [
+          "id",
+          "email",
+          "status",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the invite.",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address the invite was sent to.",
+            "format": "email"
+          },
+          "status": {
+            "type": "string",
+            "description": "\"The lifecycle status of an invite.\nPossible values: `pending`, `expired`, `processed`. List endpoints return only `pending` and `expired` invites; `processed` is returned only when fetching a single invite by ID.\"",
+            "example": "pending",
+            "x-enum": [
+              "pending",
+              "expired",
+              "processed"
+            ]
+          },
+          "expires_at": {
+            "type": "string",
+            "description": "When the invite expires if not accepted. Default TTL is 7 days. Resending the invite extends this to now plus 7 days. `null` if the invite does not expire.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "processed_at": {
+            "type": "string",
+            "description": "The date and time the invite was accepted. `null` or omitted while the invite is still pending or expired.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time the invite was created.",
+            "format": "date-time"
+          }
+        },
+        "description": "An invitation to join the organization.",
+        "example": {
+          "created_at": "2026-04-14T20:00:00Z",
+          "email": "newhire@acme.com",
+          "expires_at": "2026-05-21T03:00:00Z",
+          "id": "9c8e3528-b9c0-4358-84ce-84c28e91b566",
+          "processed_at": null,
+          "status": "pending"
+        }
+      },
+      "InviteList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Invite"
+            },
+            "description": "The page of invites."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/InviteListPagination"
+          }
+        },
+        "description": "A paginated list of invites in the organization.",
+        "example": {
+          "data": [
+            {
+              "created_at": "2026-04-14T20:00:00Z",
+              "email": "newhire@acme.com",
+              "expires_at": "2026-05-21T03:00:00Z",
+              "id": "9c8e3528-b9c0-4358-84ce-84c28e91b566",
+              "processed_at": null,
+              "status": "pending"
+            }
+          ],
+          "pagination": {
+            "next": "eyJsYXN0X2lkIjoiOWM4ZTM1MjgifQ=="
+          }
+        }
+      },
+      "ListApiKeysResponse": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiKey"
+            }
           }
         }
       },
@@ -9385,6 +12248,474 @@
           }
         },
         "description": "The details of an organization."
+      },
+      "OrganizationList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Organization"
+            }
+          }
+        }
+      },
+      "Project": {
+        "required": [
+          "id",
+          "name",
+          "max_pods",
+          "force_encryption_with_cmek",
+          "organization_id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the project.",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the project."
+          },
+          "max_pods": {
+            "type": "integer",
+            "description": "The maximum number of Pods that can be created in the project."
+          },
+          "force_encryption_with_cmek": {
+            "type": "boolean",
+            "description": "Whether to force encryption with a customer-managed encryption key (CMEK)."
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The unique ID of the organization that the project belongs to."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time when the project was created.",
+            "format": "date-time"
+          }
+        },
+        "description": "The details of a project."
+      },
+      "ProjectList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            }
+          }
+        }
+      },
+      "RoleBinding": {
+        "required": [
+          "id",
+          "principal_type",
+          "principal_id",
+          "resource_type",
+          "resource_id",
+          "role",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the role binding.",
+            "format": "uuid"
+          },
+          "principal_type": {
+            "type": "string",
+            "description": "\"The kind of principal that receives permissions from a role binding.\nPossible values: `user`, `service_account`, `api_key`, `invite`.\"",
+            "example": "service_account",
+            "x-enum": [
+              "user",
+              "service_account",
+              "api_key",
+              "invite"
+            ]
+          },
+          "principal_id": {
+            "type": "string",
+            "description": "The principal's ID. A UUID for all principal types (`user`, `service_account`, `api_key`, `invite`).",
+            "example": "e2e92523-85dc-4142-b8c2-e681be8b78df"
+          },
+          "resource_type": {
+            "type": "string",
+            "description": "\"The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.\"",
+            "example": "project",
+            "x-enum": [
+              "organization",
+              "project"
+            ]
+          },
+          "resource_id": {
+            "type": "string",
+            "description": "The organization or project that the binding is scoped to."
+          },
+          "role": {
+            "type": "string",
+            "description": "A role assigned to a principal at a resource scope.",
+            "example": "ProjectOwner",
+            "x-enum": [
+              "OrgOwner",
+              "OrgManager",
+              "OrgMember",
+              "OrgBillingAdmin",
+              "ProjectOwner",
+              "ProjectManager",
+              "ProjectMember",
+              "ProjectEditor",
+              "ProjectViewer",
+              "ControlPlaneEditor",
+              "ControlPlaneViewer",
+              "DataPlaneEditor",
+              "DataPlaneViewer"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the role binding was created.",
+            "format": "date-time"
+          }
+        },
+        "description": "Grants a `role` to a `principal` at a `resource` scope.",
+        "example": {
+          "created_at": "2026-04-10T15:23:00Z",
+          "id": "9a8e3528-b9c0-4358-84ce-84c28e91b566",
+          "principal_id": "f8a3b2c1-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+          "principal_type": "service_account",
+          "resource_id": "a2f7dddb-1597-4eff-9f71-535fde243f58",
+          "resource_type": "project",
+          "role": "DataPlaneEditor"
+        }
+      },
+      "RoleBindingInput": {
+        "required": [
+          "resource_type",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "resource_type": {
+            "type": "string",
+            "description": "\"The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.\"",
+            "example": "project",
+            "x-enum": [
+              "organization",
+              "project"
+            ]
+          },
+          "resource_id": {
+            "type": "string",
+            "description": "Project UUID. Required when `resource_type` is `project`; omit for `organization` scope."
+          },
+          "role": {
+            "type": "string",
+            "description": "A role assigned to a principal at a resource scope.",
+            "example": "ProjectOwner",
+            "x-enum": [
+              "OrgOwner",
+              "OrgManager",
+              "OrgMember",
+              "OrgBillingAdmin",
+              "ProjectOwner",
+              "ProjectManager",
+              "ProjectMember",
+              "ProjectEditor",
+              "ProjectViewer",
+              "ControlPlaneEditor",
+              "ControlPlaneViewer",
+              "DataPlaneEditor",
+              "DataPlaneViewer"
+            ]
+          }
+        },
+        "description": "A role to grant to the principal being created. `resource_type` selects the binding scope and acts as the tag for the entry.\nFor `organization` scope, omit `resource_id`; the binding applies to the principal's organization (inferred from the request context). For `project` scope, `resource_id` is required and must be the project UUID."
+      },
+      "RoleBindingList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoleBinding"
+            },
+            "description": "The page of role bindings."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/RoleBindingListPagination"
+          }
+        },
+        "description": "A paginated list of role bindings.",
+        "example": {
+          "data": [
+            {
+              "created_at": "2026-04-10T15:23:00Z",
+              "id": "9a8e3528-b9c0-4358-84ce-84c28e91b566",
+              "principal_id": "f8a3b2c1-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+              "principal_type": "service_account",
+              "resource_id": "a2f7dddb-1597-4eff-9f71-535fde243f58",
+              "resource_type": "project",
+              "role": "DataPlaneEditor"
+            }
+          ],
+          "pagination": {
+            "next": "eyJsYXN0X2lkIjoiOWE4ZTM1MjgifQ=="
+          }
+        }
+      },
+      "ServiceAccount": {
+        "required": [
+          "id",
+          "name",
+          "client_id",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier for the service account. Use this as the path parameter on `/admin/service-accounts/{service_account_id}` endpoints and as the `principal_id` when querying or creating role bindings.",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string",
+            "description": "A short human-readable label, set by the caller at creation time."
+          },
+          "client_id": {
+            "type": "string",
+            "description": "The OAuth client ID used by the service account to obtain access tokens. Used only for OAuth token exchange."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time the service account was created.",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The date and time of the service account's most recent metadata update.",
+            "format": "date-time"
+          }
+        },
+        "description": "A service account. The OAuth `client_secret` is not included.",
+        "example": {
+          "client_id": "l3Ow0CmFyc4jOONcwiKUCRqQKN0tiCAn",
+          "created_at": "2026-04-10T15:23:00Z",
+          "id": "f8a3b2c1-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+          "name": "My Service Account",
+          "updated_at": "2026-04-12T09:11:00Z"
+        }
+      },
+      "ServiceAccountList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceAccount"
+            },
+            "description": "The page of service accounts."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/ServiceAccountListPagination"
+          }
+        },
+        "description": "A paginated list of service accounts in the organization.",
+        "example": {
+          "data": [
+            {
+              "client_id": "l3Ow0CmFyc4jOONcwiKUCRqQKN0tiCAn",
+              "created_at": "2026-04-10T15:23:00Z",
+              "id": "f8a3b2c1-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+              "name": "My Service Account",
+              "updated_at": "2026-04-12T09:11:00Z"
+            }
+          ],
+          "pagination": {
+            "next": "eyJsYXN0X2lkIjoiZDI0MTc3YTAifQ=="
+          }
+        }
+      },
+      "ServiceAccountWithSecret": {
+        "required": [
+          "service_account",
+          "client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "service_account": {
+            "$ref": "#/components/schemas/ServiceAccount"
+          },
+          "client_secret": {
+            "type": "string",
+            "description": "The OAuth client secret. Returned exactly once. Treat this value as a credential — store it securely and never log it."
+          }
+        },
+        "description": "A service account with a newly issued OAuth `client_secret`. The secret is returned only once and cannot be retrieved later.",
+        "example": {
+          "client_secret": "8p-kkC23XOWvkCosKq-BOn3G74qp__rBcDMxc82iB4gfzRvuhSCRBKM7C5Q7TAzj",
+          "service_account": {
+            "client_id": "l3Ow0CmFyc4jOONcwiKUCRqQKN0tiCAn",
+            "created_at": "2026-04-10T15:23:00Z",
+            "id": "f8a3b2c1-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+            "name": "My Service Account",
+            "updated_at": "2026-04-10T15:23:00Z"
+          }
+        }
+      },
+      "UpdateApiKeyRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string",
+            "description": "A new name for the API key. The name must be 1-80 characters long. If omitted, the name will not be updated.\n",
+            "example": "devkey"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "\"A role that can be assigned to an API key.\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.\"",
+              "example": "ProjectEditor",
+              "x-enum": [
+                "ProjectEditor",
+                "ProjectViewer",
+                "ControlPlaneEditor",
+                "ControlPlaneViewer",
+                "DataPlaneEditor",
+                "DataPlaneViewer"
+              ]
+            },
+            "description": "A new set of roles for the API key. Existing roles will be removed if not included.\nIf this field is omitted, the roles will not be updated.\n"
+          }
+        }
+      },
+      "UpdateOrganizationRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string",
+            "description": "The new name for the organization.",
+            "example": "organization-name"
+          }
+        }
+      },
+      "UpdateProjectRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the new project.",
+            "example": "chatbot-prod"
+          },
+          "max_pods": {
+            "type": "integer",
+            "description": "The maximum number of Pods that can be created in the project.\n"
+          },
+          "force_encryption_with_cmek": {
+            "type": "boolean",
+            "description": "Whether to force encryption with a customer-managed encryption key (CMEK). Once enabled, CMEK encryption cannot be disabled.\n"
+          }
+        }
+      },
+      "UpdateServiceAccountRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string",
+            "description": "A new name for the service account. If omitted, the name is unchanged.",
+            "example": "ci-prod-renamed"
+          }
+        }
+      },
+      "User": {
+        "required": [
+          "id",
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the user.",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "description": "The user's email address.",
+            "format": "email"
+          },
+          "name": {
+            "type": "string",
+            "description": "The user's display name. Omitted from the response if the user has not set one."
+          }
+        },
+        "description": "A user who is a member of the organization.",
+        "example": {
+          "email": "alice@example.com",
+          "id": "e2e92523-85dc-4142-b8c2-e681be8b78df",
+          "name": "Alice Example"
+        }
+      },
+      "UserList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "description": "The page of users."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/UserListPagination"
+          }
+        },
+        "description": "A paginated list of users in the organization.",
+        "example": {
+          "data": [
+            {
+              "email": "alice@example.com",
+              "id": "e2e92523-85dc-4142-b8c2-e681be8b78df",
+              "name": "Alice Example"
+            }
+          ],
+          "pagination": {
+            "next": "eyJsYXN0X2lkIjoiZTJlOTI1MjMifQ=="
+          }
+        }
       },
       "UpdateAssistantResponse": {
         "type": "object",
@@ -10858,18 +14189,16 @@
         },
         "description": "A basic error response that contains a message."
       },
-      "IndexSpecByoc": {
-        "title": "BYOC",
-        "required": [
-          "byoc"
-        ],
+      "ServiceAccountListPagination": {
         "type": "object",
         "properties": {
-          "byoc": {
-            "$ref": "#/components/schemas/ByocSpec"
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
           }
         },
-        "additionalProperties": false
+        "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results."
       },
       "EvaluatedFact": {
         "title": "Evaluated fact",
@@ -11802,18 +15131,16 @@
         },
         "description": "The list of backups that exist in the project."
       },
-      "IndexSpecPodBased": {
-        "title": "Pod-based",
-        "required": [
-          "pod"
-        ],
+      "RoleBindingListPagination": {
         "type": "object",
         "properties": {
-          "pod": {
-            "$ref": "#/components/schemas/PodSpec"
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
           }
         },
-        "additionalProperties": false
+        "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results."
       },
       "ModelIndexEmbed": {
         "required": [
@@ -13238,18 +16565,16 @@
         },
         "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
       },
-      "IndexSpecServerless": {
-        "title": "Serverless",
-        "required": [
-          "serverless"
-        ],
+      "InviteListPagination": {
         "type": "object",
         "properties": {
-          "serverless": {
-            "$ref": "#/components/schemas/ServerlessSpec"
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
           }
         },
-        "additionalProperties": false
+        "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results."
       },
       "ModelInfoSupportedParameter": {
         "required": [
@@ -13805,6 +17130,56 @@
           "grant_type": "client_credentials"
         }
       },
+      "UserListPagination": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results."
+      },
+      "IndexSpecServerless": {
+        "title": "Serverless",
+        "required": [
+          "serverless"
+        ],
+        "type": "object",
+        "properties": {
+          "serverless": {
+            "$ref": "#/components/schemas/ServerlessSpec"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IndexSpecPodBased": {
+        "title": "Pod-based",
+        "required": [
+          "pod"
+        ],
+        "type": "object",
+        "properties": {
+          "pod": {
+            "$ref": "#/components/schemas/PodSpec"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IndexSpecByoc": {
+        "title": "BYOC",
+        "required": [
+          "byoc"
+        ],
+        "type": "object",
+        "properties": {
+          "byoc": {
+            "$ref": "#/components/schemas/ByocSpec"
+          }
+        },
+        "additionalProperties": false
+      },
       "ConfigureIndexRequestSpec": {
         "required": [
           "type"
@@ -13916,6 +17291,66 @@
         ],
         "description": "The default value for the parameter when a parameter is optional.",
         "example": "END"
+      },
+      "ServiceAccountListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When `next` is present, pass it as `paginationToken` on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
+      },
+      "RoleBindingListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When `next` is present, pass it as `paginationToken` on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
+      },
+      "InviteListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When `next` is present, pass it as `paginationToken` on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
+      },
+      "UserListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When `next` is present, pass it as `paginationToken` on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
       },
       "ConfigureIndexRequestSpecServerless": {
         "title": "Serverless",
@@ -15348,6 +18783,22 @@
     {
       "name": "Projects",
       "description": "Actions that manage projects."
+    },
+    {
+      "name": "Users",
+      "description": "Actions that manage users."
+    },
+    {
+      "name": "Invites",
+      "description": "Actions that manage invites."
+    },
+    {
+      "name": "Service Accounts",
+      "description": "Actions that manage service accounts."
+    },
+    {
+      "name": "Role Bindings",
+      "description": "Actions that manage role bindings."
     },
     {
       "name": "Manage Assistants",
