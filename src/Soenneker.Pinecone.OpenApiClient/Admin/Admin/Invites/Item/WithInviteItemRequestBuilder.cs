@@ -40,7 +40,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.Item
         {
         }
         /// <summary>
-        /// Delete a pending or expired invite and its role bindings, revoking the acceptance link. Returns `202`; the invite is then no longer returned by get requests (returns `404`).Deleting an already-accepted (processed) invite returns `409`; the underlying user is unaffected. To remove an accepted user, use `DELETE /admin/users/{user_id}` instead. Deleting an invite that does not exist in your organization returns `404`.
+        /// Delete a pending or expired invite and its role bindings; to remove an accepted user, delete the user instead.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -73,7 +73,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get an invite by ID. Returns `404` if the invite is not in your organization.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// Get an invite in the caller&apos;s organization by ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Invite"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -104,7 +104,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Invite>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Invite.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a pending or expired invite and its role bindings, revoking the acceptance link. Returns `202`; the invite is then no longer returned by get requests (returns `404`).Deleting an already-accepted (processed) invite returns `409`; the underlying user is unaffected. To remove an accepted user, use `DELETE /admin/users/{user_id}` instead. Deleting an invite that does not exist in your organization returns `404`.
+        /// Delete a pending or expired invite and its role bindings; to remove an accepted user, delete the user instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -123,7 +123,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get an invite by ID. Returns `404` if the invite is not in your organization.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// Get an invite in the caller&apos;s organization by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

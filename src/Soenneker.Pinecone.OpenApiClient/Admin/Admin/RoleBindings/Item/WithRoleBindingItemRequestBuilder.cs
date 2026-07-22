@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.Item
         {
         }
         /// <summary>
-        /// Delete a role binding. Permissions are revoked when the deletion completes.Returns `202`. The binding is removed immediately, so it no longer appears in list or get requests and instead returns `404`. A repeat delete request for the same binding returns `404`.Returns `409` when deleting:- The last `OrgOwner` binding for a user in the organization.- The last organization-membership role binding for a user who still has  other role bindings.- The last organization-membership role binding for a pending invite  (delete the invite instead).
+        /// Delete a role binding; permissions are revoked when the deletion completes.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a role binding by ID. Returns `404` if the binding is not in your organization.
+        /// Get a role binding in the caller&apos;s organization by ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a role binding. Permissions are revoked when the deletion completes.Returns `202`. The binding is removed immediately, so it no longer appears in list or get requests and instead returns `404`. A repeat delete request for the same binding returns `404`.Returns `409` when deleting:- The last `OrgOwner` binding for a user in the organization.- The last organization-membership role binding for a user who still has  other role bindings.- The last organization-membership role binding for a pending invite  (delete the invite instead).
+        /// Delete a role binding; permissions are revoked when the deletion completes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a role binding by ID. Returns `404` if the binding is not in your organization.
+        /// Get a role binding in the caller&apos;s organization by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -61,7 +61,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ListApiKeysResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ListApiKeysResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new API key for a project. Developers can use the API key to authenticate requests to Pinecone&apos;s Data Plane and Control Plane APIs.
+        /// Create an API key for a project to authenticate Data Plane and Control Plane requests.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ApiKeyWithSecret"/></returns>
         /// <param name="body">The request body</param>
@@ -113,7 +113,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item.ApiKeys
             return requestInfo;
         }
         /// <summary>
-        /// Create a new API key for a project. Developers can use the API key to authenticate requests to Pinecone&apos;s Data Plane and Control Plane APIs.
+        /// Create an API key for a project to authenticate Data Plane and Control Plane requests.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item
         {
         }
         /// <summary>
-        /// Delete an organization and all its associated configuration.Before deleting an organization, you must delete all projects (including indexes, assistants, backups, and collections) associated with the organization.
+        /// Delete an organization and all its configuration; delete all its projects first.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get details about an organization.
+        /// Get an organization&apos;s details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Organization"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -129,7 +129,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Organization>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Organization.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an organization and all its associated configuration.Before deleting an organization, you must delete all projects (including indexes, assistants, backups, and collections) associated with the organization.
+        /// Delete an organization and all its configuration; delete all its projects first.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get details about an organization.
+        /// Get an organization&apos;s details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

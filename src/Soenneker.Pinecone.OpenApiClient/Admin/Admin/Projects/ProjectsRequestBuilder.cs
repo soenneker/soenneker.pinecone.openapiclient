@@ -74,7 +74,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ProjectList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ProjectList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a new project.
+        /// Create a new project.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Project"/></returns>
         /// <param name="body">The request body</param>
@@ -128,7 +128,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects
             return requestInfo;
         }
         /// <summary>
-        /// Creates a new project.
+        /// Create a new project.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

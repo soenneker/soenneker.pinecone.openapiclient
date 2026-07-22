@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get the details of an API key, excluding the API key secret.
+        /// Get an API key&apos;s details, excluding its secret.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ApiKey"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -94,7 +94,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ApiKey>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ApiKey.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update the name and roles of an API key.
+        /// Update an API key&apos;s name and roles.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ApiKey"/></returns>
         /// <param name="body">The request body</param>
@@ -146,7 +146,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get the details of an API key, excluding the API key secret.
+        /// Get an API key&apos;s details, excluding its secret.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -165,7 +165,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update the name and roles of an API key.
+        /// Update an API key&apos;s name and roles.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

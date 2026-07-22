@@ -47,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites
         {
         }
         /// <summary>
-        /// List invites in the caller&apos;s organization. Results are paginated. Returns pending and expired invites (processed and deleted invites are excluded); use `status` to distinguish pending from expired. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List pending and expired invites in the caller&apos;s organization.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.InviteList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.InviteList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.InviteList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Invite a user to join the organization. Sends an email with an acceptance link.Grant roles with `role_bindings`. Include at least one `organization`-scoped binding that grants organization membership (`OrgOwner`, `OrgManager`, `OrgBillingAdmin`, or `OrgMember`; omit `resource_id`); add `project`-scoped bindings (with a `resource_id`) to grant project roles. Bindings are not returned in the response.If a pending or expired invite already exists for the email, returns `409` with the existing invite&apos;s ID in the error message. Use `POST /admin/invites/{invite_id}/resend` to resend the email, and the role-bindings endpoints to change the invite&apos;s bindings.If the email already belongs to a member of the organization, returns `409` (see shared conflict response). Manage that user&apos;s roles with the role-bindings endpoints instead.An invite&apos;s bindings are first-class role bindings: they appear in `GET /admin/role-bindings` with `principal_type=invite` and `principal_id` equal to the invite ID, and can be added or removed with the role-bindings endpoints.&quot;
+        /// Invite a user to the organization by email and grant their initial role bindings.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Invite"/></returns>
         /// <param name="body">The request body</param>
@@ -113,7 +113,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Invite>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Invite.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List invites in the caller&apos;s organization. Results are paginated. Returns pending and expired invites (processed and deleted invites are excluded); use `status` to distinguish pending from expired. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List pending and expired invites in the caller&apos;s organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -132,7 +132,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Invite a user to join the organization. Sends an email with an acceptance link.Grant roles with `role_bindings`. Include at least one `organization`-scoped binding that grants organization membership (`OrgOwner`, `OrgManager`, `OrgBillingAdmin`, or `OrgMember`; omit `resource_id`); add `project`-scoped bindings (with a `resource_id`) to grant project roles. Bindings are not returned in the response.If a pending or expired invite already exists for the email, returns `409` with the existing invite&apos;s ID in the error message. Use `POST /admin/invites/{invite_id}/resend` to resend the email, and the role-bindings endpoints to change the invite&apos;s bindings.If the email already belongs to a member of the organization, returns `409` (see shared conflict response). Manage that user&apos;s roles with the role-bindings endpoints instead.An invite&apos;s bindings are first-class role bindings: they appear in `GET /admin/role-bindings` with `principal_type=invite` and `principal_id` equal to the invite ID, and can be added or removed with the role-bindings endpoints.&quot;
+        /// Invite a user to the organization by email and grant their initial role bindings.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -163,7 +163,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites
             return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.InvitesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List invites in the caller&apos;s organization. Results are paginated. Returns pending and expired invites (processed and deleted invites are excluded); use `status` to distinguish pending from expired. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List pending and expired invites in the caller&apos;s organization.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class InvitesRequestBuilderGetQueryParameters 

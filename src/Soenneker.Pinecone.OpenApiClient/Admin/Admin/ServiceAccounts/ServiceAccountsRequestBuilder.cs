@@ -47,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts
         {
         }
         /// <summary>
-        /// List service accounts in the caller&apos;s organization. Results are paginated. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List service accounts in the caller&apos;s organization.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Create a service account with optional initial role bindings. The `client_secret` in the response is shown only once; store it securely.Grant roles with `role_bindings`: `organization`-scoped bindings omit `resource_id`, while `project`-scoped bindings include the project `resource_id`. Service accounts may receive any organization- or project-scoped role (see Role). Bindings are not returned in the response.Repeating the same request may create duplicate service accounts.&quot;
+        /// Create a service account with optional initial role bindings; the client secret is returned only once.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountWithSecret"/></returns>
         /// <param name="body">The request body</param>
@@ -111,7 +111,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountWithSecret>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountWithSecret.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List service accounts in the caller&apos;s organization. Results are paginated. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List service accounts in the caller&apos;s organization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -130,7 +130,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Create a service account with optional initial role bindings. The `client_secret` in the response is shown only once; store it securely.Grant roles with `role_bindings`: `organization`-scoped bindings omit `resource_id`, while `project`-scoped bindings include the project `resource_id`. Service accounts may receive any organization- or project-scoped role (see Role). Bindings are not returned in the response.Repeating the same request may create duplicate service accounts.&quot;
+        /// Create a service account with optional initial role bindings; the client secret is returned only once.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -161,7 +161,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts
             return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.ServiceAccountsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List service accounts in the caller&apos;s organization. Results are paginated. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List service accounts in the caller&apos;s organization.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ServiceAccountsRequestBuilderGetQueryParameters 

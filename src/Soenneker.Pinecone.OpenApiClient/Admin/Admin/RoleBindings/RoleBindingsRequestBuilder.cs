@@ -47,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
         {
         }
         /// <summary>
-        /// List role bindings in the organization. Results are paginated.Optional filters are described in the query parameters. Filters are combined with AND. Pagination tokens apply to the full query (including all filters).
+        /// List role bindings in the caller&apos;s organization, optionally filtered by principal, resource, and role.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RoleBindingList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.RoleBindingList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.RoleBindingList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Grant a role to a principal at an organization or project scope.Set `resource_type` to select the scope. For `project` scope, `resource_id` is required and must be the project UUID. For `organization` scope, omit `resource_id`; the binding applies to the caller&apos;s organization.Returns `409` if an identical binding already exists, or if the target principal is an invite that has already been accepted (processed).
+        /// Grant a role to a principal at an organization or project scope.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding"/></returns>
         /// <param name="body">The request body</param>
@@ -115,7 +115,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List role bindings in the organization. Results are paginated.Optional filters are described in the query parameters. Filters are combined with AND. Pagination tokens apply to the full query (including all filters).
+        /// List role bindings in the caller&apos;s organization, optionally filtered by principal, resource, and role.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -134,7 +134,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
             return requestInfo;
         }
         /// <summary>
-        /// Grant a role to a principal at an organization or project scope.Set `resource_type` to select the scope. For `project` scope, `resource_id` is required and must be the project UUID. For `organization` scope, omit `resource_id`; the binding applies to the caller&apos;s organization.Returns `409` if an identical binding already exists, or if the target principal is an invite that has already been accepted (processed).
+        /// Grant a role to a principal at an organization or project scope.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -165,7 +165,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
             return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings.RoleBindingsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List role bindings in the organization. Results are paginated.Optional filters are described in the query parameters. Filters are combined with AND. Pagination tokens apply to the full query (including all filters).
+        /// List role bindings in the caller&apos;s organization, optionally filtered by principal, resource, and role.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RoleBindingsRequestBuilderGetQueryParameters 

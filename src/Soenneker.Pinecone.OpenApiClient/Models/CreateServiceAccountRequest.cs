@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Optional initial role bindings. Omitting the field or passing an empty array creates the service account with no role bindings; roles can be added later via the role binding endpoints. Not returned in the response.</summary>
+        /// <summary>Optional initial role bindings. Omitting the field or passing an empty array creates the service account with no role bindings; roles can be added later via the role binding endpoints. A service account may be granted any organization- or project-scoped role. Not returned in the response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.RoleBindingInput>? RoleBindings { get; set; }

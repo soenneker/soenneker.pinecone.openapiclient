@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item.Rota
         {
         }
         /// <summary>
-        /// Rotate the OAuth `client_secret` for a service account. The previous secret and tokens minted from it are revoked within a few seconds. The new secret is returned only in this response.Repeating the request may rotate again and invalidate the previous new secret.
+        /// Rotate a service account&apos;s OAuth client secret; the previous secret and its tokens are revoked within seconds and the new secret is returned only once.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountWithSecret"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item.Rota
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountWithSecret>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccountWithSecret.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Rotate the OAuth `client_secret` for a service account. The previous secret and tokens minted from it are revoked within a few seconds. The new secret is returned only in this response.Repeating the request may rotate again and invalidate the previous new secret.
+        /// Rotate a service account&apos;s OAuth client secret; the previous secret and its tokens are revoked within seconds and the new secret is returned only once.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

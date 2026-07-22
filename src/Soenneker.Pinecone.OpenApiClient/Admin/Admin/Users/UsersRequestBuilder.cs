@@ -47,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users
         {
         }
         /// <summary>
-        /// List users who are members of the caller&apos;s organization. Results are paginated.Optional filters:- `email` — case-insensitive match on the user&apos;s email address.Pagination tokens apply to the full query, including `email`. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List users in the caller&apos;s organization, optionally filtered by email address.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UserList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.UserList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.UserList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List users who are members of the caller&apos;s organization. Results are paginated.Optional filters:- `email` — case-insensitive match on the user&apos;s email address.Pagination tokens apply to the full query, including `email`. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List users in the caller&apos;s organization, optionally filtered by email address.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -106,7 +106,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users
             return new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.UsersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List users who are members of the caller&apos;s organization. Results are paginated.Optional filters:- `email` — case-insensitive match on the user&apos;s email address.Pagination tokens apply to the full query, including `email`. See query parameters for cursor rules.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// List users in the caller&apos;s organization, optionally filtered by email address.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class UsersRequestBuilderGetQueryParameters 

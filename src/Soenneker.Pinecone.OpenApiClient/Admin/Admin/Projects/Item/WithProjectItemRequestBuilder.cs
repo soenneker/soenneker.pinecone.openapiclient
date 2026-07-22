@@ -40,7 +40,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item
         {
         }
         /// <summary>
-        /// Delete a project and all its associated configuration.Before deleting a project, you must delete all indexes, assistants, backups, and collections associated with the project. Other project resources, such as API keys, are automatically deleted when the project is deleted.
+        /// Delete a project and all its configuration; delete its indexes, assistants, backups, and collections first.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get details about a project.
+        /// Get a project&apos;s details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Project"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -100,7 +100,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Project>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Project.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a project&apos;s configuration details.You can update the project&apos;s name, maximum number of Pods, or enable encryption with a customer-managed encryption key (CMEK).
+        /// Update a project&apos;s name, maximum number of Pods, or customer-managed encryption key (CMEK).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Project"/></returns>
         /// <param name="body">The request body</param>
@@ -135,7 +135,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Project>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Project.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a project and all its associated configuration.Before deleting a project, you must delete all indexes, assistants, backups, and collections associated with the project. Other project resources, such as API keys, are automatically deleted when the project is deleted.
+        /// Delete a project and all its configuration; delete its indexes, assistants, backups, and collections first.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -154,7 +154,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get details about a project.
+        /// Get a project&apos;s details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,7 +173,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a project&apos;s configuration details.You can update the project&apos;s name, maximum number of Pods, or enable encryption with a customer-managed encryption key (CMEK).
+        /// Update a project&apos;s name, maximum number of Pods, or customer-managed encryption key (CMEK).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

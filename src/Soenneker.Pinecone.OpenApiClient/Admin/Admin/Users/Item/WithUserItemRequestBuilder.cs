@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.Item
         {
         }
         /// <summary>
-        /// Remove a user from the organization and revoke their role bindings. Does not delete the user&apos;s Pinecone account.Returns `202`. The user&apos;s role bindings are revoked immediately, so the user no longer appears in get or list requests and instead returns `404`. A repeat request for the same user returns `404`.Returns `409` when removing the last `OrgOwner` in the organization.
+        /// Remove a user from the organization and revoke their role bindings; their Pinecone account is not deleted.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a user by ID. Returns `404` if the user is not in your organization.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// Get a user in the caller&apos;s organization by ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.User"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.User>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.User.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove a user from the organization and revoke their role bindings. Does not delete the user&apos;s Pinecone account.Returns `202`. The user&apos;s role bindings are revoked immediately, so the user no longer appears in get or list requests and instead returns `404`. A repeat request for the same user returns `404`.Returns `409` when removing the last `OrgOwner` in the organization.
+        /// Remove a user from the organization and revoke their role bindings; their Pinecone account is not deleted.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.Users.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a user by ID. Returns `404` if the user is not in your organization.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them.
+        /// Get a user in the caller&apos;s organization by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

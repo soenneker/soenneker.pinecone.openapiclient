@@ -40,7 +40,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item
         {
         }
         /// <summary>
-        /// Delete a service account and its role bindings. Returns `202`; the service account is then no longer returned by get requests (returns `404`).OAuth tokens minted by the service account are revoked within a few seconds.
+        /// Delete a service account and its role bindings; tokens it minted are revoked within a few seconds.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a service account by its ID. Returns `404` if the service account is not in your organization. The `client_secret` is not included.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them. Secrets are returned only from create and rotate-secret requests.
+        /// Get a service account by ID; the client secret is returned only from create and rotate-secret requests.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccount"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -102,7 +102,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccount>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a service account&apos;s mutable metadata. Only `name` is supported as a mutable field; fields that are omitted are left unchanged.Role bindings cannot be updated here; use the role binding endpoints to create or delete bindings.
+        /// Update a service account&apos;s name; role bindings are managed through the role-binding endpoints.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccount"/></returns>
         /// <param name="body">The request body</param>
@@ -137,7 +137,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccount>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ServiceAccount.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a service account and its role bindings. Returns `202`; the service account is then no longer returned by get requests (returns `404`).OAuth tokens minted by the service account are revoked within a few seconds.
+        /// Delete a service account and its role bindings; tokens it minted are revoked within a few seconds.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -156,7 +156,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a service account by its ID. Returns `404` if the service account is not in your organization. The `client_secret` is not included.Role bindings are not included. Use `GET /admin/role-bindings` with `principal_type` and `principal_id` to list them. Secrets are returned only from create and rotate-secret requests.
+        /// Get a service account by ID; the client secret is returned only from create and rotate-secret requests.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -175,7 +175,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.ServiceAccounts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a service account&apos;s mutable metadata. Only `name` is supported as a mutable field; fields that are omitted are left unchanged.Role bindings cannot be updated here; use the role binding endpoints to create or delete bindings.
+        /// Update a service account&apos;s name; role bindings are managed through the role-binding endpoints.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
