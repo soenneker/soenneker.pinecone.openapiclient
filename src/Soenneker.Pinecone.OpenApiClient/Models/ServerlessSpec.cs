@@ -47,6 +47,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema Schema { get; set; }
 #endif
+        /// <summary>The ID of a backup from which to restore the index. Mutually exclusive with `source_collection`. The target `cloud` and `region` may differ from the backup&apos;s source region for same-cloud cross-region restore. Cross-cloud restore is not supported.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourceBackupId { get; set; }
+#nullable restore
+#else
+        public string SourceBackupId { get; set; }
+#endif
         /// <summary>The name of the collection to be used as the source for the index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,6 +92,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "read_capacity", n => { ReadCapacity = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>(global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity.CreateFromDiscriminatorValue); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema.CreateFromDiscriminatorValue); } },
+                { "source_backup_id", n => { SourceBackupId = n.GetStringValue(); } },
                 { "source_collection", n => { SourceCollection = n.GetStringValue(); } },
             };
         }
@@ -98,6 +107,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>("read_capacity", ReadCapacity);
             writer.WriteStringValue("region", Region);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema>("schema", Schema);
+            writer.WriteStringValue("source_backup_id", SourceBackupId);
             writer.WriteStringValue("source_collection", SourceCollection);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,45 +8,37 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The list of backups that exist in the project.
+    /// Cursor envelope for the next page. `null` (or absent) on the final page of results.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BackupList : IAdditionalDataHolder, IParsable
+    public partial class BackupScheduleHistoryListPagination : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of backup objects</summary>
+        /// <summary>The token to use to retrieve the next page of results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel>? Data { get; set; }
+        public string? Next { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel> Data { get; set; }
-#endif
-        /// <summary>Cursor envelope for the next page. `null` (or absent) on the final page of results.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupListPagination? Pagination { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupListPagination Pagination { get; set; }
+        public string Next { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupList"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination"/> and sets the default values.
         /// </summary>
-        public BackupList()
+        public BackupScheduleHistoryListPagination()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.BackupList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.BackupList();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,8 +48,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupListPagination>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupListPagination.CreateFromDiscriminatorValue); } },
+                { "next", n => { Next = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -67,8 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupListPagination>("pagination", Pagination);
+            writer.WriteStringValue("next", Next);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

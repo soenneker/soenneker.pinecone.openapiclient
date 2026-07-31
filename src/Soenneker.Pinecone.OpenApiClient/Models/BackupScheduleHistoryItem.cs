@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The BackupModel describes the configuration and status of a Pinecone backup.
+    /// A backup produced by a schedule, including lifecycle status. When `status` is `Scheduled`, `scheduled_execution_at` is set to the planned run time.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BackupModel : IAdditionalDataHolder, IParsable
+    public partial class BackupScheduleHistoryItem : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -31,15 +31,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Cloud { get; set; }
 #endif
-        /// <summary>Timestamp when the backup was created.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? CreatedAt { get; set; }
-#nullable restore
-#else
-        public string CreatedAt { get; set; }
-#endif
-        /// <summary>Optional description providing context for the backup.</summary>
+        /// <summary>RFC 3339 timestamp when the backup record was created.</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>Optional description of the backup, or `null`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -57,7 +51,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Metric { get; set; }
 #endif
-        /// <summary>Optional user-defined name for the backup.</summary>
+        /// <summary>Name of the backup.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -68,7 +62,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Number of namespaces in the backup.</summary>
         public int? NamespaceCount { get; set; }
         /// <summary>Total number of records in the backup.</summary>
-        public int? RecordCount { get; set; }
+        public long? RecordCount { get; set; }
         /// <summary>Cloud region where the backup is stored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,19 +71,19 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Region { get; set; }
 #endif
-        /// <summary>&quot;Schema for the behavior of Pinecone&apos;s internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.&quot;</summary>
+        /// <summary>Present when `status` is `Scheduled`. RFC 3339 timestamp when the backup is planned to run.</summary>
+        public DateTimeOffset? ScheduledExecutionAt { get; set; }
+        /// <summary>Metadata schema associated with the backup, or `null` if not applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema? Schema { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchema? Schema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema Schema { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchema Schema { get; set; }
 #endif
-        /// <summary>Size of the backup in bytes.</summary>
-        public int? SizeBytes { get; set; }
-        /// <summary>The deletion timestamp when the source index has been deleted. Not present for backups associated with an active index.</summary>
-        public DateTimeOffset? SourceIndexDeletedAt { get; set; }
-        /// <summary>ID of the index.</summary>
+        /// <summary>Approximate stored size of this scheduled-backup snapshot, in bytes.</summary>
+        public long? SizeBytes { get; set; }
+        /// <summary>ID of the index from which the backup was taken.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SourceIndexId { get; set; }
@@ -105,7 +99,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string SourceIndexName { get; set; }
 #endif
-        /// <summary>Current status of the backup (e.g., Initializing, Ready, Failed).</summary>
+        /// <summary>Current lifecycle status of the backup.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -113,30 +107,30 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, &apos;_&apos;, or &apos;-&apos;.  Values must be alphanumeric, &apos;;&apos;, &apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;+&apos;, or &apos; &apos;. To unset a key, set the value to be an empty string.</summary>
+        /// <summary>Custom user tags on this backup snapshot. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, &apos;_&apos;, or &apos;-&apos;. Values must be alphanumeric, &apos;;&apos;, &apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;+&apos;, or &apos; &apos;. To unset a key, set the value to be an empty string. `null` when no tags are set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupModelTags? Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemTags? Tags { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupModelTags Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemTags Tags { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem"/> and sets the default values.
         /// </summary>
-        public BackupModel()
+        public BackupScheduleHistoryItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -148,21 +142,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "backup_id", n => { BackupId = n.GetStringValue(); } },
                 { "cloud", n => { Cloud = n.GetStringValue(); } },
-                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "dimension", n => { Dimension = n.GetIntValue(); } },
                 { "metric", n => { Metric = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "namespace_count", n => { NamespaceCount = n.GetIntValue(); } },
-                { "record_count", n => { RecordCount = n.GetIntValue(); } },
+                { "record_count", n => { RecordCount = n.GetLongValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema.CreateFromDiscriminatorValue); } },
-                { "size_bytes", n => { SizeBytes = n.GetIntValue(); } },
-                { "source_index_deleted_at", n => { SourceIndexDeletedAt = n.GetDateTimeOffsetValue(); } },
+                { "scheduled_execution_at", n => { ScheduledExecutionAt = n.GetDateTimeOffsetValue(); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchema.CreateFromDiscriminatorValue); } },
+                { "size_bytes", n => { SizeBytes = n.GetLongValue(); } },
                 { "source_index_id", n => { SourceIndexId = n.GetStringValue(); } },
                 { "source_index_name", n => { SourceIndexName = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModelTags>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupModelTags.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemTags>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemTags.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -174,21 +168,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("backup_id", BackupId);
             writer.WriteStringValue("cloud", Cloud);
-            writer.WriteStringValue("created_at", CreatedAt);
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("dimension", Dimension);
             writer.WriteStringValue("metric", Metric);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("namespace_count", NamespaceCount);
-            writer.WriteIntValue("record_count", RecordCount);
+            writer.WriteLongValue("record_count", RecordCount);
             writer.WriteStringValue("region", Region);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema>("schema", Schema);
-            writer.WriteIntValue("size_bytes", SizeBytes);
-            writer.WriteDateTimeOffsetValue("source_index_deleted_at", SourceIndexDeletedAt);
+            writer.WriteDateTimeOffsetValue("scheduled_execution_at", ScheduledExecutionAt);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchema>("schema", Schema);
+            writer.WriteLongValue("size_bytes", SizeBytes);
             writer.WriteStringValue("source_index_id", SourceIndexId);
             writer.WriteStringValue("source_index_name", SourceIndexName);
             writer.WriteStringValue("status", Status);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModelTags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemTags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

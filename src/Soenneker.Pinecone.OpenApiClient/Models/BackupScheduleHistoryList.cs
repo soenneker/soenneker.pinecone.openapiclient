@@ -8,45 +8,45 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The list of restore jobs that exist in the project.
+    /// Paginated list of backups created by a specific backup schedule.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RestoreJobList : IAdditionalDataHolder, IParsable
+    public partial class BackupScheduleHistoryList : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>List of restore job objects</summary>
+        /// <summary>Backups from this schedule for the current page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel>? Data { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel> Data { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem> Data { get; set; }
 #endif
         /// <summary>Cursor envelope for the next page. `null` (or absent) on the final page of results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobListPagination? Pagination { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination? Pagination { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobListPagination Pagination { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination Pagination { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobList"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryList"/> and sets the default values.
         /// </summary>
-        public RestoreJobList()
+        public BackupScheduleHistoryList()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryList"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobList();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryList();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,8 +56,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel>(global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobListPagination>(global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobListPagination.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination>(global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,8 +67,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobListPagination>("pagination", Pagination);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItem>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryListPagination>("pagination", Pagination);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

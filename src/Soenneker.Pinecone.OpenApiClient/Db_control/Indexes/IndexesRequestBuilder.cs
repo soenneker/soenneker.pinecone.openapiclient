@@ -78,7 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.IndexList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.IndexList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.  For guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).
+        /// Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.To restore from a backup, set `spec.serverless.source_backup_id` and specify the target `cloud` and `region`. Same-cloud cross-region restore is supported when available for the backup&apos;s source region. Cross-cloud restore is not supported.For guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel"/></returns>
         /// <param name="body">The configuration needed to create a Pinecone index.</param>
@@ -90,6 +90,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 412 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,6 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "412", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
             };
@@ -136,7 +138,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes
             return requestInfo;
         }
         /// <summary>
-        /// Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.  For guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).
+        /// Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.To restore from a backup, set `spec.serverless.source_backup_id` and specify the target `cloud` and `region`. Same-cloud cross-region restore is supported when available for the backup&apos;s source region. Cross-cloud restore is not supported.For guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The configuration needed to create a Pinecone index.</param>

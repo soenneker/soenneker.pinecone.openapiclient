@@ -41,6 +41,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema Schema { get; set; }
 #endif
+        /// <summary>The total size of the namespace&apos;s data, in bytes.</summary>
+        public long? SizeBytes { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescription"/> and sets the default values.
         /// </summary>
@@ -70,6 +72,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "record_count", n => { RecordCount = n.GetLongValue(); } },
                 { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema.CreateFromDiscriminatorValue); } },
+                { "size_bytes", n => { SizeBytes = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -83,6 +86,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteLongValue("record_count", RecordCount);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema>("schema", Schema);
+            writer.WriteLongValue("size_bytes", SizeBytes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

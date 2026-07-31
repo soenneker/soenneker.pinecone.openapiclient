@@ -6039,7 +6039,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of operations.",
+            "description": "Successful response.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7019,7 +7019,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index",
-        "description": "Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.\n  \nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).\n",
+        "description": "Create a Pinecone index. This is where you specify the measure of similarity, the dimension of vectors to be stored in the index, which cloud provider you would like to deploy with, and more.\nTo restore from a backup, set `spec.serverless.source_backup_id` and specify the target `cloud` and `region`. Same-cloud cross-region restore is supported when available for the backup's source region. Cross-cloud restore is not supported.\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).\n",
         "operationId": "db_control_2026_04_create_index",
         "parameters": [
           {
@@ -7099,6 +7099,21 @@
                           "mode": "Dedicated"
                         },
                         "region": "us-east1"
+                      }
+                    }
+                  }
+                },
+                "serverless-restore-from-backup": {
+                  "summary": "Restoring a serverless index from a backup in another region",
+                  "value": {
+                    "dimension": 3,
+                    "metric": "cosine",
+                    "name": "xr-restore-test",
+                    "spec": {
+                      "serverless": {
+                        "cloud": "aws",
+                        "region": "us-west-2",
+                        "source_backup_id": "670e8400-e29b-41d4-a716-446655440000"
                       }
                     }
                   }
@@ -7234,7 +7249,7 @@
             }
           },
           "404": {
-            "description": "Unknown cloud or region when creating a serverless index.",
+            "description": "A resource required to create the index was not found. This includes an unknown cloud or region for serverless indexes, or a backup ID that does not exist when `spec.serverless.source_backup_id` is set.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7242,13 +7257,45 @@
                 },
                 "examples": {
                   "serverless-spec-cloud-not-found": {
-                    "summary": "Cannot create serverless index with invalid spec.",
+                    "summary": "Unknown cloud or region when creating a serverless index.",
                     "value": {
                       "error": {
                         "code": "NOT_FOUND",
                         "message": "Resource cloud: aws region: us-west1 not found."
                       },
                       "status": 404
+                    }
+                  },
+                  "backup-not-found": {
+                    "summary": "Backup not found when restoring from source_backup_id.",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Backup bkp_123abc not found."
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Cross-region restore is not available for the backup's source region.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "cross-region-restore-unavailable": {
+                    "summary": "Cross-region restore is not yet available for the source region.",
+                    "value": {
+                      "error": {
+                        "code": "FAILED_PRECONDITION",
+                        "message": "Cross-region restore is not yet available for aws/us-east-1"
+                      },
+                      "status": 412
                     }
                   }
                 }
@@ -7946,7 +7993,7 @@
           "Manage Indexes"
         ],
         "summary": "List backups for an index",
-        "description": "List all backups for an index.",
+        "description": "When `include_deleted` is false (or omitted), `index_name` must resolve to an active index in the project. If no active index by that name exists—including the case where only deleted indexes have used the name—the API returns **404**, not an empty list.\nWhen `include_deleted` is true, the API returns backups from every index in the project that has ever used this name (active and deleted). The `source_index_deleted_at` field is present only when the backup is from a deleted index. **404** is returned only when no index by that name has ever existed in the project (active or deleted).",
         "operationId": "db_control_2026_04_list_index_backups",
         "parameters": [
           {
@@ -7962,10 +8009,19 @@
           {
             "name": "index_name",
             "in": "path",
-            "description": "Name of the backed up index",
+            "description": "Name of the index whose backups are listed. When `include_deleted` is false or omitted, this must resolve to an active index in the project.",
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "include_deleted",
+            "in": "query",
+            "description": "When true, includes backups for every index incarnation with this name (active and deleted). When false or omitted, only the active index’s backups are included; **404** when no active index has that name.",
+            "schema": {
+              "type": "boolean",
+              "default": false
             }
           },
           {
@@ -7990,15 +8046,15 @@
         ],
         "responses": {
           "200": {
-            "description": "This operation returns a list of all the backups that you have previously created, and which are associated with the given index.",
+            "description": "Returns backups associated with the index name. With `include_deleted` true, backups for all versions of the index name are returned. With `include_deleted` false, only backups for the active index are returned, or **404** if there is no active index.",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BackupList"
                 },
                 "examples": {
-                  "backups": {
-                    "summary": "A list containing backups.",
+                  "active_index_backups": {
+                    "summary": "Backups for the active index only (`include_deleted` false or omitted).",
                     "value": {
                       "data": [
                         {
@@ -8042,6 +8098,36 @@
                           "namespace_count": 4,
                           "record_count": 125000,
                           "region": "us-east-1",
+                          "size_bytes": 10500000,
+                          "source_index_id": "idx_456",
+                          "source_index_name": "my-index",
+                          "status": "Ready",
+                          "tags": {
+                            "environment": "production",
+                            "type": "pre-deploy"
+                          }
+                        }
+                      ],
+                      "pagination": {
+                        "next": "dXNlcl9pZD11c2VyXzE="
+                      }
+                    }
+                  },
+                  "include_deleted_backups": {
+                    "summary": "Backups from active and deleted indexes with the same name (`include_deleted` true).",
+                    "value": {
+                      "data": [
+                        {
+                          "backup_id": "bkp_123abc",
+                          "cloud": "aws",
+                          "created_at": "2024-03-15T10:30:00Z",
+                          "description": "Monthly backup of production index",
+                          "dimension": 1536,
+                          "metric": "cosine",
+                          "name": "backup_2024_03_15",
+                          "namespace_count": 3,
+                          "record_count": 120000,
+                          "region": "us-east-1",
                           "schema": {
                             "fields": {
                               "genre": {
@@ -8052,6 +8138,26 @@
                               }
                             }
                           },
+                          "size_bytes": 10000000,
+                          "source_index_id": "idx_456",
+                          "source_index_name": "my-index",
+                          "status": "Ready",
+                          "tags": {
+                            "environment": "production",
+                            "type": "monthly"
+                          }
+                        },
+                        {
+                          "backup_id": "bkp_789xyz",
+                          "cloud": "aws",
+                          "created_at": "2024-03-20T15:45:00Z",
+                          "description": "Pre-deployment safety backup",
+                          "dimension": 1536,
+                          "metric": "cosine",
+                          "name": "backup_2024_03_20",
+                          "namespace_count": 4,
+                          "record_count": 125000,
+                          "region": "us-east-1",
                           "size_bytes": 10500000,
                           "source_index_id": "idx_456",
                           "source_index_name": "my-index",
@@ -8059,6 +8165,33 @@
                           "tags": {
                             "environment": "production",
                             "type": "pre-deploy"
+                          }
+                        },
+                        {
+                          "backup_id": "bkp_oldidx",
+                          "cloud": "aws",
+                          "created_at": "2024-03-01T09:00:00Z",
+                          "description": "Backup from a since-deleted index with the same name",
+                          "dimension": 1536,
+                          "metric": "cosine",
+                          "name": "backup_before_rename",
+                          "namespace_count": 2,
+                          "record_count": 100000,
+                          "region": "us-east-1",
+                          "schema": {
+                            "fields": {
+                              "genre": {
+                                "filterable": true
+                              }
+                            }
+                          },
+                          "size_bytes": 9000000,
+                          "source_index_deleted_at": "2024-03-05T12:00:00Z",
+                          "source_index_id": "idx_legacy",
+                          "source_index_name": "my-index",
+                          "status": "Ready",
+                          "tags": {
+                            "environment": "production"
                           }
                         }
                       ],
@@ -8290,6 +8423,421 @@
                         "message": "Increase your quota or upgrade to create more backups."
                       },
                       "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "missing-field": {
+                    "summary": "Unprocessable entity",
+                    "value": {
+                      "error": {
+                        "code": "UNPROCESSABLE_ENTITY",
+                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                      },
+                      "status": 422
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/db_control_2026-04/indexes/{index_name}/backup-schedules": {
+      "get": {
+        "tags": [
+          "Manage Indexes"
+        ],
+        "summary": "List backup schedules for an index",
+        "description": "Return backup schedules associated with the given index.",
+        "operationId": "db_control_2026_04_list_backup_schedules",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "index_name",
+            "in": "path",
+            "description": "Name of the index whose backup schedules are listed.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "The token to use to retrieve the next page of results.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Backup schedules for the index.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupScheduleList"
+                },
+                "examples": {
+                  "schedules": {
+                    "summary": "Single schedule on the index",
+                    "value": {
+                      "data": [
+                        {
+                          "created_at": "2026-04-02T18:22:56.712605+00:00",
+                          "enabled": true,
+                          "frequency": "daily",
+                          "index_id": "8cbf7ba6-4135-438e-a3c3-4a89a3298905",
+                          "name": "daily-compliance-backup",
+                          "next_scheduled_run": "2026-04-03T06:00:00+00:00",
+                          "project_id": "71ce31ea-75f7-45d6-a147-ef67f661a1b0",
+                          "retention_expire_after_days": 90,
+                          "schedule_id": "e88f7273-42aa-47e9-af73-593827136867",
+                          "schedule_type": "time-based"
+                        }
+                      ]
+                    }
+                  },
+                  "empty": {
+                    "summary": "No schedules configured",
+                    "value": {
+                      "data": [ ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Scheduled backups are not available for the caller's plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "scheduled-backups-plan": {
+                    "summary": "Scheduled backups not enabled for plan",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Scheduled backups are not available for your plan"
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Index not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "index-not-found": {
+                    "summary": "Index not found",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Index example-index not found."
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Manage Indexes"
+        ],
+        "summary": "Create a backup schedule for an index",
+        "description": "Create a time-based backup schedule for the specified index.",
+        "operationId": "db_control_2026_04_create_backup_schedule",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "index_name",
+            "in": "path",
+            "description": "Name of the index to attach the backup schedule to.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Schedule name, cadence, and retention for automatic backups.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBackupScheduleRequest"
+              },
+              "examples": {
+                "daily-schedule": {
+                  "summary": "Daily backup with 90-day retention",
+                  "value": {
+                    "name": "daily-compliance-backup",
+                    "retention": {
+                      "expire_after_days": 90
+                    },
+                    "schedule": {
+                      "frequency": "daily",
+                      "type": "time-based"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The backup schedule was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupScheduleResponse"
+                },
+                "examples": {
+                  "created": {
+                    "summary": "New backup schedule",
+                    "value": {
+                      "created_at": "2026-04-02T18:22:56.712605+00:00",
+                      "enabled": true,
+                      "frequency": "daily",
+                      "index_id": "8cbf7ba6-4135-438e-a3c3-4a89a3298905",
+                      "name": "daily-compliance-backup",
+                      "next_scheduled_run": "2026-04-03T06:00:00+00:00",
+                      "project_id": "71ce31ea-75f7-45d6-a147-ef67f661a1b0",
+                      "retention_expire_after_days": 90,
+                      "schedule_id": "e88f7273-42aa-47e9-af73-593827136867",
+                      "schedule_type": "time-based"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Scheduled backups are not available for the caller's plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "scheduled-backups-plan": {
+                    "summary": "Scheduled backups not enabled for plan",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Scheduled backups are not available for your plan"
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Index not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "index-not-found": {
+                    "summary": "Index not found",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Index example-index not found."
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The index already has an enabled backup schedule.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "schedule-already-exists": {
+                    "summary": "Index already has an enabled schedule",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "This index already has an enabled backup schedule. Disable or delete it first."
+                      },
+                      "status": 409
                     }
                   }
                 }
@@ -9301,7 +9849,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index from a backup",
-        "description": "Create an index from a backup.",
+        "description": "Create an index from a backup. For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.",
         "operationId": "db_control_2026_04_create_index_from_backup_operation",
         "parameters": [
           {
@@ -9331,6 +9879,31 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateIndexFromBackupRequest"
+              },
+              "examples": {
+                "on-demand": {
+                  "summary": "Restore with on-demand read capacity (default)",
+                  "value": {
+                    "name": "restored-index"
+                  }
+                },
+                "dedicated": {
+                  "summary": "Restore directly onto dedicated read nodes",
+                  "value": {
+                    "name": "restored-drn-index",
+                    "read_capacity": {
+                      "dedicated": {
+                        "manual": {
+                          "replicas": 2,
+                          "shards": 2
+                        },
+                        "node_type": "t1",
+                        "scaling": "Manual"
+                      },
+                      "mode": "Dedicated"
+                    }
+                  }
+                }
               }
             }
           },
@@ -9483,6 +10056,689 @@
                         "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
                       },
                       "status": 422
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/db_control_2026-04/backup-schedules/{schedule_id}": {
+      "get": {
+        "tags": [
+          "Manage Indexes"
+        ],
+        "summary": "Describe a backup schedule",
+        "description": "Get a single backup schedule by ID.",
+        "operationId": "db_control_2026_04_describe_backup_schedule",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "description": "The ID of the backup schedule.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "e88f7273-42aa-47e9-af73-593827136867"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The backup schedule configuration and metadata.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupScheduleResponse"
+                },
+                "examples": {
+                  "schedule": {
+                    "summary": "Active daily schedule",
+                    "value": {
+                      "created_at": "2026-04-02T18:22:56.712605+00:00",
+                      "enabled": true,
+                      "frequency": "daily",
+                      "index_id": "8cbf7ba6-4135-438e-a3c3-4a89a3298905",
+                      "name": "daily-compliance-backup",
+                      "next_scheduled_run": "2026-04-03T06:00:00+00:00",
+                      "project_id": "71ce31ea-75f7-45d6-a147-ef67f661a1b0",
+                      "retention_expire_after_days": 90,
+                      "schedule_id": "e88f7273-42aa-47e9-af73-593827136867",
+                      "schedule_type": "time-based"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Scheduled backups are not available for the caller's plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "scheduled-backups-plan": {
+                    "summary": "Scheduled backups not enabled for plan",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Scheduled backups are not available for your plan"
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Backup schedule not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "schedule-not-found": {
+                    "summary": "Backup schedule not found",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Backup schedule not found."
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Manage Indexes"
+        ],
+        "summary": "Delete a backup schedule",
+        "description": "Permanently remove a backup schedule.",
+        "operationId": "db_control_2026_04_delete_backup_schedule",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "description": "The ID of the backup schedule to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "e88f7273-42aa-47e9-af73-593827136867"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The backup schedule was deleted. No response body is returned."
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Scheduled backups are not available for the caller's plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "scheduled-backups-plan": {
+                    "summary": "Scheduled backups not enabled for plan",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Scheduled backups are not available for your plan"
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Backup schedule not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "schedule-not-found": {
+                    "summary": "Backup schedule not found",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Backup schedule not found."
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Manage Indexes"
+        ],
+        "summary": "Update a backup schedule",
+        "description": "Update frequency, retention, or enabled state for a backup schedule.\nRe-enabling a disabled schedule (`enabled: true`) enqueues a new backup operation.",
+        "operationId": "db_control_2026_04_update_backup_schedule",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "description": "The ID of the backup schedule to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "e88f7273-42aa-47e9-af73-593827136867"
+          }
+        ],
+        "requestBody": {
+          "description": "Fields to update. Omitted fields are unchanged.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBackupScheduleRequest"
+              },
+              "examples": {
+                "update-frequency-retention-disable": {
+                  "summary": "Weekly cadence, shorter retention, disable schedule",
+                  "value": {
+                    "enabled": false,
+                    "frequency": "weekly",
+                    "retention": {
+                      "expire_after_days": 30
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The updated backup schedule.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupScheduleResponse"
+                },
+                "examples": {
+                  "updated": {
+                    "summary": "Schedule after update",
+                    "value": {
+                      "created_at": "2026-04-02T18:22:56.712605+00:00",
+                      "enabled": false,
+                      "frequency": "weekly",
+                      "index_id": "8cbf7ba6-4135-438e-a3c3-4a89a3298905",
+                      "name": "daily-compliance-backup",
+                      "project_id": "71ce31ea-75f7-45d6-a147-ef67f661a1b0",
+                      "retention_expire_after_days": 30,
+                      "schedule_id": "e88f7273-42aa-47e9-af73-593827136867",
+                      "schedule_type": "time-based"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The request body included invalid request parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "index-metric-validation-error": {
+                    "summary": "Validation error",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Bad request. The request body included invalid request parameters."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Scheduled backups are not available for the caller's plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "scheduled-backups-plan": {
+                    "summary": "Scheduled backups not enabled for plan",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Scheduled backups are not available for your plan"
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Backup schedule not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "schedule-not-found": {
+                    "summary": "Backup schedule not found",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Backup schedule not found."
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "missing-field": {
+                    "summary": "Unprocessable entity",
+                    "value": {
+                      "error": {
+                        "code": "UNPROCESSABLE_ENTITY",
+                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                      },
+                      "status": 422
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/db_control_2026-04/backup-schedules/{schedule_id}/history": {
+      "get": {
+        "tags": [
+          "Manage Indexes"
+        ],
+        "summary": "List backup history for a schedule",
+        "description": "Return backups that were created by the specified backup schedule.",
+        "operationId": "db_control_2026_04_list_backup_schedule_history",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-04"
+            }
+          },
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "description": "The ID of the backup schedule.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "e88f7273-42aa-47e9-af73-593827136867"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "The token to use to retrieve the next page of results.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Backups produced by this schedule.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BackupScheduleHistoryList"
+                },
+                "examples": {
+                  "history": {
+                    "summary": "Ready backup and paginated final page",
+                    "value": {
+                      "data": [
+                        {
+                          "backup_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                          "cloud": "aws",
+                          "created_at": "2026-04-03T06:00:00+00:00",
+                          "dimension": 1536,
+                          "metric": "cosine",
+                          "name": "daily-compliance-backup-20260403T060000Z",
+                          "namespace_count": 1,
+                          "record_count": 500000,
+                          "region": "us-east-1",
+                          "size_bytes": 104857600,
+                          "source_index_id": "8cbf7ba6-4135-438e-a3c3-4a89a3298905",
+                          "source_index_name": "my-index",
+                          "status": "Ready"
+                        }
+                      ]
+                    }
+                  },
+                  "scheduled-row": {
+                    "summary": "Backup waiting to run",
+                    "value": {
+                      "data": [
+                        {
+                          "backup_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+                          "cloud": "aws",
+                          "created_at": "2026-04-03T06:00:01+00:00",
+                          "dimension": 1536,
+                          "metric": "cosine",
+                          "name": "daily-compliance-backup-20260404T060000Z",
+                          "namespace_count": 0,
+                          "record_count": 0,
+                          "region": "us-east-1",
+                          "scheduled_execution_at": "2026-04-04T06:00:00+00:00",
+                          "size_bytes": 0,
+                          "source_index_id": "8cbf7ba6-4135-438e-a3c3-4a89a3298905",
+                          "source_index_name": "my-index",
+                          "status": "Scheduled"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Scheduled backups are not available for the caller's plan.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "scheduled-backups-plan": {
+                    "summary": "Scheduled backups not enabled for plan",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Scheduled backups are not available for your plan"
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Backup schedule not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db_control_2026_04_ErrorResponse"
+                },
+                "examples": {
+                  "schedule-not-found": {
+                    "summary": "Backup schedule not found",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Backup schedule not found."
+                      },
+                      "status": 404
                     }
                   }
                 }
@@ -13233,66 +14489,6 @@
           }
         }
       },
-      "UpdateAssistantResponse": {
-        "type": "object",
-        "properties": {
-          "assistant_name": {
-            "type": "string",
-            "description": "The assistant name."
-          },
-          "instructions": {
-            "type": "string",
-            "description": "Guidance applied to all responses generated by the assistant.",
-            "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
-          },
-          "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.",
-            "example": {
-              "role": "Customer Support Helper",
-              "team": "Operations"
-            }
-          }
-        }
-      },
-      "CreateAssistantRequest": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 63,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the assistant. Resource name must be 1-63 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or `-`.\n",
-            "example": "example-assistant"
-          },
-          "instructions": {
-            "type": "string",
-            "description": "Guidance applied to all responses generated by the assistant. Maximum 16 KB.",
-            "nullable": true,
-            "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
-          },
-          "metadata": {
-            "type": "object",
-            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
-            "example": {
-              "role": "Customer Support Helper",
-              "team": "Operations"
-            }
-          },
-          "region": {
-            "type": "string",
-            "description": "The region to deploy the assistant in. Our current options are either `us` or `eu`. Defaults to `us`.",
-            "x-enum": [
-              "us",
-              "eu"
-            ]
-          }
-        },
-        "description": "The configuration needed to create an assistant."
-      },
       "Assistant": {
         "required": [
           "name",
@@ -13361,9 +14557,19 @@
         },
         "description": "Describes the configuration and status of a Pinecone Assistant."
       },
-      "UpdateAssistantRequest": {
+      "CreateAssistantRequest": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
+          "name": {
+            "maxLength": 63,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the assistant. Resource name must be 1-63 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or `-`.\n",
+            "example": "example-assistant"
+          },
           "instructions": {
             "type": "string",
             "description": "Guidance applied to all responses generated by the assistant. Maximum 16 KB.",
@@ -13373,45 +14579,21 @@
           "metadata": {
             "type": "object",
             "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
-            "nullable": true,
             "example": {
               "role": "Customer Support Helper",
               "team": "Operations"
             }
-          }
-        },
-        "description": "The configuration updates for the assistant."
-      },
-      "ListAssistantsResponse": {
-        "type": "object",
-        "properties": {
-          "assistants": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Assistant"
-            },
-            "description": "The list of assistants that exist in the project."
           },
-          "pagination": {
-            "$ref": "#/components/schemas/PaginationResponse"
-          }
-        }
-      },
-      "PaginationResponse": {
-        "required": [
-          "next"
-        ],
-        "type": "object",
-        "properties": {
-          "next": {
+          "region": {
             "type": "string",
-            "description": "The token to use to retrieve the next page of results."
+            "description": "The region to deploy the assistant in. Our current options are either `us` or `eu`. Defaults to `us`.",
+            "x-enum": [
+              "us",
+              "eu"
+            ]
           }
         },
-        "description": "Object that contains the next pagination token to continue a previous listing operation.",
-        "example": {
-          "next": "dXNlcl9pZD11c2VyXzE="
-        }
+        "description": "The configuration needed to create an assistant."
       },
       "assistant_control_2026_04_ErrorResponse": {
         "required": [
@@ -13481,6 +14663,80 @@
             "message": "Too many get or list assistant requests, try again later"
           },
           "status": 429
+        }
+      },
+      "ListAssistantsResponse": {
+        "type": "object",
+        "properties": {
+          "assistants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assistant"
+            },
+            "description": "The list of assistants that exist in the project."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationResponse"
+          }
+        }
+      },
+      "PaginationResponse": {
+        "required": [
+          "next"
+        ],
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "The token to use to retrieve the next page of results."
+          }
+        },
+        "description": "Object that contains the next pagination token to continue a previous listing operation.",
+        "example": {
+          "next": "dXNlcl9pZD11c2VyXzE="
+        }
+      },
+      "UpdateAssistantRequest": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "type": "string",
+            "description": "Guidance applied to all responses generated by the assistant. Maximum 16 KB.",
+            "nullable": true,
+            "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes. Maximum size is 16KB.",
+            "nullable": true,
+            "example": {
+              "role": "Customer Support Helper",
+              "team": "Operations"
+            }
+          }
+        },
+        "description": "The configuration updates for the assistant."
+      },
+      "UpdateAssistantResponse": {
+        "type": "object",
+        "properties": {
+          "assistant_name": {
+            "type": "string",
+            "description": "The assistant name."
+          },
+          "instructions": {
+            "type": "string",
+            "description": "Guidance applied to all responses generated by the assistant.",
+            "example": "Answer questions with clear, helpful answers. Keep the tone friendly and easy to follow."
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Optional metadata associated with the assistant. Metadata is a JSON object that can store custom organizational data, tags, and attributes.",
+            "example": {
+              "role": "Customer Support Helper",
+              "team": "Operations"
+            }
+          }
         }
       },
       "AssistantFileModel": {
@@ -14483,7 +15739,7 @@
             "example": 50
           }
         },
-        "description": "The OperationModel describes the status of an ongoing or completed server operation."
+        "description": "Describes the status of an ongoing or completed server operation."
       },
       "assistant_data_2026_04_PaginationResponse": {
         "required": [
@@ -14943,125 +16199,594 @@
         },
         "description": "Contains the token usage details for LLM interactions, including tokens used in requests (`prompt_tokens`), tokens used in responses (`completion_tokens`), and the total number of tokens (`total_tokens`)."
       },
-      "CreateIndexFromBackupRequest": {
+      "BackupList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BackupModel"
+            },
+            "description": "List of backup objects"
+          },
+          "pagination": {
+            "type": "object",
+            "allOf": [
+              {
+                "required": [
+                  "next"
+                ],
+                "type": "object",
+                "properties": {
+                  "next": {
+                    "type": "string",
+                    "description": "The token to use to retrieve the next page of results.",
+                    "example": "dXNlcl9pZD11c2VyXzE="
+                  }
+                },
+                "description": "The pagination object that is returned with paginated responses.",
+                "example": {
+                  "next": "dXNlcl9pZD11c2VyXzE="
+                },
+                "x-component-name": "PaginationResponse"
+              }
+            ],
+            "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results.",
+            "nullable": true
+          }
+        },
+        "description": "The list of backups that exist in the project."
+      },
+      "BackupModel": {
         "required": [
-          "name"
+          "backup_id",
+          "source_index_name",
+          "source_index_id",
+          "status",
+          "cloud",
+          "region"
         ],
         "type": "object",
         "properties": {
-          "name": {
-            "maxLength": 45,
-            "minLength": 1,
+          "backup_id": {
             "type": "string",
-            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n",
-            "example": "example-index"
+            "description": "Unique identifier for the backup.",
+            "example": "670e8400-e29b-41d4-a716-446655440001"
+          },
+          "source_index_name": {
+            "type": "string",
+            "description": "Name of the index from which the backup was taken.",
+            "example": "my-index"
+          },
+          "source_index_id": {
+            "type": "string",
+            "description": "ID of the index.",
+            "example": "670e8400-e29b-41d4-a716-446655440000"
+          },
+          "source_index_deleted_at": {
+            "type": "string",
+            "description": "The deletion timestamp when the source index has been deleted. Not present for backups associated with an active index.",
+            "format": "date-time",
+            "example": "2024-03-05T12:00:00Z"
+          },
+          "name": {
+            "type": "string",
+            "description": "Optional user-defined name for the backup.",
+            "example": "backup-2025-02-04"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description providing context for the backup.",
+            "example": "Backup before bulk update."
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the backup (e.g., Initializing, Ready, Failed).",
+            "example": "Ready"
+          },
+          "cloud": {
+            "type": "string",
+            "description": "Cloud provider where the backup is stored.",
+            "example": "aws"
+          },
+          "region": {
+            "type": "string",
+            "description": "Cloud region where the backup is stored.",
+            "example": "us-east-1"
+          },
+          "dimension": {
+            "maximum": 20000,
+            "minimum": 1,
+            "type": "integer",
+            "description": "The dimensions of the vectors to be inserted in the index.",
+            "format": "int32",
+            "example": 1536
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If the 'vector_type' is 'sparse', the metric must be 'dotproduct'. If the `vector_type` is `dense`, the metric defaults to 'cosine'.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+            "x-enum": [
+              "cosine",
+              "euclidean",
+              "dotproduct"
+            ]
+          },
+          "schema": {
+            "$ref": "#/components/schemas/MetadataSchema"
+          },
+          "record_count": {
+            "type": "integer",
+            "description": "Total number of records in the backup.",
+            "example": 120000
+          },
+          "namespace_count": {
+            "type": "integer",
+            "description": "Number of namespaces in the backup.",
+            "example": 3
+          },
+          "size_bytes": {
+            "type": "integer",
+            "description": "Size of the backup in bytes.",
+            "example": 10000000
           },
           "tags": {
             "$ref": "#/components/schemas/IndexTags"
           },
-          "deletion_protection": {
-            "$ref": "#/components/schemas/DeletionProtection"
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the backup was created."
           }
         },
-        "description": "The configuration needed to create a Pinecone index from a backup."
+        "description": "The BackupModel describes the configuration and status of a Pinecone backup."
       },
-      "ReadCapacity": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ReadCapacityOnDemandSpec"
-          },
-          {
-            "$ref": "#/components/schemas/ReadCapacityDedicatedSpec"
-          }
-        ],
-        "description": "By default the index will be created with read capacity  mode `OnDemand`. If you prefer to allocate dedicated read  nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`.",
-        "discriminator": {
-          "propertyName": "mode",
-          "mapping": {
-            "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpec",
-            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpec"
-          }
-        }
-      },
-      "MetadataSchema": {
+      "BackupScheduleHistoryItem": {
         "required": [
-          "fields"
+          "backup_id",
+          "source_index_id",
+          "source_index_name",
+          "name",
+          "status",
+          "cloud",
+          "region",
+          "dimension",
+          "metric",
+          "record_count",
+          "namespace_count",
+          "size_bytes",
+          "created_at"
         ],
         "type": "object",
         "properties": {
-          "fields": {
+          "backup_id": {
+            "type": "string",
+            "description": "Unique identifier for the backup.",
+            "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+          },
+          "source_index_id": {
+            "type": "string",
+            "description": "ID of the index from which the backup was taken.",
+            "example": "8cbf7ba6-4135-438e-a3c3-4a89a3298905"
+          },
+          "source_index_name": {
+            "type": "string",
+            "description": "Name of the index from which the backup was taken.",
+            "example": "my-index"
+          },
+          "tags": {
             "type": "object",
             "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "filterable": {
-                  "type": "boolean",
-                  "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
-                }
-              }
+              "type": "string"
             },
-            "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+            "description": "Custom user tags on this backup snapshot. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'. Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string. `null` when no tags are set.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the backup.",
+            "example": "daily-compliance-backup-20260403T060000Z"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description of the backup, or `null`.",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "Current lifecycle status of the backup.",
+            "example": "Ready",
+            "x-enum": [
+              "Scheduled",
+              "Initializing",
+              "Ready",
+              "InitializationFailed"
+            ]
+          },
+          "cloud": {
+            "type": "string",
+            "description": "Cloud provider where the backup is stored.",
+            "example": "aws"
+          },
+          "region": {
+            "type": "string",
+            "description": "Cloud region where the backup is stored.",
+            "example": "us-east-1"
+          },
+          "dimension": {
+            "maximum": 20000,
+            "minimum": 1,
+            "type": "integer",
+            "description": "The dimensions of the vectors to be inserted in the index.",
+            "format": "int32",
+            "example": 1536
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If the 'vector_type' is 'sparse', the metric must be 'dotproduct'. If the `vector_type` is `dense`, the metric defaults to 'cosine'.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+            "x-enum": [
+              "cosine",
+              "euclidean",
+              "dotproduct"
+            ]
+          },
+          "schema": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MetadataSchema"
+              }
+            ],
+            "description": "Metadata schema associated with the backup, or `null` if not applicable."
+          },
+          "record_count": {
+            "type": "integer",
+            "description": "Total number of records in the backup.",
+            "format": "int64",
+            "example": 500000
+          },
+          "namespace_count": {
+            "type": "integer",
+            "description": "Number of namespaces in the backup.",
+            "format": "int32",
+            "example": 1
+          },
+          "size_bytes": {
+            "type": "integer",
+            "description": "Approximate stored size of this scheduled-backup snapshot, in bytes.",
+            "format": "int64",
+            "example": 104857600
+          },
+          "created_at": {
+            "type": "string",
+            "description": "RFC 3339 timestamp when the backup record was created.",
+            "format": "date-time",
+            "example": "2026-04-03T06:00:00+00:00"
+          },
+          "scheduled_execution_at": {
+            "type": "string",
+            "description": "Present when `status` is `Scheduled`. RFC 3339 timestamp when the backup is planned to run.",
+            "format": "date-time",
+            "example": "2026-04-04T06:00:00+00:00"
           }
         },
-        "description": "Schema for the behavior of Pinecone's internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.",
-        "example": {
-          "fields": {
-            "description": {
-              "filterable": true
+        "description": "A backup produced by a schedule, including lifecycle status. When `status` is `Scheduled`, `scheduled_execution_at` is set to the planned run time."
+      },
+      "BackupScheduleHistoryList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BackupScheduleHistoryItem"
             },
-            "genre": {
-              "filterable": true
-            },
-            "year": {
-              "filterable": true
-            }
+            "description": "Backups from this schedule for the current page."
+          },
+          "pagination": {
+            "type": "object",
+            "allOf": [
+              {
+                "required": [
+                  "next"
+                ],
+                "type": "object",
+                "properties": {
+                  "next": {
+                    "type": "string",
+                    "description": "The token to use to retrieve the next page of results.",
+                    "example": "dXNlcl9pZD11c2VyXzE="
+                  }
+                },
+                "description": "The pagination object that is returned with paginated responses.",
+                "example": {
+                  "next": "dXNlcl9pZD11c2VyXzE="
+                },
+                "x-component-name": "PaginationResponse"
+              }
+            ],
+            "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results.",
+            "nullable": true
           }
+        },
+        "description": "Paginated list of backups created by a specific backup schedule."
+      },
+      "BackupScheduleList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BackupScheduleResponse"
+            },
+            "description": "Backup schedules returned for this page."
+          },
+          "pagination": {
+            "type": "object",
+            "allOf": [
+              {
+                "required": [
+                  "next"
+                ],
+                "type": "object",
+                "properties": {
+                  "next": {
+                    "type": "string",
+                    "description": "The token to use to retrieve the next page of results.",
+                    "example": "dXNlcl9pZD11c2VyXzE="
+                  }
+                },
+                "description": "The pagination object that is returned with paginated responses.",
+                "example": {
+                  "next": "dXNlcl9pZD11c2VyXzE="
+                },
+                "x-component-name": "PaginationResponse"
+              }
+            ],
+            "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results.",
+            "nullable": true
+          }
+        },
+        "description": "Paginated list of backup schedules for an index."
+      },
+      "BackupScheduleRequestSchedule": {
+        "required": [
+          "type",
+          "frequency"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Schedule category. Only time-based schedules are supported.",
+            "example": "time-based",
+            "x-enum": [
+              "time-based"
+            ]
+          },
+          "frequency": {
+            "type": "string",
+            "description": "How often the scheduled backup runs.",
+            "example": "daily",
+            "x-enum": [
+              "daily",
+              "weekly",
+              "monthly"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "description": "Time-based schedule configuration for automatic index backups. Only time-based schedules are supported."
+      },
+      "BackupScheduleResponse": {
+        "required": [
+          "schedule_id",
+          "name",
+          "index_id",
+          "project_id",
+          "schedule_type",
+          "frequency",
+          "retention_expire_after_days",
+          "enabled",
+          "next_scheduled_run",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "schedule_id": {
+            "type": "string",
+            "description": "Unique identifier for the backup schedule.",
+            "example": "e88f7273-42aa-47e9-af73-593827136867"
+          },
+          "name": {
+            "type": "string",
+            "description": "User-defined name for the backup schedule.",
+            "example": "daily-compliance-backup"
+          },
+          "index_id": {
+            "type": "string",
+            "description": "ID of the index this schedule backs up.",
+            "example": "8cbf7ba6-4135-438e-a3c3-4a89a3298905"
+          },
+          "project_id": {
+            "type": "string",
+            "description": "Pinecone project that contains this schedule (same project as the source index).",
+            "example": "71ce31ea-75f7-45d6-a147-ef67f661a1b0"
+          },
+          "schedule_type": {
+            "type": "string",
+            "description": "Schedule category. Only time-based schedules are supported.",
+            "example": "time-based",
+            "x-enum": [
+              "time-based"
+            ]
+          },
+          "frequency": {
+            "type": "string",
+            "description": "How often the scheduled backup runs.",
+            "example": "daily",
+            "x-enum": [
+              "daily",
+              "weekly",
+              "monthly"
+            ]
+          },
+          "retention_expire_after_days": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of days backups created by this schedule are retained.",
+            "format": "int32",
+            "example": 90
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the schedule is active. Disabled schedules do not run.",
+            "example": true
+          },
+          "next_scheduled_run": {
+            "type": "string",
+            "description": "Always present. RFC 3339 timestamp of the next planned backup run when `enabled` is `true`. `null` when `enabled` is `false`; no backup is scheduled until the schedule is re-enabled.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-04-03T06:00:00+00:00"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "RFC 3339 timestamp when the schedule was created.",
+            "format": "date-time",
+            "example": "2026-04-02T18:22:56.712605+00:00"
+          }
+        },
+        "description": "Describes a backup schedule for an index."
+      },
+      "BackupScheduleRetentionInput": {
+        "required": [
+          "expire_after_days"
+        ],
+        "type": "object",
+        "properties": {
+          "expire_after_days": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of days to retain each backup created by this schedule. The maximum allowed value is determined by your project configuration (`max_backup_retention_days`).",
+            "format": "int32",
+            "example": 90
+          }
+        },
+        "additionalProperties": false,
+        "description": "Retention policy for backups created by this schedule. Backups older than the retention window may be removed."
+      },
+      "ByocSpec": {
+        "title": "BYOC",
+        "required": [
+          "environment"
+        ],
+        "type": "object",
+        "properties": {
+          "environment": {
+            "type": "string",
+            "description": "The environment where the index is hosted.",
+            "example": "aws-us-east-1-b921"
+          },
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacity"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/MetadataSchema"
+          }
+        },
+        "description": "Configuration needed to deploy an index in a BYOC environment.",
+        "example": {
+          "environment": "aws-us-east-1-b921"
         }
       },
-      "IndexSpec": {
-        "type": "object",
-        "oneOf": [
-          {
-            "title": "Serverless",
-            "required": [
-              "serverless"
-            ],
-            "type": "object",
-            "properties": {
-              "serverless": {
-                "$ref": "#/components/schemas/ServerlessSpec"
-              }
-            },
-            "additionalProperties": false
-          },
-          {
-            "title": "Pod-based",
-            "required": [
-              "pod"
-            ],
-            "type": "object",
-            "properties": {
-              "pod": {
-                "$ref": "#/components/schemas/PodSpec"
-              }
-            },
-            "additionalProperties": false
-          },
-          {
-            "title": "BYOC",
-            "required": [
-              "byoc"
-            ],
-            "type": "object",
-            "properties": {
-              "byoc": {
-                "$ref": "#/components/schemas/ByocSpec"
-              }
-            },
-            "additionalProperties": false
-          }
+      "ByocSpecResponse": {
+        "title": "BYOC",
+        "required": [
+          "environment",
+          "read_capacity"
         ],
-        "description": "The spec object defines how the index should be deployed.\n\nFor serverless indexes, you define only the [cloud and region](http://docs.pinecone.io/guides/index-data/create-an-index#cloud-regions) where the index should be hosted. For pod-based indexes, you define the [environment](http://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes#pod-environments) where the index should be hosted, the [pod type and size](http://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes#pod-types) to use, and other index characteristics.\n"
+        "type": "object",
+        "properties": {
+          "environment": {
+            "type": "string",
+            "description": "The environment where the index is hosted.",
+            "example": "aws-us-east-1-b921"
+          },
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacityResponse"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/MetadataSchema"
+          }
+        },
+        "description": "Configuration of a BYOC index."
+      },
+      "CollectionList": {
+        "type": "object",
+        "properties": {
+          "collections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CollectionModel"
+            },
+            "description": "List of collections in the project"
+          }
+        },
+        "description": "The list of collections that exist in the project."
+      },
+      "CollectionModel": {
+        "required": [
+          "name",
+          "status",
+          "environment"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the collection.",
+            "example": "example-collection"
+          },
+          "size": {
+            "type": "integer",
+            "description": "The size of the collection in bytes.",
+            "format": "int64",
+            "example": 10000000
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the collection.\nPossible values: `Initializing`, `Ready`, or `Terminating`.",
+            "example": "Initializing",
+            "x-enum": [
+              "Initializing",
+              "Ready",
+              "Terminating"
+            ]
+          },
+          "dimension": {
+            "maximum": 20000,
+            "minimum": 1,
+            "type": "integer",
+            "description": "The dimension of the vectors stored in each record held in the collection.",
+            "format": "int32",
+            "example": 1536
+          },
+          "vector_count": {
+            "type": "integer",
+            "description": "The number of records stored in the collection.",
+            "format": "int32",
+            "example": 120000
+          },
+          "environment": {
+            "type": "string",
+            "description": "The environment where the collection is hosted.",
+            "example": "us-east1-gcp"
+          }
+        },
+        "description": "The CollectionModel describes the configuration and status of a Pinecone collection."
       },
       "ConfigureIndexRequest": {
         "type": "object",
@@ -15185,53 +16910,268 @@
         },
         "description": "Configuration used to scale an index."
       },
-      "IndexTags": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string.",
-        "example": {
-          "tag0": "val0",
-          "tag1": "val1"
-        }
-      },
-      "CollectionList": {
+      "CreateBackupRequest": {
         "type": "object",
         "properties": {
-          "collections": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CollectionModel"
-            },
-            "description": "List of collections in the project"
+          "name": {
+            "type": "string",
+            "description": "The name of the backup."
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the backup."
           }
         },
-        "description": "The list of collections that exist in the project."
+        "description": "The configuration needed to create a backup of an index."
       },
-      "ReadCapacityOnDemandSpecResponse": {
-        "title": "On-demand",
+      "CreateBackupScheduleRequest": {
         "required": [
-          "mode",
-          "status"
+          "name",
+          "schedule",
+          "retention"
         ],
         "type": "object",
         "properties": {
-          "mode": {
+          "name": {
             "type": "string",
-            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
+            "description": "User-defined name for the backup schedule.",
+            "example": "daily-compliance-backup"
           },
-          "status": {
-            "$ref": "#/components/schemas/ReadCapacityStatus"
+          "schedule": {
+            "$ref": "#/components/schemas/BackupScheduleRequestSchedule"
+          },
+          "retention": {
+            "$ref": "#/components/schemas/BackupScheduleRetentionInput"
           }
         },
         "additionalProperties": false,
-        "example": {
-          "mode": "OnDemand",
-          "status": {
-            "state": "Ready"
+        "description": "Request body for creating a backup schedule on an index."
+      },
+      "CreateCollectionRequest": {
+        "required": [
+          "name",
+          "source"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 45,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the collection to be created. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n"
+          },
+          "source": {
+            "type": "string",
+            "description": "The name of the index to be used as the source for the collection.",
+            "example": "example-source-index"
           }
-        }
+        },
+        "description": "The configuration needed to create a Pinecone collection."
+      },
+      "CreateIndexForModelRequest": {
+        "required": [
+          "name",
+          "cloud",
+          "region",
+          "embed"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 45,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n",
+            "example": "example-index"
+          },
+          "cloud": {
+            "type": "string",
+            "description": "The public cloud where you would like your index hosted.\nPossible values: `gcp`, `aws`, or `azure`.",
+            "example": "aws",
+            "x-enum": [
+              "gcp",
+              "aws",
+              "azure"
+            ]
+          },
+          "region": {
+            "type": "string",
+            "description": "The region where you would like your index to be created.",
+            "example": "us-east-1"
+          },
+          "deletion_protection": {
+            "$ref": "#/components/schemas/DeletionProtection"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/IndexTags"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/MetadataSchema"
+          },
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacity"
+          },
+          "embed": {
+            "required": [
+              "model",
+              "field_map"
+            ],
+            "type": "object",
+            "properties": {
+              "model": {
+                "type": "string",
+                "description": "The name of the embedding model to use for the index.",
+                "example": "multilingual-e5-large"
+              },
+              "metric": {
+                "type": "string",
+                "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+                "x-enum": [
+                  "cosine",
+                  "euclidean",
+                  "dotproduct"
+                ]
+              },
+              "field_map": {
+                "type": "object",
+                "description": "Identifies the name of the text field from your document model that will be embedded.",
+                "example": {
+                  "text": "your-text-field"
+                }
+              },
+              "dimension": {
+                "type": "integer",
+                "description": "The dimension of embedding vectors produced for the index."
+              },
+              "read_parameters": {
+                "type": "object",
+                "description": "The read parameters for the embedding model."
+              },
+              "write_parameters": {
+                "type": "object",
+                "description": "The write parameters for the embedding model."
+              }
+            },
+            "description": "Specify the integrated inference embedding configuration for the index.\n\nOnce set the model cannot be changed, but you can later update the embedding configuration for an integrated inference index including field map, read parameters, or write parameters.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.",
+            "example": {
+              "field_map": {
+                "text": "your-text-field"
+              },
+              "metric": "cosine",
+              "model": "multilingual-e5-large",
+              "read_parameters": {
+                "input_type": "query",
+                "truncate": "NONE"
+              },
+              "write_parameters": {
+                "input_type": "passage"
+              }
+            }
+          }
+        },
+        "description": "The desired configuration for the index and associated embedding model."
+      },
+      "CreateIndexFromBackupRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 45,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n",
+            "example": "example-index"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/IndexTags"
+          },
+          "deletion_protection": {
+            "$ref": "#/components/schemas/DeletionProtection"
+          },
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacity"
+          }
+        },
+        "description": "The configuration needed to create a Pinecone index from a backup."
+      },
+      "CreateIndexFromBackupResponse": {
+        "required": [
+          "restore_job_id",
+          "index_id"
+        ],
+        "type": "object",
+        "properties": {
+          "restore_job_id": {
+            "type": "string",
+            "description": "The ID of the restore job that was created.",
+            "example": "670e8400-e29b-41d4-a716-446655440000"
+          },
+          "index_id": {
+            "type": "string",
+            "description": "The ID of the index that was created from the backup.",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "description": "The response for creating an index from a backup."
+      },
+      "CreateIndexRequest": {
+        "required": [
+          "name",
+          "spec"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 45,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n",
+            "example": "example-index"
+          },
+          "dimension": {
+            "maximum": 20000,
+            "minimum": 1,
+            "type": "integer",
+            "description": "The dimensions of the vectors to be inserted in the index.",
+            "format": "int32",
+            "example": 1536
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If the 'vector_type' is 'sparse', the metric must be 'dotproduct'. If the `vector_type` is `dense`, the metric defaults to 'cosine'.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+            "x-enum": [
+              "cosine",
+              "euclidean",
+              "dotproduct"
+            ]
+          },
+          "deletion_protection": {
+            "$ref": "#/components/schemas/DeletionProtection"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/IndexTags"
+          },
+          "spec": {
+            "$ref": "#/components/schemas/IndexSpec"
+          },
+          "vector_type": {
+            "type": "string",
+            "description": "The index vector type. You can use 'dense' or 'sparse'. If 'dense', the vector dimension must be specified.  If 'sparse', the vector dimension should not be specified.",
+            "default": "dense"
+          }
+        },
+        "description": "The configuration needed to create a Pinecone index."
+      },
+      "DeletionProtection": {
+        "type": "string",
+        "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: `disabled` or `enabled`.",
+        "default": "disabled",
+        "x-enum": [
+          "disabled",
+          "enabled"
+        ]
       },
       "db_control_2026_04_ErrorResponse": {
         "required": [
@@ -15304,101 +17244,18 @@
           "status": 429
         }
       },
-      "RestoreJobModel": {
-        "required": [
-          "restore_job_id",
-          "backup_id",
-          "target_index_name",
-          "target_index_id",
-          "status",
-          "created_at"
-        ],
+      "IndexList": {
         "type": "object",
         "properties": {
-          "restore_job_id": {
-            "type": "string",
-            "description": "Unique identifier for the restore job",
-            "example": "670e8400-e29b-41d4-a716-446655440001"
-          },
-          "backup_id": {
-            "type": "string",
-            "description": "Backup used for the restore",
-            "example": "670e8400-e29b-41d4-a716-446655440000"
-          },
-          "target_index_name": {
-            "type": "string",
-            "description": "Name of the index into which data is being restored",
-            "example": "sample-index"
-          },
-          "target_index_id": {
-            "type": "string",
-            "description": "ID of the index",
-            "example": "670e8400-e29b-41d4-a716-446655440002"
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the restore job",
-            "example": "Completed"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Timestamp when the restore job started",
-            "format": "date-time",
-            "example": "2025-02-04T13:00:00Z"
-          },
-          "completed_at": {
-            "type": "string",
-            "description": "Timestamp when the restore job finished",
-            "format": "date-time",
-            "example": "2025-02-04T14:00:00Z"
-          },
-          "percent_complete": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "number",
-            "description": "The progress made by the restore job out of 100",
-            "format": "float",
-            "example": 42.2
-          }
-        },
-        "description": "The RestoreJobModel describes the status of a restore job."
-      },
-      "ReadCapacityResponse": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ReadCapacityOnDemandSpecResponse"
-          },
-          {
-            "$ref": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
-          }
-        ],
-        "description": "Response containing read capacity configuration",
-        "discriminator": {
-          "propertyName": "mode",
-          "mapping": {
-            "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpecResponse",
-            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
-          }
-        }
-      },
-      "RestoreJobList": {
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
+          "indexes": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RestoreJobModel"
+              "$ref": "#/components/schemas/IndexModel"
             },
-            "description": "List of restore job objects"
-          },
-          "pagination": {
-            "$ref": "#/components/schemas/db_control_2026_04_PaginationResponse"
+            "description": "List of indexes in the project"
           }
         },
-        "description": "The list of restore jobs that exist in the project."
+        "description": "The list of indexes that exist in the project."
       },
       "IndexModel": {
         "required": [
@@ -15556,159 +17413,116 @@
         },
         "description": "The IndexModel describes the configuration and status of a Pinecone index."
       },
-      "CreateIndexForModelRequest": {
-        "required": [
-          "name",
-          "cloud",
-          "region",
-          "embed"
-        ],
+      "IndexSpec": {
         "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 45,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n",
-            "example": "example-index"
-          },
-          "cloud": {
-            "type": "string",
-            "description": "The public cloud where you would like your index hosted.\nPossible values: `gcp`, `aws`, or `azure`.",
-            "example": "aws",
-            "x-enum": [
-              "gcp",
-              "aws",
-              "azure"
-            ]
-          },
-          "region": {
-            "type": "string",
-            "description": "The region where you would like your index to be created.",
-            "example": "us-east-1"
-          },
-          "deletion_protection": {
-            "$ref": "#/components/schemas/DeletionProtection"
-          },
-          "tags": {
-            "$ref": "#/components/schemas/IndexTags"
-          },
-          "schema": {
-            "$ref": "#/components/schemas/MetadataSchema"
-          },
-          "read_capacity": {
-            "$ref": "#/components/schemas/ReadCapacity"
-          },
-          "embed": {
+        "oneOf": [
+          {
+            "title": "Serverless",
             "required": [
-              "model",
-              "field_map"
+              "serverless"
             ],
             "type": "object",
             "properties": {
-              "model": {
-                "type": "string",
-                "description": "The name of the embedding model to use for the index.",
-                "example": "multilingual-e5-large"
-              },
-              "metric": {
-                "type": "string",
-                "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
-                "x-enum": [
-                  "cosine",
-                  "euclidean",
-                  "dotproduct"
-                ]
-              },
-              "field_map": {
-                "type": "object",
-                "description": "Identifies the name of the text field from your document model that will be embedded.",
-                "example": {
-                  "text": "your-text-field"
-                }
-              },
-              "dimension": {
-                "type": "integer",
-                "description": "The dimension of embedding vectors produced for the index."
-              },
-              "read_parameters": {
-                "type": "object",
-                "description": "The read parameters for the embedding model."
-              },
-              "write_parameters": {
-                "type": "object",
-                "description": "The write parameters for the embedding model."
+              "serverless": {
+                "$ref": "#/components/schemas/ServerlessSpec"
               }
             },
-            "description": "Specify the integrated inference embedding configuration for the index.\n\nOnce set the model cannot be changed, but you can later update the embedding configuration for an integrated inference index including field map, read parameters, or write parameters.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.",
-            "example": {
-              "field_map": {
-                "text": "your-text-field"
-              },
-              "metric": "cosine",
-              "model": "multilingual-e5-large",
-              "read_parameters": {
-                "input_type": "query",
-                "truncate": "NONE"
-              },
-              "write_parameters": {
-                "input_type": "passage"
+            "additionalProperties": false
+          },
+          {
+            "title": "Pod-based",
+            "required": [
+              "pod"
+            ],
+            "type": "object",
+            "properties": {
+              "pod": {
+                "$ref": "#/components/schemas/PodSpec"
               }
+            },
+            "additionalProperties": false
+          },
+          {
+            "title": "BYOC",
+            "required": [
+              "byoc"
+            ],
+            "type": "object",
+            "properties": {
+              "byoc": {
+                "$ref": "#/components/schemas/ByocSpec"
+              }
+            },
+            "additionalProperties": false
+          }
+        ],
+        "description": "The spec object defines how the index should be deployed.\n\nFor serverless indexes, you define only the [cloud and region](http://docs.pinecone.io/guides/index-data/create-an-index#cloud-regions) where the index should be hosted. For pod-based indexes, you define the [environment](http://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes#pod-environments) where the index should be hosted, the [pod type and size](http://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes#pod-types) to use, and other index characteristics.\n"
+      },
+      "IndexTags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, '_', or '-'.  Values must be alphanumeric, ';', '@', '_', '-', '.', '+', or ' '. To unset a key, set the value to be an empty string.",
+        "example": {
+          "tag0": "val0",
+          "tag1": "val1"
+        }
+      },
+      "MetadataSchema": {
+        "required": [
+          "fields"
+        ],
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "filterable": {
+                  "type": "boolean",
+                  "description": "Whether the field is filterable. If true, the field is indexed and can be used in filters. Only true values are allowed."
+                }
+              }
+            },
+            "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique."
+          }
+        },
+        "description": "Schema for the behavior of Pinecone's internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.",
+        "example": {
+          "fields": {
+            "description": {
+              "filterable": true
+            },
+            "genre": {
+              "filterable": true
+            },
+            "year": {
+              "filterable": true
             }
           }
-        },
-        "description": "The desired configuration for the index and associated embedding model."
+        }
       },
-      "ServerlessSpec": {
-        "title": "Serverless",
+      "ModelIndexEmbed": {
         "required": [
-          "cloud",
-          "region"
+          "model"
         ],
         "type": "object",
         "properties": {
-          "cloud": {
+          "model": {
             "type": "string",
-            "description": "The public cloud where you would like your index hosted.\nPossible values: `gcp`, `aws`, or `azure`.",
-            "example": "aws",
+            "description": "The name of the embedding model used to create the index.",
+            "example": "multilingual-e5-large"
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
             "x-enum": [
-              "gcp",
-              "aws",
-              "azure"
+              "cosine",
+              "euclidean",
+              "dotproduct"
             ]
-          },
-          "region": {
-            "type": "string",
-            "description": "The region where you would like your index to be created.",
-            "example": "us-east-1"
-          },
-          "read_capacity": {
-            "$ref": "#/components/schemas/ReadCapacity"
-          },
-          "source_collection": {
-            "type": "string",
-            "description": "The name of the collection to be used as the source for the index.",
-            "example": "movie-embeddings"
-          },
-          "schema": {
-            "$ref": "#/components/schemas/MetadataSchema"
-          }
-        },
-        "description": "Configuration needed to deploy a serverless index."
-      },
-      "CreateIndexRequest": {
-        "required": [
-          "name",
-          "spec"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 45,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n",
-            "example": "example-index"
           },
           "dimension": {
             "maximum": 20000,
@@ -15718,190 +17532,41 @@
             "format": "int32",
             "example": 1536
           },
-          "metric": {
-            "type": "string",
-            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If the 'vector_type' is 'sparse', the metric must be 'dotproduct'. If the `vector_type` is `dense`, the metric defaults to 'cosine'.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
-            "x-enum": [
-              "cosine",
-              "euclidean",
-              "dotproduct"
-            ]
-          },
-          "deletion_protection": {
-            "$ref": "#/components/schemas/DeletionProtection"
-          },
-          "tags": {
-            "$ref": "#/components/schemas/IndexTags"
-          },
-          "spec": {
-            "$ref": "#/components/schemas/IndexSpec"
-          },
           "vector_type": {
             "type": "string",
             "description": "The index vector type. You can use 'dense' or 'sparse'. If 'dense', the vector dimension must be specified.  If 'sparse', the vector dimension should not be specified.",
             "default": "dense"
+          },
+          "field_map": {
+            "type": "object",
+            "description": "Identifies the name of the text field from your document model that is embedded.",
+            "example": {
+              "text": "your-text-field"
+            }
+          },
+          "read_parameters": {
+            "type": "object",
+            "description": "The read parameters for the embedding model."
+          },
+          "write_parameters": {
+            "type": "object",
+            "description": "The write parameters for the embedding model."
           }
         },
-        "description": "The configuration needed to create a Pinecone index."
-      },
-      "CreateBackupRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "The name of the backup."
-          },
-          "description": {
-            "type": "string",
-            "description": "A description of the backup."
-          }
-        },
-        "description": "The configuration needed to create a backup of an index."
-      },
-      "ReadCapacityDedicatedSpecResponse": {
-        "title": "Dedicated",
-        "required": [
-          "mode",
-          "dedicated",
-          "status"
-        ],
-        "type": "object",
-        "properties": {
-          "mode": {
-            "type": "string",
-            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
-          },
-          "dedicated": {
-            "$ref": "#/components/schemas/ReadCapacityDedicatedConfig"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ReadCapacityStatus"
-          }
-        },
-        "additionalProperties": false,
+        "description": "The embedding model and document fields mapped to embedding inputs.",
         "example": {
-          "dedicated": {
-            "manual": {
-              "replicas": 2,
-              "shards": 2
-            },
-            "node_type": "t1",
-            "scaling": "Manual"
+          "field_map": {
+            "text": "your-text-field"
           },
-          "mode": "Dedicated",
-          "status": {
-            "current_replicas": 2,
-            "current_shards": 2,
-            "state": "Ready"
+          "metric": "cosine",
+          "model": "multilingual-e5-large",
+          "read_parameters": {
+            "input_type": "query",
+            "truncate": "NONE"
+          },
+          "write_parameters": {
+            "input_type": "passage"
           }
-        }
-      },
-      "ReadCapacityDedicatedConfig": {
-        "type": "object",
-        "properties": {
-          "node_type": {
-            "type": "string",
-            "description": "The type of machines to use. Available options: `b1` and `t1`. `t1` includes increased processing power and memory."
-          },
-          "scaling": {
-            "type": "string",
-            "description": "The type of scaling strategy to use."
-          },
-          "manual": {
-            "$ref": "#/components/schemas/ScalingConfigManual"
-          }
-        },
-        "description": "Configuration for dedicated read capacity. See  [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on  how to configure dedicated read capacity."
-      },
-      "ReadCapacityDedicatedSpec": {
-        "title": "Dedicated",
-        "required": [
-          "mode",
-          "dedicated"
-        ],
-        "type": "object",
-        "properties": {
-          "mode": {
-            "type": "string",
-            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
-          },
-          "dedicated": {
-            "$ref": "#/components/schemas/ReadCapacityDedicatedConfig"
-          }
-        },
-        "example": {
-          "dedicated": {
-            "manual": {
-              "replicas": 1,
-              "shards": 1
-            },
-            "node_type": "t1",
-            "scaling": "Manual"
-          },
-          "mode": "Dedicated"
-        }
-      },
-      "CreateCollectionRequest": {
-        "required": [
-          "name",
-          "source"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 45,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the collection to be created. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or '-'.\n"
-          },
-          "source": {
-            "type": "string",
-            "description": "The name of the index to be used as the source for the collection.",
-            "example": "example-source-index"
-          }
-        },
-        "description": "The configuration needed to create a Pinecone collection."
-      },
-      "ScalingConfigManual": {
-        "type": "object",
-        "properties": {
-          "replicas": {
-            "minimum": 0,
-            "type": "integer",
-            "description": "The number of replicas to use. Replicas duplicate the compute resources and data of an index, allowing higher query throughput and availability. Setting replicas to 0 disables the index but can be used to reduce costs while usage is paused.",
-            "format": "int32"
-          },
-          "shards": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "The number of shards to use. Shards determine the storage capacity of an index, with each shard providing 250 GB of storage.",
-            "format": "int32"
-          }
-        },
-        "description": "The config to use for manual read capacity scaling."
-      },
-      "ByocSpec": {
-        "title": "BYOC",
-        "required": [
-          "environment"
-        ],
-        "type": "object",
-        "properties": {
-          "environment": {
-            "type": "string",
-            "description": "The environment where the index is hosted.",
-            "example": "aws-us-east-1-b921"
-          },
-          "read_capacity": {
-            "$ref": "#/components/schemas/ReadCapacity"
-          },
-          "schema": {
-            "$ref": "#/components/schemas/MetadataSchema"
-          }
-        },
-        "description": "Configuration needed to deploy an index in a BYOC environment.",
-        "example": {
-          "environment": "aws-us-east-1-b921"
         }
       },
       "PodSpec": {
@@ -15986,6 +17651,166 @@
           "source_collection": "movie-embeddings"
         }
       },
+      "ReadCapacity": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ReadCapacityOnDemandSpec"
+          },
+          {
+            "$ref": "#/components/schemas/ReadCapacityDedicatedSpec"
+          }
+        ],
+        "description": "By default the index will be created with read capacity  mode `OnDemand`. If you prefer to allocate dedicated read  nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`.",
+        "discriminator": {
+          "propertyName": "mode",
+          "mapping": {
+            "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpec",
+            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpec"
+          }
+        }
+      },
+      "ReadCapacityDedicatedConfig": {
+        "type": "object",
+        "properties": {
+          "node_type": {
+            "type": "string",
+            "description": "The type of machines to use. Available options: `b1` and `t1`. `t1` includes increased processing power and memory."
+          },
+          "scaling": {
+            "type": "string",
+            "description": "The type of scaling strategy to use."
+          },
+          "manual": {
+            "$ref": "#/components/schemas/ScalingConfigManual"
+          }
+        },
+        "description": "Configuration for dedicated read capacity. See  [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on  how to configure dedicated read capacity."
+      },
+      "ReadCapacityDedicatedSpec": {
+        "title": "Dedicated",
+        "required": [
+          "mode",
+          "dedicated"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
+          },
+          "dedicated": {
+            "$ref": "#/components/schemas/ReadCapacityDedicatedConfig"
+          }
+        },
+        "example": {
+          "dedicated": {
+            "manual": {
+              "replicas": 1,
+              "shards": 1
+            },
+            "node_type": "t1",
+            "scaling": "Manual"
+          },
+          "mode": "Dedicated"
+        }
+      },
+      "ReadCapacityDedicatedSpecResponse": {
+        "title": "Dedicated",
+        "required": [
+          "mode",
+          "dedicated",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
+          },
+          "dedicated": {
+            "$ref": "#/components/schemas/ReadCapacityDedicatedConfig"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReadCapacityStatus"
+          }
+        },
+        "additionalProperties": false,
+        "example": {
+          "dedicated": {
+            "manual": {
+              "replicas": 2,
+              "shards": 2
+            },
+            "node_type": "t1",
+            "scaling": "Manual"
+          },
+          "mode": "Dedicated",
+          "status": {
+            "current_replicas": 2,
+            "current_shards": 2,
+            "state": "Ready"
+          }
+        }
+      },
+      "ReadCapacityOnDemandSpec": {
+        "title": "On-demand",
+        "required": [
+          "mode"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
+          }
+        },
+        "additionalProperties": false,
+        "example": {
+          "mode": "OnDemand"
+        }
+      },
+      "ReadCapacityOnDemandSpecResponse": {
+        "title": "On-demand",
+        "required": [
+          "mode",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReadCapacityStatus"
+          }
+        },
+        "additionalProperties": false,
+        "example": {
+          "mode": "OnDemand",
+          "status": {
+            "state": "Ready"
+          }
+        }
+      },
+      "ReadCapacityResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ReadCapacityOnDemandSpecResponse"
+          },
+          {
+            "$ref": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
+          }
+        ],
+        "description": "Response containing read capacity configuration",
+        "discriminator": {
+          "propertyName": "mode",
+          "mapping": {
+            "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpecResponse",
+            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
+          }
+        }
+      },
       "ReadCapacityStatus": {
         "required": [
           "state"
@@ -16012,6 +17837,166 @@
           }
         },
         "description": "The current status of factors affecting the read capacity of a serverless index"
+      },
+      "RestoreJobList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RestoreJobModel"
+            },
+            "description": "List of restore job objects"
+          },
+          "pagination": {
+            "type": "object",
+            "allOf": [
+              {
+                "required": [
+                  "next"
+                ],
+                "type": "object",
+                "properties": {
+                  "next": {
+                    "type": "string",
+                    "description": "The token to use to retrieve the next page of results.",
+                    "example": "dXNlcl9pZD11c2VyXzE="
+                  }
+                },
+                "description": "The pagination object that is returned with paginated responses.",
+                "example": {
+                  "next": "dXNlcl9pZD11c2VyXzE="
+                },
+                "x-component-name": "PaginationResponse"
+              }
+            ],
+            "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results.",
+            "nullable": true
+          }
+        },
+        "description": "The list of restore jobs that exist in the project."
+      },
+      "RestoreJobModel": {
+        "required": [
+          "restore_job_id",
+          "backup_id",
+          "target_index_name",
+          "target_index_id",
+          "status",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "restore_job_id": {
+            "type": "string",
+            "description": "Unique identifier for the restore job",
+            "example": "670e8400-e29b-41d4-a716-446655440001"
+          },
+          "backup_id": {
+            "type": "string",
+            "description": "Backup used for the restore",
+            "example": "670e8400-e29b-41d4-a716-446655440000"
+          },
+          "target_index_name": {
+            "type": "string",
+            "description": "Name of the index into which data is being restored",
+            "example": "sample-index"
+          },
+          "target_index_id": {
+            "type": "string",
+            "description": "ID of the index",
+            "example": "670e8400-e29b-41d4-a716-446655440002"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the restore job",
+            "example": "Completed"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the restore job started",
+            "format": "date-time",
+            "example": "2025-02-04T13:00:00Z"
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "Timestamp when the restore job finished",
+            "format": "date-time",
+            "example": "2025-02-04T14:00:00Z"
+          },
+          "percent_complete": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number",
+            "description": "The progress made by the restore job out of 100",
+            "format": "float",
+            "example": 42.2
+          }
+        },
+        "description": "The RestoreJobModel describes the status of a restore job."
+      },
+      "ScalingConfigManual": {
+        "type": "object",
+        "properties": {
+          "replicas": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The number of replicas to use. Replicas duplicate the compute resources and data of an index, allowing higher query throughput and availability. Setting replicas to 0 disables the index but can be used to reduce costs while usage is paused.",
+            "format": "int32"
+          },
+          "shards": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "The number of shards to use. Shards determine the storage capacity of an index, with each shard providing 250 GB of storage.",
+            "format": "int32"
+          }
+        },
+        "description": "The config to use for manual read capacity scaling."
+      },
+      "ServerlessSpec": {
+        "title": "Serverless",
+        "required": [
+          "cloud",
+          "region"
+        ],
+        "type": "object",
+        "properties": {
+          "cloud": {
+            "type": "string",
+            "description": "The public cloud where you would like your index hosted.\nPossible values: `gcp`, `aws`, or `azure`.",
+            "example": "aws",
+            "x-enum": [
+              "gcp",
+              "aws",
+              "azure"
+            ]
+          },
+          "region": {
+            "type": "string",
+            "description": "The region where you would like your index to be created.",
+            "example": "us-east-1"
+          },
+          "read_capacity": {
+            "$ref": "#/components/schemas/ReadCapacity"
+          },
+          "source_collection": {
+            "type": "string",
+            "description": "The name of the collection to be used as the source for the index.",
+            "example": "movie-embeddings"
+          },
+          "source_backup_id": {
+            "type": "string",
+            "description": "The ID of a backup from which to restore the index. Mutually exclusive with `source_collection`. The target `cloud` and `region` may differ from the backup's source region for same-cloud cross-region restore. Cross-cloud restore is not supported.",
+            "example": "670e8400-e29b-41d4-a716-446655440000"
+          },
+          "schema": {
+            "$ref": "#/components/schemas/MetadataSchema"
+          }
+        },
+        "description": "Configuration needed to deploy a serverless index."
       },
       "ServerlessSpecResponse": {
         "required": [
@@ -16044,337 +18029,41 @@
             "description": "The name of the collection to be used as the source for the index.",
             "example": "movie-embeddings"
           },
+          "source_backup_id": {
+            "type": "string",
+            "description": "The ID of the backup this index was restored from, if any.",
+            "example": "670e8400-e29b-41d4-a716-446655440000"
+          },
           "schema": {
             "$ref": "#/components/schemas/MetadataSchema"
           }
         },
         "description": "Configuration of a serverless index."
       },
-      "BackupList": {
+      "UpdateBackupScheduleRequest": {
         "type": "object",
         "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BackupModel"
-            },
-            "description": "List of backup objects"
-          },
-          "pagination": {
-            "$ref": "#/components/schemas/db_control_2026_04_PaginationResponse"
-          }
-        },
-        "description": "The list of backups that exist in the project."
-      },
-      "DeletionProtection": {
-        "type": "string",
-        "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: `disabled` or `enabled`.",
-        "default": "disabled",
-        "x-enum": [
-          "disabled",
-          "enabled"
-        ]
-      },
-      "ModelIndexEmbed": {
-        "required": [
-          "model"
-        ],
-        "type": "object",
-        "properties": {
-          "model": {
+          "frequency": {
             "type": "string",
-            "description": "The name of the embedding model used to create the index.",
-            "example": "multilingual-e5-large"
-          },
-          "metric": {
-            "type": "string",
-            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+            "description": "How often the scheduled backup runs.",
+            "example": "weekly",
             "x-enum": [
-              "cosine",
-              "euclidean",
-              "dotproduct"
+              "daily",
+              "weekly",
+              "monthly"
             ]
           },
-          "dimension": {
-            "maximum": 20000,
-            "minimum": 1,
-            "type": "integer",
-            "description": "The dimensions of the vectors to be inserted in the index.",
-            "format": "int32",
-            "example": 1536
+          "retention": {
+            "$ref": "#/components/schemas/BackupScheduleRetentionInput"
           },
-          "vector_type": {
-            "type": "string",
-            "description": "The index vector type. You can use 'dense' or 'sparse'. If 'dense', the vector dimension must be specified.  If 'sparse', the vector dimension should not be specified.",
-            "default": "dense"
-          },
-          "field_map": {
-            "type": "object",
-            "description": "Identifies the name of the text field from your document model that is embedded.",
-            "example": {
-              "text": "your-text-field"
-            }
-          },
-          "read_parameters": {
-            "type": "object",
-            "description": "The read parameters for the embedding model."
-          },
-          "write_parameters": {
-            "type": "object",
-            "description": "The write parameters for the embedding model."
-          }
-        },
-        "description": "The embedding model and document fields mapped to embedding inputs.",
-        "example": {
-          "field_map": {
-            "text": "your-text-field"
-          },
-          "metric": "cosine",
-          "model": "multilingual-e5-large",
-          "read_parameters": {
-            "input_type": "query",
-            "truncate": "NONE"
-          },
-          "write_parameters": {
-            "input_type": "passage"
-          }
-        }
-      },
-      "CreateIndexFromBackupResponse": {
-        "required": [
-          "restore_job_id",
-          "index_id"
-        ],
-        "type": "object",
-        "properties": {
-          "restore_job_id": {
-            "type": "string",
-            "description": "The ID of the restore job that was created.",
-            "example": "670e8400-e29b-41d4-a716-446655440000"
-          },
-          "index_id": {
-            "type": "string",
-            "description": "The ID of the index that was created from the backup.",
-            "example": "123e4567-e89b-12d3-a456-426614174000"
-          }
-        },
-        "description": "The response for creating an index from a backup."
-      },
-      "CollectionModel": {
-        "required": [
-          "name",
-          "status",
-          "environment"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "The name of the collection.",
-            "example": "example-collection"
-          },
-          "size": {
-            "type": "integer",
-            "description": "The size of the collection in bytes.",
-            "format": "int64",
-            "example": 10000000
-          },
-          "status": {
-            "type": "string",
-            "description": "The status of the collection.\nPossible values: `Initializing`, `Ready`, or `Terminating`.",
-            "example": "Initializing",
-            "x-enum": [
-              "Initializing",
-              "Ready",
-              "Terminating"
-            ]
-          },
-          "dimension": {
-            "maximum": 20000,
-            "minimum": 1,
-            "type": "integer",
-            "description": "The dimension of the vectors stored in each record held in the collection.",
-            "format": "int32",
-            "example": 1536
-          },
-          "vector_count": {
-            "type": "integer",
-            "description": "The number of records stored in the collection.",
-            "format": "int32",
-            "example": 120000
-          },
-          "environment": {
-            "type": "string",
-            "description": "The environment where the collection is hosted.",
-            "example": "us-east1-gcp"
-          }
-        },
-        "description": "The CollectionModel describes the configuration and status of a Pinecone collection."
-      },
-      "IndexList": {
-        "type": "object",
-        "properties": {
-          "indexes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/IndexModel"
-            },
-            "description": "List of indexes in the project"
-          }
-        },
-        "description": "The list of indexes that exist in the project."
-      },
-      "BackupModel": {
-        "required": [
-          "backup_id",
-          "source_index_name",
-          "source_index_id",
-          "status",
-          "cloud",
-          "region"
-        ],
-        "type": "object",
-        "properties": {
-          "backup_id": {
-            "type": "string",
-            "description": "Unique identifier for the backup.",
-            "example": "670e8400-e29b-41d4-a716-446655440001"
-          },
-          "source_index_name": {
-            "type": "string",
-            "description": "Name of the index from which the backup was taken.",
-            "example": "my-index"
-          },
-          "source_index_id": {
-            "type": "string",
-            "description": "ID of the index.",
-            "example": "670e8400-e29b-41d4-a716-446655440000"
-          },
-          "name": {
-            "type": "string",
-            "description": "Optional user-defined name for the backup.",
-            "example": "backup-2025-02-04"
-          },
-          "description": {
-            "type": "string",
-            "description": "Optional description providing context for the backup.",
-            "example": "Backup before bulk update."
-          },
-          "status": {
-            "type": "string",
-            "description": "Current status of the backup (e.g., Initializing, Ready, Failed).",
-            "example": "Ready"
-          },
-          "cloud": {
-            "type": "string",
-            "description": "Cloud provider where the backup is stored.",
-            "example": "aws"
-          },
-          "region": {
-            "type": "string",
-            "description": "Cloud region where the backup is stored.",
-            "example": "us-east-1"
-          },
-          "dimension": {
-            "maximum": 20000,
-            "minimum": 1,
-            "type": "integer",
-            "description": "The dimensions of the vectors to be inserted in the index.",
-            "format": "int32",
-            "example": 1536
-          },
-          "metric": {
-            "type": "string",
-            "description": "The distance metric to be used for similarity search. You can use 'euclidean', 'cosine', or 'dotproduct'. If the 'vector_type' is 'sparse', the metric must be 'dotproduct'. If the `vector_type` is `dense`, the metric defaults to 'cosine'.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
-            "x-enum": [
-              "cosine",
-              "euclidean",
-              "dotproduct"
-            ]
-          },
-          "schema": {
-            "$ref": "#/components/schemas/MetadataSchema"
-          },
-          "record_count": {
-            "type": "integer",
-            "description": "Total number of records in the backup.",
-            "example": 120000
-          },
-          "namespace_count": {
-            "type": "integer",
-            "description": "Number of namespaces in the backup.",
-            "example": 3
-          },
-          "size_bytes": {
-            "type": "integer",
-            "description": "Size of the backup in bytes.",
-            "example": 10000000
-          },
-          "tags": {
-            "$ref": "#/components/schemas/IndexTags"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Timestamp when the backup was created."
-          }
-        },
-        "description": "The BackupModel describes the configuration and status of a Pinecone backup."
-      },
-      "ReadCapacityOnDemandSpec": {
-        "title": "On-demand",
-        "required": [
-          "mode"
-        ],
-        "type": "object",
-        "properties": {
-          "mode": {
-            "type": "string",
-            "description": "The mode of the index. Possible values: `OnDemand` or `Dedicated`. Defaults to `OnDemand`. If set to `Dedicated`, `dedicated.node_type`, and `dedicated.scaling` must be specified."
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the schedule is active. Setting to `true` after a disable re-enqueues backup processing.",
+            "example": false
           }
         },
         "additionalProperties": false,
-        "example": {
-          "mode": "OnDemand"
-        }
-      },
-      "ByocSpecResponse": {
-        "title": "BYOC",
-        "required": [
-          "environment",
-          "read_capacity"
-        ],
-        "type": "object",
-        "properties": {
-          "environment": {
-            "type": "string",
-            "description": "The environment where the index is hosted.",
-            "example": "aws-us-east-1-b921"
-          },
-          "read_capacity": {
-            "$ref": "#/components/schemas/ReadCapacityResponse"
-          },
-          "schema": {
-            "$ref": "#/components/schemas/MetadataSchema"
-          }
-        },
-        "description": "Configuration of a BYOC index."
-      },
-      "db_control_2026_04_PaginationResponse": {
-        "required": [
-          "next"
-        ],
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "The token to use to retrieve the next page of results.",
-            "example": "dXNlcl9pZD11c2VyXzE="
-          }
-        },
-        "description": "The pagination object that is returned with paginated responses.",
-        "example": {
-          "next": "dXNlcl9pZD11c2VyXzE="
-        }
+        "description": "Fields that can be updated on an existing backup schedule. Omitted fields are left unchanged. Re-enabling a disabled schedule (`enabled: true`) enqueues a new backup operation."
       },
       "StartImportRequest": {
         "required": [
@@ -16835,6 +18524,12 @@
               }
             },
             "description": "A list of all indexed metatadata fields in the namespace"
+          },
+          "size_bytes": {
+            "type": "integer",
+            "description": "The total size of the namespace's data, in bytes.",
+            "format": "int64",
+            "example": 1048576
           }
         },
         "description": "A description of a namespace, including the name and record count."
@@ -17886,156 +19581,32 @@
         },
         "description": "The PrometheusTargets object describes the configuration needed to scrape metrics from a set of targets."
       },
-      "ModelInfoMetric": {
-        "type": "string",
-        "description": "A distance metric that the embedding model supports for similarity searches.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
-        "x-enum": [
-          "cosine",
-          "euclidean",
-          "dotproduct"
-        ]
-      },
-      "ModelInfoSupportedParameter": {
+      "DenseEmbedding": {
+        "title": "Dense embedding",
         "required": [
-          "parameter",
-          "type",
-          "value_type",
-          "required"
-        ],
-        "type": "object",
-        "properties": {
-          "parameter": {
-            "type": "string",
-            "description": "The name of the parameter.",
-            "example": "input_type"
-          },
-          "type": {
-            "type": "string",
-            "description": "The parameter type e.g. 'one_of', 'numeric_range', or 'any'.\n\nIf the type is 'one_of', then 'allowed_values' will be set, and the value specified must be one of the allowed values. 'one_of' is only compatible with value_type 'string' or 'integer'.\n\nIf 'numeric_range', then 'min' and 'max' will be set, then the value specified must adhere to the value_type and must fall within the `[min, max]` range (inclusive).\n\nIf 'any' then any value is allowed, as long as it adheres to the value_type.",
-            "example": "one_of"
-          },
-          "value_type": {
-            "type": "string",
-            "description": "The type of value the parameter accepts, e.g. 'string', 'integer', 'float', or 'boolean'.",
-            "example": "string"
-          },
-          "required": {
-            "type": "boolean",
-            "description": "Whether the parameter is required (true) or optional (false).",
-            "example": true
-          },
-          "allowed_values": {
-            "type": "array",
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "integer"
-                }
-              ]
-            },
-            "description": "The allowed parameter values when the type is 'one_of'."
-          },
-          "min": {
-            "type": "number",
-            "description": "The minimum allowed value (inclusive) when the type is 'numeric_range'.",
-            "example": 1
-          },
-          "max": {
-            "type": "number",
-            "description": "The maximum allowed value (inclusive) when the type is 'numeric_range'.",
-            "example": 1
-          },
-          "default": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "format": "int32"
-              },
-              {
-                "type": "number",
-                "format": "float"
-              },
-              {
-                "type": "boolean"
-              }
-            ],
-            "description": "The default value for the parameter when a parameter is optional.",
-            "example": "END"
-          }
-        },
-        "description": "Describes a parameter supported by the model, including parameter value constraints."
-      },
-      "VectorType": {
-        "type": "string",
-        "description": "Indicates whether this is a 'dense' or 'sparse' embedding."
-      },
-      "SparseEmbedding": {
-        "title": "Sparse embedding",
-        "required": [
-          "sparse_values",
-          "sparse_indices",
+          "values",
           "vector_type"
         ],
         "type": "object",
         "properties": {
-          "sparse_values": {
+          "values": {
             "type": "array",
             "items": {
               "type": "number",
               "format": "float"
             },
-            "description": "The sparse embedding values.",
+            "description": "The dense embedding values.",
             "example": [
               0.1,
               0.2,
               0.3
             ]
           },
-          "sparse_indices": {
-            "type": "array",
-            "items": {
-              "maximum": 4294967295,
-              "minimum": 0,
-              "type": "integer",
-              "format": "int64"
-            },
-            "description": "The sparse embedding indices.",
-            "example": [
-              10,
-              3,
-              156
-            ]
-          },
-          "sparse_tokens": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The normalized tokens used to create the sparse embedding.",
-            "example": [
-              "quick",
-              "brown",
-              "fox"
-            ]
-          },
           "vector_type": {
             "$ref": "#/components/schemas/VectorType"
           }
         },
-        "description": "A sparse embedding of a single input"
-      },
-      "ModelInfoSupportedMetrics": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ModelInfoMetric"
-        },
-        "description": "The distance metrics supported by the model for similarity search."
+        "description": "A dense embedding of a single input"
       },
       "Document": {
         "type": "object",
@@ -18045,6 +19616,61 @@
           "text": "Paris is the capital of France.",
           "title": "France",
           "url": "https://example.com"
+        }
+      },
+      "EmbedRequest": {
+        "required": [
+          "model",
+          "inputs"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The [model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to use for embedding generation.",
+            "example": "multilingual-e5-large"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters.",
+            "example": {
+              "input_type": "passage",
+              "truncate": "END"
+            }
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "The text input to generate embeddings for.",
+                  "example": "The quick brown fox jumps over the lazy dog."
+                }
+              }
+            },
+            "description": "List of inputs to generate embeddings for."
+          }
+        }
+      },
+      "Embedding": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DenseEmbedding"
+          },
+          {
+            "$ref": "#/components/schemas/SparseEmbedding"
+          }
+        ],
+        "description": "Embedding of a single input",
+        "discriminator": {
+          "propertyName": "vector_type",
+          "mapping": {
+            "dense": "#/components/schemas/DenseEmbedding",
+            "sparse": "#/components/schemas/SparseEmbedding"
+          }
         }
       },
       "EmbeddingsList": {
@@ -18158,165 +19784,6 @@
           "status": 429
         }
       },
-      "RerankRequest": {
-        "required": [
-          "model",
-          "documents",
-          "query"
-        ],
-        "type": "object",
-        "properties": {
-          "model": {
-            "type": "string",
-            "description": "The [model](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) to use for reranking.",
-            "example": "bge-reranker-v2-m3"
-          },
-          "query": {
-            "type": "string",
-            "description": "The query to rerank documents against.",
-            "example": "What is the capital of France?"
-          },
-          "top_n": {
-            "type": "integer",
-            "description": "The number of results to return sorted by relevance. Defaults to the number of inputs.",
-            "example": 5
-          },
-          "return_documents": {
-            "type": "boolean",
-            "description": "Whether to return the documents in the response.",
-            "default": true,
-            "example": true
-          },
-          "rank_fields": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The field(s) to consider for reranking. If not provided, the default is `[\"text\"]`.\n\nThe number of fields supported is [model-specific](https://docs.pinecone.io/guides/search/rerank-results#reranking-models).\n",
-            "default": [
-              "text"
-            ]
-          },
-          "documents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
-            },
-            "description": "The documents to rerank."
-          },
-          "parameters": {
-            "type": "object",
-            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
-            "example": {
-              "truncate": "END"
-            }
-          }
-        }
-      },
-      "ModelInfoList": {
-        "type": "object",
-        "properties": {
-          "models": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ModelInfo"
-            },
-            "description": "List of available models."
-          }
-        },
-        "description": "The list of available models."
-      },
-      "RerankResult": {
-        "required": [
-          "model",
-          "data",
-          "usage"
-        ],
-        "type": "object",
-        "properties": {
-          "model": {
-            "type": "string",
-            "description": "The model used to rerank documents.",
-            "example": "bge-reranker-v2-m3"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RankedDocument"
-            },
-            "description": "The reranked documents."
-          },
-          "usage": {
-            "type": "object",
-            "properties": {
-              "rerank_units": {
-                "minimum": 0,
-                "type": "integer",
-                "description": "The number of rerank units consumed by this operation.",
-                "format": "int32",
-                "example": 1
-              }
-            },
-            "description": "Usage statistics for the model inference."
-          }
-        },
-        "description": "The result of a reranking request."
-      },
-      "Embedding": {
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DenseEmbedding"
-          },
-          {
-            "$ref": "#/components/schemas/SparseEmbedding"
-          }
-        ],
-        "description": "Embedding of a single input",
-        "discriminator": {
-          "propertyName": "vector_type",
-          "mapping": {
-            "dense": "#/components/schemas/DenseEmbedding",
-            "sparse": "#/components/schemas/SparseEmbedding"
-          }
-        }
-      },
-      "EmbedRequest": {
-        "required": [
-          "model",
-          "inputs"
-        ],
-        "type": "object",
-        "properties": {
-          "model": {
-            "type": "string",
-            "description": "The [model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to use for embedding generation.",
-            "example": "multilingual-e5-large"
-          },
-          "parameters": {
-            "type": "object",
-            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters.",
-            "example": {
-              "input_type": "passage",
-              "truncate": "END"
-            }
-          },
-          "inputs": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "text": {
-                  "type": "string",
-                  "description": "The text input to generate embeddings for.",
-                  "example": "The quick brown fox jumps over the lazy dog."
-                }
-              }
-            },
-            "description": "List of inputs to generate embeddings for."
-          }
-        }
-      },
       "ModelInfo": {
         "required": [
           "model",
@@ -18401,32 +19868,110 @@
         },
         "description": "Represents the model configuration including model type, supported parameters, and other model details."
       },
-      "DenseEmbedding": {
-        "title": "Dense embedding",
+      "ModelInfoList": {
+        "type": "object",
+        "properties": {
+          "models": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelInfo"
+            },
+            "description": "List of available models."
+          }
+        },
+        "description": "The list of available models."
+      },
+      "ModelInfoMetric": {
+        "type": "string",
+        "description": "A distance metric that the embedding model supports for similarity searches.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+        "x-enum": [
+          "cosine",
+          "euclidean",
+          "dotproduct"
+        ]
+      },
+      "ModelInfoSupportedMetrics": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ModelInfoMetric"
+        },
+        "description": "The distance metrics supported by the model for similarity search."
+      },
+      "ModelInfoSupportedParameter": {
         "required": [
-          "values",
-          "vector_type"
+          "parameter",
+          "type",
+          "value_type",
+          "required"
         ],
         "type": "object",
         "properties": {
-          "values": {
+          "parameter": {
+            "type": "string",
+            "description": "The name of the parameter.",
+            "example": "input_type"
+          },
+          "type": {
+            "type": "string",
+            "description": "The parameter type e.g. 'one_of', 'numeric_range', or 'any'.\n\nIf the type is 'one_of', then 'allowed_values' will be set, and the value specified must be one of the allowed values. 'one_of' is only compatible with value_type 'string' or 'integer'.\n\nIf 'numeric_range', then 'min' and 'max' will be set, then the value specified must adhere to the value_type and must fall within the `[min, max]` range (inclusive).\n\nIf 'any' then any value is allowed, as long as it adheres to the value_type.",
+            "example": "one_of"
+          },
+          "value_type": {
+            "type": "string",
+            "description": "The type of value the parameter accepts, e.g. 'string', 'integer', 'float', or 'boolean'.",
+            "example": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether the parameter is required (true) or optional (false).",
+            "example": true
+          },
+          "allowed_values": {
             "type": "array",
             "items": {
-              "type": "number",
-              "format": "float"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
             },
-            "description": "The dense embedding values.",
-            "example": [
-              0.1,
-              0.2,
-              0.3
-            ]
+            "description": "The allowed parameter values when the type is 'one_of'."
           },
-          "vector_type": {
-            "$ref": "#/components/schemas/VectorType"
+          "min": {
+            "type": "number",
+            "description": "The minimum allowed value (inclusive) when the type is 'numeric_range'.",
+            "example": 1
+          },
+          "max": {
+            "type": "number",
+            "description": "The maximum allowed value (inclusive) when the type is 'numeric_range'.",
+            "example": 1
+          },
+          "default": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "format": "int32"
+              },
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "description": "The default value for the parameter when a parameter is optional.",
+            "example": "END"
           }
         },
-        "description": "A dense embedding of a single input"
+        "description": "Describes a parameter supported by the model, including parameter value constraints."
       },
       "RankedDocument": {
         "required": [
@@ -18450,36 +19995,155 @@
         },
         "description": "A ranked document with a relevance score and an index position."
       },
-      "TokenResponse": {
+      "RerankRequest": {
         "required": [
-          "access_token",
-          "token_type",
-          "expires_in"
+          "model",
+          "documents",
+          "query"
         ],
         "type": "object",
         "properties": {
-          "access_token": {
+          "model": {
             "type": "string",
-            "description": "The access token."
+            "description": "The [model](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) to use for reranking.",
+            "example": "bge-reranker-v2-m3"
           },
-          "token_type": {
+          "query": {
             "type": "string",
-            "description": "The type of token.\nPossible values: `Bearer`.",
-            "x-enum": [
-              "Bearer"
+            "description": "The query to rerank documents against.",
+            "example": "What is the capital of France?"
+          },
+          "top_n": {
+            "type": "integer",
+            "description": "The number of results to return sorted by relevance. Defaults to the number of inputs.",
+            "example": 5
+          },
+          "return_documents": {
+            "type": "boolean",
+            "description": "Whether to return the documents in the response.",
+            "default": true,
+            "example": true
+          },
+          "rank_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The field(s) to consider for reranking. If not provided, the default is `[\"text\"]`.\n\nThe number of fields supported is [model-specific](https://docs.pinecone.io/guides/search/rerank-results#reranking-models).\n",
+            "default": [
+              "text"
             ]
           },
-          "expires_in": {
-            "type": "integer",
-            "description": "The number of seconds until the token expires."
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Document"
+            },
+            "description": "The documents to rerank."
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
+            "example": {
+              "truncate": "END"
+            }
+          }
+        }
+      },
+      "RerankResult": {
+        "required": [
+          "model",
+          "data",
+          "usage"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The model used to rerank documents.",
+            "example": "bge-reranker-v2-m3"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RankedDocument"
+            },
+            "description": "The reranked documents."
+          },
+          "usage": {
+            "type": "object",
+            "properties": {
+              "rerank_units": {
+                "minimum": 0,
+                "type": "integer",
+                "description": "The number of rerank units consumed by this operation.",
+                "format": "int32",
+                "example": 1
+              }
+            },
+            "description": "Usage statistics for the model inference."
           }
         },
-        "description": "A response that contains the access token.",
-        "example": {
-          "access_token": "eyJz93a...k4laUWw",
-          "expires_in": 1800,
-          "token_type": "Bearer"
-        }
+        "description": "The result of a reranking request."
+      },
+      "SparseEmbedding": {
+        "title": "Sparse embedding",
+        "required": [
+          "sparse_values",
+          "sparse_indices",
+          "vector_type"
+        ],
+        "type": "object",
+        "properties": {
+          "sparse_values": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "float"
+            },
+            "description": "The sparse embedding values.",
+            "example": [
+              0.1,
+              0.2,
+              0.3
+            ]
+          },
+          "sparse_indices": {
+            "type": "array",
+            "items": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "The sparse embedding indices.",
+            "example": [
+              10,
+              3,
+              156
+            ]
+          },
+          "sparse_tokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The normalized tokens used to create the sparse embedding.",
+            "example": [
+              "quick",
+              "brown",
+              "fox"
+            ]
+          },
+          "vector_type": {
+            "$ref": "#/components/schemas/VectorType"
+          }
+        },
+        "description": "A sparse embedding of a single input"
+      },
+      "VectorType": {
+        "type": "string",
+        "description": "Indicates whether this is a 'dense' or 'sparse' embedding."
       },
       "oauth_2026_04_ErrorResponse": {
         "type": "object",
@@ -18537,6 +20201,37 @@
           "client_id": "I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5",
           "client_secret": "EriX...j2ci",
           "grant_type": "client_credentials"
+        }
+      },
+      "TokenResponse": {
+        "required": [
+          "access_token",
+          "token_type",
+          "expires_in"
+        ],
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "The access token."
+          },
+          "token_type": {
+            "type": "string",
+            "description": "The type of token.\nPossible values: `Bearer`.",
+            "x-enum": [
+              "Bearer"
+            ]
+          },
+          "expires_in": {
+            "type": "integer",
+            "description": "The number of seconds until the token expires."
+          }
+        },
+        "description": "A response that contains the access token.",
+        "example": {
+          "access_token": "eyJz93a...k4laUWw",
+          "expires_in": 1800,
+          "token_type": "Bearer"
         }
       }
     },

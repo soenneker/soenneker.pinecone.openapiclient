@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The OperationModel describes the status of an ongoing or completed server operation.
+    /// Describes the status of an ongoing or completed server operation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OperationModel : IAdditionalDataHolder, IParsable

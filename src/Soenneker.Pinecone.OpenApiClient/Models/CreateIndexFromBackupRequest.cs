@@ -31,6 +31,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>By default the index will be created with read capacity  mode `OnDemand`. If you prefer to allocate dedicated read  nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity? ReadCapacity { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity ReadCapacity { get; set; }
+#endif
         /// <summary>Custom user tags added to an index. Keys must be 80 characters or less. Values must be 120 characters or less. Keys must be alphanumeric, &apos;_&apos;, or &apos;-&apos;.  Values must be alphanumeric, &apos;;&apos;, &apos;@&apos;, &apos;_&apos;, &apos;-&apos;, &apos;.&apos;, &apos;+&apos;, or &apos; &apos;. To unset a key, set the value to be an empty string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,6 +74,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "deletion_protection", n => { DeletionProtection = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "read_capacity", n => { ReadCapacity = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>(global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags.CreateFromDiscriminatorValue); } },
             };
         }
@@ -78,6 +87,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("deletion_protection", DeletionProtection);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>("read_capacity", ReadCapacity);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags>("tags", Tags);
             writer.WriteAdditionalData(AdditionalData);
         }

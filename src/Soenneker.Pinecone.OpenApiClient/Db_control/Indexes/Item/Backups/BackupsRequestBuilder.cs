@@ -22,7 +22,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BackupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}/backups{?limit*,paginationToken*}", pathParameters)
+        public BackupsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}/backups{?include_deleted*,limit*,paginationToken*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BackupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}/backups{?limit*,paginationToken*}", rawUrl)
+        public BackupsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}/backups{?include_deleted*,limit*,paginationToken*}", rawUrl)
         {
         }
         /// <summary>
-        /// List all backups for an index.
+        /// When `include_deleted` is false (or omitted), `index_name` must resolve to an active index in the project. If no active index by that name exists—including the case where only deleted indexes have used the name—the API returns **404**, not an empty list.When `include_deleted` is true, the API returns backups from every index in the project that has ever used this name (active and deleted). The `source_index_deleted_at` field is present only when the backup is from a deleted index. **404** is returned only when no index by that name has ever existed in the project (active or deleted).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupList"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -96,7 +96,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.BackupModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List all backups for an index.
+        /// When `include_deleted` is false (or omitted), `index_name` must resolve to an active index in the project. If no active index by that name exists—including the case where only deleted indexes have used the name—the API returns **404**, not an empty list.When `include_deleted` is true, the API returns backups from every index in the project that has ever used this name (active and deleted). The `source_index_deleted_at` field is present only when the backup is from a deleted index. **404** is returned only when no index by that name has ever existed in the project (active or deleted).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -146,11 +146,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups
             return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups.BackupsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List all backups for an index.
+        /// When `include_deleted` is false (or omitted), `index_name` must resolve to an active index in the project. If no active index by that name exists—including the case where only deleted indexes have used the name—the API returns **404**, not an empty list.When `include_deleted` is true, the API returns backups from every index in the project that has ever used this name (active and deleted). The `source_index_deleted_at` field is present only when the backup is from a deleted index. **404** is returned only when no index by that name has ever existed in the project (active or deleted).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BackupsRequestBuilderGetQueryParameters 
         {
+            /// <summary>When true, includes backups for every index incarnation with this name (active and deleted). When false or omitted, only the active index’s backups are included; **404** when no active index has that name.</summary>
+            [QueryParameter("include_deleted")]
+            public bool? IncludeDeleted { get; set; }
             /// <summary>The number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }

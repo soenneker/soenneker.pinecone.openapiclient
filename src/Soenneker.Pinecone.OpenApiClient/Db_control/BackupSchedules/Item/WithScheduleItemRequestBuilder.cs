@@ -3,50 +3,44 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedules;
-using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups;
+using Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.History;
 using Soenneker.Pinecone.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
+namespace Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \db_control\indexes\{indexName}
+    /// Builds and executes requests for operations under \db_control\backup-schedules\{scheduleId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WithIndexNameItemRequestBuilder : BaseRequestBuilder
+    public partial class WithScheduleItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The backups property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups.BackupsRequestBuilder Backups
+        /// <summary>The history property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.History.HistoryRequestBuilder History
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups.BackupsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The backupSchedules property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedules.BackupSchedulesRequestBuilder BackupSchedules
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedules.BackupSchedulesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.History.HistoryRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.WithScheduleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIndexNameItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}", pathParameters)
+        public WithScheduleItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/backup-schedules/{scheduleId}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.WithScheduleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithIndexNameItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/indexes/{indexName}", rawUrl)
+        public WithScheduleItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/db_control/backup-schedules/{scheduleId}", rawUrl)
         {
         }
         /// <summary>
-        /// Delete an existing index.
+        /// Permanently remove a backup schedule.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -54,7 +48,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 412 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,59 +64,59 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "412", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a description of an index.
+        /// Get a single backup schedule by ID.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Configure an existing index. For guidance and examples, see [Manage indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).
+        /// &quot;Update frequency, retention, or enabled state for a backup schedule.Re-enabling a disabled schedule (`enabled: true`) enqueues a new backup operation.&quot;
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel"/></returns>
-        /// <param name="body">Configuration used to scale an index.</param>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse"/></returns>
+        /// <param name="body">&quot;Fields that can be updated on an existing backup schedule. Omitted fields are left unchanged. Re-enabling a disabled schedule (`enabled: true`) enqueues a new backup operation.&quot;</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel?> PatchAsync(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse?> PatchAsync(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateBackupScheduleRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel> PatchAsync(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse> PatchAsync(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateBackupScheduleRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -132,16 +125,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
             {
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
-                { "402", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604ErrorResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an existing index.
+        /// Permanently remove a backup schedule.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -160,7 +152,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
             return requestInfo;
         }
         /// <summary>
-        /// Get a description of an index.
+        /// Get a single backup schedule by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -179,18 +171,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
             return requestInfo;
         }
         /// <summary>
-        /// Configure an existing index. For guidance and examples, see [Manage indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).
+        /// &quot;Update frequency, retention, or enabled state for a backup schedule.Re-enabling a disabled schedule (`enabled: true`) enqueues a new backup operation.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Configuration used to scale an index.</param>
+        /// <param name="body">&quot;Fields that can be updated on an existing backup schedule. Omitted fields are left unchanged. Re-enabling a disabled schedule (`enabled: true`) enqueues a new backup operation.&quot;</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateBackupScheduleRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Pinecone.OpenApiClient.Models.UpdateBackupScheduleRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -203,11 +195,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.WithScheduleItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.WithScheduleItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item.WithScheduleItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

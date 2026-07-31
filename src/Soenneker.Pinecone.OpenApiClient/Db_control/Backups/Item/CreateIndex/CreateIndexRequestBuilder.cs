@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.CreateIndex
         {
         }
         /// <summary>
-        /// Create an index from a backup.
+        /// Create an index from a backup. For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupResponse"/></returns>
         /// <param name="body">The configuration needed to create a Pinecone index from a backup.</param>
@@ -73,7 +73,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.CreateIndex
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an index from a backup.
+        /// Create an index from a backup. For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The configuration needed to create a Pinecone index from a backup.</param>

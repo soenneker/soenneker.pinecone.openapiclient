@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Backups;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Collections;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes;
@@ -22,6 +23,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control
         public global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.BackupsRequestBuilder Backups
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Backups.BackupsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The backupSchedules property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.BackupSchedulesRequestBuilder BackupSchedules
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.BackupSchedulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The collections property</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.CollectionsRequestBuilder Collections

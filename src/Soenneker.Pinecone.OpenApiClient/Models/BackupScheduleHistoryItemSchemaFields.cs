@@ -8,37 +8,29 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The pagination object that is returned with paginated responses.
+    /// A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DbControl202604PaginationResponse : IAdditionalDataHolder, IParsable
+    public partial class BackupScheduleHistoryItemSchemaFields : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The token to use to retrieve the next page of results.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Next { get; set; }
-#nullable restore
-#else
-        public string Next { get; set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604PaginationResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchemaFields"/> and sets the default values.
         /// </summary>
-        public DbControl202604PaginationResponse()
+        public BackupScheduleHistoryItemSchemaFields()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604PaginationResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchemaFields"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604PaginationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchemaFields CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202604PaginationResponse();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleHistoryItemSchemaFields();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -48,7 +40,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "next", n => { Next = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,7 +49,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("next", Next);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
