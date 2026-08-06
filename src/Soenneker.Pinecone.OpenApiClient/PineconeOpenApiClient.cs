@@ -6,15 +6,7 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
-using Soenneker.Pinecone.OpenApiClient.Admin;
-using Soenneker.Pinecone.OpenApiClient.Assistant_control;
-using Soenneker.Pinecone.OpenApiClient.Assistant_data;
-using Soenneker.Pinecone.OpenApiClient.Assistant_evaluation;
-using Soenneker.Pinecone.OpenApiClient.Db_control;
-using Soenneker.Pinecone.OpenApiClient.Db_data;
-using Soenneker.Pinecone.OpenApiClient.Db_metrics;
-using Soenneker.Pinecone.OpenApiClient.Inference;
-using Soenneker.Pinecone.OpenApiClient.Oauth;
+using Soenneker.Pinecone.OpenApiClient.Nexus;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -27,50 +19,10 @@ namespace Soenneker.Pinecone.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PineconeOpenApiClient : BaseRequestBuilder
     {
-        /// <summary>The admin property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Admin.AdminRequestBuilder Admin
+        /// <summary>The nexus property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Nexus.NexusRequestBuilder Nexus
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.AdminRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The assistant_control property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistant_controlRequestBuilder Assistant_control
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistant_controlRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The assistant_data property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Assistant_dataRequestBuilder Assistant_data
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_data.Assistant_dataRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The assistant_evaluation property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Assistant_evaluation.Assistant_evaluationRequestBuilder Assistant_evaluation
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Assistant_evaluation.Assistant_evaluationRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The db_control property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Db_controlRequestBuilder Db_control
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Db_controlRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The db_data property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_data.Db_dataRequestBuilder Db_data
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_data.Db_dataRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The db_metrics property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Db_metrics.Db_metricsRequestBuilder Db_metrics
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Db_metrics.Db_metricsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The inference property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Inference.InferenceRequestBuilder Inference
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Inference.InferenceRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The oauth property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Oauth.OauthRequestBuilder Oauth
-        {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Oauth.OauthRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Nexus.NexusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.PineconeOpenApiClient"/> and sets the default values.
@@ -87,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
             if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
             {
-                RequestAdapter.BaseUrl = "https://api.pinecone.io";
+                RequestAdapter.BaseUrl = "https://{host}/api";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }
