@@ -25,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Ask { get; set; }
 #endif
-        /// <summary>&quot;Fire-and-forget: 202 + in_progress query; poll GET /queries/{id}. Mutually exclusive with stream.&quot;</summary>
+        /// <summary>Fire-and-forget: 202 + in_progress query; poll GET /queries/{id}. Mutually exclusive with stream.</summary>
         public bool? Background { get; set; }
         /// <summary>Retrieval-only, narrowed to chunks</summary>
         public bool? ChunksOnly { get; set; }

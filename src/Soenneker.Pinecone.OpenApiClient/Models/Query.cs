@@ -81,7 +81,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Object { get; set; }
 #endif
-        /// <summary>&quot;Output items; assistant text is `{role, content:[{type: output_text, text}]}`&quot;</summary>
+        /// <summary>Output items; assistant text is `{role, content:[{type: output_text, text}]}`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem>? Output { get; set; }

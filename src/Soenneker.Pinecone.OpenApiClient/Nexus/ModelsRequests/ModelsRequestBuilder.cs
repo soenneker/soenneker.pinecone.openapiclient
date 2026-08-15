@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.ModelsRequests
         {
         }
         /// <summary>
-        /// &quot;The model catalog the `model` field on `POST /query` draws from. Returns the default model, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable model ids. Only entries with `available: true` are selectable (others are coming soon and rejected with `400`).&quot;
+        /// The model catalog the `model` field on `POST /query` draws from. Returns the default model, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable model ids. Only entries with `available: true` are selectable (others are coming soon and rejected with `400`).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.ModelsRequests
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The model catalog the `model` field on `POST /query` draws from. Returns the default model, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable model ids. Only entries with `available: true` are selectable (others are coming soon and rejected with `400`).&quot;
+        /// The model catalog the `model` field on `POST /query` draws from. Returns the default model, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable model ids. Only entries with `available: true` are selectable (others are coming soon and rejected with `400`).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

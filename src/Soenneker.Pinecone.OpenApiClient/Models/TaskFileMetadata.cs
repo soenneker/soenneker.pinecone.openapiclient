@@ -37,7 +37,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadata();
             if("TaskFileMetadataArchived".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {

@@ -40,7 +40,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Contexts.Item.Curate
         {
         }
         /// <summary>
-        /// &quot;The full ledger: per-source hashes, edges, corpus groups, chunk-id lineage, version pin, reclaim intents, pointers, and glossary. This pays an O(corpus) chunk-id-lineage read — use `GET /contexts/{slug}/curate/version/pin` on the per-turn path.&quot;
+        /// The full ledger: per-source hashes, edges, corpus groups, chunk-id lineage, version pin, reclaim intents, pointers, and glossary. This pays an O(corpus) chunk-id-lineage read — use `GET /contexts/{slug}/curate/version/pin` on the per-turn path.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurationState"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Contexts.Item.Curate
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.CurationState>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.CurationState.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional. Set `force: true` to do a full rebuild (use after editing the manifest); the default is an incremental curate. Search contexts only — a work context builds via `work`/`groom` instead.&quot;
+        /// Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional. Set `force: true` to do a full rebuild (use after editing the manifest); the default is an incremental curate. Search contexts only — a work context builds via `work`/`groom` instead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.WorkflowTriggerResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -88,7 +88,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Contexts.Item.Curate
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.WorkflowTriggerResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.WorkflowTriggerResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;The full ledger: per-source hashes, edges, corpus groups, chunk-id lineage, version pin, reclaim intents, pointers, and glossary. This pays an O(corpus) chunk-id-lineage read — use `GET /contexts/{slug}/curate/version/pin` on the per-turn path.&quot;
+        /// The full ledger: per-source hashes, edges, corpus groups, chunk-id lineage, version pin, reclaim intents, pointers, and glossary. This pays an O(corpus) chunk-id-lineage read — use `GET /contexts/{slug}/curate/version/pin` on the per-turn path.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -107,7 +107,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Contexts.Item.Curate
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional. Set `force: true` to do a full rebuild (use after editing the manifest); the default is an incremental curate. Search contexts only — a work context builds via `work`/`groom` instead.&quot;
+        /// Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional. Set `force: true` to do a full rebuild (use after editing the manifest); the default is an incremental curate. Search contexts only — a work context builds via `work`/`groom` instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

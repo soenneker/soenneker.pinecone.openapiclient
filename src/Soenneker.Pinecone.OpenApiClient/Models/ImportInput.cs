@@ -79,14 +79,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string RawArchiveKey { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -128,7 +120,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "preview", n => { Preview = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits>(global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "raw_archive_key", n => { RawArchiveKey = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
             };
         }
@@ -147,7 +138,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits>("preview", Preview);
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("raw_archive_key", RawArchiveKey);
-            writer.WriteStringValue("type", Type);
             writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Queries.Item.Events
         {
         }
         /// <summary>
-        /// &quot;Server-sent event stream of the turn&apos;s events as they land — the same `type`-named events POST /query emits with `stream: true`, but as a standalone, resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.&quot;
+        /// Server-sent event stream of the turn&apos;s events as they land — the same `type`-named events POST /query emits with `stream: true`, but as a standalone, resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.
         /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -51,7 +51,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Queries.Item.Events
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Server-sent event stream of the turn&apos;s events as they land — the same `type`-named events POST /query emits with `stream: true`, but as a standalone, resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.&quot;
+        /// Server-sent event stream of the turn&apos;s events as they land — the same `type`-named events POST /query emits with `stream: true`, but as a standalone, resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

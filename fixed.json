@@ -30,7 +30,8 @@
                 "$ref": "#/components/schemas/Nexus202607LoginRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -234,6 +235,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Unknown provider, or the provider is key-based"
           }
         }
       },
@@ -274,7 +278,8 @@
                 "$ref": "#/components/schemas/Nexus202607CreateConnectorRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -286,6 +291,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Unknown provider, provider uses OAuth, or empty api_key"
           }
         }
       },
@@ -366,6 +374,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Context not found"
           }
         }
       },
@@ -392,7 +403,8 @@
                 "$ref": "#/components/schemas/Nexus202607UpdateContextConnectorRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -404,6 +416,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Provider does not support this context kind"
+          },
+          "404": {
+            "description": "Context or connector not found"
           }
         }
       },
@@ -449,7 +467,7 @@
           "Contexts"
         ],
         "summary": "Create a context",
-        "description": "\"The context is created empty and is not queryable until you import sources and curate them (curate is explicit — there is no auto-curate). Optionally seed a `manifest`. A `work` context is the exception: it is queryable from day zero and is built from traces of work rather than source documents.\"",
+        "description": "The context is created empty and is not queryable until you import sources and curate them (curate is explicit — there is no auto-curate). Optionally seed a `manifest`. A `work` context is the exception: it is queryable from day zero and is built from traces of work rather than source documents.",
         "operationId": "Nexus202607CreateContext",
         "requestBody": {
           "content": {
@@ -458,7 +476,8 @@
                 "$ref": "#/components/schemas/CreateContextRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -483,6 +502,9 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": "Slug already exists"
           }
         }
       },
@@ -529,7 +551,8 @@
                 "$ref": "#/components/schemas/UpdateContextRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -547,6 +570,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "description": "Slug conflict"
           }
         }
       },
@@ -557,8 +583,14 @@
         "summary": "Delete a context (and its Pinecone indexes)",
         "operationId": "Nexus202607DeleteContext",
         "responses": {
+          "200": {
+            "description": "Deleted (empty body)"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "504": {
+            "description": "Active tasks did not terminate in time"
           }
         }
       },
@@ -586,7 +618,8 @@
                 "$ref": "#/components/schemas/Nexus202607ForkContextRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -598,6 +631,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Source and target are the same context"
+          },
+          "404": {
+            "description": "Source or target context not found"
+          },
+          "409": {
+            "description": "Source is optimizing, or has never been optimized"
           }
         }
       },
@@ -681,7 +723,7 @@
           "Curation"
         ],
         "summary": "(Re)build the context's index from its sources",
-        "description": "\"Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional. Set `force: true` to do a full rebuild (use after editing the manifest); the default is an incremental curate. Search contexts only — a work context builds via `work`/`groom` instead.\"",
+        "description": "Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional. Set `force: true` to do a full rebuild (use after editing the manifest); the default is an incremental curate. Search contexts only — a work context builds via `work`/`groom` instead.",
         "operationId": "Nexus202607CurateContext",
         "requestBody": {
           "content": {
@@ -694,7 +736,7 @@
         },
         "responses": {
           "200": {
-            "description": "\"Curate enqueued (`state: importing`)\"",
+            "description": "Curate enqueued (`state: importing`)",
             "content": {
               "application/json": {
                 "schema": {
@@ -703,8 +745,14 @@
               }
             }
           },
+          "400": {
+            "description": "Context is a work context"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "description": "Context has no sources, is optimizing, or hit the preview task cap"
           }
         }
       },
@@ -713,7 +761,7 @@
           "Curation"
         ],
         "summary": "Get the curation ledger",
-        "description": "\"The full ledger: per-source hashes, edges, corpus groups, chunk-id lineage, version pin, reclaim intents, pointers, and glossary. This pays an O(corpus) chunk-id-lineage read — use `GET /contexts/{slug}/curate/version/pin` on the per-turn path.\"",
+        "description": "The full ledger: per-source hashes, edges, corpus groups, chunk-id lineage, version pin, reclaim intents, pointers, and glossary. This pays an O(corpus) chunk-id-lineage read — use `GET /contexts/{slug}/curate/version/pin` on the per-turn path.",
         "operationId": "Nexus202607GetCurationLedger",
         "responses": {
           "200": {
@@ -754,9 +802,13 @@
                 "$ref": "#/components/schemas/Nexus202607DeleteCuratedSourcesRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
+          "200": {
+            "description": "Done (empty body)"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
@@ -786,11 +838,12 @@
                 "$ref": "#/components/schemas/Nexus202607OptimizeContextRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "\"Optimize enqueued (`state: optimizing`)\"",
+            "description": "Optimize enqueued (`state: optimizing`)",
             "content": {
               "application/json": {
                 "schema": {
@@ -801,6 +854,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "description": "Context is already optimizing or was never curated"
           }
         }
       },
@@ -832,7 +888,7 @@
         },
         "responses": {
           "200": {
-            "description": "\"Explore enqueued (`state: exploring`)\"",
+            "description": "Explore enqueued (`state: exploring`)",
             "content": {
               "application/json": {
                 "schema": {
@@ -843,6 +899,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "description": "An explore is already in progress"
           }
         }
       },
@@ -874,7 +933,7 @@
         },
         "responses": {
           "200": {
-            "description": "\"Profile enqueued (`state: profiling`)\"",
+            "description": "Profile enqueued (`state: profiling`)",
             "content": {
               "application/json": {
                 "schema": {
@@ -912,11 +971,12 @@
                 "$ref": "#/components/schemas/Nexus202607ImportContextSourcesRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "\"Import accepted (`state: importing`)\"",
+            "description": "Import accepted (`state: importing`)",
             "content": {
               "application/json": {
                 "schema": {
@@ -927,6 +987,12 @@
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "description": "Context or connector not found"
+          },
+          "409": {
+            "description": "Context is optimizing, or an import is already in flight"
           }
         }
       },
@@ -954,11 +1020,12 @@
                 "$ref": "#/components/schemas/Nexus202607UploadContextSourceFormDataRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "\"Upload accepted; import enqueued (`state: importing`)\"",
+            "description": "Upload accepted; import enqueued (`state: importing`)",
             "content": {
               "application/json": {
                 "schema": {
@@ -967,8 +1034,17 @@
               }
             }
           },
+          "400": {
+            "description": "Missing/unsafe file name, or archives disallowed in preview"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "description": "Context is optimizing, an import is in flight, or the preview file cap was hit (`preview_file_limit`)"
+          },
+          "413": {
+            "description": "File exceeds 2 GiB, or the preview byte cap was hit (`preview_byte_limit`)"
           }
         }
       },
@@ -1357,7 +1433,7 @@
           "Query"
         ],
         "summary": "Run one KnowQL query turn",
-        "description": "\"Send `ask` (the natural-language question) and, when starting a new session, a `scope` of 1–10 contexts. Continue an existing session with `session_id` or `previous_query_id`. Scoped search contexts must be curated (work contexts are queryable immediately), and a scope may not mix work and search contexts.\n\n`stream` and `background` are mutually exclusive. With `background: true` the API returns `202` with an `in_progress` query and the client polls `GET /queries/{id}`. With `stream: true` the API emits an SSE stream whose `event:` names are the event `type` (`response.created`, `response.step`, `response.output_text.delta`, `response.turn_rollup`, `response.synthesis`, `response.trace`, and a terminal `response.completed` / `response.failed` / `response.cancelled`), followed by a final `query` event carrying the full query object. Read the answer from `output[].content[].text`.\"",
+        "description": "Send `ask` (the natural-language question) and, when starting a new session, a `scope` of 1–10 contexts. Continue an existing session with `session_id` or `previous_query_id`. Scoped search contexts must be curated (work contexts are queryable immediately), and a scope may not mix work and search contexts.\n\n`stream` and `background` are mutually exclusive. With `background: true` the API returns `202` with an `in_progress` query and the client polls `GET /queries/{id}`. With `stream: true` the API emits an SSE stream whose `event:` names are the event `type` (`response.created`, `response.step`, `response.output_text.delta`, `response.turn_rollup`, `response.synthesis`, `response.trace`, and a terminal `response.completed` / `response.failed` / `response.cancelled`), followed by a final `query` event carrying the full query object. Read the answer from `output[].content[].text`.",
         "operationId": "Nexus202607Query",
         "requestBody": {
           "content": {
@@ -1366,7 +1442,8 @@
                 "$ref": "#/components/schemas/QueryRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1393,6 +1470,18 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Missing/invalid `ask`, mixed-kind scope, unavailable model, or stream+background together"
+          },
+          "404": {
+            "description": "Scoped context, session, or previous_query_id not found"
+          },
+          "409": {
+            "description": "A scoped context is not curated, a query is already in flight on the session, or a preview cap was hit"
+          },
+          "504": {
+            "description": "Turn timed out (15-minute cap, or a lower `timeout_seconds`)"
           }
         }
       },
@@ -1495,6 +1584,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Query or trace not found"
           }
         }
       },
@@ -1518,7 +1610,7 @@
           "Query"
         ],
         "summary": "Stream a query turn's events (SSE)",
-        "description": "\"Server-sent event stream of the turn's events as they land — the same `type`-named events POST /query emits with `stream: true`, but as a standalone, resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.\"",
+        "description": "Server-sent event stream of the turn's events as they land — the same `type`-named events POST /query emits with `stream: true`, but as a standalone, resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.",
         "operationId": "Nexus202607StreamQueryEvents",
         "responses": {
           "200": {
@@ -1530,6 +1622,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Query not found"
           }
         }
       },
@@ -1569,9 +1664,16 @@
                 "$ref": "#/components/schemas/Nexus202607CreateQueryFeedbackRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
+          "204": {
+            "description": "Recorded (empty body)"
+          },
+          "400": {
+            "description": "Invalid rating"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
           }
@@ -1597,7 +1699,7 @@
           "Query"
         ],
         "summary": "List the selectable query models",
-        "description": "\"The model catalog the `model` field on `POST /query` draws from. Returns the default model, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable model ids. Only entries with `available: true` are selectable (others are coming soon and rejected with `400`).\"",
+        "description": "The model catalog the `model` field on `POST /query` draws from. Returns the default model, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable model ids. Only entries with `available: true` are selectable (others are coming soon and rejected with `400`).",
         "operationId": "Nexus202607ListModels",
         "responses": {
           "200": {
@@ -1889,8 +1991,14 @@
           }
         },
         "responses": {
+          "200": {
+            "description": "Termination enqueued (empty body)"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "504": {
+            "description": "Task did not terminate in time"
           }
         }
       },
@@ -1946,6 +2054,24 @@
         "responses": {
           "200": {
             "description": "File contents",
+            "headers": {
+              "x-nexus-file-size": {
+                "description": "Byte size, when known.",
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "x-nexus-stale": {
+                "description": "Present when the bytes came from a stale archive copy.",
+                "schema": {
+                  "type": "string",
+                  "x-enum": [
+                    "true"
+                  ]
+                }
+              }
+            },
             "content": {
               "application/octet-stream": {
                 "schema": {
@@ -2727,9 +2853,6 @@
         "description": "A task's file listing. A running task's entries carry `mode`; an archived task's do not."
       },
       "TaskFileMetadata": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -2740,16 +2863,33 @@
           }
         ],
         "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "TaskFileMetadataArchived": "#/components/schemas/TaskFileMetadataArchived",
-            "TaskFileMetadataLive": "#/components/schemas/TaskFileMetadataLive"
+          "is_dir": {
+            "type": "boolean"
+          },
+          "is_file": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "modified": {
+            "type": "integer",
+            "description": "Unix seconds",
+            "format": "int64",
+            "nullable": true
+          },
+          "kind": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "mtime": {
+            "type": "string"
+          },
+          "link_target": {
+            "type": "string"
           }
         }
       },
@@ -3581,7 +3721,7 @@
           },
           "background": {
             "type": "boolean",
-            "description": "\"Fire-and-forget: 202 + in_progress query; poll GET /queries/{id}. Mutually exclusive with stream.\""
+            "description": "Fire-and-forget: 202 + in_progress query; poll GET /queries/{id}. Mutually exclusive with stream."
           },
           "timeout_seconds": {
             "type": "integer",
@@ -3805,7 +3945,7 @@
             "items": {
               "$ref": "#/components/schemas/QueryOutputItem"
             },
-            "description": "\"Output items; assistant text is `{role, content:[{type: output_text, text}]}`\""
+            "description": "Output items; assistant text is `{role, content:[{type: output_text, text}]}`"
           },
           "output_json": {
             "$ref": "#/components/schemas/QueryOutputJsonProperty"
@@ -4422,9 +4562,6 @@
         }
       },
       "TaskInput": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "anyOf": [
           {
@@ -4456,26 +4593,179 @@
           }
         ],
         "properties": {
-          "type": {
+          "session_id": {
+            "type": "string"
+          },
+          "query_id": {
+            "type": "string"
+          },
+          "ask": {
             "type": "string",
-            "description": "Union discriminator"
+            "description": "Title fallback for the tasks UI; empty when the turn had no user message"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchInputMessagesItem"
+            }
+          },
+          "models": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "shape": {
+            "$ref": "#/components/schemas/SearchInputShapeProperty"
+          },
+          "instructions": {
+            "type": "string",
+            "nullable": true
+          },
+          "turn_timeout_seconds": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "retrieval": {
+            "$ref": "#/components/schemas/SearchInputRetrieval"
+          },
+          "comparison_group": {
+            "type": "string",
+            "nullable": true
+          },
+          "trigger": {
+            "type": "string",
+            "description": "e.g. manual / reconcile / restore / resume"
+          },
+          "force": {
+            "type": "boolean"
+          },
+          "batch_size": {
+            "type": "integer"
+          },
+          "legs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "`[\"chunks\"]` gates the run to the chunk + keyword indices, skipping artifact extraction"
+          },
+          "artifacts_reset": {
+            "type": "boolean"
+          },
+          "skip_corpus_aggregation": {
+            "type": "boolean"
+          },
+          "claimed_version": {
+            "type": "integer",
+            "description": "The version a drained predecessor had claimed",
+            "format": "int64"
+          },
+          "include_traces": {
+            "type": "boolean"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "pack_key": {
+            "type": "string"
+          },
+          "pack_filename": {
+            "type": "string"
+          },
+          "target_context_id": {
+            "type": "string"
+          },
+          "target_slug": {
+            "type": "string"
+          },
+          "target_name": {
+            "type": "string"
+          },
+          "guide": {
+            "type": "string"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/ProfileInputManifest"
+          },
+          "candidate_queries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CandidateQuery"
+            }
+          },
+          "eval_pass_rate_threshold": {
+            "type": "number",
+            "format": "double"
+          },
+          "retrieval_p90_latency_ms": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "optimize_timeout_seconds": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "max_tool_turns": {
+            "type": "integer"
+          },
+          "max_iterations": {
+            "type": "integer"
+          },
+          "budget": {
+            "type": "integer"
+          },
+          "groom_timeout_seconds": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "connector_id": {
+            "type": "string"
+          },
+          "folder": {
+            "type": "string",
+            "nullable": true
+          },
+          "item_type": {
+            "type": "string",
+            "x-enum": [
+              "folder",
+              "file"
+            ]
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "path": {
+            "type": "string"
+          },
+          "preview": {
+            "$ref": "#/components/schemas/PreviewLimits"
+          },
+          "url": {
+            "type": "string"
+          },
+          "raw_archive_key": {
+            "type": "string",
+            "description": "Staging key under the source bucket's `_inbox/` prefix"
           }
         },
-        "description": "A task's per-workflow `input`, written once at creation and echoed back verbatim. It carries no discriminant of its own — the sibling `workflow` field selects the shape.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "SearchInput": "#/components/schemas/SearchInput",
-            "CurateInput": "#/components/schemas/CurateInput",
-            "ImportInput": "#/components/schemas/ImportInput",
-            "PackInput": "#/components/schemas/PackInput",
-            "RestoreInput": "#/components/schemas/RestoreInput",
-            "ExploreInput": "#/components/schemas/ExploreInput",
-            "ProfileInput": "#/components/schemas/ProfileInput",
-            "OptimizeInput": "#/components/schemas/OptimizeInput",
-            "GroomInput": "#/components/schemas/GroomInput"
-          }
-        }
+        "description": "A task's per-workflow `input`, written once at creation and echoed back verbatim. It carries no discriminant of its own — the sibling `workflow` field selects the shape."
       },
       "SearchInput": {
         "title": "search / search_cc / search_rag / work",
@@ -4600,9 +4890,6 @@
       },
       "ImportInput": {
         "title": "import",
-        "required": [
-          "type"
-        ],
         "type": "object",
         "anyOf": [
           {
@@ -4616,20 +4903,44 @@
           }
         ],
         "properties": {
-          "type": {
+          "provider": {
+            "type": "string"
+          },
+          "connector_id": {
+            "type": "string"
+          },
+          "folder": {
             "type": "string",
-            "description": "Union discriminator"
+            "nullable": true
+          },
+          "item_type": {
+            "type": "string",
+            "x-enum": [
+              "folder",
+              "file"
+            ]
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "path": {
+            "type": "string"
+          },
+          "preview": {
+            "$ref": "#/components/schemas/PreviewLimits"
+          },
+          "url": {
+            "type": "string"
+          },
+          "raw_archive_key": {
+            "type": "string",
+            "description": "Staging key under the source bucket's `_inbox/` prefix"
           }
         },
-        "description": "One of three disjoint shapes, discriminated by which of `connector_id` / `url` / `raw_archive_key` is present.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "ImportInputConnectorImport": "#/components/schemas/ImportInputConnectorImport",
-            "ImportInputPublicRepoImport": "#/components/schemas/ImportInputPublicRepoImport",
-            "ImportInputArchiveUpload": "#/components/schemas/ImportInputArchiveUpload"
-          }
-        }
+        "description": "One of three disjoint shapes, discriminated by which of `connector_id` / `url` / `raw_archive_key` is present."
       },
       "PreviewLimits": {
         "required": [
@@ -4820,9 +5131,6 @@
         }
       },
       "TaskOutput": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "anyOf": [
           {
@@ -4883,34 +5191,338 @@
           }
         ],
         "properties": {
-          "type": {
+          "status": {
+            "type": "string"
+          },
+          "query_id": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "output_json": {
+            "$ref": "#/components/schemas/SearchTurnCompletedOutputOutputJsonProperty"
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "latency_ms": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "steps": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "error": {
+            "type": "string"
+          },
+          "state": {
             "type": "string",
-            "description": "Union discriminator"
+            "x-enum": [
+              "running",
+              "completed",
+              "failed",
+              "unknown"
+            ]
+          },
+          "slug": {
+            "type": "string"
+          },
+          "include_traces": {
+            "type": "boolean"
+          },
+          "started_at": {
+            "type": "string"
+          },
+          "completed_at": {
+            "type": "string"
+          },
+          "enriching": {
+            "type": "boolean"
+          },
+          "sources_total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "knowledge_total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "traces_total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "files_written": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "bytes_collected": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pack_filename": {
+            "type": "string"
+          },
+          "pack_size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sources_files": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "knowledge_files": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "traces_included": {
+            "type": "boolean"
+          },
+          "traces_files": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "corpus_groups_included": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "details": {
+            "$ref": "#/components/schemas/PackDetails"
+          },
+          "target_context_id": {
+            "type": "string"
+          },
+          "target_slug": {
+            "type": "string"
+          },
+          "stage_progress": {
+            "$ref": "#/components/schemas/RestoreTaskOutputStageProgress"
+          },
+          "sources_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "knowledge_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sources_staged": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "knowledge_staged": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "manifest_set": {
+            "type": "boolean"
+          },
+          "corpus_groups_set": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "best_score": {
+            "type": "number",
+            "format": "double"
+          },
+          "best_iteration": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "best_latency_ok": {
+            "type": "boolean"
+          },
+          "total_iterations": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pass_rate_threshold": {
+            "type": "number",
+            "format": "double"
+          },
+          "p90_latency_limit_ms": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "elapsed_seconds": {
+            "type": "number",
+            "format": "double"
+          },
+          "manifest": {
+            "$ref": "#/components/schemas/OptimizeResultOutputManifest"
+          },
+          "changed_legs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          },
+          "candidate_queries": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "problems": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "budget": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "batches_staged": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "batches_consumed": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "facts_distilled": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "facts_added": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "facts_merged": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "facts_dropped_untyped": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "edges_added": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "artifacts_pruned": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "artifact_files_written": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "artifact_files_deleted": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "artifact_count": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "artifact_bytes": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "flipped": {
+            "type": "boolean"
+          },
+          "versioned": {
+            "type": "boolean"
+          },
+          "mode": {
+            "type": "string",
+            "description": "`incremental` when the context has a manifest, `full` otherwise"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "images_skipped_no_vision": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sample_queries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Example questions the corpus can answer"
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TemplateMatch"
+            },
+            "description": "Validated template recommendations; unknown or low-confidence proposals are dropped upstream."
+          },
+          "none": {
+            "type": "boolean",
+            "description": "True when no template fit"
+          },
+          "guide": {
+            "type": "string"
+          },
+          "g": {
+            "$ref": "#/components/schemas/ProfileEstimateOutputG"
+          },
+          "density": {
+            "$ref": "#/components/schemas/ProfileEstimateOutputDensity"
+          },
+          "cost": {
+            "$ref": "#/components/schemas/ProfileEstimateOutputCost"
+          },
+          "sampling": {
+            "$ref": "#/components/schemas/ProfileEstimateOutputSampling"
+          },
+          "imported_items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "output_files": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "failed": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "skipped": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "skipped_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImportManifestEntry"
+            },
+            "description": "Bounded sample of the skipped records"
+          },
+          "manifest_sample": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImportManifestEntry"
+            },
+            "description": "Bounded sample of the records that produced output"
+          },
+          "manifest_truncated": {
+            "type": "boolean",
+            "description": "Whether either sample was cut"
+          },
+          "manifest_file": {
+            "type": "string",
+            "description": "Where the full manifest was written"
+          },
+          "manifest_object": {
+            "type": "string",
+            "description": "Object-store key of the full manifest"
           }
         },
-        "description": "\"A task's reported `output` — heterogeneous: every workflow reports a different per-state shape, stored and echoed verbatim. An unrecognized or newer shape is preserved as-is rather than rejected, so treat this union as open.\"",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "SearchTurnCompletedOutput": "#/components/schemas/SearchTurnCompletedOutput",
-            "SearchCcTurnCompletedOutput": "#/components/schemas/SearchCcTurnCompletedOutput",
-            "SearchTurnFailedOutput": "#/components/schemas/SearchTurnFailedOutput",
-            "PackTaskOutput": "#/components/schemas/PackTaskOutput",
-            "RestoreTaskOutput": "#/components/schemas/RestoreTaskOutput",
-            "OptimizeResultOutput": "#/components/schemas/OptimizeResultOutput",
-            "OptimizeNoopOutput": "#/components/schemas/OptimizeNoopOutput",
-            "GroomMetricsOutput": "#/components/schemas/GroomMetricsOutput",
-            "CurateRunOutput": "#/components/schemas/CurateRunOutput",
-            "CurateManifestTuneOutput": "#/components/schemas/CurateManifestTuneOutput",
-            "CurateNoopOutput": "#/components/schemas/CurateNoopOutput",
-            "ExploreOutput": "#/components/schemas/ExploreOutput",
-            "ProfileEstimateOutput": "#/components/schemas/ProfileEstimateOutput",
-            "ProfileEmptyOutput": "#/components/schemas/ProfileEmptyOutput",
-            "ImportOutput": "#/components/schemas/ImportOutput",
-            "StatusErrorOutput": "#/components/schemas/StatusErrorOutput",
-            "StateFailedOutput": "#/components/schemas/StateFailedOutput"
-          }
-        }
+        "description": "A task's reported `output` — heterogeneous: every workflow reports a different per-state shape, stored and echoed verbatim. An unrecognized or newer shape is preserved as-is rather than rejected, so treat this union as open."
       },
       "ModelUsage": {
         "required": [
@@ -4973,7 +5585,7 @@
             "format": "int64"
           }
         },
-        "description": "\"Per-model embed/rerank-seam counts: billed per token (embed) or per request (rerank).\""
+        "description": "Per-model embed/rerank-seam counts: billed per token (embed) or per request (rerank)."
       },
       "ChatUsage": {
         "required": [
@@ -5041,7 +5653,7 @@
             "$ref": "#/components/schemas/CurateUsageEmbedByModelProperty"
           }
         },
-        "description": "\"Curate's token rollup: the chat-seam totals plus the embed/rerank seam (`embed_by_model`). It does not carry the cache-token fields.\""
+        "description": "Curate's token rollup: the chat-seam totals plus the embed/rerank seam (`embed_by_model`). It does not carry the cache-token fields."
       },
       "SearchTurnCompletedOutput": {
         "title": "search / search_rag completed",
@@ -7295,9 +7907,6 @@
         "format": "binary"
       },
       "Nexus202607Query200EventStreamResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -7310,22 +7919,207 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "Union discriminator"
+            "x-enum": [
+              "response.created",
+              "response.step",
+              "response.output_text.delta",
+              "response.turn_rollup",
+              "response.synthesis",
+              "response.trace",
+              "response.completed",
+              "response.failed",
+              "response.cancelled"
+            ]
+          },
+          "query_id": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string",
+            "description": "`response.created`"
+          },
+          "delta": {
+            "type": "string",
+            "description": "`response.output_text.delta`"
+          },
+          "step_id": {
+            "type": "string",
+            "description": "`response.step`"
+          },
+          "status": {
+            "type": "string",
+            "description": "`response.step` (running/completed/failed), `response.synthesis` (completed)"
+          },
+          "commentary": {
+            "type": "string",
+            "description": "`response.step`"
+          },
+          "fns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "`response.step`"
+          },
+          "code": {
+            "type": "string",
+            "description": "`response.step`"
+          },
+          "cum_input_tokens": {
+            "type": "integer",
+            "description": "`response.step`",
+            "format": "int64"
+          },
+          "cum_output_tokens": {
+            "type": "integer",
+            "description": "`response.step`",
+            "format": "int64"
+          },
+          "n_steps": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "n_tool_calls": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "by_category": {
+            "$ref": "#/components/schemas/QueryEventByCategoryProperty"
+          },
+          "total_hits": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "cache_read_tokens": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "cache_write_tokens": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "tokens_in": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "tokens_out": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "ms": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "answer_preview": {
+            "type": "string",
+            "description": "`response.synthesis`"
+          },
+          "tokens_in_cached": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "tokens_in_cache_write": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "tokens_in_fresh": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "id": {
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "x-enum": [
+              "query"
+            ]
+          },
+          "model": {
+            "type": "string",
+            "nullable": true
+          },
+          "created": {
+            "type": "integer",
+            "description": "Unix seconds",
+            "format": "int64"
+          },
+          "previous_query_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "comparison": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryComparisonMember"
+            },
+            "nullable": true
+          },
+          "feedback": {
+            "$ref": "#/components/schemas/QueryFeedback"
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryInputItem"
+            },
+            "description": "The stored message array (plain-text `content`)."
+          },
+          "output": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryOutputItem"
+            },
+            "description": "Output items; assistant text is `{role, content:[{type: output_text, text}]}`"
+          },
+          "output_json": {
+            "$ref": "#/components/schemas/QueryOutputJsonProperty"
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Citation"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryStep"
+            }
+          },
+          "rollup": {
+            "$ref": "#/components/schemas/QueryRollup"
+          },
+          "synthesis": {
+            "$ref": "#/components/schemas/QuerySynthesis"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/QueryUsage"
+          },
+          "runtime_ms": {
+            "type": "integer",
+            "format": "int64"
           }
         },
-        "description": "\"Server-sent event stream. While the turn runs, each progress frame has an `id:` (the event's sequence number — send it back as the `Last-Event-ID` header to resume), an `event:` name equal to the QueryEvent `type` (e.g. `response.step`), and that QueryEvent as its JSON `data:`. When the turn finishes, a final frame named `event: query` is sent — no `id:`, with the full Query document as `data:`.\n\"",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "QueryEvent": "#/components/schemas/QueryEvent",
-            "Query": "#/components/schemas/Query"
-          }
-        }
+        "description": "Server-sent event stream. While the turn runs, each progress frame has an `id:` (the event's sequence number — send it back as the `Last-Event-ID` header to resume), an `event:` name equal to the QueryEvent `type` (e.g. `response.step`), and that QueryEvent as its JSON `data:`. When the turn finishes, a final frame named `event: query` is sent — no `id:`, with the full Query document as `data:`.\n"
       },
       "Nexus202607StreamQueryEvents200EventStreamResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -7338,17 +8132,205 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "Union discriminator"
+            "x-enum": [
+              "response.created",
+              "response.step",
+              "response.output_text.delta",
+              "response.turn_rollup",
+              "response.synthesis",
+              "response.trace",
+              "response.completed",
+              "response.failed",
+              "response.cancelled"
+            ]
+          },
+          "query_id": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string",
+            "description": "`response.created`"
+          },
+          "delta": {
+            "type": "string",
+            "description": "`response.output_text.delta`"
+          },
+          "step_id": {
+            "type": "string",
+            "description": "`response.step`"
+          },
+          "status": {
+            "type": "string",
+            "description": "`response.step` (running/completed/failed), `response.synthesis` (completed)"
+          },
+          "commentary": {
+            "type": "string",
+            "description": "`response.step`"
+          },
+          "fns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "`response.step`"
+          },
+          "code": {
+            "type": "string",
+            "description": "`response.step`"
+          },
+          "cum_input_tokens": {
+            "type": "integer",
+            "description": "`response.step`",
+            "format": "int64"
+          },
+          "cum_output_tokens": {
+            "type": "integer",
+            "description": "`response.step`",
+            "format": "int64"
+          },
+          "n_steps": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "n_tool_calls": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "by_category": {
+            "$ref": "#/components/schemas/QueryEventByCategoryProperty"
+          },
+          "total_hits": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "cache_read_tokens": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "cache_write_tokens": {
+            "type": "integer",
+            "description": "`response.turn_rollup`",
+            "format": "int64"
+          },
+          "tokens_in": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "tokens_out": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "ms": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "answer_preview": {
+            "type": "string",
+            "description": "`response.synthesis`"
+          },
+          "tokens_in_cached": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "tokens_in_cache_write": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "tokens_in_fresh": {
+            "type": "integer",
+            "description": "`response.synthesis`",
+            "format": "int64"
+          },
+          "id": {
+            "type": "string"
+          },
+          "object": {
+            "type": "string",
+            "x-enum": [
+              "query"
+            ]
+          },
+          "model": {
+            "type": "string",
+            "nullable": true
+          },
+          "created": {
+            "type": "integer",
+            "description": "Unix seconds",
+            "format": "int64"
+          },
+          "previous_query_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "comparison": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryComparisonMember"
+            },
+            "nullable": true
+          },
+          "feedback": {
+            "$ref": "#/components/schemas/QueryFeedback"
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryInputItem"
+            },
+            "description": "The stored message array (plain-text `content`)."
+          },
+          "output": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryOutputItem"
+            },
+            "description": "Output items; assistant text is `{role, content:[{type: output_text, text}]}`"
+          },
+          "output_json": {
+            "$ref": "#/components/schemas/QueryOutputJsonProperty"
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Citation"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QueryStep"
+            }
+          },
+          "rollup": {
+            "$ref": "#/components/schemas/QueryRollup"
+          },
+          "synthesis": {
+            "$ref": "#/components/schemas/QuerySynthesis"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/QueryUsage"
+          },
+          "runtime_ms": {
+            "type": "integer",
+            "format": "int64"
           }
         },
-        "description": "\"Server-sent event stream. While the turn runs, each progress frame has an `id:` (the event's sequence number — send it back as the `Last-Event-ID` header to resume), an `event:` name equal to the QueryEvent `type` (e.g. `response.step`), and that QueryEvent as its JSON `data:`. When the turn finishes, a final frame named `event: query` is sent — no `id:`, with the full Query document as `data:`.\n\"",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "QueryEvent": "#/components/schemas/QueryEvent",
-            "Query": "#/components/schemas/Query"
-          }
-        }
+        "description": "Server-sent event stream. While the turn runs, each progress frame has an `id:` (the event's sequence number — send it back as the `Last-Event-ID` header to resume), an `event:` name equal to the QueryEvent `type` (e.g. `response.step`), and that QueryEvent as its JSON `data:`. When the turn finishes, a final frame named `event: query` is sent — no `id:`, with the full Query document as `data:`.\n"
       },
       "Nexus202607CreateQueryFeedbackRequest": {
         "required": [
@@ -7849,7 +8831,7 @@
         }
       },
       "Forbidden": {
-        "description": "\"Not permitted. Coded cases: `preview_not_enabled` (project not enabled for the Nexus preview), `workspace_host_required` (reached over the account host on a workspace-enabled cluster).\"",
+        "description": "Not permitted. Coded cases: `preview_not_enabled` (project not enabled for the Nexus preview), `workspace_host_required` (reached over the account host on a workspace-enabled cluster).",
         "content": {
           "application/json": {
             "schema": {
@@ -7947,12 +8929,6 @@
         "description": "Pinecone API key, accepted as an alternative to the bearer JWT.",
         "name": "X-Pinecone-Api-Key",
         "in": "header"
-      },
-      "assets_jwt": {
-        "type": "http",
-        "description": "JWT used for assets upload",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   },

@@ -66,7 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Contexts
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// &quot;The context is created empty and is not queryable until you import sources and curate them (curate is explicit — there is no auto-curate). Optionally seed a `manifest`. A `work` context is the exception: it is queryable from day zero and is built from traces of work rather than source documents.&quot;
+        /// The context is created empty and is not queryable until you import sources and curate them (curate is explicit — there is no auto-curate). Optionally seed a `manifest`. A `work` context is the exception: it is queryable from day zero and is built from traces of work rather than source documents.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -112,7 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus.Contexts
             return requestInfo;
         }
         /// <summary>
-        /// &quot;The context is created empty and is not queryable until you import sources and curate them (curate is explicit — there is no auto-curate). Optionally seed a `manifest`. A `work` context is the exception: it is queryable from day zero and is built from traces of work rather than source documents.&quot;
+        /// The context is created empty and is not queryable until you import sources and curate them (curate is explicit — there is no auto-curate). Optionally seed a `manifest`. A `work` context is the exception: it is queryable from day zero and is built from traces of work rather than source documents.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;A task&apos;s reported `output` — heterogeneous: every workflow reports a different per-state shape, stored and echoed verbatim. An unrecognized or newer shape is preserved as-is rather than rejected, so treat this union as open.&quot;
+    /// A task&apos;s reported `output` — heterogeneous: every workflow reports a different per-state shape, stored and echoed verbatim. An unrecognized or newer shape is preserved as-is rather than rejected, so treat this union as open.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskResponseOutput : IAdditionalDataHolder, IParsable
@@ -383,14 +383,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public bool? TracesIncluded { get; set; }
         /// <summary>The traces_total property</summary>
         public long? TracesTotal { get; set; }
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>The chat-seam token rollup reported by the inference client, which carries the cache-token fields. Used by optimize and explore.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -511,7 +503,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "traces_files", n => { TracesFiles = n.GetLongValue(); } },
                 { "traces_included", n => { TracesIncluded = n.GetBoolValue(); } },
                 { "traces_total", n => { TracesTotal = n.GetLongValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage>(global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage.CreateFromDiscriminatorValue); } },
                 { "versioned", n => { Versioned = n.GetBoolValue(); } },
             };
@@ -608,7 +599,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("traces_files", TracesFiles);
             writer.WriteBoolValue("traces_included", TracesIncluded);
             writer.WriteLongValue("traces_total", TracesTotal);
-            writer.WriteStringValue("type", Type);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage>("usage", Usage);
             writer.WriteBoolValue("versioned", Versioned);
             writer.WriteAdditionalData(AdditionalData);
