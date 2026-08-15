@@ -92,10 +92,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Present when a shape was used, or on a retrieval-only turn</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson? OutputJson { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty? OutputJson { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson OutputJson { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty OutputJson { get; set; }
 #endif
         /// <summary>The previous_query_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -198,7 +198,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "output", n => { Output = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "output_json", n => { OutputJson = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson.CreateFromDiscriminatorValue); } },
+                { "output_json", n => { OutputJson = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty.CreateFromDiscriminatorValue); } },
                 { "previous_query_id", n => { PreviousQueryId = n.GetStringValue(); } },
                 { "rollup", n => { Rollup = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup.CreateFromDiscriminatorValue); } },
                 { "runtime_ms", n => { RuntimeMs = n.GetLongValue(); } },
@@ -227,7 +227,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("object", Object);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem>("output", Output);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson>("output_json", OutputJson);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty>("output_json", OutputJson);
             writer.WriteStringValue("previous_query_id", PreviousQueryId);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup>("rollup", Rollup);
             writer.WriteLongValue("runtime_ms", RuntimeMs);

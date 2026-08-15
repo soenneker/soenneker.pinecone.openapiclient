@@ -11,26 +11,26 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Present when a shape was used, or on a retrieval-only turn
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class QueryOutputJson : IAdditionalDataHolder, IParsable
+    public partial class QueryOutputJsonProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty"/> and sets the default values.
         /// </summary>
-        public QueryOutputJson()
+        public QueryOutputJsonProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJson();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

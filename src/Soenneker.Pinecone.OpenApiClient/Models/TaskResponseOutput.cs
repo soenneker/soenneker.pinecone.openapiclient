@@ -238,10 +238,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The output_json property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJson? OutputJson { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJsonProperty? OutputJson { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJson OutputJson { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJsonProperty OutputJson { get; set; }
 #endif
         /// <summary>The p90_latency_limit_ms property</summary>
         public double? P90LatencyLimitMs { get; set; }
@@ -482,7 +482,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "models", n => { Models = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty.CreateFromDiscriminatorValue); } },
                 { "none", n => { None = n.GetBoolValue(); } },
                 { "output_files", n => { OutputFiles = n.GetLongValue(); } },
-                { "output_json", n => { OutputJson = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJson>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJson.CreateFromDiscriminatorValue); } },
+                { "output_json", n => { OutputJson = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJsonProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJsonProperty.CreateFromDiscriminatorValue); } },
                 { "p90_latency_limit_ms", n => { P90LatencyLimitMs = n.GetDoubleValue(); } },
                 { "pack_filename", n => { PackFilename = n.GetStringValue(); } },
                 { "pack_size", n => { PackSize = n.GetLongValue(); } },
@@ -579,7 +579,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty>("models", Models);
             writer.WriteBoolValue("none", None);
             writer.WriteLongValue("output_files", OutputFiles);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJson>("output_json", OutputJson);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutputOutputJsonProperty>("output_json", OutputJson);
             writer.WriteDoubleValue("p90_latency_limit_ms", P90LatencyLimitMs);
             writer.WriteStringValue("pack_filename", PackFilename);
             writer.WriteLongValue("pack_size", PackSize);

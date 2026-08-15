@@ -89,10 +89,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The shape property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShape? Shape { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty? Shape { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShape Shape { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty Shape { get; set; }
 #endif
         /// <summary>The tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -138,7 +138,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "retrieval", n => { Retrieval = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval.CreateFromDiscriminatorValue); } },
                 { "scope", n => { Scope = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "shape", n => { Shape = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShape>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShape.CreateFromDiscriminatorValue); } },
+                { "shape", n => { Shape = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "turn_timeout_seconds", n => { TurnTimeoutSeconds = n.GetLongValue(); } },
             };
@@ -159,7 +159,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval>("retrieval", Retrieval);
             writer.WriteCollectionOfPrimitiveValues<string>("scope", Scope);
             writer.WriteStringValue("session_id", SessionId);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShape>("shape", Shape);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty>("shape", Shape);
             writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
             writer.WriteLongValue("turn_timeout_seconds", TurnTimeoutSeconds);
             writer.WriteAdditionalData(AdditionalData);
