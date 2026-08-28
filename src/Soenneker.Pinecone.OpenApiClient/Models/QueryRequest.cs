@@ -8,138 +8,62 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A single KnowQL query turn. `scope` and the session-config fields (`system_prompt`, `guardrails`, `model`/`models`, `tools`) are honored only when starting a NEW session and are pinned for its life; continue an existing session with `session_id` or `previous_query_id`. The per-turn controls (`workflow`, `shape`, `max_steps`, `thinking_level`, `compose`, `retrieval_only`/`pointers_only`, `chunks_only`/`artifacts_only`, `max_retrieved`/`max_retrieved_chars`) ride the turn and are not pinned to the session.
+    /// The request for the `query` operation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Retrieval-only, narrowed to artifacts</summary>
-        public bool? ArtifactsOnly { get; set; }
-        /// <summary>The natural-language question</summary>
+        /// <summary>The filter to apply. You can use vector metadata to limit your search. See [Understanding metadata](https://docs.pinecone.io/guides/index-data/indexing-overview#metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ask { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public string Ask { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty Filter { get; set; }
 #endif
-        /// <summary>Fire-and-forget: 202 + in_progress query; poll GET /queries/{id}. Mutually exclusive with stream.</summary>
-        public bool? Background { get; set; }
-        /// <summary>Retrieval-only, narrowed to chunks</summary>
-        public bool? ChunksOnly { get; set; }
-        /// <summary>Client-generated id shared by the turns of one Compare run, so the preview per-project query cap treats them as a single action. The group is size-bounded server-side (max 3 turns). Omit for a normal single query.</summary>
+        /// <summary>The unique ID of the vector to be used as a query vector. It is mutually exclusive with both vector forms: a request naming `id` may not also carry `vector` or `sparseVector`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ComparisonGroup { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string ComparisonGroup { get; set; }
+        public string Id { get; set; }
 #endif
-        /// <summary>`false` skips synthesis (alias for `retrieval_only`)</summary>
-        public bool? Compose { get; set; }
-        /// <summary>Guardrails pinned to a new session</summary>
+        /// <summary>Indicates whether metadata is included in the response as well as the ids.</summary>
+        public bool? IncludeMetadata { get; set; }
+        /// <summary>Indicates whether vector values are included in the response. For on-demand indexes, setting this to `true` may increase latency, especially with higher `topK` values, because vector values are retrieved from object storage. Unless you need vector values, set this to `false` for better performance.</summary>
+        public bool? IncludeValues { get; set; }
+        /// <summary>An optimization parameter that controls the maximum number of candidate dense vectors to rerank. Reranking computes exact distances to improve recall but increases query latency. Range: top_k – 100000.Keep the default for a balance of recall and latency. Increase this value if recall is too low, or decrease it to reduce latency at the cost of accuracy. This parameter is only supported for dedicated (DRN) dense indexes.</summary>
+        public long? MaxCandidates { get; set; }
+        /// <summary>The namespace to query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Guardrails { get; set; }
+        public string? Namespace { get; set; }
 #nullable restore
 #else
-        public string Guardrails { get; set; }
+        public string Namespace { get; set; }
 #endif
-        /// <summary>Cap the item count for retrieval-only turns</summary>
-        public long? MaxRetrieved { get; set; }
-        /// <summary>Cap per-item verbatim text length for retrieval-only turns</summary>
-        public long? MaxRetrievedChars { get; set; }
-        /// <summary>Cap the agent&apos;s tool-loop steps for this turn</summary>
-        public long? MaxSteps { get; set; }
-        /// <summary>provider/model</summary>
+        /// <summary>An optimization parameter for IVF dense indexes in dedicated read node indexes. It adjusts how much of the index is scanned to find vector candidates. Range: 0.5 – 4 (default).Keep the default (4.0) for the best search results. If query latency is too high, try lowering this value incrementally (minimum 0.5) to speed up the search at the cost of slightly lower accuracy. This parameter is only supported for dedicated (DRN) dense indexes.</summary>
+        public float? ScanFactor { get; set; }
+        /// <summary>Vector sparse data. Represented as a list of indices and a list of  corresponded values, which must be with the same length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues? SparseVector { get; set; }
 #nullable restore
 #else
-        public string Model { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues SparseVector { get; set; }
 #endif
-        /// <summary>Ordered fallback list; takes precedence over model</summary>
+        /// <summary>The number of results to return for each query.</summary>
+        public long? TopK { get; set; }
+        /// <summary>The query vector. This should be the same length as the dimension of the index being queried. Each `query` request can contain only one of the parameters `id` or `vector`.Whether `vector` and `sparseVector` may be sent together depends on the index: an index that supports only a single query predicate rejects the combination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Models { get; set; }
+        public List<float?>? Vector { get; set; }
 #nullable restore
 #else
-        public List<string> Models { get; set; }
-#endif
-        /// <summary>Skip synthesis; return just pointers in `output_json`</summary>
-        public bool? PointersOnly { get; set; }
-        /// <summary>Continue the session this query belongs to</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PreviousQueryId { get; set; }
-#nullable restore
-#else
-        public string PreviousQueryId { get; set; }
-#endif
-        /// <summary>Skip synthesis; return retrieved hits in `output_json`</summary>
-        public bool? RetrievalOnly { get; set; }
-        /// <summary>Context slugs/UUIDs. New session only; pinned for the session&apos;s life. A scope may not mix work and search contexts.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Scope { get; set; }
-#nullable restore
-#else
-        public List<string> Scope { get; set; }
-#endif
-        /// <summary>Continue an existing session</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SessionId { get; set; }
-#nullable restore
-#else
-        public string SessionId { get; set; }
-#endif
-        /// <summary>JSON Schema subset for structured output; result in output_json</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty? Shape { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty Shape { get; set; }
-#endif
-        /// <summary>SSE streaming. Mutually exclusive with background.</summary>
-        public bool? Stream { get; set; }
-        /// <summary>Instructions pinned to a new session</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? SystemPrompt { get; set; }
-#nullable restore
-#else
-        public string SystemPrompt { get; set; }
-#endif
-        /// <summary>Gemini reasoning depth. Default `low`. Gemini-backed workflows only; ignored for `search_cc`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ThinkingLevel { get; set; }
-#nullable restore
-#else
-        public string ThinkingLevel { get; set; }
-#endif
-        /// <summary>May only LOWER the 15-minute (900s) cap</summary>
-        public long? TimeoutSeconds { get; set; }
-        /// <summary>The tools property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Tools { get; set; }
-#nullable restore
-#else
-        public List<string> Tools { get; set; }
-#endif
-        /// <summary>Search workflow for this turn. Legacy aliases `query_search`/`query_sac`, `query_cc`, `query_rag` are still accepted on input. Ignored for work contexts, which always run the `work` runtime.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Workflow { get; set; }
-#nullable restore
-#else
-        public string Workflow { get; set; }
+        public List<float?> Vector { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequest"/> and sets the default values.
@@ -147,6 +71,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public QueryRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            IncludeMetadata = false;
+            IncludeValues = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -166,30 +92,16 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "artifacts_only", n => { ArtifactsOnly = n.GetBoolValue(); } },
-                { "ask", n => { Ask = n.GetStringValue(); } },
-                { "background", n => { Background = n.GetBoolValue(); } },
-                { "chunks_only", n => { ChunksOnly = n.GetBoolValue(); } },
-                { "comparison_group", n => { ComparisonGroup = n.GetStringValue(); } },
-                { "compose", n => { Compose = n.GetBoolValue(); } },
-                { "guardrails", n => { Guardrails = n.GetStringValue(); } },
-                { "max_retrieved", n => { MaxRetrieved = n.GetLongValue(); } },
-                { "max_retrieved_chars", n => { MaxRetrievedChars = n.GetLongValue(); } },
-                { "max_steps", n => { MaxSteps = n.GetLongValue(); } },
-                { "model", n => { Model = n.GetStringValue(); } },
-                { "models", n => { Models = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "pointers_only", n => { PointersOnly = n.GetBoolValue(); } },
-                { "previous_query_id", n => { PreviousQueryId = n.GetStringValue(); } },
-                { "retrieval_only", n => { RetrievalOnly = n.GetBoolValue(); } },
-                { "scope", n => { Scope = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "session_id", n => { SessionId = n.GetStringValue(); } },
-                { "shape", n => { Shape = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty.CreateFromDiscriminatorValue); } },
-                { "stream", n => { Stream = n.GetBoolValue(); } },
-                { "system_prompt", n => { SystemPrompt = n.GetStringValue(); } },
-                { "thinking_level", n => { ThinkingLevel = n.GetStringValue(); } },
-                { "timeout_seconds", n => { TimeoutSeconds = n.GetLongValue(); } },
-                { "tools", n => { Tools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "workflow", n => { Workflow = n.GetStringValue(); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty.CreateFromDiscriminatorValue); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "includeMetadata", n => { IncludeMetadata = n.GetBoolValue(); } },
+                { "includeValues", n => { IncludeValues = n.GetBoolValue(); } },
+                { "maxCandidates", n => { MaxCandidates = n.GetLongValue(); } },
+                { "namespace", n => { Namespace = n.GetStringValue(); } },
+                { "scanFactor", n => { ScanFactor = n.GetFloatValue(); } },
+                { "sparseVector", n => { SparseVector = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>(global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues.CreateFromDiscriminatorValue); } },
+                { "topK", n => { TopK = n.GetLongValue(); } },
+                { "vector", n => { Vector = n.GetCollectionOfPrimitiveValues<float?>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -199,30 +111,16 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("artifacts_only", ArtifactsOnly);
-            writer.WriteStringValue("ask", Ask);
-            writer.WriteBoolValue("background", Background);
-            writer.WriteBoolValue("chunks_only", ChunksOnly);
-            writer.WriteStringValue("comparison_group", ComparisonGroup);
-            writer.WriteBoolValue("compose", Compose);
-            writer.WriteStringValue("guardrails", Guardrails);
-            writer.WriteLongValue("max_retrieved", MaxRetrieved);
-            writer.WriteLongValue("max_retrieved_chars", MaxRetrievedChars);
-            writer.WriteLongValue("max_steps", MaxSteps);
-            writer.WriteStringValue("model", Model);
-            writer.WriteCollectionOfPrimitiveValues<string>("models", Models);
-            writer.WriteBoolValue("pointers_only", PointersOnly);
-            writer.WriteStringValue("previous_query_id", PreviousQueryId);
-            writer.WriteBoolValue("retrieval_only", RetrievalOnly);
-            writer.WriteCollectionOfPrimitiveValues<string>("scope", Scope);
-            writer.WriteStringValue("session_id", SessionId);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty>("shape", Shape);
-            writer.WriteBoolValue("stream", Stream);
-            writer.WriteStringValue("system_prompt", SystemPrompt);
-            writer.WriteStringValue("thinking_level", ThinkingLevel);
-            writer.WriteLongValue("timeout_seconds", TimeoutSeconds);
-            writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
-            writer.WriteStringValue("workflow", Workflow);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestFilterProperty>("filter", Filter);
+            writer.WriteStringValue("id", Id);
+            writer.WriteBoolValue("includeMetadata", IncludeMetadata);
+            writer.WriteBoolValue("includeValues", IncludeValues);
+            writer.WriteLongValue("maxCandidates", MaxCandidates);
+            writer.WriteStringValue("namespace", Namespace);
+            writer.WriteFloatValue("scanFactor", ScanFactor);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseValues>("sparseVector", SparseVector);
+            writer.WriteLongValue("topK", TopK);
+            writer.WriteCollectionOfPrimitiveValues<float?>("vector", Vector);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,29 +8,45 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// JSON Schema subset for structured output; result in output_json
+    /// Represents a reference to a part of a text document.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class QueryRequestShapeProperty : IAdditionalDataHolder, IParsable
+    public partial class TextReferenceModel : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The response format for a successful file upload request.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel? File { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel File { get; set; }
+#endif
+        /// <summary>The type of reference. Always `text`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TextReferenceModel"/> and sets the default values.
         /// </summary>
-        public QueryRequestShapeProperty()
+        public TextReferenceModel()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TextReferenceModel"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.TextReferenceModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.QueryRequestShapeProperty();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.TextReferenceModel();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,6 +56,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "file", n => { File = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel>(global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel.CreateFromDiscriminatorValue); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +67,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.AssistantFileModel>("file", File);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
