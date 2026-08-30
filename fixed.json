@@ -28503,21 +28503,20 @@
             "type": "object"
           },
           {
-            "title": "Multiple text scoring clauses",
-            "minItems": 2,
-            "type": "object",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "$ref": "#/components/schemas/SearchDocumentsRequestScoreByOneOf2ItemType"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/SearchDocumentsRequestScoreByMultipleTextScoringClausesWrapper"
           }
         ],
         "items": {
           "$ref": "#/components/schemas/DocumentScoringMethod"
+        },
+        "properties": {
+          "value": {
+            "minItems": 2,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchDocumentsRequestScoreByMultipleTextScoringClausesItem"
+            }
+          }
         },
         "description": "The list of scoring methods to use for ranking documents.\n\nA single clause of any type is always valid. Several clauses may be combined only when every one of them is \u0060text\u0060 or \u0060query_string\u0060; a \u0060dense_vector\u0060 or \u0060sparse_vector\u0060 clause must appear on its own."
       },
@@ -29041,6 +29040,14 @@
           "next": "dXNlcl9pZD11c2VyXzE="
         },
         "x-component-name": "PaginationResponse"
+      },
+      "SearchDocumentsRequestScoreByMultipleTextScoringClauses": {
+        "title": "Multiple text scoring clauses",
+        "minItems": 2,
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/SearchDocumentsRequestScoreByMultipleTextScoringClausesItem"
+        }
       },
       "ErrorResponseError": {
         "required": [
@@ -30995,6 +31002,14 @@
           }
         }
       },
+      "SearchDocumentsRequestScoreByMultipleTextScoringClausesItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SearchDocumentsRequestScoreByMultipleTextScoringClausesItemType"
+          }
+        }
+      },
       "ErrorResponseErrorDetails": {
         "type": "object",
         "description": "Additional information about the error. This field is not guaranteed to be present."
@@ -32418,6 +32433,21 @@
           }
         }
       },
+      "SearchDocumentsRequestScoreByMultipleTextScoringClausesWrapper": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "minItems": 2,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchDocumentsRequestScoreByMultipleTextScoringClausesItem"
+            }
+          }
+        }
+      },
       "DbControl202607ListIndexes401PlainResponseSchema": {
         "type": "string",
         "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the API, so they carry a short message rather than an \u0060ErrorResponse\u0060."
@@ -33479,29 +33509,6 @@
           ]
         }
       },
-      "SearchDocumentsRequestScoreByOneOf2ItemType": {
-        "enum": [
-          "text",
-          "query_string"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "Multiple scoring clauses must use \u0060text\u0060 or \u0060query_string\u0060.",
-        "x-ms-enum": {
-          "name": "SearchDocumentsRequestScoreByOneOf2ItemType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "text",
-              "name": "Text"
-            },
-            {
-              "value": "query_string",
-              "name": "QueryString"
-            }
-          ]
-        }
-      },
       "DeleteDocumentsRequestByIdDeleteAll": {
         "enum": [
           false
@@ -33522,6 +33529,29 @@
         ],
         "type": "boolean",
         "additionalProperties": false
+      },
+      "SearchDocumentsRequestScoreByMultipleTextScoringClausesItemType": {
+        "enum": [
+          "text",
+          "query_string"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Multiple scoring clauses must use \u0060text\u0060 or \u0060query_string\u0060.",
+        "x-ms-enum": {
+          "name": "SearchDocumentsRequestScoreByMultipleTextScoringClausesItemType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "text",
+              "name": "Text"
+            },
+            {
+              "value": "query_string",
+              "name": "QueryString"
+            }
+          ]
+        }
       },
       "MetadataSchemaFieldsAdditionalPropertiesFilterable": {
         "enum": [

@@ -34,10 +34,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The list of scoring methods to use for ranking documents.A single clause of any type is always valid. Several clauses may be combined only when every one of them is `text` or `query_string`; a `dense_vector` or `sparse_vector` clause must appear on its own.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>? ScoreBy { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy? ScoreBy { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod> ScoreBy { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy ScoreBy { get; set; }
 #endif
         /// <summary>The number of top-ranked documents to return.</summary>
         public int? TopK { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "include_fields", n => { IncludeFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "score_by", n => { ScoreBy = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>(global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "score_by", n => { ScoreBy = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy.CreateFromDiscriminatorValue); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty>("filter", Filter);
             writer.WriteCollectionOfPrimitiveValues<string>("include_fields", IncludeFields);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>("score_by", ScoreBy);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy>("score_by", ScoreBy);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteAdditionalData(AdditionalData);
         }

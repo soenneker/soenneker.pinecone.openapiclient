@@ -7,31 +7,38 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// The list of scoring methods to use for ranking documents.A single clause of any type is always valid. Several clauses may be combined only when every one of them is `text` or `query_string`; a `dense_vector` or `sparse_vector` clause must appear on its own.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class DocumentScoringMethodTextScoring : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class SearchDocumentsRequestScoreBy : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TextType? Type { get; set; }
+        /// <summary>The value property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreByMultipleTextScoringClausesItem>? Value { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreByMultipleTextScoringClausesItem> Value { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethodTextScoring"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy"/> and sets the default values.
         /// </summary>
-        public DocumentScoringMethodTextScoring()
+        public SearchDocumentsRequestScoreBy()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethodTextScoring"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethodTextScoring CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethodTextScoring();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,7 +48,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.TextType>(); } },
+                { "value", n => { Value = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreByMultipleTextScoringClausesItem>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreByMultipleTextScoringClausesItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -51,7 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.TextType>("type", Type);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreByMultipleTextScoringClausesItem>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
