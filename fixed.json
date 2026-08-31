@@ -20670,36 +20670,6 @@
           "filterable": {
             "type": "boolean",
             "description": "Whether this field is indexed for metadata filtering."
-          },
-          "description": {
-            "maxLength": 256,
-            "type": "string",
-            "description": "Optional description for this field, at most 256 bytes. \u0060null\u0060 in responses when none was set.",
-            "nullable": true
-          },
-          "metric": {
-            "type": "string",
-            "description": "The distance metric used for similarity search.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
-            "example": "cosine",
-            "x-enum": [
-              "cosine",
-              "dotproduct",
-              "euclidean"
-            ]
-          },
-          "model": {
-            "type": "string",
-            "description": "The name of the integrated embedding model to use for this field.",
-            "example": "multilingual-e5-large"
-          },
-          "write_parameters": {
-            "$ref": "#/components/schemas/SemanticTextFieldWriteParametersProperty"
-          },
-          "read_parameters": {
-            "$ref": "#/components/schemas/SemanticTextFieldReadParametersProperty"
-          },
-          "full_text_search": {
-            "$ref": "#/components/schemas/ResponseStringFieldFullTextSearch"
           }
         },
         "description": "The configuration of a single field in the index schema.\nMost fields carry a \u0060type\u0060 property that identifies the field type:\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search. - \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search. - \u0060semantic_text\u0060: Text field backed by an integrated embedding model. - \u0060string\u0060: String field for full-text search or metadata filtering. - \u0060string_list\u0060: String array field. - \u0060float\u0060: Numeric field. - \u0060integer\u0060: Legacy numeric field from older indexes (pre-dating float\n\n  normalization). Will not appear in new indexes.\n- \u0060boolean\u0060: Boolean field.\nFields in older indexes may omit \u0060type\u0060 entirely. These are legacy metadata fields from before typed schemas were introduced."
@@ -26659,42 +26629,6 @@
           "groom_timeout_seconds": {
             "type": "integer",
             "format": "int64"
-          },
-          "provider": {
-            "type": "string"
-          },
-          "connector_id": {
-            "type": "string"
-          },
-          "folder": {
-            "type": "string",
-            "nullable": true
-          },
-          "item_type": {
-            "type": "string",
-            "x-enum": [
-              "folder",
-              "file"
-            ]
-          },
-          "files": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "path": {
-            "type": "string"
-          },
-          "preview": {
-            "$ref": "#/components/schemas/PreviewLimits"
-          },
-          "url": {
-            "type": "string"
-          },
-          "raw_archive_key": {
-            "type": "string",
-            "description": "Staging key under the source bucket\u0027s \u0060_inbox/\u0060 prefix"
           }
         },
         "description": "A task\u0027s per-workflow \u0060input\u0060, written once at creation and echoed back verbatim. It carries no discriminant of its own \u2014 the sibling \u0060workflow\u0060 field selects the shape."
