@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One kind of artifact to extract. `name` is required of a written manifest; a read echoes a stored document that lacks one rather than failing.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ArtifactType : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>sqlite-format artifacts only</summary>
+        /// <summary>Table schema for a `sqlite`-format type. Ignored for `markdown`. Two names that normalize to the same column collide, and the first declaration wins.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactTypeColumnsItem>? Columns { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactTypeColumnsItem> Columns { get; set; }
 #endif
-        /// <summary>The coverage property</summary>
+        /// <summary>Topics the extraction is told to address wherever the source speaks to them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Coverage { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Coverage { get; set; }
 #endif
-        /// <summary>The description property</summary>
+        /// <summary>What this type should capture. Goes into the extraction prompt, so it steers the result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -38,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The format property</summary>
+        /// <summary>Where the artifacts of this type are written — `markdown` a prose file each, `sqlite` rows in the context&apos;s structured database.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Format { get; set; }
@@ -46,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Format { get; set; }
 #endif
-        /// <summary>The icon property</summary>
+        /// <summary>Symbol to display beside artifacts of this kind.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Icon { get; set; }
@@ -54,7 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Icon { get; set; }
 #endif
-        /// <summary>The kind property</summary>
+        /// <summary>What the artifact represents, which selects the extraction prompt. `glossary` is the exception — it reads the headings named in `sections` deterministically, with no LLM call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -62,9 +63,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Kind { get; set; }
 #endif
-        /// <summary>The min_doc_count property</summary>
+        /// <summary>Overrides the manifest-level `min_doc_count` for this type.</summary>
         public int? MinDocCount { get; set; }
-        /// <summary>The name property</summary>
+        /// <summary>What the type is called. Edge endpoints reference it, and a sqlite type&apos;s table is named after it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -72,7 +73,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The natural_key property</summary>
+        /// <summary>Columns that identify a row uniquely, so re-curating a source upserts its rows rather than duplicating them. `sqlite`-format types only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? NaturalKey { get; set; }
@@ -80,7 +81,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> NaturalKey { get; set; }
 #endif
-        /// <summary>The scope property</summary>
+        /// <summary>How widely the extraction reaches. `document` extracts one artifact per source; `corpus` reduces mentions from across every source into one artifact per subject.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Scope { get; set; }
@@ -88,7 +89,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Scope { get; set; }
 #endif
-        /// <summary>The sections property</summary>
+        /// <summary>Exact section headings a `glossary`-kind type reads verbatim. Ignored by every other kind.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Sections { get; set; }

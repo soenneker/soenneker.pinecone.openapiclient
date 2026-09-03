@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A paginated source/knowledge directory listing.
+    /// One page of a source or knowledge directory. A listing returns a single page, so `offset` is 0 and `next_offset` is null; `limit` echoes the request rather than being applied.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DirListing : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The entries property</summary>
+        /// <summary>The directory&apos;s immediate children.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.DirListingEntriesItem>? Entries { get; set; }
@@ -23,13 +23,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.DirListingEntriesItem> Entries { get; set; }
 #endif
-        /// <summary>The limit property</summary>
+        /// <summary>Echoes the request.</summary>
         public long? Limit { get; set; }
-        /// <summary>The next_offset property</summary>
+        /// <summary>Always null — a listing returns one page.</summary>
         public long? NextOffset { get; set; }
-        /// <summary>The offset property</summary>
+        /// <summary>Echoes the request.</summary>
         public long? Offset { get; set; }
-        /// <summary>The total property</summary>
+        /// <summary>Entries in this directory.</summary>
         public long? Total { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DirListing"/> and sets the default values.

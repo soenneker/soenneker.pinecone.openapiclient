@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What a profile run was started with.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ProfileInput : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileInputManifest Manifest { get; set; }
 #endif
-        /// <summary>The trigger property</summary>
+        /// <summary>What started the run, e.g. `manual`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Trigger { get; set; }

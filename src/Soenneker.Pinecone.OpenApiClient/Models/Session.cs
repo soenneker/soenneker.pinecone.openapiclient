@@ -8,16 +8,16 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A project-owned conversation thread of queries.
+    /// A project-owned conversation thread of queries. Its scope and configuration are pinned when the first turn creates it and cannot be changed afterwards.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Session : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the session was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>Principal whose first turn created the session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get; set; }
@@ -25,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
-        /// <summary>The guardrails property</summary>
+        /// <summary>Guardrails pinned at session creation. Null when none were given.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Guardrails { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Guardrails { get; set; }
 #endif
-        /// <summary>ses_&lt;uuid&gt;</summary>
+        /// <summary>Session id, `ses_&lt;uuid&gt;`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The last_query_id property</summary>
+        /// <summary>The most recent turn. Null on a session with no turns yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastQueryId { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string LastQueryId { get; set; }
 #endif
-        /// <summary>Pinned model fallback list</summary>
+        /// <summary>Pinned model fallback list, in preference order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Models { get; set; }
@@ -57,7 +57,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Models { get; set; }
 #endif
-        /// <summary>The project_id property</summary>
+        /// <summary>The Pinecone project that owns the session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProjectId { get; set; }
@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ProjectId { get; set; }
 #endif
-        /// <summary>Pinned context UUIDs (1–10)</summary>
+        /// <summary>Pinned context UUIDs (1–10) every turn searches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Scope { get; set; }
@@ -73,7 +73,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Scope { get; set; }
 #endif
-        /// <summary>The system_prompt property</summary>
+        /// <summary>Instructions pinned at session creation. Null when none were given.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SystemPrompt { get; set; }
@@ -81,7 +81,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string SystemPrompt { get; set; }
 #endif
-        /// <summary>The title property</summary>
+        /// <summary>Display title derived from the opening ask. Null until one is written.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }
@@ -89,7 +89,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Title { get; set; }
 #endif
-        /// <summary>The tools property</summary>
+        /// <summary>Tool names the session&apos;s turns may call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Tools { get; set; }
@@ -97,7 +97,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Tools { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>When the session last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>The workflow this session&apos;s turns run</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +107,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Workflow { get; set; }
 #endif
-        /// <summary>Present only on a workspace-enabled cluster</summary>
+        /// <summary>Owning workspace. Absent off a workspace-enabled cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Workspace { get; set; }

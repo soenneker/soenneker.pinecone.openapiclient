@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Answer { get; set; }
 #endif
-        /// <summary>The ask property</summary>
+        /// <summary>The question to tune retrieval against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Ask { get; set; }
@@ -31,9 +31,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Ask { get; set; }
 #endif
-        /// <summary>The fallback_to_chunks property</summary>
+        /// <summary>Whether answering this query had to drill from artifacts down to chunks.</summary>
         public bool? FallbackToChunks { get; set; }
-        /// <summary>The latency_ms property</summary>
+        /// <summary>Latency the query showed in real traffic, as a tuning baseline.</summary>
         public double? LatencyMs { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery"/> and sets the default values.

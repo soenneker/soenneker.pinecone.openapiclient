@@ -8,22 +8,22 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// `point` is the estimate at G&apos;s midpoint and splits into input/output; `lo`/`hi` are band totals.
+    /// The `point` estimate sits at G&apos;s midpoint and splits into input/output; `lo`/`hi` are band totals.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileTierCostTokens : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The hi property</summary>
+        /// <summary>Total at the high end of the band.</summary>
         public long? Hi { get; set; }
-        /// <summary>The input property</summary>
+        /// <summary>Input share of the point estimate.</summary>
         public long? Input { get; set; }
-        /// <summary>The lo property</summary>
+        /// <summary>Total at the low end of the band.</summary>
         public long? Lo { get; set; }
-        /// <summary>The output property</summary>
+        /// <summary>Output share of the point estimate.</summary>
         public long? Output { get; set; }
-        /// <summary>The point property</summary>
+        /// <summary>Estimate at the artifact count&apos;s midpoint.</summary>
         public long? Point { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens"/> and sets the default values.

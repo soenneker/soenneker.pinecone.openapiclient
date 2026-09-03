@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One file or folder in the provider&apos;s tree, as offered for import.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ConnectorItem : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>Provider-side id. Pass it as `folder` or in `files` to import.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Display name at the provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -32,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>Files only, when the provider reports it</summary>
         public long? Size { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>Whether the item is a file or a folder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }

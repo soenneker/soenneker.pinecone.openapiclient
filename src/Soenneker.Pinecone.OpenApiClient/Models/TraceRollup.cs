@@ -8,33 +8,49 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// End-of-turn aggregate counters. The cache fields are present only on the search-as-code path.
+    /// Null on a turn the runtime never closed. The trace&apos;s copy omits the `type` and `query_id` the event form carries.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TraceRollup : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The by_category property</summary>
+        /// <summary>Tool calls tallied by category.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategoryProperty? ByCategory { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategory? ByCategory { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategoryProperty ByCategory { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategory ByCategory { get; set; }
 #endif
-        /// <summary>The cache_read_tokens property</summary>
+        /// <summary>Input tokens served from the prompt cache.</summary>
         public long? CacheReadTokens { get; set; }
-        /// <summary>The cache_write_tokens property</summary>
+        /// <summary>Input tokens written into the prompt cache.</summary>
         public long? CacheWriteTokens { get; set; }
-        /// <summary>The duration_ms property</summary>
+        /// <summary>Wall time for the whole turn.</summary>
         public long? DurationMs { get; set; }
-        /// <summary>The n_steps property</summary>
+        /// <summary>Reasoning steps the turn ran.</summary>
         public long? NSteps { get; set; }
-        /// <summary>The n_tool_calls property</summary>
+        /// <summary>How many calls the whole turn made.</summary>
         public long? NToolCalls { get; set; }
-        /// <summary>The total_hits property</summary>
+        /// <summary>Event form only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? QueryId { get; set; }
+#nullable restore
+#else
+        public string QueryId { get; set; }
+#endif
+        /// <summary>Retrieved items across all calls, before dedup.</summary>
         public long? TotalHits { get; set; }
+        /// <summary>Event form only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollup"/> and sets the default values.
         /// </summary>
@@ -60,13 +76,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by_category", n => { ByCategory = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategoryProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategoryProperty.CreateFromDiscriminatorValue); } },
+                { "by_category", n => { ByCategory = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategory>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategory.CreateFromDiscriminatorValue); } },
                 { "cache_read_tokens", n => { CacheReadTokens = n.GetLongValue(); } },
                 { "cache_write_tokens", n => { CacheWriteTokens = n.GetLongValue(); } },
                 { "duration_ms", n => { DurationMs = n.GetLongValue(); } },
                 { "n_steps", n => { NSteps = n.GetLongValue(); } },
                 { "n_tool_calls", n => { NToolCalls = n.GetLongValue(); } },
+                { "query_id", n => { QueryId = n.GetStringValue(); } },
                 { "total_hits", n => { TotalHits = n.GetLongValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -76,13 +94,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategoryProperty>("by_category", ByCategory);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollupByCategory>("by_category", ByCategory);
             writer.WriteLongValue("cache_read_tokens", CacheReadTokens);
             writer.WriteLongValue("cache_write_tokens", CacheWriteTokens);
             writer.WriteLongValue("duration_ms", DurationMs);
             writer.WriteLongValue("n_steps", NSteps);
             writer.WriteLongValue("n_tool_calls", NToolCalls);
+            writer.WriteStringValue("query_id", QueryId);
             writer.WriteLongValue("total_hits", TotalHits);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

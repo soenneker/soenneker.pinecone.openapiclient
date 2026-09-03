@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Knowledge-artifact extraction config.
+    /// The artifact leg: knowledge an LLM distills out of the sources, as prose files or database rows. Off by default.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ArtifactsConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artifact_model property</summary>
+        /// <summary>Model tier that does the extraction. `standard` reads more carefully at a higher token cost.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ArtifactModel { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ArtifactModel { get; set; }
 #endif
-        /// <summary>The artifact_types property</summary>
+        /// <summary>What kinds of artifact to extract. Nothing is extracted until at least one is declared.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactType>? ArtifactTypes { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactType> ArtifactTypes { get; set; }
 #endif
-        /// <summary>The edge_types property</summary>
+        /// <summary>Typed, directed relationships between artifact types, which turn the artifacts into a graph the agent can traverse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.EdgeType>? EdgeTypes { get; set; }
@@ -39,23 +39,23 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.EdgeType> EdgeTypes { get; set; }
 #endif
-        /// <summary>The enabled property</summary>
+        /// <summary>Whether curate extracts artifacts at all.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>The extraction_window_chars property</summary>
+        /// <summary>Window size for walking a long source across several extraction calls, so its back half is covered rather than dropped. `0` opts out and reads only the head, up to `max_doc_chars`.</summary>
         public int? ExtractionWindowChars { get; set; }
-        /// <summary>The max_artifacts_per_type property</summary>
+        /// <summary>How many artifacts one type may produce. Omit for no cap.</summary>
         public int? MaxArtifactsPerType { get; set; }
-        /// <summary>The max_doc_chars property</summary>
+        /// <summary>Input cap for one extraction call, in characters. With windowing off this also caps how much of a source is read at all; everything beyond it is dropped.</summary>
         public int? MaxDocChars { get; set; }
-        /// <summary>The max_mentions_per_artifact property</summary>
+        /// <summary>How many mentions are fed into the pass that reduces them into one corpus-wide artifact.</summary>
         public int? MaxMentionsPerArtifact { get; set; }
-        /// <summary>The max_tokens property</summary>
+        /// <summary>Output cap for one extracted artifact, in tokens.</summary>
         public int? MaxTokens { get; set; }
-        /// <summary>The mention_context_chars property</summary>
+        /// <summary>Cap on those mentions once concatenated, in characters. Applied after `max_mentions_per_artifact`.</summary>
         public int? MentionContextChars { get; set; }
-        /// <summary>The mention_max_chars property</summary>
+        /// <summary>Cap on one recorded mention — what a single document says about the subject — in characters.</summary>
         public int? MentionMaxChars { get; set; }
-        /// <summary>The min_doc_count property</summary>
+        /// <summary>How many source documents must mention a corpus-scoped subject before it earns an artifact. Raise it to suppress one-off mentions. An artifact type may override it.</summary>
         public int? MinDocCount { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig"/> and sets the default values.

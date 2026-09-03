@@ -8,12 +8,12 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// One ingest record.
+    /// One ingest record — what happened to a single source the import saw.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ImportManifestEntry : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The action property</summary>
+        /// <summary>What happened to the record. `parsed` converted the file to text, `copied` took it as-is, `extracted` expanded an archive.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Action { get; set; }
@@ -23,9 +23,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The bytes property</summary>
+        /// <summary>Bytes written for this record.</summary>
         public long? Bytes { get; set; }
-        /// <summary>The fmt property</summary>
+        /// <summary>Format the ingester recognized.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fmt { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Out { get; set; }
 #endif
-        /// <summary>The reason property</summary>
+        /// <summary>Why it was skipped or how it failed. Empty on success.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Reason { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Reason { get; set; }
 #endif
-        /// <summary>The src property</summary>
+        /// <summary>The record at the provider.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Src { get; set; }

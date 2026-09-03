@@ -7,16 +7,17 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One manifest template an explore run proposes for the corpus.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class TemplateMatch : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The confidence property</summary>
+        /// <summary>How sure the run is, 0–1. Low-confidence proposals are dropped before this point.</summary>
         public double? Confidence { get; set; }
-        /// <summary>The rationale property</summary>
+        /// <summary>Why the run thinks this template fits the corpus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Rationale { get; set; }
@@ -24,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Rationale { get; set; }
 #endif
-        /// <summary>The template_id property</summary>
+        /// <summary>Catalog entry the run proposes for this corpus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TemplateId { get; set; }

@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What the last curate recorded, and what the next one resumes from.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CurationState : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artifact_reclaim property</summary>
+        /// <summary>Artifact swaps awaiting the next curate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim>? ArtifactReclaim { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim> ArtifactReclaim { get; set; }
 #endif
-        /// <summary>The corpus_groups property</summary>
+        /// <summary>The source groupings the corpus pass reduced over.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup>? CorpusGroups { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup> CorpusGroups { get; set; }
 #endif
-        /// <summary>The edges property</summary>
+        /// <summary>Artifact ids each source contributed an edge to, keyed by source path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty? Edges { get; set; }
@@ -38,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty Edges { get; set; }
 #endif
-        /// <summary>The live_version property</summary>
+        /// <summary>The index version queries read.</summary>
         public long? LiveVersion { get; set; }
         /// <summary>Per-source curate ledger, keyed by source path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,9 +49,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty Manifest { get; set; }
 #endif
-        /// <summary>The redispatch_count property</summary>
+        /// <summary>How many times a curate on this context was killed and redispatched. The checkpointed run resumes rather than restarting.</summary>
         public int? RedispatchCount { get; set; }
-        /// <summary>The source_glossary property</summary>
+        /// <summary>The glossary resume cursor, keyed by source path. `{}` for a context whose curates all ran to completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty? SourceGlossary { get; set; }
@@ -58,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty SourceGlossary { get; set; }
 #endif
-        /// <summary>The source_pointers property</summary>
+        /// <summary>The resume cursor a redispatched curate writes, keyed by source path. `{}` for a context whose curates all ran to completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty? SourcePointers { get; set; }
@@ -66,7 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty SourcePointers { get; set; }
 #endif
-        /// <summary>The source_removed property</summary>
+        /// <summary>Delete tombstones awaiting the next curate, keyed by source path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty? SourceRemoved { get; set; }
@@ -74,7 +75,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty SourceRemoved { get; set; }
 #endif
-        /// <summary>The versions_stamped property</summary>
+        /// <summary>Whether every index entry carries a version stamp, which is what lets a curate flip versions atomically.</summary>
         public bool? VersionsStamped { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurationState"/> and sets the default values.

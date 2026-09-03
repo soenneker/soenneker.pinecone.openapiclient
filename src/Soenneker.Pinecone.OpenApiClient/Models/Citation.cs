@@ -8,14 +8,22 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A cited source in a completed turn&apos;s answer.
+    /// What a turn&apos;s answer was grounded in. Every field is optional: a search turn cites a corpus file (`source` and its pointers), a work turn the earlier turn a fact came from (`source_path`, `query_id`, `steps`, `artifact_name`).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Citation : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The grounding property</summary>
+        /// <summary>Work contexts — name of the cited artifact.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ArtifactName { get; set; }
+#nullable restore
+#else
+        public string ArtifactName { get; set; }
+#endif
+        /// <summary>The quoted span the answer rests on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Grounding { get; set; }
@@ -23,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Grounding { get; set; }
 #endif
-        /// <summary>The kind property</summary>
+        /// <summary>Which index the citation came out of, e.g. `chunk` or `artifact`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -31,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Kind { get; set; }
 #endif
-        /// <summary>The pages property</summary>
+        /// <summary>1-based page numbers, for sources that paginate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<long?>? Pages { get; set; }
@@ -39,7 +47,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<long?> Pages { get; set; }
 #endif
-        /// <summary>Heading paths within the source, when known.</summary>
+        /// <summary>Work contexts — the earlier turn the fact was learned from.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? QueryId { get; set; }
+#nullable restore
+#else
+        public string QueryId { get; set; }
+#endif
+        /// <summary>Retrieval score — how well this source answered the ask. Comparable only within one turn.</summary>
+        public double? Score { get; set; }
+        /// <summary>Heading paths within the source, when known. One inner array per cited section, outermost heading first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? SectionPaths { get; set; }
@@ -47,13 +65,37 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public UntypedNode SectionPaths { get; set; }
 #endif
-        /// <summary>The source property</summary>
+        /// <summary>Path of the cited corpus file, relative to the source-tree root.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Source { get; set; }
 #nullable restore
 #else
         public string Source { get; set; }
+#endif
+        /// <summary>Work contexts — path of the artifact the fact was consolidated into.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SourcePath { get; set; }
+#nullable restore
+#else
+        public string SourcePath { get; set; }
+#endif
+        /// <summary>The documents a cited artifact was derived from.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Sources { get; set; }
+#nullable restore
+#else
+        public List<string> Sources { get; set; }
+#endif
+        /// <summary>Work contexts — step ids within that earlier turn.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Steps { get; set; }
+#nullable restore
+#else
+        public List<string> Steps { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Citation"/> and sets the default values.
@@ -80,11 +122,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "artifact_name", n => { ArtifactName = n.GetStringValue(); } },
                 { "grounding", n => { Grounding = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "pages", n => { Pages = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
+                { "query_id", n => { QueryId = n.GetStringValue(); } },
+                { "score", n => { Score = n.GetDoubleValue(); } },
                 { "section_paths", n => { SectionPaths = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
+                { "source_path", n => { SourcePath = n.GetStringValue(); } },
+                { "sources", n => { Sources = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "steps", n => { Steps = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -94,11 +142,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("artifact_name", ArtifactName);
             writer.WriteStringValue("grounding", Grounding);
             writer.WriteStringValue("kind", Kind);
             writer.WriteCollectionOfPrimitiveValues<long?>("pages", Pages);
+            writer.WriteStringValue("query_id", QueryId);
+            writer.WriteDoubleValue("score", Score);
             writer.WriteObjectValue<UntypedNode>("section_paths", SectionPaths);
             writer.WriteStringValue("source", Source);
+            writer.WriteStringValue("source_path", SourcePath);
+            writer.WriteCollectionOfPrimitiveValues<string>("sources", Sources);
+            writer.WriteCollectionOfPrimitiveValues<string>("steps", Steps);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The citations property</summary>
+        /// <summary>What the answer was grounded in. Empty on a turn that cited nothing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.Citation>? Citations { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.Citation> Citations { get; set; }
 #endif
-        /// <summary>The comparison property</summary>
+        /// <summary>The sibling turns of the same Compare run. Null on a normal single query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryComparisonMember>? Comparison { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>Unix seconds</summary>
         public long? Created { get; set; }
-        /// <summary>The error property</summary>
+        /// <summary>Failure detail. Set on a `failed` turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Error { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
-        /// <summary>The feedback property</summary>
+        /// <summary>Thumbs-up/down recorded on this turn. Null until a caller submits some.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.QueryFeedback? Feedback { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.QueryFeedback Feedback { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Turn id, `qry_&lt;uuid&gt;`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -65,7 +65,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryInputItem> Input { get; set; }
 #endif
-        /// <summary>The model property</summary>
+        /// <summary>The agentic tool-loop step cap this turn actually ran with, whether the request set it or the deployment default supplied it.</summary>
+        public long? MaxSteps { get; set; }
+        /// <summary>The model that actually answered. Null before the turn resolves one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -73,7 +75,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>The object property</summary>
+        /// <summary>Always `query`, so a caller can tell this document apart from a session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Object { get; set; }
@@ -97,7 +99,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputJsonProperty OutputJson { get; set; }
 #endif
-        /// <summary>The previous_query_id property</summary>
+        /// <summary>The turn this one continues. Null on a session&apos;s first turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PreviousQueryId { get; set; }
@@ -105,7 +107,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string PreviousQueryId { get; set; }
 #endif
-        /// <summary>Per-turn token/cache totals + tool tally (`response.turn_rollup`)</summary>
+        /// <summary>End-of-turn counters. Null on a turn the runtime never closed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup? Rollup { get; set; }
@@ -113,9 +115,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup Rollup { get; set; }
 #endif
-        /// <summary>The runtime_ms property</summary>
+        /// <summary>Wall time from turn start to terminal state.</summary>
         public long? RuntimeMs { get; set; }
-        /// <summary>The session_id property</summary>
+        /// <summary>The session this turn belongs to. A turn that started a new one names it here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SessionId { get; set; }
@@ -123,7 +125,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string SessionId { get; set; }
 #endif
-        /// <summary>The status property</summary>
+        /// <summary>Where the turn is in its lifecycle.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -131,7 +133,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The steps property</summary>
+        /// <summary>The turn&apos;s reasoning steps, reduced from its `response.step` events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryStep>? Steps { get; set; }
@@ -139,15 +141,23 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.QueryStep> Steps { get; set; }
 #endif
-        /// <summary>Token/latency of the answer completion (`response.synthesis`)</summary>
+        /// <summary>The answer completion&apos;s cost. Null on a turn that skipped synthesis, as retrieval-only turns do.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesis? Synthesis { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed? Synthesis { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesis Synthesis { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed Synthesis { get; set; }
 #endif
-        /// <summary>Blob key of the persisted trace</summary>
+        /// <summary>The thinking level this turn actually ran at. Null on the Claude-backed `search_cc`, which has no equivalent knob.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ThinkingLevel { get; set; }
+#nullable restore
+#else
+        public string ThinkingLevel { get; set; }
+#endif
+        /// <summary>Blob key of the persisted trace. Fetch the trace itself from `GET /queries/{id}/trace`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TraceRef { get; set; }
@@ -155,7 +165,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string TraceRef { get; set; }
 #endif
-        /// <summary>The usage property</summary>
+        /// <summary>The turn&apos;s token totals. Embed and rerank bill on their own seam and are not counted here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.QueryUsage? Usage { get; set; }
@@ -195,6 +205,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "feedback", n => { Feedback = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryFeedback>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryFeedback.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "input", n => { Input = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryInputItem>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryInputItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "max_steps", n => { MaxSteps = n.GetLongValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "output", n => { Output = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -205,7 +216,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryStep>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryStep.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "synthesis", n => { Synthesis = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesis>(global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesis.CreateFromDiscriminatorValue); } },
+                { "synthesis", n => { Synthesis = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed>(global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed.CreateFromDiscriminatorValue); } },
+                { "thinking_level", n => { ThinkingLevel = n.GetStringValue(); } },
                 { "trace_ref", n => { TraceRef = n.GetStringValue(); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryUsage>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryUsage.CreateFromDiscriminatorValue); } },
             };
@@ -224,6 +236,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryFeedback>("feedback", Feedback);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryInputItem>("input", Input);
+            writer.WriteLongValue("max_steps", MaxSteps);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("object", Object);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryOutputItem>("output", Output);
@@ -234,7 +247,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryStep>("steps", Steps);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesis>("synthesis", Synthesis);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed>("synthesis", Synthesis);
+            writer.WriteStringValue("thinking_level", ThinkingLevel);
             writer.WriteStringValue("trace_ref", TraceRef);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryUsage>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);

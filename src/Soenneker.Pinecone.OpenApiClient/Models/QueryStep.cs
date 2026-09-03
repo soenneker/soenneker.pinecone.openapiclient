@@ -7,22 +7,23 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One step of a turn&apos;s reasoning loop. `step_id`, `status`, and `commentary` are always set; the rest are reduced from whatever the step&apos;s event carried, so an absent key stays absent.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class QueryStep : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The code property</summary>
+        /// <summary>A step&apos;s generated code, capped. Either the source string alone or a `{language, source}` document.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCode? Code { get; set; }
 #nullable restore
 #else
-        public string Code { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCode Code { get; set; }
 #endif
-        /// <summary>The commentary property</summary>
+        /// <summary>The model&apos;s own one-line account of what this step is doing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Commentary { get; set; }
@@ -30,11 +31,19 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Commentary { get; set; }
 #endif
-        /// <summary>The cum_input_tokens property</summary>
+        /// <summary>The step&apos;s incremental token and latency cost — deltas against the running turn cursor, not totals. The cache fields are tracked only on the search-as-code path.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCost? Cost { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCost Cost { get; set; }
+#endif
+        /// <summary>Turn-to-date input tokens, including this step.</summary>
         public long? CumInputTokens { get; set; }
-        /// <summary>The cum_output_tokens property</summary>
+        /// <summary>Turn-to-date output tokens, including this step.</summary>
         public long? CumOutputTokens { get; set; }
-        /// <summary>The fns property</summary>
+        /// <summary>Tool functions this step called.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Fns { get; set; }
@@ -42,7 +51,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Fns { get; set; }
 #endif
-        /// <summary>The status property</summary>
+        /// <summary>Prompt tokens billed by this one step.</summary>
+        public long? InputTokens { get; set; }
+        /// <summary>Completion tokens billed by this one step.</summary>
+        public long? OutputTokens { get; set; }
+        /// <summary>How far the step has got.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -50,13 +63,39 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The step_id property</summary>
+        /// <summary>Identifies the step within the turn. Clients merge repeated events by it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StepId { get; set; }
 #nullable restore
 #else
         public string StepId { get; set; }
+#endif
+        /// <summary>The retrieval approach the step picked.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy? Strategy { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy Strategy { get; set; }
+#endif
+        /// <summary>Per-call detail for the step&apos;s tool calls.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall>? ToolCalls { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall> ToolCalls { get; set; }
+#endif
+        /// <summary>Prompt plus completion for this one step.</summary>
+        public long? TotalTokens { get; set; }
+        /// <summary>What a clamp shed from an oversized step event.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepTruncation? TraceTruncated { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepTruncation TraceTruncated { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryStep"/> and sets the default values.
@@ -83,13 +122,20 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCode>(global::Soenneker.Pinecone.OpenApiClient.Models.StepCode.CreateFromDiscriminatorValue); } },
                 { "commentary", n => { Commentary = n.GetStringValue(); } },
+                { "cost", n => { Cost = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCost>(global::Soenneker.Pinecone.OpenApiClient.Models.StepCost.CreateFromDiscriminatorValue); } },
                 { "cum_input_tokens", n => { CumInputTokens = n.GetLongValue(); } },
                 { "cum_output_tokens", n => { CumOutputTokens = n.GetLongValue(); } },
                 { "fns", n => { Fns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "input_tokens", n => { InputTokens = n.GetLongValue(); } },
+                { "output_tokens", n => { OutputTokens = n.GetLongValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "step_id", n => { StepId = n.GetStringValue(); } },
+                { "strategy", n => { Strategy = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy>(global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy.CreateFromDiscriminatorValue); } },
+                { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "total_tokens", n => { TotalTokens = n.GetLongValue(); } },
+                { "trace_truncated", n => { TraceTruncated = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepTruncation>(global::Soenneker.Pinecone.OpenApiClient.Models.StepTruncation.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -99,13 +145,20 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("code", Code);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCode>("code", Code);
             writer.WriteStringValue("commentary", Commentary);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCost>("cost", Cost);
             writer.WriteLongValue("cum_input_tokens", CumInputTokens);
             writer.WriteLongValue("cum_output_tokens", CumOutputTokens);
             writer.WriteCollectionOfPrimitiveValues<string>("fns", Fns);
+            writer.WriteLongValue("input_tokens", InputTokens);
+            writer.WriteLongValue("output_tokens", OutputTokens);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("step_id", StepId);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy>("strategy", Strategy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall>("tool_calls", ToolCalls);
+            writer.WriteLongValue("total_tokens", TotalTokens);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepTruncation>("trace_truncated", TraceTruncated);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

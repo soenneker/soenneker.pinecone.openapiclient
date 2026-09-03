@@ -8,30 +8,30 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The turn&apos;s retrieval controls; every key is written, `null` where the caller omitted it.
+    /// The turn&apos;s retrieval controls.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SearchInputRetrieval : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artifacts_only property</summary>
+        /// <summary>Narrow retrieval to artifacts. Null where the caller omitted it.</summary>
         public bool? ArtifactsOnly { get; set; }
-        /// <summary>The chunks_only property</summary>
+        /// <summary>Narrow retrieval to chunks. Null where the caller omitted it.</summary>
         public bool? ChunksOnly { get; set; }
-        /// <summary>The compose property</summary>
+        /// <summary>Whether to synthesize an answer. Null where the caller omitted it.</summary>
         public bool? Compose { get; set; }
-        /// <summary>The max_retrieved property</summary>
+        /// <summary>Cap on retrieved items. Null where the caller omitted it.</summary>
         public long? MaxRetrieved { get; set; }
-        /// <summary>The max_retrieved_chars property</summary>
+        /// <summary>Cap on per-item text length. Null where the caller omitted it.</summary>
         public long? MaxRetrievedChars { get; set; }
-        /// <summary>The max_steps property</summary>
+        /// <summary>Cap on the agent&apos;s tool-loop steps. Null where the caller omitted it.</summary>
         public long? MaxSteps { get; set; }
-        /// <summary>The pointers_only property</summary>
+        /// <summary>Skip synthesis and return pointers only. Null where the caller omitted it.</summary>
         public bool? PointersOnly { get; set; }
-        /// <summary>The retrieval_only property</summary>
+        /// <summary>Skip synthesis and return the hits. Null where the caller omitted it.</summary>
         public bool? RetrievalOnly { get; set; }
-        /// <summary>The thinking_level property</summary>
+        /// <summary>Reasoning depth. Null where the caller omitted it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ThinkingLevel { get; set; }

@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// The built-in manifest templates, baked into the build rather than stored per project.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ManifestTemplateCatalog : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The default_id property</summary>
+        /// <summary>The `id` of the template applied when a caller names none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DefaultId { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string DefaultId { get; set; }
 #endif
-        /// <summary>The templates property</summary>
+        /// <summary>The templates, in display order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplate>? Templates { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplate> Templates { get; set; }
 #endif
-        /// <summary>The version property</summary>
+        /// <summary>Catalog revision. Bumped when the baked templates change.</summary>
         public long? Version { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplateCatalog"/> and sets the default values.

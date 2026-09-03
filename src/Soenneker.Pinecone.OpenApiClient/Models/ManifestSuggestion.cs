@@ -8,16 +8,16 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Outcome of a Design-flow explore run, pinned to the context row.
+    /// Outcome of the last explore run, pinned to the context row. A proposal only — apply it by writing the manifest and forcing a curate.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManifestSuggestion : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The explored_at property</summary>
+        /// <summary>When the run produced this proposal.</summary>
         public DateTimeOffset? ExploredAt { get; set; }
-        /// <summary>The matches property</summary>
+        /// <summary>Proposed templates, best fit first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.TemplateMatch>? Matches { get; set; }
@@ -27,7 +27,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>True when no template fit</summary>
         public bool? None { get; set; }
-        /// <summary>The task_id property</summary>
+        /// <summary>The explore task that produced it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TaskId { get; set; }

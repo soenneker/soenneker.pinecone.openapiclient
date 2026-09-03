@@ -7,16 +7,17 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// A set of sources the corpus pass treats as one subject, so their mentions reduce into a single artifact.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CorpusGroup : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
-        /// <summary>The added_version property</summary>
+        /// <summary>Index version the group was added in.</summary>
         public long? AddedVersion { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The canonical_name property</summary>
+        /// <summary>The name the group&apos;s artifact is written under.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CanonicalName { get; set; }
@@ -24,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string CanonicalName { get; set; }
 #endif
-        /// <summary>The group_key property</summary>
+        /// <summary>Stable identifier the reduce pass groups on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GroupKey { get; set; }
@@ -32,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string GroupKey { get; set; }
 #endif
-        /// <summary>The membership_hash property</summary>
+        /// <summary>Hash of the membership. A change here means the group must be re-reduced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MembershipHash { get; set; }
@@ -40,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string MembershipHash { get; set; }
 #endif
-        /// <summary>The member_sources property</summary>
+        /// <summary>Source paths in the group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? MemberSources { get; set; }
@@ -54,7 +55,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public CorpusGroup()
         {
             AdditionalData = new Dictionary<string, object>();
-            AddedVersion = 0;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

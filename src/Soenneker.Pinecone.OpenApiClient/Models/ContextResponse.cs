@@ -8,16 +8,16 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// What context endpoints return (derived flags).
+    /// What context endpoints return — the stored context plus the lifecycle flags derived from its in-flight tasks.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContextResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the context was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>Principal that created the context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get; set; }
@@ -25,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
-        /// <summary>The curate_task_id property</summary>
+        /// <summary>The curate task — the running one, or the last to finish.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurateTaskId { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string CurateTaskId { get; set; }
 #endif
-        /// <summary>The description property</summary>
+        /// <summary>Free-text summary of what the context holds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The explore_task_id property</summary>
+        /// <summary>The explore task — the running one, or the last to finish.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExploreTaskId { get; set; }
@@ -49,9 +49,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ExploreTaskId { get; set; }
 #endif
-        /// <summary>The groom_artifact_count property</summary>
+        /// <summary>Artifacts the last groom left in the work context.</summary>
         public long? GroomArtifactCount { get; set; }
-        /// <summary>The groom_task_id property</summary>
+        /// <summary>The groom task — the running one, or the last to finish.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? GroomTaskId { get; set; }
@@ -59,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string GroomTaskId { get; set; }
 #endif
-        /// <summary>High-level guidance for the query runtime</summary>
+        /// <summary>High-level standing instructions the query runtime reads on every turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Guide { get; set; }
@@ -67,9 +67,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Guide { get; set; }
 #endif
-        /// <summary>The has_sources property</summary>
+        /// <summary>The source tree holds at least one file. False blocks curate.</summary>
         public bool? HasSources { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>Stable UUID. Accepted anywhere `{slug}` is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -77,7 +77,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The import_task_id property</summary>
+        /// <summary>The import task — the running one, or the last to finish.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ImportTaskId { get; set; }
@@ -85,19 +85,27 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ImportTaskId { get; set; }
 #endif
-        /// <summary>The is_curating property</summary>
+        /// <summary>A curate task is in flight.</summary>
         public bool? IsCurating { get; set; }
-        /// <summary>The is_exploring property</summary>
+        /// <summary>An explore task is in flight.</summary>
         public bool? IsExploring { get; set; }
-        /// <summary>The is_grooming property</summary>
+        /// <summary>A groom task is in flight. Work contexts only.</summary>
         public bool? IsGrooming { get; set; }
-        /// <summary>The is_importing property</summary>
+        /// <summary>An import task is in flight.</summary>
         public bool? IsImporting { get; set; }
-        /// <summary>The is_optimizing property</summary>
+        /// <summary>An optimize task is in flight.</summary>
         public bool? IsOptimizing { get; set; }
-        /// <summary>The is_restoring property</summary>
+        /// <summary>A restore task is in flight.</summary>
         public bool? IsRestoring { get; set; }
-        /// <summary>`search` — built from source documents; must be curated before it can be queried. `work` — built from traces of work done; queryable immediately and consolidated by `groom` rather than `curate`.</summary>
+        /// <summary>Host of the index backing keyword retrieval. The same host as `semantic_index` today — the two names are separate seams over one index.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? KeywordIndex { get; set; }
+#nullable restore
+#else
+        public string KeywordIndex { get; set; }
+#endif
+        /// <summary>How the context is built. `search` — built from source documents, and must be curated before it can be queried. `work` — built from traces of work done, queryable immediately, consolidated by `groom` rather than `curate`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -105,15 +113,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Kind { get; set; }
 #endif
-        /// <summary>The last_curated_at property</summary>
+        /// <summary>When a curate last flipped a new index version live.</summary>
         public DateTimeOffset? LastCuratedAt { get; set; }
-        /// <summary>The last_groomed_at property</summary>
+        /// <summary>When a groom last consolidated the work context.</summary>
         public DateTimeOffset? LastGroomedAt { get; set; }
-        /// <summary>The last_optimized_at property</summary>
+        /// <summary>When an optimize last persisted a tuned manifest.</summary>
         public DateTimeOffset? LastOptimizedAt { get; set; }
-        /// <summary>The last_source_import_at property</summary>
+        /// <summary>When sources were last staged by an upload or import.</summary>
         public DateTimeOffset? LastSourceImportAt { get; set; }
-        /// <summary>Pinned manifest document; absent when the context is on defaults</summary>
+        /// <summary>Pinned manifest document. Absent when the context runs on validator defaults.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseManifest? Manifest { get; set; }
@@ -121,7 +129,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseManifest Manifest { get; set; }
 #endif
-        /// <summary>Outcome of a Design-flow explore run, pinned to the context row.</summary>
+        /// <summary>Outcome of the last explore run, pinned to the context row. A proposal only — apply it by writing the manifest and forcing a curate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ManifestSuggestion? ManifestSuggestion { get; set; }
@@ -129,7 +137,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ManifestSuggestion ManifestSuggestion { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Human-readable display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -137,11 +145,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The optimize_iterations property</summary>
+        /// <summary>How many candidate manifests the last run tried.</summary>
         public int? OptimizeIterations { get; set; }
-        /// <summary>The optimize_score property</summary>
+        /// <summary>Eval pass rate the last optimize&apos;s best iteration scored.</summary>
         public double? OptimizeScore { get; set; }
-        /// <summary>The optimize_task_id property</summary>
+        /// <summary>The optimize task — the running one, or the last to finish.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? OptimizeTaskId { get; set; }
@@ -149,7 +157,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string OptimizeTaskId { get; set; }
 #endif
-        /// <summary>The restore_task_id property</summary>
+        /// <summary>The restore task — the running one, or the last to finish.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RestoreTaskId { get; set; }
@@ -157,7 +165,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string RestoreTaskId { get; set; }
 #endif
-        /// <summary>Example questions the curated corpus can answer</summary>
+        /// <summary>Example questions the curated corpus can answer, written by the last curate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? SampleQueries { get; set; }
@@ -165,7 +173,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> SampleQueries { get; set; }
 #endif
-        /// <summary>The slug property</summary>
+        /// <summary>Host of the index backing this context&apos;s vector retrieval. Null until a curate resolves one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SemanticIndex { get; set; }
+#nullable restore
+#else
+        public string SemanticIndex { get; set; }
+#endif
+        /// <summary>URL-safe name, unique within the project. Mutable via `PUT`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Slug { get; set; }
@@ -173,7 +189,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Slug { get; set; }
 #endif
-        /// <summary>Populated only on the list endpoint</summary>
+        /// <summary>Aggregate task counters. Populated only on the list endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseStats? Stats { get; set; }
@@ -181,9 +197,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseStats Stats { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>When the context last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>Present only on a workspace-enabled cluster</summary>
+        /// <summary>Owning workspace. Absent off a workspace-enabled cluster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Workspace { get; set; }
@@ -233,6 +249,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "is_importing", n => { IsImporting = n.GetBoolValue(); } },
                 { "is_optimizing", n => { IsOptimizing = n.GetBoolValue(); } },
                 { "is_restoring", n => { IsRestoring = n.GetBoolValue(); } },
+                { "keyword_index", n => { KeywordIndex = n.GetStringValue(); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "last_curated_at", n => { LastCuratedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_groomed_at", n => { LastGroomedAt = n.GetDateTimeOffsetValue(); } },
@@ -246,6 +263,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "optimize_task_id", n => { OptimizeTaskId = n.GetStringValue(); } },
                 { "restore_task_id", n => { RestoreTaskId = n.GetStringValue(); } },
                 { "sample_queries", n => { SampleQueries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "semantic_index", n => { SemanticIndex = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
                 { "stats", n => { Stats = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseStats>(global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseStats.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -276,6 +294,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteBoolValue("is_importing", IsImporting);
             writer.WriteBoolValue("is_optimizing", IsOptimizing);
             writer.WriteBoolValue("is_restoring", IsRestoring);
+            writer.WriteStringValue("keyword_index", KeywordIndex);
             writer.WriteStringValue("kind", Kind);
             writer.WriteDateTimeOffsetValue("last_curated_at", LastCuratedAt);
             writer.WriteDateTimeOffsetValue("last_groomed_at", LastGroomedAt);
@@ -289,6 +308,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("optimize_task_id", OptimizeTaskId);
             writer.WriteStringValue("restore_task_id", RestoreTaskId);
             writer.WriteCollectionOfPrimitiveValues<string>("sample_queries", SampleQueries);
+            writer.WriteStringValue("semantic_index", SemanticIndex);
             writer.WriteStringValue("slug", Slug);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ContextResponseStats>("stats", Stats);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

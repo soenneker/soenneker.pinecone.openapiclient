@@ -7,12 +7,13 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// A project connector as one context sees it, carrying that context&apos;s enabled flag.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ContextConnectorView : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
-        /// <summary>The account_label property</summary>
+        /// <summary>Display label distinguishing two links to the same provider. Null when none was given.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountLabel { get; set; }
@@ -22,11 +23,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the connector was linked.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The enabled property</summary>
+        /// <summary>Whether this context may import from the connector.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>Connector id, used to import from it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -34,7 +35,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>e.g. box</summary>
+        /// <summary>Which external system this links to, e.g. `box`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Provider { get; set; }
@@ -42,7 +43,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Provider { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>When the connector last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ContextConnectorView"/> and sets the default values.

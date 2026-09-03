@@ -15,9 +15,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The avg_doc_chars property</summary>
+        /// <summary>Mean source length in characters.</summary>
         public long? AvgDocChars { get; set; }
-        /// <summary>The entities_per_doc property</summary>
+        /// <summary>Mean distinct subjects found per sampled document.</summary>
         public double? EntitiesPerDoc { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity"/> and sets the default values.

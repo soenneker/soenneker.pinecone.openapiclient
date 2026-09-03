@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Estimated distinct-artifact count with its uncertainty band.
+    /// Estimated distinct-artifact count with its uncertainty band. This is what drives the cost estimate, since extraction cost scales with it.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileEstimateOutputG : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The confidence property</summary>
+        /// <summary>Qualitative confidence in the estimate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Confidence { get; set; }
@@ -23,9 +23,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Confidence { get; set; }
 #endif
-        /// <summary>The hi property</summary>
+        /// <summary>High end of the band.</summary>
         public long? Hi { get; set; }
-        /// <summary>The lo property</summary>
+        /// <summary>Low end of the band.</summary>
         public long? Lo { get; set; }
         /// <summary>The estimator the recurrence blend selected; `empty` on the no-sample path</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -35,7 +35,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Method { get; set; }
 #endif
-        /// <summary>The note property</summary>
+        /// <summary>Caveat on how to read the estimate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Note { get; set; }
@@ -43,9 +43,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Note { get; set; }
 #endif
-        /// <summary>The recurrence property</summary>
+        /// <summary>How often the same subject recurs across sampled documents. Drives which estimator is chosen.</summary>
         public double? Recurrence { get; set; }
-        /// <summary>The value property</summary>
+        /// <summary>Point estimate of the distinct-artifact count.</summary>
         public long? Value { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG"/> and sets the default values.

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Source chunking + embedding config.
+    /// The chunk leg — sources split into passages, embedded for semantic search and optionally indexed for keyword search.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChunksConfig : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The chunking property</summary>
+        /// <summary>How a source is cut into chunks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig? Chunking { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig Chunking { get; set; }
 #endif
-        /// <summary>The embedding_model property</summary>
+        /// <summary>Model that embeds the chunks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EmbeddingModel { get; set; }
@@ -31,9 +31,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string EmbeddingModel { get; set; }
 #endif
-        /// <summary>The enabled property</summary>
+        /// <summary>Whether curate builds the chunk leg at all.</summary>
         public bool? Enabled { get; set; }
-        /// <summary>The keyword property</summary>
+        /// <summary>The lexical index built alongside the vectors, for exact-term matching.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfigKeyword? Keyword { get; set; }

@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What a new context is created with. Only `slug` and `name` are required.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CreateContextRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The description property</summary>
+        /// <summary>Free-text summary of what the context will hold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The guide property</summary>
+        /// <summary>High-level standing instructions for the query runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Guide { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Guide { get; set; }
 #endif
-        /// <summary>`search` — built from source documents; must be curated before it can be queried. `work` — built from traces of work done; queryable immediately and consolidated by `groom` rather than `curate`.</summary>
+        /// <summary>How the context is built. `search` — built from source documents, and must be curated before it can be queried. `work` — built from traces of work done, queryable immediately, consolidated by `groom` rather than `curate`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -53,6 +54,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>Pinecone API key used to provision the context&apos;s managed index. Omit it under BYOC, where the deployment holds its own credential.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PineconeApiKey { get; set; }
+#nullable restore
+#else
+        public string PineconeApiKey { get; set; }
 #endif
         /// <summary>3–64 chars, lowercase alnum + hyphens, starts with a letter</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -92,6 +101,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateContextRequestManifest>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateContextRequestManifest.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "pinecone_api_key", n => { PineconeApiKey = n.GetStringValue(); } },
                 { "slug", n => { Slug = n.GetStringValue(); } },
             };
         }
@@ -107,6 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateContextRequestManifest>("manifest", Manifest);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("pinecone_api_key", PineconeApiKey);
             writer.WriteStringValue("slug", Slug);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -8,16 +8,16 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Coarse task progress surfaced to the console.
+    /// Coarse run progress, written by the runtime. Absent on a task that reports none.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskProgress : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The eta_seconds property</summary>
+        /// <summary>Estimated seconds remaining. Null when the run cannot estimate one.</summary>
         public long? EtaSeconds { get; set; }
-        /// <summary>The label property</summary>
+        /// <summary>What the current phase is doing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get; set; }
@@ -25,11 +25,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The pct property</summary>
+        /// <summary>Completion across the whole run, 0–100.</summary>
         public double? Pct { get; set; }
-        /// <summary>The phase property</summary>
+        /// <summary>1-based index of the phase now running.</summary>
         public long? Phase { get; set; }
-        /// <summary>The phases property</summary>
+        /// <summary>Total phases this run expects.</summary>
         public long? Phases { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskProgress"/> and sets the default values.

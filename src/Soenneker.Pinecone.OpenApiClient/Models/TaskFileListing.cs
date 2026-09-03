@@ -8,36 +8,27 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A task&apos;s file listing. A running task&apos;s entries carry `mode`; an archived task&apos;s do not.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ArchivedFileListing"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.LiveFileListing"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TaskFileListing : IAdditionalDataHolder, IParsable
+    public partial class TaskFileListing : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The entries property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ArchivedFileListing"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListingEntriesItem>? Entries { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ArchivedFileListing? ArchivedFileListing { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListingEntriesItem> Entries { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ArchivedFileListing ArchivedFileListing { get; set; }
 #endif
-        /// <summary>The limit property</summary>
-        public long? Limit { get; set; }
-        /// <summary>The next_offset property</summary>
-        public long? NextOffset { get; set; }
-        /// <summary>The offset property</summary>
-        public long? Offset { get; set; }
-        /// <summary>The total property</summary>
-        public long? Total { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListing"/> and sets the default values.
-        /// </summary>
-        public TaskFileListing()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.LiveFileListing"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.LiveFileListing? LiveFileListing { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.LiveFileListing LiveFileListing { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +37,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListing CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListing();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListing();
+            if("ArchivedFileListing".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.ArchivedFileListing = new global::Soenneker.Pinecone.OpenApiClient.Models.ArchivedFileListing();
+            }
+            else if("LiveFileListing".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.LiveFileListing = new global::Soenneker.Pinecone.OpenApiClient.Models.LiveFileListing();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,14 +55,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ArchivedFileListing != null)
             {
-                { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListingEntriesItem>(global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListingEntriesItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "limit", n => { Limit = n.GetLongValue(); } },
-                { "next_offset", n => { NextOffset = n.GetLongValue(); } },
-                { "offset", n => { Offset = n.GetLongValue(); } },
-                { "total", n => { Total = n.GetLongValue(); } },
-            };
+                return ArchivedFileListing.GetFieldDeserializers();
+            }
+            else if(LiveFileListing != null)
+            {
+                return LiveFileListing.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -70,12 +72,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileListingEntriesItem>("entries", Entries);
-            writer.WriteLongValue("limit", Limit);
-            writer.WriteLongValue("next_offset", NextOffset);
-            writer.WriteLongValue("offset", Offset);
-            writer.WriteLongValue("total", Total);
-            writer.WriteAdditionalData(AdditionalData);
+            if(ArchivedFileListing != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ArchivedFileListing>(null, ArchivedFileListing);
+            }
+            else if(LiveFileListing != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.LiveFileListing>(null, LiveFileListing);
+            }
         }
     }
 }

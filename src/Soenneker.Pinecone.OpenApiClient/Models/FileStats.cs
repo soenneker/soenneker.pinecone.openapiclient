@@ -7,18 +7,19 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// Counts over a whole tree.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class FileStats : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The dir_count property</summary>
+        /// <summary>Directories in the tree. Counts the ancestor prefixes of the stored objects, so a store with no standalone directories still reports one per level that holds a file.</summary>
         public long? DirCount { get; set; }
-        /// <summary>The file_count property</summary>
+        /// <summary>Files in the tree.</summary>
         public long? FileCount { get; set; }
-        /// <summary>The total_size property</summary>
+        /// <summary>Summed byte size of every file.</summary>
         public long? TotalSize { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.FileStats"/> and sets the default values.

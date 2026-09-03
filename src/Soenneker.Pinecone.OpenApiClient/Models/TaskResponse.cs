@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One task record — a single run of a workflow, owned by the project.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class TaskResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The agent_id property</summary>
+        /// <summary>Reserved. Null on every task this version serves.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AgentId { get; set; }
@@ -22,9 +23,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string AgentId { get; set; }
 #endif
-        /// <summary>The archived_at property</summary>
+        /// <summary>When the task&apos;s files were archived. Null while they are still live.</summary>
         public DateTimeOffset? ArchivedAt { get; set; }
-        /// <summary>The context_id property</summary>
+        /// <summary>The context the run acts on. Null for a task that belongs to no context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ContextId { get; set; }
@@ -32,9 +33,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ContextId { get; set; }
 #endif
-        /// <summary>The created_at property</summary>
+        /// <summary>When the task row was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The created_by property</summary>
+        /// <summary>Principal that started the run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedBy { get; set; }
@@ -42,7 +43,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string CreatedBy { get; set; }
 #endif
-        /// <summary>The error property</summary>
+        /// <summary>Failure detail. Set on a `failed` task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Error { get; set; }
@@ -50,7 +51,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Task id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -58,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>A task&apos;s per-workflow `input`, written once at creation and echoed back verbatim. It carries no discriminant of its own — the sibling `workflow` field selects the shape.</summary>
+        /// <summary>A task&apos;s per-workflow `input`. It carries no discriminant of its own — the sibling `workflow` field selects the shape.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.TaskInput? Input { get; set; }
@@ -66,17 +67,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.TaskInput Input { get; set; }
 #endif
-        /// <summary>The last_activity_at property</summary>
+        /// <summary>When the runtime last reported anything. Drives stall detection.</summary>
         public DateTimeOffset? LastActivityAt { get; set; }
-        /// <summary>The output property</summary>
+        /// <summary>A task&apos;s reported `output`. Every workflow reports a different per-state shape, matched to a named variant only when its key set is exactly that variant&apos;s; anything else is preserved as stored. Treat this union as open. Null until the run reports anything.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskResponseOutput? Output { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutput? Output { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskResponseOutput Output { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutput Output { get; set; }
 #endif
-        /// <summary>The parent_task_id property</summary>
+        /// <summary>The task that spawned this one, as an optimize spawns its curates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ParentTaskId { get; set; }
@@ -84,7 +85,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ParentTaskId { get; set; }
 #endif
-        /// <summary>Coarse task progress surfaced to the console.</summary>
+        /// <summary>Coarse run progress, written by the runtime. Absent on a task that reports none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.TaskProgress? Progress { get; set; }
@@ -92,7 +93,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.TaskProgress Progress { get; set; }
 #endif
-        /// <summary>The project_id property</summary>
+        /// <summary>The Pinecone project that owns the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ProjectId { get; set; }
@@ -100,11 +101,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ProjectId { get; set; }
 #endif
-        /// <summary>The running_from property</summary>
+        /// <summary>When the container started. Null before it does.</summary>
         public DateTimeOffset? RunningFrom { get; set; }
-        /// <summary>The runtime_seconds property</summary>
+        /// <summary>Seconds the container has been running.</summary>
         public long? RuntimeSeconds { get; set; }
-        /// <summary>The schedule property</summary>
+        /// <summary>Cron expression this run was scheduled from. Null for an on-demand run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Schedule { get; set; }
@@ -112,7 +113,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Schedule { get; set; }
 #endif
-        /// <summary>The scheduled_at property</summary>
+        /// <summary>When a `scheduled` task is due to start.</summary>
         public DateTimeOffset? ScheduledAt { get; set; }
         /// <summary>Set for query turns</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -122,7 +123,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string SessionId { get; set; }
 #endif
-        /// <summary>The state property</summary>
+        /// <summary>Where the run has got to. `scheduled` waits for its due time; `starting` and `provisioning` are a container being claimed and built; `running` is the work happening; `stopping` is a termination in progress. `completed`, `cancelled` and `failed` are terminal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }
@@ -130,7 +131,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string State { get; set; }
 #endif
-        /// <summary>Populated only on GET /tasks/{id}</summary>
+        /// <summary>Populated only on GET /tasks/{id}. May be a trailing window when `steps_limit` was given, so read the count from `steps_total` rather than this array&apos;s length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.TaskStep>? Steps { get; set; }
@@ -138,15 +139,17 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.TaskStep> Steps { get; set; }
 #endif
-        /// <summary>The timeout_at property</summary>
+        /// <summary>True number of recorded steps. Absent on a read that carries no steps.</summary>
+        public long? StepsTotal { get; set; }
+        /// <summary>When the budget expires and the run is terminated.</summary>
         public DateTimeOffset? TimeoutAt { get; set; }
-        /// <summary>The timeout_seconds property</summary>
+        /// <summary>Runtime budget for this task. Null when it runs uncapped.</summary>
         public int? TimeoutSeconds { get; set; }
-        /// <summary>The tokens_completion property</summary>
+        /// <summary>Output tokens the run has billed so far.</summary>
         public long? TokensCompletion { get; set; }
-        /// <summary>The tokens_prompt property</summary>
+        /// <summary>Input tokens the run has billed so far.</summary>
         public long? TokensPrompt { get; set; }
-        /// <summary>The canonical workflow name. Legacy aliases (`build`, `query`, `query_search`, `query_sac`, `query_cc`, `query_rag`, `response`, `agent`, `session`) are still accepted on input and normalized to the canonical value.</summary>
+        /// <summary>The canonical workflow name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Workflow { get; set; }
@@ -188,7 +191,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "input", n => { Input = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskInput>(global::Soenneker.Pinecone.OpenApiClient.Models.TaskInput.CreateFromDiscriminatorValue); } },
                 { "last_activity_at", n => { LastActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "output", n => { Output = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskResponseOutput>(global::Soenneker.Pinecone.OpenApiClient.Models.TaskResponseOutput.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutput>(global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutput.CreateFromDiscriminatorValue); } },
                 { "parent_task_id", n => { ParentTaskId = n.GetStringValue(); } },
                 { "progress", n => { Progress = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskProgress>(global::Soenneker.Pinecone.OpenApiClient.Models.TaskProgress.CreateFromDiscriminatorValue); } },
                 { "project_id", n => { ProjectId = n.GetStringValue(); } },
@@ -199,6 +202,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TaskStep>(global::Soenneker.Pinecone.OpenApiClient.Models.TaskStep.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "steps_total", n => { StepsTotal = n.GetLongValue(); } },
                 { "timeout_at", n => { TimeoutAt = n.GetDateTimeOffsetValue(); } },
                 { "timeout_seconds", n => { TimeoutSeconds = n.GetIntValue(); } },
                 { "tokens_completion", n => { TokensCompletion = n.GetLongValue(); } },
@@ -222,7 +226,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskInput>("input", Input);
             writer.WriteDateTimeOffsetValue("last_activity_at", LastActivityAt);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskResponseOutput>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutput>("output", Output);
             writer.WriteStringValue("parent_task_id", ParentTaskId);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskProgress>("progress", Progress);
             writer.WriteStringValue("project_id", ProjectId);
@@ -233,6 +237,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("state", State);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TaskStep>("steps", Steps);
+            writer.WriteLongValue("steps_total", StepsTotal);
             writer.WriteDateTimeOffsetValue("timeout_at", TimeoutAt);
             writer.WriteIntValue("timeout_seconds", TimeoutSeconds);
             writer.WriteLongValue("tokens_completion", TokensCompletion);

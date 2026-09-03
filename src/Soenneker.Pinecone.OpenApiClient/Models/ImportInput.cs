@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The connector_id property</summary>
+        /// <summary>The linked connector the sources came from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConnectorId { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ConnectorId { get; set; }
 #endif
-        /// <summary>The files property</summary>
+        /// <summary>Connector file ids imported. Empty on a folder import.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Files { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Files { get; set; }
 #endif
-        /// <summary>The folder property</summary>
+        /// <summary>Connector folder imported. Null on a file-list import.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Folder { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Folder { get; set; }
 #endif
-        /// <summary>The item_type property</summary>
+        /// <summary>Whether `folder` or `files` selected the sources.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ItemType { get; set; }
@@ -47,7 +47,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ItemType { get; set; }
 #endif
-        /// <summary>The path property</summary>
+        /// <summary>The caps the import ran under.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ImportLimits? Limits { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ImportLimits Limits { get; set; }
+#endif
+        /// <summary>Subdirectory under the source tree the import landed in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Path { get; set; }
@@ -55,15 +63,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Path { get; set; }
 #endif
-        /// <summary>Preview-mode import caps grafted onto the input; absent outside preview mode.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits? Preview { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits Preview { get; set; }
-#endif
-        /// <summary>The provider property</summary>
+        /// <summary>The connector&apos;s provider, e.g. `box`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Provider { get; set; }
@@ -79,7 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string RawArchiveKey { get; set; }
 #endif
-        /// <summary>The url property</summary>
+        /// <summary>The public repository or archive fetched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Url { get; set; }
@@ -116,8 +116,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "files", n => { Files = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "folder", n => { Folder = n.GetStringValue(); } },
                 { "item_type", n => { ItemType = n.GetStringValue(); } },
+                { "limits", n => { Limits = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ImportLimits>(global::Soenneker.Pinecone.OpenApiClient.Models.ImportLimits.CreateFromDiscriminatorValue); } },
                 { "path", n => { Path = n.GetStringValue(); } },
-                { "preview", n => { Preview = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits>(global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits.CreateFromDiscriminatorValue); } },
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "raw_archive_key", n => { RawArchiveKey = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
@@ -134,8 +134,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("files", Files);
             writer.WriteStringValue("folder", Folder);
             writer.WriteStringValue("item_type", ItemType);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ImportLimits>("limits", Limits);
             writer.WriteStringValue("path", Path);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PreviewLimits>("preview", Preview);
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("raw_archive_key", RawArchiveKey);
             writer.WriteStringValue("url", Url);

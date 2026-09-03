@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Every field optional — an input with no keys is a valid no-op optimize.
+    /// Only the keys the trigger request supplied are written, so an input with no keys is a valid no-op optimize.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OptimizeInput : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The candidate_queries property</summary>
+        /// <summary>The queries the run tunes toward. Absent makes the run a no-op.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery>? CandidateQueries { get; set; }
@@ -23,13 +23,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery> CandidateQueries { get; set; }
 #endif
-        /// <summary>The eval_pass_rate_threshold property</summary>
+        /// <summary>Pass rate an iteration must clear to count as ready.</summary>
         public double? EvalPassRateThreshold { get; set; }
-        /// <summary>The max_iterations property</summary>
+        /// <summary>Cap on candidate manifests tried.</summary>
         public int? MaxIterations { get; set; }
-        /// <summary>The max_tool_turns property</summary>
+        /// <summary>Cap on tool-loop turns per eval query.</summary>
         public int? MaxToolTurns { get; set; }
-        /// <summary>The models property</summary>
+        /// <summary>Tier names or catalog ids, in preference order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Models { get; set; }
@@ -37,9 +37,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Models { get; set; }
 #endif
-        /// <summary>The optimize_timeout_seconds property</summary>
+        /// <summary>Runtime budget for the whole optimize.</summary>
         public long? OptimizeTimeoutSeconds { get; set; }
-        /// <summary>The retrieval_p90_latency_ms property</summary>
+        /// <summary>The p90 latency bar an iteration must stay under.</summary>
         public long? RetrievalP90LatencyMs { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeInput"/> and sets the default values.

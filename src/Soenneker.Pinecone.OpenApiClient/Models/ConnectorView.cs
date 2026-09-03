@@ -8,12 +8,12 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The connector view returned by connector endpoints (secrets stripped). There is no `config` field — no provider populates one today.
+    /// A linked project connector, secrets stripped. There is no `config` field — the domain model carries a provider-specific blob, but no provider populates one today.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConnectorView : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The account_label property</summary>
+        /// <summary>Display label distinguishing two links to the same provider. Null when none was given.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccountLabel { get; set; }
@@ -23,9 +23,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The created_at property</summary>
+        /// <summary>When the connector was linked.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>Connector id, used to import from it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>e.g. box</summary>
+        /// <summary>Which external system this links to, e.g. `box`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Provider { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Provider { get; set; }
 #endif
-        /// <summary>The updated_at property</summary>
+        /// <summary>When the connector last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorView"/> and sets the default values.

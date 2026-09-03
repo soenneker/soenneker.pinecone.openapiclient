@@ -8,20 +8,20 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The uniform acknowledgment every context-workflow trigger returns. `state` is the forward-looking status; the per-workflow boolean flags are legacy and set only for the workflows that historically emitted them.
+    /// What every context-workflow trigger returns. The work is asynchronous: poll `GET /tasks/{task_id}`. The per-workflow booleans duplicate `state` and appear only where a workflow&apos;s contract names one.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowTriggerResponse : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Legacy flag; present only for explore</summary>
+        /// <summary>Duplicates `state`; present only for explore</summary>
         public bool? Exploring { get; set; }
-        /// <summary>Legacy flag; present only for the import/curate triggers</summary>
+        /// <summary>Duplicates `state`; present only for the import/curate triggers</summary>
         public bool? Importing { get; set; }
-        /// <summary>Legacy flag; present only for profile</summary>
+        /// <summary>Duplicates `state`; present only for profile</summary>
         public bool? Profiling { get; set; }
-        /// <summary>The state property</summary>
+        /// <summary>The forward-looking status the trigger put the context into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? State { get; set; }
@@ -29,7 +29,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string State { get; set; }
 #endif
-        /// <summary>The task_id property</summary>
+        /// <summary>The enqueued task. Poll it at `GET /tasks/{id}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TaskId { get; set; }

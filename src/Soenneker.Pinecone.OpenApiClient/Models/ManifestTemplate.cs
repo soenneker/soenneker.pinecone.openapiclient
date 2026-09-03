@@ -7,16 +7,17 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One built-in starting point for a context manifest.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ManifestTemplate : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>True on the catalog&apos;s default template</summary>
+        /// <summary>Set on the catalog&apos;s default template, and absent on every other.</summary>
         public bool? Default { get; set; }
-        /// <summary>The description property</summary>
+        /// <summary>What corpus shape the template is built for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -24,7 +25,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>Stable template id, as matched by `explore` and named by `default_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -32,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The label property</summary>
+        /// <summary>Short display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get; set; }
@@ -40,15 +41,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The context manifest that drives curate and search. A sparse document — every field is optional and an omitted key falls back to the validator default, so absent fields are omitted rather than nulled. Value constraints are enforced by the write-side validator.</summary>
+        /// <summary>The manifest document the template seeds a context with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Manifest? Manifest { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplateManifest? Manifest { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Manifest Manifest { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplateManifest Manifest { get; set; }
 #endif
-        /// <summary>The sample_questions property</summary>
+        /// <summary>Questions a corpus curated under this template should answer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? SampleQuestions { get; set; }
@@ -56,7 +57,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> SampleQuestions { get; set; }
 #endif
-        /// <summary>The when_to_use property</summary>
+        /// <summary>Guidance for picking this template over its neighbours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WhenToUse { get; set; }
@@ -93,7 +94,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
-                { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Manifest>(global::Soenneker.Pinecone.OpenApiClient.Models.Manifest.CreateFromDiscriminatorValue); } },
+                { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplateManifest>(global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplateManifest.CreateFromDiscriminatorValue); } },
                 { "sample_questions", n => { SampleQuestions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "when_to_use", n => { WhenToUse = n.GetStringValue(); } },
             };
@@ -109,7 +110,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("label", Label);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Manifest>("manifest", Manifest);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManifestTemplateManifest>("manifest", Manifest);
             writer.WriteCollectionOfPrimitiveValues<string>("sample_questions", SampleQuestions);
             writer.WriteStringValue("when_to_use", WhenToUse);
             writer.WriteAdditionalData(AdditionalData);

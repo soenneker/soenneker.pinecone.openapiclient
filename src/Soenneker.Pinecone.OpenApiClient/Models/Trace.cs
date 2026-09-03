@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A turn&apos;s full-fidelity debug trace.
+    /// A turn&apos;s full-fidelity debug trace. Every turn lands one.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Trace : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>End-of-turn aggregate counters. The cache fields are present only on the search-as-code path.</summary>
+        /// <summary>Null on a turn the runtime never closed. The trace&apos;s copy omits the `type` and `query_id` the event form carries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollup? Rollup { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.TraceRollup Rollup { get; set; }
 #endif
-        /// <summary>The steps property</summary>
+        /// <summary>The turn&apos;s reasoning steps, in the order they ran.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.TraceStep>? Steps { get; set; }

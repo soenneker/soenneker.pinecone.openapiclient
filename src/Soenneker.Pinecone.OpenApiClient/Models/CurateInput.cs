@@ -7,22 +7,23 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What a curate run was started with.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CurateInput : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artifacts_reset property</summary>
+        /// <summary>Drop the existing artifacts and re-extract from scratch.</summary>
         public bool? ArtifactsReset { get; set; }
-        /// <summary>The batch_size property</summary>
+        /// <summary>Sources processed per batch.</summary>
         public int? BatchSize { get; set; }
-        /// <summary>The version a drained predecessor had claimed</summary>
+        /// <summary>What a drained predecessor had already reserved.</summary>
         public long? ClaimedVersion { get; set; }
-        /// <summary>The force property</summary>
+        /// <summary>Full rebuild rather than incremental.</summary>
         public bool? Force { get; set; }
-        /// <summary>`[&quot;chunks&quot;]` gates the run to the chunk + keyword indices, skipping artifact extraction</summary>
+        /// <summary>Set to `[&quot;chunks&quot;]` to gate the run to the chunk + keyword indices, skipping artifact extraction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Legs { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Legs { get; set; }
 #endif
-        /// <summary>The models property</summary>
+        /// <summary>Model-id overrides for the curate runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Models { get; set; }
@@ -38,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Models { get; set; }
 #endif
-        /// <summary>e.g. full / reconcile / restore</summary>
+        /// <summary>What the run covered, e.g. `full`, `reconcile`, or `restore`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Scope { get; set; }
@@ -46,9 +47,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Scope { get; set; }
 #endif
-        /// <summary>The skip_corpus_aggregation property</summary>
+        /// <summary>Skip the corpus-wide artifact pass, leaving only per-document extraction.</summary>
         public bool? SkipCorpusAggregation { get; set; }
-        /// <summary>e.g. manual / reconcile / restore / resume</summary>
+        /// <summary>What started the run, e.g. `manual`, `reconcile`, `restore`, or `resume`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Trigger { get; set; }

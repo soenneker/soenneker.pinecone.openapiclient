@@ -26,7 +26,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
-        /// <summary>The message property</summary>
+        /// <summary>Human-readable explanation. Not stable — branch on `code`, not on this.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MessageEscaped { get; set; }

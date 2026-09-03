@@ -8,20 +8,20 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// How much of the corpus the profile actually read.
+    /// How much of the corpus the profile actually read. The estimate is extrapolated from this much, so a small `fraction` means a wide band.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileEstimateOutputSampling : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The fraction property</summary>
+        /// <summary>The `n_sampled` count over `n_total`.</summary>
         public double? Fraction { get; set; }
-        /// <summary>The n_sampled property</summary>
+        /// <summary>Sources the profile read.</summary>
         public long? NSampled { get; set; }
-        /// <summary>The n_total property</summary>
+        /// <summary>Sources in the corpus.</summary>
         public long? NTotal { get; set; }
-        /// <summary>The wall_s property</summary>
+        /// <summary>Seconds the sampling itself took.</summary>
         public double? WallS { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling"/> and sets the default values.

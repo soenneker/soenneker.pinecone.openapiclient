@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One typed, directed relationship between artifact types. `name`, `from`, and `to` are required of a written manifest; a read echoes a stored document that lacks one rather than failing.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class EdgeType : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The attributes property</summary>
+        /// <summary>Extra properties recorded on each edge, e.g. `count`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Attributes { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Attributes { get; set; }
 #endif
-        /// <summary>The description property</summary>
+        /// <summary>What the relationship means. Steers the extraction that finds it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>Source artifact-type name</summary>
+        /// <summary>Source artifact-type name. May equal `to` for a self-referential edge.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? From { get; set; }
@@ -38,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string From { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>What the relationship is called, e.g. `mentions`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

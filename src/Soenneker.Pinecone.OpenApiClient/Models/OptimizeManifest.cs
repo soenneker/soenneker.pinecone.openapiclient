@@ -8,22 +8,22 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Scheduled self-tuning config.
+    /// The scheduled self-tuning loop: it clusters the queries that answered badly and tries candidate manifests against an ephemeral index until one reproduces the recorded answers.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OptimizeManifest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The eval_pass_rate_threshold property</summary>
+        /// <summary>Fraction of eval queries a candidate manifest must answer correctly to be considered ready. `1` demands all of them.</summary>
         public double? EvalPassRateThreshold { get; set; }
-        /// <summary>The latency_threshold_ms property</summary>
+        /// <summary>A query slower than this counts as a problem worth tuning for, as does any query that fell back from artifacts to chunks. `0` disables the latency test, leaving only fallback.</summary>
         public int? LatencyThresholdMs { get; set; }
-        /// <summary>The max_iterations property</summary>
+        /// <summary>How many candidate manifests the loop tries before stopping with its best.</summary>
         public int? MaxIterations { get; set; }
-        /// <summary>The min_group_size property</summary>
+        /// <summary>How many near-duplicate problem queries must cluster together before the loop tunes for them. Keeps a one-off slow query from triggering a manifest change.</summary>
         public int? MinGroupSize { get; set; }
-        /// <summary>cron</summary>
+        /// <summary>Cron expression the tuning loop runs on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Schedule { get; set; }

@@ -8,14 +8,14 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// One reasoning step — its generated code, tool calls, strategy, and cost.
+    /// One reasoning step as recorded in the trace — its generated code, tool calls, strategy, and cost. Every field is optional; a step carries what its stage produced.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TraceStep : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The calls property</summary>
+        /// <summary>The tool calls this step made.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall>? Calls { get; set; }
@@ -23,15 +23,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall> Calls { get; set; }
 #endif
-        /// <summary>The code property</summary>
+        /// <summary>A step&apos;s generated code, capped. Either the source string alone or a `{language, source}` document.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCode? Code { get; set; }
 #nullable restore
 #else
-        public string Code { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCode Code { get; set; }
 #endif
-        /// <summary>The commentary property</summary>
+        /// <summary>The model&apos;s own one-line account of what this step is doing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Commentary { get; set; }
@@ -39,15 +39,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Commentary { get; set; }
 #endif
-        /// <summary>The step&apos;s incremental cost (deltas against the running turn cursor).</summary>
+        /// <summary>The step&apos;s incremental token and latency cost — deltas against the running turn cursor, not totals. The cache fields are tracked only on the search-as-code path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepCost? Cost { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCost? Cost { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepCost Cost { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCost Cost { get; set; }
 #endif
-        /// <summary>The step_id property</summary>
+        /// <summary>Identifies the step within the turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StepId { get; set; }
@@ -55,13 +55,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string StepId { get; set; }
 #endif
-        /// <summary>The strategy property</summary>
+        /// <summary>The retrieval approach the step picked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepStrategy? Strategy { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy? Strategy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepStrategy Strategy { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy Strategy { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TraceStep"/> and sets the default values.
@@ -89,11 +89,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "calls", n => { Calls = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "code", n => { Code = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCode>(global::Soenneker.Pinecone.OpenApiClient.Models.StepCode.CreateFromDiscriminatorValue); } },
                 { "commentary", n => { Commentary = n.GetStringValue(); } },
-                { "cost", n => { Cost = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepCost>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepCost.CreateFromDiscriminatorValue); } },
+                { "cost", n => { Cost = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCost>(global::Soenneker.Pinecone.OpenApiClient.Models.StepCost.CreateFromDiscriminatorValue); } },
                 { "step_id", n => { StepId = n.GetStringValue(); } },
-                { "strategy", n => { Strategy = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepStrategy>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepStrategy.CreateFromDiscriminatorValue); } },
+                { "strategy", n => { Strategy = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy>(global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -104,11 +104,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCall>("calls", Calls);
-            writer.WriteStringValue("code", Code);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCode>("code", Code);
             writer.WriteStringValue("commentary", Commentary);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepCost>("cost", Cost);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCost>("cost", Cost);
             writer.WriteStringValue("step_id", StepId);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceStepStrategy>("strategy", Strategy);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepStrategy>("strategy", Strategy);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

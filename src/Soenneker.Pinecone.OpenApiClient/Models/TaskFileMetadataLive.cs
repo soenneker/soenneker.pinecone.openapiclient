@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// A `stat` in the running container.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class TaskFileMetadataLive : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The kind property</summary>
+        /// <summary>Entry kind: `file`, `dir` or `symlink` when the stat is recognized, and the raw stat word otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Kind { get; set; }
 #endif
-        /// <summary>The link_target property</summary>
+        /// <summary>Where the link points. Present only for a symlink.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LinkTarget { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string LinkTarget { get; set; }
 #endif
-        /// <summary>The mode property</summary>
+        /// <summary>POSIX permission bits, as reported by the container.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mode { get; set; }
@@ -38,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Mode { get; set; }
 #endif
-        /// <summary>The mtime property</summary>
+        /// <summary>Last-modified time as the container reported it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Mtime { get; set; }
@@ -46,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Mtime { get; set; }
 #endif
-        /// <summary>The size property</summary>
+        /// <summary>Byte size.</summary>
         public long? Size { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataLive"/> and sets the default values.

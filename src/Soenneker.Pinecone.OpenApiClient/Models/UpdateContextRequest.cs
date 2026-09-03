@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The description property</summary>
+        /// <summary>New summary. Empty string clears it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The guide property</summary>
+        /// <summary>New standing instructions. Empty string clears them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Guide { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Guide { get; set; }
 #endif
-        /// <summary>The context manifest that drives curate and search. A sparse document — every field is optional and an omitted key falls back to the validator default, so absent fields are omitted rather than nulled. Value constraints are enforced by the write-side validator.</summary>
+        /// <summary>The document that drives curate and search. Sparse: every field is optional and an omitted one falls back to its default, so absent fields are omitted rather than nulled. A change reaches the index on the next curate; rebuilding what is already indexed needs a forced one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.Manifest? Manifest { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.Manifest Manifest { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>New display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -47,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The slug property</summary>
+        /// <summary>Renames the context. Must stay unique within the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Slug { get; set; }

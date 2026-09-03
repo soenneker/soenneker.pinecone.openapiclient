@@ -7,26 +7,27 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// Aggregate counters over every task this context has ever run.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ContextStats : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The runtime_seconds property</summary>
+        /// <summary>Summed container runtime across every task.</summary>
         public long? RuntimeSeconds { get; set; }
-        /// <summary>The tasks_active property</summary>
+        /// <summary>Tasks in a non-terminal state.</summary>
         public long? TasksActive { get; set; }
-        /// <summary>The tasks_cancelled property</summary>
+        /// <summary>Runs stopped before they finished.</summary>
         public long? TasksCancelled { get; set; }
-        /// <summary>The tasks_completed property</summary>
+        /// <summary>Tasks that finished successfully.</summary>
         public long? TasksCompleted { get; set; }
-        /// <summary>The tasks_failed property</summary>
+        /// <summary>Tasks that ended in failure.</summary>
         public long? TasksFailed { get; set; }
-        /// <summary>The tasks_total property</summary>
+        /// <summary>Tasks this context has ever run.</summary>
         public long? TasksTotal { get; set; }
-        /// <summary>The tokens_total property</summary>
+        /// <summary>Prompt plus completion tokens across every task.</summary>
         public long? TokensTotal { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ContextStats"/> and sets the default values.

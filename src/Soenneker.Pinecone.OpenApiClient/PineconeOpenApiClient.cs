@@ -14,7 +14,8 @@ using Soenneker.Pinecone.OpenApiClient.Db_control;
 using Soenneker.Pinecone.OpenApiClient.Db_data;
 using Soenneker.Pinecone.OpenApiClient.Db_metrics;
 using Soenneker.Pinecone.OpenApiClient.Inference;
-using Soenneker.Pinecone.OpenApiClient.Nexus;
+using Soenneker.Pinecone.OpenApiClient.Nexus_control;
+using Soenneker.Pinecone.OpenApiClient.Nexus_data;
 using Soenneker.Pinecone.OpenApiClient.Oauth;
 using System.Collections.Generic;
 using System.IO;
@@ -68,10 +69,15 @@ namespace Soenneker.Pinecone.OpenApiClient
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Inference.InferenceRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The nexus property</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Nexus.NexusRequestBuilder Nexus
+        /// <summary>The nexus_control property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Nexus_control.Nexus_controlRequestBuilder Nexus_control
         {
-            get => new global::Soenneker.Pinecone.OpenApiClient.Nexus.NexusRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Pinecone.OpenApiClient.Nexus_control.Nexus_controlRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The nexus_data property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Nexus_data.Nexus_dataRequestBuilder Nexus_data
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Nexus_data.Nexus_dataRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The oauth property</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Oauth.OauthRequestBuilder Oauth

@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What a restore run was started with.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class RestoreInput : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The pack_filename property</summary>
+        /// <summary>The pack archive&apos;s file name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PackFilename { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string PackFilename { get; set; }
 #endif
-        /// <summary>The pack_key property</summary>
+        /// <summary>Object-store key of the pack being restored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PackKey { get; set; }
@@ -30,7 +31,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string PackKey { get; set; }
 #endif
-        /// <summary>The target_context_id property</summary>
+        /// <summary>Sample queries to seed the target with, taken from the pack. Absent on a pack that carried none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SampleQueries { get; set; }
+#nullable restore
+#else
+        public List<string> SampleQueries { get; set; }
+#endif
+        /// <summary>The already-created context the pack is restored into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetContextId { get; set; }
@@ -38,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string TargetContextId { get; set; }
 #endif
-        /// <summary>The target_name property</summary>
+        /// <summary>Human-readable label of the context being written into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetName { get; set; }
@@ -46,7 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string TargetName { get; set; }
 #endif
-        /// <summary>The target_slug property</summary>
+        /// <summary>URL-safe name of the context being written into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? TargetSlug { get; set; }
@@ -81,6 +90,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "pack_filename", n => { PackFilename = n.GetStringValue(); } },
                 { "pack_key", n => { PackKey = n.GetStringValue(); } },
+                { "sample_queries", n => { SampleQueries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "target_context_id", n => { TargetContextId = n.GetStringValue(); } },
                 { "target_name", n => { TargetName = n.GetStringValue(); } },
                 { "target_slug", n => { TargetSlug = n.GetStringValue(); } },
@@ -95,6 +105,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("pack_filename", PackFilename);
             writer.WriteStringValue("pack_key", PackKey);
+            writer.WriteCollectionOfPrimitiveValues<string>("sample_queries", SampleQueries);
             writer.WriteStringValue("target_context_id", TargetContextId);
             writer.WriteStringValue("target_name", TargetName);
             writer.WriteStringValue("target_slug", TargetSlug);

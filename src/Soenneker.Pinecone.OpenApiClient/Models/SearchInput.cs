@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// One shape for the whole search family — the same payload is written whichever of them a turn resolves to.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class SearchInput : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Ask { get; set; }
 #endif
-        /// <summary>The comparison_group property</summary>
+        /// <summary>The Compare run this turn belongs to. Null on a normal single query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ComparisonGroup { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string ComparisonGroup { get; set; }
 #endif
-        /// <summary>The instructions property</summary>
+        /// <summary>The session&apos;s system prompt. Null when none was pinned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Instructions { get; set; }
@@ -38,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Instructions { get; set; }
 #endif
-        /// <summary>The messages property</summary>
+        /// <summary>The conversation history handed to the runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputMessagesItem>? Messages { get; set; }
@@ -46,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputMessagesItem> Messages { get; set; }
 #endif
-        /// <summary>The models property</summary>
+        /// <summary>The session&apos;s model fallback list, in preference order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Models { get; set; }
@@ -54,7 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Models { get; set; }
 #endif
-        /// <summary>The query_id property</summary>
+        /// <summary>The turn this task serves.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? QueryId { get; set; }
@@ -62,7 +63,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string QueryId { get; set; }
 #endif
-        /// <summary>The turn&apos;s retrieval controls; every key is written, `null` where the caller omitted it.</summary>
+        /// <summary>The turn&apos;s retrieval controls.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval? Retrieval { get; set; }
@@ -70,7 +71,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval Retrieval { get; set; }
 #endif
-        /// <summary>The scope property</summary>
+        /// <summary>Context ids the turn searches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Scope { get; set; }
@@ -78,7 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Scope { get; set; }
 #endif
-        /// <summary>The session_id property</summary>
+        /// <summary>The session the turn runs in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? SessionId { get; set; }
@@ -86,7 +87,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string SessionId { get; set; }
 #endif
-        /// <summary>The shape property</summary>
+        /// <summary>JSON Schema the answer must conform to. Null on a free-text turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty? Shape { get; set; }
@@ -94,7 +95,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputShapeProperty Shape { get; set; }
 #endif
-        /// <summary>The tools property</summary>
+        /// <summary>Tool names the turn may call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Tools { get; set; }
@@ -102,7 +103,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Tools { get; set; }
 #endif
-        /// <summary>The turn_timeout_seconds property</summary>
+        /// <summary>Runtime budget for this one turn.</summary>
         public long? TurnTimeoutSeconds { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchInput"/> and sets the default values.

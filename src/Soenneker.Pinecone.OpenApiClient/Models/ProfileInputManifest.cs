@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The curate property</summary>
+        /// <summary>What curate builds out of the sources — the chunk leg, the artifact leg, or both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifest? Curate { get; set; }
@@ -23,13 +23,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifest Curate { get; set; }
 #endif
-        /// <summary>Scheduled self-tuning config.</summary>
+        /// <summary>The scheduled self-tuning loop: it clusters the queries that answered badly and tries candidate manifests against an ephemeral index until one reproduces the recorded answers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeManifest? Optimize { get; set; }
 #nullable restore
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeManifest Optimize { get; set; }
+#endif
+        /// <summary>Standing instructions for the query runtime, pinned on the context rather than sent per turn.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchManifest? Search { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchManifest Search { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileInputManifest"/> and sets the default values.
@@ -58,6 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "curate", n => { Curate = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifest>(global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifest.CreateFromDiscriminatorValue); } },
                 { "optimize", n => { Optimize = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeManifest>(global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeManifest.CreateFromDiscriminatorValue); } },
+                { "search", n => { Search = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchManifest>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchManifest.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,6 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifest>("curate", Curate);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeManifest>("optimize", Optimize);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchManifest>("search", Search);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

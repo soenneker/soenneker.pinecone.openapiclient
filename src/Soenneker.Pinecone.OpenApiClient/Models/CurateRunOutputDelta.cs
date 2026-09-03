@@ -7,40 +7,41 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What the run changed, counted per leg.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CurateRunOutputDelta : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The artifacts_created property</summary>
+        /// <summary>Per-document artifacts written for the first time.</summary>
         public long? ArtifactsCreated { get; set; }
-        /// <summary>The artifacts_errored property</summary>
+        /// <summary>Extraction calls that failed outright.</summary>
         public long? ArtifactsErrored { get; set; }
-        /// <summary>The artifacts_screened property</summary>
+        /// <summary>Per-document artifacts rejected by the quality screen.</summary>
         public long? ArtifactsScreened { get; set; }
-        /// <summary>The artifacts_updated property</summary>
+        /// <summary>Per-document artifacts rewritten from changed sources.</summary>
         public long? ArtifactsUpdated { get; set; }
-        /// <summary>The changed property</summary>
+        /// <summary>Sources whose content hash moved.</summary>
         public long? Changed { get; set; }
-        /// <summary>The chunks_created property</summary>
+        /// <summary>Chunks written for the first time.</summary>
         public long? ChunksCreated { get; set; }
-        /// <summary>The chunks_screened property</summary>
+        /// <summary>Chunks rejected by the quality screen.</summary>
         public long? ChunksScreened { get; set; }
-        /// <summary>The chunks_updated property</summary>
+        /// <summary>Chunks rewritten from changed sources.</summary>
         public long? ChunksUpdated { get; set; }
-        /// <summary>The corpus_artifacts property</summary>
+        /// <summary>Artifacts written by the corpus-wide reduce pass.</summary>
         public long? CorpusArtifacts { get; set; }
-        /// <summary>The corpus_artifacts_screened property</summary>
+        /// <summary>Corpus artifacts rejected by the quality screen.</summary>
         public long? CorpusArtifactsScreened { get; set; }
-        /// <summary>The corpus_edges property</summary>
+        /// <summary>Edges written by that pass.</summary>
         public long? CorpusEdges { get; set; }
-        /// <summary>The deleted property</summary>
+        /// <summary>Sources dropped from the index.</summary>
         public long? Deleted { get; set; }
-        /// <summary>The failed property</summary>
+        /// <summary>Sources that could not be curated.</summary>
         public long? Failed { get; set; }
-        /// <summary>The failed_sources property</summary>
+        /// <summary>Paths of the failed sources, capped in length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? FailedSources { get; set; }
@@ -58,16 +59,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #endif
         /// <summary>Whether failed_sources was capped and the full list spilled to a file</summary>
         public bool? FailedSourcesTruncated { get; set; }
-        /// <summary>The images_skipped_no_vision property</summary>
+        /// <summary>Images left unread because the configured model cannot see.</summary>
         public long? ImagesSkippedNoVision { get; set; }
-        /// <summary>The new property</summary>
+        /// <summary>Sources not seen by a previous curate.</summary>
         public long? New { get; set; }
-        /// <summary>The processed property</summary>
+        /// <summary>Sources the run actually read.</summary>
         public long? Processed { get; set; }
         /// <summary>Sum of the per-leg and corpus screen counts</summary>
         public long? Screened { get; set; }
-        /// <summary>The sources_content_truncated property</summary>
+        /// <summary>Sources whose text was cut at the input cap, so their tail went unread.</summary>
         public long? SourcesContentTruncated { get; set; }
+        /// <summary>Sources no leg could read, skipped rather than failed.</summary>
+        public long? SourcesSkippedUnreadable { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateRunOutputDelta"/> and sets the default values.
         /// </summary>
@@ -114,6 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "processed", n => { Processed = n.GetLongValue(); } },
                 { "screened", n => { Screened = n.GetLongValue(); } },
                 { "sources_content_truncated", n => { SourcesContentTruncated = n.GetLongValue(); } },
+                { "sources_skipped_unreadable", n => { SourcesSkippedUnreadable = n.GetLongValue(); } },
             };
         }
         /// <summary>
@@ -144,6 +148,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("processed", Processed);
             writer.WriteLongValue("screened", Screened);
             writer.WriteLongValue("sources_content_truncated", SourcesContentTruncated);
+            writer.WriteLongValue("sources_skipped_unreadable", SourcesSkippedUnreadable);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

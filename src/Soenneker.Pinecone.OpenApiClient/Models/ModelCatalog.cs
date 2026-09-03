@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// The models this deployment can run, and the defaults it resolves.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ModelCatalog : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -22,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Default { get; set; }
 #endif
-        /// <summary>The models property</summary>
+        /// <summary>Every catalog entry, selectable or not.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>? Models { get; set; }
@@ -30,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem> Models { get; set; }
 #endif
-        /// <summary>Workflow phase → default model id</summary>
+        /// <summary>Workflow phase → the model id or tier name that phase defaults to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty? PhaseDefaults { get; set; }
@@ -38,7 +39,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty PhaseDefaults { get; set; }
 #endif
-        /// <summary>Model ids accepted by the curate runtime</summary>
+        /// <summary>The per-turn harness values a turn runs with when the request sets none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults? QueryDefaults { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults QueryDefaults { get; set; }
+#endif
+        /// <summary>Model ids the curate runtime accepts — a subset of the catalog, since curate reads the whole corpus and is priced accordingly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? SupportedCurateModels { get; set; }
@@ -46,7 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> SupportedCurateModels { get; set; }
 #endif
-        /// <summary>Tier (`lite`/`standard`/`pro`) → resolved model id</summary>
+        /// <summary>Tier (`lite`/`standard`/`pro`) → resolved model id. A tier name is accepted anywhere a model id is, so a caller can ask for `standard` and let the deployment choose.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty? Tiers { get; set; }
@@ -82,6 +91,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "default", n => { Default = n.GetStringValue(); } },
                 { "models", n => { Models = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "phase_defaults", n => { PhaseDefaults = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty.CreateFromDiscriminatorValue); } },
+                { "query_defaults", n => { QueryDefaults = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults.CreateFromDiscriminatorValue); } },
                 { "supported_curate_models", n => { SupportedCurateModels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tiers", n => { Tiers = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty.CreateFromDiscriminatorValue); } },
             };
@@ -96,6 +106,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("default", Default);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>("models", Models);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty>("phase_defaults", PhaseDefaults);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults>("query_defaults", QueryDefaults);
             writer.WriteCollectionOfPrimitiveValues<string>("supported_curate_models", SupportedCurateModels);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty>("tiers", Tiers);
             writer.WriteAdditionalData(AdditionalData);

@@ -7,16 +7,17 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// Estimated wall-clock band for the curate, in seconds.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ProfileTierCostTimeS : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The hi property</summary>
+        /// <summary>High end of the wall-clock band.</summary>
         public long? Hi { get; set; }
-        /// <summary>The lo property</summary>
+        /// <summary>Low end of the wall-clock band.</summary>
         public long? Lo { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS"/> and sets the default values.

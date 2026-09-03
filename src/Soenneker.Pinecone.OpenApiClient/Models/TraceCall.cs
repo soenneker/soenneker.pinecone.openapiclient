@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallArgsProperty Args { get; set; }
 #endif
-        /// <summary>The category property</summary>
+        /// <summary>Which family the tool belongs to, as tallied in the rollup&apos;s `by_category`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Category { get; set; }
@@ -31,9 +31,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Category { get; set; }
 #endif
-        /// <summary>The duration_ms property</summary>
+        /// <summary>Wall time for this one call.</summary>
         public long? DurationMs { get; set; }
-        /// <summary>The error property</summary>
+        /// <summary>Failure detail. Set when `ok` is false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Error { get; set; }
@@ -41,7 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Error { get; set; }
 #endif
-        /// <summary>The fn property</summary>
+        /// <summary>Name of the function this call invoked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Fn { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Fn { get; set; }
 #endif
-        /// <summary>The ok property</summary>
+        /// <summary>Whether the call succeeded.</summary>
         public bool? Ok { get; set; }
         /// <summary>Compact summary of the call&apos;s result (never the payload). The shape varies by category and is runtime-extensible.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -59,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallResult Result { get; set; }
 #endif
-        /// <summary>The score_space property</summary>
+        /// <summary>Which scoring space the returned scores live in, for calls that retrieve.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ScoreSpace { get; set; }

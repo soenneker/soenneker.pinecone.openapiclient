@@ -7,20 +7,21 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// Read after the task&apos;s files were archived.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class TaskFileMetadataArchived : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The is_dir property</summary>
+        /// <summary>Whether the object is a directory.</summary>
         public bool? IsDir { get; set; }
-        /// <summary>The is_file property</summary>
+        /// <summary>Whether the object is a regular file.</summary>
         public bool? IsFile { get; set; }
-        /// <summary>Unix seconds</summary>
+        /// <summary>Unix seconds. Null when the store reports none.</summary>
         public long? Modified { get; set; }
-        /// <summary>The size property</summary>
+        /// <summary>Byte size.</summary>
         public long? Size { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataArchived"/> and sets the default values.

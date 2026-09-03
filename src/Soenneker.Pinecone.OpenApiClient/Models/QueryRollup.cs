@@ -8,32 +8,32 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Per-turn token/cache totals + tool tally (`response.turn_rollup`)
+    /// End-of-turn counters. Null on a turn the runtime never closed.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryRollup : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The by_category property</summary>
+        /// <summary>Tool calls tallied by category.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategoryProperty? ByCategory { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory? ByCategory { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategoryProperty ByCategory { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory ByCategory { get; set; }
 #endif
-        /// <summary>The cache_read_tokens property</summary>
+        /// <summary>Input tokens served from the prompt cache.</summary>
         public long? CacheReadTokens { get; set; }
-        /// <summary>The cache_write_tokens property</summary>
+        /// <summary>Input tokens written into the prompt cache.</summary>
         public long? CacheWriteTokens { get; set; }
-        /// <summary>The duration_ms property</summary>
+        /// <summary>Wall time for the whole turn.</summary>
         public long? DurationMs { get; set; }
-        /// <summary>The n_steps property</summary>
+        /// <summary>Reasoning steps the turn ran.</summary>
         public long? NSteps { get; set; }
-        /// <summary>The n_tool_calls property</summary>
+        /// <summary>How many calls the whole turn made.</summary>
         public long? NToolCalls { get; set; }
-        /// <summary>The query_id property</summary>
+        /// <summary>Event form only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? QueryId { get; set; }
@@ -41,9 +41,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string QueryId { get; set; }
 #endif
-        /// <summary>The total_hits property</summary>
+        /// <summary>Retrieved items across all calls, before dedup.</summary>
         public long? TotalHits { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>Event form only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -76,7 +76,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by_category", n => { ByCategory = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategoryProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategoryProperty.CreateFromDiscriminatorValue); } },
+                { "by_category", n => { ByCategory = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory.CreateFromDiscriminatorValue); } },
                 { "cache_read_tokens", n => { CacheReadTokens = n.GetLongValue(); } },
                 { "cache_write_tokens", n => { CacheWriteTokens = n.GetLongValue(); } },
                 { "duration_ms", n => { DurationMs = n.GetLongValue(); } },
@@ -94,7 +94,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategoryProperty>("by_category", ByCategory);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory>("by_category", ByCategory);
             writer.WriteLongValue("cache_read_tokens", CacheReadTokens);
             writer.WriteLongValue("cache_write_tokens", CacheWriteTokens);
             writer.WriteLongValue("duration_ms", DurationMs);

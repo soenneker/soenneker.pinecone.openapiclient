@@ -7,18 +7,19 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// What a groom run was started with.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class GroomInput : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The budget property</summary>
+        /// <summary>Cap on fact batches the run consolidates.</summary>
         public int? Budget { get; set; }
-        /// <summary>The groom_timeout_seconds property</summary>
+        /// <summary>Runtime budget for the whole groom.</summary>
         public long? GroomTimeoutSeconds { get; set; }
-        /// <summary>The models property</summary>
+        /// <summary>Tier names or catalog ids, in preference order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Models { get; set; }

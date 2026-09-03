@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Tier (`lite`/`standard`/`pro`) → resolved model id
+    /// Tier (`lite`/`standard`/`pro`) → resolved model id. A tier name is accepted anywhere a model id is, so a caller can ask for `standard` and let the deployment choose.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelCatalogTiersProperty : IAdditionalDataHolder, IParsable

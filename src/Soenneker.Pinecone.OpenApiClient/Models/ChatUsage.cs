@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The chat-seam token rollup reported by the inference client, which carries the cache-token fields. Used by optimize and explore.
+    /// What a run billed on the chat seam, in tokens. Reported by the inference client, which carries the cache-token fields. Used by optimize and explore.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatUsage : IAdditionalDataHolder, IParsable
@@ -23,15 +23,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty ByModel { get; set; }
 #endif
-        /// <summary>The cache_read_tokens property</summary>
+        /// <summary>Input served without re-billing.</summary>
         public long? CacheReadTokens { get; set; }
-        /// <summary>The cache_write_tokens property</summary>
+        /// <summary>Prompt tokens written into cache.</summary>
         public long? CacheWriteTokens { get; set; }
-        /// <summary>The completion_tokens property</summary>
+        /// <summary>Output tokens billed across every model.</summary>
         public long? CompletionTokens { get; set; }
-        /// <summary>The prompt_tokens property</summary>
+        /// <summary>Input tokens billed across every model.</summary>
         public long? PromptTokens { get; set; }
-        /// <summary>The total_tokens property</summary>
+        /// <summary>Input plus output tokens across every model.</summary>
         public long? TotalTokens { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage"/> and sets the default values.

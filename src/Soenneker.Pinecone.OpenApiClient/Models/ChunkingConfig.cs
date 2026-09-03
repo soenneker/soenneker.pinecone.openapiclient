@@ -7,18 +7,19 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
+    /// <summary>
+    /// How a source is cut into chunks.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ChunkingConfig : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The overlap property</summary>
+        /// <summary>Tokens each chunk repeats from its predecessor, so a passage split across a boundary is still retrievable whole.</summary>
         public int? Overlap { get; set; }
-        /// <summary>The respect_sections property</summary>
+        /// <summary>Never cut across a section boundary, even when that leaves a chunk short of `target_size`.</summary>
         public bool? RespectSections { get; set; }
-        /// <summary>The strategy property</summary>
+        /// <summary>Which structure the splitter cuts on — markdown headings, fixed-size windows, HTML elements, CSV rows, or code syntax. Pick the one that matches the corpus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Strategy { get; set; }
@@ -26,7 +27,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Strategy { get; set; }
 #endif
-        /// <summary>The target_size property</summary>
+        /// <summary>Chunk size the splitter aims for, in tokens. Smaller chunks retrieve more precisely; larger ones carry more surrounding context.</summary>
         public int? TargetSize { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig"/> and sets the default values.

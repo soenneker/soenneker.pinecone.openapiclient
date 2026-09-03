@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Workflow phase → default model id
+    /// Workflow phase → the model id or tier name that phase defaults to.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelCatalogPhaseDefaultsProperty : IAdditionalDataHolder, IParsable

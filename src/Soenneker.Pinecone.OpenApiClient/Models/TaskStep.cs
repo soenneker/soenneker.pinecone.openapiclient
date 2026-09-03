@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// One reported step row. `step_id` and `status` are always set; the rest are per-call optionals.
+    /// One reported step row. `step_id` and `status` are always set; the rest are per-workflow optionals, so an absent key stays absent.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskStep : IAdditionalDataHolder, IParsable
@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Code { get; set; }
 #endif
-        /// <summary>The commentary property</summary>
+        /// <summary>The runtime&apos;s one-line account of what the step is doing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Commentary { get; set; }
@@ -31,11 +31,19 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Commentary { get; set; }
 #endif
-        /// <summary>The cum_input_tokens property</summary>
+        /// <summary>The step&apos;s reported text payload.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Content { get; set; }
+#nullable restore
+#else
+        public string Content { get; set; }
+#endif
+        /// <summary>Task-to-date input tokens, including this step.</summary>
         public long? CumInputTokens { get; set; }
-        /// <summary>The cum_output_tokens property</summary>
+        /// <summary>Task-to-date output tokens, including this step.</summary>
         public long? CumOutputTokens { get; set; }
-        /// <summary>LlamaParse job id</summary>
+        /// <summary>Identifier of the LlamaParse job doing the work.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? JobId { get; set; }
@@ -59,7 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Result { get; set; }
 #endif
-        /// <summary>The status property</summary>
+        /// <summary>How the step ended, e.g. `running` or `completed`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -67,7 +75,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The step_id property</summary>
+        /// <summary>Identifies the step within the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? StepId { get; set; }
@@ -75,7 +83,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string StepId { get; set; }
 #endif
-        /// <summary>The type property</summary>
+        /// <summary>What kind of step this is; the vocabulary is per-workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Type { get; set; }
@@ -110,6 +118,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "commentary", n => { Commentary = n.GetStringValue(); } },
+                { "content", n => { Content = n.GetStringValue(); } },
                 { "cum_input_tokens", n => { CumInputTokens = n.GetLongValue(); } },
                 { "cum_output_tokens", n => { CumOutputTokens = n.GetLongValue(); } },
                 { "job_id", n => { JobId = n.GetStringValue(); } },
@@ -129,6 +138,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("commentary", Commentary);
+            writer.WriteStringValue("content", Content);
             writer.WriteLongValue("cum_input_tokens", CumInputTokens);
             writer.WriteLongValue("cum_output_tokens", CumOutputTokens);
             writer.WriteStringValue("job_id", JobId);
