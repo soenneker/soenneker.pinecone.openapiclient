@@ -20663,6 +20663,9 @@
         }
       },
       "MultiModalContentBlocksModel": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -20971,6 +20974,9 @@
         "description": "Represents a request to chat with an assistant."
       },
       "SnippetModel": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -21006,6 +21012,9 @@
         }
       },
       "StreamChatChunkModel": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -21149,6 +21158,9 @@
         "description": "Represents a text context snippet."
       },
       "TypedReferenceModel": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -22143,6 +22155,9 @@
         }
       },
       "CreateIndexSchemaField": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -22176,6 +22191,9 @@
           },
           "full_text_search": {
             "$ref": "#/components/schemas/StringFieldFullTextSearch"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The configuration of a single field in the index schema at creation time. The \u0060type\u0060 property determines how the field is stored and searched.\nField types accepted at creation time:\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search. - \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search. - \u0060string\u0060 with a \u0060full_text_search\u0060 object: String field for full-text search.\nSchema constraints enforced at creation time:\n- At most one \u0060dense_vector\u0060 field. - At most one \u0060sparse_vector\u0060 field. - At least one of \u0060dense_vector\u0060, \u0060sparse_vector\u0060, or a \u0060string\u0060 field with\n\n  \u0060full_text_search\u0060 must be present.\n\nOther field types seen in \u0060IndexSchemaField\u0060 responses cannot be declared here:\n- \u0060semantic_text\u0060 cannot be declared in a schema. Create an index with an\n\n  integrated embedding model through the create-for-model operation instead;\n  it appears as a \u0060semantic_text\u0060 field when the index is described.\n- \u0060float\u0060 (also spelled \u0060number\u0060), \u0060boolean\u0060, \u0060string_list\u0060, and \u0060string\u0060\n\n  without \u0060full_text_search\u0060 are metadata types and are rejected. Include the\n  values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional \u0060description\u0060 of at most 256 bytes.",
@@ -22300,6 +22318,9 @@
         }
       },
       "IndexDeployment": {
+        "required": [
+          "deployment_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -22351,6 +22372,9 @@
             "type": "string",
             "description": "The region where the index is hosted.",
             "example": "us-east-1"
+          },
+          "deployment_type": {
+            "type": "string"
           }
         },
         "description": "The deployment configuration of a Pinecone index. The \u0060deployment_type\u0060 field indicates which infrastructure model the index uses.\n- \u0060pod\u0060: Dedicated pod-based infrastructure. Suitable for workloads that\n\n  require predictable performance.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n\n  full-text search indexes. Scales automatically; billed per usage.\n- \u0060byoc\u0060: Bring-your-own-compute. Runs in customer-managed infrastructure.",
@@ -22367,6 +22391,9 @@
         }
       },
       "IndexDeploymentRequest": {
+        "required": [
+          "deployment_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -22397,6 +22424,9 @@
             "description": "The Pinecone environment hosting the index. Returned in responses; do not set it when creating an index.",
             "readOnly": true,
             "example": "aped-4627-b74a"
+          },
+          "deployment_type": {
+            "type": "string"
           }
         },
         "description": "The deployment configuration for index creation. The \u0060deployment_type\u0060 field selects the infrastructure model. Defaults to \u0060managed\u0060 (serverless) in \u0060us-east-1\u0060 on \u0060aws\u0060 if omitted.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n\n  full-text search indexes.\n- \u0060byoc\u0060: Bring-your-own-compute.",
@@ -22568,6 +22598,36 @@
           "filterable": {
             "type": "boolean",
             "description": "Whether this field is indexed for metadata filtering."
+          },
+          "description": {
+            "maxLength": 256,
+            "type": "string",
+            "description": "Optional description for this field, at most 256 bytes. \u0060null\u0060 in responses when none was set.",
+            "nullable": true
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric used for similarity search.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
+            "example": "cosine",
+            "x-enum": [
+              "cosine",
+              "dotproduct",
+              "euclidean"
+            ]
+          },
+          "model": {
+            "type": "string",
+            "description": "The name of the integrated embedding model to use for this field.",
+            "example": "multilingual-e5-large"
+          },
+          "write_parameters": {
+            "$ref": "#/components/schemas/SemanticTextFieldWriteParametersProperty"
+          },
+          "read_parameters": {
+            "$ref": "#/components/schemas/SemanticTextFieldReadParametersProperty"
+          },
+          "full_text_search": {
+            "$ref": "#/components/schemas/ResponseStringFieldFullTextSearch"
           }
         },
         "description": "The configuration of a single field in the index schema.\nMost fields carry a \u0060type\u0060 property that identifies the field type:\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search. - \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search. - \u0060semantic_text\u0060: Text field backed by an integrated embedding model. - \u0060string\u0060: String field for full-text search or metadata filtering. - \u0060string_list\u0060: String array field. - \u0060float\u0060: Numeric field. - \u0060integer\u0060: Legacy numeric field from older indexes (pre-dating float\n\n  normalization). Will not appear in new indexes.\n- \u0060boolean\u0060: Boolean field.\nFields in older indexes may omit \u0060type\u0060 entirely. These are legacy metadata fields from before typed schemas were introduced."
@@ -22813,6 +22873,9 @@
         }
       },
       "ReadCapacity": {
+        "required": [
+          "mode"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -23047,6 +23110,9 @@
         }
       },
       "ReadCapacityPatch": {
+        "required": [
+          "mode"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -23077,6 +23143,9 @@
         }
       },
       "ReadCapacityResponse": {
+        "required": [
+          "mode"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -23436,6 +23505,9 @@
       },
       "TypedIndexSchemaField": {
         "title": "Typed field",
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -23497,6 +23569,9 @@
           "filterable": {
             "type": "boolean",
             "description": "Whether this field is indexed for metadata filtering."
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A schema field that carries a \u0060type\u0060 discriminator. This covers all field types in current use. See \u0060IndexSchemaField\u0060 for the full union that also includes legacy untyped fields.",
@@ -25629,6 +25704,9 @@
         }
       },
       "Embedding": {
+        "required": [
+          "vector_type"
+        ],
         "type": "object",
         "oneOf": [
           {
