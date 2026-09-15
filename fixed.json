@@ -7002,7 +7002,7 @@
           }
         ],
         "requestBody": {
-          "description": "The desired configuration for the index.",
+          "description": "The index to create, including its schema and deployment target.",
           "content": {
             "application/json": {
               "schema": {
@@ -7732,7 +7732,7 @@
           }
         ],
         "requestBody": {
-          "description": "The configuration changes to apply to the index.",
+          "description": "The index to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -8926,7 +8926,7 @@
           }
         ],
         "requestBody": {
-          "description": "The desired configuration for the index and associated embedding model.",
+          "description": "The index to create and the embedding model to attach to it.",
           "content": {
             "application/json": {
               "schema": {
@@ -10123,7 +10123,7 @@
           }
         ],
         "requestBody": {
-          "description": "Fields to update. Omitted fields are unchanged.",
+          "description": "The backup schedule to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -21931,7 +21931,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.\n- \u0060deployment\u0060: Update pod-based scaling parameters (\u0060replicas\u0060, \u0060pod_type\u0060).\n\n  Deployment type and cloud/region cannot be changed.\n- \u0060schema\u0060: Update \u0060semantic_text\u0060 field embedding parameters. Only\n\n  \u0060write_parameters\u0060 and \u0060read_parameters\u0060 may be changed; the model cannot\n  be changed after creation.\n- \u0060read_capacity\u0060: Update read capacity mode or dedicated node configuration\n\n  for managed and BYOC indexes. Not applicable to pod-based indexes.\n- \u0060tags\u0060: Update or delete index tags. Setting a tag value to \u0060\u0022\u0022\u0060 removes\n\n  the tag.\n- \u0060deletion_protection\u0060: Enable or disable deletion protection."
+        "description": "Configuration updates to apply to an existing index. All fields are optional;\nonly the fields you include are modified.\n\n- \u0060deployment\u0060: Update pod-based scaling parameters (\u0060replicas\u0060, \u0060pod_type\u0060).\n  Deployment type and cloud/region cannot be changed.\n- \u0060schema\u0060: Update \u0060semantic_text\u0060 field embedding parameters. Only\n  \u0060write_parameters\u0060 and \u0060read_parameters\u0060 may be changed; the model cannot\n  be changed after creation.\n- \u0060read_capacity\u0060: Update read capacity mode or dedicated node configuration\n  for managed and BYOC indexes. Not applicable to pod-based indexes.\n- \u0060tags\u0060: Update or delete index tags. Setting a tag value to \u0060\u0022\u0022\u0060 removes\n  the tag.\n- \u0060deletion_protection\u0060: Enable or disable deletion protection."
       },
       "CreateBackupRequest": {
         "type": "object",
@@ -22125,7 +22125,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "The configuration needed to create a Pinecone index.\nThe \u0060schema\u0060 field is required and defines the typed fields for the index. The \u0060deployment\u0060 field selects infrastructure and defaults to managed (serverless) on AWS \u0060us-east-1\u0060 if omitted. The \u0060name\u0060 is auto-generated if not provided."
+        "description": "Configuration for a new index.\nThe \u0060schema\u0060 field is required and defines the typed fields for the index. The \u0060deployment\u0060 field selects infrastructure and defaults to managed (serverless) on AWS \u0060us-east-1\u0060 if omitted. The \u0060name\u0060 is auto-generated if not provided."
       },
       "CreateIndexSchema": {
         "required": [
@@ -22196,7 +22196,7 @@
             "type": "string"
           }
         },
-        "description": "The configuration of a single field in the index schema at creation time. The \u0060type\u0060 property determines how the field is stored and searched.\nField types accepted at creation time:\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search. - \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search. - \u0060string\u0060 with a \u0060full_text_search\u0060 object: String field for full-text search.\nSchema constraints enforced at creation time:\n- At most one \u0060dense_vector\u0060 field. - At most one \u0060sparse_vector\u0060 field. - At least one of \u0060dense_vector\u0060, \u0060sparse_vector\u0060, or a \u0060string\u0060 field with\n\n  \u0060full_text_search\u0060 must be present.\n\nOther field types seen in \u0060IndexSchemaField\u0060 responses cannot be declared here:\n- \u0060semantic_text\u0060 cannot be declared in a schema. Create an index with an\n\n  integrated embedding model through the create-for-model operation instead;\n  it appears as a \u0060semantic_text\u0060 field when the index is described.\n- \u0060float\u0060 (also spelled \u0060number\u0060), \u0060boolean\u0060, \u0060string_list\u0060, and \u0060string\u0060\n\n  without \u0060full_text_search\u0060 are metadata types and are rejected. Include the\n  values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional \u0060description\u0060 of at most 256 bytes.",
+        "description": "The configuration of a single field in the index schema at creation time.\nThe \u0060type\u0060 property determines how the field is stored and searched.\n\nField types accepted at creation time:\n\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search.\n- \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search.\n- \u0060string\u0060 with a \u0060full_text_search\u0060 object: String field for full-text search.\n\nOther field types seen in \u0060IndexSchemaField\u0060 responses cannot be declared\nhere:\n\n- \u0060semantic_text\u0060 cannot be declared in a schema. Create an index with an\n  integrated embedding model through the create-for-model operation instead;\n  it appears as a \u0060semantic_text\u0060 field when the index is described.\n- \u0060float\u0060 (also spelled \u0060number\u0060), \u0060boolean\u0060, \u0060string_list\u0060, and \u0060string\u0060\n  without \u0060full_text_search\u0060 are metadata types and are rejected. Include the\n  values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional \u0060description\u0060 of at most 256 bytes.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -22377,7 +22377,7 @@
             "type": "string"
           }
         },
-        "description": "The deployment configuration of a Pinecone index. The \u0060deployment_type\u0060 field indicates which infrastructure model the index uses.\n- \u0060pod\u0060: Dedicated pod-based infrastructure. Suitable for workloads that\n\n  require predictable performance.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n\n  full-text search indexes. Scales automatically; billed per usage.\n- \u0060byoc\u0060: Bring-your-own-compute. Runs in customer-managed infrastructure.",
+        "description": "The deployment configuration of a Pinecone index. The \u0060deployment_type\u0060 field\nindicates which infrastructure model the index uses.\n\n- \u0060pod\u0060: Dedicated pod-based infrastructure. Suitable for workloads that\n  require predictable performance.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n  full-text search indexes. Scales automatically; billed per usage.\n- \u0060byoc\u0060: Bring-your-own-compute. Runs in customer-managed infrastructure.",
         "discriminator": {
           "propertyName": "deployment_type",
           "mapping": {
@@ -22429,7 +22429,7 @@
             "type": "string"
           }
         },
-        "description": "The deployment configuration for index creation. The \u0060deployment_type\u0060 field selects the infrastructure model. Defaults to \u0060managed\u0060 (serverless) in \u0060us-east-1\u0060 on \u0060aws\u0060 if omitted.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n\n  full-text search indexes.\n- \u0060byoc\u0060: Bring-your-own-compute.",
+        "description": "The deployment configuration for index creation. The \u0060deployment_type\u0060 field\nselects the infrastructure model. Defaults to \u0060managed\u0060 (serverless) in\n\u0060us-east-1\u0060 on \u0060aws\u0060 if omitted.\n\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n  full-text search indexes.\n- \u0060byoc\u0060: Bring-your-own-compute.",
         "discriminator": {
           "propertyName": "deployment_type",
           "mapping": {
@@ -22630,7 +22630,7 @@
             "$ref": "#/components/schemas/ResponseStringFieldFullTextSearch"
           }
         },
-        "description": "The configuration of a single field in the index schema.\nMost fields carry a \u0060type\u0060 property that identifies the field type:\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search. - \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search. - \u0060semantic_text\u0060: Text field backed by an integrated embedding model. - \u0060string\u0060: String field for full-text search or metadata filtering. - \u0060string_list\u0060: String array field. - \u0060float\u0060: Numeric field. - \u0060integer\u0060: Legacy numeric field from older indexes (pre-dating float\n\n  normalization). Will not appear in new indexes.\n- \u0060boolean\u0060: Boolean field.\nFields in older indexes may omit \u0060type\u0060 entirely. These are legacy metadata fields from before typed schemas were introduced."
+        "description": "The configuration of a single field in the index schema.\n\nMost fields carry a \u0060type\u0060 property that identifies the field type:\n\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search.\n- \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search.\n- \u0060semantic_text\u0060: Text field backed by an integrated embedding model.\n- \u0060string\u0060: String field for full-text search or metadata filtering.\n- \u0060string_list\u0060: String array field.\n- \u0060float\u0060: Numeric field.\n- \u0060integer\u0060: Legacy numeric field from older indexes (pre-dating float\n  normalization). Will not appear in new indexes.\n- \u0060boolean\u0060: Boolean field.\n\nFields in older indexes may omit \u0060type\u0060 entirely. These are legacy metadata\nfields from before typed schemas were introduced."
       },
       "IndexTags": {
         "type": "object",
@@ -34353,7 +34353,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateIndexSchemaField"
         },
-        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected.\nThe map may not be empty: a schema with no fields is rejected with \u0060Schema must contain at least one of the following field types: dense_vector, sparse_vector, string with full_text_search\u0060."
+        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
       },
       "DbControl202607ErrorResponseError": {
         "required": [
@@ -37332,7 +37332,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateIndexSchemaField"
         },
-        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected.\nThe map may not be empty: a schema with no fields is rejected with \u0060Schema must contain at least one of the following field types: dense_vector, sparse_vector, string with full_text_search\u0060."
+        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
       },
       "IndexModelTags": {
         "type": "object",

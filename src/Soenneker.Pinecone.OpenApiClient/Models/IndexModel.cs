@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string DeletionProtection { get; set; }
 #endif
-        /// <summary>The deployment configuration of a Pinecone index. The `deployment_type` field indicates which infrastructure model the index uses.- `pod`: Dedicated pod-based infrastructure. Suitable for workloads that  require predictable performance.- `managed`: Serverless infrastructure managed by Pinecone, including  full-text search indexes. Scales automatically; billed per usage.- `byoc`: Bring-your-own-compute. Runs in customer-managed infrastructure.</summary>
+        /// <summary>The deployment configuration of a Pinecone index. The `deployment_type` fieldindicates which infrastructure model the index uses.- `pod`: Dedicated pod-based infrastructure. Suitable for workloads that  require predictable performance.- `managed`: Serverless infrastructure managed by Pinecone, including  full-text search indexes. Scales automatically; billed per usage.- `byoc`: Bring-your-own-compute. Runs in customer-managed infrastructure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDeployment? Deployment { get; set; }

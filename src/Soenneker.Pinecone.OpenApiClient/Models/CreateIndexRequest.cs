@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The configuration needed to create a Pinecone index.The `schema` field is required and defines the typed fields for the index. The `deployment` field selects infrastructure and defaults to managed (serverless) on AWS `us-east-1` if omitted. The `name` is auto-generated if not provided.
+    /// Configuration for a new index.The `schema` field is required and defines the typed fields for the index. The `deployment` field selects infrastructure and defaults to managed (serverless) on AWS `us-east-1` if omitted. The `name` is auto-generated if not provided.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateIndexRequest : IParsable
@@ -29,7 +29,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string DeletionProtection { get; set; }
 #endif
-        /// <summary>The deployment configuration for index creation. The `deployment_type` field selects the infrastructure model. Defaults to `managed` (serverless) in `us-east-1` on `aws` if omitted.- `managed`: Serverless infrastructure managed by Pinecone, including  full-text search indexes.- `byoc`: Bring-your-own-compute.</summary>
+        /// <summary>The deployment configuration for index creation. The `deployment_type` fieldselects the infrastructure model. Defaults to `managed` (serverless) in`us-east-1` on `aws` if omitted.- `managed`: Serverless infrastructure managed by Pinecone, including  full-text search indexes.- `byoc`: Bring-your-own-compute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDeploymentRequest? Deployment { get; set; }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`).  Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters. Only  `write_parameters` and `read_parameters` may be changed; the model cannot  be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration  for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes  the tag.- `deletion_protection`: Enable or disable deletion protection.
+    /// Configuration updates to apply to an existing index. All fields are optional;only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`).  Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters. Only  `write_parameters` and `read_parameters` may be changed; the model cannot  be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration  for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes  the tag.- `deletion_protection`: Enable or disable deletion protection.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConfigureIndexRequest : IParsable
