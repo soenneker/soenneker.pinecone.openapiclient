@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>By default the index will be created with read capacity  mode `OnDemand`. If you prefer to allocate dedicated read  nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`. BYOC indexes do not support `OnDemand`: a `byoc` deployment must set `mode: Dedicated` explicitly, since omitting `read_capacity` defaults to `OnDemand` and is rejected.</summary>
+        /// <summary>By default the index will be created with read capacity mode `OnDemand`. If you prefer to allocate dedicated read nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`. BYOC indexes do not support `OnDemand`: a `byoc` deployment must set `mode: Dedicated` explicitly, since omitting `read_capacity` defaults to `OnDemand` and is rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity? ReadCapacity { get; set; }

@@ -66,7 +66,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedul
         /// Create a time-based backup schedule for the specified index.Backup schedules are supported for serverless and BYOC indexes; the request is rejected with `400` for a pod-based index.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse"/></returns>
-        /// <param name="body">Request body for creating a backup schedule on an index.</param>
+        /// <param name="body">Name, cadence, and retention for an index&apos;s automatic backups.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 400 status code</exception>
@@ -122,7 +122,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedul
         /// Create a time-based backup schedule for the specified index.Backup schedules are supported for serverless and BYOC indexes; the request is rejected with `400` for a pod-based index.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Request body for creating a backup schedule on an index.</param>
+        /// <param name="body">Name, cadence, and retention for an index&apos;s automatic backups.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

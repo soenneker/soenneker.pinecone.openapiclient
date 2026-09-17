@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Request body for creating a backup schedule on an index.
+    /// Name, cadence, and retention for an index&apos;s automatic backups.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateBackupScheduleRequest : IAdditionalDataHolder, IParsable

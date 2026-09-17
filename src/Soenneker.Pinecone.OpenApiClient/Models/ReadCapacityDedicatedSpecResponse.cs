@@ -12,7 +12,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     public partial class ReadCapacityDedicatedSpecResponse : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Configuration for dedicated read capacity. See  [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on  how to configure dedicated read capacity.</summary>
+        /// <summary>Configuration for dedicated read capacity. See [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on how to configure dedicated read capacity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedConfig? Dedicated { get; set; }

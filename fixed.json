@@ -6987,7 +6987,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index",
-        "description": "Create a Pinecone index. Define the schema for your index \u2014 dense vector, sparse vector, and full-text search fields \u2014 and, optionally, the deployment infrastructure (managed serverless or BYOC). To create an index with an integrated embedding model, use [Create an index with integrated embedding](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_for_model). If \u0060deployment\u0060 is omitted, the index is deployed as a managed (serverless) index on \u0060aws\u0060 in \u0060us-east-1\u0060.\n**The index schema cannot be modified after creation.** Field types, dimensions, metrics, and text-analysis settings are permanent. Choose your schema carefully before creating an index.\nTo create an index from a backup, use [Create index from backup](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_from_backup).\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).\n",
+        "description": "Create a Pinecone index. Define the schema for your index \u2014 dense vector, sparse vector, and full-text search fields \u2014 and, optionally, the deployment infrastructure (managed serverless or BYOC). To create an index with an integrated embedding model, use [Create an index with integrated embedding](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_for_model).\n\n**The index schema cannot be modified after creation.** Field types, dimensions, metrics, and text-analysis settings are permanent. Choose your schema carefully before creating an index.\n\nTo create an index from a backup, use [Create index from backup](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_from_backup).\n\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).",
         "operationId": "DbControl202607CreateIndex",
         "parameters": [
           {
@@ -7002,7 +7002,6 @@
           }
         ],
         "requestBody": {
-          "description": "The index to create, including its schema and deployment target.",
           "content": {
             "application/json": {
               "schema": {
@@ -7732,7 +7731,6 @@
           }
         ],
         "requestBody": {
-          "description": "The index to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -7975,7 +7973,7 @@
           "Manage Indexes"
         ],
         "summary": "List backups for an index",
-        "description": "When \u0060include_deleted\u0060 is false (or omitted), \u0060index_name\u0060 must resolve to an active index in the project. If no active index by that name exists\u2014including the case where only deleted indexes have used the name\u2014the API returns **404**, not an empty list.\nWhen \u0060include_deleted\u0060 is true, the API returns backups from every index in the project that has ever used this name (active and deleted). The \u0060source_index_deleted_at\u0060 field is present only when the backup is from a deleted index. **404** is returned only when no index by that name has ever existed in the project (active or deleted).",
+        "description": "When \u0060include_deleted\u0060 is false (or omitted), \u0060index_name\u0060 must resolve to an active index in the project. If no active index by that name exists\u2014including the case where only deleted indexes have used the name\u2014the API returns **404**, not an empty list.\n\nWhen \u0060include_deleted\u0060 is true, the API returns backups from every index in the project that has ever used this name (active and deleted). The \u0060source_index_deleted_at\u0060 field is present only when the backup is from a deleted index. **404** is returned only when no index by that name has ever existed in the project (active or deleted).",
         "operationId": "DbControl202607ListIndexBackups",
         "parameters": [
           {
@@ -8297,7 +8295,7 @@
           "Manage Indexes"
         ],
         "summary": "Create a backup of an index",
-        "description": "Create a backup of an index.\nThe backup records the schema of the index it is taken from and reports it as \u0060schema\u0060. An index created from the backup with [Create index from backup](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_from_backup) inherits that schema.\n",
+        "description": "Create a backup of an index.\n\nThe backup records the schema of the index it is taken from and reports it as \u0060schema\u0060. An index created from the backup with [Create index from backup](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_from_backup) inherits that schema.",
         "operationId": "DbControl202607CreateBackup",
         "parameters": [
           {
@@ -8321,7 +8319,6 @@
           }
         ],
         "requestBody": {
-          "description": "The desired configuration for the backup.",
           "content": {
             "application/json": {
               "schema": {
@@ -8661,7 +8658,7 @@
           "Manage Indexes"
         ],
         "summary": "Create a backup schedule for an index",
-        "description": "Create a time-based backup schedule for the specified index.\nBackup schedules are supported for serverless and BYOC indexes; the request is rejected with \u0060400\u0060 for a pod-based index.",
+        "description": "Create a time-based backup schedule for the specified index.\n\nBackup schedules are supported for serverless and BYOC indexes; the request is rejected with \u0060400\u0060 for a pod-based index.",
         "operationId": "DbControl202607CreateBackupSchedule",
         "parameters": [
           {
@@ -8685,7 +8682,6 @@
           }
         ],
         "requestBody": {
-          "description": "Schedule name, cadence, and retention for automatic backups.",
           "content": {
             "application/json": {
               "schema": {
@@ -8911,7 +8907,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index with integrated embedding",
-        "description": "Create an index with integrated embedding.\nWith this type of index, you provide source text, and Pinecone uses a [hosted embedding model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to convert the text automatically during [upsert](https://docs.pinecone.io/reference/api/2026-07/data-plane/upsert_records) and [search](https://docs.pinecone.io/reference/api/2026-07/data-plane/search_records).\nThe response is this version\u0027s index model, with the embedding configuration surfaced as a \u0060semantic_text\u0060 field in the index \u0060schema\u0060, named after the \u0060field_map\u0060 text entry. Read and write the index through the records API.\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index#integrated-embedding).",
+        "description": "Create an index with integrated embedding.\n\nWith this type of index, you provide source text, and Pinecone uses a [hosted embedding model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to convert the text automatically during [upsert](https://docs.pinecone.io/reference/api/2026-07/data-plane/upsert_records) and [search](https://docs.pinecone.io/reference/api/2026-07/data-plane/search_records).\n\nThe response is this version\u0027s index model, with the embedding configuration surfaced as a \u0060semantic_text\u0060 field in the index \u0060schema\u0060, named after the \u0060field_map\u0060 text entry. Read and write the index through the records API.\n\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index#integrated-embedding).",
         "operationId": "DbControl202607CreateIndexForModel",
         "parameters": [
           {
@@ -8926,7 +8922,6 @@
           }
         ],
         "requestBody": {
-          "description": "The index to create and the embedding model to attach to it.",
           "content": {
             "application/json": {
               "schema": {
@@ -9598,7 +9593,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index from a backup",
-        "description": "Create an index from a backup.\nThe restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its integrated embedding configuration, and the request cannot override it. A backup that carries no \u0060schema\u0060 restores an index whose fields are derived from the source index\u0027s dimension, metric, and vector type, and reported under the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 names.\nFor serverless backups, you can optionally set \u0060read_capacity\u0060 so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.",
+        "description": "Create an index from a backup.\n\nThe restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its integrated embedding configuration, and the request cannot override it. A backup that carries no \u0060schema\u0060 restores an index whose fields are derived from the source index\u0027s dimension, metric, and vector type, and reported under the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 names.\n\nFor serverless backups, you can optionally set \u0060read_capacity\u0060 so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.",
         "operationId": "DbControl202607CreateIndexFromBackupOperation",
         "parameters": [
           {
@@ -9623,7 +9618,6 @@
           }
         ],
         "requestBody": {
-          "description": "The desired configuration for the index created from a backup.",
           "content": {
             "application/json": {
               "schema": {
@@ -10098,7 +10092,7 @@
           "Manage Indexes"
         ],
         "summary": "Update a backup schedule",
-        "description": "Update frequency, retention, or enabled state for a backup schedule.\nRe-enabling a disabled schedule (\u0060enabled: true\u0060) enqueues a new backup operation, and is rejected with \u0060409\u0060 when the index already has another enabled schedule.",
+        "description": "Update frequency, retention, or enabled state for a backup schedule.\n\nRe-enabling a disabled schedule (\u0060enabled: true\u0060) enqueues a new backup operation, and is rejected with \u0060409\u0060 when the index already has another enabled schedule.",
         "operationId": "DbControl202607UpdateBackupSchedule",
         "parameters": [
           {
@@ -10123,7 +10117,6 @@
           }
         ],
         "requestBody": {
-          "description": "The backup schedule to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -10832,7 +10825,7 @@
           "Manage Indexes"
         ],
         "summary": "List collections",
-        "description": "List all collections in a project.\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.\n",
+        "description": "List all collections in a project.\n\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.",
         "operationId": "DbControl202607ListCollections",
         "parameters": [
           {
@@ -10935,7 +10928,7 @@
           "Manage Indexes"
         ],
         "summary": "Create a collection",
-        "description": "Create a Pinecone collection.\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.\n",
+        "description": "Create a Pinecone collection.\n\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.",
         "operationId": "DbControl202607CreateCollection",
         "parameters": [
           {
@@ -10950,7 +10943,6 @@
           }
         ],
         "requestBody": {
-          "description": "The desired configuration for the collection.",
           "content": {
             "application/json": {
               "schema": {
@@ -11153,7 +11145,7 @@
           "Manage Indexes"
         ],
         "summary": "Describe a collection",
-        "description": "Get a description of a collection.\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.\n",
+        "description": "Get a description of a collection.\n\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.",
         "operationId": "DbControl202607DescribeCollection",
         "parameters": [
           {
@@ -11262,7 +11254,7 @@
           "Manage Indexes"
         ],
         "summary": "Delete a collection",
-        "description": "Delete an existing collection.\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.\n",
+        "description": "Delete an existing collection.\n\nCollections are supported only for pod-based indexes. Pod-based indexes cannot be created with API version \u00602026-07\u0060, so this operation applies to pod-based indexes created with an earlier API version.",
         "operationId": "DbControl202607DeleteCollection",
         "parameters": [
           {
@@ -21879,7 +21871,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The status of the collection.\nPossible values: \u0060Initializing\u0060, \u0060Ready\u0060, \u0060Terminating\u0060, or \u0060Terminated\u0060.",
+            "description": "The status of the collection.\n\nPossible values: \u0060Initializing\u0060, \u0060Ready\u0060, \u0060Terminating\u0060, or \u0060Terminated\u0060.",
             "example": "Initializing",
             "x-enum": [
               "Initializing",
@@ -21927,11 +21919,11 @@
           },
           "deletion_protection": {
             "type": "string",
-            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
+            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\n\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
           }
         },
         "additionalProperties": false,
-        "description": "Configuration updates to apply to an existing index. All fields are optional;\nonly the fields you include are modified.\n\n- \u0060deployment\u0060: Update pod-based scaling parameters (\u0060replicas\u0060, \u0060pod_type\u0060).\n  Deployment type and cloud/region cannot be changed.\n- \u0060schema\u0060: Update \u0060semantic_text\u0060 field embedding parameters. Only\n  \u0060write_parameters\u0060 and \u0060read_parameters\u0060 may be changed; the model cannot\n  be changed after creation.\n- \u0060read_capacity\u0060: Update read capacity mode or dedicated node configuration\n  for managed and BYOC indexes. Not applicable to pod-based indexes.\n- \u0060tags\u0060: Update or delete index tags. Setting a tag value to \u0060\u0022\u0022\u0060 removes\n  the tag.\n- \u0060deletion_protection\u0060: Enable or disable deletion protection."
+        "description": "Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.\n\n- \u0060deployment\u0060: Update pod-based scaling parameters (\u0060replicas\u0060, \u0060pod_type\u0060). Deployment type and cloud/region cannot be changed.\n- \u0060schema\u0060: Update \u0060semantic_text\u0060 field embedding parameters. Only \u0060write_parameters\u0060 and \u0060read_parameters\u0060 may be changed; the model cannot be changed after creation.\n- \u0060read_capacity\u0060: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.\n- \u0060tags\u0060: Update or delete index tags. Setting a tag value to \u0060\u0022\u0022\u0060 removes the tag.\n- \u0060deletion_protection\u0060: Enable or disable deletion protection."
       },
       "CreateBackupRequest": {
         "type": "object",
@@ -21970,7 +21962,7 @@
             "$ref": "#/components/schemas/BackupScheduleRetentionInput"
           }
         },
-        "description": "Request body for creating a backup schedule on an index."
+        "description": "Name, cadence, and retention for an index\u0027s automatic backups."
       },
       "CreateCollectionRequest": {
         "required": [
@@ -21983,7 +21975,7 @@
             "maxLength": 45,
             "minLength": 1,
             "type": "string",
-            "description": "The name of the collection to be created. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.\n"
+            "description": "The name of the collection to be created. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027."
           },
           "source": {
             "type": "string",
@@ -22006,12 +21998,12 @@
             "maxLength": 45,
             "minLength": 1,
             "type": "string",
-            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.\n",
+            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.",
             "example": "example-index"
           },
           "cloud": {
             "type": "string",
-            "description": "The public cloud where you would like your index hosted.\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
+            "description": "The public cloud where you would like your index hosted.\n\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
             "example": "aws",
             "x-enum": [
               "gcp",
@@ -22026,7 +22018,7 @@
           },
           "deletion_protection": {
             "type": "string",
-            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
+            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\n\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
           },
           "tags": {
             "$ref": "#/components/schemas/CreateIndexForModelRequestTags"
@@ -22053,7 +22045,7 @@
             "maxLength": 45,
             "minLength": 1,
             "type": "string",
-            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.\n",
+            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.",
             "example": "example-index"
           },
           "tags": {
@@ -22061,7 +22053,7 @@
           },
           "deletion_protection": {
             "type": "string",
-            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
+            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\n\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
           },
           "read_capacity": {
             "$ref": "#/components/schemas/ReadCapacity"
@@ -22099,7 +22091,7 @@
             "maxLength": 45,
             "minLength": 1,
             "type": "string",
-            "description": "The name of the index. Must be unique within the project. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027. If not provided, a name is generated automatically. Callers that require retry-safe behavior should provide an explicit name \u2014 a duplicate request with the same name returns 409, making success detectable on retry.",
+            "description": "The name of the index. Must be unique within the project, start and end with an alphanumeric character, and contain only lower case alphanumeric characters or \u0027-\u0027. Generated automatically if not provided.",
             "example": "example-index"
           },
           "deployment": {
@@ -22121,11 +22113,11 @@
           },
           "deletion_protection": {
             "type": "string",
-            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
+            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\n\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
           }
         },
         "additionalProperties": false,
-        "description": "Configuration for a new index.\nThe \u0060schema\u0060 field is required and defines the typed fields for the index. The \u0060deployment\u0060 field selects infrastructure and defaults to managed (serverless) on AWS \u0060us-east-1\u0060 if omitted. The \u0060name\u0060 is auto-generated if not provided."
+        "description": "Configuration for a new index.\n\nThe \u0060schema\u0060 field is required and defines the typed fields for the index. The \u0060deployment\u0060 field selects infrastructure and defaults to managed (serverless) on AWS \u0060us-east-1\u0060 if omitted. The \u0060name\u0060 is auto-generated if not provided."
       },
       "CreateIndexSchema": {
         "required": [
@@ -22137,7 +22129,7 @@
             "$ref": "#/components/schemas/CreateIndexSchemaFieldsProperty"
           }
         },
-        "description": "The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and full-text search fields.\nAt least one of \u0060dense_vector\u0060, \u0060sparse_vector\u0060, or a \u0060string\u0060 field with \u0060full_text_search\u0060 must be present; an empty \u0060fields\u0060 map is rejected. At most one \u0060dense_vector\u0060 and one \u0060sparse_vector\u0060 field, and at most 100 \u0060full_text_search\u0060 fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.",
+        "description": "The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and full-text search fields.\n\nAt least one of \u0060dense_vector\u0060, \u0060sparse_vector\u0060, or a \u0060string\u0060 field with \u0060full_text_search\u0060 must be present; an empty \u0060fields\u0060 map is rejected. At most one \u0060dense_vector\u0060 and one \u0060sparse_vector\u0060 field, and at most 100 \u0060full_text_search\u0060 fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.",
         "example": {
           "fields": {
             "body": {
@@ -22181,7 +22173,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric used for similarity search.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
+            "description": "The distance metric used for similarity search.\n\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
             "example": "cosine",
             "x-enum": [
               "cosine",
@@ -22196,7 +22188,7 @@
             "type": "string"
           }
         },
-        "description": "The configuration of a single field in the index schema at creation time.\nThe \u0060type\u0060 property determines how the field is stored and searched.\n\nField types accepted at creation time:\n\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search.\n- \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search.\n- \u0060string\u0060 with a \u0060full_text_search\u0060 object: String field for full-text search.\n\nOther field types seen in \u0060IndexSchemaField\u0060 responses cannot be declared\nhere:\n\n- \u0060semantic_text\u0060 cannot be declared in a schema. Create an index with an\n  integrated embedding model through the create-for-model operation instead;\n  it appears as a \u0060semantic_text\u0060 field when the index is described.\n- \u0060float\u0060 (also spelled \u0060number\u0060), \u0060boolean\u0060, \u0060string_list\u0060, and \u0060string\u0060\n  without \u0060full_text_search\u0060 are metadata types and are rejected. Include the\n  values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional \u0060description\u0060 of at most 256 bytes.",
+        "description": "The configuration of a single field in the index schema at creation time. The \u0060type\u0060 property determines how the field is stored and searched.\n\nField types accepted at creation time:\n\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search.\n- \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search.\n- \u0060string\u0060 with a \u0060full_text_search\u0060 object: String field for full-text search.\n\nOther field types seen in \u0060IndexSchemaField\u0060 responses cannot be declared here:\n\n- \u0060semantic_text\u0060 cannot be declared in a schema. Create an index with an integrated embedding model through the create-for-model operation instead; it appears as a \u0060semantic_text\u0060 field when the index is described.\n- \u0060float\u0060 (also spelled \u0060number\u0060), \u0060boolean\u0060, \u0060string_list\u0060, and \u0060string\u0060 without \u0060full_text_search\u0060 are metadata types and are rejected. Include the values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional \u0060description\u0060 of at most 256 bytes.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -22251,7 +22243,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric used for similarity search.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
+            "description": "The distance metric used for similarity search.\n\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
             "example": "cosine",
             "x-enum": [
               "cosine",
@@ -22360,7 +22352,7 @@
           },
           "cloud": {
             "type": "string",
-            "description": "The public cloud where the index is hosted.\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
+            "description": "The public cloud where the index is hosted.\n\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
             "example": "aws",
             "x-enum": [
               "gcp",
@@ -22377,7 +22369,7 @@
             "type": "string"
           }
         },
-        "description": "The deployment configuration of a Pinecone index. The \u0060deployment_type\u0060 field\nindicates which infrastructure model the index uses.\n\n- \u0060pod\u0060: Dedicated pod-based infrastructure. Suitable for workloads that\n  require predictable performance.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n  full-text search indexes. Scales automatically; billed per usage.\n- \u0060byoc\u0060: Bring-your-own-compute. Runs in customer-managed infrastructure.",
+        "description": "The deployment configuration of a Pinecone index. The \u0060deployment_type\u0060 field indicates which infrastructure model the index uses.\n\n- \u0060pod\u0060: Dedicated pod-based infrastructure. Suitable for workloads that require predictable performance.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including full-text search indexes. Scales automatically; billed per usage.\n- \u0060byoc\u0060: Bring-your-own-compute. Runs in customer-managed infrastructure.",
         "discriminator": {
           "propertyName": "deployment_type",
           "mapping": {
@@ -22406,7 +22398,7 @@
         "properties": {
           "cloud": {
             "type": "string",
-            "description": "The public cloud where the index is hosted.\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
+            "description": "The public cloud where the index is hosted.\n\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
             "example": "aws",
             "x-enum": [
               "gcp",
@@ -22429,7 +22421,7 @@
             "type": "string"
           }
         },
-        "description": "The deployment configuration for index creation. The \u0060deployment_type\u0060 field\nselects the infrastructure model. Defaults to \u0060managed\u0060 (serverless) in\n\u0060us-east-1\u0060 on \u0060aws\u0060 if omitted.\n\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including\n  full-text search indexes.\n- \u0060byoc\u0060: Bring-your-own-compute.",
+        "description": "The deployment configuration for index creation. The \u0060deployment_type\u0060 field selects the infrastructure model. Defaults to \u0060managed\u0060 (serverless) in \u0060us-east-1\u0060 on \u0060aws\u0060 if omitted.\n\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including full-text search indexes.\n- \u0060byoc\u0060: Bring-your-own-compute.",
         "discriminator": {
           "propertyName": "deployment_type",
           "mapping": {
@@ -22468,7 +22460,7 @@
             "maxLength": 45,
             "minLength": 1,
             "type": "string",
-            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.\n",
+            "description": "The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or \u0027-\u0027.",
             "example": "example-index"
           },
           "host": {
@@ -22513,7 +22505,7 @@
           },
           "deletion_protection": {
             "type": "string",
-            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
+            "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\n\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060."
           }
         },
         "description": "The IndexModel describes the configuration and status of a Pinecone index.",
@@ -22607,7 +22599,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric used for similarity search.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
+            "description": "The distance metric used for similarity search.\n\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
             "example": "cosine",
             "x-enum": [
               "cosine",
@@ -22630,7 +22622,7 @@
             "$ref": "#/components/schemas/ResponseStringFieldFullTextSearch"
           }
         },
-        "description": "The configuration of a single field in the index schema.\n\nMost fields carry a \u0060type\u0060 property that identifies the field type:\n\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search.\n- \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search.\n- \u0060semantic_text\u0060: Text field backed by an integrated embedding model.\n- \u0060string\u0060: String field for full-text search or metadata filtering.\n- \u0060string_list\u0060: String array field.\n- \u0060float\u0060: Numeric field.\n- \u0060integer\u0060: Legacy numeric field from older indexes (pre-dating float\n  normalization). Will not appear in new indexes.\n- \u0060boolean\u0060: Boolean field.\n\nFields in older indexes may omit \u0060type\u0060 entirely. These are legacy metadata\nfields from before typed schemas were introduced."
+        "description": "The configuration of a single field in the index schema.\n\nMost fields carry a \u0060type\u0060 property that identifies the field type:\n\n- \u0060dense_vector\u0060: Fixed-dimension floating-point vectors for ANN search.\n- \u0060sparse_vector\u0060: Sparse vectors for keyword or hybrid search.\n- \u0060semantic_text\u0060: Text field backed by an integrated embedding model.\n- \u0060string\u0060: String field for full-text search or metadata filtering.\n- \u0060string_list\u0060: String array field.\n- \u0060float\u0060: Numeric field.\n- \u0060integer\u0060: Legacy numeric field from older indexes (pre-dating float normalization). Will not appear in new indexes.\n- \u0060boolean\u0060: Boolean field.\n\nFields in older indexes may omit \u0060type\u0060 entirely. These are legacy metadata fields from before typed schemas were introduced."
       },
       "IndexTags": {
         "type": "object",
@@ -22702,7 +22694,7 @@
           },
           "cloud": {
             "type": "string",
-            "description": "The public cloud where the index is hosted.\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
+            "description": "The public cloud where the index is hosted.\n\nPossible values: \u0060gcp\u0060, \u0060aws\u0060, or \u0060azure\u0060.",
             "example": "aws",
             "x-enum": [
               "gcp",
@@ -22894,7 +22886,7 @@
             "$ref": "#/components/schemas/ReadCapacityDedicatedConfig"
           }
         },
-        "description": "By default the index will be created with read capacity  mode \u0060OnDemand\u0060. If you prefer to allocate dedicated read  nodes for your workload, you must specify mode \u0060Dedicated\u0060 and additional configurations for \u0060node_type\u0060 and \u0060scaling\u0060. BYOC indexes do not support \u0060OnDemand\u0060: a \u0060byoc\u0060 deployment must set \u0060mode: Dedicated\u0060 explicitly, since omitting \u0060read_capacity\u0060 defaults to \u0060OnDemand\u0060 and is rejected.",
+        "description": "By default the index will be created with read capacity mode \u0060OnDemand\u0060. If you prefer to allocate dedicated read nodes for your workload, you must specify mode \u0060Dedicated\u0060 and additional configurations for \u0060node_type\u0060 and \u0060scaling\u0060. BYOC indexes do not support \u0060OnDemand\u0060: a \u0060byoc\u0060 deployment must set \u0060mode: Dedicated\u0060 explicitly, since omitting \u0060read_capacity\u0060 defaults to \u0060OnDemand\u0060 and is rejected.",
         "discriminator": {
           "propertyName": "mode",
           "mapping": {
@@ -22925,7 +22917,7 @@
             "$ref": "#/components/schemas/ScalingConfigManual"
           }
         },
-        "description": "Configuration for dedicated read capacity. See  [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on  how to configure dedicated read capacity."
+        "description": "Configuration for dedicated read capacity. See [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on how to configure dedicated read capacity."
       },
       "ReadCapacityDedicatedPatchConfig": {
         "type": "object",
@@ -23186,7 +23178,7 @@
         "properties": {
           "state": {
             "type": "string",
-            "description": "The \u0060state\u0060 describes the overall status of factors relating to the read capacity of an index. \n\nAvailable values:\n- \u0060Ready\u0060 is the state most of the time\n- \u0060Scaling\u0060 if the number of replicas or shards has been recently updated by calling the [configure index endpoint](https://docs.pinecone.io/reference/api/2026-07/control-plane/configure_index)\n- \u0060Migrating\u0060 if the index is being migrated to a new \u0060node_type\u0060\n- \u0060Error\u0060 if there is an error with the read capacity configuration. In that case, see \u0060error_message\u0060 for more details.",
+            "description": "The \u0060state\u0060 describes the overall status of factors relating to the read capacity of an index.\n\nAvailable values:\n- \u0060Ready\u0060 is the state most of the time\n- \u0060Scaling\u0060 if the number of replicas or shards has been recently updated by calling the [configure index endpoint](https://docs.pinecone.io/reference/api/2026-07/control-plane/configure_index)\n- \u0060Migrating\u0060 if the index is being migrated to a new \u0060node_type\u0060\n- \u0060Error\u0060 if there is an error with the read capacity configuration. In that case, see \u0060error_message\u0060 for more details.",
             "x-enum": [
               "Ready",
               "Scaling",
@@ -23298,7 +23290,7 @@
           },
           "status": {
             "type": "string",
-            "description": "Status of the restore job.\nPossible values: \u0060Pending\u0060, \u0060Completed\u0060, \u0060Failed\u0060, or \u0060Cancelled\u0060.",
+            "description": "Status of the restore job.\n\nPossible values: \u0060Pending\u0060, \u0060Completed\u0060, \u0060Failed\u0060, or \u0060Cancelled\u0060.",
             "example": "Completed",
             "x-enum": [
               "Pending",
@@ -23405,7 +23397,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric used for similarity search. Defaults to the model\u0027s preferred metric if not specified.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
+            "description": "The distance metric used for similarity search. Defaults to the model\u0027s preferred metric if not specified.\n\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
             "example": "cosine",
             "x-enum": [
               "cosine",
@@ -23544,7 +23536,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric used for similarity search.\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
+            "description": "The distance metric used for similarity search.\n\nPossible values: \u0060cosine\u0060, \u0060dotproduct\u0060, or \u0060euclidean\u0060.",
             "example": "cosine",
             "x-enum": [
               "cosine",
@@ -34310,7 +34302,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric to be used for similarity search. You can use \u0027euclidean\u0027, \u0027cosine\u0027, or \u0027dotproduct\u0027. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.\nPossible values: \u0060cosine\u0060, \u0060euclidean\u0060, or \u0060dotproduct\u0060.",
+            "description": "The distance metric to be used for similarity search. You can use \u0027euclidean\u0027, \u0027cosine\u0027, or \u0027dotproduct\u0027. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.\n\nPossible values: \u0060cosine\u0060, \u0060euclidean\u0060, or \u0060dotproduct\u0060.",
             "x-enum": [
               "cosine",
               "euclidean",
@@ -34353,7 +34345,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateIndexSchemaField"
         },
-        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
+        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\n\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
       },
       "DbControl202607ErrorResponseError": {
         "required": [
@@ -34364,7 +34356,7 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "The error code.\nPossible values: \u0060OK\u0060, \u0060UNKNOWN\u0060, \u0060INVALID_ARGUMENT\u0060, \u0060DEADLINE_EXCEEDED\u0060, \u0060NOT_FOUND\u0060, \u0060ALREADY_EXISTS\u0060, \u0060PERMISSION_DENIED\u0060, \u0060UNAUTHENTICATED\u0060, \u0060RESOURCE_EXHAUSTED\u0060, \u0060FAILED_PRECONDITION\u0060, \u0060ABORTED\u0060, \u0060OUT_OF_RANGE\u0060, \u0060INTERNAL\u0060, \u0060FORBIDDEN\u0060, \u0060PAYMENT_REQUIRED\u0060, \u0060SERVICE_UNAVAILABLE\u0060, \u0060PAYLOAD_TOO_LARGE\u0060, or \u0060UNPROCESSABLE_ENTITY\u0060.",
+            "description": "The error code.\n\nPossible values: \u0060OK\u0060, \u0060UNKNOWN\u0060, \u0060INVALID_ARGUMENT\u0060, \u0060DEADLINE_EXCEEDED\u0060, \u0060NOT_FOUND\u0060, \u0060ALREADY_EXISTS\u0060, \u0060PERMISSION_DENIED\u0060, \u0060UNAUTHENTICATED\u0060, \u0060RESOURCE_EXHAUSTED\u0060, \u0060FAILED_PRECONDITION\u0060, \u0060ABORTED\u0060, \u0060OUT_OF_RANGE\u0060, \u0060INTERNAL\u0060, \u0060FORBIDDEN\u0060, \u0060PAYMENT_REQUIRED\u0060, \u0060SERVICE_UNAVAILABLE\u0060, \u0060PAYLOAD_TOO_LARGE\u0060, or \u0060UNPROCESSABLE_ENTITY\u0060.",
             "x-enum": [
               "OK",
               "UNKNOWN",
@@ -34414,7 +34406,7 @@
           },
           "state": {
             "type": "string",
-            "description": "The current state of the index.\nPossible values: \u0060Initializing\u0060, \u0060InitializationFailed\u0060, \u0060Failed\u0060, \u0060ScalingUp\u0060, \u0060ScalingDown\u0060, \u0060ScalingUpPodSize\u0060, \u0060Terminating\u0060, \u0060Ready\u0060, or \u0060Disabled\u0060.",
+            "description": "The current state of the index.\n\nPossible values: \u0060Initializing\u0060, \u0060InitializationFailed\u0060, \u0060Failed\u0060, \u0060ScalingUp\u0060, \u0060ScalingDown\u0060, \u0060ScalingUpPodSize\u0060, \u0060Terminating\u0060, \u0060Ready\u0060, or \u0060Disabled\u0060.",
             "x-enum": [
               "Initializing",
               "InitializationFailed",
@@ -34439,7 +34431,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/IndexSchemaField"
         },
-        "description": "A map of field names to their configurations.\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
+        "description": "A map of field names to their configurations.\n\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
       },
       "MetadataSchemaFields": {
         "maxProperties": 50,
@@ -34447,7 +34439,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/MetadataSchemaFieldsAdditionalProperties"
         },
-        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\n\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
       },
       "PatchIndexSchemaFields": {
         "maxProperties": 1,
@@ -34542,7 +34534,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Full-text search configuration. When present, the field is indexed for full-text search.\n\u0060stop_words\u0060 requires \u0060stemming: true\u0060. \u0060ngram\u0060 cannot be combined with \u0060stemming\u0060 or \u0060stop_words\u0060."
+        "description": "Full-text search configuration. When present, the field is indexed for full-text search.\n\n\u0060stop_words\u0060 requires \u0060stemming: true\u0060. \u0060ngram\u0060 cannot be combined with \u0060stemming\u0060 or \u0060stop_words\u0060."
       },
       "DeleteRequestFilter": {
         "minProperties": 1,
@@ -37332,7 +37324,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateIndexSchemaField"
         },
-        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
+        "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\n\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
       },
       "IndexModelTags": {
         "type": "object",
@@ -37346,14 +37338,14 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/IndexSchemaField"
         },
-        "description": "A map of field names to their configurations.\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
+        "description": "A map of field names to their configurations.\n\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
       },
       "MetadataSchemaFieldsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/MetadataSchemaFieldsAdditionalProperties"
         },
-        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\n\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
       },
       "PatchIndexSchemaFieldsProperty": {
         "type": "object",
@@ -37445,7 +37437,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/IndexSchemaField"
         },
-        "description": "A map of field names to their configurations.\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
+        "description": "A map of field names to their configurations.\n\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
       },
       "SearchDocumentsRequestFilterProperty": {
         "type": "object",
