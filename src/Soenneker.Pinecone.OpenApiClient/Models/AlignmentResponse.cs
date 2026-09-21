@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// The response for the alignment evaluation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AlignmentResponse : IParsable
+    public partial class AlignmentResponse : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The metrics returned for the alignment evaluation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,6 +39,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.TokenCounts Usage { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.AlignmentResponse"/> and sets the default values.
+        /// </summary>
+        public AlignmentResponse()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -70,6 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Metrics>("metrics", Metrics);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Reasoning>("reasoning", Reasoning);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TokenCounts>("usage", Usage);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Deployment configuration for a bring-your-own-compute (BYOC) index.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ByocDeployment : IParsable
+    public partial class ByocDeployment : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifies this as a BYOC deployment. Must be `byoc`.</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Models.ByocDeploymentType? DeploymentType { get; set; }
         /// <summary>The BYOC environment where the index is hosted.</summary>
@@ -23,6 +25,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Environment { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ByocDeployment"/> and sets the default values.
+        /// </summary>
+        public ByocDeployment()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -54,6 +63,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.ByocDeploymentType>("deployment_type", DeploymentType);
             writer.WriteStringValue("environment", Environment);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

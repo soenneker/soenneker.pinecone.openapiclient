@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Deployment configuration for a pod-based index.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PodDeployment : IParsable
+    public partial class PodDeployment : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifies this as a pod-based deployment. Must be `pod`.</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Models.PodDeploymentType? DeploymentType { get; set; }
         /// <summary>The environment where the index is hosted.</summary>
@@ -40,6 +42,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// </summary>
         public PodDeployment()
         {
+            AdditionalData = new Dictionary<string, object>();
             PodType = "p1.x1";
             Replicas = 1;
             Shards = 1;
@@ -81,6 +84,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("pod_type", PodType);
             writer.WriteIntValue("replicas", Replicas);
             writer.WriteIntValue("shards", Shards);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

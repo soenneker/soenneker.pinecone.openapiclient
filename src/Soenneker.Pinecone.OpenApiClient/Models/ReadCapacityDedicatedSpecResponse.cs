@@ -9,9 +9,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ReadCapacityDedicatedSpecResponse : IParsable
+    public partial class ReadCapacityDedicatedSpecResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Configuration for dedicated read capacity. See [this guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes) for more details on how to configure dedicated read capacity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +38,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityStatus Status { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedSpecResponse"/> and sets the default values.
+        /// </summary>
+        public ReadCapacityDedicatedSpecResponse()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,6 +78,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedConfig>("dedicated", Dedicated);
             writer.WriteStringValue("mode", Mode);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityStatus>("status", Status);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

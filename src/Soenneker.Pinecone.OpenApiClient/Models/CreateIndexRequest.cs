@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Configuration for a new index.The `schema` field is required and defines the typed fields for the index. The `deployment` field selects infrastructure and defaults to managed (serverless) on AWS `us-east-1` if omitted. The `name` is auto-generated if not provided.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateIndexRequest : IParsable
+    public partial class CreateIndexRequest : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of a customer-managed encryption key (CMEK) to use for this index. Requires CMEK to be enabled for your organization. Encrypted indexes cannot have `full_text_search` fields: a request that sets `cmek_id` and declares one is rejected, and a project that enforces CMEK rejects any schema with a `full_text_search` field with `412`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +72,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags Tags { get; set; }
 #endif
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest"/> and sets the default values.
+        /// </summary>
+        public CreateIndexRequest()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequest"/></returns>
@@ -110,6 +119,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>("read_capacity", ReadCapacity);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexSchema>("schema", Schema);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexRequestTags>("tags", Tags);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

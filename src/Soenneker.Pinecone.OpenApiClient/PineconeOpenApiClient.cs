@@ -97,11 +97,6 @@ namespace Soenneker.Pinecone.OpenApiClient
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
-            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
-            {
-                RequestAdapter.BaseUrl = "https://api.pinecone.io";
-            }
-            PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }
     }
 }

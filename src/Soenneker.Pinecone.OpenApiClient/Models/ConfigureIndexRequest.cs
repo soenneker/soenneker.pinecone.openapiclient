@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes the tag.- `deletion_protection`: Enable or disable deletion protection.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ConfigureIndexRequest : IParsable
+    public partial class ConfigureIndexRequest : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.Possible values: `disabled` or `enabled`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +56,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags Tags { get; set; }
 #endif
         /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest"/> and sets the default values.
+        /// </summary>
+        public ConfigureIndexRequest()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequest"/></returns>
@@ -90,6 +99,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityPatch>("read_capacity", ReadCapacity);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.PatchIndexSchema>("schema", Schema);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ConfigureIndexRequestTags>("tags", Tags);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

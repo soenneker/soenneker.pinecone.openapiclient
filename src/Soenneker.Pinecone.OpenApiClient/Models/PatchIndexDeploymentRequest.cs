@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Deployment update parameters for pod-based indexes. Specify `replicas`, `pod_type`, or both. Deployment type, cloud/region, and environment cannot be changed after creation. Do not include a `deployment_type` field; it is not accepted.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PatchIndexDeploymentRequest : IParsable
+    public partial class PatchIndexDeploymentRequest : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type of pod to use. One of `s1`, `p1`, or `p2` appended with `.` and one of `x1`, `x2`, `x4`, or `x8`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +30,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// </summary>
         public PatchIndexDeploymentRequest()
         {
+            AdditionalData = new Dictionary<string, object>();
             PodType = "p1.x1";
             Replicas = 1;
         }
@@ -62,6 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("pod_type", PodType);
             writer.WriteIntValue("replicas", Replicas);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -11,8 +11,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// Deployment configuration for a serverless (managed) index. Serverless indexes scale automatically and you are billed only for the resources you use. This deployment type also covers full-text search indexes, which are serverless under the hood.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ManagedDeployment : IParsable
+    public partial class ManagedDeployment : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The public cloud where the index is hosted.Possible values: `gcp`, `aws`, or `azure`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,6 +41,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Region { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeployment"/> and sets the default values.
+        /// </summary>
+        public ManagedDeployment()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -73,6 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("cloud", Cloud);
             writer.WriteEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType>("deployment_type", DeploymentType);
             writer.WriteStringValue("region", Region);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

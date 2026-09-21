@@ -4,55 +4,6 @@
     "title": "Merged OpenAPI",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://api.pinecone.io",
-      "description": "Production API endpoints"
-    },
-    {
-      "url": "https://api.pinecone.io/assistant",
-      "description": "Production API endpoints"
-    },
-    {
-      "url": "https://{assistant_host}",
-      "variables": {
-        "assistant_host": {
-          "default": "unknown",
-          "description": "The host of the created assistant"
-        }
-      }
-    },
-    {
-      "url": "https://prod-1-data.ke.pinecone.io/assistant",
-      "description": "Evaluation US Production API endpoints"
-    },
-    {
-      "url": "https://prod-eu-data.ke.pinecone.io/assistant",
-      "description": "Evaluation EU Production API endpoints"
-    },
-    {
-      "url": "https://{index_host}",
-      "variables": {
-        "index_host": {
-          "default": "unknown",
-          "description": "host of the index"
-        }
-      }
-    },
-    {
-      "url": "https://{host}/api",
-      "description": "Your Nexus deployment host",
-      "variables": {
-        "host": {
-          "default": "api.example.com",
-          "description": "Host of your Nexus deployment."
-        }
-      }
-    },
-    {
-      "url": "https://login.pinecone.io"
-    }
-  ],
   "paths": {
     "/admin_2026-07/admin/projects": {
       "get": {
@@ -139,7 +90,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -278,7 +240,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/organizations": {
@@ -366,7 +339,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/projects/{project_id}": {
@@ -474,7 +458,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -583,7 +578,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -732,7 +738,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/organizations/{organization_id}": {
@@ -839,7 +856,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -947,7 +975,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -1095,7 +1134,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/projects/{project_id}/api-keys": {
@@ -1193,7 +1243,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1332,7 +1393,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/api-keys/{api_key_id}": {
@@ -1440,7 +1512,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1549,7 +1632,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -1688,7 +1782,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/users": {
@@ -1874,7 +1979,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/users/{user_id}": {
@@ -1992,7 +2108,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2193,7 +2320,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/invites": {
@@ -2332,7 +2470,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2584,7 +2733,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/invites/{invite_id}": {
@@ -2702,7 +2862,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2903,7 +3074,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/invites/{invite_id}/resend": {
@@ -3136,7 +3318,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/service-accounts": {
@@ -3275,7 +3468,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -3431,7 +3635,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/service-accounts/{service_account_id}": {
@@ -3549,7 +3764,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -3658,7 +3884,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -3807,7 +4044,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/service-accounts/{service_account_id}/rotate-secret": {
@@ -3925,7 +4173,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/role-bindings": {
@@ -3948,6 +4207,33 @@
             }
           },
           {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "principal_id",
+            "in": "query",
+            "description": "Filter by principal ID. Requires `principal_type`. The ID is a UUID for all principal types (user, service account, or invite).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "principal_type",
             "in": "query",
             "description": "Filter by principal type. Required when `principal_id` is set.",
@@ -3964,9 +4250,9 @@
             }
           },
           {
-            "name": "principal_id",
+            "name": "resource_id",
             "in": "query",
-            "description": "Filter by principal ID. Requires `principal_type`. The ID is a UUID for all principal types (user, service account, or invite).",
+            "description": "Filter by resource ID. Requires `resource_type`.",
             "schema": {
               "type": "string"
             }
@@ -3983,14 +4269,6 @@
                 "organization",
                 "project"
               ]
-            }
-          },
-          {
-            "name": "resource_id",
-            "in": "query",
-            "description": "Filter by resource ID. Requires `resource_type`.",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -4016,25 +4294,6 @@
                 "DataPlaneEditor",
                 "DataPlaneViewer"
               ]
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
-            "schema": {
-              "maximum": 100,
-              "minimum": 1,
-              "type": "integer",
-              "default": 100
-            }
-          },
-          {
-            "name": "paginationToken",
-            "in": "query",
-            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4156,7 +4415,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4417,7 +4687,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/admin_2026-07/admin/role-bindings/{role_binding_id}": {
@@ -4535,7 +4816,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -4736,7 +5028,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/assistant_control_2026-07/assistants": {
@@ -4832,7 +5135,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io/assistant",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -4951,7 +5265,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io/assistant",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/assistant_control_2026-07/assistants/{assistant_name}": {
@@ -5061,7 +5386,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io/assistant",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5162,7 +5498,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io/assistant",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -5226,7 +5573,18 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io/assistant",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/files/{assistant_name}": {
@@ -5364,7 +5722,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -5527,7 +5901,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/files/{assistant_name}/{assistant_file_id}": {
@@ -5550,16 +5940,6 @@
             }
           },
           {
-            "name": "assistant_name",
-            "in": "path",
-            "description": "The name of the assistant that contains the file.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "test-assistant"
-          },
-          {
             "name": "assistant_file_id",
             "in": "path",
             "description": "The identifier of the file to be described.",
@@ -5568,6 +5948,16 @@
               "type": "string"
             },
             "example": "my-file-id-123"
+          },
+          {
+            "name": "assistant_name",
+            "in": "path",
+            "description": "The name of the assistant that contains the file.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "test-assistant"
           },
           {
             "name": "include_url",
@@ -5659,7 +6049,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -5680,16 +6086,6 @@
             }
           },
           {
-            "name": "assistant_name",
-            "in": "path",
-            "description": "The name of the assistant to upload files to.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "test-model"
-          },
-          {
             "name": "assistant_file_id",
             "in": "path",
             "description": "The identifier of the file to be created or replaced. Must be 1-128 characters long and consist only of alphanumeric characters, hyphens (-), or underscores (_).",
@@ -5700,6 +6096,16 @@
               "type": "string"
             },
             "example": "my-file-id-123"
+          },
+          {
+            "name": "assistant_name",
+            "in": "path",
+            "description": "The name of the assistant to upload files to.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "test-model"
           },
           {
             "name": "multimodal",
@@ -5834,7 +6240,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5855,16 +6277,6 @@
             }
           },
           {
-            "name": "assistant_name",
-            "in": "path",
-            "description": "The name of the assistant that contains the file.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "test-assistant"
-          },
-          {
             "name": "assistant_file_id",
             "in": "path",
             "description": "The identifier of the file to be deleted.",
@@ -5873,6 +6285,16 @@
               "type": "string"
             },
             "example": "my-file-id-123"
+          },
+          {
+            "name": "assistant_name",
+            "in": "path",
+            "description": "The name of the assistant that contains the file.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "test-assistant"
           }
         ],
         "responses": {
@@ -5965,7 +6387,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/operations/{assistant_name}": {
@@ -5998,6 +6436,17 @@
             "example": "test-assistant"
           },
           {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit on the number of operations to return.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "example": 100
+          },
+          {
             "name": "operation_type",
             "in": "query",
             "description": "Filter operations by type.",
@@ -6013,6 +6462,15 @@
             "example": "upload_file"
           },
           {
+            "name": "pagination_token",
+            "in": "query",
+            "description": "Pagination token to continue a previous listing operation.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "dXNlcl9pZD11c2VyXzE="
+          },
+          {
             "name": "status",
             "in": "query",
             "description": "Filter operations by status.",
@@ -6025,26 +6483,6 @@
               ]
             },
             "example": "Processing"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Limit on the number of operations to return.",
-            "schema": {
-              "maximum": 100,
-              "minimum": 1,
-              "type": "integer"
-            },
-            "example": 100
-          },
-          {
-            "name": "pagination_token",
-            "in": "query",
-            "description": "Pagination token to continue a previous listing operation.",
-            "schema": {
-              "type": "string"
-            },
-            "example": "dXNlcl9pZD11c2VyXzE="
           }
         ],
         "responses": {
@@ -6172,7 +6610,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/operations/{assistant_name}/{operation_id}": {
@@ -6330,7 +6784,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/chat/{assistant_name}/chat/completions": {
@@ -6478,7 +6948,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/chat/{assistant_name}": {
@@ -6626,7 +7112,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_data_2026-07/chat/{assistant_name}/context": {
@@ -6769,7 +7271,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{assistant_host}",
+            "variables": {
+              "assistant_host": {
+                "default": "unknown",
+                "description": "The host of the created assistant"
+              }
+            }
+          }
+        ]
       }
     },
     "/assistant_evaluation_2026-07/evaluation/metrics/alignment": {
@@ -6834,7 +7352,22 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "assistant_evaluation_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://prod-1-data.ke.pinecone.io/assistant",
+            "description": "Evaluation US Production API endpoints"
+          },
+          {
+            "url": "https://prod-eu-data.ke.pinecone.io/assistant",
+            "description": "Evaluation EU Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/indexes": {
@@ -6980,7 +7513,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -7355,7 +7899,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/indexes/{index_name}": {
@@ -7474,38 +8029,8 @@
               }
             },
             "links": {
-              "UpsertVector": {
-                "operationId": "upsert",
-                "server": {
-                  "url": "$response.body#/host"
-                }
-              },
-              "UpdateVector": {
-                "operationId": "update",
-                "server": {
-                  "url": "$response.body#/host"
-                }
-              },
               "QueryVector": {
-                "operationId": "query",
-                "server": {
-                  "url": "$response.body#/host"
-                }
-              },
-              "FetchVector": {
-                "operationId": "fetch",
-                "server": {
-                  "url": "$response.body#/host"
-                }
-              },
-              "DeleteOneVector": {
-                "operationId": "delete1",
-                "server": {
-                  "url": "$response.body#/host"
-                }
-              },
-              "DeleteVector": {
-                "operationId": "delete",
+                "operationRef": "#/paths/~1nexus_data_2026-07~1query/post",
                 "server": {
                   "url": "$response.body#/host"
                 }
@@ -7566,7 +8091,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -7699,7 +8235,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -7964,7 +8511,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/indexes/{index_name}/backups": {
@@ -8288,7 +8846,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8466,7 +9035,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/indexes/{index_name}/backup-schedules": {
@@ -8651,7 +9231,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -8898,7 +9489,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/indexes/create-for-model": {
@@ -9124,7 +9726,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/backups": {
@@ -9321,7 +9934,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/backups/{backup_id}": {
@@ -9473,7 +10097,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -9584,7 +10219,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/backups/{backup_id}/create-index": {
@@ -9837,7 +10483,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/backup-schedules/{schedule_id}": {
@@ -9974,7 +10631,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -10085,7 +10753,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -10307,7 +10986,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/backup-schedules/{schedule_id}/history": {
@@ -10524,7 +11214,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/restore-jobs": {
@@ -10696,7 +11397,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/restore-jobs/{job_id}": {
@@ -10816,7 +11528,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/collections": {
@@ -10921,7 +11644,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -11136,7 +11870,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_control_2026-07/collections/{collection_name}": {
@@ -11247,7 +11992,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11358,7 +12114,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/db_data_2026-07/bulk/imports": {
@@ -11453,7 +12220,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -11535,7 +12318,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/bulk/imports/{id}": {
@@ -11621,7 +12420,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -11705,7 +12520,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/describe_index_stats": {
@@ -11789,7 +12620,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/query": {
@@ -11834,7 +12681,7 @@
             },
             "links": {
               "FetchMatchedRecord": {
-                "operationId": "fetchVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1fetch/get",
                 "parameters": {
                   "ids": "$response.body#/matches/0/id",
                   "namespace": "$response.body#/namespace"
@@ -11842,11 +12689,11 @@
                 "description": "Look up a record returned as a query match."
               },
               "UpdateMatchedRecord": {
-                "operationId": "updateVector",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1update/post",
                 "description": "Update a record returned as a query match."
               },
               "DeleteMatchedRecord": {
-                "operationId": "deleteVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1delete/post",
                 "description": "Delete a record returned as a query match."
               }
             }
@@ -11891,7 +12738,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/vectors/delete": {
@@ -11936,7 +12799,7 @@
             },
             "links": {
               "FetchDeletedRecord": {
-                "operationId": "fetchVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1fetch/get",
                 "parameters": {
                   "ids": "$request.body#/ids/0",
                   "namespace": "$request.body#/namespace"
@@ -11985,7 +12848,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/vectors/fetch": {
@@ -12084,7 +12963,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/vectors/fetch_by_metadata": {
@@ -12129,7 +13024,7 @@
             },
             "links": {
               "FetchByMetadataNextPage": {
-                "operationId": "fetch_vectors_by_metadata",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1fetch_by_metadata/post",
                 "description": "Fetch the next page of metadata matches."
               }
             }
@@ -12174,7 +13069,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/vectors/list": {
@@ -12197,16 +13108,6 @@
             }
           },
           {
-            "name": "prefix",
-            "in": "query",
-            "description": "The ID prefix to match. Only records whose ID starts with this value are returned.",
-            "schema": {
-              "maxLength": 512,
-              "pattern": "^[\\x01-\\x7F]*$",
-              "type": "string"
-            }
-          },
-          {
             "name": "limit",
             "in": "query",
             "description": "Max number of IDs to return per page.",
@@ -12219,6 +13120,14 @@
             }
           },
           {
+            "name": "namespace",
+            "in": "query",
+            "description": "The namespace to list vectors from. If not provided, the default namespace is used.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "paginationToken",
             "in": "query",
             "description": "Pagination token to continue a previous listing operation.",
@@ -12227,10 +13136,12 @@
             }
           },
           {
-            "name": "namespace",
+            "name": "prefix",
             "in": "query",
-            "description": "The namespace to list vectors from. If not provided, the default namespace is used.",
+            "description": "The ID prefix to match. Only records whose ID starts with this value are returned.",
             "schema": {
+              "maxLength": 512,
+              "pattern": "^[\\x01-\\x7F]*$",
               "type": "string"
             }
           }
@@ -12247,7 +13158,7 @@
             },
             "links": {
               "ListNextPage": {
-                "operationId": "listVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1list/get",
                 "parameters": {
                   "paginationToken": "$response.body#/pagination/next",
                   "namespace": "$response.body#/namespace"
@@ -12255,7 +13166,7 @@
                 "description": "Fetch the next page of record IDs."
               },
               "FetchListedRecord": {
-                "operationId": "fetchVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1fetch/get",
                 "parameters": {
                   "ids": "$response.body#/vectors/0/id",
                   "namespace": "$response.body#/namespace"
@@ -12263,7 +13174,7 @@
                 "description": "Look up a record returned by list."
               },
               "DeleteListedRecord": {
-                "operationId": "deleteVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1delete/post",
                 "description": "Delete a record returned by list."
               }
             }
@@ -12308,7 +13219,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/vectors/update": {
@@ -12353,7 +13280,7 @@
             },
             "links": {
               "FetchUpdatedRecord": {
-                "operationId": "fetchVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1fetch/get",
                 "parameters": {
                   "ids": "$request.body#/id",
                   "namespace": "$request.body#/namespace"
@@ -12402,7 +13329,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/vectors/upsert": {
@@ -12447,7 +13390,7 @@
             },
             "links": {
               "FetchUpsertedRecord": {
-                "operationId": "fetchVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1fetch/get",
                 "parameters": {
                   "ids": "$request.body#/vectors/0/id",
                   "namespace": "$request.body#/namespace"
@@ -12455,15 +13398,15 @@
                 "description": "Look up a record that was just upserted."
               },
               "QueryUpsertedRecord": {
-                "operationId": "queryVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1query/post",
                 "description": "Use a just-upserted record as a query target."
               },
               "UpdateUpsertedRecord": {
-                "operationId": "updateVector",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1update/post",
                 "description": "Update a record that was just upserted."
               },
               "DeleteUpsertedRecord": {
-                "operationId": "deleteVectors",
+                "operationRef": "#/paths/~1db_data_2026-07~1vectors~1delete/post",
                 "description": "Delete a record that was just upserted."
               }
             }
@@ -12508,7 +13451,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces": {
@@ -12614,7 +13573,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -12706,7 +13681,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}": {
@@ -12812,7 +13803,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12906,7 +13913,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/records/namespaces/{namespace}/upsert": {
@@ -12996,7 +14019,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/records/namespaces/{namespace}/search": {
@@ -13089,7 +14128,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}/documents/upsert": {
@@ -13143,21 +14198,21 @@
             },
             "links": {
               "FetchUpsertedDocument": {
-                "operationId": "fetchDocuments",
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1fetch/post",
                 "parameters": {
                   "namespace": "$request.path.namespace"
                 },
                 "description": "Look up a document that was just upserted."
               },
               "DeleteUpsertedDocument": {
-                "operationId": "deleteDocuments",
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1delete/post",
                 "parameters": {
                   "namespace": "$request.path.namespace"
                 },
                 "description": "Delete a document that was just upserted."
               },
               "ListUpsertedDocuments": {
-                "operationId": "listDocuments",
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1list/post",
                 "parameters": {
                   "namespace": "$request.path.namespace"
                 },
@@ -13205,7 +14260,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}/documents/search": {
@@ -13259,7 +14330,7 @@
             },
             "links": {
               "FetchMatchedDocument": {
-                "operationId": "fetchDocuments",
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1fetch/post",
                 "parameters": {
                   "namespace": "$request.path.namespace"
                 },
@@ -13307,7 +14378,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}/documents/fetch": {
@@ -13491,7 +14578,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}/documents/delete": {
@@ -13623,7 +14726,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}/documents/update": {
@@ -13763,7 +14882,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_data_2026-07/namespaces/{namespace}/documents/list": {
@@ -13853,14 +14988,14 @@
             },
             "links": {
               "FetchListedDocument": {
-                "operationId": "fetchDocuments",
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1fetch/post",
                 "parameters": {
                   "namespace": "$request.path.namespace"
                 },
                 "description": "Look up a document returned by list."
               },
               "ListDocumentsNextPage": {
-                "operationId": "listDocuments",
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1list/post",
                 "parameters": {
                   "namespace": "$request.path.namespace"
                 },
@@ -13908,7 +15043,23 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
       }
     },
     "/db_metrics_2026-07/prometheus/projects/{project_id}/metrics/discover": {
@@ -14008,7 +15159,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "db_metrics_2026_07_BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production server"
+          }
+        ]
       }
     },
     "/inference_2026-07/embed": {
@@ -14118,7 +15280,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "inference_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/inference_2026-07/rerank": {
@@ -14228,7 +15401,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "inference_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/inference_2026-07/models": {
@@ -14434,7 +15618,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "inference_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/inference_2026-07/models/{model_name}": {
@@ -14621,7 +15816,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "inference_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/nexus_control_2026-07/workspaces": {
@@ -14766,7 +15972,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "nexus_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -14984,7 +16201,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "nexus_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/nexus_control_2026-07/workspaces/{workspace_name}": {
@@ -15118,7 +16346,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "nexus_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15255,7 +16494,18 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "nexus_control_2026_07_ApiKeyAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/auth/login": {
@@ -15333,7 +16583,19 @@
             }
           }
         },
-        "security": [ ]
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/auth": {
@@ -15380,7 +16642,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/project": {
@@ -15427,7 +16709,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/connectors": {
@@ -15478,7 +16780,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/connectors/{id}": {
@@ -15491,15 +16813,6 @@
         "operationId": "nexus_data_2026_07_get_connector",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Connector id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -15510,6 +16823,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Connector id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -15534,7 +16856,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -15544,15 +16886,6 @@
         "description": "Unlink the connector from the project. Sources it already imported stay in place.",
         "operationId": "nexus_data_2026_07_delete_connector",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Connector id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
@@ -15564,6 +16897,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Connector id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -15588,7 +16930,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/connectors/oauth/{provider}/start": {
@@ -15600,6 +16962,19 @@
         "description": "Returns an `authorize_url` for the user to open in a browser. The connector is persisted by the provider's OAuth redirect callback once the user approves access.",
         "operationId": "nexus_data_2026_07_start_connector_oauth",
         "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
           {
             "name": "provider",
             "in": "path",
@@ -15615,19 +16990,6 @@
             "description": "Console path to bounce back to after the callback",
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
-            "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
             }
           }
         ],
@@ -15645,7 +17007,27 @@
           "400": {
             "description": "Unknown provider, or the provider is key-based"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/connectors/keys/{provider}": {
@@ -15658,15 +17040,6 @@
         "operationId": "nexus_data_2026_07_create_connector",
         "parameters": [
           {
-            "name": "provider",
-            "in": "path",
-            "description": "A key-based provider (e.g. parallel)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -15677,6 +17050,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "A key-based provider (e.g. parallel)",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -15704,7 +17086,27 @@
           "400": {
             "description": "Unknown provider, provider uses OAuth, or empty api_key"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/connectors/{id}/items": {
@@ -15716,6 +17118,19 @@
         "description": "Browse the provider's folders and files to find the ids to import. Omit `folder` for the root.",
         "operationId": "nexus_data_2026_07_list_connector_items",
         "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -15731,19 +17146,6 @@
             "description": "Folder id to browse (root when absent)",
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
-            "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
             }
           }
         ],
@@ -15768,7 +17170,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/connectors": {
@@ -15781,15 +17203,6 @@
         "operationId": "nexus_data_2026_07_list_context_connectors",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -15800,6 +17213,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -15817,7 +17239,27 @@
           "404": {
             "description": "Context not found"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/connectors/{connector_id}": {
@@ -15830,12 +17272,16 @@
         "operationId": "nexus_data_2026_07_update_context_connector",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
             }
           },
           {
@@ -15848,16 +17294,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "string"
             }
           }
         ],
@@ -15888,7 +17330,27 @@
           "404": {
             "description": "Context or connector not found"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts": {
@@ -15925,7 +17387,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -15993,7 +17475,27 @@
           "409": {
             "description": "Slug already exists"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}": {
@@ -16006,15 +17508,6 @@
         "operationId": "nexus_data_2026_07_get_context",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16025,6 +17518,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16049,7 +17551,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -16059,15 +17581,6 @@
         "description": "All fields optional; an absent one is left untouched. An empty string clears `description`/`guide`, and `{}` clears the manifest back to defaults.",
         "operationId": "nexus_data_2026_07_update_context",
         "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
@@ -16079,6 +17592,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16126,7 +17648,27 @@
           "409": {
             "description": "Slug conflict"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -16136,15 +17678,6 @@
         "description": "Delete the context, its sources, its curated knowledge, and its Pinecone indexes. Not reversible.",
         "operationId": "nexus_data_2026_07_delete_context",
         "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
@@ -16156,6 +17689,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16176,7 +17718,27 @@
           "504": {
             "description": "Active tasks did not terminate in time"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/manifest": {
@@ -16189,15 +17751,6 @@
         "operationId": "nexus_data_2026_07_get_context_manifest",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16208,6 +17761,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16232,7 +17794,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/tasks/stats": {
@@ -16245,15 +17827,6 @@
         "operationId": "nexus_data_2026_07_get_context_task_stats",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16264,6 +17837,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16288,7 +17870,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/curate": {
@@ -16301,15 +17903,6 @@
         "operationId": "nexus_data_2026_07_get_curation_ledger",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16320,6 +17913,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16344,7 +17946,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -16354,15 +17976,6 @@
         "description": "Curate the staged sources under the active manifest. **Required before querying** — there is no auto-curate. Body is optional; `force: true` rebuilds fully, which is what a manifest edit needs. Search contexts only: a work context builds via `work`/`groom`.",
         "operationId": "nexus_data_2026_07_curate_context",
         "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
@@ -16374,6 +17987,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16413,7 +18035,27 @@
           "409": {
             "description": "Context has no sources, is optimizing, or hit the preview task cap"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/curate/delete-sources": {
@@ -16426,15 +18068,6 @@
         "operationId": "nexus_data_2026_07_delete_curated_sources",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16445,6 +18078,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16472,7 +18114,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/optimize": {
@@ -16485,15 +18147,6 @@
         "operationId": "nexus_data_2026_07_optimize_context",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16504,6 +18157,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16541,7 +18203,27 @@
           "409": {
             "description": "Context is already optimizing or was never curated"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/explore": {
@@ -16554,15 +18236,6 @@
         "operationId": "nexus_data_2026_07_explore_context",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16573,6 +18246,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16609,7 +18291,27 @@
           "409": {
             "description": "An explore is already in progress"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/profile": {
@@ -16622,15 +18324,6 @@
         "operationId": "nexus_data_2026_07_profile_context",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16641,6 +18334,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16674,7 +18376,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/import": {
@@ -16687,15 +18409,6 @@
         "operationId": "nexus_data_2026_07_import_context_sources",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16706,6 +18419,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16746,7 +18468,27 @@
           "409": {
             "description": "Context is optimizing, or an import is already in flight"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/import/upload": {
@@ -16758,6 +18500,19 @@
         "description": "One file per request, max 2 GiB; archives (`.zip`, `.tar`, `.tar.gz`, `.tgz`) are expanded by the import runtime. Stages the source without indexing it — curate explicitly before querying.",
         "operationId": "nexus_data_2026_07_upload_context_source",
         "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
           {
             "name": "slug",
             "in": "path",
@@ -16774,19 +18529,6 @@
             "schema": {
               "type": "string",
               "default": "uploads"
-            }
-          },
-          {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
-            "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
             }
           }
         ],
@@ -16830,7 +18572,27 @@
           "413": {
             "description": "File exceeds 2 GiB, or the preview byte cap was hit (`preview_byte_limit`)"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/source/list": {
@@ -16843,21 +18605,25 @@
         "operationId": "nexus_data_2026_07_list_source_files",
         "parameters": [
           {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
+          {
             "name": "slug",
             "in": "path",
             "description": "Context slug or UUID.",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
             }
           },
           {
@@ -16870,16 +18636,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -16904,7 +18666,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/source/stats": {
@@ -16917,15 +18699,6 @@
         "operationId": "nexus_data_2026_07_get_source_stats",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16936,6 +18709,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -16960,7 +18742,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/source/manifest": {
@@ -16973,15 +18775,6 @@
         "operationId": "nexus_data_2026_07_get_source_manifest",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -16992,6 +18785,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -17016,7 +18818,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/source/list/{path}": {
@@ -17029,12 +18851,16 @@
         "operationId": "nexus_data_2026_07_list_source_files_by_path",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
             }
           },
           {
@@ -17047,12 +18873,12 @@
             }
           },
           {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           {
@@ -17065,16 +18891,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -17099,7 +18921,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/source/read/{path}": {
@@ -17112,12 +18954,16 @@
         "operationId": "nexus_data_2026_07_read_source_file",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
             }
           },
           {
@@ -17130,16 +18976,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "string"
             }
           }
         ],
@@ -17164,7 +19006,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/source/delete/{path}": {
@@ -17177,12 +19039,16 @@
         "operationId": "nexus_data_2026_07_delete_source_file",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
             }
           },
           {
@@ -17195,16 +19061,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "string"
             }
           }
         ],
@@ -17229,7 +19091,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/knowledge/list": {
@@ -17242,21 +19124,25 @@
         "operationId": "nexus_data_2026_07_list_knowledge",
         "parameters": [
           {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
+          {
             "name": "slug",
             "in": "path",
             "description": "Context slug or UUID.",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
             }
           },
           {
@@ -17269,16 +19155,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -17303,7 +19185,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/knowledge/stats": {
@@ -17316,15 +19218,6 @@
         "operationId": "nexus_data_2026_07_get_knowledge_stats",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -17335,6 +19228,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -17359,7 +19261,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/knowledge/list/{path}": {
@@ -17372,12 +19294,16 @@
         "operationId": "nexus_data_2026_07_list_knowledge_by_path",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
             }
           },
           {
@@ -17390,12 +19316,12 @@
             }
           },
           {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           {
@@ -17408,16 +19334,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -17442,7 +19364,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/contexts/{slug}/knowledge/read/{path}": {
@@ -17455,12 +19397,16 @@
         "operationId": "nexus_data_2026_07_read_knowledge_file",
         "parameters": [
           {
-            "name": "slug",
-            "in": "path",
-            "description": "Context slug or UUID.",
-            "required": true,
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
             }
           },
           {
@@ -17473,16 +19419,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "slug",
+            "in": "path",
+            "description": "Context slug or UUID.",
+            "required": true,
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "string"
             }
           }
         ],
@@ -17507,7 +19449,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/query": {
@@ -17581,7 +19543,27 @@
           "504": {
             "description": "Turn timed out (15-minute cap, or a lower `timeout_seconds`)"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/queries/{id}": {
@@ -17594,15 +19576,6 @@
         "operationId": "nexus_data_2026_07_get_query",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Query turn id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -17613,6 +19586,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Query turn id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -17637,7 +19619,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/queries/{id}/cancel": {
@@ -17650,15 +19652,6 @@
         "operationId": "nexus_data_2026_07_cancel_query",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Query turn id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -17669,6 +19662,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Query turn id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -17693,7 +19695,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/queries/{id}/trace": {
@@ -17706,15 +19728,6 @@
         "operationId": "nexus_data_2026_07_get_query_trace",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Query turn id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -17725,6 +19738,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Query turn id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -17742,7 +19764,27 @@
           "404": {
             "description": "Query or trace not found"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/queries/{id}/events": {
@@ -17754,15 +19796,6 @@
         "description": "The turn's events as they land — the same `type`-named events `POST /query` emits with `stream: true`, as a standalone resumable subscription. Reconnect with `Last-Event-ID` to replay from where the stream dropped.",
         "operationId": "nexus_data_2026_07_stream_query_events",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Query turn id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "Last-Event-ID",
             "in": "header",
@@ -17783,6 +19816,15 @@
                 "unstable"
               ]
             }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Query turn id.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -17799,7 +19841,27 @@
           "404": {
             "description": "Query not found"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/queries/{id}/feedback": {
@@ -17812,15 +19874,6 @@
         "operationId": "nexus_data_2026_07_create_query_feedback",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Query turn id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -17831,6 +19884,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Query turn id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -17861,7 +19923,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/models": {
@@ -17898,7 +19980,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/sessions": {
@@ -17955,7 +20057,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/sessions/{id}": {
@@ -17968,15 +20090,6 @@
         "operationId": "nexus_data_2026_07_get_session",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Session id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -17987,6 +20100,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Session id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -18011,7 +20133,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -18021,15 +20163,6 @@
         "description": "Delete a session and every turn belonging to it.",
         "operationId": "nexus_data_2026_07_delete_session",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Session id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
@@ -18041,6 +20174,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Session id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -18055,7 +20197,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/stats": {
@@ -18092,7 +20254,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/manifest/templates": {
@@ -18129,7 +20311,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks": {
@@ -18155,26 +20357,47 @@
             }
           },
           {
-            "name": "workflow",
+            "name": "context",
             "in": "query",
-            "description": "Return only tasks of this workflow.",
+            "description": "Context slug or UUID",
             "schema": {
-              "type": "string",
-              "description": "The canonical workflow name.",
-              "x-enum": [
-                "optimize",
-                "curate",
-                "search",
-                "search_cc",
-                "search_rag",
-                "work",
-                "explore",
-                "profile",
-                "import",
-                "pack",
-                "restore",
-                "groom"
-              ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum tasks per page.",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer",
+              "default": 30
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Takes precedence over `page`.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "1-based page to return. Ignored when `offset` is given.",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Free-text over id/created_by/input",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -18197,47 +20420,26 @@
             }
           },
           {
-            "name": "context",
+            "name": "workflow",
             "in": "query",
-            "description": "Context slug or UUID",
+            "description": "Return only tasks of this workflow.",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "q",
-            "in": "query",
-            "description": "Free-text over id/created_by/input",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum tasks per page.",
-            "schema": {
-              "maximum": 1000,
-              "minimum": 1,
-              "type": "integer",
-              "default": 30
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "1-based page to return. Ignored when `offset` is given.",
-            "schema": {
-              "type": "integer",
-              "default": 1
-            }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Takes precedence over `page`.",
-            "schema": {
-              "type": "integer"
+              "type": "string",
+              "description": "The canonical workflow name.",
+              "x-enum": [
+                "optimize",
+                "curate",
+                "search",
+                "search_cc",
+                "search_rag",
+                "work",
+                "explore",
+                "profile",
+                "import",
+                "pack",
+                "restore",
+                "groom"
+              ]
             }
           }
         ],
@@ -18252,7 +20454,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks/{id}": {
@@ -18265,15 +20487,6 @@
         "operationId": "nexus_data_2026_07_get_task",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "Task id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
             "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
@@ -18284,6 +20497,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Task id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -18317,7 +20539,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -18327,15 +20569,6 @@
         "description": "Body is optional. Max body 1 MiB.",
         "operationId": "nexus_data_2026_07_cancel_task",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Task id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "X-Pinecone-Api-Version",
             "in": "header",
@@ -18347,6 +20580,15 @@
                 "2026-07",
                 "unstable"
               ]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Task id.",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -18376,7 +20618,27 @@
           "504": {
             "description": "Task did not terminate in time"
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks/{id}/files/read/{path}": {
@@ -18388,6 +20650,19 @@
         "description": "Serves a task's files while it runs and after it finishes. This is how a finished pack's `<slug>.context.zip` is downloaded.",
         "operationId": "nexus_data_2026_07_read_task_file",
         "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -18404,19 +20679,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
-            "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
             }
           }
         ],
@@ -18461,7 +20723,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks/{id}/files/metadata/{path}": {
@@ -18473,6 +20755,19 @@
         "description": "Stat one file in the task container without reading its bytes.",
         "operationId": "nexus_data_2026_07_get_task_file_metadata",
         "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -18489,19 +20784,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
-            "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
             }
           }
         ],
@@ -18526,7 +20808,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks/{id}/files/list/{path}": {
@@ -18539,6 +20841,19 @@
         "operationId": "nexus_data_2026_07_list_task_files_by_path",
         "parameters": [
           {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
+          {
             "name": "id",
             "in": "path",
             "description": "Task id.",
@@ -18557,15 +20872,6 @@
             }
           },
           {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
             "name": "limit",
             "in": "query",
             "description": "Maximum entries in the page. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
@@ -18575,16 +20881,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -18609,7 +20911,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks/{id}/files/list": {
@@ -18622,21 +20944,25 @@
         "operationId": "nexus_data_2026_07_list_task_files",
         "parameters": [
           {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
+          {
             "name": "id",
             "in": "path",
             "description": "Task id.",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
             }
           },
           {
@@ -18649,16 +20975,12 @@
             }
           },
           {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "name": "offset",
+            "in": "query",
+            "description": "Where the page starts. Source and knowledge listings echo it rather than applying it, since they return the whole directory in one page.",
             "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
+              "type": "integer",
+              "format": "int64"
             }
           }
         ],
@@ -18683,7 +21005,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/nexus_data_2026-07/tasks/{id}/files/delete/{path}": {
@@ -18695,6 +21037,19 @@
         "description": "Delete one file from a running task container.",
         "operationId": "nexus_data_2026_07_delete_task_file",
         "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
+            "schema": {
+              "type": "string",
+              "default": "2026-07",
+              "x-enum": [
+                "2026-07",
+                "unstable"
+              ]
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -18711,19 +21066,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Pinecone-Api-Version",
-            "in": "header",
-            "description": "Date-based contract version, echoed back on the same header. Omit for the default (`2026-07`); send `unstable` for the in-development surface. An unrecognized value is rejected with `400 unsupported_api_version`.",
-            "schema": {
-              "type": "string",
-              "default": "2026-07",
-              "x-enum": [
-                "2026-07",
-                "unstable"
-              ]
             }
           }
         ],
@@ -18748,7 +21090,27 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": [ ]
+          },
+          {
+            "apiKey": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{host}/api",
+            "description": "Your Nexus deployment host",
+            "variables": {
+              "host": {
+                "default": "api.example.com",
+                "description": "Host of your Nexus deployment."
+              }
+            }
+          }
+        ]
       }
     },
     "/oauth_2026-07/oauth/token": {
@@ -18868,7 +21230,13 @@
               }
             }
           }
-        }
+        },
+        "security": [ ],
+        "servers": [
+          {
+            "url": "https://login.pinecone.io"
+          }
+        ]
       }
     }
   },
@@ -20727,6 +23095,7 @@
           },
           "metadata": {
             "type": "object",
+            "additionalProperties": { },
             "description": "Optional metadata associated with the file. This metadata can be used to filter files when listing them or to restrict search results when querying the assistant. Maximum size is 16KB.",
             "nullable": true,
             "example": {
@@ -20959,7 +23328,9 @@
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/MultiModalContentTextBlockModel",
-            "image": "#/components/schemas/MultiModalContentImageBlockModel"
+            "image": "#/components/schemas/MultiModalContentImageBlockModel",
+            "MultiModalContentTextBlockModel": "#/components/schemas/MultiModalContentTextBlockModel",
+            "MultiModalContentImageBlockModel": "#/components/schemas/MultiModalContentImageBlockModel"
           }
         }
       },
@@ -21254,7 +23625,9 @@
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/TextSnippetModel",
-            "multimodal": "#/components/schemas/MultiModalSnippetModel"
+            "multimodal": "#/components/schemas/MultiModalSnippetModel",
+            "TextSnippetModel": "#/components/schemas/TextSnippetModel",
+            "MultiModalSnippetModel": "#/components/schemas/MultiModalSnippetModel"
           }
         }
       },
@@ -21281,7 +23654,11 @@
             "message_start": "#/components/schemas/MessageStartModel",
             "content_chunk": "#/components/schemas/ContentChunkModel",
             "citation": "#/components/schemas/CitationChunkModel",
-            "message_end": "#/components/schemas/MessageEndModel"
+            "message_end": "#/components/schemas/MessageEndModel",
+            "MessageStartModel": "#/components/schemas/MessageStartModel",
+            "ContentChunkModel": "#/components/schemas/ContentChunkModel",
+            "CitationChunkModel": "#/components/schemas/CitationChunkModel",
+            "MessageEndModel": "#/components/schemas/MessageEndModel"
           }
         }
       },
@@ -21380,7 +23757,12 @@
             "json": "#/components/schemas/JsonReferenceModel",
             "markdown": "#/components/schemas/MarkdownReferenceModel",
             "pdf": "#/components/schemas/PdfReferenceModel",
-            "doc_x": "#/components/schemas/DocxReferenceModel"
+            "doc_x": "#/components/schemas/DocxReferenceModel",
+            "TextReferenceModel": "#/components/schemas/TextReferenceModel",
+            "JsonReferenceModel": "#/components/schemas/JsonReferenceModel",
+            "MarkdownReferenceModel": "#/components/schemas/MarkdownReferenceModel",
+            "PdfReferenceModel": "#/components/schemas/PdfReferenceModel",
+            "DocxReferenceModel": "#/components/schemas/DocxReferenceModel"
           }
         }
       },
@@ -21430,7 +23812,9 @@
             "example": "Madrid."
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "The request for the alignment evaluation."
       },
       "AlignmentResponse": {
@@ -21452,7 +23836,9 @@
             "$ref": "#/components/schemas/TokenCounts"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "The response for the alignment evaluation."
       },
       "BasicErrorResponse": {
@@ -21495,7 +23881,9 @@
             "$ref": "#/components/schemas/Entailment"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "A fact that was evaluated."
       },
       "Fact": {
@@ -21511,7 +23899,9 @@
             "description": "The content of the fact."
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "A fact"
       },
       "Metrics": {
@@ -21539,7 +23929,9 @@
             "description": "The harmonic mean of correctness and completeness."
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "The metrics returned for the alignment evaluation."
       },
       "Reasoning": {
@@ -21558,7 +23950,9 @@
             "description": "The facts that were evaluated."
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "The reasoning behind the alignment evaluation."
       },
       "TokenCounts": {
@@ -22089,7 +24483,9 @@
             "example": "aws-us-east-1-b921"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Deployment configuration for a bring-your-own-compute (BYOC) index.",
         "example": {
           "deployment_type": "byoc",
@@ -22180,7 +24576,9 @@
             "$ref": "#/components/schemas/DeletionProtection"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.\n\n- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.\n- `schema`: Update `semantic_text` field embedding parameters. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.\n- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.\n- `tags`: Update or delete index tags. Setting a tag value to `\"\"` removes the tag.\n- `deletion_protection`: Enable or disable deletion protection."
       },
       "CreateBackupRequest": {
@@ -22425,7 +24823,9 @@
             "$ref": "#/components/schemas/DeletionProtection"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Configuration for a new index.\n\nThe `schema` field is required and defines the typed fields for the index. The `deployment` field selects infrastructure and defaults to managed (serverless) on AWS `us-east-1` if omitted. The `name` is auto-generated if not provided."
       },
       "CreateIndexSchema": {
@@ -22478,7 +24878,10 @@
           "mapping": {
             "dense_vector": "#/components/schemas/DenseVectorField",
             "sparse_vector": "#/components/schemas/SparseVectorField",
-            "string": "#/components/schemas/StringField"
+            "string": "#/components/schemas/StringField",
+            "DenseVectorField": "#/components/schemas/DenseVectorField",
+            "SparseVectorField": "#/components/schemas/SparseVectorField",
+            "StringField": "#/components/schemas/StringField"
           }
         }
       },
@@ -22655,7 +25058,10 @@
           "mapping": {
             "pod": "#/components/schemas/PodDeployment",
             "managed": "#/components/schemas/ManagedDeployment",
-            "byoc": "#/components/schemas/ByocDeployment"
+            "byoc": "#/components/schemas/ByocDeployment",
+            "PodDeployment": "#/components/schemas/PodDeployment",
+            "ManagedDeployment": "#/components/schemas/ManagedDeployment",
+            "ByocDeployment": "#/components/schemas/ByocDeployment"
           }
         }
       },
@@ -22673,7 +25079,9 @@
           "propertyName": "deployment_type",
           "mapping": {
             "managed": "#/components/schemas/ManagedDeployment",
-            "byoc": "#/components/schemas/ByocDeployment"
+            "byoc": "#/components/schemas/ByocDeployment",
+            "ManagedDeployment": "#/components/schemas/ManagedDeployment",
+            "ByocDeployment": "#/components/schemas/ByocDeployment"
           }
         }
       },
@@ -22919,7 +25327,9 @@
             "description": "Whether this field is indexed for metadata filtering."
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "A legacy metadata field from indexes created before typed schema fields were introduced. The original data type of the field (string, float, boolean, etc.) was not recorded. Only the `filterable` flag is available. This field type will not appear in new indexes; it may appear in responses for older indexes pending schema migration.",
         "example": {
           "filterable": true
@@ -22963,7 +25373,9 @@
             "example": "aped-4627-b74a"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Deployment configuration for a serverless (managed) index. Serverless indexes scale automatically and you are billed only for the resources you use. This deployment type also covers full-text search indexes, which are serverless under the hood.",
         "example": {
           "cloud": "aws",
@@ -23027,7 +25439,9 @@
             "default": "p1.x1"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Deployment update parameters for pod-based indexes. Specify `replicas`, `pod_type`, or both. Deployment type, cloud/region, and environment cannot be changed after creation. Do not include a `deployment_type` field; it is not accepted.",
         "example": {
           "replicas": 4
@@ -23099,7 +25513,9 @@
             }
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Updated parameters for a semantic text field."
       },
       "PodDeployment": {
@@ -23143,7 +25559,9 @@
             "default": "p1.x1"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "Deployment configuration for a pod-based index.",
         "example": {
           "deployment_type": "pod",
@@ -23167,7 +25585,9 @@
           "propertyName": "mode",
           "mapping": {
             "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpec",
-            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpec"
+            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpec",
+            "ReadCapacityOnDemandSpec": "#/components/schemas/ReadCapacityOnDemandSpec",
+            "ReadCapacityDedicatedSpec": "#/components/schemas/ReadCapacityDedicatedSpec"
           }
         }
       },
@@ -23315,7 +25735,9 @@
             "$ref": "#/components/schemas/ReadCapacityStatus"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "example": {
           "dedicated": {
             "manual": {
@@ -23365,7 +25787,9 @@
             "$ref": "#/components/schemas/ReadCapacityStatus"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "example": {
           "mode": "OnDemand",
           "status": {
@@ -23387,7 +25811,9 @@
           "propertyName": "mode",
           "mapping": {
             "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpec",
-            "Dedicated": "#/components/schemas/ReadCapacityDedicatedPatchSpec"
+            "Dedicated": "#/components/schemas/ReadCapacityDedicatedPatchSpec",
+            "ReadCapacityOnDemandSpec": "#/components/schemas/ReadCapacityOnDemandSpec",
+            "ReadCapacityDedicatedPatchSpec": "#/components/schemas/ReadCapacityDedicatedPatchSpec"
           }
         }
       },
@@ -23405,7 +25831,9 @@
           "propertyName": "mode",
           "mapping": {
             "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpecResponse",
-            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
+            "Dedicated": "#/components/schemas/ReadCapacityDedicatedSpecResponse",
+            "ReadCapacityOnDemandSpecResponse": "#/components/schemas/ReadCapacityOnDemandSpecResponse",
+            "ReadCapacityDedicatedSpecResponse": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
           }
         }
       },
@@ -23508,11 +25936,15 @@
                     "description": "Whether only prefix n-grams anchored at the start of the token are generated."
                   }
                 },
-                "additionalProperties": false,
+                "additionalProperties": {
+                  "not": { }
+                },
                 "description": "Character n-gram tokenization configuration. Present only when the field is configured for n-gram substring matching."
               }
             },
-            "additionalProperties": false,
+            "additionalProperties": {
+              "not": { }
+            },
             "description": "Full-text search configuration. Present when the field is indexed for full-text search."
           },
           "filterable": {
@@ -23838,15 +26270,21 @@
                     "default": false
                   }
                 },
-                "additionalProperties": false,
+                "additionalProperties": {
+                  "not": { }
+                },
                 "description": "Character n-gram tokenization for substring matching. When present, the field is tokenized into character n-grams instead of words. Cannot be combined with `stemming` or `stop_words`."
               }
             },
-            "additionalProperties": false,
+            "additionalProperties": {
+              "not": { }
+            },
             "description": "Full-text search configuration. When present, the field is indexed for full-text search.\n\n`stop_words` requires `stemming: true`. `ngram` cannot be combined with `stemming` or `stop_words`."
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "A string field configuration for full-text search. The `full_text_search` object is required; a string field without it will be rejected.",
         "example": {
           "full_text_search": {
@@ -23924,7 +26362,15 @@
             "string_list": "#/components/schemas/StringListField",
             "float": "#/components/schemas/FloatField",
             "integer": "#/components/schemas/IntegerField",
-            "boolean": "#/components/schemas/BooleanField"
+            "boolean": "#/components/schemas/BooleanField",
+            "DenseVectorField": "#/components/schemas/DenseVectorField",
+            "SparseVectorField": "#/components/schemas/SparseVectorField",
+            "SemanticTextField": "#/components/schemas/SemanticTextField",
+            "ResponseStringField": "#/components/schemas/ResponseStringField",
+            "StringListField": "#/components/schemas/StringListField",
+            "FloatField": "#/components/schemas/FloatField",
+            "IntegerField": "#/components/schemas/IntegerField",
+            "BooleanField": "#/components/schemas/BooleanField"
           }
         }
       },
@@ -25040,6 +27486,7 @@
               },
               "parameters": {
                 "type": "object",
+                "additionalProperties": { },
                 "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
                 "example": {
                   "truncate": "END"
@@ -25952,6 +28399,7 @@
             "nullable": true
           }
         },
+        "additionalProperties": { },
         "description": "A document match returned from a search operation, including the document ID, similarity score, and selected fields.",
         "example": {
           "_id": "doc-1",
@@ -26082,6 +28530,7 @@
             "description": "The unique identifier of the document."
           }
         },
+        "additionalProperties": { },
         "description": "A fetched document containing its ID and field values.",
         "example": {
           "_id": "doc-1",
@@ -26609,6 +29058,7 @@
       },
       "Document": {
         "type": "object",
+        "additionalProperties": { },
         "description": "Document for reranking",
         "example": {
           "id": "1",
@@ -26631,6 +29081,7 @@
           },
           "parameters": {
             "type": "object",
+            "additionalProperties": { },
             "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available model parameters.",
             "example": {
               "input_type": "passage",
@@ -26668,7 +29119,9 @@
           "propertyName": "vector_type",
           "mapping": {
             "dense": "#/components/schemas/DenseEmbedding",
-            "sparse": "#/components/schemas/SparseEmbedding"
+            "sparse": "#/components/schemas/SparseEmbedding",
+            "DenseEmbedding": "#/components/schemas/DenseEmbedding",
+            "SparseEmbedding": "#/components/schemas/SparseEmbedding"
           }
         }
       },
@@ -27042,6 +29495,7 @@
           },
           "parameters": {
             "type": "object",
+            "additionalProperties": { },
             "description": "Additional model-specific parameters. Refer to the [model guide](https://docs.pinecone.io/guides/search/rerank-results#reranking-models) for available model parameters.",
             "example": {
               "truncate": "END"
@@ -27368,7 +29822,9 @@
             "$ref": "#/components/schemas/WorkspaceByocSpec"
           }
         },
-        "additionalProperties": false,
+        "additionalProperties": {
+          "not": { }
+        },
         "description": "The spec object defines the environment in which the workspace's contexts are created. Workspaces are created in a customer-managed BYOC (Bring Your Own Cloud) environment.\n"
       },
       "ArchivedFileListing": {
@@ -31638,6 +34094,7 @@
           },
           "output_json": {
             "type": "object",
+            "additionalProperties": { },
             "description": "Present when a shape was used, or on a retrieval-only turn",
             "nullable": true
           },
@@ -32002,6 +34459,7 @@
           },
           "shape": {
             "type": "object",
+            "additionalProperties": { },
             "description": "JSON Schema subset for structured output; result in output_json"
           },
           "model": {
@@ -32631,6 +35089,7 @@
           },
           "shape": {
             "type": "object",
+            "additionalProperties": { },
             "description": "JSON Schema the answer must conform to. Null on a free-text turn.",
             "nullable": true
           },
@@ -32766,6 +35225,7 @@
           },
           "output_json": {
             "type": "object",
+            "additionalProperties": { },
             "description": "Structured answer when the turn carried a shape, or the hits on a retrieval-only turn. Absent otherwise.",
             "nullable": true
           },
@@ -33492,6 +35952,7 @@
           {
             "title": "Other",
             "type": "object",
+            "additionalProperties": { },
             "description": "Any shape without a named variant"
           }
         ],
@@ -33862,6 +36323,7 @@
           },
           "args": {
             "type": "object",
+            "additionalProperties": { },
             "description": "Compact, redacted summary of the call's arguments. The key set is tool-specific and deliberately open."
           },
           "result": {

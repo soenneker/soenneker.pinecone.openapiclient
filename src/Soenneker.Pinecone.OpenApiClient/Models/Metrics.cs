@@ -11,14 +11,23 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// The metrics returned for the alignment evaluation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class Metrics : IParsable
+    public partial class Metrics : IAdditionalDataHolder, IParsable
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The harmonic mean of correctness and completeness.</summary>
         public double? Alignment { get; set; }
         /// <summary>The recall of the generated answer.</summary>
         public double? Completeness { get; set; }
         /// <summary>The precision of the generated answer.</summary>
         public double? Correctness { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Metrics"/> and sets the default values.
+        /// </summary>
+        public Metrics()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -52,6 +61,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteDoubleValue("alignment", Alignment);
             writer.WriteDoubleValue("completeness", Completeness);
             writer.WriteDoubleValue("correctness", Correctness);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }
