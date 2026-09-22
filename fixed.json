@@ -23662,19 +23662,15 @@
         },
         "description": "A basic error response that contains a message."
       },
-      "RestoreJobListPagination": {
-        "required": [
-          "next"
-        ],
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "The token to use to retrieve the next page of results.",
-            "example": "dXNlcl9pZD11c2VyXzE="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "Entailment": {
+        "title": "Entailment",
+        "type": "string",
+        "description": "The entailment of a fact.",
+        "x-enum": [
+          "entailed",
+          "contradicted",
+          "neutral"
+        ]
       },
       "EvaluatedFact": {
         "title": "Evaluated fact",
@@ -24587,19 +24583,14 @@
           }
         }
       },
-      "BackupScheduleListPagination": {
-        "required": [
-          "next"
-        ],
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "The token to use to retrieve the next page of results.",
-            "example": "dXNlcl9pZD11c2VyXzE="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "DeletionProtection": {
+        "type": "string",
+        "description": "Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.\n\nPossible values: \u0060disabled\u0060 or \u0060enabled\u0060.",
+        "default": "disabled",
+        "x-enum": [
+          "disabled",
+          "enabled"
+        ]
       },
       "DenseVectorField": {
         "title": "Dense vector",
@@ -25991,19 +25982,10 @@
           }
         }
       },
-      "BackupScheduleHistoryListPagination": {
-        "required": [
-          "next"
-        ],
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "The token to use to retrieve the next page of results.",
-            "example": "dXNlcl9pZD11c2VyXzE="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "UnauthorizedMessage": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the API, so they carry a short message rather than an \u0060ErrorResponse\u0060.",
+        "example": "Invalid API key"
       },
       "UpdateBackupScheduleRequest": {
         "type": "object",
@@ -27261,17 +27243,10 @@
           ]
         }
       },
-      "BackupScheduleHistoryItemSchema": {
-        "required": [
-          "fields"
-        ],
-        "type": "object",
-        "properties": {
-          "fields": {
-            "$ref": "#/components/schemas/BackupScheduleHistoryItemSchemaFields"
-          }
-        },
-        "description": "Index schema associated with the backup, or \u0060null\u0060 if not applicable."
+      "DbData202607UnauthorizedMessage": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object.",
+        "example": "Unauthorized"
       },
       "DbData202607ErrorResponse": {
         "required": [
@@ -28328,19 +28303,14 @@
         },
         "description": "The list of available models."
       },
-      "BackupListPagination": {
-        "required": [
-          "next"
-        ],
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "The token to use to retrieve the next page of results.",
-            "example": "dXNlcl9pZD11c2VyXzE="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "ModelInfoMetric": {
+        "type": "string",
+        "description": "A distance metric that the embedding model supports for similarity searches.\nPossible values: \u0060cosine\u0060, \u0060euclidean\u0060, or \u0060dotproduct\u0060.",
+        "x-enum": [
+          "cosine",
+          "euclidean",
+          "dotproduct"
+        ]
       },
       "ModelInfoSupportedMetrics": {
         "type": "array",
@@ -28549,16 +28519,9 @@
         },
         "description": "A sparse embedding of a single input"
       },
-      "UserListPagination": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "VectorType": {
+        "type": "string",
+        "description": "Indicates whether this is a \u0027dense\u0027 or \u0027sparse\u0027 embedding."
       },
       "CreateWorkspaceRequest": {
         "required": [
@@ -29351,16 +29314,14 @@
         },
         "description": "A project connector as one context sees it, carrying that context\u0027s enabled flag."
       },
-      "ServiceAccountListPagination": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "ContextKind": {
+        "type": "string",
+        "description": "How the context is built. \u0060search\u0060 \u2014 built from source documents, and must be curated before it can be queried. \u0060work\u0060 \u2014 built from traces of work done, queryable immediately, consolidated by \u0060groom\u0060 rather than \u0060curate\u0060.",
+        "default": "search",
+        "x-enum": [
+          "search",
+          "work"
+        ]
       },
       "ContextList": {
         "type": "array",
@@ -30343,16 +30304,10 @@
         },
         "description": "What an explore run proposed. Persists nothing \u2014 apply it by writing the manifest and forcing a curate."
       },
-      "RoleBindingListPagination": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "FileBytes": {
+        "type": "string",
+        "description": "The file bytes.",
+        "format": "binary"
       },
       "FileStats": {
         "required": [
@@ -34841,16 +34796,19 @@
         },
         "description": "One task record \u2014 a single run of a workflow, owned by the project."
       },
-      "InviteListPagination": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      "TaskState": {
+        "type": "string",
+        "description": "Where the run has got to. \u0060scheduled\u0060 waits for its due time; \u0060starting\u0060 and \u0060provisioning\u0060 are a container being claimed and built; \u0060running\u0060 is the work happening; \u0060stopping\u0060 is a termination in progress. \u0060completed\u0060, \u0060cancelled\u0060 and \u0060failed\u0060 are terminal.",
+        "x-enum": [
+          "scheduled",
+          "starting",
+          "provisioning",
+          "running",
+          "stopping",
+          "completed",
+          "cancelled",
+          "failed"
+        ]
       },
       "TaskStep": {
         "required": [
@@ -35118,23 +35076,23 @@
         },
         "description": "The file to stage. One per request."
       },
-      "PrometheusTargetsItem": {
-        "required": [
-          "targets"
-        ],
-        "type": "object",
-        "properties": {
-          "targets": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "List of hostnames or IP addresses that are targets for monitoring."
-          },
-          "labels": {
-            "$ref": "#/components/schemas/PrometheusTargetsItemLabelsProperty"
-          }
-        }
+      "Workflow": {
+        "type": "string",
+        "description": "The canonical workflow name.",
+        "x-enum": [
+          "optimize",
+          "curate",
+          "search",
+          "search_cc",
+          "search_rag",
+          "work",
+          "explore",
+          "profile",
+          "import",
+          "pack",
+          "restore",
+          "groom"
+        ]
       },
       "WorkflowTriggerResponse": {
         "required": [
@@ -35261,6 +35219,136 @@
           "expires_in": 1800,
           "token_type": "Bearer"
         }
+      },
+      "PrometheusTargetsItem": {
+        "required": [
+          "targets"
+        ],
+        "type": "object",
+        "properties": {
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of hostnames or IP addresses that are targets for monitoring."
+          },
+          "labels": {
+            "$ref": "#/components/schemas/PrometheusTargetsItemLabelsProperty"
+          }
+        }
+      },
+      "InviteListPagination": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "RoleBindingListPagination": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "ServiceAccountListPagination": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "UserListPagination": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "BackupListPagination": {
+        "required": [
+          "next"
+        ],
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "The token to use to retrieve the next page of results.",
+            "example": "dXNlcl9pZD11c2VyXzE="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "BackupScheduleHistoryItemSchema": {
+        "required": [
+          "fields"
+        ],
+        "type": "object",
+        "properties": {
+          "fields": {
+            "$ref": "#/components/schemas/BackupScheduleHistoryItemSchemaFields"
+          }
+        },
+        "description": "Index schema associated with the backup, or \u0060null\u0060 if not applicable."
+      },
+      "BackupScheduleHistoryListPagination": {
+        "required": [
+          "next"
+        ],
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "The token to use to retrieve the next page of results.",
+            "example": "dXNlcl9pZD11c2VyXzE="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "BackupScheduleListPagination": {
+        "required": [
+          "next"
+        ],
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "The token to use to retrieve the next page of results.",
+            "example": "dXNlcl9pZD11c2VyXzE="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
+      },
+      "RestoreJobListPagination": {
+        "required": [
+          "next"
+        ],
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "The token to use to retrieve the next page of results.",
+            "example": "dXNlcl9pZD11c2VyXzE="
+          }
+        },
+        "description": "Cursor envelope for the next page. \u0060null\u0060 (or absent) on the final page of results."
       },
       "DocumentScoringMethodDenseVectorScoring": {
         "title": "Dense vector scoring",
@@ -36139,25 +36227,67 @@
         },
         "description": "Null on a turn the runtime never closed. The trace\u0027s copy omits the \u0060type\u0060 and \u0060query_id\u0060 the event form carries."
       },
-      "RestoreJobListPaginationAllOf1": {
-        "required": [
-          "next"
-        ],
+      "InviteListPaginationAllOf1": {
         "type": "object",
         "properties": {
           "next": {
             "type": "string",
-            "description": "The token to use to retrieve the next page of results.",
-            "example": "dXNlcl9pZD11c2VyXzE="
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
           }
         },
-        "description": "The pagination object that is returned with paginated responses.",
+        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
         "example": {
-          "next": "dXNlcl9pZD11c2VyXzE="
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
         },
         "x-component-name": "PaginationResponse"
       },
-      "BackupScheduleListPaginationAllOf1": {
+      "RoleBindingListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
+      },
+      "ServiceAccountListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
+      },
+      "UserListPaginationAllOf1": {
+        "type": "object",
+        "properties": {
+          "next": {
+            "type": "string",
+            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
+            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          }
+        },
+        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
+        "example": {
+          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+        },
+        "x-component-name": "PaginationResponse"
+      },
+      "BackupListPaginationAllOf1": {
         "required": [
           "next"
         ],
@@ -36193,7 +36323,7 @@
         },
         "x-component-name": "PaginationResponse"
       },
-      "BackupListPaginationAllOf1": {
+      "BackupScheduleListPaginationAllOf1": {
         "required": [
           "next"
         ],
@@ -36211,63 +36341,21 @@
         },
         "x-component-name": "PaginationResponse"
       },
-      "UserListPaginationAllOf1": {
+      "RestoreJobListPaginationAllOf1": {
+        "required": [
+          "next"
+        ],
         "type": "object",
         "properties": {
           "next": {
             "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+            "description": "The token to use to retrieve the next page of results.",
+            "example": "dXNlcl9pZD11c2VyXzE="
           }
         },
-        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
+        "description": "The pagination object that is returned with paginated responses.",
         "example": {
-          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-        },
-        "x-component-name": "PaginationResponse"
-      },
-      "ServiceAccountListPaginationAllOf1": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
-        "example": {
-          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-        },
-        "x-component-name": "PaginationResponse"
-      },
-      "RoleBindingListPaginationAllOf1": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
-        "example": {
-          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-        },
-        "x-component-name": "PaginationResponse"
-      },
-      "InviteListPaginationAllOf1": {
-        "type": "object",
-        "properties": {
-          "next": {
-            "type": "string",
-            "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return \u0060400\u0060.",
-            "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
-          }
-        },
-        "description": "Pagination metadata for list responses. When \u0060next\u0060 is present, pass it as \u0060paginationToken\u0060 on the following request.",
-        "example": {
-          "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+          "next": "dXNlcl9pZD11c2VyXzE="
         },
         "x-component-name": "PaginationResponse"
       },
@@ -39954,13 +40042,6 @@
         },
         "description": "The fetched vectors, in the form of a map between the fetched ids and the fetched vectors"
       },
-      "BackupScheduleHistoryItemSchemaFields": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/IndexSchemaField"
-        },
-        "description": "A map of field names to their configurations.\n\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
-      },
       "SearchDocumentsRequestFilterProperty": {
         "type": "object",
         "description": "A metadata filter expression to restrict the documents searched."
@@ -40212,6 +40293,13 @@
           "type": "string"
         },
         "description": "Set of labels to be attached to the scraped metrics from the targets."
+      },
+      "BackupScheduleHistoryItemSchemaFields": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/IndexSchemaField"
+        },
+        "description": "A map of field names to their configurations.\n\nIndexes that are served by the vectors API \u2014 created with the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 schema, or created by an earlier API version from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060 \u2014 report their vector fields under the reserved names \u0060_values\u0060 (dense) and \u0060_sparse_values\u0060 (sparse), and any metadata fields configured for filtering as legacy fields carrying only \u0060filterable\u0060. Dense vectors-API indexes always report both \u0060_values\u0060 and \u0060_sparse_values\u0060, regardless of how they were created."
       },
       "DocumentScoringMethodDenseVectorScoringFields": {
         "maxItems": 1,
