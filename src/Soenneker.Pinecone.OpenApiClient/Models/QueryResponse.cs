@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.ScoredVector> Matches { get; set; }
 #endif
-        /// <summary>The namespace for the vectors.</summary>
+        /// <summary>The namespace that served the query: the request&apos;s namespace, or the alias&apos;s target namespace when the request named a namespace alias.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Namespace { get; set; }

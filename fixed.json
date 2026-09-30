@@ -12809,7 +12809,7 @@
             }
           },
           "400": {
-            "description": "Bad request. The request body included invalid request parameters.",
+            "description": "Bad request. Possible causes: invalid request parameters, or the request addressed a namespace alias (reason \u0060WRITE_TO_ALIAS\u0060). Writes must address a namespace directly.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13290,7 +13290,7 @@
             }
           },
           "400": {
-            "description": "Bad request. The request body included invalid request parameters.",
+            "description": "Bad request. Possible causes: invalid request parameters, or the request addressed a namespace alias (reason \u0060WRITE_TO_ALIAS\u0060). Writes must address a namespace directly.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13427,6 +13427,16 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/DbData202607UpsertVectors401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The upsert addressed a namespace that does not exist, and the namespace could not be created because its name is in use by a namespace alias (reason \u0060NAME_IN_USE_BY_ALIAS\u0060). Writes cannot address an alias. Write to the alias\u0027s target namespace directly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
                 }
               }
             }
@@ -13652,7 +13662,7 @@
             }
           },
           "409": {
-            "description": "Namespace of the given name already exists on the index.",
+            "description": "Namespace of the given name already exists on the index, or the name is in use by a namespace alias (reason \u0060NAME_IN_USE_BY_ALIAS\u0060).",
             "content": {
               "application/json": {
                 "schema": {
@@ -13744,7 +13754,7 @@
             }
           },
           "400": {
-            "description": "Bad request. The request body included invalid request parameters.",
+            "description": "Bad request. Possible causes: invalid request parameters, or the name belongs to a namespace alias rather than a namespace (reason \u0060NAMESPACE_OPERATION_ON_ALIAS\u0060). Aliases are described via \u0060GET /namespace-aliases/{alias_name}\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13864,7 +13874,7 @@
             }
           },
           "400": {
-            "description": "Bad request. The request body included invalid request parameters.",
+            "description": "Bad request. Possible causes: invalid request parameters, the name belongs to a namespace alias rather than a namespace (reason \u0060NAMESPACE_OPERATION_ON_ALIAS\u0060), or the namespace is the target of one or more aliases (reason \u0060NAMESPACE_TARGETED_BY_ALIAS\u0060) and can only be deleted after every alias pointing at it is repointed or deleted.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13885,6 +13895,590 @@
           },
           "404": {
             "description": "Namespace not found. No namespace of the given name exists on the index.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/db_data/namespace-aliases": {
+      "get": {
+        "tags": [
+          "Namespace Alias Operations"
+        ],
+        "summary": "List namespace aliases",
+        "description": "List the namespace aliases in a serverless index, ordered by name. Filter by name prefix or by target namespace.\n\nUp to 100 aliases are returned per page; set \u0060limit\u0060 to return fewer. When more remain, the response includes \u0060pagination.next\u0060; pass it as \u0060paginationToken\u0060 to get the next page.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "operationId": "DbData202607ListNamespaceAliases",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Max number of aliases to return per page. Defaults to 100.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            },
+            "example": 10
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Pagination token to continue a previous listing operation. Filters are carried by the token; if they are repeated in the request, they must match.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "description": "Prefix of the aliases to list. Acts as a filter to return only aliases whose name starts with this prefix.",
+            "schema": {
+              "maxLength": 512,
+              "pattern": "^[\\x01-\\x7F]*$",
+              "type": "string"
+            },
+            "example": "dataset"
+          },
+          {
+            "name": "target_namespace",
+            "in": "query",
+            "description": "Return only aliases that resolve to this namespace. Use \u0060__default__\u0060 for the default namespace. Aliases cannot be targets, so an alias name here matches nothing. Combines with \u0060prefix\u0060.",
+            "schema": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x01-\\x7F]\u002B$",
+              "type": "string"
+            },
+            "example": "dataset_v1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListNamespaceAliasesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The \u0060reason\u0060 field of the error\u0027s \u0060details\u0060 entry identifies the cause: \u0060LIST_INVALID_LIMIT\u0060 (\u0060limit\u0060 is out of range), \u0060INVALID_PAGINATION_TOKEN\u0060 (the pagination token is malformed or from another endpoint), \u0060LIST_INVALID_TOKEN_WITH_PREFIX\u0060 or \u0060LIST_INVALID_TOKEN_WITH_TARGET\u0060 (a repeated filter disagrees with the token), \u0060LIST_INVALID_TOKEN_WITH_NEW_PREFIX\u0060 or \u0060LIST_INVALID_TOKEN_WITH_NEW_TARGET\u0060 (a filter was added mid-listing), \u0060TARGET_FILTER_EMPTY\u0060 (\u0060target_namespace\u0060 is present but empty), \u0060PREFIX_TOO_LONG\u0060, \u0060PREFIX_MUST_BE_ASCII\u0060, or \u0060PREFIX_MUST_NOT_CONTAIN_NULL_CHARACTER\u0060 (the \u0060prefix\u0060 is invalid), or \u0060API_VERSION_TOO_OLD\u0060 (the API version is too old). An unknown query parameter is also rejected.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: missing or invalid API key.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607ListNamespaceAliases401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Namespace Alias Operations"
+        ],
+        "summary": "Create a namespace alias",
+        "description": "Create an alias that resolves to an existing namespace in the index. Reads\nthrough the alias are served from its target namespace; writes to an alias\nname are rejected. Many aliases can resolve to the same namespace.\n\nThe call returns once the alias resolves on every reader, which takes about\na second; size client timeouts accordingly. A 409 whose\n\u0060details.metadata.target_namespace\u0060 matches the requested target carries\nthe same guarantee: your earlier call committed and the alias is live.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "operationId": "DbData202607CreateNamespaceAlias",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNamespaceAliasRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamespaceAliasDescription"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The \u0060reason\u0060 field of the error\u0027s \u0060details\u0060 entry identifies the cause: \u0060ALIAS_NAME_INVALID\u0060 (the alias name is invalid), \u0060TARGET_NAMESPACE_REQUIRED\u0060 (\u0060target_namespace\u0060 is missing or empty), \u0060NAMESPACE_TOO_LONG\u0060 or \u0060NAMESPACE_INVALID\u0060 (the target is not a possible namespace name), \u0060TARGET_NAMESPACE_NOT_FOUND\u0060 (the target namespace does not exist), \u0060TARGET_NAMESPACE_NOT_ACTIVE\u0060 (the target namespace is not active yet; the same request succeeds once it is), \u0060TARGET_IS_ALIAS\u0060 (the target is itself an alias), \u0060ALIASES_PER_INDEX_EXCEEDED\u0060 (the index has reached its alias limit), or \u0060API_VERSION_TOO_OLD\u0060 (the API version is too old).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: missing or invalid API key.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607CreateNamespaceAlias401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The \u0060reason\u0060 field of the error\u0027s \u0060details\u0060 entry identifies the cause: \u0060ALIAS_ALREADY_EXISTS\u0060 (an alias with this name already exists; the \u0060details\u0060 entry\u0027s \u0060metadata.target_namespace\u0060 names its current target) or \u0060NAME_IN_USE_BY_NAMESPACE\u0060 (the name is held by a namespace).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/db_data/namespace-aliases/{aliasName}": {
+      "get": {
+        "tags": [
+          "Namespace Alias Operations"
+        ],
+        "summary": "Describe a namespace alias",
+        "description": "Get an alias and the namespace it resolves to.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "operationId": "DbData202607DescribeNamespaceAlias",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          },
+          {
+            "name": "aliasName",
+            "in": "path",
+            "description": "The name of the alias. Must be 1-512 characters of printable ASCII, excluding space and \u0060/ ? # % \u0026 = \\ ; \u002B\u0060.",
+            "required": true,
+            "schema": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x21\\x22\\x24\\x27-\\x2A\\x2C-\\x2E\\x30-\\x3A\\x3C\\x3E\\x40-\\x5B\\x5D-\\x7E]\u002B$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamespaceAliasDescription"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The \u0060reason\u0060 field of the error\u0027s \u0060details\u0060 entry identifies the cause: \u0060ALIAS_NAME_INVALID\u0060 (the alias name is invalid) or \u0060API_VERSION_TOO_OLD\u0060 (the API version is too old).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: missing or invalid API key.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607DescribeNamespaceAlias401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. No alias with this name exists in the index.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Namespace Alias Operations"
+        ],
+        "summary": "Delete a namespace alias",
+        "description": "Remove an alias. The target namespace and its data are unchanged. Reads\nthat still use the alias name are treated as reads of a nonexistent\nnamespace (empty results, not an error), so migrate readers off the alias\nfirst.\n\nThe call returns once no reader still resolves the alias, which takes about\na second; size client timeouts accordingly. A retried delete that returns\n404 means the alias is already gone and carries the same guarantee.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "operationId": "DbData202607DeleteNamespaceAlias",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          },
+          {
+            "name": "aliasName",
+            "in": "path",
+            "description": "The name of the alias. Must be 1-512 characters of printable ASCII, excluding space and \u0060/ ? # % \u0026 = \\ ; \u002B\u0060.",
+            "required": true,
+            "schema": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x21\\x22\\x24\\x27-\\x2A\\x2C-\\x2E\\x30-\\x3A\\x3C\\x3E\\x40-\\x5B\\x5D-\\x7E]\u002B$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607DeleteNamespaceAlias200Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The \u0060reason\u0060 field of the error\u0027s \u0060details\u0060 entry identifies the cause: \u0060ALIAS_NAME_INVALID\u0060 (the alias name is invalid) or \u0060API_VERSION_TOO_OLD\u0060 (the API version is too old).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: missing or invalid API key.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607DeleteNamespaceAlias401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. No alias with this name exists in the index. For a retried delete this means the alias is already gone.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "An unexpected error response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "db_data_2026_07_ApiKeyAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://{index_host}",
+            "variables": {
+              "index_host": {
+                "default": "unknown",
+                "description": "host of the index"
+              }
+            }
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Namespace Alias Operations"
+        ],
+        "summary": "Repoint a namespace alias",
+        "description": "Update the namespace an alias resolves to. The change is atomic: the target\nis validated in the same transaction that rewrites the alias, and on\nfailure the alias keeps its current target.\n\nThe call returns once the new target is live on every reader, which takes\nabout a second; size client timeouts accordingly. Reads through the alias\nthat start after the response are served from the new namespace, so no\npolling is needed. Repointing is safe to retry; \u0060updated_at\u0060 advances on\nevery attempt.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "operationId": "DbData202607RepointNamespaceAlias",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          },
+          {
+            "name": "aliasName",
+            "in": "path",
+            "description": "The name of the alias. Must be 1-512 characters of printable ASCII, excluding space and \u0060/ ? # % \u0026 = \\ ; \u002B\u0060.",
+            "required": true,
+            "schema": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x21\\x22\\x24\\x27-\\x2A\\x2C-\\x2E\\x30-\\x3A\\x3C\\x3E\\x40-\\x5B\\x5D-\\x7E]\u002B$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepointNamespaceAliasRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamespaceAliasDescription"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The \u0060reason\u0060 field of the error\u0027s \u0060details\u0060 entry identifies the cause: \u0060ALIAS_NAME_INVALID\u0060 (the alias name is invalid), \u0060TARGET_NAMESPACE_REQUIRED\u0060 (\u0060target_namespace\u0060 is missing or empty), \u0060NAMESPACE_TOO_LONG\u0060 or \u0060NAMESPACE_INVALID\u0060 (the target is not a possible namespace name), \u0060TARGET_NAMESPACE_NOT_FOUND\u0060 (the target namespace does not exist), \u0060TARGET_NAMESPACE_NOT_ACTIVE\u0060 (the target namespace is not active yet; the same request succeeds once it is), \u0060TARGET_IS_ALIAS\u0060 (the target is itself an alias), or \u0060API_VERSION_TOO_OLD\u0060 (the API version is too old).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RpcStatus"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: missing or invalid API key.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607RepointNamespaceAlias401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. No alias with this name exists in the index.",
             "content": {
               "application/json": {
                 "schema": {
@@ -13992,6 +14586,16 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/DbData202607UpsertRecordsNamespace401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The namespace does not exist and could not be created because its name is in use by a namespace alias. Writes cannot address an alias. Write to the alias\u0027s target namespace directly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607ErrorResponse"
                 }
               }
             }
@@ -14233,6 +14837,16 @@
               "text/plain": {
                 "schema": {
                   "$ref": "#/components/schemas/DbData202607UpsertDocuments401PlainResponseSchema"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The namespace does not exist and could not be created because its name is in use by a namespace alias. Writes cannot address an alias. Write to the alias\u0027s target namespace directly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607ErrorResponse"
                 }
               }
             }
@@ -14494,6 +15108,7 @@
                       },
                       "namespace": "my-namespace",
                       "usage": {
+                        "egress_bytes": 1024,
                         "read_units": 5
                       }
                     }
@@ -14512,6 +15127,7 @@
                         "next": "Tm90aGluZyB0byBzZWUgaGVyZQo="
                       },
                       "usage": {
+                        "egress_bytes": 1024,
                         "read_units": 5
                       }
                     }
@@ -14527,6 +15143,7 @@
                       },
                       "namespace": "my-namespace",
                       "usage": {
+                        "egress_bytes": 1024,
                         "read_units": 5
                       }
                     }
@@ -14703,6 +15320,16 @@
               }
             }
           },
+          "412": {
+            "description": "The request addressed a namespace alias, which cannot be written through. Write to the alias\u0027s target namespace directly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607ErrorResponse"
+                }
+              }
+            }
+          },
           "4XX": {
             "description": "An unexpected error response.",
             "content": {
@@ -14859,6 +15486,16 @@
               }
             }
           },
+          "412": {
+            "description": "The request addressed a namespace alias, which cannot be written through. Write to the alias\u0027s target namespace directly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DbData202607ErrorResponse"
+                }
+              }
+            }
+          },
           "4XX": {
             "description": "An unexpected error response.",
             "content": {
@@ -14962,6 +15599,7 @@
                         "next": "Tm90aGluZyB0byBzZWUgaGVyZQo="
                       },
                       "usage": {
+                        "egress_bytes": 1024,
                         "read_units": 1
                       }
                     }
@@ -14976,6 +15614,7 @@
                       ],
                       "namespace": "my-namespace",
                       "usage": {
+                        "egress_bytes": 1024,
                         "read_units": 1
                       }
                     }
@@ -24511,6 +25150,9 @@
             "$ref": "#/components/schemas/CreateIndexSchemaFieldsProperty"
           }
         },
+        "additionalProperties": {
+          "$ref": "#/components/schemas/CreateIndexSchemaAdditionalProperties"
+        },
         "description": "The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and full-text search fields.\n\nAt least one of \u0060dense_vector\u0060, \u0060sparse_vector\u0060, or a \u0060string\u0060 field with \u0060full_text_search\u0060 must be present; an empty \u0060fields\u0060 map is rejected. At most one \u0060dense_vector\u0060 and one \u0060sparse_vector\u0060 field, and at most 100 \u0060full_text_search\u0060 fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.",
         "example": {
           "fields": {
@@ -24628,6 +25270,9 @@
               "euclidean"
             ]
           }
+        },
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DenseVectorFieldAdditionalProperties"
         },
         "description": "A dense vector field configuration. Stores fixed-dimension floating-point vectors for approximate nearest-neighbor (ANN) search.",
         "example": {
@@ -25826,6 +26471,9 @@
             "nullable": true
           }
         },
+        "additionalProperties": {
+          "$ref": "#/components/schemas/SparseVectorFieldAdditionalProperties"
+        },
         "description": "A sparse vector field configuration. Stores sparse vectors for keyword or hybrid search.",
         "example": {
           "type": "sparse_vector"
@@ -26305,7 +26953,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace of the vectors.",
+            "description": "The namespace that served the fetch: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
             "example": "example-namespace"
           },
           "usage": {
@@ -26316,6 +26964,7 @@
         "example": {
           "namespace": "example-namespace",
           "usage": {
+            "egressBytes": 1024,
             "readUnits": 1
           },
           "vectors": {
@@ -26360,7 +27009,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace of the vectors.",
+            "description": "The namespace that served the list: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
             "example": "example-namespace"
           },
           "usage": {
@@ -26460,6 +27109,107 @@
             "description": "The total number of namespaces in the index matching the prefix",
             "format": "int32",
             "example": 25
+          }
+        }
+      },
+      "CreateNamespaceAliasRequest": {
+        "required": [
+          "name",
+          "target_namespace"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 512,
+            "minLength": 1,
+            "pattern": "^[\\x21\\x22\\x24\\x27-\\x2A\\x2C-\\x2E\\x30-\\x3A\\x3C\\x3E\\x40-\\x5B\\x5D-\\x7E]\u002B$",
+            "type": "string",
+            "description": "The name of the alias to create. Must be 1-512 characters of printable ASCII, excluding space and \u0060/ ? # % \u0026 = \\ ; \u002B\u0060, and cannot be \u0060__default__\u0060, \u0060.\u0060 or \u0060..\u0060. It shares one uniqueness space with namespace names: it cannot be the name of an existing namespace or alias, and no namespace can later be created under it.",
+            "example": "dataset"
+          },
+          "target_namespace": {
+            "maxLength": 512,
+            "minLength": 1,
+            "pattern": "^[\\x01-\\x7F]\u002B$",
+            "type": "string",
+            "description": "The namespace the alias resolves to. Must be an existing, active namespace in the index; an alias cannot point to another alias. To point the alias at the default namespace, use \u0060__default__\u0060.",
+            "example": "dataset_v1"
+          }
+        },
+        "description": "A request for creating a namespace alias."
+      },
+      "RepointNamespaceAliasRequest": {
+        "required": [
+          "target_namespace"
+        ],
+        "type": "object",
+        "properties": {
+          "target_namespace": {
+            "maxLength": 512,
+            "minLength": 1,
+            "pattern": "^[\\x01-\\x7F]\u002B$",
+            "type": "string",
+            "description": "The namespace the alias resolves to after the repoint. Must be an existing, active namespace in the index; an alias cannot point to another alias. To point the alias at the default namespace, use \u0060__default__\u0060.",
+            "example": "dataset_v2"
+          }
+        },
+        "description": "A request for repointing a namespace alias at a different namespace."
+      },
+      "NamespaceAliasDescription": {
+        "required": [
+          "name",
+          "target_namespace",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the alias. Immutable after creation.",
+            "example": "dataset"
+          },
+          "target_namespace": {
+            "type": "string",
+            "description": "The namespace the alias resolves to. Changed only by repointing the alias. The default namespace is represented as \u0060__default__\u0060.",
+            "example": "dataset_v1"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The time the alias was created.",
+            "format": "date-time",
+            "example": "2026-09-01T12:00:00Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The time the alias was last repointed. Advances on every repoint, including a repoint to the alias\u0027s current target; equals \u0060created_at\u0060 until the first repoint.",
+            "format": "date-time",
+            "example": "2026-09-01T12:00:00Z"
+          }
+        },
+        "description": "A description of a namespace alias and the namespace it resolves to."
+      },
+      "ListNamespaceAliasesResponse": {
+        "required": [
+          "total_count"
+        ],
+        "type": "object",
+        "properties": {
+          "namespace_aliases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NamespaceAliasDescription"
+            },
+            "description": "The aliases in this index that match the request, ordered by name."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "total_count": {
+            "type": "integer",
+            "description": "The total number of aliases in the index matching the request filters. May change between pages under concurrent modifications.",
+            "format": "int32",
+            "example": 3
           }
         }
       },
@@ -26593,7 +27343,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace for the vectors."
+            "description": "The namespace that served the query: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias."
           },
           "usage": {
             "$ref": "#/components/schemas/Usage"
@@ -26860,7 +27610,8 @@
       "SearchRecordsResponse": {
         "required": [
           "usage",
-          "result"
+          "result",
+          "namespace"
         ],
         "type": "object",
         "properties": {
@@ -26869,10 +27620,16 @@
           },
           "usage": {
             "$ref": "#/components/schemas/SearchUsage"
+          },
+          "namespace": {
+            "type": "string",
+            "description": "The namespace that served the search: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
+            "example": "example-namespace"
           }
         },
         "description": "The records search response.",
         "example": {
+          "namespace": "example-namespace",
           "result": {
             "hits": [
               {
@@ -26885,6 +27642,7 @@
             ]
           },
           "usage": {
+            "egress_bytes": 1024,
             "embed_total_tokens": 10,
             "read_units": 5
           }
@@ -26932,6 +27690,13 @@
             "description": "The number of read units consumed by this operation.",
             "format": "int64",
             "example": 5
+          },
+          "egressBytes": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The billed egress for this response, in bytes. Measured on the encoded response payload.",
+            "format": "int64",
+            "example": 1024
           }
         }
       },
@@ -26947,6 +27712,13 @@
             "description": "The number of read units consumed by this operation.",
             "format": "int32",
             "example": 5
+          },
+          "egress_bytes": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The billed egress for this response, in bytes. Measured on the encoded response payload.",
+            "format": "int64",
+            "example": 1024
           },
           "embed_total_tokens": {
             "minimum": 0,
@@ -27133,7 +27905,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace of the vectors.",
+            "description": "The namespace that served the fetch: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
             "example": "example-namespace"
           },
           "usage": {
@@ -27150,6 +27922,7 @@
             "next": "Tm90aGluZyB0byBzZWUgaGVyZQo="
           },
           "usage": {
+            "egressBytes": 1024,
             "readUnits": 5
           },
           "vectors": {
@@ -27511,10 +28284,18 @@
             "description": "The number of read units consumed by this operation.",
             "format": "int32",
             "example": 5
+          },
+          "egress_bytes": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The billed egress for this response, in bytes. Measured on the encoded response payload.",
+            "format": "int64",
+            "example": 1024
           }
         },
         "description": "Usage information for the \u0060search_documents\u0060 operation.",
         "example": {
+          "egress_bytes": 1024,
           "read_units": 5
         }
       },
@@ -27565,7 +28346,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace that was searched.",
+            "description": "The namespace that served the search: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
             "example": "my-namespace"
           },
           "usage": {
@@ -27583,6 +28364,7 @@
           ],
           "namespace": "my-namespace",
           "usage": {
+            "egress_bytes": 1024,
             "read_units": 5
           }
         }
@@ -27686,10 +28468,18 @@
             "description": "The number of read units consumed by this operation.",
             "format": "int32",
             "example": 5
+          },
+          "egress_bytes": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The billed egress for this response, in bytes. Measured on the encoded response payload.",
+            "format": "int64",
+            "example": 1024
           }
         },
         "description": "Usage information for the \u0060fetch_documents\u0060 operation.",
         "example": {
+          "egress_bytes": 1024,
           "read_units": 5
         }
       },
@@ -27709,7 +28499,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace the documents were fetched from.",
+            "description": "The namespace the documents were fetched from: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
             "example": "my-namespace"
           },
           "usage": {
@@ -27953,10 +28743,18 @@
             "description": "The number of read units consumed by this operation.",
             "format": "int32",
             "example": 1
+          },
+          "egress_bytes": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The billed egress for this response, in bytes. Measured on the encoded response payload.",
+            "format": "int64",
+            "example": 1024
           }
         },
         "description": "Usage information for the \u0060list_documents\u0060 operation.",
         "example": {
+          "egress_bytes": 1024,
           "read_units": 1
         }
       },
@@ -27980,7 +28778,7 @@
           },
           "namespace": {
             "type": "string",
-            "description": "The namespace the documents were listed from.",
+            "description": "The namespace the documents were listed from: the request\u0027s namespace, or the alias\u0027s target namespace when the request named a namespace alias.",
             "example": "my-namespace"
           },
           "usage": {
@@ -38780,7 +39578,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateNamespaceRequestSchemaFieldsAdditionalProperties"
         },
-        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\n\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
       },
       "NamespaceDescriptionSchemaFields": {
         "maxProperties": 50,
@@ -38788,7 +39586,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/NamespaceDescriptionSchemaFieldsAdditionalProperties"
         },
-        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\n\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
       },
       "SearchRecordsRequestQueryFilter": {
         "type": "object",
@@ -39376,6 +40174,26 @@
         "type": "string",
         "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
       },
+      "DbData202607ListNamespaceAliases401PlainResponse": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607CreateNamespaceAlias401PlainResponse": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607DescribeNamespaceAlias401PlainResponse": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607DeleteNamespaceAlias401PlainResponse": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607RepointNamespaceAlias401PlainResponse": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
       "DbData202607UpsertRecordsNamespaceXNdjsonRequest": {
         "type": "array",
         "items": {
@@ -39695,6 +40513,30 @@
         "type": "string",
         "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
       },
+      "DbData202607ListNamespaceAliases401PlainResponseSchema": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607CreateNamespaceAlias401PlainResponseSchema": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607DescribeNamespaceAlias401PlainResponseSchema": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607DeleteNamespaceAlias200Response": {
+        "type": "object",
+        "description": "The response for the \u0060delete\u0060 operation."
+      },
+      "DbData202607DeleteNamespaceAlias401PlainResponseSchema": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
+      "DbData202607RepointNamespaceAlias401PlainResponseSchema": {
+        "type": "string",
+        "description": "The plain-text body of a \u0060401\u0060 response. Authentication failures are rejected before the request reaches the index, so they carry the message \u0060Unauthorized\u0060 rather than an error object."
+      },
       "DbData202607UpsertRecordsNamespaceXNdjsonRequestRequestBody": {
         "type": "array",
         "items": {
@@ -39897,12 +40739,20 @@
         },
         "description": "Custom user tags added to an index, at most 20 per index. Keys must be 80 characters or less and alphanumeric, \u0027_\u0027, or \u0027-\u0027. Values must be 120 characters or less and consist of printable ASCII characters or spaces. To unset a key, set the value to be an empty string. \u0060null\u0060 in responses when the index has no tags."
       },
+      "CreateIndexSchemaAdditionalProperties": {
+        "type": "object",
+        "not": {}
+      },
       "CreateIndexSchemaFieldsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateIndexSchemaField"
         },
         "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with \u0060$\u0060, which introduces a filter operator.\n\nNames starting with \u0060_\u0060 are reserved: this covers \u0060_id\u0060, \u0060_values\u0060, \u0060_sparse_values\u0060, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: \u0060_values\u0060 (type \u0060dense_vector\u0060) and/or \u0060_sparse_values\u0060 (type \u0060sparse_vector\u0060) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API \u2014 the same index that earlier API versions created from \u0060dimension\u0060, \u0060metric\u0060, and \u0060vector_type\u0060. Reserved fields do not accept a \u0060description\u0060. Any other field named with a leading \u0060_\u0060, or a reserved field combined with other fields, is rejected."
+      },
+      "DenseVectorFieldAdditionalProperties": {
+        "type": "object",
+        "not": {}
       },
       "IndexModelTags": {
         "type": "object",
@@ -39975,6 +40825,10 @@
       "SemanticTextFieldReadParametersProperty": {
         "type": "object",
         "description": "Model-specific parameters applied at query time, such as \u0060input_type\u0060."
+      },
+      "SparseVectorFieldAdditionalProperties": {
+        "type": "object",
+        "not": {}
       },
       "StringFieldAdditionalProperties": {
         "type": "object",
@@ -40406,14 +41260,14 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/CreateNamespaceRequestSchemaFieldsAdditionalProperties"
         },
-        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\n\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
       },
       "NamespaceDescriptionSchemaFieldsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/NamespaceDescriptionSchemaFieldsAdditionalProperties"
         },
-        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
+        "description": "A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.\n\nField names may not begin with \u0060$\u0060, which introduces a filter operator. When declared at index creation, names beginning with \u0060_\u0060 are also rejected (reserved for internal use)."
       },
       "SearchRecordsRequestQueryFilterProperty": {
         "type": "object",
@@ -40923,6 +41777,9 @@
     },
     {
       "name": "Namespace Operations"
+    },
+    {
+      "name": "Namespace Alias Operations"
     },
     {
       "name": "Document Operations",

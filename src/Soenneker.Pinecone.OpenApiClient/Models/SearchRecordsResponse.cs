@@ -15,6 +15,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The namespace that served the search: the request&apos;s namespace, or the alias&apos;s target namespace when the request named a namespace alias.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Namespace { get; set; }
+#nullable restore
+#else
+        public string Namespace { get; set; }
+#endif
         /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +64,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "namespace", n => { Namespace = n.GetStringValue(); } },
                 { "result", n => { Result = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsResponseResult>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsResponseResult.CreateFromDiscriminatorValue); } },
                 { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchUsage>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchUsage.CreateFromDiscriminatorValue); } },
             };
@@ -67,6 +76,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("namespace", Namespace);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchRecordsResponseResult>("result", Result);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchUsage>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);

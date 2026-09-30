@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsResponseDocumentsProperty Documents { get; set; }
 #endif
-        /// <summary>The namespace the documents were fetched from.</summary>
+        /// <summary>The namespace the documents were fetched from: the request&apos;s namespace, or the alias&apos;s target namespace when the request named a namespace alias.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Namespace { get; set; }

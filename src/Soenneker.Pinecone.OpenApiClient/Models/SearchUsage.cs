@@ -14,6 +14,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The billed egress for this response, in bytes. Measured on the encoded response payload.</summary>
+        public long? EgressBytes { get; set; }
         /// <summary>The number of embedding tokens consumed by this operation.</summary>
         public int? EmbedTotalTokens { get; set; }
         /// <summary>The number of read units consumed by this operation.</summary>
@@ -45,6 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "egress_bytes", n => { EgressBytes = n.GetLongValue(); } },
                 { "embed_total_tokens", n => { EmbedTotalTokens = n.GetIntValue(); } },
                 { "read_units", n => { ReadUnits = n.GetIntValue(); } },
                 { "rerank_units", n => { RerankUnits = n.GetIntValue(); } },
@@ -57,6 +60,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteLongValue("egress_bytes", EgressBytes);
             writer.WriteIntValue("embed_total_tokens", EmbedTotalTokens);
             writer.WriteIntValue("read_units", ReadUnits);
             writer.WriteIntValue("rerank_units", RerankUnits);

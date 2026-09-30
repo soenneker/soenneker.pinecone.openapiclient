@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Pinecone.OpenApiClient.Db_data.Bulk;
 using Soenneker.Pinecone.OpenApiClient.Db_data.Describe_index_stats;
+using Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases;
 using Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces;
 using Soenneker.Pinecone.OpenApiClient.Db_data.Query;
 using Soenneker.Pinecone.OpenApiClient.Db_data.Records;
@@ -29,6 +30,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data
         public global::Soenneker.Pinecone.OpenApiClient.Db_data.Describe_index_stats.Describe_index_statsRequestBuilder Describe_index_stats
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Db_data.Describe_index_stats.Describe_index_statsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The namespaceAliases property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases.NamespaceAliasesRequestBuilder NamespaceAliases
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases.NamespaceAliasesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The namespaces property</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.NamespacesRequestBuilder Namespaces

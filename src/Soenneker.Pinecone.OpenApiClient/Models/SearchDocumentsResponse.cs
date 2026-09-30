@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentSearchMatch> Matches { get; set; }
 #endif
-        /// <summary>The namespace that was searched.</summary>
+        /// <summary>The namespace that served the search: the request&apos;s namespace, or the alias&apos;s target namespace when the request named a namespace alias.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Namespace { get; set; }

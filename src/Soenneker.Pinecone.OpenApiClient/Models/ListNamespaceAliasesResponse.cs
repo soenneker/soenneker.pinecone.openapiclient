@@ -7,29 +7,20 @@ using System.IO;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
-    /// <summary>
-    /// The response for the `list_documents` operation.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ListDocumentsResponse : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class ListNamespaceAliasesResponse : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The listed documents, in sorted order by ID.</summary>
+        /// <summary>The aliases in this index that match the request, ordered by name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord>? Documents { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription>? NamespaceAliases { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord> Documents { get; set; }
-#endif
-        /// <summary>The namespace the documents were listed from: the request&apos;s namespace, or the alias&apos;s target namespace when the request named a namespace alias.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Namespace { get; set; }
-#nullable restore
-#else
-        public string Namespace { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription> NamespaceAliases { get; set; }
 #endif
         /// <summary>The pagination property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -39,30 +30,24 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.Pagination Pagination { get; set; }
 #endif
-        /// <summary>Usage information for the `list_documents` operation.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DocumentListUsage? Usage { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DocumentListUsage Usage { get; set; }
-#endif
+        /// <summary>The total number of aliases in the index matching the request filters. May change between pages under concurrent modifications.</summary>
+        public int? TotalCount { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ListDocumentsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ListNamespaceAliasesResponse"/> and sets the default values.
         /// </summary>
-        public ListDocumentsResponse()
+        public ListNamespaceAliasesResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ListDocumentsResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ListNamespaceAliasesResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.ListDocumentsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.ListNamespaceAliasesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ListDocumentsResponse();
+            return new global::Soenneker.Pinecone.OpenApiClient.Models.ListNamespaceAliasesResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,10 +57,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord>(global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "namespace", n => { Namespace = n.GetStringValue(); } },
+                { "namespace_aliases", n => { NamespaceAliases = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription>(global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Pagination>(global::Soenneker.Pinecone.OpenApiClient.Models.Pagination.CreateFromDiscriminatorValue); } },
-                { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentListUsage>(global::Soenneker.Pinecone.OpenApiClient.Models.DocumentListUsage.CreateFromDiscriminatorValue); } },
+                { "total_count", n => { TotalCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -85,10 +69,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord>("documents", Documents);
-            writer.WriteStringValue("namespace", Namespace);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription>("namespace_aliases", NamespaceAliases);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Pagination>("pagination", Pagination);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentListUsage>("usage", Usage);
+            writer.WriteIntValue("total_count", TotalCount);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The namespace of the vectors.</summary>
+        /// <summary>The namespace that served the list: the request&apos;s namespace, or the alias&apos;s target namespace when the request named a namespace alias.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Namespace { get; set; }
