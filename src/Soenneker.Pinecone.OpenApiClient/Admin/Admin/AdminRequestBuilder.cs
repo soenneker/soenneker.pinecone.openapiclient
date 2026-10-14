@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys;
+using Soenneker.Pinecone.OpenApiClient.Admin.Admin.CostUsageExports;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Organizations;
 using Soenneker.Pinecone.OpenApiClient.Admin.Admin.Projects;
@@ -25,6 +26,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin
         public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.ApiKeysRequestBuilder ApiKeys
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.ApiKeys.ApiKeysRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The costUsageExports property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.CostUsageExports.CostUsageExportsRequestBuilder CostUsageExports
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.CostUsageExports.CostUsageExportsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The invites property</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Admin.Admin.Invites.InvitesRequestBuilder Invites

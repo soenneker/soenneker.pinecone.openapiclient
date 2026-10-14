@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Specify the integrated inference embedding configuration for the index.Once set the model cannot be changed, but you can later update the embedding configuration for an integrated inference index including field map, read parameters, or write parameters.Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.
+    /// Specify the integrated embedding configuration for the legacy integrated index.Once set the model cannot be changed, but you can later update the embedding configuration of a legacy integrated index, including field map, read parameters, or write parameters.Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateIndexForModelRequestEmbed : IAdditionalDataHolder, IParsable

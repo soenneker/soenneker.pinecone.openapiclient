@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string DeletionProtection { get; set; }
 #endif
-        /// <summary>Specify the integrated inference embedding configuration for the index.Once set the model cannot be changed, but you can later update the embedding configuration for an integrated inference index including field map, read parameters, or write parameters.Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.</summary>
+        /// <summary>Specify the integrated embedding configuration for the legacy integrated index.Once set the model cannot be changed, but you can later update the embedding configuration of a legacy integrated index, including field map, read parameters, or write parameters.Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed? Embed { get; set; }

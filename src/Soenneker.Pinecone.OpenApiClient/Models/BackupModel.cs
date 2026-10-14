@@ -61,7 +61,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public string Region { get; set; }
 #endif
-        /// <summary>The schema of a Pinecone index. The schema defines the typed fields that documents in the index can contain, including vector fields, semantic text fields, and metadata fields.</summary>
+        /// <summary>The schema of a Pinecone index. The schema defines the typed fields that documents in the index can contain, including vector fields, string fields searched by full-text search or by embeddings, and metadata fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.IndexSchema? Schema { get; set; }

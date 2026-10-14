@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Update
         {
         }
         /// <summary>
-        /// Update records by ID or by metadata in a namespace. Updating by ID changes the vector and/or metadata of a single record. Updating by metadata changes metadata across multiple records using a metadata filter.If a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.For guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).
+        /// Update records in a namespace, either by ID or with a metadata filter. By ID, you can change a single record&apos;s vector values, its metadata, or both. A filter updates metadata only, and applies to every record that matches.If a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.For guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UpdateResponse"/></returns>
         /// <param name="body">The request for the `update` operation.</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.Update
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.UpdateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update records by ID or by metadata in a namespace. Updating by ID changes the vector and/or metadata of a single record. Updating by metadata changes metadata across multiple records using a metadata filter.If a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.For guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).
+        /// Update records in a namespace, either by ID or with a metadata filter. By ID, you can change a single record&apos;s vector values, its metadata, or both. A filter updates metadata only, and applies to every record that matches.If a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.For guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request for the `update` operation.</param>

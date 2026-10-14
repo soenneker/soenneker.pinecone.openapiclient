@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A search request for records in a specific namespace.
+    /// A search request for records in a specific namespace, for the legacy Records API&apos;s `search_records` operation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SearchRecordsRequest : IAdditionalDataHolder, IParsable

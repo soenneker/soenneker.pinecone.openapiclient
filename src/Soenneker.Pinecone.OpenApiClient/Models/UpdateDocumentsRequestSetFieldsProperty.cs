@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The fields to set on every document matching `filter`, and the values to set them to. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.
+    /// The fields to set on every document matching `filter`, and the values to set them to. Only metadata fields can be set here; every data field is refused, that is, vector fields, full-text-searchable text and embedded text, not only fields that declare `embed` or `sparse_embed`. Update those per ID with `documents`. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateDocumentsRequestSetFieldsProperty : IAdditionalDataHolder, IParsable

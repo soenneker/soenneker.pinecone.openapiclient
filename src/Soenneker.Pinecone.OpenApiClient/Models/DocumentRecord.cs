@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A document with a unique identifier and field values. Fields named in the index schema are validated against it; any other field is stored as filterable metadata. Every document must carry at least one schema field and every schema field the index marks required; a document with only `_id` and metadata is rejected. Limits: 2 MB per document and per request, 100 KB and 10,000 tokens per full-text-search field value.
+    /// A document with a unique identifier and field values. Fields named in the index schema are validated against it; any other field is stored as filterable metadata. Every document must carry at least one schema field and every schema field the index marks required; a document with only `_id` and metadata is rejected. Limits: 2 MB per document and per request, 100 KB per `string` schema field value (whether or not its text is stored), and 10,000 tokens per full-text-search field value.A `string` field that declares `embed` or `sparse_embed` takes its text as a string, and Pinecone derives its vectors; a caller-supplied vector on such a field is rejected. A field with `embed` is required on every upsert.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DocumentRecord : IAdditionalDataHolder, IParsable

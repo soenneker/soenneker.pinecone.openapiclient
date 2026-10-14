@@ -23,7 +23,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty Filter { get; set; }
 #endif
-        /// <summary>The document fields to return on each match alongside `_id` and `_score`. When omitted or empty, no fields are returned. Pass `[&quot;*&quot;]` to return every field.</summary>
+        /// <summary>The document fields to return on each match alongside `_id` and `_score`. When omitted or empty, no fields are returned. Pass `[&quot;*&quot;]` to return every field. A name the schema doesn&apos;t declare is read as a metadata key, and returns nothing for documents without that key.Naming a field whose schema sets `store_text: false` is rejected with `400`, since its text is not stored; `[&quot;*&quot;]` leaves such fields out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? IncludeFields { get; set; }
@@ -31,13 +31,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> IncludeFields { get; set; }
 #endif
-        /// <summary>The list of scoring methods to use for ranking documents.A single clause of any type is always valid. Several clauses may be combined only when every one of them is `text` or `query_string`; a `dense_vector` or `sparse_vector` clause must appear on its own.</summary>
+        /// <summary>The scoring clauses used to rank documents.One clause of any type is always valid. Several clauses can be combined only when every clause is `text` or `query_string`, and the server combines them into one ranking. A `dense_vector`, `sparse_vector`, `embed`, or `sparse_embed` clause must be the only clause.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy? ScoreBy { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>? ScoreBy { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy ScoreBy { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod> ScoreBy { get; set; }
 #endif
         /// <summary>The number of top-ranked documents to return.</summary>
         public int? TopK { get; set; }
@@ -68,7 +68,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty.CreateFromDiscriminatorValue); } },
                 { "include_fields", n => { IncludeFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "score_by", n => { ScoreBy = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy.CreateFromDiscriminatorValue); } },
+                { "score_by", n => { ScoreBy = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>(global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "top_k", n => { TopK = n.GetIntValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty>("filter", Filter);
             writer.WriteCollectionOfPrimitiveValues<string>("include_fields", IncludeFields);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestScoreBy>("score_by", ScoreBy);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>("score_by", ScoreBy);
             writer.WriteIntValue("top_k", TopK);
             writer.WriteAdditionalData(AdditionalData);
         }

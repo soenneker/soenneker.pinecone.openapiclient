@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// The schema of a Pinecone index. The schema defines the typed fields that documents in the index can contain, including vector fields, semantic text fields, and metadata fields.
+    /// The schema of a Pinecone index. The schema defines the typed fields that documents in the index can contain, including vector fields, string fields searched by full-text search or by embeddings, and metadata fields.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IndexSchema : IAdditionalDataHolder, IParsable

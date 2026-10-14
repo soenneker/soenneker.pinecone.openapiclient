@@ -17,6 +17,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of documents that matched `filter` when the update was accepted. Only returned for a filtered update; a per-ID update reports no count. The patch is applied asynchronously, so this is a point-in-time count rather than a guarantee of the number of documents ultimately patched.</summary>
         public int? MatchedRecords { get; set; }
+        /// <summary>Usage information for the `upsert_documents` and `update_documents` operations.Present only when the request embedded text, that is, when it wrote text to a field whose schema declares `embed` or `sparse_embed`. A request that embedded nothing returns no `usage`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DocumentWriteUsage? Usage { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DocumentWriteUsage Usage { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsResponse"/> and sets the default values.
         /// </summary>
@@ -43,6 +51,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "matched_records", n => { MatchedRecords = n.GetIntValue(); } },
+                { "usage", n => { Usage = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentWriteUsage>(global::Soenneker.Pinecone.OpenApiClient.Models.DocumentWriteUsage.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -53,6 +62,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("matched_records", MatchedRecords);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentWriteUsage>("usage", Usage);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

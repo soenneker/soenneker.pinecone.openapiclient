@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Ids { get; set; }
 #endif
-        /// <summary>The document fields to return on each document. When omitted or empty, all fields are returned; `[&quot;*&quot;]` also returns every field.</summary>
+        /// <summary>The document fields to return on each document. When omitted or empty, all fields are returned; `[&quot;*&quot;]` also returns every field. A name the schema doesn&apos;t declare is read as a metadata key, and returns nothing for documents without that key.Naming a field whose schema sets `store_text: false` is rejected with `400`, since its text is not stored; omitting `include_fields` or passing `[&quot;*&quot;]` leaves such fields out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? IncludeFields { get; set; }

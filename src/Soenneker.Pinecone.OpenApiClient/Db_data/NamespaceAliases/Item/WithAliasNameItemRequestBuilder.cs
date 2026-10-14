@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases.Item
         {
         }
         /// <summary>
-        /// Remove an alias. The target namespace and its data are unchanged. Readsthat still use the alias name are treated as reads of a nonexistentnamespace (empty results, not an error), so migrate readers off the aliasfirst.The call returns once no reader still resolves the alias, which takes abouta second; size client timeouts accordingly. A retried delete that returns404 means the alias is already gone and carries the same guarantee.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
+        /// Remove an alias. The target namespace and its data are unchanged. Reads that still use the alias name are treated as reads of a nonexistent namespace (empty results, not an error), so migrate readers off the alias first.The call returns once no reader still resolves the alias, which takes about a second; size client timeouts accordingly. A retried delete that returns 404 means the alias is already gone and carries the same guarantee.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607DeleteNamespaceAlias200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -88,7 +88,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update the namespace an alias resolves to. The change is atomic: the targetis validated in the same transaction that rewrites the alias, and onfailure the alias keeps its current target.The call returns once the new target is live on every reader, which takesabout a second; size client timeouts accordingly. Reads through the aliasthat start after the response are served from the new namespace, so nopolling is needed. Repointing is safe to retry; `updated_at` advances onevery attempt.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
+        /// Update the namespace an alias resolves to. The change is atomic: the target is validated in the same transaction that rewrites the alias, and on failure the alias keeps its current target.The call returns once the new target is live on every reader, which takes about a second; size client timeouts accordingly. Reads through the alias that start after the response are served from the new namespace, so no polling is needed. Repointing is safe to retry; `updated_at` advances on every attempt.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription"/></returns>
         /// <param name="body">A request for repointing a namespace alias at a different namespace.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove an alias. The target namespace and its data are unchanged. Readsthat still use the alias name are treated as reads of a nonexistentnamespace (empty results, not an error), so migrate readers off the aliasfirst.The call returns once no reader still resolves the alias, which takes abouta second; size client timeouts accordingly. A retried delete that returns404 means the alias is already gone and carries the same guarantee.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
+        /// Remove an alias. The target namespace and its data are unchanged. Reads that still use the alias name are treated as reads of a nonexistent namespace (empty results, not an error), so migrate readers off the alias first.The call returns once no reader still resolves the alias, which takes about a second; size client timeouts accordingly. A retried delete that returns 404 means the alias is already gone and carries the same guarantee.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -155,7 +155,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update the namespace an alias resolves to. The change is atomic: the targetis validated in the same transaction that rewrites the alias, and onfailure the alias keeps its current target.The call returns once the new target is live on every reader, which takesabout a second; size client timeouts accordingly. Reads through the aliasthat start after the response are served from the new namespace, so nopolling is needed. Repointing is safe to retry; `updated_at` advances onevery attempt.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
+        /// Update the namespace an alias resolves to. The change is atomic: the target is validated in the same transaction that rewrites the alias, and on failure the alias keeps its current target.The call returns once the new target is live on every reader, which takes about a second; size client timeouts accordingly. Reads through the alias that start after the response are served from the new namespace, so no polling is needed. Repointing is safe to retry; `updated_at` advances on every attempt.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">A request for repointing a namespace alias at a different namespace.</param>

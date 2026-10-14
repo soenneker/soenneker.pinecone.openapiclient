@@ -72,7 +72,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ListNamespaceAliasesResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ListNamespaceAliasesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an alias that resolves to an existing namespace in the index. Readsthrough the alias are served from its target namespace; writes to an aliasname are rejected. Many aliases can resolve to the same namespace.The call returns once the alias resolves on every reader, which takes abouta second; size client timeouts accordingly. A 409 whose`details.metadata.target_namespace` matches the requested target carriesthe same guarantee: your earlier call committed and the alias is live.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
+        /// Create an alias that resolves to an existing namespace in the index. Reads through the alias are served from its target namespace; writes to an alias name are rejected. Many aliases can resolve to the same namespace.The call returns once the alias resolves on every reader, which takes about a second; size client timeouts accordingly. A 409 whose `details.metadata.target_namespace` matches the requested target carries the same guarantee: your earlier call committed and the alias is live.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceAliasDescription"/></returns>
         /// <param name="body">A request for creating a namespace alias.</param>
@@ -120,7 +120,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.NamespaceAliases
             return requestInfo;
         }
         /// <summary>
-        /// Create an alias that resolves to an existing namespace in the index. Readsthrough the alias are served from its target namespace; writes to an aliasname are rejected. Many aliases can resolve to the same namespace.The call returns once the alias resolves on every reader, which takes abouta second; size client timeouts accordingly. A 409 whose`details.metadata.target_namespace` matches the requested target carriesthe same guarantee: your earlier call committed and the alias is live.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
+        /// Create an alias that resolves to an existing namespace in the index. Reads through the alias are served from its target namespace; writes to an alias name are rejected. Many aliases can resolve to the same namespace.The call returns once the alias resolves on every reader, which takes about a second; size client timeouts accordingly. A 409 whose `details.metadata.target_namespace` matches the requested target carries the same guarantee: your earlier call committed and the alias is live.For guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">A request for creating a namespace alias.</param>

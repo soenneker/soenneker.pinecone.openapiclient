@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item
         {
         }
         /// <summary>
-        /// Get a description of a model hosted by Pinecone. You can use hosted models as an integrated part of Pinecone operations or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).
+        /// Get a description of a model hosted by Pinecone. You can use hosted models for integrated inference in Pinecone operations, such as integrated-embedding fields in a document index, or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfo"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Inference.ModelsRequests.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfo>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfo.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get a description of a model hosted by Pinecone. You can use hosted models as an integrated part of Pinecone operations or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).
+        /// Get a description of a model hosted by Pinecone. You can use hosted models for integrated inference in Pinecone operations, such as integrated-embedding fields in a document index, or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

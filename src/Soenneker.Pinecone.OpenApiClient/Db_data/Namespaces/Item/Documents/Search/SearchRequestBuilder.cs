@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.Documents.Sea
         {
         }
         /// <summary>
-        /// Search for documents in a namespace using one or more scoring methods (dense vector, sparse vector, text, or query string similarity).Returns the top-k most similar documents along with their scores and requested fields.
+        /// Search for documents in a namespace using one or more scoring methods (dense vector, sparse vector, text, or query string similarity, or similarity to query text that Pinecone embeds with a field&apos;s own model).Returns the top-k most similar documents along with their scores and requested fields.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsResponse"/></returns>
         /// <param name="body">The request for the `search_documents` operation.</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.Documents.Sea
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Search for documents in a namespace using one or more scoring methods (dense vector, sparse vector, text, or query string similarity).Returns the top-k most similar documents along with their scores and requested fields.
+        /// Search for documents in a namespace using one or more scoring methods (dense vector, sparse vector, text, or query string similarity, or similarity to query text that Pinecone embeds with a field&apos;s own model).Returns the top-k most similar documents along with their scores and requested fields.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request for the `search_documents` operation.</param>

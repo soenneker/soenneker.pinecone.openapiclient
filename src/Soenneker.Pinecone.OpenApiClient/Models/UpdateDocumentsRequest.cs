@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The list of partial document updates to apply. Mutually exclusive with `filter`, and with a non-empty `set_fields` or `remove_fields`.</summary>
+        /// <summary>The list of partial document updates to apply. At most 1000 updates, or 96 on an index whose schema declares `embed` or `sparse_embed`. Mutually exclusive with `filter`, and with a non-empty `set_fields` or `remove_fields`.`maxItems` states the general limit. A client that batches updates must size batches at 96 when any field of the index schema declares `embed` or `sparse_embed`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord>? Documents { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty Filter { get; set; }
 #endif
-        /// <summary>The names of the fields to remove from every document matching `filter`. When non-empty, only valid together with `filter`; an empty list asks for no change and is ignored.</summary>
+        /// <summary>The names of the fields to remove from every document matching `filter`. Only metadata fields can be removed here; data fields are refused, as in `set_fields`. When non-empty, only valid together with `filter`; an empty list asks for no change and is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? RemoveFields { get; set; }
@@ -39,7 +39,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> RemoveFields { get; set; }
 #endif
-        /// <summary>The fields to set on every document matching `filter`, and the values to set them to. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.</summary>
+        /// <summary>The fields to set on every document matching `filter`, and the values to set them to. Only metadata fields can be set here; every data field is refused, that is, vector fields, full-text-searchable text and embedded text, not only fields that declare `embed` or `sparse_embed`. Update those per ID with `documents`. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty? SetFields { get; set; }

@@ -4239,7 +4239,7 @@
             "description": "Filter by principal type. Required when `principal_id` is set.",
             "schema": {
               "type": "string",
-              "description": "The kind of principal that receives permissions from a role binding.\nPossible values: `user`, `service_account`, `api_key`, `invite`.",
+              "description": "The kind of principal that receives permissions from a role binding.\n\nPossible values: `user`, `service_account`, `api_key`, `invite`.",
               "example": "service_account",
               "x-enum": [
                 "user",
@@ -4263,7 +4263,7 @@
             "description": "Filter by resource type. Required when `resource_id` is set.",
             "schema": {
               "type": "string",
-              "description": "The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.",
+              "description": "The kind of resource scope a role binding applies to.\n\nPossible values: `organization`, `project`.",
               "example": "project",
               "x-enum": [
                 "organization",
@@ -5022,6 +5022,867 @@
                         "message": "Internal server error"
                       },
                       "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
+      }
+    },
+    "/admin_2026-07/admin/cost-usage-exports": {
+      "get": {
+        "tags": [
+          "Cost Usage Exports"
+        ],
+        "summary": "List cost usage exports",
+        "description": "List the cost usage exports belonging to your organization, newest first.\n\nList items never carry a download link: `download_url` and `download_url_expires_at` are always `null` here. Request a single export to generate one.\n",
+        "operationId": "admin_2026_07_list_cost_usage_exports",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of results to return per page. When omitted, the server defaults to 100. Out-of-range values return `400 OUT_OF_RANGE`.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "paginationToken",
+            "in": "query",
+            "description": "Cursor from `pagination.next` of a prior response. Must be reused with the same query context (path parameters, filters, and `limit`).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by status. Supply a comma-separated list to match any of several statuses: `status=Pending,InProgress` returns the export that is running now, if there is one.",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Status of a cost usage export. `Pending` and `InProgress` mean the job is still running; `Completed` and `Failed` are terminal and never change afterwards.\nPossible values: `Pending`, `InProgress`, `Completed`, or `Failed`.",
+                "example": "Completed",
+                "x-enum": [
+                  "Pending",
+                  "InProgress",
+                  "Completed",
+                  "Failed"
+                ]
+              }
+            },
+            "example": [
+              "Pending",
+              "InProgress"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paginated list of cost usage exports. An export outlives its file, so most items are `Completed` with `file_expired` set to `true`; check that field, not `status`, to find the exports that can still be downloaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostUsageExportList"
+                },
+                "examples": {
+                  "recent-exports": {
+                    "summary": "Recent exports, newest first",
+                    "value": {
+                      "data": [
+                        {
+                          "created_at": "2026-09-02T14:31:07Z",
+                          "data_available_through": "2026-08-31",
+                          "download_url": null,
+                          "download_url_expires_at": null,
+                          "error": null,
+                          "file_expired": false,
+                          "file_expires_at": "2026-09-04T14:35:52Z",
+                          "finished_at": "2026-09-02T14:35:52Z",
+                          "format": "zip",
+                          "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                          "period_end": "2026-09-01",
+                          "period_start": "2026-08-01",
+                          "row_count": 48213,
+                          "size_bytes": 4183902,
+                          "started_at": "2026-09-02T14:31:19Z",
+                          "status": "Completed",
+                          "updated_at": "2026-09-02T14:36:11Z"
+                        },
+                        {
+                          "created_at": "2026-08-20T09:10:22Z",
+                          "data_available_through": "2026-08-18",
+                          "download_url": null,
+                          "download_url_expires_at": null,
+                          "error": null,
+                          "file_expired": true,
+                          "file_expires_at": "2026-08-22T09:14:38Z",
+                          "finished_at": "2026-08-20T09:14:38Z",
+                          "format": "zip",
+                          "id": "4c7b0d92-1e5a-4f83-9c21-7ab6d4e08f31",
+                          "period_end": "2026-08-01",
+                          "period_start": "2026-07-01",
+                          "row_count": 46102,
+                          "size_bytes": 3998214,
+                          "started_at": "2026-08-20T09:10:31Z",
+                          "status": "Completed",
+                          "updated_at": "2026-08-22T09:14:38Z"
+                        }
+                      ],
+                      "pagination": {
+                        "next": "eyJsYXN0X2lkIjoiNGM3YjBkOTIifQ=="
+                      }
+                    }
+                  },
+                  "running-export": {
+                    "summary": "Filtered to the export running now",
+                    "value": {
+                      "data": [
+                        {
+                          "created_at": "2026-09-02T14:31:07Z",
+                          "data_available_through": null,
+                          "download_url": null,
+                          "download_url_expires_at": null,
+                          "error": null,
+                          "file_expired": false,
+                          "file_expires_at": null,
+                          "finished_at": null,
+                          "format": "zip",
+                          "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                          "period_end": "2026-09-01",
+                          "period_start": "2026-08-01",
+                          "row_count": null,
+                          "size_bytes": null,
+                          "started_at": "2026-09-02T14:31:19Z",
+                          "status": "InProgress",
+                          "updated_at": "2026-09-02T14:31:19Z"
+                        }
+                      ],
+                      "pagination": null
+                    }
+                  },
+                  "no-exports": {
+                    "summary": "No exports yet",
+                    "value": {
+                      "data": [ ],
+                      "pagination": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The `status` filter, `limit`, or `paginationToken` was not usable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unknown-status": {
+                    "summary": "Status filter is not a known status",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Unknown status 'Running'. Valid values are Pending, InProgress, Completed, Failed. Omit the parameter to list every status."
+                      },
+                      "status": 400
+                    }
+                  },
+                  "stale-pagination-token": {
+                    "summary": "Pagination token is invalid or expired",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Invalid pagination token"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. Either the service account lacks the permission, or the organization's plan does not include this feature.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "missing-permission": {
+                    "summary": "Service account lacks the permission",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "This service account cannot read cost usage exports. Grant it the OrgOwner or OrgBillingAdmin role."
+                      },
+                      "status": 403
+                    }
+                  },
+                  "plan-not-entitled": {
+                    "summary": "Plan does not include cost usage exports",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Cost usage exports are available to organizations on the Enterprise plan."
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Cost Usage Exports"
+        ],
+        "summary": "Create a cost usage export",
+        "description": "Start an asynchronous export of an organization's cost usage data. Only one export can run at a time and only a limited number of exports can be triggered per hour. The generated file is kept for two days.\n",
+        "operationId": "admin_2026_07_create_cost_usage_export",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The window of usage to cover. Omit the body to export the trailing 30 complete days.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCostUsageExportRequest"
+              },
+              "examples": {
+                "default-window": {
+                  "summary": "Trailing 30 complete days",
+                  "value": { }
+                },
+                "explicit-window": {
+                  "summary": "A single calendar month",
+                  "value": {
+                    "period_end": "2026-09-01",
+                    "period_start": "2026-08-01"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "The export was accepted and durably recorded. It has not run yet.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostUsageExport"
+                },
+                "examples": {
+                  "accepted": {
+                    "summary": "Export accepted",
+                    "value": {
+                      "created_at": "2026-09-02T14:31:07Z",
+                      "data_available_through": null,
+                      "download_url": null,
+                      "download_url_expires_at": null,
+                      "error": null,
+                      "file_expired": false,
+                      "file_expires_at": null,
+                      "finished_at": null,
+                      "format": "zip",
+                      "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                      "period_end": "2026-09-01",
+                      "period_start": "2026-08-01",
+                      "row_count": null,
+                      "size_bytes": null,
+                      "started_at": null,
+                      "status": "Pending",
+                      "updated_at": "2026-09-02T14:31:07Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. The body could not be read, or the window was malformed, half-specified, or outside the range that can be exported.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unreadable-body": {
+                    "summary": "Body is not valid JSON for this endpoint",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "Supply period_start and period_end as YYYY-MM-DD dates, or omit the body to export the trailing 30 days."
+                      },
+                      "status": 400
+                    }
+                  },
+                  "half-specified-window": {
+                    "summary": "Only one bound supplied",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "period_start was provided without period_end. Provide both dates, or omit both to export the trailing 30 days."
+                      },
+                      "status": 400
+                    }
+                  },
+                  "inverted-window": {
+                    "summary": "Start date is not earlier than the end date",
+                    "value": {
+                      "error": {
+                        "code": "INVALID_ARGUMENT",
+                        "message": "period_start 2026-09-01 must be earlier than period_end 2026-08-01. period_end is exclusive."
+                      },
+                      "status": 400
+                    }
+                  },
+                  "window-too-old": {
+                    "summary": "Start date beyond the lookback limit",
+                    "value": {
+                      "error": {
+                        "code": "OUT_OF_RANGE",
+                        "message": "period_start 2025-01-01 is earlier than the 365-day lookback limit. The earliest available date is 2025-09-02."
+                      },
+                      "status": 400
+                    }
+                  },
+                  "window-in-the-future": {
+                    "summary": "End date later than today",
+                    "value": {
+                      "error": {
+                        "code": "OUT_OF_RANGE",
+                        "message": "period_end 2027-01-01 is in the future. period_end is exclusive, so the latest value it can take is today, 2026-10-01."
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. Either the service account lacks the permission, or the organization's plan does not include this feature. Both carry `PERMISSION_DENIED`, so the message is what tells them apart.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "missing-permission": {
+                    "summary": "Service account lacks the permission",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "This service account cannot create cost usage exports. Grant it the OrgOwner or OrgBillingAdmin role."
+                      },
+                      "status": 403
+                    }
+                  },
+                  "plan-not-entitled": {
+                    "summary": "Plan does not include cost usage exports",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Cost usage exports are available to organizations on the Enterprise plan."
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict. The organization already has an export running. Poll that one instead of starting another.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "export-already-running": {
+                    "summary": "An export is already running",
+                    "value": {
+                      "error": {
+                        "code": "ALREADY_EXISTS",
+                        "message": "Export 9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8 is already running for this organization."
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded. The organization has started the maximum number of exports for the trailing hour.",
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds to wait before creating another export.",
+                "style": "simple",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 3600
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "rate-limited": {
+                    "summary": "Hourly creation limit reached",
+                    "value": {
+                      "error": {
+                        "code": "RESOURCE_EXHAUSTED",
+                        "message": "Export creation is limited to 5 per hour per organization. Retry after 3600 seconds."
+                      },
+                      "status": 429
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": [ ]
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.pinecone.io",
+            "description": "Production API endpoints"
+          }
+        ]
+      }
+    },
+    "/admin_2026-07/admin/cost-usage-exports/{cost_usage_export_id}": {
+      "get": {
+        "tags": [
+          "Cost Usage Exports"
+        ],
+        "summary": "Get cost usage export details",
+        "description": "Get the state of a cost usage export, and a link to download its file once the export has completed. A fresh signed link, valid for one hour, is generated on each read.\n",
+        "operationId": "admin_2026_07_fetch_cost_usage_export",
+        "parameters": [
+          {
+            "name": "X-Pinecone-Api-Version",
+            "in": "header",
+            "description": "Required date-based version header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2026-07"
+            }
+          },
+          {
+            "name": "cost_usage_export_id",
+            "in": "path",
+            "description": "Cost usage export ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The state of the export, and a download link once it has completed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostUsageExport"
+                },
+                "examples": {
+                  "in-progress": {
+                    "summary": "Export is running",
+                    "value": {
+                      "created_at": "2026-09-02T14:31:07Z",
+                      "data_available_through": null,
+                      "download_url": null,
+                      "download_url_expires_at": null,
+                      "error": null,
+                      "file_expired": false,
+                      "file_expires_at": null,
+                      "finished_at": null,
+                      "format": "zip",
+                      "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                      "period_end": "2026-09-01",
+                      "period_start": "2026-08-01",
+                      "row_count": null,
+                      "size_bytes": null,
+                      "started_at": "2026-09-02T14:31:19Z",
+                      "status": "InProgress",
+                      "updated_at": "2026-09-02T14:31:19Z"
+                    }
+                  },
+                  "completed": {
+                    "summary": "Export is ready to download",
+                    "value": {
+                      "created_at": "2026-09-02T14:31:07Z",
+                      "data_available_through": "2026-08-31",
+                      "download_url": "https://storage.googleapis.com/example-bucket/cost_usage_exports/export.zip?X-Goog-Expires=3600&X-Goog-Signature=abc123",
+                      "download_url_expires_at": "2026-09-02T15:36:11Z",
+                      "error": null,
+                      "file_expired": false,
+                      "file_expires_at": "2026-09-04T14:35:52Z",
+                      "finished_at": "2026-09-02T14:35:52Z",
+                      "format": "zip",
+                      "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                      "period_end": "2026-09-01",
+                      "period_start": "2026-08-01",
+                      "row_count": 48213,
+                      "size_bytes": 4183902,
+                      "started_at": "2026-09-02T14:31:19Z",
+                      "status": "Completed",
+                      "updated_at": "2026-09-02T14:36:11Z"
+                    }
+                  },
+                  "expired": {
+                    "summary": "Export succeeded, but its file has been removed",
+                    "value": {
+                      "created_at": "2026-08-20T14:31:07Z",
+                      "data_available_through": "2026-08-31",
+                      "download_url": null,
+                      "download_url_expires_at": null,
+                      "error": null,
+                      "file_expired": true,
+                      "file_expires_at": "2026-08-22T14:35:52Z",
+                      "finished_at": "2026-08-20T14:35:52Z",
+                      "format": "zip",
+                      "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                      "period_end": "2026-09-01",
+                      "period_start": "2026-08-01",
+                      "row_count": 48213,
+                      "size_bytes": 4183902,
+                      "started_at": "2026-08-20T14:31:19Z",
+                      "status": "Completed",
+                      "updated_at": "2026-08-22T14:35:52Z"
+                    }
+                  },
+                  "failed": {
+                    "summary": "Export failed",
+                    "value": {
+                      "created_at": "2026-09-02T14:31:07Z",
+                      "data_available_through": null,
+                      "download_url": null,
+                      "download_url_expires_at": null,
+                      "error": {
+                        "code": "DEADLINE_EXCEEDED",
+                        "message": "The export did not finish within the time budget. Create a new export, or request a shorter window."
+                      },
+                      "file_expired": false,
+                      "file_expires_at": null,
+                      "finished_at": "2026-09-02T14:58:03Z",
+                      "format": "zip",
+                      "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                      "period_end": "2026-09-01",
+                      "period_start": "2026-08-01",
+                      "row_count": null,
+                      "size_bytes": null,
+                      "started_at": "2026-09-02T14:31:19Z",
+                      "status": "Failed",
+                      "updated_at": "2026-09-02T14:58:03Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Possible causes: Invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "Invalid API key."
+                      },
+                      "status": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. Either the service account lacks the permission, or the organization's plan does not include this feature.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "missing-permission": {
+                    "summary": "Service account lacks the permission",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "This service account cannot read cost usage exports. Grant it the OrgOwner or OrgBillingAdmin role."
+                      },
+                      "status": 403
+                    }
+                  },
+                  "plan-not-entitled": {
+                    "summary": "Plan does not include cost usage exports",
+                    "value": {
+                      "error": {
+                        "code": "PERMISSION_DENIED",
+                        "message": "Cost usage exports are available to organizations on the Enterprise plan."
+                      },
+                      "status": 403
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. The identifier does not name an export belonging to this organization. The same response is returned whether the export is unknown, malformed, or owned by another organization.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unknown-export": {
+                    "summary": "No such export",
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "Cost Usage Export 9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8 not found"
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Unexpected error on request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal-server-error": {
+                    "summary": "Internal server error",
+                    "value": {
+                      "error": {
+                        "code": "UNKNOWN",
+                        "message": "Internal server error"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The download link could not be signed. The export itself is unaffected, so retry the read rather than creating another export.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "signing-unavailable": {
+                    "summary": "Signing the download link failed",
+                    "value": {
+                      "error": {
+                        "code": "SERVICE_UNAVAILABLE",
+                        "message": "The download link could not be generated. Retry the request; if it keeps failing, contact support."
+                      },
+                      "status": 503
                     }
                   }
                 }
@@ -6412,7 +7273,7 @@
           "Manage Assistants"
         ],
         "summary": "List operations",
-        "description": "List all operations for an assistant. Returns operations that are in progress, as well as recently completed or failed operations.\nBoth successful and failed operations are retained for 30 days after completion.\nUse the `operation_type` and `status` query parameters to filter results.\n",
+        "description": "List all operations for an assistant. Returns operations that are in progress, as well as recently completed or failed operations.\n\nBoth successful and failed operations are retained for 30 days after completion.\n\nUse the `operation_type` and `status` query parameters to filter results.",
         "operationId": "assistant_data_2026_07_list_operations",
         "parameters": [
           {
@@ -7420,7 +8281,7 @@
                           },
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -7456,7 +8317,7 @@
                           },
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -7531,7 +8392,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index",
-        "description": "Create a Pinecone index. Define the schema for your index — dense vector, sparse vector, and full-text search fields — and, optionally, the deployment infrastructure (managed serverless or BYOC). To create an index with an integrated embedding model, use [Create an index with integrated embedding](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_for_model).\n\n**The index schema cannot be modified after creation.** Field types, dimensions, metrics, and text-analysis settings are permanent. Choose your schema carefully before creating an index.\n\nTo create an index from a backup, use [Create index from backup](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_from_backup).\n\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).",
+        "description": "Create a Pinecone index. Define the schema for your index — dense vector, sparse vector, and full-text search fields, and string fields with integrated embedding — and, optionally, the deployment infrastructure (managed serverless or BYOC).\n\nThe index is a document index, read and written through the Documents API. To enable integrated embedding on a field, declare a `string` field with `embed` (dense) and/or `sparse_embed` (sparse): Pinecone embeds the field's text when documents are written and the query text when a search scores the field. BYOC indexes cannot declare `embed` or `sparse_embed`.\n\n**The index schema cannot be modified after creation.** Field types, dimensions, metrics, embedding models, and text-analysis settings are permanent. Choose your schema carefully before creating an index.\n\nTo create an index from a backup, use [Create index from backup](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_from_backup).\n\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index).\n\n[Create a legacy integrated index](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index_for_model) creates legacy integrated indexes, which require the legacy Records API.",
         "operationId": "db_control_2026_07_create_index",
         "parameters": [
           {
@@ -7553,11 +8414,17 @@
               },
               "examples": {
                 "default-deployment": {
-                  "summary": "Dense vector index using the default deployment",
+                  "summary": "Text field with full-text search and sparse embedding, plus your own dense vector",
+                  "description": "Pinecone indexes `chunk_text` for full-text search and embeds its text into a learned-sparse vector with the default sparse model. `your_vector` holds the dense vectors you supply with each document. The index uses the default deployment.",
                   "value": {
                     "schema": {
                       "fields": {
-                        "embedding": {
+                        "chunk_text": {
+                          "full_text_search": { },
+                          "sparse_embed": { },
+                          "type": "string"
+                        },
+                        "your_vector": {
                           "dimension": 1536,
                           "metric": "cosine",
                           "type": "dense_vector"
@@ -7593,7 +8460,7 @@
                     "name": "movie-recommendations",
                     "schema": {
                       "fields": {
-                        "embedding": {
+                        "your_vector": {
                           "dimension": 1536,
                           "metric": "cosine",
                           "type": "dense_vector"
@@ -7613,7 +8480,7 @@
                     "name": "sparse-index",
                     "schema": {
                       "fields": {
-                        "sparse_embedding": {
+                        "your_sparse_vector": {
                           "type": "sparse_vector"
                         }
                       }
@@ -7631,13 +8498,13 @@
                     "name": "hybrid-index",
                     "schema": {
                       "fields": {
-                        "embedding": {
+                        "your_sparse_vector": {
+                          "type": "sparse_vector"
+                        },
+                        "your_vector": {
                           "dimension": 768,
                           "metric": "dotproduct",
                           "type": "dense_vector"
-                        },
-                        "sparse_embedding": {
-                          "type": "sparse_vector"
                         }
                       }
                     }
@@ -7659,6 +8526,46 @@
                             "language": "en",
                             "stemming": true,
                             "stop_words": true
+                          },
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "embed-serverless": {
+                  "summary": "Serverless index that embeds a text field with the default dense and sparse models",
+                  "value": {
+                    "deployment": {
+                      "cloud": "aws",
+                      "deployment_type": "managed",
+                      "region": "us-east-1"
+                    },
+                    "name": "embed-index",
+                    "schema": {
+                      "fields": {
+                        "body": {
+                          "embed": { },
+                          "full_text_search": {
+                            "language": "en"
+                          },
+                          "sparse_embed": { },
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "embed-model-dimension": {
+                  "summary": "Serverless index that embeds a text field with a chosen model and dimension",
+                  "value": {
+                    "name": "embed-512-index",
+                    "schema": {
+                      "fields": {
+                        "body": {
+                          "embed": {
+                            "dimension": 512,
+                            "model": "llama-text-embed-v2"
                           },
                           "type": "string"
                         }
@@ -7688,7 +8595,7 @@
                     },
                     "schema": {
                       "fields": {
-                        "embedding": {
+                        "your_vector": {
                           "dimension": 1536,
                           "metric": "cosine",
                           "type": "dense_vector"
@@ -7856,22 +8763,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -7971,7 +8876,7 @@
                       },
                       "schema": {
                         "fields": {
-                          "embedding": {
+                          "your_vector": {
                             "dimension": 1536,
                             "metric": "cosine",
                             "type": "dense_vector"
@@ -8009,12 +8914,14 @@
                               "stemming": true,
                               "stop_words": true
                             },
+                            "store_text": true,
                             "type": "string"
                           },
                           "title": {
                             "full_text_search": {
                               "language": "en"
                             },
+                            "store_text": true,
                             "type": "string"
                           }
                         }
@@ -8468,22 +9375,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -8604,7 +9509,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -8631,7 +9536,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -8668,7 +9573,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -8695,7 +9600,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -8722,7 +9627,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -8992,22 +9897,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -9446,22 +10349,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -9508,8 +10409,8 @@
         "tags": [
           "Manage Indexes"
         ],
-        "summary": "Create an index with integrated embedding",
-        "description": "Create an index with integrated embedding.\n\nWith this type of index, you provide source text, and Pinecone uses a [hosted embedding model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to convert the text automatically during [upsert](https://docs.pinecone.io/reference/api/2026-07/data-plane/upsert_records) and [search](https://docs.pinecone.io/reference/api/2026-07/data-plane/search_records).\n\nThe response is this version's index model, with the embedding configuration surfaced as a `semantic_text` field in the index `schema`, named after the `field_map` text entry. Read and write the index through the records API.\n\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index#integrated-embedding).",
+        "summary": "Create a legacy integrated index",
+        "description": "Create a legacy integrated index. Legacy integrated indexes created via create-for-model require the legacy Records API.\n\nFor new work, create a document index with [Create an index](https://docs.pinecone.io/reference/api/2026-07/control-plane/create_index), declaring `embed` or `sparse_embed` on a `string` field to enable integrated embedding on it, and read and write the index through the Documents API. Document indexes support integrated embedding alongside full-text search on the same field, and scoring with `score_by`.\n\nWith this type of index, you provide source text, and Pinecone uses a [hosted embedding model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) to convert the text automatically during [upsert](https://docs.pinecone.io/reference/api/2026-07/data-plane/upsert_records) and [search](https://docs.pinecone.io/reference/api/2026-07/data-plane/search_records).\n\nThe response is this version's index model, with the embedding configuration surfaced as a `semantic_text` field in the index `schema`, named after the `field_map` text entry. Read and write the index through the legacy Records API.\n\nFor guidance and examples, see [Create an index](https://docs.pinecone.io/guides/index-data/create-an-index#integrated-embedding).",
         "operationId": "db_control_2026_07_create_index_for_model",
         "parameters": [
           {
@@ -9683,22 +10584,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -9801,7 +10700,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -9832,12 +10731,14 @@
                                 "full_text_search": {
                                   "language": "en"
                                 },
+                                "store_text": true,
                                 "type": "string"
                               },
                               "title": {
                                 "full_text_search": {
                                   "language": "en"
                                 },
+                                "store_text": true,
                                 "type": "string"
                               }
                             }
@@ -10000,7 +10901,7 @@
                       "region": "us-east-1",
                       "schema": {
                         "fields": {
-                          "embedding": {
+                          "your_vector": {
                             "dimension": 1536,
                             "metric": "cosine",
                             "type": "dense_vector"
@@ -10239,7 +11140,7 @@
           "Manage Indexes"
         ],
         "summary": "Create an index from a backup",
-        "description": "Create an index from a backup.\n\nThe restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its integrated embedding configuration, and the request cannot override it. A backup that carries no `schema` restores an index whose fields are derived from the source index's dimension, metric, and vector type, and reported under the reserved `_values` / `_sparse_values` names.\n\nFor serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.",
+        "description": "Create an index from a backup.\n\nThe restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its embedding configuration (`embed` / `sparse_embed` fields, or the `semantic_text` field of a legacy integrated index created via create-for-model), and the request cannot override it. A backup that carries no `schema` restores an index whose fields are derived from the source index's dimension, metric, and vector type, and reported under the reserved `_values` / `_sparse_values` names.\n\nFor serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.",
         "operationId": "db_control_2026_07_create_index_from_backup_operation",
         "parameters": [
           {
@@ -10440,22 +11341,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -10943,22 +11842,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -11070,7 +11967,7 @@
                           "region": "us-east-1",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -11098,7 +11995,7 @@
                           "scheduled_execution_at": "2026-04-04T06:00:00+00:00",
                           "schema": {
                             "fields": {
-                              "embedding": {
+                              "your_vector": {
                                 "dimension": 1536,
                                 "metric": "cosine",
                                 "type": "dense_vector"
@@ -11827,22 +12724,20 @@
             }
           },
           "422": {
-            "description": "Unprocessable entity. The request body could not be deserialized.",
+            "description": "Unprocessable entity. The request body is valid JSON but could not be deserialized into the request type, for example because it has an unknown key, a missing required key, or a value of the wrong type. The body is a plain-text message naming the problem and where it occurred, not an `ErrorResponse`.",
             "content": {
-              "application/json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/db_control_2026_07_ErrorResponse"
+                  "$ref": "#/components/schemas/UnprocessableEntityMessage"
                 },
                 "examples": {
                   "missing-field": {
-                    "summary": "Unprocessable entity",
-                    "value": {
-                      "error": {
-                        "code": "UNPROCESSABLE_ENTITY",
-                        "message": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
-                      },
-                      "status": 422
-                    }
+                    "summary": "A required key is missing",
+                    "value": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+                  },
+                  "unknown-field": {
+                    "summary": "An unknown key",
+                    "value": "Failed to deserialize the JSON body into the target type: schema.fields.score: unknown field `embed`, expected `description` or `filterable` at line 1 column 98"
                   }
                 }
               }
@@ -12873,7 +13768,7 @@
           "Vector Operations"
         ],
         "summary": "Fetch records",
-        "description": "Look up and return records by ID from a single namespace. The returned records include the vector data and/or metadata.\nFor on-demand indexes, since vector values are retrieved from object storage, fetch operations may have increased latency. If you only need metadata or IDs, consider using the query operation with `includeValues` set to `false` instead.\nFor guidance and examples, see [Fetch data](https://docs.pinecone.io/guides/manage-data/fetch-data).",
+        "description": "Look up and return records by ID from a single namespace. The returned records include the vector data and/or metadata.\n\nFor on-demand indexes, since vector values are retrieved from object storage, fetch operations may have increased latency. If you only need metadata or IDs, consider using the query operation with `includeValues` set to `false` instead.\n\nFor guidance and examples, see [Fetch data](https://docs.pinecone.io/guides/manage-data/fetch-data).",
         "operationId": "db_data_2026_07_fetchVectors",
         "parameters": [
           {
@@ -12988,7 +13883,7 @@
           "Vector Operations"
         ],
         "summary": "Fetch records by metadata",
-        "description": "Look up and return records by metadata from a single namespace. The returned records include the vector data and metadata.\nFor guidance and examples, see [Fetch data](https://docs.pinecone.io/guides/manage-data/fetch-data).",
+        "description": "Look up and return records by metadata from a single namespace. The returned records include the vector data and metadata.\n\nFor guidance and examples, see [Fetch data](https://docs.pinecone.io/guides/manage-data/fetch-data).",
         "operationId": "db_data_2026_07_fetch_vectors_by_metadata",
         "parameters": [
           {
@@ -13244,7 +14139,7 @@
           "Vector Operations"
         ],
         "summary": "Update a record",
-        "description": "Update records by ID or by metadata in a namespace. Updating by ID changes the vector and/or metadata of a single record. Updating by metadata changes metadata across multiple records using a metadata filter.\nIf a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.\nFor guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).",
+        "description": "Update records in a namespace, either by ID or with a metadata filter. By ID, you can change a single record's vector values, its metadata, or both. A filter updates metadata only, and applies to every record that matches.\n\nIf a vector value is included, it will overwrite the previous value. If `set_metadata` is included, only the specified metadata fields are modified, and if a specified metadata field does not exist, it is added.\n\nFor guidance and examples, see [Update data](https://docs.pinecone.io/guides/manage-data/update-data).",
         "operationId": "db_data_2026_07_updateVector",
         "parameters": [
           {
@@ -14080,7 +14975,7 @@
           "Namespace Alias Operations"
         ],
         "summary": "Create a namespace alias",
-        "description": "Create an alias that resolves to an existing namespace in the index. Reads\nthrough the alias are served from its target namespace; writes to an alias\nname are rejected. Many aliases can resolve to the same namespace.\n\nThe call returns once the alias resolves on every reader, which takes about\na second; size client timeouts accordingly. A 409 whose\n`details.metadata.target_namespace` matches the requested target carries\nthe same guarantee: your earlier call committed and the alias is live.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "description": "Create an alias that resolves to an existing namespace in the index. Reads through the alias are served from its target namespace; writes to an alias name are rejected. Many aliases can resolve to the same namespace.\n\nThe call returns once the alias resolves on every reader, which takes about a second; size client timeouts accordingly. A 409 whose `details.metadata.target_namespace` matches the requested target carries the same guarantee: your earlier call committed and the alias is live.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
         "operationId": "db_data_2026_07_createNamespaceAlias",
         "parameters": [
           {
@@ -14300,7 +15195,7 @@
           "Namespace Alias Operations"
         ],
         "summary": "Delete a namespace alias",
-        "description": "Remove an alias. The target namespace and its data are unchanged. Reads\nthat still use the alias name are treated as reads of a nonexistent\nnamespace (empty results, not an error), so migrate readers off the alias\nfirst.\n\nThe call returns once no reader still resolves the alias, which takes about\na second; size client timeouts accordingly. A retried delete that returns\n404 means the alias is already gone and carries the same guarantee.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "description": "Remove an alias. The target namespace and its data are unchanged. Reads that still use the alias name are treated as reads of a nonexistent namespace (empty results, not an error), so migrate readers off the alias first.\n\nThe call returns once no reader still resolves the alias, which takes about a second; size client timeouts accordingly. A retried delete that returns 404 means the alias is already gone and carries the same guarantee.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
         "operationId": "db_data_2026_07_deleteNamespaceAlias",
         "parameters": [
           {
@@ -14410,7 +15305,7 @@
           "Namespace Alias Operations"
         ],
         "summary": "Repoint a namespace alias",
-        "description": "Update the namespace an alias resolves to. The change is atomic: the target\nis validated in the same transaction that rewrites the alias, and on\nfailure the alias keeps its current target.\n\nThe call returns once the new target is live on every reader, which takes\nabout a second; size client timeouts accordingly. Reads through the alias\nthat start after the response are served from the new namespace, so no\npolling is needed. Repointing is safe to retry; `updated_at` advances on\nevery attempt.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
+        "description": "Update the namespace an alias resolves to. The change is atomic: the target is validated in the same transaction that rewrites the alias, and on failure the alias keeps its current target.\n\nThe call returns once the new target is live on every reader, which takes about a second; size client timeouts accordingly. Reads through the alias that start after the response are served from the new namespace, so no polling is needed. Repointing is safe to retry; `updated_at` advances on every attempt.\n\nFor guidance and examples, see [Manage namespace aliases](https://docs.pinecone.io/guides/manage-data/namespace-aliases/manage-aliases).",
         "operationId": "db_data_2026_07_repointNamespaceAlias",
         "parameters": [
           {
@@ -14531,8 +15426,8 @@
         "tags": [
           "Vector Operations"
         ],
-        "summary": "Upsert text",
-        "description": "Upsert text into a namespace. Pinecone converts the text to vectors automatically using the hosted embedding model associated with the index.\n\nUpserting text is supported only for [indexes with integrated embedding](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models); for any other index the request is rejected with `400`. It is not available on BYOC indexes.\n\nA request can contain at most 1000 records. Each record is identified by `_id`. The service also accepts `id` as an alias, which this schema does not model; a record must not carry both.\n\nFor guidance, examples, and limits, see [Upsert data](https://docs.pinecone.io/guides/index-data/upsert-data).",
+        "summary": "Upsert text (legacy Records API)",
+        "description": "Upsert text into a namespace. Pinecone converts the text to vectors automatically using the hosted embedding model associated with the index.\n\nThis operation is part of the legacy Records API, which legacy integrated indexes require. For new work, create a document index with a `string` field that uses integrated embedding (`embed` or `sparse_embed`), and write text with the Documents API's `upsert_documents` operation.\n\nUpserting text is supported only for [legacy integrated indexes](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models); for any other index the request is rejected with `400`. It is not available on BYOC indexes.\n\nA request can contain at most 1000 records. Each record is identified by `_id`. The service also accepts `id` as an alias, which this schema does not model; a record must not carry both.\n\nFor guidance, examples, and limits, see [Upsert data](https://docs.pinecone.io/guides/index-data/upsert-data).",
         "operationId": "db_data_2026_07_upsertRecordsNamespace",
         "parameters": [
           {
@@ -14556,7 +15451,7 @@
           }
         ],
         "requestBody": {
-          "description": "Each record in the request body must include an `_id` field and a field that matches your index's `field_map` configuration (such as `chunk_text` or `data`). All other fields are stored as metadata.\n",
+          "description": "Each record in the request body must include an `_id` field and a field that matches your index's `field_map` configuration (such as `chunk_text` or `data`). All other fields are stored as metadata.",
           "content": {
             "application/x-ndjson": {
               "schema": {
@@ -14647,8 +15542,8 @@
         "tags": [
           "Vector Operations"
         ],
-        "summary": "Search with text",
-        "description": "Search a namespace with a query text, query vector, or record ID and return the most similar records, along with their similarity scores. Optionally, rerank the initial results based on their relevance to the query. \n\nSearching with text (`inputs`) is supported only for indexes with [integrated embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding); for any other index a text query is rejected with `400`, and it is not available on BYOC indexes; reranking (`rerank`) is likewise unavailable on BYOC indexes. Searching with a query vector (`vector`) or a record ID (`id`) works on any index served by the vectors API.\n\nFor guidance and examples, see [Search](https://docs.pinecone.io/guides/search/search-overview).",
+        "summary": "Search with text (legacy Records API)",
+        "description": "Search a namespace with a query text, query vector, or record ID and return the most similar records, along with their similarity scores. Optionally, rerank the initial results based on their relevance to the query. \n\nThis operation is part of the legacy Records API, which legacy integrated indexes require. For new work, create a document index with a `string` field that uses integrated embedding (`embed` or `sparse_embed`), and search it with the Documents API's `search_documents` operation and an `embed` or `sparse_embed` scoring method.\n\nSearching with text (`inputs`) is supported only for [legacy integrated indexes](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding); for any other index a text query is rejected with `400`, and it is not available on BYOC indexes; reranking (`rerank`) is likewise unavailable on BYOC indexes. Searching with a query vector (`vector`) or a record ID (`id`) works on any index served by the vectors API.\n\nFor guidance and examples, see [Search](https://docs.pinecone.io/guides/search/search-overview).",
         "operationId": "db_data_2026_07_searchRecordsNamespace",
         "parameters": [
           {
@@ -14757,7 +15652,7 @@
           "Document Operations"
         ],
         "summary": "Upsert documents",
-        "description": "Upsert documents into a namespace.\n\nEach document must include an `_id` field and at least one field defined in the index schema; metadata fields may be\nprovided alongside them.\nAny metadata field you provide that is not declared in the schema is stored on the document, returned via include_fields, and\nautomatically indexed for filtering.",
+        "description": "Upsert documents into a namespace.\n\nEach document must include an `_id` field and at least one field defined in the index schema; metadata fields may be provided alongside them. Any metadata field you provide that is not declared in the schema is stored on the document, returned via include_fields, and automatically indexed for filtering.\n\nOn a `string` field whose schema declares `embed` or `sparse_embed`, provide the text: Pinecone embeds it with the field's model and stores the resulting vectors, and the text itself unless the field sets `store_text: false`. A vector or any other non-string value on such a field is rejected. A field with `embed` must be present on every document; a field with only `sparse_embed` may be omitted. An index that embeds a field accepts at most 96 documents per request, the inference batch size.\n\nPinecone embeds the text on every request that carries it, so a retried upsert produces the same vectors and is embedded, and metered, again. If embedding fails, nothing in the request is written. When the request embeds text, the response's `usage.embed_total_tokens` reports the tokens it consumed.\n\nDocuments aren't deduplicated by `_id` within a request. Each entry is written, counted in `upserted_count`, billed in write units and, for embedded fields, embedded and counted in `embed_total_tokens`. The last entry with a given `_id` wins.",
         "operationId": "db_data_2026_07_upsertDocuments",
         "parameters": [
           {
@@ -14797,6 +15692,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UpsertDocumentsResponse"
+                },
+                "examples": {
+                  "without_embedding": {
+                    "summary": "An upsert that embedded no text, which reports no usage",
+                    "value": {
+                      "upserted_count": 2
+                    }
+                  },
+                  "with_embedding": {
+                    "summary": "An upsert that embedded text, reporting the tokens it consumed",
+                    "value": {
+                      "upserted_count": 2,
+                      "usage": {
+                        "embed_total_tokens": 24
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -14899,7 +15811,7 @@
           "Document Operations"
         ],
         "summary": "Search documents",
-        "description": "Search for documents in a namespace using one or more scoring methods (dense vector, sparse vector, text, or query string similarity).\n\nReturns the top-k most similar documents along with their scores and requested fields.",
+        "description": "Search for documents in a namespace using one or more scoring methods (dense vector, sparse vector, text, or query string similarity, or similarity to query text that Pinecone embeds with a field's own model).\n\nReturns the top-k most similar documents along with their scores and requested fields.",
         "operationId": "db_data_2026_07_searchDocuments",
         "parameters": [
           {
@@ -14927,6 +15839,99 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SearchDocumentsRequest"
+              },
+              "examples": {
+                "text": {
+                  "summary": "Score by BM25 text similarity",
+                  "value": {
+                    "include_fields": [
+                      "title",
+                      "content"
+                    ],
+                    "score_by": [
+                      {
+                        "fields": [
+                          "content"
+                        ],
+                        "query": "What is machine learning?",
+                        "type": "text"
+                      }
+                    ],
+                    "top_k": 10
+                  }
+                },
+                "dense_vector": {
+                  "summary": "Score by similarity to a dense vector you supply",
+                  "description": "The query vector in `values` has as many values as the `your_vector` field's dimension (shortened here). The field holds the dense vectors supplied with each document.",
+                  "value": {
+                    "include_fields": [
+                      "chunk_text"
+                    ],
+                    "score_by": [
+                      {
+                        "fields": [
+                          "your_vector"
+                        ],
+                        "type": "dense_vector",
+                        "values": [
+                          0.0123,
+                          -0.0412,
+                          0.0871
+                        ]
+                      }
+                    ],
+                    "top_k": 10
+                  }
+                },
+                "sparse_vector": {
+                  "summary": "Score by similarity to a sparse vector you supply",
+                  "description": "The query vector in `sparse_values` is given as parallel `indices` and `values` arrays, and is scored against the sparse vectors supplied with each document in `your_sparse_vector`.",
+                  "value": {
+                    "include_fields": [
+                      "chunk_text"
+                    ],
+                    "score_by": [
+                      {
+                        "fields": [
+                          "your_sparse_vector"
+                        ],
+                        "sparse_values": {
+                          "indices": [
+                            102,
+                            4071,
+                            18766
+                          ],
+                          "values": [
+                            0.42,
+                            0.31,
+                            0.18
+                          ]
+                        },
+                        "type": "sparse_vector"
+                      }
+                    ],
+                    "top_k": 10
+                  }
+                },
+                "embed": {
+                  "summary": "Score by similarity to query text that Pinecone embeds with the field's model",
+                  "value": {
+                    "include_fields": [
+                      "title",
+                      "content"
+                    ],
+                    "score_by": [
+                      {
+                        "fields": [
+                          "content"
+                        ],
+                        "query": "What is machine learning?",
+                        "type": "embed"
+                      }
+                    ],
+                    "top_k": 10
+                  }
+                }
               }
             }
           },
@@ -15378,7 +16383,7 @@
           "Document Operations"
         ],
         "summary": "Update documents",
-        "description": "Apply partial updates to documents in a namespace. Documents are selected either per ID with `documents`, or in bulk with `filter`.\n\n- `documents`: Each update is identified by its `_id`. Any other fields set new values for those fields, and fields listed in `_remove_fields` are removed from the document. Fields that are not mentioned are left unchanged. Updates to a document that does not exist are accepted but have no effect.\n- `filter`: The same patch is applied to every document matching a metadata filter expression. The patch is given by `set_fields` and/or `remove_fields`, at least one of which must be specified. Text-match operators (`$match_phrase`, `$match_all`, `$match_any`) are not supported in a filtered update; they are only supported in search. The response reports `matched_records`, the number of documents the filter matched.\n\n`documents` and the by-filter fields (`filter`, `set_fields`, `remove_fields`) are mutually exclusive.",
+        "description": "Apply partial updates to documents in a namespace. Documents are selected either per ID with `documents`, or in bulk with `filter`.\n\n- `documents`: Each update is identified by its `_id`. Any other fields set new values for those fields, and fields listed in `_remove_fields` are removed from the document. Fields that are not mentioned are left unchanged. Updates to a document that does not exist are accepted but have no effect.\n- `filter`: The same patch is applied to every document matching a metadata filter expression. The patch is given by `set_fields` and/or `remove_fields`, at least one of which must be specified. Text-match operators (`$match_phrase`, `$match_all`, `$match_any`) are not supported in a filtered update; they are only supported in search. The response reports `matched_records`, the number of documents the filter matched.\n\n`documents` and the by-filter fields (`filter`, `set_fields`, `remove_fields`) are mutually exclusive.\n\nOn an index whose schema declares `embed` or `sparse_embed`, a per-ID update that sets such a field provides its new text, and Pinecone re-embeds it with the field's model; an update that does not set the field leaves its text and vectors unchanged. A by-filter update can set or remove only metadata fields: it refuses every data field, that is, vector fields, full-text-searchable text and embedded text. An index that embeds a field accepts at most 96 documents per request.\n\nPinecone embeds the text on every request that sets such a field, so a retried update is embedded, and metered, again. A per-ID update of a document that does not exist still embeds the text it sets. When the request embedded text, the response's `usage.embed_total_tokens` reports the tokens it consumed.",
         "operationId": "db_data_2026_07_updateDocuments",
         "parameters": [
           {
@@ -15434,7 +16439,7 @@
                       }
                     },
                     "remove_fields": [
-                      "content"
+                      "reviewer"
                     ],
                     "set_fields": {
                       "category": "archive"
@@ -15464,6 +16469,14 @@
                   "by_ids": {
                     "summary": "A per-ID update, which reports no count",
                     "value": { }
+                  },
+                  "by_ids_with_embedding": {
+                    "summary": "A per-ID update that set a field with integrated embedding, reporting the tokens it consumed",
+                    "value": {
+                      "usage": {
+                        "embed_total_tokens": 12
+                      }
+                    }
                   }
                 }
               }
@@ -16060,7 +17073,7 @@
           "Inference"
         ],
         "summary": "List available models",
-        "description": "List the embedding and reranking models hosted by Pinecone. \n\nYou can use hosted models as an integrated part of Pinecone operations or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
+        "description": "List the embedding and reranking models hosted by Pinecone. \n\nYou can use hosted models for integrated inference in Pinecone operations, such as integrated-embedding fields in a document index, or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
         "operationId": "inference_2026_07_list_models",
         "parameters": [
           {
@@ -16079,7 +17092,7 @@
             "description": "Filter models by type ('embed' or 'rerank').",
             "schema": {
               "type": "string",
-              "description": "Filter models by type.\nPossible values: `embed` or `rerank`.",
+              "description": "Filter models by type.\n\nPossible values: `embed` or `rerank`.",
               "x-enum": [
                 "embed",
                 "rerank"
@@ -16093,7 +17106,7 @@
             "description": "Filter embedding models by vector type ('dense' or 'sparse'). Only relevant when `type=embed`.",
             "schema": {
               "type": "string",
-              "description": "Filter models by vector type.\nPossible values: `dense` or `sparse`.",
+              "description": "Filter models by vector type.\n\nPossible values: `dense` or `sparse`.",
               "x-enum": [
                 "dense",
                 "sparse"
@@ -16277,7 +17290,7 @@
           "Inference"
         ],
         "summary": "Describe a model",
-        "description": "Get a description of a model hosted by Pinecone. \n\nYou can use hosted models as an integrated part of Pinecone operations or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
+        "description": "Get a description of a model hosted by Pinecone. \n\nYou can use hosted models for integrated inference in Pinecone operations, such as integrated-embedding fields in a document index, or for standalone embedding and reranking. For more details, see [Vector embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) and [Rerank results](https://docs.pinecone.io/guides/search/rerank-results).",
         "operationId": "inference_2026_07_get_model",
         "parameters": [
           {
@@ -20117,7 +21130,7 @@
           "Query"
         ],
         "summary": "Run one KnowQL query turn",
-        "description": "Send `ask` and, on a new session, a `scope` of 1–10 contexts; continue an existing one with\n`session_id` or `previous_query_id`. Scoped search contexts must be curated, and a scope may\nnot mix work and search contexts. Read the answer from `output[].content[].text`.\n\n`stream` and `background` are mutually exclusive. `background: true` returns `202` with an\n`in_progress` query to poll. `stream: true` emits an SSE stream whose `event:` names are the\nevent `type` (see `QueryEvent`), closed by a final `query` frame carrying the whole turn:\n\n```\nid: 1\nevent: response.created\ndata: {\"type\":\"response.created\",\"query_id\":\"qry_8b3d5f1a\",\"session_id\":\"ses_4f9c1e2a\"}\n\nid: 2\nevent: response.output_text.delta\ndata: {\"type\":\"response.output_text.delta\",\"query_id\":\"qry_8b3d5f1a\",\"delta\":\"Revenue grew 12%...\"}\n\nid: 3\nevent: response.completed\ndata: {\"type\":\"response.completed\",\"query_id\":\"qry_8b3d5f1a\"}\n\nevent: query\ndata: {\"id\":\"qry_8b3d5f1a\",\"object\":\"query\",\"status\":\"completed\",\"output\":[...]}\n```\n",
+        "description": "Send `ask` and, on a new session, a `scope` of 1–10 contexts; continue an existing one with `session_id` or `previous_query_id`. Scoped search contexts must be curated, and a scope may not mix work and search contexts. Read the answer from `output[].content[].text`.\n\n`stream` and `background` are mutually exclusive. `background: true` returns `202` with an `in_progress` query to poll. `stream: true` emits an SSE stream whose `event:` names are the event `type` (see `QueryEvent`), closed by a final `query` frame carrying the whole turn:\n\n``` id: 1 event: response.created data: {\"type\":\"response.created\",\"query_id\":\"qry_8b3d5f1a\",\"session_id\":\"ses_4f9c1e2a\"}\n\nid: 2 event: response.output_text.delta data: {\"type\":\"response.output_text.delta\",\"query_id\":\"qry_8b3d5f1a\",\"delta\":\"Revenue grew 12%...\"}\n\nid: 3 event: response.completed data: {\"type\":\"response.completed\",\"query_id\":\"qry_8b3d5f1a\"}\n\nevent: query data: {\"id\":\"qry_8b3d5f1a\",\"object\":\"query\",\"status\":\"completed\",\"output\":[...]} ```",
         "operationId": "nexus_data_2026_07_query",
         "parameters": [
           {
@@ -21758,7 +22771,7 @@
           "OAuth"
         ],
         "summary": "Create an access token",
-        "description": "Obtain an access token for a service account using the OAuth2 client credentials flow. An access token is needed to authorize requests to the Pinecone Admin API.\nThe host domain for OAuth endpoints is `login.pinecone.io`.\n",
+        "description": "Obtain an access token for a service account using the OAuth2 client credentials flow. An access token is needed to authorize requests to the Pinecone Admin API.\n\nThe host domain for OAuth endpoints is `login.pinecone.io`.",
         "operationId": "oauth_2026_07_get_token",
         "parameters": [
           {
@@ -21908,7 +22921,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "description": "A role that can be assigned to an API key.\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.",
+              "description": "A role that can be assigned to an API key.\n\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.",
               "example": "ProjectEditor",
               "x-enum": [
                 "ProjectEditor",
@@ -21941,6 +22954,224 @@
         },
         "description": "The details of an API key, including the secret. Only returned on API key creation.\n"
       },
+      "CostUsageExport": {
+        "required": [
+          "id",
+          "status",
+          "format",
+          "period_start",
+          "period_end",
+          "file_expired",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the export. Use it to poll for completion, and to identify the export when contacting Pinecone Support.",
+            "format": "uuid",
+            "example": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of a cost usage export. `Pending` and `InProgress` mean the job is still running; `Completed` and `Failed` are terminal and never change afterwards.\nPossible values: `Pending`, `InProgress`, `Completed`, or `Failed`.",
+            "example": "Completed",
+            "x-enum": [
+              "Pending",
+              "InProgress",
+              "Completed",
+              "Failed"
+            ]
+          },
+          "format": {
+            "type": "string",
+            "description": "Encoding of the generated file. `zip` is a zip archive holding the cost records as one or more CSV files whose columns follow the FOCUS v1.4 Cost and Usage dataset, alongside a `manifest.json` describing the archive. Each CSV starts with a header line and holds at most 800,000 rows, so larger exports are split across several files, named `part-1-of-3.csv` through `part-3-of-3.csv` and ordered by those names.\nEvery CSV carries these 45 columns, in this order: `x_OrganizationId`, `SubAccountId`, `ResourceName`, `ResourceType`, `ChargePeriodStart`, `ChargePeriodEnd`, `BillingPeriodStart`, `BillingPeriodEnd`, `SkuId`, `ServiceName`, `PricingQuantity`, `PricingUnit`, `ConsumedQuantity`, `ConsumedUnit`, `ListUnitPrice`, `ListCost`, `ContractedUnitPrice`, `ContractedCost`, `EffectiveCost`, `BilledCost`, `BillingCurrency`, `PricingCategory`, `ChargeCategory`, `ChargeClass`, `ChargeFrequency`, `ServiceCategory`, `ServiceSubcategory`, `RegionId`, `RegionName`, `HostProviderName`, `ServiceProviderName`, `InvoiceIssuerName`, `InvoiceId`, `BillingAccountId`, `BillingAccountName`, `BillingAccountType`, `SubAccountName`, `SubAccountType`, `ResourceId`, `SkuPriceId`, `SkuMeter`, `ChargeDescription`, `x_CloudId`, `Tags`, `x_ProjectMetadata`.\nColumns prefixed with `x_` are Pinecone extensions, which is how FOCUS requires a provider to name a column the specification does not define. `SubAccountId` and `SubAccountName` identify the Pinecone project, and `BillingAccountId` identifies the organization that is invoiced.\nRows are ordered by `ChargePeriodStart`, `SubAccountName`, `ResourceName`, `ChargeDescription`, `SkuId`, `ResourceId`, across the archive as a whole rather than within each file. `InvoiceId` is provisional while its billing period is still open, so it may change for a period that has not yet closed.\nPossible values: `zip`.",
+            "example": "zip",
+            "x-enum": [
+              "zip"
+            ]
+          },
+          "period_start": {
+            "type": "string",
+            "description": "First day of usage covered by the export, as a UTC calendar day. This bound is inclusive.",
+            "format": "date",
+            "example": "2026-08-01"
+          },
+          "period_end": {
+            "type": "string",
+            "description": "Day after the last day of usage covered by the export, as a UTC calendar day. This bound is exclusive.",
+            "format": "date",
+            "example": "2026-09-01"
+          },
+          "data_available_through": {
+            "type": "string",
+            "description": "Last day for which the billing warehouse holds complete data, recorded when the export runs to describe the contents of the generated file. `null` until then. Cost data lags by roughly two days.",
+            "format": "date",
+            "nullable": true,
+            "example": "2026-08-31"
+          },
+          "row_count": {
+            "type": "integer",
+            "description": "Number of line items across all CSV files in the archive, excluding header lines.",
+            "format": "int64",
+            "nullable": true,
+            "example": 48213
+          },
+          "size_bytes": {
+            "type": "integer",
+            "description": "Length of the zip archive, in bytes.",
+            "format": "int64",
+            "nullable": true,
+            "example": 4183902
+          },
+          "download_url": {
+            "type": "string",
+            "description": "Signed link to the generated file, generated fresh each time a single export is read and valid for one hour. Treat the link as a secret: anyone holding it can download the file. Do not store it or pass it between systems; read the export again for a new link. Always `null` in list responses.",
+            "format": "uri",
+            "nullable": true,
+            "example": "https://storage.googleapis.com/example-bucket/cost_usage_exports/export.zip?X-Goog-Expires=3600"
+          },
+          "download_url_expires_at": {
+            "type": "string",
+            "description": "When `download_url` stops working: one hour after the link was generated, or `file_expires_at`, whichever comes first. Read the export again for a new link. Always `null` in list responses.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-09-02T15:36:11Z"
+          },
+          "file_expires_at": {
+            "type": "string",
+            "description": "When the generated file is deleted, two days after the export finished. The file cannot be re-delivered afterwards; create another export instead.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-09-04T14:35:52Z"
+          },
+          "file_expired": {
+            "type": "boolean",
+            "description": "Whether the generated file has been deleted. Check this rather than `status`: a `Completed` export whose file has expired can no longer be downloaded.",
+            "example": false
+          },
+          "error": {
+            "$ref": "#/components/schemas/CostUsageExportError"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "When the export was accepted.",
+            "format": "date-time",
+            "example": "2026-09-02T14:31:07Z"
+          },
+          "started_at": {
+            "type": "string",
+            "description": "When the export job began running.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-09-02T14:31:19Z"
+          },
+          "finished_at": {
+            "type": "string",
+            "description": "When the export job finished running, either successfully or with an error.",
+            "format": "date-time",
+            "nullable": true,
+            "example": "2026-09-02T14:35:52Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "When the export was last updated.",
+            "format": "date-time",
+            "example": "2026-09-02T14:35:52Z"
+          }
+        },
+        "description": "The CostUsageExport describes an asynchronous job that produces a cost and usage file for an organization, together with the link used to download that file. The file holds cost records that follow the FOCUS v1.4 Cost and Usage dataset."
+      },
+      "CostUsageExportError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Machine-readable classification of the failure. `DEADLINE_EXCEEDED` means the export ran out of time and a shorter window may succeed; `INTERNAL` covers every other failure and is worth retrying once.\nPossible values: `DEADLINE_EXCEEDED` or `INTERNAL`.",
+            "example": "DEADLINE_EXCEEDED",
+            "x-enum": [
+              "DEADLINE_EXCEEDED",
+              "INTERNAL"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable explanation of what went wrong and what to try next.",
+            "example": "The export did not finish within the time budget. Create a new export, or request a shorter window."
+          }
+        },
+        "description": "Why an export failed.",
+        "nullable": true
+      },
+      "CostUsageExportList": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CostUsageExport"
+            },
+            "description": "The page of cost usage exports, newest first. `download_url` and `download_url_expires_at` are always `null` here; request a single export to get a link."
+          },
+          "pagination": {
+            "type": "object",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "next": {
+                    "type": "string",
+                    "description": "Opaque cursor for the next page. Do not parse or construct. Invalid or expired tokens return `400`.",
+                    "example": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+                  }
+                },
+                "description": "Pagination metadata for list responses. When `next` is present, pass it as `paginationToken` on the following request.",
+                "example": {
+                  "next": "eyJsYXN0X2lkIjogImluZGV4LTQifQ=="
+                },
+                "x-component-name": "PaginationResponse"
+              }
+            ],
+            "description": "Cursor envelope for the next page. `null` (or absent) on the final page of results.",
+            "nullable": true
+          }
+        },
+        "description": "A paginated list of cost usage exports.",
+        "example": {
+          "data": [
+            {
+              "created_at": "2026-09-02T14:31:07Z",
+              "data_available_through": "2026-08-31",
+              "download_url": null,
+              "download_url_expires_at": null,
+              "error": null,
+              "file_expired": false,
+              "file_expires_at": "2026-09-04T14:35:52Z",
+              "finished_at": "2026-09-02T14:35:52Z",
+              "format": "zip",
+              "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+              "period_end": "2026-09-01",
+              "period_start": "2026-08-01",
+              "row_count": 48213,
+              "size_bytes": 4183902,
+              "started_at": "2026-09-02T14:31:19Z",
+              "status": "Completed",
+              "updated_at": "2026-09-02T14:36:11Z"
+            }
+          ],
+          "pagination": {
+            "next": "eyJsYXN0X2lkIjoiOWYyYzFhNGUifQ=="
+          }
+        }
+      },
       "CreateAPIKeyRequest": {
         "required": [
           "name"
@@ -21958,7 +23189,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "description": "A role that can be assigned to an API key.\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.",
+              "description": "A role that can be assigned to an API key.\n\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.",
               "example": "ProjectEditor",
               "x-enum": [
                 "ProjectEditor",
@@ -21972,6 +23203,24 @@
             "description": "The roles to create the API key with. Default is `[\"ProjectEditor\"]`.\n"
           }
         }
+      },
+      "CreateCostUsageExportRequest": {
+        "type": "object",
+        "properties": {
+          "period_start": {
+            "type": "string",
+            "description": "First day of usage to cover, as a UTC calendar day. This bound is inclusive, and may be no earlier than 365 days before today.",
+            "format": "date",
+            "example": "2026-08-01"
+          },
+          "period_end": {
+            "type": "string",
+            "description": "Day after the last day of usage to cover, as a UTC calendar day. This bound is exclusive.",
+            "format": "date",
+            "example": "2026-09-01"
+          }
+        },
+        "description": "The window of usage to cover, given as a half-open range of UTC calendar days."
       },
       "CreateInviteRequest": {
         "required": [
@@ -22032,7 +23281,7 @@
         "properties": {
           "principal_type": {
             "type": "string",
-            "description": "The kind of principal that receives permissions from a role binding.\nPossible values: `user`, `service_account`, `api_key`, `invite`.",
+            "description": "The kind of principal that receives permissions from a role binding.\n\nPossible values: `user`, `service_account`, `api_key`, `invite`.",
             "example": "service_account",
             "x-enum": [
               "user",
@@ -22048,7 +23297,7 @@
           },
           "resource_type": {
             "type": "string",
-            "description": "The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.",
+            "description": "The kind of resource scope a role binding applies to.\n\nPossible values: `organization`, `project`.",
             "example": "project",
             "x-enum": [
               "organization",
@@ -22127,7 +23376,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "description": "The error code.\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, `FORBIDDEN`, or `UNPROCESSABLE_ENTITY`.        ",
+                "description": "The error code.\n\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, `FORBIDDEN`, or `UNPROCESSABLE_ENTITY`.",
                 "x-enum": [
                   "OK",
                   "UNKNOWN",
@@ -22196,7 +23445,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The lifecycle status of an invite.\nPossible values: `pending`, `expired`, `processed`. List endpoints return only `pending` and `expired` invites; `processed` is returned only when fetching a single invite by ID.",
+            "description": "The lifecycle status of an invite.\n\nPossible values: `pending`, `expired`, `processed`. List endpoints return only `pending` and `expired` invites; `processed` is returned only when fetching a single invite by ID.",
             "example": "pending",
             "x-enum": [
               "pending",
@@ -22448,7 +23697,7 @@
           },
           "principal_type": {
             "type": "string",
-            "description": "The kind of principal that receives permissions from a role binding.\nPossible values: `user`, `service_account`, `api_key`, `invite`.",
+            "description": "The kind of principal that receives permissions from a role binding.\n\nPossible values: `user`, `service_account`, `api_key`, `invite`.",
             "example": "service_account",
             "x-enum": [
               "user",
@@ -22464,7 +23713,7 @@
           },
           "resource_type": {
             "type": "string",
-            "description": "The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.",
+            "description": "The kind of resource scope a role binding applies to.\n\nPossible values: `organization`, `project`.",
             "example": "project",
             "x-enum": [
               "organization",
@@ -22521,7 +23770,7 @@
         "properties": {
           "resource_type": {
             "type": "string",
-            "description": "The kind of resource scope a role binding applies to.\nPossible values: `organization`, `project`.",
+            "description": "The kind of resource scope a role binding applies to.\n\nPossible values: `organization`, `project`.",
             "example": "project",
             "x-enum": [
               "organization",
@@ -22553,7 +23802,7 @@
             ]
           }
         },
-        "description": "A role to grant to the principal being created. `resource_type` selects the binding scope and acts as the tag for the entry.\nFor `organization` scope, omit `resource_id`; the binding applies to the principal's organization (inferred from the request context). For `project` scope, `resource_id` is required and must be the project UUID."
+        "description": "A role to grant to the principal being created. `resource_type` selects the binding scope and acts as the tag for the entry.\n\nFor `organization` scope, omit `resource_id`; the binding applies to the principal's organization (inferred from the request context). For `project` scope, `resource_id` is required and must be the project UUID."
       },
       "RoleBindingList": {
         "required": [
@@ -22747,7 +23996,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "description": "A role that can be assigned to an API key.\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.",
+              "description": "A role that can be assigned to an API key.\n\nPossible values: `ProjectEditor`, `ProjectViewer`, `ControlPlaneEditor`, `ControlPlaneViewer`, `DataPlaneEditor`, or `DataPlaneViewer`.",
               "example": "ProjectEditor",
               "x-enum": [
                 "ProjectEditor",
@@ -22758,7 +24007,7 @@
                 "DataPlaneViewer"
               ]
             },
-            "description": "A new set of roles for the API key. Existing roles will be removed if not included.\nIf this field is omitted, the roles will not be updated.\n"
+            "description": "A new set of roles for the API key. Existing roles will be removed if not included.\n\nIf this field is omitted, the roles will not be updated."
           }
         }
       },
@@ -23299,9 +24548,8 @@
               "gpt-4o",
               "gpt-4.1",
               "gpt-5",
-              "o4-mini",
               "claude-sonnet-4-5",
-              "gemini-2.5-pro"
+              "gemini-3.5-flash"
             ]
           },
           "temperature": {
@@ -24226,9 +25474,8 @@
             "x-enum": [
               "gpt-4o",
               "gpt-4.1",
-              "o4-mini",
               "claude-sonnet-4-5",
-              "gemini-2.5-pro"
+              "gemini-3.5-flash"
             ]
           },
           "temperature": {
@@ -24410,11 +25657,11 @@
         "properties": {
           "prompt_tokens": {
             "type": "integer",
-            "description": "For chat interactions, the number of tokens in the LLM request (message, context snippets, and system prompt).\nFor context retrieval, the number of tokens in the LLM request used to generate search queries from the messages, plus the tokens in the retrieved context snippets."
+            "description": "For chat interactions, the number of tokens in the LLM request (message, context snippets, and system prompt).\n\nFor context retrieval, the number of tokens in the LLM request used to generate search queries from the messages, plus the tokens in the retrieved context snippets."
           },
           "completion_tokens": {
             "type": "integer",
-            "description": "For chat interactions, the number of tokens in the assistant's response.  \nFor context retrieval, this is always 0."
+            "description": "For chat interactions, the number of tokens in the assistant's response.\n\nFor context retrieval, this is always 0."
           },
           "total_tokens": {
             "type": "integer",
@@ -25218,7 +26465,7 @@
         "additionalProperties": {
           "not": { }
         },
-        "description": "Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.\n\n- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.\n- `schema`: Update `semantic_text` field embedding parameters. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.\n- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.\n- `tags`: Update or delete index tags. Setting a tag value to `\"\"` removes the tag.\n- `deletion_protection`: Enable or disable deletion protection."
+        "description": "Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.\n\n- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.\n- `schema`: Update `semantic_text` field embedding parameters, on a legacy integrated index created via create-for-model. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.\n- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.\n- `tags`: Update or delete index tags. Setting a tag value to `\"\"` removes the tag.\n- `deletion_protection`: Enable or disable deletion protection."
       },
       "CreateBackupRequest": {
         "type": "object",
@@ -25279,6 +26526,55 @@
           }
         },
         "description": "The configuration needed to create a Pinecone collection."
+      },
+      "CreateEmbedConfig": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The name of a hosted dense embedding model. Defaults to `llama-text-embed-v2`. A sparse model is rejected; declare it under `sparse_embed` instead.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models.",
+            "example": "llama-text-embed-v2"
+          },
+          "dimension": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "The dimension of the embedding vectors. Defaults to the model's default dimension. Models that support several dimensions accept any of them; for example, `llama-text-embed-v2` accepts `512` as well as its default of `1024`. A dimension the model does not support is rejected, and the error lists the supported ones.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for each model's supported dimensions.",
+            "format": "int32",
+            "example": 1024
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric used for similarity search. Defaults to the model's default metric. A metric the model does not support is rejected.\n\nPossible values: `cosine`, `dotproduct`, or `euclidean`.",
+            "example": "cosine",
+            "x-enum": [
+              "cosine",
+              "dotproduct",
+              "euclidean"
+            ]
+          },
+          "write_parameters": {
+            "type": "object",
+            "description": "Model-specific parameters applied when embedding document text, such as `truncate`. Validated against the model; omitted parameters take the model's defaults. The resolved parameters are returned when the index is described.",
+            "example": {
+              "truncate": "END"
+            }
+          },
+          "read_parameters": {
+            "type": "object",
+            "description": "Model-specific parameters applied when embedding search query text, such as `truncate`. Validated against the model; omitted parameters take the model's defaults. The resolved parameters are returned when the index is described.",
+            "example": {
+              "truncate": "END"
+            }
+          }
+        },
+        "additionalProperties": {
+          "not": { }
+        },
+        "description": "Dense embedding configuration for a `string` field. Pinecone embeds the field's text with a hosted embedding model when documents are upserted or updated, and embeds the query text with the same model when a search scores the field with an `embed` scoring method.\n\nEvery key is optional; `{}` selects the default model at its default dimension and metric. The server resolves each omitted key from the model, validates each supplied one against it, and returns the resolved configuration when the index is described. The configuration is fixed at creation and cannot be changed afterwards.\n\nAn `embed` field occupies the index's single dense vector slot, so it cannot be combined with a `dense_vector` field or with `embed` on another field.",
+        "example": {
+          "dimension": 512,
+          "model": "llama-text-embed-v2"
+        }
       },
       "CreateIndexForModelRequest": {
         "required": [
@@ -25364,7 +26660,7 @@
                 "description": "The write parameters for the embedding model."
               }
             },
-            "description": "Specify the integrated inference embedding configuration for the index.\n\nOnce set the model cannot be changed, but you can later update the embedding configuration for an integrated inference index including field map, read parameters, or write parameters.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.",
+            "description": "Specify the integrated embedding configuration for the legacy integrated index.\n\nOnce set the model cannot be changed, but you can later update the embedding configuration of a legacy integrated index, including field map, read parameters, or write parameters.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.",
             "example": {
               "field_map": {
                 "text": "your-text-field"
@@ -25479,13 +26775,13 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/CreateIndexSchemaField"
             },
-            "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with `$`, which introduces a filter operator.\n\nNames starting with `_` are reserved: this covers `_id`, `_values`, `_sparse_values`, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: `_values` (type `dense_vector`) and/or `_sparse_values` (type `sparse_vector`) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the documents API — the same index that earlier API versions created from `dimension`, `metric`, and `vector_type`. Reserved fields do not accept a `description`. Any other field named with a leading `_`, or a reserved field combined with other fields, is rejected."
+            "description": "A map of field names to their configurations. Field names must be unique, non-empty strings of at most 64 bytes and must not start with `$`, which introduces a filter operator.\n\nNames starting with `_` are reserved: this covers `_id`, `_values`, `_sparse_values`, and every other underscore-prefixed name. Two reserved names are accepted, and only as the whole schema: `_values` (type `dense_vector`) and/or `_sparse_values` (type `sparse_vector`) with no other fields. Such a schema creates a classic vector index, which is read and written through the vectors API rather than the Documents API — the same index that earlier API versions created from `dimension`, `metric`, and `vector_type`. Reserved fields do not accept a `description`. Any other field named with a leading `_`, or a reserved field combined with other fields, is rejected."
           }
         },
         "additionalProperties": {
           "not": { }
         },
-        "description": "The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and full-text search fields.\n\nAt least one of `dense_vector`, `sparse_vector`, or a `string` field with `full_text_search` must be present; an empty `fields` map is rejected. At most one `dense_vector` and one `sparse_vector` field, and at most 100 `full_text_search` fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.",
+        "description": "The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and string fields searched by full-text search or by embeddings Pinecone derives from their text.\n\nAt least one of `dense_vector`, `sparse_vector`, or a `string` field with `full_text_search`, `embed`, or `sparse_embed` must be present; an empty `fields` map is rejected. An index has one dense vector slot and one sparse vector slot: at most one field may be a `dense_vector` field or carry `embed`, and at most one may be a `sparse_vector` field or carry `sparse_embed`. At most 100 `full_text_search` fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.",
         "example": {
           "fields": {
             "body": {
@@ -25494,7 +26790,7 @@
               },
               "type": "string"
             },
-            "embedding": {
+            "your_vector": {
               "dimension": 1536,
               "metric": "cosine",
               "type": "dense_vector"
@@ -25514,7 +26810,7 @@
             "$ref": "#/components/schemas/StringField"
           }
         ],
-        "description": "The configuration of a single field in the index schema at creation time. The `type` property determines how the field is stored and searched.\n\nField types accepted at creation time:\n\n- `dense_vector`: Fixed-dimension floating-point vectors for ANN search.\n- `sparse_vector`: Sparse vectors for keyword or hybrid search.\n- `string` with a `full_text_search` object: String field for full-text search.\n\nOther field types seen in `IndexSchemaField` responses cannot be declared here:\n\n- `semantic_text` cannot be declared in a schema. Create an index with an integrated embedding model through the create-for-model operation instead; it appears as a `semantic_text` field when the index is described.\n- `float` (also spelled `number`), `boolean`, `string_list`, and `string` without `full_text_search` are metadata types and are rejected. Include the values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional `description` of at most 256 bytes.",
+        "description": "The configuration of a single field in the index schema at creation time. The `type` property determines how the field is stored and searched.\n\nField types accepted at creation time:\n\n- `dense_vector`: Fixed-dimension floating-point vectors for ANN search.\n- `sparse_vector`: Sparse vectors for keyword or hybrid search.\n- `string` with `full_text_search`, `embed`, and/or `sparse_embed`: String field searched by full-text search, or by dense or sparse similarity over embeddings Pinecone derives from its text.\n\nOther field types seen in `IndexSchemaField` responses cannot be declared here:\n\n- `semantic_text` is rejected. It is how a legacy integrated index created via create-for-model describes its embedded text field. To enable integrated embedding on a field of a new document index, declare a `string` field with `embed` or `sparse_embed`.\n- `float` (also spelled `number`), `boolean`, `string_list`, and a `string` field with none of `full_text_search`, `embed`, or `sparse_embed` are metadata types and are rejected. Include the values as document metadata and they are indexed for filtering automatically.\n\nEvery field accepts an optional `description` of at most 256 bytes.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -25525,6 +26821,37 @@
             "SparseVectorField": "#/components/schemas/SparseVectorField",
             "StringField": "#/components/schemas/StringField"
           }
+        }
+      },
+      "CreateSparseEmbedConfig": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The name of a hosted sparse embedding model. Defaults to `pinecone-sparse-english-v0`. A dense model is rejected; declare it under `embed` instead.\n\nRefer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models.",
+            "example": "pinecone-sparse-english-v0"
+          },
+          "write_parameters": {
+            "type": "object",
+            "description": "Model-specific parameters applied when embedding document text, such as `truncate`. Validated against the model; omitted parameters take the model's defaults. The resolved parameters are returned when the index is described.",
+            "example": {
+              "truncate": "END"
+            }
+          },
+          "read_parameters": {
+            "type": "object",
+            "description": "Model-specific parameters applied when embedding search query text, such as `truncate`. Validated against the model; omitted parameters take the model's defaults. The resolved parameters are returned when the index is described.",
+            "example": {
+              "truncate": "END"
+            }
+          }
+        },
+        "additionalProperties": {
+          "not": { }
+        },
+        "description": "Learned-sparse embedding configuration for a `string` field. Pinecone embeds the field's text with a hosted sparse embedding model when documents are upserted or updated, and embeds the query text with the same model when a search scores the field with a `sparse_embed` scoring method.\n\nEvery key is optional; `{}` selects the default model. Sparse embeddings have no dimension or metric, and `dimension` or `metric` is rejected here. The resolved configuration is returned when the index is described. The configuration is fixed at creation and cannot be changed afterwards.\n\nA `sparse_embed` field occupies the index's single sparse vector slot, so it cannot be combined with a `sparse_vector` field or with `sparse_embed` on another field.",
+        "example": {
+          "model": "pinecone-sparse-english-v0"
         }
       },
       "DeletionProtection": {
@@ -25853,18 +27180,19 @@
           },
           "schema": {
             "fields": {
-              "embedding": {
-                "dimension": 1536,
-                "metric": "cosine",
-                "type": "dense_vector"
-              },
               "title": {
                 "full_text_search": {
                   "language": "en",
                   "stemming": false,
                   "stop_words": false
                 },
+                "store_text": true,
                 "type": "string"
+              },
+              "your_vector": {
+                "dimension": 1536,
+                "metric": "cosine",
+                "type": "dense_vector"
               }
             }
           },
@@ -25888,13 +27216,25 @@
             "description": "A map of field names to their configurations.\n\nIndexes that are served by the vectors API — created with the reserved `_values` / `_sparse_values` schema, or created by an earlier API version from `dimension`, `metric`, and `vector_type` — report their vector fields under the reserved names `_values` (dense) and `_sparse_values` (sparse), and any metadata fields configured for filtering as legacy fields carrying only `filterable`. Dense vectors-API indexes always report both `_values` and `_sparse_values`, regardless of how they were created."
           }
         },
-        "description": "The schema of a Pinecone index. The schema defines the typed fields that documents in the index can contain, including vector fields, semantic text fields, and metadata fields.",
+        "description": "The schema of a Pinecone index. The schema defines the typed fields that documents in the index can contain, including vector fields, string fields searched by full-text search or by embeddings, and metadata fields.",
         "example": {
           "fields": {
-            "embedding": {
-              "dimension": 1536,
-              "metric": "cosine",
-              "type": "dense_vector"
+            "body": {
+              "embed": {
+                "dimension": 1024,
+                "metric": "cosine",
+                "model": "llama-text-embed-v2"
+              },
+              "full_text_search": {
+                "language": "en",
+                "stemming": false,
+                "stop_words": false
+              },
+              "sparse_embed": {
+                "model": "pinecone-sparse-english-v0"
+              },
+              "store_text": true,
+              "type": "string"
             },
             "title": {
               "full_text_search": {
@@ -25902,6 +27242,7 @@
                 "stemming": false,
                 "stop_words": false
               },
+              "store_text": true,
               "type": "string"
             }
           }
@@ -25916,7 +27257,7 @@
             "$ref": "#/components/schemas/LegacyMetadataField"
           }
         ],
-        "description": "The configuration of a single field in the index schema.\n\nMost fields carry a `type` property that identifies the field type:\n\n- `dense_vector`: Fixed-dimension floating-point vectors for ANN search.\n- `sparse_vector`: Sparse vectors for keyword or hybrid search.\n- `semantic_text`: Text field backed by an integrated embedding model.\n- `string`: String field for full-text search or metadata filtering.\n- `string_list`: String array field.\n- `float`: Numeric field.\n- `integer`: Legacy numeric field from older indexes (pre-dating float normalization). Will not appear in new indexes.\n- `boolean`: Boolean field.\n\nFields in older indexes may omit `type` entirely. These are legacy metadata fields from before typed schemas were introduced."
+        "description": "The configuration of a single field in the index schema.\n\nMost fields carry a `type` property that identifies the field type:\n\n- `dense_vector`: Fixed-dimension floating-point vectors for ANN search.\n- `sparse_vector`: Sparse vectors for keyword or hybrid search.\n- `semantic_text`: The embedded text field of a legacy integrated index created via create-for-model.\n- `string`: String field for full-text search, integrated embedding (`embed` / `sparse_embed`), or metadata filtering.\n- `string_list`: String array field.\n- `float`: Numeric field.\n- `integer`: Legacy numeric field from older indexes (pre-dating float normalization). Will not appear in new indexes.\n- `boolean`: Boolean field.\n\nFields in older indexes may omit `type` entirely. These are legacy metadata fields from before typed schemas were introduced."
       },
       "IndexTags": {
         "type": "object",
@@ -26108,7 +27449,7 @@
             "description": "A map of semantic text field names to their updated parameters. Only fields of type `semantic_text` may be specified, and only one field per request."
           }
         },
-        "description": "Schema updates to apply to an existing index. Only `semantic_text` field parameters can be updated after index creation. The model itself cannot be changed once set; only `write_parameters` and `read_parameters` may be updated if the model stays the same.",
+        "description": "Schema updates to apply to an existing index. Only `semantic_text` field parameters, on a legacy integrated index created via create-for-model, can be updated after index creation. The model itself cannot be changed once set; only `write_parameters` and `read_parameters` may be updated if the model stays the same. The `embed` and `sparse_embed` configurations of a `string` field are fixed at creation and cannot be updated.",
         "example": {
           "fields": {
             "content": {
@@ -26517,6 +27858,100 @@
         },
         "description": "The current status of factors affecting the read capacity of a serverless index"
       },
+      "ResponseEmbedConfig": {
+        "required": [
+          "model",
+          "dimension",
+          "metric"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The hosted dense embedding model that embeds the field's text and the query text of `embed` scoring methods.",
+            "example": "llama-text-embed-v2"
+          },
+          "dimension": {
+            "type": "integer",
+            "description": "The dimension of the embedding vectors.",
+            "format": "int32",
+            "example": 1024
+          },
+          "metric": {
+            "type": "string",
+            "description": "The distance metric used for similarity search.\n\nPossible values: `cosine`, `dotproduct`, or `euclidean`.",
+            "example": "cosine",
+            "x-enum": [
+              "cosine",
+              "dotproduct",
+              "euclidean"
+            ]
+          },
+          "write_parameters": {
+            "type": "object",
+            "description": "The model-specific parameters applied when embedding document text, as resolved at creation: the parameters set in the create request merged with the model's defaults.",
+            "example": {
+              "truncate": "END"
+            }
+          },
+          "read_parameters": {
+            "type": "object",
+            "description": "The model-specific parameters applied when embedding the query text of `embed` scoring methods, as resolved at creation: the parameters set in the create request merged with the model's defaults.",
+            "example": {
+              "truncate": "END"
+            }
+          }
+        },
+        "description": "The dense embedding configuration of a `string` field, as resolved when the index was created: the values set in the create request, with every omitted one filled from the model's defaults. Present when the field was created with `embed`.",
+        "example": {
+          "dimension": 1024,
+          "metric": "cosine",
+          "model": "llama-text-embed-v2",
+          "read_parameters": {
+            "truncate": "END"
+          },
+          "write_parameters": {
+            "truncate": "END"
+          }
+        }
+      },
+      "ResponseSparseEmbedConfig": {
+        "required": [
+          "model"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The hosted sparse embedding model that embeds the field's text and the query text of `sparse_embed` scoring methods.",
+            "example": "pinecone-sparse-english-v0"
+          },
+          "write_parameters": {
+            "type": "object",
+            "description": "The model-specific parameters applied when embedding document text, as resolved at creation: the parameters set in the create request merged with the model's defaults.",
+            "example": {
+              "truncate": "END"
+            }
+          },
+          "read_parameters": {
+            "type": "object",
+            "description": "The model-specific parameters applied when embedding the query text of `sparse_embed` scoring methods, as resolved at creation: the parameters set in the create request merged with the model's defaults.",
+            "example": {
+              "truncate": "END"
+            }
+          }
+        },
+        "description": "The learned-sparse embedding configuration of a `string` field, as resolved when the index was created: the values set in the create request, with every omitted one filled from the model's defaults. Present when the field was created with `sparse_embed`. Sparse embeddings have no dimension or metric.",
+        "example": {
+          "model": "pinecone-sparse-english-v0",
+          "read_parameters": {
+            "truncate": "END"
+          },
+          "write_parameters": {
+            "truncate": "END"
+          }
+        }
+      },
       "ResponseStringField": {
         "title": "String",
         "required": [
@@ -26592,18 +28027,30 @@
             },
             "description": "Full-text search configuration. Present when the field is indexed for full-text search."
           },
+          "store_text": {
+            "type": "boolean",
+            "description": "Whether the field's text is stored. `true` means the text is stored and indexed for full-text search; `false` means it is embedded without being stored.",
+            "example": true
+          },
+          "embed": {
+            "$ref": "#/components/schemas/ResponseEmbedConfig"
+          },
+          "sparse_embed": {
+            "$ref": "#/components/schemas/ResponseSparseEmbedConfig"
+          },
           "filterable": {
             "type": "boolean",
-            "description": "Whether this field is indexed for metadata filtering."
+            "description": "Whether this field is indexed for metadata filtering. Present only on a string field with no search configuration."
           }
         },
-        "description": "A string field as returned in index schema responses. String fields configured for full-text search include a `full_text_search` object; string fields used for metadata filtering only include a `filterable` flag.",
+        "description": "A string field as returned in index schema responses. A search field includes one or more of `full_text_search`, `embed`, and `sparse_embed`. A field whose text is stored always reports `full_text_search`, with its resolved settings, including when it was enabled by default. A string field used for metadata only includes a `filterable` flag instead.",
         "example": {
           "full_text_search": {
             "language": "en",
             "stemming": false,
             "stop_words": false
           },
+          "store_text": true,
           "type": "string"
         }
       },
@@ -26775,12 +28222,12 @@
           "description": {
             "maxLength": 256,
             "type": "string",
-            "description": "Optional description for this field, at most 256 bytes. `null` in responses when none was set.",
+            "description": "The field's description, or `null` when none was set.",
             "nullable": true
           },
           "model": {
             "type": "string",
-            "description": "The name of the integrated embedding model to use for this field.",
+            "description": "The hosted embedding model that embeds the field's text.",
             "example": "multilingual-e5-large"
           },
           "dimension": {
@@ -26792,7 +28239,7 @@
           },
           "metric": {
             "type": "string",
-            "description": "The distance metric used for similarity search. Defaults to the model's preferred metric if not specified.\n\nPossible values: `cosine`, `dotproduct`, or `euclidean`.",
+            "description": "The distance metric the index uses.\n\nPossible values: `cosine`, `dotproduct`, or `euclidean`.",
             "example": "cosine",
             "x-enum": [
               "cosine",
@@ -26817,7 +28264,7 @@
             }
           }
         },
-        "description": "A semantic text field, as returned when describing an index created with an integrated embedding model. Backed by an integrated embedding model that embeds text at write and query time, enabling semantic similarity search without separate embedding calls. Cannot be declared when creating an index; use the create-for-model operation.",
+        "description": "The embedded text field of a legacy integrated index created via create-for-model, as returned when the index is described. The index's embedding configuration is reported on the field named by its `field_map`. Legacy integrated indexes require the legacy Records API.\n\nThis is a read-only view: `semantic_text` is rejected when creating an index. A document index reports an integrated-embedding field as a `string` field carrying `embed` or `sparse_embed` instead.",
         "example": {
           "model": "multilingual-e5-large",
           "type": "semantic_text"
@@ -26855,10 +28302,26 @@
       "StringField": {
         "title": "String",
         "required": [
-          "type",
-          "full_text_search"
+          "type"
         ],
         "type": "object",
+        "anyOf": [
+          {
+            "required": [
+              "full_text_search"
+            ]
+          },
+          {
+            "required": [
+              "embed"
+            ]
+          },
+          {
+            "required": [
+              "sparse_embed"
+            ]
+          }
+        ],
         "properties": {
           "type": {
             "enum": [
@@ -26928,12 +28391,24 @@
               "not": { }
             },
             "description": "Full-text search configuration. When present, the field is indexed for full-text search.\n\n`stop_words` requires `stemming: true`. `ngram` cannot be combined with `stemming` or `stop_words`."
+          },
+          "store_text": {
+            "type": "boolean",
+            "description": "When `true` (the default), the field's text is stored and the field is indexed for full-text search. Each value is then subject to the full-text limit of 10,000 tokens after tokenization, in addition to the 100 KB limit.\n\nWhen `false`, the field's text is embedded and then discarded rather than stored. Such a field must declare `embed` or `sparse_embed`, and cannot declare `full_text_search`. A fetch or search whose `include_fields` names it is rejected with `400`, and it cannot be scored with `text` or `query_string` or matched with `$match_phrase`, `$match_all`, or `$match_any`; searching it with an `embed` or `sparse_embed` scoring method still works.\n\nFixed at creation.",
+            "default": true,
+            "example": true
+          },
+          "embed": {
+            "$ref": "#/components/schemas/CreateEmbedConfig"
+          },
+          "sparse_embed": {
+            "$ref": "#/components/schemas/CreateSparseEmbedConfig"
           }
         },
         "additionalProperties": {
           "not": { }
         },
-        "description": "A string field configuration for full-text search. The `full_text_search` object is required; a string field without it will be rejected.",
+        "description": "A string field configuration. The field must declare at least one search configuration:\n\n- `full_text_search`: Index the text for full-text search.\n- `embed`: Integrated embedding with a dense model. Pinecone embeds the text with a hosted dense embedding model.\n- `sparse_embed`: Integrated embedding with a sparse model. Pinecone embeds the text with a hosted sparse embedding model.\n\nThey can be combined on one field, so the same text can be searched by full-text search, dense similarity, and sparse similarity. A string field with none of them is a metadata field and is rejected; include metadata in the documents you upsert instead.\n\nBy default the field's text is stored, and a stored field is always indexed for full-text search: when `full_text_search` is omitted, it is enabled with default settings. Set `store_text` to `false` to embed the text without storing it.\n\nEach value is at most 100 KB, whether or not the text is stored.",
         "example": {
           "full_text_search": {
             "language": "en"
@@ -27027,6 +28502,11 @@
         "description": "The plain-text body of a `401` response. Authentication failures are rejected before the request reaches the API, so they carry a short message rather than an `ErrorResponse`.",
         "example": "Invalid API key"
       },
+      "UnprocessableEntityMessage": {
+        "type": "string",
+        "description": "The plain-text body of a `422` response. A request body that cannot be deserialized is rejected before the request reaches the API, so it carries the deserializer's message rather than an `ErrorResponse`.",
+        "example": "Failed to deserialize the JSON body into the target type: missing field `metric` at line 1 column 16"
+      },
       "UpdateBackupScheduleRequest": {
         "type": "object",
         "properties": {
@@ -27079,7 +28559,7 @@
         "properties": {
           "onError": {
             "type": "string",
-            "description": "Indicates how to respond to errors during the import process.\nPossible values: `abort` or `continue`.",
+            "description": "Indicates how to respond to errors during the import process.\n\nPossible values: `abort` or `continue`.",
             "x-enum": [
               "abort",
               "continue"
@@ -27132,7 +28612,7 @@
           },
           "status": {
             "type": "string",
-            "description": "The status of the operation.\nPossible values: `Pending`, `InProgress`, `Failed`, `Completed`, or `Cancelled`.",
+            "description": "The status of the operation.\n\nPossible values: `Pending`, `InProgress`, `Failed`, `Completed`, or `Cancelled`.",
             "example": "Pending",
             "x-enum": [
               "Pending",
@@ -27828,7 +29308,7 @@
             "maximum": 4,
             "minimum": 0.5,
             "type": "number",
-            "description": "An optimization parameter for IVF dense indexes in dedicated read node indexes. It adjusts how much of the index is scanned to find vector candidates. Range: 0.5 – 4 (default).\nKeep the default (4.0) for the best search results. If query latency is too high, try lowering this value incrementally (minimum 0.5) to speed up the search at the cost of slightly lower accuracy. This parameter is only supported for dedicated (DRN) dense indexes.",
+            "description": "An optimization parameter for IVF dense indexes in dedicated read node indexes. It adjusts how much of the index is scanned to find vector candidates. Range: 0.5 – 4 (default).\n\nKeep the default (4.0) for the best search results. If query latency is too high, try lowering this value incrementally (minimum 0.5) to speed up the search at the cost of slightly lower accuracy. This parameter is only supported for dedicated (DRN) dense indexes.",
             "format": "float",
             "example": 2
           },
@@ -27836,7 +29316,7 @@
             "maximum": 100000,
             "minimum": 1,
             "type": "integer",
-            "description": "An optimization parameter that controls the maximum number of candidate dense vectors to rerank. Reranking computes exact distances to improve recall but increases query latency. Range: top_k – 100000.\nKeep the default for a balance of recall and latency. Increase this value if recall is too low, or decrease it to reduce latency at the cost of accuracy. This parameter is only supported for dedicated (DRN) dense indexes.",
+            "description": "An optimization parameter that controls the maximum number of candidate dense vectors to rerank. Reranking computes exact distances to improve recall but increases query latency. Range: top_k – 100000.\n\nKeep the default for a balance of recall and latency. Increase this value if recall is too low, or decrease it to reduce latency at the cost of accuracy. This parameter is only supported for dedicated (DRN) dense indexes.",
             "format": "int64",
             "example": 1000
           }
@@ -28148,7 +29628,7 @@
             "description": "The unique ID of the record to upsert. The service also accepts `id` as an alias, which this schema does not model."
           }
         },
-        "description": "The request for the `upsert` operation.",
+        "description": "A record for the legacy Records API's `upsert_records` operation.",
         "example": {
           "_id": "example-record-1"
         }
@@ -28222,7 +29702,7 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "The field(s) to consider for reranking. Every returned record must contain each\nlisted field; otherwise the request is rejected with `400`.\n\nThe number of fields supported is [model-specific](https://docs.pinecone.io/guides/search/rerank-results#reranking-models).\n",
+                "description": "The field(s) to consider for reranking. Every returned record must contain each listed field; otherwise the request is rejected with `400`.\n\nThe number of fields supported is [model-specific](https://docs.pinecone.io/guides/search/rerank-results#reranking-models).",
                 "example": [
                   "chunk_text",
                   "title"
@@ -28251,7 +29731,7 @@
             "description": "Parameters for reranking the initial search results."
           }
         },
-        "description": "A search request for records in a specific namespace.",
+        "description": "A search request for records in a specific namespace, for the legacy Records API's `search_records` operation.",
         "example": {
           "fields": [
             "chunk_text"
@@ -28695,7 +30175,7 @@
             "description": "A list of terms that must be present in the text of each search hit based on the specified strategy."
           }
         },
-        "description": "Specifies which terms must be present in the text of each search hit based on the specified strategy. The match is performed\nagainst the text field specified in the integrated index `field_map` configuration.\n\nTerms are normalized and tokenized into single tokens before matching, and order does not matter.\n\nExample:\n\n  `\"match_terms\": {\"terms\": [\"animal\", \"CHARACTER\", \"donald Duck\"], \"strategy\": \"all\"}` will tokenize\n  to `[\"animal\", \"character\", \"donald\", \"duck\"]`, and would match\n  `\"Donald F. Duck is a funny animal character\"` but would not match `\"A duck is a funny animal\"`.\n\nMatch terms filtering is supported only for sparse indexes with [integrated embedding](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding)\nconfigured to use the [pinecone-sparse-english-v0](https://docs.pinecone.io/models/pinecone-sparse-english-v0) model.",
+        "description": "Specifies which terms must be present in the text of each search hit based on the specified strategy. The match is performed against the text field specified in the legacy integrated index's `field_map` configuration.\n\nTerms are normalized and tokenized into single tokens before matching, and order does not matter.\n\nExample:\n\n  `\"match_terms\": {\"terms\": [\"animal\", \"CHARACTER\", \"donald Duck\"], \"strategy\": \"all\"}` will tokenize to `[\"animal\", \"character\", \"donald\", \"duck\"]`, and would match `\"Donald F. Duck is a funny animal character\"` but would not match `\"A duck is a funny animal\"`.\n\nMatch terms filtering is supported only for sparse [legacy integrated indexes](https://docs.pinecone.io/guides/index-data/indexing-overview#vector-embedding) configured to use the [pinecone-sparse-english-v0](https://docs.pinecone.io/models/pinecone-sparse-english-v0) model.",
         "example": {
           "strategy": "all",
           "terms": [
@@ -28731,7 +30211,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "description": "The error code.\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `INTERNAL`, `FORBIDDEN`, `PAYMENT_REQUIRED`, `SERVICE_UNAVAILABLE`, or `PAYLOAD_TOO_LARGE`.",
+                "description": "The error code.\n\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `INTERNAL`, `FORBIDDEN`, `PAYMENT_REQUIRED`, `SERVICE_UNAVAILABLE`, or `PAYLOAD_TOO_LARGE`.",
                 "example": "INVALID_ARGUMENT",
                 "x-enum": [
                   "OK",
@@ -28819,7 +30299,7 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/DocumentFieldValue"
         },
-        "description": "A document with a unique identifier and field values. Fields named in the index schema are validated against it; any other field is stored as filterable metadata. Every document must carry at least one schema field and every schema field the index marks required; a document with only `_id` and metadata is rejected. Limits: 2 MB per document and per request, 100 KB and 10,000 tokens per full-text-search field value.",
+        "description": "A document with a unique identifier and field values. Fields named in the index schema are validated against it; any other field is stored as filterable metadata. Every document must carry at least one schema field and every schema field the index marks required; a document with only `_id` and metadata is rejected. Limits: 2 MB per document and per request, 100 KB per `string` schema field value (whether or not its text is stored), and 10,000 tokens per full-text-search field value.\n\nA `string` field that declares `embed` or `sparse_embed` takes its text as a string, and Pinecone derives its vectors; a caller-supplied vector on such a field is rejected. A field with `embed` is required on every upsert.",
         "example": {
           "_id": "doc-1",
           "content": "Machine learning is a subset of artificial intelligence.",
@@ -28839,7 +30319,7 @@
             "items": {
               "$ref": "#/components/schemas/DocumentRecord"
             },
-            "description": "The list of documents to upsert into the namespace."
+            "description": "The list of documents to upsert into the namespace. At most 1000 documents, or 96 on an index whose schema declares `embed` or `sparse_embed`.\n\n`maxItems` states the general limit. A client that batches documents must size batches at 96 when any field of the index schema declares `embed` or `sparse_embed`."
           }
         },
         "description": "The request for the `upsert_documents` operation.",
@@ -28869,6 +30349,9 @@
             "description": "The number of documents successfully upserted.",
             "format": "int32",
             "example": 2
+          },
+          "usage": {
+            "$ref": "#/components/schemas/DocumentWriteUsage"
           }
         },
         "description": "The response for the `upsert_documents` operation.",
@@ -28876,162 +30359,121 @@
           "upserted_count": 2
         }
       },
-      "DocumentScoringMethod": {
+      "DocumentWriteUsage": {
         "required": [
-          "type"
+          "embed_total_tokens"
         ],
         "type": "object",
-        "anyOf": [
+        "properties": {
+          "embed_total_tokens": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The total number of tokens Pinecone embedded for the request, summed over every embedding call it made, dense and sparse, across all fields and models. Documents aren't deduplicated by `_id` within an upsert, so every entry's text is embedded and counted, including entries that repeat an `_id`.",
+            "format": "int32",
+            "example": 24
+          }
+        },
+        "description": "Usage information for the `upsert_documents` and `update_documents` operations.\n\nPresent only when the request embedded text, that is, when it wrote text to a field whose schema declares `embed` or `sparse_embed`. A request that embedded nothing returns no `usage`.",
+        "example": {
+          "embed_total_tokens": 24
+        }
+      },
+      "DocumentScoringMethod": {
+        "oneOf": [
           {
-            "title": "Dense vector scoring",
-            "required": [
-              "type",
-              "values"
-            ],
-            "anyOf": [
-              {
-                "required": [
-                  "field"
-                ]
-              },
-              {
-                "required": [
-                  "fields"
-                ]
-              }
-            ],
-            "properties": {
-              "type": {
-                "enum": [
-                  "dense_vector"
-                ]
-              },
-              "fields": {
-                "maxItems": 1
-              }
-            }
+            "$ref": "#/components/schemas/DenseVectorScoring"
           },
           {
-            "title": "Sparse vector scoring",
-            "required": [
-              "type",
-              "sparse_values"
-            ],
-            "anyOf": [
-              {
-                "required": [
-                  "field"
-                ]
-              },
-              {
-                "required": [
-                  "fields"
-                ]
-              }
-            ],
-            "properties": {
-              "type": {
-                "enum": [
-                  "sparse_vector"
-                ]
-              },
-              "fields": {
-                "maxItems": 1
-              }
-            }
+            "$ref": "#/components/schemas/SparseVectorScoring"
           },
           {
-            "title": "Text scoring",
-            "required": [
-              "type",
-              "query"
-            ],
-            "anyOf": [
-              {
-                "required": [
-                  "field"
-                ]
-              },
-              {
-                "required": [
-                  "fields"
-                ]
-              }
-            ],
-            "properties": {
-              "type": {
-                "enum": [
-                  "text"
-                ]
-              }
-            }
+            "$ref": "#/components/schemas/TextScoring"
           },
           {
-            "title": "Query string scoring",
-            "required": [
-              "type",
-              "query"
-            ],
-            "not": {
-              "anyOf": [
-                {
-                  "required": [
-                    "field"
-                  ]
-                },
-                {
-                  "required": [
-                    "fields"
-                  ]
-                }
-              ]
-            },
-            "properties": {
-              "type": {
-                "enum": [
-                  "query_string"
-                ]
-              }
-            }
+            "$ref": "#/components/schemas/QueryStringScoring"
+          },
+          {
+            "$ref": "#/components/schemas/EmbedScoring"
+          },
+          {
+            "$ref": "#/components/schemas/SparseEmbedScoring"
           }
         ],
+        "description": "A scoring clause that defines how documents are scored against a query. `type` selects the scoring method and which other fields the clause takes.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "dense_vector": "#/components/schemas/DenseVectorScoring",
+            "sparse_vector": "#/components/schemas/SparseVectorScoring",
+            "text": "#/components/schemas/TextScoring",
+            "query_string": "#/components/schemas/QueryStringScoring",
+            "embed": "#/components/schemas/EmbedScoring",
+            "sparse_embed": "#/components/schemas/SparseEmbedScoring",
+            "DenseVectorScoring": "#/components/schemas/DenseVectorScoring",
+            "SparseVectorScoring": "#/components/schemas/SparseVectorScoring",
+            "TextScoring": "#/components/schemas/TextScoring",
+            "QueryStringScoring": "#/components/schemas/QueryStringScoring",
+            "EmbedScoring": "#/components/schemas/EmbedScoring",
+            "SparseEmbedScoring": "#/components/schemas/SparseEmbedScoring"
+          }
+        }
+      },
+      "DenseVectorScoring": {
+        "title": "Dense vector",
+        "required": [
+          "type",
+          "values"
+        ],
+        "type": "object",
         "not": {
-          "required": [
-            "field",
-            "fields"
+          "anyOf": [
+            {
+              "required": [
+                "field",
+                "fields"
+              ]
+            },
+            {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "field"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "fields"
+                    ]
+                  }
+                ]
+              }
+            }
           ]
         },
         "properties": {
           "type": {
+            "enum": [
+              "dense_vector"
+            ],
             "type": "string",
-            "description": "The scoring method type.\nPossible values: `dense_vector`, `sparse_vector`, `text`, or `query_string`.",
-            "x-enum": [
-              "dense_vector",
-              "sparse_vector",
-              "text",
-              "query_string"
-            ]
+            "description": "The scoring method. Always `dense_vector`."
           },
           "fields": {
+            "maxItems": 1,
             "minItems": 1,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "The fields to score against.\n\nEither `fields` or `field` must be provided for `dense_vector`, `sparse_vector`, and `text` scoring types, and neither may be provided for `query_string`. `dense_vector` and `sparse_vector` accept exactly one field; `text` accepts one or more.",
+            "description": "The `dense_vector` field to score against, as a one-element array. Provide `fields` or `field` (one is required, not both).",
             "example": [
-              "content"
+              "your_vector"
             ]
           },
           "field": {
             "type": "string",
-            "description": "A single field to score against. Equivalent to a one-element `fields`; prefer `fields`, which can also name more than one field. Either `field` or `fields` must be provided for `dense_vector`, `sparse_vector`, and `text` scoring types, but not both.",
-            "deprecated": true
-          },
-          "query": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The text query to use for `text` and `query_string` scoring types. Leading and trailing whitespace is trimmed; a query that is empty after trimming is rejected. At most 10 KB."
+            "description": "The one-field form of `fields`. Provide `field` or `fields` (one is required, not both)."
           },
           "values": {
             "type": "array",
@@ -29039,20 +30481,324 @@
               "type": "number",
               "format": "float"
             },
-            "description": "The dense vector values to use for `dense_vector` scoring type."
+            "description": "The dense query vector. Its length must match the field's dimension."
+          }
+        },
+        "description": "Score by dense vector similarity between `values` and a `dense_vector` field. Name the field with `fields` or `field`."
+      },
+      "SparseVectorScoring": {
+        "title": "Sparse vector",
+        "required": [
+          "type",
+          "sparse_values"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "field",
+                "fields"
+              ]
+            },
+            {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "field"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "fields"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "properties": {
+          "type": {
+            "enum": [
+              "sparse_vector"
+            ],
+            "type": "string",
+            "description": "The scoring method. Always `sparse_vector`."
+          },
+          "fields": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The `sparse_vector` field to score against, as a one-element array. Provide `fields` or `field` (one is required, not both).",
+            "example": [
+              "your_sparse_vector"
+            ]
+          },
+          "field": {
+            "type": "string",
+            "description": "The one-field form of `fields`. Provide `field` or `fields` (one is required, not both)."
           },
           "sparse_values": {
             "$ref": "#/components/schemas/SparseValues"
           }
         },
-        "description": "A scoring method that defines how documents are scored against a query.\n\nThe `type` field determines which other fields are used:\n- `dense_vector`: Score by dense vector similarity. Requires either `field` or `fields` naming exactly one field, and a `values` array.\n- `sparse_vector`: Score by sparse vector similarity. Requires either `field` or `fields` naming exactly one field, and `sparse_values`.\n- `text`: Score by BM25 text similarity. Requires either `field` or `fields` naming one or more fields, and `query`. Naming several fields scores the query against all of them.\n- `query_string`: Score using a Lucene query string. Use field qualifiers (`field:(clause)`) to target a field, or omit field qualifiers to search against all text-searchable fields. Errors if `field` or `fields` is provided.",
-        "example": {
-          "fields": [
-            "content"
-          ],
-          "query": "What is machine learning?",
-          "type": "text"
-        }
+        "description": "Score by sparse vector similarity between `sparse_values` and a `sparse_vector` field. Name the field with `fields` or `field`."
+      },
+      "TextScoring": {
+        "title": "Text",
+        "required": [
+          "type",
+          "query"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "field",
+                "fields"
+              ]
+            },
+            {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "field"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "fields"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "properties": {
+          "type": {
+            "enum": [
+              "text"
+            ],
+            "type": "string",
+            "description": "The scoring method. Always `text`."
+          },
+          "fields": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The full-text-search fields to score against. Provide `fields` or `field` (one is required, not both).",
+            "example": [
+              "content"
+            ]
+          },
+          "field": {
+            "type": "string",
+            "description": "The one-field form of `fields`. Provide `field` or `fields` (one is required, not both)."
+          },
+          "query": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The text query. Leading and trailing whitespace is trimmed; a query that is empty after trimming is rejected. At most 10,000 bytes."
+          }
+        },
+        "description": "Score by BM25 text similarity between `query` and one or more full-text-search fields. Naming several fields scores the query against all of them. Name the fields with `fields` or `field`."
+      },
+      "QueryStringScoring": {
+        "title": "Query string",
+        "required": [
+          "type",
+          "query"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "field"
+              ]
+            },
+            {
+              "required": [
+                "fields"
+              ]
+            }
+          ]
+        },
+        "properties": {
+          "type": {
+            "enum": [
+              "query_string"
+            ],
+            "type": "string",
+            "description": "The scoring method. Always `query_string`."
+          },
+          "query": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The Lucene query string. Leading and trailing whitespace is trimmed; a query that is empty after trimming is rejected. At most 10,000 bytes."
+          }
+        },
+        "description": "Score using a Lucene query string. Target a field with a field qualifier in the query (`field:(clause)`), or omit qualifiers to search all full-text-search fields. `field` and `fields` are rejected."
+      },
+      "EmbedScoring": {
+        "title": "Embed",
+        "required": [
+          "type",
+          "query"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "values"
+              ]
+            },
+            {
+              "required": [
+                "sparse_values"
+              ]
+            },
+            {
+              "required": [
+                "field",
+                "fields"
+              ]
+            },
+            {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "field"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "fields"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "properties": {
+          "type": {
+            "enum": [
+              "embed"
+            ],
+            "type": "string",
+            "description": "The scoring method. Always `embed`."
+          },
+          "fields": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The `string` field that declares `embed`, as a one-element array. Provide `fields` or `field` (one is required, not both).",
+            "example": [
+              "content"
+            ]
+          },
+          "field": {
+            "type": "string",
+            "description": "The one-field form of `fields`. Provide `field` or `fields` (one is required, not both)."
+          },
+          "query": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The text to embed and score against. Leading and trailing whitespace is trimmed; a query that is empty after trimming is rejected. At most 10,000 bytes."
+          }
+        },
+        "description": "Score by dense vector similarity to `query`, which Pinecone embeds with the model and read parameters of the named field's `embed` configuration. Name exactly one `string` field that declares `embed`, with `fields` or `field`. `values` and `sparse_values` are rejected."
+      },
+      "SparseEmbedScoring": {
+        "title": "Sparse embed",
+        "required": [
+          "type",
+          "query"
+        ],
+        "type": "object",
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "values"
+              ]
+            },
+            {
+              "required": [
+                "sparse_values"
+              ]
+            },
+            {
+              "required": [
+                "field",
+                "fields"
+              ]
+            },
+            {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "field"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "fields"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "properties": {
+          "type": {
+            "enum": [
+              "sparse_embed"
+            ],
+            "type": "string",
+            "description": "The scoring method. Always `sparse_embed`."
+          },
+          "fields": {
+            "maxItems": 1,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The `string` field that declares `sparse_embed`, as a one-element array. Provide `fields` or `field` (one is required, not both).",
+            "example": [
+              "content"
+            ]
+          },
+          "field": {
+            "type": "string",
+            "description": "The one-field form of `fields`. Provide `field` or `fields` (one is required, not both)."
+          },
+          "query": {
+            "minLength": 1,
+            "type": "string",
+            "description": "The text to embed and score against. Leading and trailing whitespace is trimmed; a query that is empty after trimming is rejected. At most 10,000 bytes."
+          }
+        },
+        "description": "Score by sparse vector similarity to `query`, which Pinecone embeds with the model and read parameters of the named field's `sparse_embed` configuration. Name exactly one `string` field that declares `sparse_embed`, with `fields` or `field`. `values` and `sparse_values` are rejected. Only documents that share a term with the query are returned, so a search can return fewer than `top_k` results."
       },
       "SearchDocumentsRequest": {
         "required": [
@@ -29065,33 +30811,25 @@
             "maxItems": 100,
             "minItems": 1,
             "type": "array",
-            "oneOf": [
-              {
-                "title": "Single scoring clause",
-                "maxItems": 1
-              },
-              {
-                "title": "Multiple text scoring clauses",
-                "minItems": 2,
+            "not": {
+              "minItems": 2,
+              "not": {
                 "items": {
-                  "type": "object",
                   "properties": {
                     "type": {
                       "enum": [
                         "text",
                         "query_string"
-                      ],
-                      "type": "string",
-                      "description": "Multiple scoring clauses must use `text` or `query_string`."
+                      ]
                     }
                   }
                 }
               }
-            ],
+            },
             "items": {
               "$ref": "#/components/schemas/DocumentScoringMethod"
             },
-            "description": "The list of scoring methods to use for ranking documents.\n\nA single clause of any type is always valid. Several clauses may be combined only when every one of them is `text` or `query_string`; a `dense_vector` or `sparse_vector` clause must appear on its own."
+            "description": "The scoring clauses used to rank documents.\n\nOne clause of any type is always valid. Several clauses can be combined only when every clause is `text` or `query_string`, and the server combines them into one ranking. A `dense_vector`, `sparse_vector`, `embed`, or `sparse_embed` clause must be the only clause."
           },
           "top_k": {
             "maximum": 10000,
@@ -29106,7 +30844,7 @@
             "items": {
               "type": "string"
             },
-            "description": "The document fields to return on each match alongside `_id` and `_score`. When omitted or empty, no fields are returned. Pass `[\"*\"]` to return every field.",
+            "description": "The document fields to return on each match alongside `_id` and `_score`. When omitted or empty, no fields are returned. Pass `[\"*\"]` to return every field. A name the schema doesn't declare is read as a metadata key, and returns nothing for documents without that key.\n\nNaming a field whose schema sets `store_text: false` is rejected with `400`, since its text is not stored; `[\"*\"]` leaves such fields out.",
             "example": [
               "title",
               "content"
@@ -29153,6 +30891,13 @@
             "description": "The billed egress for this response, in bytes. Measured on the encoded response payload.",
             "format": "int64",
             "example": 1024
+          },
+          "embed_total_tokens": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The number of tokens Pinecone embedded for the query text of an `embed` or `sparse_embed` scoring method. Present only when the search embedded query text.",
+            "format": "int32",
+            "example": 12
           }
         },
         "description": "Usage information for the `search_documents` operation.",
@@ -29282,7 +31027,7 @@
             "items": {
               "type": "string"
             },
-            "description": "The document fields to return on each document. When omitted or empty, all fields are returned; `[\"*\"]` also returns every field."
+            "description": "The document fields to return on each document. When omitted or empty, all fields are returned; `[\"*\"]` also returns every field. A name the schema doesn't declare is read as a metadata key, and returns nothing for documents without that key.\n\nNaming a field whose schema sets `store_text: false` is rejected with `400`, since its text is not stored; omitting `include_fields` or passing `[\"*\"]` leaves such fields out."
           },
           "pagination_token": {
             "type": "string",
@@ -29597,7 +31342,7 @@
             "items": {
               "$ref": "#/components/schemas/UpdateDocumentRecord"
             },
-            "description": "The list of partial document updates to apply. Mutually exclusive with `filter`, and with a non-empty `set_fields` or `remove_fields`."
+            "description": "The list of partial document updates to apply. At most 1000 updates, or 96 on an index whose schema declares `embed` or `sparse_embed`. Mutually exclusive with `filter`, and with a non-empty `set_fields` or `remove_fields`.\n\n`maxItems` states the general limit. A client that batches updates must size batches at 96 when any field of the index schema declares `embed` or `sparse_embed`."
           },
           "filter": {
             "minProperties": 1,
@@ -29614,7 +31359,7 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/DocumentFieldValue"
             },
-            "description": "The fields to set on every document matching `filter`, and the values to set them to. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.",
+            "description": "The fields to set on every document matching `filter`, and the values to set them to. Only metadata fields can be set here; every data field is refused, that is, vector fields, full-text-searchable text and embedded text, not only fields that declare `embed` or `sparse_embed`. Update those per ID with `documents`. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.",
             "example": {
               "category": "archive"
             }
@@ -29624,9 +31369,9 @@
             "items": {
               "type": "string"
             },
-            "description": "The names of the fields to remove from every document matching `filter`. When non-empty, only valid together with `filter`; an empty list asks for no change and is ignored.",
+            "description": "The names of the fields to remove from every document matching `filter`. Only metadata fields can be removed here; data fields are refused, as in `set_fields`. When non-empty, only valid together with `filter`; an empty list asks for no change and is ignored.",
             "example": [
-              "content"
+              "reviewer"
             ]
           }
         },
@@ -29640,6 +31385,9 @@
             "description": "The number of documents that matched `filter` when the update was accepted. Only returned for a filtered update; a per-ID update reports no count. The patch is applied asynchronously, so this is a point-in-time count rather than a guarantee of the number of documents ultimately patched.",
             "format": "int32",
             "example": 42
+          },
+          "usage": {
+            "$ref": "#/components/schemas/DocumentWriteUsage"
           }
         },
         "description": "The response for the `update_documents` operation."
@@ -29765,7 +31513,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "description": "The error code.\nPossible values: `OK`, `UNKNOWN`, `UNAUTHENTICATED`, or `TOO_MANY_REQUESTS`.",
+                "description": "The error code.\n\nPossible values: `OK`, `UNKNOWN`, `UNAUTHENTICATED`, or `TOO_MANY_REQUESTS`.",
                 "x-enum": [
                   "OK",
                   "UNKNOWN",
@@ -29986,7 +31734,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "description": "The error code.\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, or `FORBIDDEN`.",
+                "description": "The error code.\n\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, or `FORBIDDEN`.",
                 "x-enum": [
                   "OK",
                   "UNKNOWN",
@@ -30133,7 +31881,7 @@
       },
       "ModelInfoMetric": {
         "type": "string",
-        "description": "A distance metric that the embedding model supports for similarity searches.\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
+        "description": "A distance metric that the embedding model supports for similarity searches.\n\nPossible values: `cosine`, `euclidean`, or `dotproduct`.",
         "x-enum": [
           "cosine",
           "euclidean",
@@ -30437,7 +32185,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "description": "The code of the error.\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, `FORBIDDEN`, `UNPROCESSABLE_ENTITY`, or `PAYMENT_REQUIRED`.",
+                "description": "The code of the error.\n\nPossible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`, `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`, `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`, `DATA_LOSS`, `FORBIDDEN`, `UNPROCESSABLE_ENTITY`, or `PAYMENT_REQUIRED`.",
                 "x-enum": [
                   "OK",
                   "UNKNOWN",
@@ -30592,7 +32340,7 @@
               },
               "state": {
                 "type": "string",
-                "description": "The state of the workspace.\nPossible values: `Initializing`, `InitializationFailed`, `Ready`, or `Terminating`.",
+                "description": "The state of the workspace.\n\nPossible values: `Initializing`, `InitializationFailed`, `Ready`, or `Terminating`.",
                 "x-enum": [
                   "Initializing",
                   "InitializationFailed",
@@ -37413,7 +39161,7 @@
           },
           "token_type": {
             "type": "string",
-            "description": "The type of token.\nPossible values: `Bearer`.",
+            "description": "The type of token.\n\nPossible values: `Bearer`.",
             "x-enum": [
               "Bearer"
             ]
@@ -37528,6 +39276,10 @@
       "description": "Actions that manage role bindings."
     },
     {
+      "name": "Cost Usage Exports",
+      "description": "Actions that export an organization's cost and usage records as a file."
+    },
+    {
       "name": "Manage Assistants",
       "description": "Actions that manage Assistants"
     },
@@ -37553,7 +39305,7 @@
     },
     {
       "name": "Document Operations",
-      "description": "Operations on documents in an index created with a document schema — one that declares at least one full-text-searchable string field or a `dense_vector` / `sparse_vector` field under a name other than the reserved `_values` / `_sparse_values`. Metadata fields alone do not make a document schema. Indexes served by the vectors API — created from `dimension`/`metric` on an earlier API version, or from a schema holding only the reserved vector fields and metadata — and indexes served by the records API — created with an integrated embedding model, whose schema holds a single `semantic_text` field — reject every document operation with `400` and name the API to use instead. A document index accepts only the document operations; the vector data operations (upsert, query, fetch, update, delete, list) reject it, while index stats and the namespace operations remain available."
+      "description": "Operations on documents in a document index — an index created with a document schema, one that declares at least one `string` field with `full_text_search`, `embed`, or `sparse_embed`, or a `dense_vector` / `sparse_vector` field under a name other than the reserved `_values` / `_sparse_values`. Metadata fields alone do not make a document schema. Indexes served by the vectors API — created from `dimension`/`metric` on an earlier API version, or from a schema holding only the reserved vector fields and metadata — and legacy integrated indexes — created via create-for-model, whose schema holds a single `semantic_text` field, and which require the legacy Records API — reject every document operation with `400` and name the API to use instead. A document index accepts only the document operations; the vector data operations (upsert, query, fetch, update, delete, list) reject it, while index stats and the namespace operations remain available."
     },
     {
       "name": "Inference",

@@ -34,7 +34,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.CreateIndex
         {
         }
         /// <summary>
-        /// Create an index from a backup.The restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its integrated embedding configuration, and the request cannot override it. A backup that carries no `schema` restores an index whose fields are derived from the source index&apos;s dimension, metric, and vector type, and reported under the reserved `_values` / `_sparse_values` names.For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.
+        /// Create an index from a backup.The restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its embedding configuration (`embed` / `sparse_embed` fields, or the `semantic_text` field of a legacy integrated index created via create-for-model), and the request cannot override it. A backup that carries no `schema` restores an index whose fields are derived from the source index&apos;s dimension, metric, and vector type, and reported under the reserved `_values` / `_sparse_values` names.For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupResponse"/></returns>
         /// <param name="body">The configuration needed to create a Pinecone index from a backup.</param>
@@ -46,7 +46,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.CreateIndex
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 412 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,13 +66,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Backups.Item.CreateIndex
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "412", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an index from a backup.The restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its integrated embedding configuration, and the request cannot override it. A backup that carries no `schema` restores an index whose fields are derived from the source index&apos;s dimension, metric, and vector type, and reported under the reserved `_values` / `_sparse_values` names.For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.
+        /// Create an index from a backup.The restored index inherits the schema of the index the backup was taken from, including its full-text search fields and its embedding configuration (`embed` / `sparse_embed` fields, or the `semantic_text` field of a legacy integrated index created via create-for-model), and the request cannot override it. A backup that carries no `schema` restores an index whose fields are derived from the source index&apos;s dimension, metric, and vector type, and reported under the reserved `_values` / `_sparse_values` names.For serverless backups, you can optionally set `read_capacity` so the restored index is created with dedicated read nodes (DRN) instead of defaulting to on-demand capacity.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The configuration needed to create a Pinecone index from a backup.</param>

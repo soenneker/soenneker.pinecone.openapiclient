@@ -15,7 +15,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>For chat interactions, the number of tokens in the assistant&apos;s response.  For context retrieval, this is always 0.</summary>
+        /// <summary>For chat interactions, the number of tokens in the assistant&apos;s response.For context retrieval, this is always 0.</summary>
         public int? CompletionTokens { get; set; }
         /// <summary>For chat interactions, the number of tokens in the LLM request (message, context snippets, and system prompt).For context retrieval, the number of tokens in the LLM request used to generate search queries from the messages, plus the tokens in the retrieved context snippets.</summary>
         public int? PromptTokens { get; set; }

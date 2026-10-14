@@ -103,7 +103,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 409 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -122,7 +121,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules.Item
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);

@@ -3,17 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
-    /// <summary>Multiple scoring clauses must use `text` or `query_string`.</summary>
+    /// <summary>The scoring method. Always `text`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum SearchDocumentsRequestScoreByMultipleTextScoringClausesItemType
+    public enum TextType
     {
         [EnumMember(Value = "text")]
         #pragma warning disable CS1591
         Text,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "query_string")]
-        #pragma warning disable CS1591
-        QueryString,
         #pragma warning restore CS1591
     }
 }

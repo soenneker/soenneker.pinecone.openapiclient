@@ -102,13 +102,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
         /// Configure an existing index. For guidance and examples, see [Manage indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel"/></returns>
-        /// <param name="body">Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes the tag.- `deletion_protection`: Enable or disable deletion protection.</param>
+        /// <param name="body">Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters, on a legacy integrated index created via create-for-model. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes the tag.- `deletion_protection`: Enable or disable deletion protection.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 422 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -126,7 +125,6 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.IndexModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -173,7 +171,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
         /// Configure an existing index. For guidance and examples, see [Manage indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes the tag.- `deletion_protection`: Enable or disable deletion protection.</param>
+        /// <param name="body">Configuration updates to apply to an existing index. All fields are optional; only the fields you include are modified.- `deployment`: Update pod-based scaling parameters (`replicas`, `pod_type`). Deployment type and cloud/region cannot be changed.- `schema`: Update `semantic_text` field embedding parameters, on a legacy integrated index created via create-for-model. Only `write_parameters` and `read_parameters` may be changed; the model cannot be changed after creation.- `read_capacity`: Update read capacity mode or dedicated node configuration for managed and BYOC indexes. Not applicable to pod-based indexes.- `tags`: Update or delete index tags. Setting a tag value to `&quot;&quot;` removes the tag.- `deletion_protection`: Enable or disable deletion protection.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

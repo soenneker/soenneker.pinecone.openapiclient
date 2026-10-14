@@ -17,6 +17,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billed egress for this response, in bytes. Measured on the encoded response payload.</summary>
         public long? EgressBytes { get; set; }
+        /// <summary>The number of tokens Pinecone embedded for the query text of an `embed` or `sparse_embed` scoring method. Present only when the search embedded query text.</summary>
+        public int? EmbedTotalTokens { get; set; }
         /// <summary>The number of read units consumed by this operation.</summary>
         public int? ReadUnits { get; set; }
         /// <summary>
@@ -45,6 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "egress_bytes", n => { EgressBytes = n.GetLongValue(); } },
+                { "embed_total_tokens", n => { EmbedTotalTokens = n.GetIntValue(); } },
                 { "read_units", n => { ReadUnits = n.GetIntValue(); } },
             };
         }
@@ -56,6 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteLongValue("egress_bytes", EgressBytes);
+            writer.WriteIntValue("embed_total_tokens", EmbedTotalTokens);
             writer.WriteIntValue("read_units", ReadUnits);
             writer.WriteAdditionalData(AdditionalData);
         }

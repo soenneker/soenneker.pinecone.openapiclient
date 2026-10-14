@@ -55,7 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity ReadCapacity { get; set; }
 #endif
-        /// <summary>The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and full-text search fields.At least one of `dense_vector`, `sparse_vector`, or a `string` field with `full_text_search` must be present; an empty `fields` map is rejected. At most one `dense_vector` and one `sparse_vector` field, and at most 100 `full_text_search` fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.</summary>
+        /// <summary>The schema to use when creating a Pinecone index. Defines the fields the index searches over: dense vector, sparse vector, and string fields searched by full-text search or by embeddings Pinecone derives from their text.At least one of `dense_vector`, `sparse_vector`, or a `string` field with `full_text_search`, `embed`, or `sparse_embed` must be present; an empty `fields` map is rejected. An index has one dense vector slot and one sparse vector slot: at most one field may be a `dense_vector` field or carry `embed`, and at most one may be a `sparse_vector` field or carry `sparse_embed`. At most 100 `full_text_search` fields. Metadata used for filtering is not declared in the schema; it is indexed automatically from the documents you upsert.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexSchema? Schema { get; set; }
