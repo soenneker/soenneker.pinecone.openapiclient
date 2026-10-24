@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateNoopOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateRunOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ErrorOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ExploreOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.GroomMetricsOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ImportOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeNoopOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.PackCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.PackRunningOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEmptyOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchCcTurnCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnFailedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StateFailedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StatusErrorOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputMember1"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateNoopOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateRunOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ErrorOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ExploreOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.GroomMetricsOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ImportOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeNoopOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.PackCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.PackRunningOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEmptyOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchCcTurnCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnCompletedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnFailedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StateFailedOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StatusErrorOutput"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputAnyOf21"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskOutput : IComposedTypeWrapper, IParsable
@@ -173,13 +173,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.StatusErrorOutput StatusErrorOutput { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputMember1"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputAnyOf21"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputMember1? TaskOutputMember1 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputAnyOf21? TaskOutputAnyOf21 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputMember1 TaskOutputMember1 { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputAnyOf21 TaskOutputAnyOf21 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -210,7 +210,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             result.SearchTurnFailedOutput = new global::Soenneker.Pinecone.OpenApiClient.Models.SearchTurnFailedOutput();
             result.StateFailedOutput = new global::Soenneker.Pinecone.OpenApiClient.Models.StateFailedOutput();
             result.StatusErrorOutput = new global::Soenneker.Pinecone.OpenApiClient.Models.StatusErrorOutput();
-            result.TaskOutputMember1 = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputMember1();
+            result.TaskOutputAnyOf21 = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskOutputAnyOf21();
             return result;
         }
         /// <summary>
@@ -219,9 +219,9 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CurateManifestTuneOutput != null || CurateNoopOutput != null || CurateRunOutput != null || ErrorOutput != null || ExploreOutput != null || GroomMetricsOutput != null || ImportOutput != null || OptimizeNoopOutput != null || OptimizeResultOutput != null || PackCompletedOutput != null || PackRunningOutput != null || ProfileEmptyOutput != null || ProfileEstimateOutput != null || RestoreCompletedOutput != null || RestoreRunningOutput != null || SearchCcTurnCompletedOutput != null || SearchTurnCompletedOutput != null || SearchTurnFailedOutput != null || StateFailedOutput != null || StatusErrorOutput != null || TaskOutputMember1 != null)
+            if(CurateManifestTuneOutput != null || CurateNoopOutput != null || CurateRunOutput != null || ErrorOutput != null || ExploreOutput != null || GroomMetricsOutput != null || ImportOutput != null || OptimizeNoopOutput != null || OptimizeResultOutput != null || PackCompletedOutput != null || PackRunningOutput != null || ProfileEmptyOutput != null || ProfileEstimateOutput != null || RestoreCompletedOutput != null || RestoreRunningOutput != null || SearchCcTurnCompletedOutput != null || SearchTurnCompletedOutput != null || SearchTurnFailedOutput != null || StateFailedOutput != null || StatusErrorOutput != null || TaskOutputAnyOf21 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CurateManifestTuneOutput, CurateNoopOutput, CurateRunOutput, ErrorOutput, ExploreOutput, GroomMetricsOutput, ImportOutput, OptimizeNoopOutput, OptimizeResultOutput, PackCompletedOutput, PackRunningOutput, ProfileEmptyOutput, ProfileEstimateOutput, RestoreCompletedOutput, RestoreRunningOutput, SearchCcTurnCompletedOutput, SearchTurnCompletedOutput, SearchTurnFailedOutput, StateFailedOutput, StatusErrorOutput, TaskOutputMember1);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CurateManifestTuneOutput, CurateNoopOutput, CurateRunOutput, ErrorOutput, ExploreOutput, GroomMetricsOutput, ImportOutput, OptimizeNoopOutput, OptimizeResultOutput, PackCompletedOutput, PackRunningOutput, ProfileEmptyOutput, ProfileEstimateOutput, RestoreCompletedOutput, RestoreRunningOutput, SearchCcTurnCompletedOutput, SearchTurnCompletedOutput, SearchTurnFailedOutput, StateFailedOutput, StatusErrorOutput, TaskOutputAnyOf21);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -232,7 +232,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutput>(null, CurateManifestTuneOutput, CurateNoopOutput, CurateRunOutput, ErrorOutput, ExploreOutput, GroomMetricsOutput, ImportOutput, OptimizeNoopOutput, OptimizeResultOutput, PackCompletedOutput, PackRunningOutput, ProfileEmptyOutput, ProfileEstimateOutput, RestoreCompletedOutput, RestoreRunningOutput, SearchCcTurnCompletedOutput, SearchTurnCompletedOutput, SearchTurnFailedOutput, StateFailedOutput, StatusErrorOutput, TaskOutputMember1);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutput>(null, CurateManifestTuneOutput, CurateNoopOutput, CurateRunOutput, ErrorOutput, ExploreOutput, GroomMetricsOutput, ImportOutput, OptimizeNoopOutput, OptimizeResultOutput, PackCompletedOutput, PackRunningOutput, ProfileEmptyOutput, ProfileEstimateOutput, RestoreCompletedOutput, RestoreRunningOutput, SearchCcTurnCompletedOutput, SearchTurnCompletedOutput, SearchTurnFailedOutput, StateFailedOutput, StatusErrorOutput, TaskOutputAnyOf21);
         }
     }
 }

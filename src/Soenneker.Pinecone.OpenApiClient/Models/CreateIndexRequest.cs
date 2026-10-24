@@ -77,6 +77,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public CreateIndexRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            DeletionProtection = "disabled";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

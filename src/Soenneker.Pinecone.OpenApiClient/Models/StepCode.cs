@@ -8,19 +8,11 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeBranch1"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeDocument"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeDocument"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StepCode : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeBranch1? StepCodeBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeBranch1 StepCodeBranch1 { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeDocument"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -28,6 +20,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeDocument StepCodeDocument { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,13 +39,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.StepCode();
-            if("StepCodeBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.StepCodeBranch1 = new global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeBranch1();
-            }
-            else if("StepCodeDocument".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("StepCodeDocument".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.StepCodeDocument = new global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeDocument();
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
             }
             return result;
         }
@@ -55,11 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(StepCodeBranch1 != null)
-            {
-                return StepCodeBranch1.GetFieldDeserializers();
-            }
-            else if(StepCodeDocument != null)
+            if(StepCodeDocument != null)
             {
                 return StepCodeDocument.GetFieldDeserializers();
             }
@@ -72,13 +68,13 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(StepCodeBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeBranch1>(null, StepCodeBranch1);
-            }
-            else if(StepCodeDocument != null)
+            if(StepCodeDocument != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.StepCodeDocument>(null, StepCodeDocument);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

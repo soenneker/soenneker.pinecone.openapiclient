@@ -54,10 +54,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Compact summary of the call&apos;s result (never the payload). The shape varies by category and is runtime-extensible.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallResult? Result { get; set; }
+        public UntypedNode? Result { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallResult Result { get; set; }
+        public UntypedNode Result { get; set; }
 #endif
         /// <summary>Which scoring space the returned scores live in, for calls that retrieve.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -98,7 +98,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "fn", n => { Fn = n.GetStringValue(); } },
                 { "ok", n => { Ok = n.GetBoolValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallResult>(global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallResult.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "score_space", n => { ScoreSpace = n.GetStringValue(); } },
             };
         }
@@ -115,7 +115,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("fn", Fn);
             writer.WriteBoolValue("ok", Ok);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TraceCallResult>("result", Result);
+            writer.WriteObjectValue<UntypedNode>("result", Result);
             writer.WriteStringValue("score_space", ScoreSpace);
             writer.WriteAdditionalData(AdditionalData);
         }

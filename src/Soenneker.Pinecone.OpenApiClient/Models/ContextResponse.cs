@@ -213,6 +213,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public ContextResponse()
         {
             AdditionalData = new Dictionary<string, object>();
+            Kind = "search";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
