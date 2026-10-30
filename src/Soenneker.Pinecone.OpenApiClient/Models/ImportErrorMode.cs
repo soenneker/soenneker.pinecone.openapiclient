@@ -18,7 +18,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("onError") is { } nullNodeOnError && nullNodeOnError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnError = null;
+            if (parseNode.GetChildNode("onError") is null) { _explicitNullValueOnError = default!; _explicitNullProperties?.Remove("onError"); }
+            else if (parseNode.GetChildNode("onError") is { } nullNodeOnError && nullNodeOnError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnError = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Indicates how to respond to errors during the import process.Possible values: `abort` or `continue`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OnError { get => _explicitNullValueOnError; set { _explicitNullValueOnError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onError"); else _explicitNullProperties?.Remove("onError"); } }
+        public string? OnError { get => _explicitNullValueOnError; set { _explicitNullValueOnError = value; AdditionalData?.Remove("onError"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onError"); else _explicitNullProperties?.Remove("onError"); } }
         private string? _explicitNullValueOnError = default!;
 #nullable restore
 #else
-        public string OnError { get => _explicitNullValueOnError; set { _explicitNullValueOnError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onError"); else _explicitNullProperties?.Remove("onError"); } }
+        public string OnError { get => _explicitNullValueOnError; set { _explicitNullValueOnError = value; AdditionalData?.Remove("onError"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onError"); else _explicitNullProperties?.Remove("onError"); } }
         private string _explicitNullValueOnError = default!;
 #endif
         /// <summary>

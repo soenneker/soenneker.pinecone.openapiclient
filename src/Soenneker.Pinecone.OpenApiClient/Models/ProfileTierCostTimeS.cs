@@ -18,17 +18,19 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("hi") is { } nullNodeHi && nullNodeHi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hi = null;
-            if (parseNode.GetChildNode("lo") is { } nullNodeLo && nullNodeLo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lo = null;
+            if (parseNode.GetChildNode("hi") is null) { _explicitNullValueHi = default!; _explicitNullProperties?.Remove("hi"); }
+            else if (parseNode.GetChildNode("hi") is { } nullNodeHi && nullNodeHi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hi = null;
+            if (parseNode.GetChildNode("lo") is null) { _explicitNullValueLo = default!; _explicitNullProperties?.Remove("lo"); }
+            else if (parseNode.GetChildNode("lo") is { } nullNodeLo && nullNodeLo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>High end of the wall-clock band.</summary>
-        public long? Hi { get => _explicitNullValueHi; set { _explicitNullValueHi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hi"); else _explicitNullProperties?.Remove("hi"); } }
+        public long? Hi { get => _explicitNullValueHi; set { _explicitNullValueHi = value; AdditionalData?.Remove("hi"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hi"); else _explicitNullProperties?.Remove("hi"); } }
         private long? _explicitNullValueHi = default!;
         /// <summary>Low end of the wall-clock band.</summary>
-        public long? Lo { get => _explicitNullValueLo; set { _explicitNullValueLo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lo"); else _explicitNullProperties?.Remove("lo"); } }
+        public long? Lo { get => _explicitNullValueLo; set { _explicitNullValueLo = value; AdditionalData?.Remove("lo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lo"); else _explicitNullProperties?.Remove("lo"); } }
         private long? _explicitNullValueLo = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS"/> and sets the default values.

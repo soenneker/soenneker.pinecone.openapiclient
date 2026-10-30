@@ -18,12 +18,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default") is { } nullNodeDefault && nullNodeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Default = null;
-            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
-            if (parseNode.GetChildNode("phase_defaults") is { } nullNodePhaseDefaults && nullNodePhaseDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PhaseDefaults = null;
-            if (parseNode.GetChildNode("query_defaults") is { } nullNodeQueryDefaults && nullNodeQueryDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryDefaults = null;
-            if (parseNode.GetChildNode("supported_curate_models") is { } nullNodeSupportedCurateModels && nullNodeSupportedCurateModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedCurateModels = null;
-            if (parseNode.GetChildNode("tiers") is { } nullNodeTiers && nullNodeTiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiers = null;
+            if (parseNode.GetChildNode("default") is null) { _explicitNullValueDefault = default!; _explicitNullProperties?.Remove("default"); }
+            else if (parseNode.GetChildNode("default") is { } nullNodeDefault && nullNodeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Default = null;
+            if (parseNode.GetChildNode("models") is null) { _explicitNullValueModels = default!; _explicitNullProperties?.Remove("models"); }
+            else if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("phase_defaults") is null) { _explicitNullValuePhaseDefaults = default!; _explicitNullProperties?.Remove("phase_defaults"); }
+            else if (parseNode.GetChildNode("phase_defaults") is { } nullNodePhaseDefaults && nullNodePhaseDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PhaseDefaults = null;
+            if (parseNode.GetChildNode("query_defaults") is null) { _explicitNullValueQueryDefaults = default!; _explicitNullProperties?.Remove("query_defaults"); }
+            else if (parseNode.GetChildNode("query_defaults") is { } nullNodeQueryDefaults && nullNodeQueryDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryDefaults = null;
+            if (parseNode.GetChildNode("supported_curate_models") is null) { _explicitNullValueSupportedCurateModels = default!; _explicitNullProperties?.Remove("supported_curate_models"); }
+            else if (parseNode.GetChildNode("supported_curate_models") is { } nullNodeSupportedCurateModels && nullNodeSupportedCurateModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedCurateModels = null;
+            if (parseNode.GetChildNode("tiers") is null) { _explicitNullValueTiers = default!; _explicitNullProperties?.Remove("tiers"); }
+            else if (parseNode.GetChildNode("tiers") is { } nullNodeTiers && nullNodeTiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiers = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,61 +37,61 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Model id used when `model` is omitted</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
+        public string? Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; AdditionalData?.Remove("default"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
         private string? _explicitNullValueDefault = default!;
 #nullable restore
 #else
-        public string Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
+        public string Default { get => _explicitNullValueDefault; set { _explicitNullValueDefault = value; AdditionalData?.Remove("default"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default"); else _explicitNullProperties?.Remove("default"); } }
         private string _explicitNullValueDefault = default!;
 #endif
         /// <summary>Every catalog entry, selectable or not.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem> _explicitNullValueModels = default!;
 #endif
         /// <summary>Workflow phase → the model id or tier name that phase defaults to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty? PhaseDefaults { get => _explicitNullValuePhaseDefaults; set { _explicitNullValuePhaseDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase_defaults"); else _explicitNullProperties?.Remove("phase_defaults"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty? PhaseDefaults { get => _explicitNullValuePhaseDefaults; set { _explicitNullValuePhaseDefaults = value; AdditionalData?.Remove("phase_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase_defaults"); else _explicitNullProperties?.Remove("phase_defaults"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty? _explicitNullValuePhaseDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty PhaseDefaults { get => _explicitNullValuePhaseDefaults; set { _explicitNullValuePhaseDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase_defaults"); else _explicitNullProperties?.Remove("phase_defaults"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty PhaseDefaults { get => _explicitNullValuePhaseDefaults; set { _explicitNullValuePhaseDefaults = value; AdditionalData?.Remove("phase_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase_defaults"); else _explicitNullProperties?.Remove("phase_defaults"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogPhaseDefaultsProperty _explicitNullValuePhaseDefaults = default!;
 #endif
         /// <summary>The per-turn harness values a turn runs with when the request sets none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults? QueryDefaults { get => _explicitNullValueQueryDefaults; set { _explicitNullValueQueryDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_defaults"); else _explicitNullProperties?.Remove("query_defaults"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults? QueryDefaults { get => _explicitNullValueQueryDefaults; set { _explicitNullValueQueryDefaults = value; AdditionalData?.Remove("query_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_defaults"); else _explicitNullProperties?.Remove("query_defaults"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults? _explicitNullValueQueryDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults QueryDefaults { get => _explicitNullValueQueryDefaults; set { _explicitNullValueQueryDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_defaults"); else _explicitNullProperties?.Remove("query_defaults"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults QueryDefaults { get => _explicitNullValueQueryDefaults; set { _explicitNullValueQueryDefaults = value; AdditionalData?.Remove("query_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_defaults"); else _explicitNullProperties?.Remove("query_defaults"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaults _explicitNullValueQueryDefaults = default!;
 #endif
         /// <summary>Model ids the curate runtime accepts — a subset of the catalog, since curate reads the whole corpus and is priced accordingly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupportedCurateModels { get => _explicitNullValueSupportedCurateModels; set { _explicitNullValueSupportedCurateModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_curate_models"); else _explicitNullProperties?.Remove("supported_curate_models"); } }
+        public List<string>? SupportedCurateModels { get => _explicitNullValueSupportedCurateModels; set { _explicitNullValueSupportedCurateModels = value; AdditionalData?.Remove("supported_curate_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_curate_models"); else _explicitNullProperties?.Remove("supported_curate_models"); } }
         private List<string>? _explicitNullValueSupportedCurateModels = default!;
 #nullable restore
 #else
-        public List<string> SupportedCurateModels { get => _explicitNullValueSupportedCurateModels; set { _explicitNullValueSupportedCurateModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_curate_models"); else _explicitNullProperties?.Remove("supported_curate_models"); } }
+        public List<string> SupportedCurateModels { get => _explicitNullValueSupportedCurateModels; set { _explicitNullValueSupportedCurateModels = value; AdditionalData?.Remove("supported_curate_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_curate_models"); else _explicitNullProperties?.Remove("supported_curate_models"); } }
         private List<string> _explicitNullValueSupportedCurateModels = default!;
 #endif
         /// <summary>Tier (`lite`/`standard`/`pro`) → resolved model id. A tier name is accepted anywhere a model id is, so a caller can ask for `standard` and let the deployment choose.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty? Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty? Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; AdditionalData?.Remove("tiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty? _explicitNullValueTiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty Tiers { get => _explicitNullValueTiers; set { _explicitNullValueTiers = value; AdditionalData?.Remove("tiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiers"); else _explicitNullProperties?.Remove("tiers"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogTiersProperty _explicitNullValueTiers = default!;
 #endif
         /// <summary>

@@ -18,10 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("answer") is { } nullNodeAnswer && nullNodeAnswer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Answer = null;
-            if (parseNode.GetChildNode("ask") is { } nullNodeAsk && nullNodeAsk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ask = null;
-            if (parseNode.GetChildNode("fallback_to_chunks") is { } nullNodeFallbackToChunks && nullNodeFallbackToChunks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackToChunks = null;
-            if (parseNode.GetChildNode("latency_ms") is { } nullNodeLatencyMs && nullNodeLatencyMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyMs = null;
+            if (parseNode.GetChildNode("answer") is null) { _explicitNullValueAnswer = default!; _explicitNullProperties?.Remove("answer"); }
+            else if (parseNode.GetChildNode("answer") is { } nullNodeAnswer && nullNodeAnswer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Answer = null;
+            if (parseNode.GetChildNode("ask") is null) { _explicitNullValueAsk = default!; _explicitNullProperties?.Remove("ask"); }
+            else if (parseNode.GetChildNode("ask") is { } nullNodeAsk && nullNodeAsk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ask = null;
+            if (parseNode.GetChildNode("fallback_to_chunks") is null) { _explicitNullValueFallbackToChunks = default!; _explicitNullProperties?.Remove("fallback_to_chunks"); }
+            else if (parseNode.GetChildNode("fallback_to_chunks") is { } nullNodeFallbackToChunks && nullNodeFallbackToChunks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackToChunks = null;
+            if (parseNode.GetChildNode("latency_ms") is null) { _explicitNullValueLatencyMs = default!; _explicitNullProperties?.Remove("latency_ms"); }
+            else if (parseNode.GetChildNode("latency_ms") is { } nullNodeLatencyMs && nullNodeLatencyMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyMs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,28 +33,28 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Used as eval ground truth</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Answer { get => _explicitNullValueAnswer; set { _explicitNullValueAnswer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer"); else _explicitNullProperties?.Remove("answer"); } }
+        public string? Answer { get => _explicitNullValueAnswer; set { _explicitNullValueAnswer = value; AdditionalData?.Remove("answer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer"); else _explicitNullProperties?.Remove("answer"); } }
         private string? _explicitNullValueAnswer = default!;
 #nullable restore
 #else
-        public string Answer { get => _explicitNullValueAnswer; set { _explicitNullValueAnswer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer"); else _explicitNullProperties?.Remove("answer"); } }
+        public string Answer { get => _explicitNullValueAnswer; set { _explicitNullValueAnswer = value; AdditionalData?.Remove("answer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer"); else _explicitNullProperties?.Remove("answer"); } }
         private string _explicitNullValueAnswer = default!;
 #endif
         /// <summary>The question to tune retrieval against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ask { get => _explicitNullValueAsk; set { _explicitNullValueAsk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask"); else _explicitNullProperties?.Remove("ask"); } }
+        public string? Ask { get => _explicitNullValueAsk; set { _explicitNullValueAsk = value; AdditionalData?.Remove("ask"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask"); else _explicitNullProperties?.Remove("ask"); } }
         private string? _explicitNullValueAsk = default!;
 #nullable restore
 #else
-        public string Ask { get => _explicitNullValueAsk; set { _explicitNullValueAsk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask"); else _explicitNullProperties?.Remove("ask"); } }
+        public string Ask { get => _explicitNullValueAsk; set { _explicitNullValueAsk = value; AdditionalData?.Remove("ask"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask"); else _explicitNullProperties?.Remove("ask"); } }
         private string _explicitNullValueAsk = default!;
 #endif
         /// <summary>Whether answering this query had to drill from artifacts down to chunks.</summary>
-        public bool? FallbackToChunks { get => _explicitNullValueFallbackToChunks; set { _explicitNullValueFallbackToChunks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_to_chunks"); else _explicitNullProperties?.Remove("fallback_to_chunks"); } }
+        public bool? FallbackToChunks { get => _explicitNullValueFallbackToChunks; set { _explicitNullValueFallbackToChunks = value; AdditionalData?.Remove("fallback_to_chunks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_to_chunks"); else _explicitNullProperties?.Remove("fallback_to_chunks"); } }
         private bool? _explicitNullValueFallbackToChunks = default!;
         /// <summary>Latency the query showed in real traffic, as a tuning baseline.</summary>
-        public double? LatencyMs { get => _explicitNullValueLatencyMs; set { _explicitNullValueLatencyMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency_ms"); else _explicitNullProperties?.Remove("latency_ms"); } }
+        public double? LatencyMs { get => _explicitNullValueLatencyMs; set { _explicitNullValueLatencyMs = value; AdditionalData?.Remove("latency_ms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency_ms"); else _explicitNullProperties?.Remove("latency_ms"); } }
         private double? _explicitNullValueLatencyMs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery"/> and sets the default values.

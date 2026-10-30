@@ -18,8 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("entailment") is { } nullNodeEntailment && nullNodeEntailment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entailment = null;
-            if (parseNode.GetChildNode("fact") is { } nullNodeFact && nullNodeFact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fact = null;
+            if (parseNode.GetChildNode("entailment") is null) { _explicitNullValueEntailment = default!; _explicitNullProperties?.Remove("entailment"); }
+            else if (parseNode.GetChildNode("entailment") is { } nullNodeEntailment && nullNodeEntailment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entailment = null;
+            if (parseNode.GetChildNode("fact") is null) { _explicitNullValueFact = default!; _explicitNullProperties?.Remove("fact"); }
+            else if (parseNode.GetChildNode("fact") is { } nullNodeFact && nullNodeFact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fact = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The entailment of a fact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Entailment { get => _explicitNullValueEntailment; set { _explicitNullValueEntailment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entailment"); else _explicitNullProperties?.Remove("entailment"); } }
+        public string? Entailment { get => _explicitNullValueEntailment; set { _explicitNullValueEntailment = value; AdditionalData?.Remove("entailment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entailment"); else _explicitNullProperties?.Remove("entailment"); } }
         private string? _explicitNullValueEntailment = default!;
 #nullable restore
 #else
-        public string Entailment { get => _explicitNullValueEntailment; set { _explicitNullValueEntailment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entailment"); else _explicitNullProperties?.Remove("entailment"); } }
+        public string Entailment { get => _explicitNullValueEntailment; set { _explicitNullValueEntailment = value; AdditionalData?.Remove("entailment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entailment"); else _explicitNullProperties?.Remove("entailment"); } }
         private string _explicitNullValueEntailment = default!;
 #endif
         /// <summary>A fact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact? Fact { get => _explicitNullValueFact; set { _explicitNullValueFact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fact"); else _explicitNullProperties?.Remove("fact"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact? Fact { get => _explicitNullValueFact; set { _explicitNullValueFact = value; AdditionalData?.Remove("fact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fact"); else _explicitNullProperties?.Remove("fact"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.Fact? _explicitNullValueFact = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact Fact { get => _explicitNullValueFact; set { _explicitNullValueFact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fact"); else _explicitNullProperties?.Remove("fact"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact Fact { get => _explicitNullValueFact; set { _explicitNullValueFact = value; AdditionalData?.Remove("fact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fact"); else _explicitNullProperties?.Remove("fact"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.Fact _explicitNullValueFact = default!;
 #endif
         /// <summary>

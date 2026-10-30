@@ -18,102 +18,115 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("best_iteration") is { } nullNodeBestIteration && nullNodeBestIteration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestIteration = null;
-            if (parseNode.GetChildNode("best_latency_ok") is { } nullNodeBestLatencyOk && nullNodeBestLatencyOk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestLatencyOk = null;
-            if (parseNode.GetChildNode("best_score") is { } nullNodeBestScore && nullNodeBestScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestScore = null;
-            if (parseNode.GetChildNode("changed_legs") is { } nullNodeChangedLegs && nullNodeChangedLegs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangedLegs = null;
-            if (parseNode.GetChildNode("elapsed_seconds") is { } nullNodeElapsedSeconds && nullNodeElapsedSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElapsedSeconds = null;
-            if (parseNode.GetChildNode("manifest") is { } nullNodeManifest && nullNodeManifest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manifest = null;
-            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
-            if (parseNode.GetChildNode("p90_latency_limit_ms") is { } nullNodeP90LatencyLimitMs && nullNodeP90LatencyLimitMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P90LatencyLimitMs = null;
-            if (parseNode.GetChildNode("pass_rate_threshold") is { } nullNodePassRateThreshold && nullNodePassRateThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassRateThreshold = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("total_iterations") is { } nullNodeTotalIterations && nullNodeTotalIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalIterations = null;
-            if (parseNode.GetChildNode("unknown_models") is { } nullNodeUnknownModels && nullNodeUnknownModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnknownModels = null;
-            if (parseNode.GetChildNode("usage") is { } nullNodeUsage && nullNodeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage = null;
+            if (parseNode.GetChildNode("best_iteration") is null) { _explicitNullValueBestIteration = default!; _explicitNullProperties?.Remove("best_iteration"); }
+            else if (parseNode.GetChildNode("best_iteration") is { } nullNodeBestIteration && nullNodeBestIteration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestIteration = null;
+            if (parseNode.GetChildNode("best_latency_ok") is null) { _explicitNullValueBestLatencyOk = default!; _explicitNullProperties?.Remove("best_latency_ok"); }
+            else if (parseNode.GetChildNode("best_latency_ok") is { } nullNodeBestLatencyOk && nullNodeBestLatencyOk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestLatencyOk = null;
+            if (parseNode.GetChildNode("best_score") is null) { _explicitNullValueBestScore = default!; _explicitNullProperties?.Remove("best_score"); }
+            else if (parseNode.GetChildNode("best_score") is { } nullNodeBestScore && nullNodeBestScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestScore = null;
+            if (parseNode.GetChildNode("changed_legs") is null) { _explicitNullValueChangedLegs = default!; _explicitNullProperties?.Remove("changed_legs"); }
+            else if (parseNode.GetChildNode("changed_legs") is { } nullNodeChangedLegs && nullNodeChangedLegs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangedLegs = null;
+            if (parseNode.GetChildNode("elapsed_seconds") is null) { _explicitNullValueElapsedSeconds = default!; _explicitNullProperties?.Remove("elapsed_seconds"); }
+            else if (parseNode.GetChildNode("elapsed_seconds") is { } nullNodeElapsedSeconds && nullNodeElapsedSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElapsedSeconds = null;
+            if (parseNode.GetChildNode("manifest") is null) { _explicitNullValueManifest = default!; _explicitNullProperties?.Remove("manifest"); }
+            else if (parseNode.GetChildNode("manifest") is { } nullNodeManifest && nullNodeManifest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manifest = null;
+            if (parseNode.GetChildNode("models") is null) { _explicitNullValueModels = default!; _explicitNullProperties?.Remove("models"); }
+            else if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("p90_latency_limit_ms") is null) { _explicitNullValueP90LatencyLimitMs = default!; _explicitNullProperties?.Remove("p90_latency_limit_ms"); }
+            else if (parseNode.GetChildNode("p90_latency_limit_ms") is { } nullNodeP90LatencyLimitMs && nullNodeP90LatencyLimitMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P90LatencyLimitMs = null;
+            if (parseNode.GetChildNode("pass_rate_threshold") is null) { _explicitNullValuePassRateThreshold = default!; _explicitNullProperties?.Remove("pass_rate_threshold"); }
+            else if (parseNode.GetChildNode("pass_rate_threshold") is { } nullNodePassRateThreshold && nullNodePassRateThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassRateThreshold = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("total_iterations") is null) { _explicitNullValueTotalIterations = default!; _explicitNullProperties?.Remove("total_iterations"); }
+            else if (parseNode.GetChildNode("total_iterations") is { } nullNodeTotalIterations && nullNodeTotalIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalIterations = null;
+            if (parseNode.GetChildNode("unknown_models") is null) { _explicitNullValueUnknownModels = default!; _explicitNullProperties?.Remove("unknown_models"); }
+            else if (parseNode.GetChildNode("unknown_models") is { } nullNodeUnknownModels && nullNodeUnknownModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnknownModels = null;
+            if (parseNode.GetChildNode("usage") is null) { _explicitNullValueUsage = default!; _explicitNullProperties?.Remove("usage"); }
+            else if (parseNode.GetChildNode("usage") is { } nullNodeUsage && nullNodeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Which iteration scored it.</summary>
-        public long? BestIteration { get => _explicitNullValueBestIteration; set { _explicitNullValueBestIteration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_iteration"); else _explicitNullProperties?.Remove("best_iteration"); } }
+        public long? BestIteration { get => _explicitNullValueBestIteration; set { _explicitNullValueBestIteration = value; AdditionalData?.Remove("best_iteration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_iteration"); else _explicitNullProperties?.Remove("best_iteration"); } }
         private long? _explicitNullValueBestIteration = default!;
         /// <summary>Whether that iteration also stayed under the latency bar.</summary>
-        public bool? BestLatencyOk { get => _explicitNullValueBestLatencyOk; set { _explicitNullValueBestLatencyOk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_latency_ok"); else _explicitNullProperties?.Remove("best_latency_ok"); } }
+        public bool? BestLatencyOk { get => _explicitNullValueBestLatencyOk; set { _explicitNullValueBestLatencyOk = value; AdditionalData?.Remove("best_latency_ok"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_latency_ok"); else _explicitNullProperties?.Remove("best_latency_ok"); } }
         private bool? _explicitNullValueBestLatencyOk = default!;
         /// <summary>Eval pass rate the best iteration scored, 0–1.</summary>
-        public double? BestScore { get => _explicitNullValueBestScore; set { _explicitNullValueBestScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_score"); else _explicitNullProperties?.Remove("best_score"); } }
+        public double? BestScore { get => _explicitNullValueBestScore; set { _explicitNullValueBestScore = value; AdditionalData?.Remove("best_score"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_score"); else _explicitNullProperties?.Remove("best_score"); } }
         private double? _explicitNullValueBestScore = default!;
         /// <summary>Which manifest legs the tuning changed, so a re-curate can be scoped to them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChangedLegs { get => _explicitNullValueChangedLegs; set { _explicitNullValueChangedLegs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_legs"); else _explicitNullProperties?.Remove("changed_legs"); } }
+        public List<string>? ChangedLegs { get => _explicitNullValueChangedLegs; set { _explicitNullValueChangedLegs = value; AdditionalData?.Remove("changed_legs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_legs"); else _explicitNullProperties?.Remove("changed_legs"); } }
         private List<string>? _explicitNullValueChangedLegs = default!;
 #nullable restore
 #else
-        public List<string> ChangedLegs { get => _explicitNullValueChangedLegs; set { _explicitNullValueChangedLegs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_legs"); else _explicitNullProperties?.Remove("changed_legs"); } }
+        public List<string> ChangedLegs { get => _explicitNullValueChangedLegs; set { _explicitNullValueChangedLegs = value; AdditionalData?.Remove("changed_legs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_legs"); else _explicitNullProperties?.Remove("changed_legs"); } }
         private List<string> _explicitNullValueChangedLegs = default!;
 #endif
         /// <summary>Wall time for the whole loop.</summary>
-        public double? ElapsedSeconds { get => _explicitNullValueElapsedSeconds; set { _explicitNullValueElapsedSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elapsed_seconds"); else _explicitNullProperties?.Remove("elapsed_seconds"); } }
+        public double? ElapsedSeconds { get => _explicitNullValueElapsedSeconds; set { _explicitNullValueElapsedSeconds = value; AdditionalData?.Remove("elapsed_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elapsed_seconds"); else _explicitNullProperties?.Remove("elapsed_seconds"); } }
         private double? _explicitNullValueElapsedSeconds = default!;
         /// <summary>The tuned manifest persisted onto the context when the task completes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputManifest? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputManifest? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputManifest? _explicitNullValueManifest = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputManifest Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputManifest Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputManifest _explicitNullValueManifest = default!;
 #endif
         /// <summary>Tier → resolved model id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeResultOutputModelsProperty _explicitNullValueModels = default!;
 #endif
         /// <summary>The p90 latency bar. Null when latency was not gated.</summary>
-        public double? P90LatencyLimitMs { get => _explicitNullValueP90LatencyLimitMs; set { _explicitNullValueP90LatencyLimitMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90_latency_limit_ms"); else _explicitNullProperties?.Remove("p90_latency_limit_ms"); } }
+        public double? P90LatencyLimitMs { get => _explicitNullValueP90LatencyLimitMs; set { _explicitNullValueP90LatencyLimitMs = value; AdditionalData?.Remove("p90_latency_limit_ms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90_latency_limit_ms"); else _explicitNullProperties?.Remove("p90_latency_limit_ms"); } }
         private double? _explicitNullValueP90LatencyLimitMs = default!;
         /// <summary>The pass-rate bar the run measured against.</summary>
-        public double? PassRateThreshold { get => _explicitNullValuePassRateThreshold; set { _explicitNullValuePassRateThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_rate_threshold"); else _explicitNullProperties?.Remove("pass_rate_threshold"); } }
+        public double? PassRateThreshold { get => _explicitNullValuePassRateThreshold; set { _explicitNullValuePassRateThreshold = value; AdditionalData?.Remove("pass_rate_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_rate_threshold"); else _explicitNullProperties?.Remove("pass_rate_threshold"); } }
         private double? _explicitNullValuePassRateThreshold = default!;
         /// <summary>Set to `ready` only when the best iteration cleared both the pass-rate and latency bars.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>Candidate manifests tried.</summary>
-        public long? TotalIterations { get => _explicitNullValueTotalIterations; set { _explicitNullValueTotalIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_iterations"); else _explicitNullProperties?.Remove("total_iterations"); } }
+        public long? TotalIterations { get => _explicitNullValueTotalIterations; set { _explicitNullValueTotalIterations = value; AdditionalData?.Remove("total_iterations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_iterations"); else _explicitNullProperties?.Remove("total_iterations"); } }
         private long? _explicitNullValueTotalIterations = default!;
         /// <summary>Model selections dropped as unknown before dispatch, so a caller whose pin was silently ignored can see it. Absent when nothing was dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UnknownModels { get => _explicitNullValueUnknownModels; set { _explicitNullValueUnknownModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_models"); else _explicitNullProperties?.Remove("unknown_models"); } }
+        public List<string>? UnknownModels { get => _explicitNullValueUnknownModels; set { _explicitNullValueUnknownModels = value; AdditionalData?.Remove("unknown_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_models"); else _explicitNullProperties?.Remove("unknown_models"); } }
         private List<string>? _explicitNullValueUnknownModels = default!;
 #nullable restore
 #else
-        public List<string> UnknownModels { get => _explicitNullValueUnknownModels; set { _explicitNullValueUnknownModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_models"); else _explicitNullProperties?.Remove("unknown_models"); } }
+        public List<string> UnknownModels { get => _explicitNullValueUnknownModels; set { _explicitNullValueUnknownModels = value; AdditionalData?.Remove("unknown_models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_models"); else _explicitNullProperties?.Remove("unknown_models"); } }
         private List<string> _explicitNullValueUnknownModels = default!;
 #endif
         /// <summary>What a run billed on the chat seam, in tokens. Reported by the inference client, which carries the cache-token fields. Used by optimize and explore.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage? Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage? Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; AdditionalData?.Remove("usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage? _explicitNullValueUsage = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; AdditionalData?.Remove("usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage _explicitNullValueUsage = default!;
 #endif
         /// <summary>

@@ -65,7 +65,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Connectors.Oauth.Item.Star
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Pinecone.OpenApiClient.Nexus_data.Connectors.Oauth.Item.Start.StartRequestBuilder.StartRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.example.com/api", "/nexus_data/connectors/oauth/{provider}/start", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

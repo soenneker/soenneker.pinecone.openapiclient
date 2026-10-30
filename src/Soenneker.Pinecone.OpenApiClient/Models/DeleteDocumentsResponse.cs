@@ -18,13 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("matched_records") is { } nullNodeMatchedRecords && nullNodeMatchedRecords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedRecords = null;
+            if (parseNode.GetChildNode("matched_records") is null) { _explicitNullValueMatchedRecords = default!; _explicitNullProperties?.Remove("matched_records"); }
+            else if (parseNode.GetChildNode("matched_records") is { } nullNodeMatchedRecords && nullNodeMatchedRecords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedRecords = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of documents that matched `filter` when the delete was accepted. Only returned for a filtered delete, and omitted when the count could not be read in time; `0` means the filter matched no documents. The delete is applied asynchronously, so this is a point-in-time count rather than a guarantee of the number of documents ultimately deleted.</summary>
-        public int? MatchedRecords { get => _explicitNullValueMatchedRecords; set { _explicitNullValueMatchedRecords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_records"); else _explicitNullProperties?.Remove("matched_records"); } }
+        public int? MatchedRecords { get => _explicitNullValueMatchedRecords; set { _explicitNullValueMatchedRecords = value; AdditionalData?.Remove("matched_records"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_records"); else _explicitNullProperties?.Remove("matched_records"); } }
         private int? _explicitNullValueMatchedRecords = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsResponse"/> and sets the default values.

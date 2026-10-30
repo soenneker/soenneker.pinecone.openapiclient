@@ -18,7 +18,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("evaluated_facts") is { } nullNodeEvaluatedFacts && nullNodeEvaluatedFacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedFacts = null;
+            if (parseNode.GetChildNode("evaluated_facts") is null) { _explicitNullValueEvaluatedFacts = default!; _explicitNullProperties?.Remove("evaluated_facts"); }
+            else if (parseNode.GetChildNode("evaluated_facts") is { } nullNodeEvaluatedFacts && nullNodeEvaluatedFacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedFacts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The facts that were evaluated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact>? EvaluatedFacts { get => _explicitNullValueEvaluatedFacts; set { _explicitNullValueEvaluatedFacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_facts"); else _explicitNullProperties?.Remove("evaluated_facts"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact>? EvaluatedFacts { get => _explicitNullValueEvaluatedFacts; set { _explicitNullValueEvaluatedFacts = value; AdditionalData?.Remove("evaluated_facts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_facts"); else _explicitNullProperties?.Remove("evaluated_facts"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact>? _explicitNullValueEvaluatedFacts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact> EvaluatedFacts { get => _explicitNullValueEvaluatedFacts; set { _explicitNullValueEvaluatedFacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_facts"); else _explicitNullProperties?.Remove("evaluated_facts"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact> EvaluatedFacts { get => _explicitNullValueEvaluatedFacts; set { _explicitNullValueEvaluatedFacts = value; AdditionalData?.Remove("evaluated_facts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_facts"); else _explicitNullProperties?.Remove("evaluated_facts"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact> _explicitNullValueEvaluatedFacts = default!;
 #endif
         /// <summary>

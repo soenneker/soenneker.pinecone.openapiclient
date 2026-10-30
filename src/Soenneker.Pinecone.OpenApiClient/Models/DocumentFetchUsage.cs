@@ -18,17 +18,19 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("egress_bytes") is { } nullNodeEgressBytes && nullNodeEgressBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EgressBytes = null;
-            if (parseNode.GetChildNode("read_units") is { } nullNodeReadUnits && nullNodeReadUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadUnits = null;
+            if (parseNode.GetChildNode("egress_bytes") is null) { _explicitNullValueEgressBytes = default!; _explicitNullProperties?.Remove("egress_bytes"); }
+            else if (parseNode.GetChildNode("egress_bytes") is { } nullNodeEgressBytes && nullNodeEgressBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EgressBytes = null;
+            if (parseNode.GetChildNode("read_units") is null) { _explicitNullValueReadUnits = default!; _explicitNullProperties?.Remove("read_units"); }
+            else if (parseNode.GetChildNode("read_units") is { } nullNodeReadUnits && nullNodeReadUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadUnits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billed egress for this response, in bytes. Measured on the encoded response payload.</summary>
-        public long? EgressBytes { get => _explicitNullValueEgressBytes; set { _explicitNullValueEgressBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("egress_bytes"); else _explicitNullProperties?.Remove("egress_bytes"); } }
+        public long? EgressBytes { get => _explicitNullValueEgressBytes; set { _explicitNullValueEgressBytes = value; AdditionalData?.Remove("egress_bytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("egress_bytes"); else _explicitNullProperties?.Remove("egress_bytes"); } }
         private long? _explicitNullValueEgressBytes = default!;
         /// <summary>The number of read units consumed by this operation.</summary>
-        public int? ReadUnits { get => _explicitNullValueReadUnits; set { _explicitNullValueReadUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_units"); else _explicitNullProperties?.Remove("read_units"); } }
+        public int? ReadUnits { get => _explicitNullValueReadUnits; set { _explicitNullValueReadUnits = value; AdditionalData?.Remove("read_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_units"); else _explicitNullProperties?.Remove("read_units"); } }
         private int? _explicitNullValueReadUnits = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DocumentFetchUsage"/> and sets the default values.

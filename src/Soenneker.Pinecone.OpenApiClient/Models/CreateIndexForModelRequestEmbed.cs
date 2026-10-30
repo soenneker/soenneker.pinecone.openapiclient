@@ -18,67 +18,73 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dimension") is { } nullNodeDimension && nullNodeDimension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dimension = null;
-            if (parseNode.GetChildNode("field_map") is { } nullNodeFieldMap && nullNodeFieldMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldMap = null;
-            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("read_parameters") is { } nullNodeReadParameters && nullNodeReadParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadParameters = null;
-            if (parseNode.GetChildNode("write_parameters") is { } nullNodeWriteParameters && nullNodeWriteParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WriteParameters = null;
+            if (parseNode.GetChildNode("dimension") is null) { _explicitNullValueDimension = default!; _explicitNullProperties?.Remove("dimension"); }
+            else if (parseNode.GetChildNode("dimension") is { } nullNodeDimension && nullNodeDimension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dimension = null;
+            if (parseNode.GetChildNode("field_map") is null) { _explicitNullValueFieldMap = default!; _explicitNullProperties?.Remove("field_map"); }
+            else if (parseNode.GetChildNode("field_map") is { } nullNodeFieldMap && nullNodeFieldMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldMap = null;
+            if (parseNode.GetChildNode("metric") is null) { _explicitNullValueMetric = default!; _explicitNullProperties?.Remove("metric"); }
+            else if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("read_parameters") is null) { _explicitNullValueReadParameters = default!; _explicitNullProperties?.Remove("read_parameters"); }
+            else if (parseNode.GetChildNode("read_parameters") is { } nullNodeReadParameters && nullNodeReadParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadParameters = null;
+            if (parseNode.GetChildNode("write_parameters") is null) { _explicitNullValueWriteParameters = default!; _explicitNullProperties?.Remove("write_parameters"); }
+            else if (parseNode.GetChildNode("write_parameters") is { } nullNodeWriteParameters && nullNodeWriteParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WriteParameters = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dimension of embedding vectors produced for the index.</summary>
-        public int? Dimension { get => _explicitNullValueDimension; set { _explicitNullValueDimension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension"); else _explicitNullProperties?.Remove("dimension"); } }
+        public int? Dimension { get => _explicitNullValueDimension; set { _explicitNullValueDimension = value; AdditionalData?.Remove("dimension"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension"); else _explicitNullProperties?.Remove("dimension"); } }
         private int? _explicitNullValueDimension = default!;
         /// <summary>Identifies the name of the text field from your document model that will be embedded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty? FieldMap { get => _explicitNullValueFieldMap; set { _explicitNullValueFieldMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_map"); else _explicitNullProperties?.Remove("field_map"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty? FieldMap { get => _explicitNullValueFieldMap; set { _explicitNullValueFieldMap = value; AdditionalData?.Remove("field_map"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_map"); else _explicitNullProperties?.Remove("field_map"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty? _explicitNullValueFieldMap = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty FieldMap { get => _explicitNullValueFieldMap; set { _explicitNullValueFieldMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_map"); else _explicitNullProperties?.Remove("field_map"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty FieldMap { get => _explicitNullValueFieldMap; set { _explicitNullValueFieldMap = value; AdditionalData?.Remove("field_map"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_map"); else _explicitNullProperties?.Remove("field_map"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty _explicitNullValueFieldMap = default!;
 #endif
         /// <summary>The distance metric to be used for similarity search. You can use &apos;euclidean&apos;, &apos;cosine&apos;, or &apos;dotproduct&apos;. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.Possible values: `cosine`, `euclidean`, or `dotproduct`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        public string? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; AdditionalData?.Remove("metric"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
         private string? _explicitNullValueMetric = default!;
 #nullable restore
 #else
-        public string Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        public string Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; AdditionalData?.Remove("metric"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
         private string _explicitNullValueMetric = default!;
 #endif
         /// <summary>The name of the embedding model to use for the index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>The read parameters for the embedding model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty? ReadParameters { get => _explicitNullValueReadParameters; set { _explicitNullValueReadParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_parameters"); else _explicitNullProperties?.Remove("read_parameters"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty? ReadParameters { get => _explicitNullValueReadParameters; set { _explicitNullValueReadParameters = value; AdditionalData?.Remove("read_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_parameters"); else _explicitNullProperties?.Remove("read_parameters"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty? _explicitNullValueReadParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty ReadParameters { get => _explicitNullValueReadParameters; set { _explicitNullValueReadParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_parameters"); else _explicitNullProperties?.Remove("read_parameters"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty ReadParameters { get => _explicitNullValueReadParameters; set { _explicitNullValueReadParameters = value; AdditionalData?.Remove("read_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_parameters"); else _explicitNullProperties?.Remove("read_parameters"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty _explicitNullValueReadParameters = default!;
 #endif
         /// <summary>The write parameters for the embedding model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty? WriteParameters { get => _explicitNullValueWriteParameters; set { _explicitNullValueWriteParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_parameters"); else _explicitNullProperties?.Remove("write_parameters"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty? WriteParameters { get => _explicitNullValueWriteParameters; set { _explicitNullValueWriteParameters = value; AdditionalData?.Remove("write_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_parameters"); else _explicitNullProperties?.Remove("write_parameters"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty? _explicitNullValueWriteParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty WriteParameters { get => _explicitNullValueWriteParameters; set { _explicitNullValueWriteParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_parameters"); else _explicitNullProperties?.Remove("write_parameters"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty WriteParameters { get => _explicitNullValueWriteParameters; set { _explicitNullValueWriteParameters = value; AdditionalData?.Remove("write_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_parameters"); else _explicitNullProperties?.Remove("write_parameters"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty _explicitNullValueWriteParameters = default!;
 #endif
         /// <summary>

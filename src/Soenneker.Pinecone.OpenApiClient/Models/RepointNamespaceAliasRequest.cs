@@ -18,7 +18,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("target_namespace") is { } nullNodeTargetNamespace && nullNodeTargetNamespace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetNamespace = null;
+            if (parseNode.GetChildNode("target_namespace") is null) { _explicitNullValueTargetNamespace = default!; _explicitNullProperties?.Remove("target_namespace"); }
+            else if (parseNode.GetChildNode("target_namespace") is { } nullNodeTargetNamespace && nullNodeTargetNamespace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetNamespace = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The namespace the alias resolves to after the repoint. Must be an existing, active namespace in the index; an alias cannot point to another alias. To point the alias at the default namespace, use `__default__`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetNamespace { get => _explicitNullValueTargetNamespace; set { _explicitNullValueTargetNamespace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_namespace"); else _explicitNullProperties?.Remove("target_namespace"); } }
+        public string? TargetNamespace { get => _explicitNullValueTargetNamespace; set { _explicitNullValueTargetNamespace = value; AdditionalData?.Remove("target_namespace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_namespace"); else _explicitNullProperties?.Remove("target_namespace"); } }
         private string? _explicitNullValueTargetNamespace = default!;
 #nullable restore
 #else
-        public string TargetNamespace { get => _explicitNullValueTargetNamespace; set { _explicitNullValueTargetNamespace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_namespace"); else _explicitNullProperties?.Remove("target_namespace"); } }
+        public string TargetNamespace { get => _explicitNullValueTargetNamespace; set { _explicitNullValueTargetNamespace = value; AdditionalData?.Remove("target_namespace"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_namespace"); else _explicitNullProperties?.Remove("target_namespace"); } }
         private string _explicitNullValueTargetNamespace = default!;
 #endif
         /// <summary>

@@ -18,8 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("artifacts") is { } nullNodeArtifacts && nullNodeArtifacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Artifacts = null;
-            if (parseNode.GetChildNode("chunks") is { } nullNodeChunks && nullNodeChunks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chunks = null;
+            if (parseNode.GetChildNode("artifacts") is null) { _explicitNullValueArtifacts = default!; _explicitNullProperties?.Remove("artifacts"); }
+            else if (parseNode.GetChildNode("artifacts") is { } nullNodeArtifacts && nullNodeArtifacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Artifacts = null;
+            if (parseNode.GetChildNode("chunks") is null) { _explicitNullValueChunks = default!; _explicitNullProperties?.Remove("chunks"); }
+            else if (parseNode.GetChildNode("chunks") is { } nullNodeChunks && nullNodeChunks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chunks = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The artifact leg: knowledge an LLM distills out of the sources, as prose files or database rows. Off by default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig? Artifacts { get => _explicitNullValueArtifacts; set { _explicitNullValueArtifacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts"); else _explicitNullProperties?.Remove("artifacts"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig? Artifacts { get => _explicitNullValueArtifacts; set { _explicitNullValueArtifacts = value; AdditionalData?.Remove("artifacts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts"); else _explicitNullProperties?.Remove("artifacts"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig? _explicitNullValueArtifacts = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig Artifacts { get => _explicitNullValueArtifacts; set { _explicitNullValueArtifacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts"); else _explicitNullProperties?.Remove("artifacts"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig Artifacts { get => _explicitNullValueArtifacts; set { _explicitNullValueArtifacts = value; AdditionalData?.Remove("artifacts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts"); else _explicitNullProperties?.Remove("artifacts"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactsConfig _explicitNullValueArtifacts = default!;
 #endif
         /// <summary>The chunk leg — sources split into passages, embedded for semantic search and optionally indexed for keyword search.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfig? Chunks { get => _explicitNullValueChunks; set { _explicitNullValueChunks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks"); else _explicitNullProperties?.Remove("chunks"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfig? Chunks { get => _explicitNullValueChunks; set { _explicitNullValueChunks = value; AdditionalData?.Remove("chunks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks"); else _explicitNullProperties?.Remove("chunks"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfig? _explicitNullValueChunks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfig Chunks { get => _explicitNullValueChunks; set { _explicitNullValueChunks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks"); else _explicitNullProperties?.Remove("chunks"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfig Chunks { get => _explicitNullValueChunks; set { _explicitNullValueChunks = value; AdditionalData?.Remove("chunks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks"); else _explicitNullProperties?.Remove("chunks"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ChunksConfig _explicitNullValueChunks = default!;
 #endif
         /// <summary>

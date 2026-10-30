@@ -18,10 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("documents") is { } nullNodeDocuments && nullNodeDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Documents = null;
-            if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
-            if (parseNode.GetChildNode("remove_fields") is { } nullNodeRemoveFields && nullNodeRemoveFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoveFields = null;
-            if (parseNode.GetChildNode("set_fields") is { } nullNodeSetFields && nullNodeSetFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetFields = null;
+            if (parseNode.GetChildNode("documents") is null) { _explicitNullValueDocuments = default!; _explicitNullProperties?.Remove("documents"); }
+            else if (parseNode.GetChildNode("documents") is { } nullNodeDocuments && nullNodeDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Documents = null;
+            if (parseNode.GetChildNode("filter") is null) { _explicitNullValueFilter = default!; _explicitNullProperties?.Remove("filter"); }
+            else if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
+            if (parseNode.GetChildNode("remove_fields") is null) { _explicitNullValueRemoveFields = default!; _explicitNullProperties?.Remove("remove_fields"); }
+            else if (parseNode.GetChildNode("remove_fields") is { } nullNodeRemoveFields && nullNodeRemoveFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoveFields = null;
+            if (parseNode.GetChildNode("set_fields") is null) { _explicitNullValueSetFields = default!; _explicitNullProperties?.Remove("set_fields"); }
+            else if (parseNode.GetChildNode("set_fields") is { } nullNodeSetFields && nullNodeSetFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetFields = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The list of partial document updates to apply. At most 1000 updates, or 96 on an index whose schema declares `embed` or `sparse_embed`. Mutually exclusive with `filter`, and with a non-empty `set_fields` or `remove_fields`.`maxItems` states the general limit. A client that batches updates must size batches at 96 when any field of the index schema declares `embed` or `sparse_embed`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord>? Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord>? Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; AdditionalData?.Remove("documents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord>? _explicitNullValueDocuments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord> Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord> Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; AdditionalData?.Remove("documents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentRecord> _explicitNullValueDocuments = default!;
 #endif
         /// <summary>A metadata filter expression selecting the documents to patch with `set_fields` and `remove_fields`. Must not be empty; an empty filter is rejected rather than matching every document. Text-match operators (`$match_phrase`, `$match_all`, `$match_any`) are not supported here, since documents are selected on metadata alone. Mutually exclusive with `documents`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty? _explicitNullValueFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestFilterProperty _explicitNullValueFilter = default!;
 #endif
         /// <summary>The names of the fields to remove from every document matching `filter`. Only metadata fields can be removed here; data fields are refused, as in `set_fields`. When non-empty, only valid together with `filter`; an empty list asks for no change and is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RemoveFields { get => _explicitNullValueRemoveFields; set { _explicitNullValueRemoveFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_fields"); else _explicitNullProperties?.Remove("remove_fields"); } }
+        public List<string>? RemoveFields { get => _explicitNullValueRemoveFields; set { _explicitNullValueRemoveFields = value; AdditionalData?.Remove("remove_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_fields"); else _explicitNullProperties?.Remove("remove_fields"); } }
         private List<string>? _explicitNullValueRemoveFields = default!;
 #nullable restore
 #else
-        public List<string> RemoveFields { get => _explicitNullValueRemoveFields; set { _explicitNullValueRemoveFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_fields"); else _explicitNullProperties?.Remove("remove_fields"); } }
+        public List<string> RemoveFields { get => _explicitNullValueRemoveFields; set { _explicitNullValueRemoveFields = value; AdditionalData?.Remove("remove_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_fields"); else _explicitNullProperties?.Remove("remove_fields"); } }
         private List<string> _explicitNullValueRemoveFields = default!;
 #endif
         /// <summary>The fields to set on every document matching `filter`, and the values to set them to. Only metadata fields can be set here; every data field is refused, that is, vector fields, full-text-searchable text and embedded text, not only fields that declare `embed` or `sparse_embed`. Update those per ID with `documents`. When non-empty, only valid together with `filter`; an empty object asks for no change and is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty? SetFields { get => _explicitNullValueSetFields; set { _explicitNullValueSetFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_fields"); else _explicitNullProperties?.Remove("set_fields"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty? SetFields { get => _explicitNullValueSetFields; set { _explicitNullValueSetFields = value; AdditionalData?.Remove("set_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_fields"); else _explicitNullProperties?.Remove("set_fields"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty? _explicitNullValueSetFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty SetFields { get => _explicitNullValueSetFields; set { _explicitNullValueSetFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_fields"); else _explicitNullProperties?.Remove("set_fields"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty SetFields { get => _explicitNullValueSetFields; set { _explicitNullValueSetFields = value; AdditionalData?.Remove("set_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_fields"); else _explicitNullProperties?.Remove("set_fields"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.UpdateDocumentsRequestSetFieldsProperty _explicitNullValueSetFields = default!;
 #endif
         /// <summary>

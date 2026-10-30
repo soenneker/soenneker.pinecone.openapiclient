@@ -18,9 +18,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("manual") is { } nullNodeManual && nullNodeManual.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manual = null;
-            if (parseNode.GetChildNode("node_type") is { } nullNodeNodeType && nullNodeNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeType = null;
-            if (parseNode.GetChildNode("scaling") is { } nullNodeScaling && nullNodeScaling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scaling = null;
+            if (parseNode.GetChildNode("manual") is null) { _explicitNullValueManual = default!; _explicitNullProperties?.Remove("manual"); }
+            else if (parseNode.GetChildNode("manual") is { } nullNodeManual && nullNodeManual.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manual = null;
+            if (parseNode.GetChildNode("node_type") is null) { _explicitNullValueNodeType = default!; _explicitNullProperties?.Remove("node_type"); }
+            else if (parseNode.GetChildNode("node_type") is { } nullNodeNodeType && nullNodeNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeType = null;
+            if (parseNode.GetChildNode("scaling") is null) { _explicitNullValueScaling = default!; _explicitNullProperties?.Remove("scaling"); }
+            else if (parseNode.GetChildNode("scaling") is { } nullNodeScaling && nullNodeScaling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scaling = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The config to use for manual read capacity scaling.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ScalingConfigManual? Manual { get => _explicitNullValueManual; set { _explicitNullValueManual = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manual"); else _explicitNullProperties?.Remove("manual"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ScalingConfigManual? Manual { get => _explicitNullValueManual; set { _explicitNullValueManual = value; AdditionalData?.Remove("manual"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manual"); else _explicitNullProperties?.Remove("manual"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ScalingConfigManual? _explicitNullValueManual = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ScalingConfigManual Manual { get => _explicitNullValueManual; set { _explicitNullValueManual = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manual"); else _explicitNullProperties?.Remove("manual"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ScalingConfigManual Manual { get => _explicitNullValueManual; set { _explicitNullValueManual = value; AdditionalData?.Remove("manual"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manual"); else _explicitNullProperties?.Remove("manual"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ScalingConfigManual _explicitNullValueManual = default!;
 #endif
         /// <summary>The type of machines to use. Available options: `b1` and `t1`. `t1` includes increased processing power and memory.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NodeType { get => _explicitNullValueNodeType; set { _explicitNullValueNodeType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_type"); else _explicitNullProperties?.Remove("node_type"); } }
+        public string? NodeType { get => _explicitNullValueNodeType; set { _explicitNullValueNodeType = value; AdditionalData?.Remove("node_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_type"); else _explicitNullProperties?.Remove("node_type"); } }
         private string? _explicitNullValueNodeType = default!;
 #nullable restore
 #else
-        public string NodeType { get => _explicitNullValueNodeType; set { _explicitNullValueNodeType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_type"); else _explicitNullProperties?.Remove("node_type"); } }
+        public string NodeType { get => _explicitNullValueNodeType; set { _explicitNullValueNodeType = value; AdditionalData?.Remove("node_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_type"); else _explicitNullProperties?.Remove("node_type"); } }
         private string _explicitNullValueNodeType = default!;
 #endif
         /// <summary>The type of scaling strategy to use.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Scaling { get => _explicitNullValueScaling; set { _explicitNullValueScaling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaling"); else _explicitNullProperties?.Remove("scaling"); } }
+        public string? Scaling { get => _explicitNullValueScaling; set { _explicitNullValueScaling = value; AdditionalData?.Remove("scaling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaling"); else _explicitNullProperties?.Remove("scaling"); } }
         private string? _explicitNullValueScaling = default!;
 #nullable restore
 #else
-        public string Scaling { get => _explicitNullValueScaling; set { _explicitNullValueScaling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaling"); else _explicitNullProperties?.Remove("scaling"); } }
+        public string Scaling { get => _explicitNullValueScaling; set { _explicitNullValueScaling = value; AdditionalData?.Remove("scaling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scaling"); else _explicitNullProperties?.Remove("scaling"); } }
         private string _explicitNullValueScaling = default!;
 #endif
         /// <summary>

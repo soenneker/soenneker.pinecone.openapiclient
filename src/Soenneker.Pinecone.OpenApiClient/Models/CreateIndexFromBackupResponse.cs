@@ -18,8 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("index_id") is { } nullNodeIndexId && nullNodeIndexId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexId = null;
-            if (parseNode.GetChildNode("restore_job_id") is { } nullNodeRestoreJobId && nullNodeRestoreJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestoreJobId = null;
+            if (parseNode.GetChildNode("index_id") is null) { _explicitNullValueIndexId = default!; _explicitNullProperties?.Remove("index_id"); }
+            else if (parseNode.GetChildNode("index_id") is { } nullNodeIndexId && nullNodeIndexId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexId = null;
+            if (parseNode.GetChildNode("restore_job_id") is null) { _explicitNullValueRestoreJobId = default!; _explicitNullProperties?.Remove("restore_job_id"); }
+            else if (parseNode.GetChildNode("restore_job_id") is { } nullNodeRestoreJobId && nullNodeRestoreJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestoreJobId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The ID of the index that was created from the backup.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IndexId { get => _explicitNullValueIndexId; set { _explicitNullValueIndexId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_id"); else _explicitNullProperties?.Remove("index_id"); } }
+        public string? IndexId { get => _explicitNullValueIndexId; set { _explicitNullValueIndexId = value; AdditionalData?.Remove("index_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_id"); else _explicitNullProperties?.Remove("index_id"); } }
         private string? _explicitNullValueIndexId = default!;
 #nullable restore
 #else
-        public string IndexId { get => _explicitNullValueIndexId; set { _explicitNullValueIndexId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_id"); else _explicitNullProperties?.Remove("index_id"); } }
+        public string IndexId { get => _explicitNullValueIndexId; set { _explicitNullValueIndexId = value; AdditionalData?.Remove("index_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_id"); else _explicitNullProperties?.Remove("index_id"); } }
         private string _explicitNullValueIndexId = default!;
 #endif
         /// <summary>The ID of the restore job that was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RestoreJobId { get => _explicitNullValueRestoreJobId; set { _explicitNullValueRestoreJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restore_job_id"); else _explicitNullProperties?.Remove("restore_job_id"); } }
+        public string? RestoreJobId { get => _explicitNullValueRestoreJobId; set { _explicitNullValueRestoreJobId = value; AdditionalData?.Remove("restore_job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restore_job_id"); else _explicitNullProperties?.Remove("restore_job_id"); } }
         private string? _explicitNullValueRestoreJobId = default!;
 #nullable restore
 #else
-        public string RestoreJobId { get => _explicitNullValueRestoreJobId; set { _explicitNullValueRestoreJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restore_job_id"); else _explicitNullProperties?.Remove("restore_job_id"); } }
+        public string RestoreJobId { get => _explicitNullValueRestoreJobId; set { _explicitNullValueRestoreJobId = value; AdditionalData?.Remove("restore_job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restore_job_id"); else _explicitNullProperties?.Remove("restore_job_id"); } }
         private string _explicitNullValueRestoreJobId = default!;
 #endif
         /// <summary>

@@ -18,10 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sparse_indices") is { } nullNodeSparseIndices && nullNodeSparseIndices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparseIndices = null;
-            if (parseNode.GetChildNode("sparse_tokens") is { } nullNodeSparseTokens && nullNodeSparseTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparseTokens = null;
-            if (parseNode.GetChildNode("sparse_values") is { } nullNodeSparseValues && nullNodeSparseValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparseValues = null;
-            if (parseNode.GetChildNode("vector_type") is { } nullNodeVectorType && nullNodeVectorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VectorType = null;
+            if (parseNode.GetChildNode("sparse_indices") is null) { _explicitNullValueSparseIndices = default!; _explicitNullProperties?.Remove("sparse_indices"); }
+            else if (parseNode.GetChildNode("sparse_indices") is { } nullNodeSparseIndices && nullNodeSparseIndices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparseIndices = null;
+            if (parseNode.GetChildNode("sparse_tokens") is null) { _explicitNullValueSparseTokens = default!; _explicitNullProperties?.Remove("sparse_tokens"); }
+            else if (parseNode.GetChildNode("sparse_tokens") is { } nullNodeSparseTokens && nullNodeSparseTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparseTokens = null;
+            if (parseNode.GetChildNode("sparse_values") is null) { _explicitNullValueSparseValues = default!; _explicitNullProperties?.Remove("sparse_values"); }
+            else if (parseNode.GetChildNode("sparse_values") is { } nullNodeSparseValues && nullNodeSparseValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparseValues = null;
+            if (parseNode.GetChildNode("vector_type") is null) { _explicitNullValueVectorType = default!; _explicitNullProperties?.Remove("vector_type"); }
+            else if (parseNode.GetChildNode("vector_type") is { } nullNodeVectorType && nullNodeVectorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VectorType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The sparse embedding indices.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<long?>? SparseIndices { get => _explicitNullValueSparseIndices; set { _explicitNullValueSparseIndices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_indices"); else _explicitNullProperties?.Remove("sparse_indices"); } }
+        public List<long?>? SparseIndices { get => _explicitNullValueSparseIndices; set { _explicitNullValueSparseIndices = value; AdditionalData?.Remove("sparse_indices"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_indices"); else _explicitNullProperties?.Remove("sparse_indices"); } }
         private List<long?>? _explicitNullValueSparseIndices = default!;
 #nullable restore
 #else
-        public List<long?> SparseIndices { get => _explicitNullValueSparseIndices; set { _explicitNullValueSparseIndices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_indices"); else _explicitNullProperties?.Remove("sparse_indices"); } }
+        public List<long?> SparseIndices { get => _explicitNullValueSparseIndices; set { _explicitNullValueSparseIndices = value; AdditionalData?.Remove("sparse_indices"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_indices"); else _explicitNullProperties?.Remove("sparse_indices"); } }
         private List<long?> _explicitNullValueSparseIndices = default!;
 #endif
         /// <summary>The normalized tokens used to create the sparse embedding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SparseTokens { get => _explicitNullValueSparseTokens; set { _explicitNullValueSparseTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_tokens"); else _explicitNullProperties?.Remove("sparse_tokens"); } }
+        public List<string>? SparseTokens { get => _explicitNullValueSparseTokens; set { _explicitNullValueSparseTokens = value; AdditionalData?.Remove("sparse_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_tokens"); else _explicitNullProperties?.Remove("sparse_tokens"); } }
         private List<string>? _explicitNullValueSparseTokens = default!;
 #nullable restore
 #else
-        public List<string> SparseTokens { get => _explicitNullValueSparseTokens; set { _explicitNullValueSparseTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_tokens"); else _explicitNullProperties?.Remove("sparse_tokens"); } }
+        public List<string> SparseTokens { get => _explicitNullValueSparseTokens; set { _explicitNullValueSparseTokens = value; AdditionalData?.Remove("sparse_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_tokens"); else _explicitNullProperties?.Remove("sparse_tokens"); } }
         private List<string> _explicitNullValueSparseTokens = default!;
 #endif
         /// <summary>The sparse embedding values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<float?>? SparseValues { get => _explicitNullValueSparseValues; set { _explicitNullValueSparseValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_values"); else _explicitNullProperties?.Remove("sparse_values"); } }
+        public List<float?>? SparseValues { get => _explicitNullValueSparseValues; set { _explicitNullValueSparseValues = value; AdditionalData?.Remove("sparse_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_values"); else _explicitNullProperties?.Remove("sparse_values"); } }
         private List<float?>? _explicitNullValueSparseValues = default!;
 #nullable restore
 #else
-        public List<float?> SparseValues { get => _explicitNullValueSparseValues; set { _explicitNullValueSparseValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_values"); else _explicitNullProperties?.Remove("sparse_values"); } }
+        public List<float?> SparseValues { get => _explicitNullValueSparseValues; set { _explicitNullValueSparseValues = value; AdditionalData?.Remove("sparse_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparse_values"); else _explicitNullProperties?.Remove("sparse_values"); } }
         private List<float?> _explicitNullValueSparseValues = default!;
 #endif
         /// <summary>Indicates whether this is a &apos;dense&apos; or &apos;sparse&apos; embedding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
+        public string? VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; AdditionalData?.Remove("vector_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
         private string? _explicitNullValueVectorType = default!;
 #nullable restore
 #else
-        public string VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
+        public string VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; AdditionalData?.Remove("vector_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
         private string _explicitNullValueVectorType = default!;
 #endif
         /// <summary>

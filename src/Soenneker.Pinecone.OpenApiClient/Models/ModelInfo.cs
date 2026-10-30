@@ -18,119 +18,131 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default_dimension") is { } nullNodeDefaultDimension && nullNodeDefaultDimension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultDimension = null;
-            if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
-            if (parseNode.GetChildNode("max_sequence_length") is { } nullNodeMaxSequenceLength && nullNodeMaxSequenceLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSequenceLength = null;
-            if (parseNode.GetChildNode("modality") is { } nullNodeModality && nullNodeModality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modality = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
-            if (parseNode.GetChildNode("short_description") is { } nullNodeShortDescription && nullNodeShortDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortDescription = null;
-            if (parseNode.GetChildNode("supported_dimensions") is { } nullNodeSupportedDimensions && nullNodeSupportedDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedDimensions = null;
-            if (parseNode.GetChildNode("supported_metrics") is { } nullNodeSupportedMetrics && nullNodeSupportedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedMetrics = null;
-            if (parseNode.GetChildNode("supported_parameters") is { } nullNodeSupportedParameters && nullNodeSupportedParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedParameters = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
-            if (parseNode.GetChildNode("vector_type") is { } nullNodeVectorType && nullNodeVectorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VectorType = null;
+            if (parseNode.GetChildNode("default_dimension") is null) { _explicitNullValueDefaultDimension = default!; _explicitNullProperties?.Remove("default_dimension"); }
+            else if (parseNode.GetChildNode("default_dimension") is { } nullNodeDefaultDimension && nullNodeDefaultDimension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultDimension = null;
+            if (parseNode.GetChildNode("max_batch_size") is null) { _explicitNullValueMaxBatchSize = default!; _explicitNullProperties?.Remove("max_batch_size"); }
+            else if (parseNode.GetChildNode("max_batch_size") is { } nullNodeMaxBatchSize && nullNodeMaxBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBatchSize = null;
+            if (parseNode.GetChildNode("max_sequence_length") is null) { _explicitNullValueMaxSequenceLength = default!; _explicitNullProperties?.Remove("max_sequence_length"); }
+            else if (parseNode.GetChildNode("max_sequence_length") is { } nullNodeMaxSequenceLength && nullNodeMaxSequenceLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSequenceLength = null;
+            if (parseNode.GetChildNode("modality") is null) { _explicitNullValueModality = default!; _explicitNullProperties?.Remove("modality"); }
+            else if (parseNode.GetChildNode("modality") is { } nullNodeModality && nullNodeModality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modality = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("provider_name") is null) { _explicitNullValueProviderName = default!; _explicitNullProperties?.Remove("provider_name"); }
+            else if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
+            if (parseNode.GetChildNode("short_description") is null) { _explicitNullValueShortDescription = default!; _explicitNullProperties?.Remove("short_description"); }
+            else if (parseNode.GetChildNode("short_description") is { } nullNodeShortDescription && nullNodeShortDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortDescription = null;
+            if (parseNode.GetChildNode("supported_dimensions") is null) { _explicitNullValueSupportedDimensions = default!; _explicitNullProperties?.Remove("supported_dimensions"); }
+            else if (parseNode.GetChildNode("supported_dimensions") is { } nullNodeSupportedDimensions && nullNodeSupportedDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedDimensions = null;
+            if (parseNode.GetChildNode("supported_metrics") is null) { _explicitNullValueSupportedMetrics = default!; _explicitNullProperties?.Remove("supported_metrics"); }
+            else if (parseNode.GetChildNode("supported_metrics") is { } nullNodeSupportedMetrics && nullNodeSupportedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedMetrics = null;
+            if (parseNode.GetChildNode("supported_parameters") is null) { _explicitNullValueSupportedParameters = default!; _explicitNullProperties?.Remove("supported_parameters"); }
+            else if (parseNode.GetChildNode("supported_parameters") is { } nullNodeSupportedParameters && nullNodeSupportedParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedParameters = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("vector_type") is null) { _explicitNullValueVectorType = default!; _explicitNullProperties?.Remove("vector_type"); }
+            else if (parseNode.GetChildNode("vector_type") is { } nullNodeVectorType && nullNodeVectorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VectorType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The default embedding model dimension (applies to dense embedding models only).</summary>
-        public int? DefaultDimension { get => _explicitNullValueDefaultDimension; set { _explicitNullValueDefaultDimension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_dimension"); else _explicitNullProperties?.Remove("default_dimension"); } }
+        public int? DefaultDimension { get => _explicitNullValueDefaultDimension; set { _explicitNullValueDefaultDimension = value; AdditionalData?.Remove("default_dimension"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_dimension"); else _explicitNullProperties?.Remove("default_dimension"); } }
         private int? _explicitNullValueDefaultDimension = default!;
         /// <summary>The maximum batch size (number of sequences) supported by the model.</summary>
-        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
+        public int? MaxBatchSize { get => _explicitNullValueMaxBatchSize; set { _explicitNullValueMaxBatchSize = value; AdditionalData?.Remove("max_batch_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_batch_size"); else _explicitNullProperties?.Remove("max_batch_size"); } }
         private int? _explicitNullValueMaxBatchSize = default!;
         /// <summary>The maximum tokens per sequence supported by the model.</summary>
-        public int? MaxSequenceLength { get => _explicitNullValueMaxSequenceLength; set { _explicitNullValueMaxSequenceLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_sequence_length"); else _explicitNullProperties?.Remove("max_sequence_length"); } }
+        public int? MaxSequenceLength { get => _explicitNullValueMaxSequenceLength; set { _explicitNullValueMaxSequenceLength = value; AdditionalData?.Remove("max_sequence_length"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_sequence_length"); else _explicitNullProperties?.Remove("max_sequence_length"); } }
         private int? _explicitNullValueMaxSequenceLength = default!;
         /// <summary>The modality of the model (e.g. &apos;text&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
+        public string? Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; AdditionalData?.Remove("modality"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
         private string? _explicitNullValueModality = default!;
 #nullable restore
 #else
-        public string Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
+        public string Modality { get => _explicitNullValueModality; set { _explicitNullValueModality = value; AdditionalData?.Remove("modality"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modality"); else _explicitNullProperties?.Remove("modality"); } }
         private string _explicitNullValueModality = default!;
 #endif
         /// <summary>The name of the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>The name of the provider of the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        public string? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; AdditionalData?.Remove("provider_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
         private string? _explicitNullValueProviderName = default!;
 #nullable restore
 #else
-        public string ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        public string ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; AdditionalData?.Remove("provider_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
         private string _explicitNullValueProviderName = default!;
 #endif
         /// <summary>A summary of the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ShortDescription { get => _explicitNullValueShortDescription; set { _explicitNullValueShortDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_description"); else _explicitNullProperties?.Remove("short_description"); } }
+        public string? ShortDescription { get => _explicitNullValueShortDescription; set { _explicitNullValueShortDescription = value; AdditionalData?.Remove("short_description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_description"); else _explicitNullProperties?.Remove("short_description"); } }
         private string? _explicitNullValueShortDescription = default!;
 #nullable restore
 #else
-        public string ShortDescription { get => _explicitNullValueShortDescription; set { _explicitNullValueShortDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_description"); else _explicitNullProperties?.Remove("short_description"); } }
+        public string ShortDescription { get => _explicitNullValueShortDescription; set { _explicitNullValueShortDescription = value; AdditionalData?.Remove("short_description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_description"); else _explicitNullProperties?.Remove("short_description"); } }
         private string _explicitNullValueShortDescription = default!;
 #endif
         /// <summary>The list of supported dimensions for the model (applies to dense embedding models only).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? SupportedDimensions { get => _explicitNullValueSupportedDimensions; set { _explicitNullValueSupportedDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_dimensions"); else _explicitNullProperties?.Remove("supported_dimensions"); } }
+        public List<int?>? SupportedDimensions { get => _explicitNullValueSupportedDimensions; set { _explicitNullValueSupportedDimensions = value; AdditionalData?.Remove("supported_dimensions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_dimensions"); else _explicitNullProperties?.Remove("supported_dimensions"); } }
         private List<int?>? _explicitNullValueSupportedDimensions = default!;
 #nullable restore
 #else
-        public List<int?> SupportedDimensions { get => _explicitNullValueSupportedDimensions; set { _explicitNullValueSupportedDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_dimensions"); else _explicitNullProperties?.Remove("supported_dimensions"); } }
+        public List<int?> SupportedDimensions { get => _explicitNullValueSupportedDimensions; set { _explicitNullValueSupportedDimensions = value; AdditionalData?.Remove("supported_dimensions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_dimensions"); else _explicitNullProperties?.Remove("supported_dimensions"); } }
         private List<int?> _explicitNullValueSupportedDimensions = default!;
 #endif
         /// <summary>The distance metrics supported by the model for similarity search.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupportedMetrics { get => _explicitNullValueSupportedMetrics; set { _explicitNullValueSupportedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_metrics"); else _explicitNullProperties?.Remove("supported_metrics"); } }
+        public List<string>? SupportedMetrics { get => _explicitNullValueSupportedMetrics; set { _explicitNullValueSupportedMetrics = value; AdditionalData?.Remove("supported_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_metrics"); else _explicitNullProperties?.Remove("supported_metrics"); } }
         private List<string>? _explicitNullValueSupportedMetrics = default!;
 #nullable restore
 #else
-        public List<string> SupportedMetrics { get => _explicitNullValueSupportedMetrics; set { _explicitNullValueSupportedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_metrics"); else _explicitNullProperties?.Remove("supported_metrics"); } }
+        public List<string> SupportedMetrics { get => _explicitNullValueSupportedMetrics; set { _explicitNullValueSupportedMetrics = value; AdditionalData?.Remove("supported_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_metrics"); else _explicitNullProperties?.Remove("supported_metrics"); } }
         private List<string> _explicitNullValueSupportedMetrics = default!;
 #endif
         /// <summary>List of parameters supported by the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter>? SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter>? SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; AdditionalData?.Remove("supported_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter>? _explicitNullValueSupportedParameters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter> SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter> SupportedParameters { get => _explicitNullValueSupportedParameters; set { _explicitNullValueSupportedParameters = value; AdditionalData?.Remove("supported_parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_parameters"); else _explicitNullProperties?.Remove("supported_parameters"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter> _explicitNullValueSupportedParameters = default!;
 #endif
         /// <summary>The type of model (e.g. &apos;embed&apos; or &apos;rerank&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private string _explicitNullValueType = default!;
 #endif
         /// <summary>Whether the embedding model produces &apos;dense&apos; or &apos;sparse&apos; embeddings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
+        public string? VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; AdditionalData?.Remove("vector_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
         private string? _explicitNullValueVectorType = default!;
 #nullable restore
 #else
-        public string VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
+        public string VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; AdditionalData?.Remove("vector_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vector_type"); else _explicitNullProperties?.Remove("vector_type"); } }
         private string _explicitNullValueVectorType = default!;
 #endif
         /// <summary>

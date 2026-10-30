@@ -18,17 +18,19 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("importErrors") is { } nullNodeImportErrors && nullNodeImportErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportErrors = null;
-            if (parseNode.GetChildNode("importSuccesses") is { } nullNodeImportSuccesses && nullNodeImportSuccesses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportSuccesses = null;
+            if (parseNode.GetChildNode("importErrors") is null) { _explicitNullValueImportErrors = default!; _explicitNullProperties?.Remove("importErrors"); }
+            else if (parseNode.GetChildNode("importErrors") is { } nullNodeImportErrors && nullNodeImportErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportErrors = null;
+            if (parseNode.GetChildNode("importSuccesses") is null) { _explicitNullValueImportSuccesses = default!; _explicitNullProperties?.Remove("importSuccesses"); }
+            else if (parseNode.GetChildNode("importSuccesses") is { } nullNodeImportSuccesses && nullNodeImportSuccesses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportSuccesses = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of records that failed validation.</summary>
-        public long? ImportErrors { get => _explicitNullValueImportErrors; set { _explicitNullValueImportErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("importErrors"); else _explicitNullProperties?.Remove("importErrors"); } }
+        public long? ImportErrors { get => _explicitNullValueImportErrors; set { _explicitNullValueImportErrors = value; AdditionalData?.Remove("importErrors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("importErrors"); else _explicitNullProperties?.Remove("importErrors"); } }
         private long? _explicitNullValueImportErrors = default!;
         /// <summary>The number of records that passed validation.</summary>
-        public long? ImportSuccesses { get => _explicitNullValueImportSuccesses; set { _explicitNullValueImportSuccesses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("importSuccesses"); else _explicitNullProperties?.Remove("importSuccesses"); } }
+        public long? ImportSuccesses { get => _explicitNullValueImportSuccesses; set { _explicitNullValueImportSuccesses = value; AdditionalData?.Remove("importSuccesses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("importSuccesses"); else _explicitNullProperties?.Remove("importSuccesses"); } }
         private long? _explicitNullValueImportSuccesses = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ImportValidationResult"/> and sets the default values.

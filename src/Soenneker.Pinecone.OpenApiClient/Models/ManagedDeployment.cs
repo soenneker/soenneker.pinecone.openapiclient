@@ -18,9 +18,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cloud") is { } nullNodeCloud && nullNodeCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cloud = null;
-            if (parseNode.GetChildNode("deployment_type") is { } nullNodeDeploymentType && nullNodeDeploymentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentType = null;
-            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+            if (parseNode.GetChildNode("cloud") is null) { _explicitNullValueCloud = default!; _explicitNullProperties?.Remove("cloud"); }
+            else if (parseNode.GetChildNode("cloud") is { } nullNodeCloud && nullNodeCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cloud = null;
+            if (parseNode.GetChildNode("deployment_type") is null) { _explicitNullValueDeploymentType = default!; _explicitNullProperties?.Remove("deployment_type"); }
+            else if (parseNode.GetChildNode("deployment_type") is { } nullNodeDeploymentType && nullNodeDeploymentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentType = null;
+            if (parseNode.GetChildNode("region") is null) { _explicitNullValueRegion = default!; _explicitNullProperties?.Remove("region"); }
+            else if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,15 +31,15 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The public cloud where the index is hosted.Possible values: `gcp`, `aws`, or `azure`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
+        public string? Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; AdditionalData?.Remove("cloud"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
         private string? _explicitNullValueCloud = default!;
 #nullable restore
 #else
-        public string Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
+        public string Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; AdditionalData?.Remove("cloud"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
         private string _explicitNullValueCloud = default!;
 #endif
         /// <summary>Identifies this as a managed (serverless) deployment. Must be `managed`.</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType? DeploymentType { get => _explicitNullValueDeploymentType; set { _explicitNullValueDeploymentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_type"); else _explicitNullProperties?.Remove("deployment_type"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType? DeploymentType { get => _explicitNullValueDeploymentType; set { _explicitNullValueDeploymentType = value; AdditionalData?.Remove("deployment_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_type"); else _explicitNullProperties?.Remove("deployment_type"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType? _explicitNullValueDeploymentType = default!;
         /// <summary>The Pinecone environment hosting the index. Returned in responses; do not set it when creating an index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,11 +52,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The region where the index is hosted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
         private string? _explicitNullValueRegion = default!;
 #nullable restore
 #else
-        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
         private string _explicitNullValueRegion = default!;
 #endif
         /// <summary>
@@ -82,7 +85,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cloud", n => { Cloud = n.GetStringValue(); } },
-                { "deployment_type", n => { DeploymentType = n.GetEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType>(); } },
+                { "deployment_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDeploymentType = default; _explicitNullProperties?.Remove("deployment_type"); AdditionalData["deployment_type"] = unknown; } else { DeploymentType = parsed; AdditionalData.Remove("deployment_type"); } } },
                 { "environment", n => { Environment = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
             };

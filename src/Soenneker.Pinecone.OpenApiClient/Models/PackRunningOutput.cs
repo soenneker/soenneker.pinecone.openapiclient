@@ -18,70 +18,80 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bytes_collected") is { } nullNodeBytesCollected && nullNodeBytesCollected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BytesCollected = null;
-            if (parseNode.GetChildNode("enriching") is { } nullNodeEnriching && nullNodeEnriching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enriching = null;
-            if (parseNode.GetChildNode("files_written") is { } nullNodeFilesWritten && nullNodeFilesWritten.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilesWritten = null;
-            if (parseNode.GetChildNode("include_traces") is { } nullNodeIncludeTraces && nullNodeIncludeTraces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeTraces = null;
-            if (parseNode.GetChildNode("knowledge_total") is { } nullNodeKnowledgeTotal && nullNodeKnowledgeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KnowledgeTotal = null;
-            if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
-            if (parseNode.GetChildNode("sources_total") is { } nullNodeSourcesTotal && nullNodeSourcesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesTotal = null;
-            if (parseNode.GetChildNode("started_at") is { } nullNodeStartedAt && nullNodeStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartedAt = null;
-            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
-            if (parseNode.GetChildNode("traces_total") is { } nullNodeTracesTotal && nullNodeTracesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TracesTotal = null;
+            if (parseNode.GetChildNode("bytes_collected") is null) { _explicitNullValueBytesCollected = default!; _explicitNullProperties?.Remove("bytes_collected"); }
+            else if (parseNode.GetChildNode("bytes_collected") is { } nullNodeBytesCollected && nullNodeBytesCollected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BytesCollected = null;
+            if (parseNode.GetChildNode("enriching") is null) { _explicitNullValueEnriching = default!; _explicitNullProperties?.Remove("enriching"); }
+            else if (parseNode.GetChildNode("enriching") is { } nullNodeEnriching && nullNodeEnriching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enriching = null;
+            if (parseNode.GetChildNode("files_written") is null) { _explicitNullValueFilesWritten = default!; _explicitNullProperties?.Remove("files_written"); }
+            else if (parseNode.GetChildNode("files_written") is { } nullNodeFilesWritten && nullNodeFilesWritten.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilesWritten = null;
+            if (parseNode.GetChildNode("include_traces") is null) { _explicitNullValueIncludeTraces = default!; _explicitNullProperties?.Remove("include_traces"); }
+            else if (parseNode.GetChildNode("include_traces") is { } nullNodeIncludeTraces && nullNodeIncludeTraces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeTraces = null;
+            if (parseNode.GetChildNode("knowledge_total") is null) { _explicitNullValueKnowledgeTotal = default!; _explicitNullProperties?.Remove("knowledge_total"); }
+            else if (parseNode.GetChildNode("knowledge_total") is { } nullNodeKnowledgeTotal && nullNodeKnowledgeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KnowledgeTotal = null;
+            if (parseNode.GetChildNode("slug") is null) { _explicitNullValueSlug = default!; _explicitNullProperties?.Remove("slug"); }
+            else if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
+            if (parseNode.GetChildNode("sources_total") is null) { _explicitNullValueSourcesTotal = default!; _explicitNullProperties?.Remove("sources_total"); }
+            else if (parseNode.GetChildNode("sources_total") is { } nullNodeSourcesTotal && nullNodeSourcesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesTotal = null;
+            if (parseNode.GetChildNode("started_at") is null) { _explicitNullValueStartedAt = default!; _explicitNullProperties?.Remove("started_at"); }
+            else if (parseNode.GetChildNode("started_at") is { } nullNodeStartedAt && nullNodeStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartedAt = null;
+            if (parseNode.GetChildNode("state") is null) { _explicitNullValueState = default!; _explicitNullProperties?.Remove("state"); }
+            else if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("traces_total") is null) { _explicitNullValueTracesTotal = default!; _explicitNullProperties?.Remove("traces_total"); }
+            else if (parseNode.GetChildNode("traces_total") is { } nullNodeTracesTotal && nullNodeTracesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TracesTotal = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bytes read so far. Absent until the inventory is counted.</summary>
-        public long? BytesCollected { get => _explicitNullValueBytesCollected; set { _explicitNullValueBytesCollected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytes_collected"); else _explicitNullProperties?.Remove("bytes_collected"); } }
+        public long? BytesCollected { get => _explicitNullValueBytesCollected; set { _explicitNullValueBytesCollected = value; AdditionalData?.Remove("bytes_collected"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytes_collected"); else _explicitNullProperties?.Remove("bytes_collected"); } }
         private long? _explicitNullValueBytesCollected = default!;
         /// <summary>Present while the LLM writes the pack&apos;s summary.</summary>
-        public bool? Enriching { get => _explicitNullValueEnriching; set { _explicitNullValueEnriching = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enriching"); else _explicitNullProperties?.Remove("enriching"); } }
+        public bool? Enriching { get => _explicitNullValueEnriching; set { _explicitNullValueEnriching = value; AdditionalData?.Remove("enriching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enriching"); else _explicitNullProperties?.Remove("enriching"); } }
         private bool? _explicitNullValueEnriching = default!;
         /// <summary>Files written into the archive so far. Present only once writing has begun.</summary>
-        public long? FilesWritten { get => _explicitNullValueFilesWritten; set { _explicitNullValueFilesWritten = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("files_written"); else _explicitNullProperties?.Remove("files_written"); } }
+        public long? FilesWritten { get => _explicitNullValueFilesWritten; set { _explicitNullValueFilesWritten = value; AdditionalData?.Remove("files_written"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("files_written"); else _explicitNullProperties?.Remove("files_written"); } }
         private long? _explicitNullValueFilesWritten = default!;
         /// <summary>Whether query traces are being packed. Absent on the write-progress report.</summary>
-        public bool? IncludeTraces { get => _explicitNullValueIncludeTraces; set { _explicitNullValueIncludeTraces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_traces"); else _explicitNullProperties?.Remove("include_traces"); } }
+        public bool? IncludeTraces { get => _explicitNullValueIncludeTraces; set { _explicitNullValueIncludeTraces = value; AdditionalData?.Remove("include_traces"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_traces"); else _explicitNullProperties?.Remove("include_traces"); } }
         private bool? _explicitNullValueIncludeTraces = default!;
         /// <summary>Curated knowledge files to be packed. Absent until the inventory is counted.</summary>
-        public long? KnowledgeTotal { get => _explicitNullValueKnowledgeTotal; set { _explicitNullValueKnowledgeTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("knowledge_total"); else _explicitNullProperties?.Remove("knowledge_total"); } }
+        public long? KnowledgeTotal { get => _explicitNullValueKnowledgeTotal; set { _explicitNullValueKnowledgeTotal = value; AdditionalData?.Remove("knowledge_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("knowledge_total"); else _explicitNullProperties?.Remove("knowledge_total"); } }
         private long? _explicitNullValueKnowledgeTotal = default!;
         /// <summary>Slug of the context being packed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string? _explicitNullValueSlug = default!;
 #nullable restore
 #else
-        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string _explicitNullValueSlug = default!;
 #endif
         /// <summary>Source files to be packed. Absent until the inventory is counted.</summary>
-        public long? SourcesTotal { get => _explicitNullValueSourcesTotal; set { _explicitNullValueSourcesTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_total"); else _explicitNullProperties?.Remove("sources_total"); } }
+        public long? SourcesTotal { get => _explicitNullValueSourcesTotal; set { _explicitNullValueSourcesTotal = value; AdditionalData?.Remove("sources_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_total"); else _explicitNullProperties?.Remove("sources_total"); } }
         private long? _explicitNullValueSourcesTotal = default!;
         /// <summary>When the pack started. Absent on the write-progress report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
+        public string? StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; AdditionalData?.Remove("started_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
         private string? _explicitNullValueStartedAt = default!;
 #nullable restore
 #else
-        public string StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
+        public string StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; AdditionalData?.Remove("started_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
         private string _explicitNullValueStartedAt = default!;
 #endif
         /// <summary>Always `running`. Which report this is shows in the keys it carries, not here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string _explicitNullValueState = default!;
 #endif
         /// <summary>Trace blobs to be packed. Absent until the inventory is counted.</summary>
-        public long? TracesTotal { get => _explicitNullValueTracesTotal; set { _explicitNullValueTracesTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traces_total"); else _explicitNullProperties?.Remove("traces_total"); } }
+        public long? TracesTotal { get => _explicitNullValueTracesTotal; set { _explicitNullValueTracesTotal = value; AdditionalData?.Remove("traces_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traces_total"); else _explicitNullProperties?.Remove("traces_total"); } }
         private long? _explicitNullValueTracesTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.PackRunningOutput"/> and sets the default values.

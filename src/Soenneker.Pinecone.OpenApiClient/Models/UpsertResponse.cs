@@ -18,13 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("upsertedCount") is { } nullNodeUpsertedCount && nullNodeUpsertedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpsertedCount = null;
+            if (parseNode.GetChildNode("upsertedCount") is null) { _explicitNullValueUpsertedCount = default!; _explicitNullProperties?.Remove("upsertedCount"); }
+            else if (parseNode.GetChildNode("upsertedCount") is { } nullNodeUpsertedCount && nullNodeUpsertedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpsertedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of vectors upserted.</summary>
-        public long? UpsertedCount { get => _explicitNullValueUpsertedCount; set { _explicitNullValueUpsertedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upsertedCount"); else _explicitNullProperties?.Remove("upsertedCount"); } }
+        public long? UpsertedCount { get => _explicitNullValueUpsertedCount; set { _explicitNullValueUpsertedCount = value; AdditionalData?.Remove("upsertedCount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upsertedCount"); else _explicitNullProperties?.Remove("upsertedCount"); } }
         private long? _explicitNullValueUpsertedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UpsertResponse"/> and sets the default values.

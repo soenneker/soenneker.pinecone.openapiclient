@@ -17,13 +17,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("delete_all") is { } nullNodeDeleteAll && nullNodeDeleteAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteAll = null;
+            if (parseNode.GetChildNode("delete_all") is null) { _explicitNullValueDeleteAll = default!; _explicitNullProperties?.Remove("delete_all"); }
+            else if (parseNode.GetChildNode("delete_all") is { } nullNodeDeleteAll && nullNodeDeleteAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteAll = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The delete_all property</summary>
-        public bool? DeleteAll { get => _explicitNullValueDeleteAll; set { _explicitNullValueDeleteAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_all"); else _explicitNullProperties?.Remove("delete_all"); } }
+        public bool? DeleteAll { get => _explicitNullValueDeleteAll; set { _explicitNullValueDeleteAll = value; AdditionalData?.Remove("delete_all"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_all"); else _explicitNullProperties?.Remove("delete_all"); } }
         private bool? _explicitNullValueDeleteAll = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestById"/> and sets the default values.

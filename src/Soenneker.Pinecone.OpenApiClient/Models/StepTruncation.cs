@@ -18,21 +18,24 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dropped_documents") is { } nullNodeDroppedDocuments && nullNodeDroppedDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedDocuments = null;
-            if (parseNode.GetChildNode("dropped_tool_calls") is { } nullNodeDroppedToolCalls && nullNodeDroppedToolCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedToolCalls = null;
-            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+            if (parseNode.GetChildNode("dropped_documents") is null) { _explicitNullValueDroppedDocuments = default!; _explicitNullProperties?.Remove("dropped_documents"); }
+            else if (parseNode.GetChildNode("dropped_documents") is { } nullNodeDroppedDocuments && nullNodeDroppedDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedDocuments = null;
+            if (parseNode.GetChildNode("dropped_tool_calls") is null) { _explicitNullValueDroppedToolCalls = default!; _explicitNullProperties?.Remove("dropped_tool_calls"); }
+            else if (parseNode.GetChildNode("dropped_tool_calls") is { } nullNodeDroppedToolCalls && nullNodeDroppedToolCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedToolCalls = null;
+            if (parseNode.GetChildNode("truncated") is null) { _explicitNullValueTruncated = default!; _explicitNullProperties?.Remove("truncated"); }
+            else if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Retrieved documents shed from the event.</summary>
-        public long? DroppedDocuments { get => _explicitNullValueDroppedDocuments; set { _explicitNullValueDroppedDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_documents"); else _explicitNullProperties?.Remove("dropped_documents"); } }
+        public long? DroppedDocuments { get => _explicitNullValueDroppedDocuments; set { _explicitNullValueDroppedDocuments = value; AdditionalData?.Remove("dropped_documents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_documents"); else _explicitNullProperties?.Remove("dropped_documents"); } }
         private long? _explicitNullValueDroppedDocuments = default!;
         /// <summary>How many calls the clamp discarded.</summary>
-        public long? DroppedToolCalls { get => _explicitNullValueDroppedToolCalls; set { _explicitNullValueDroppedToolCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_tool_calls"); else _explicitNullProperties?.Remove("dropped_tool_calls"); } }
+        public long? DroppedToolCalls { get => _explicitNullValueDroppedToolCalls; set { _explicitNullValueDroppedToolCalls = value; AdditionalData?.Remove("dropped_tool_calls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_tool_calls"); else _explicitNullProperties?.Remove("dropped_tool_calls"); } }
         private long? _explicitNullValueDroppedToolCalls = default!;
         /// <summary>Whether the clamp fired at all.</summary>
-        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; AdditionalData?.Remove("truncated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
         private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.StepTruncation"/> and sets the default values.

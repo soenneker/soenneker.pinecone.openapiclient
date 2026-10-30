@@ -18,9 +18,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("curate") is { } nullNodeCurate && nullNodeCurate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Curate = null;
-            if (parseNode.GetChildNode("optimize") is { } nullNodeOptimize && nullNodeOptimize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Optimize = null;
-            if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
+            if (parseNode.GetChildNode("curate") is null) { _explicitNullValueCurate = default!; _explicitNullProperties?.Remove("curate"); }
+            else if (parseNode.GetChildNode("curate") is { } nullNodeCurate && nullNodeCurate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Curate = null;
+            if (parseNode.GetChildNode("optimize") is null) { _explicitNullValueOptimize = default!; _explicitNullProperties?.Remove("optimize"); }
+            else if (parseNode.GetChildNode("optimize") is { } nullNodeOptimize && nullNodeOptimize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Optimize = null;
+            if (parseNode.GetChildNode("search") is null) { _explicitNullValueSearch = default!; _explicitNullProperties?.Remove("search"); }
+            else if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>What curate builds out of the sources — the chunk leg, the artifact leg, or both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Curate? Curate { get => _explicitNullValueCurate; set { _explicitNullValueCurate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("curate"); else _explicitNullProperties?.Remove("curate"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Curate? Curate { get => _explicitNullValueCurate; set { _explicitNullValueCurate = value; AdditionalData?.Remove("curate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("curate"); else _explicitNullProperties?.Remove("curate"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Curate? _explicitNullValueCurate = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Curate Curate { get => _explicitNullValueCurate; set { _explicitNullValueCurate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("curate"); else _explicitNullProperties?.Remove("curate"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Curate Curate { get => _explicitNullValueCurate; set { _explicitNullValueCurate = value; AdditionalData?.Remove("curate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("curate"); else _explicitNullProperties?.Remove("curate"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Curate _explicitNullValueCurate = default!;
 #endif
         /// <summary>The scheduled self-tuning loop: it clusters the queries that answered badly and tries candidate manifests against an ephemeral index until one reproduces the recorded answers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize? Optimize { get => _explicitNullValueOptimize; set { _explicitNullValueOptimize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimize"); else _explicitNullProperties?.Remove("optimize"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize? Optimize { get => _explicitNullValueOptimize; set { _explicitNullValueOptimize = value; AdditionalData?.Remove("optimize"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimize"); else _explicitNullProperties?.Remove("optimize"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize? _explicitNullValueOptimize = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize Optimize { get => _explicitNullValueOptimize; set { _explicitNullValueOptimize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimize"); else _explicitNullProperties?.Remove("optimize"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize Optimize { get => _explicitNullValueOptimize; set { _explicitNullValueOptimize = value; AdditionalData?.Remove("optimize"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimize"); else _explicitNullProperties?.Remove("optimize"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize _explicitNullValueOptimize = default!;
 #endif
         /// <summary>Standing instructions for the query runtime, pinned on the context rather than sent per turn.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Search? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Search? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; AdditionalData?.Remove("search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Search? _explicitNullValueSearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Search Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Search Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; AdditionalData?.Remove("search"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Search _explicitNullValueSearch = default!;
 #endif
         /// <summary>

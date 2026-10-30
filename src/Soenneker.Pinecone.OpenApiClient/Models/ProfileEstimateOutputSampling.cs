@@ -18,25 +18,29 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fraction") is { } nullNodeFraction && nullNodeFraction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fraction = null;
-            if (parseNode.GetChildNode("n_sampled") is { } nullNodeNSampled && nullNodeNSampled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NSampled = null;
-            if (parseNode.GetChildNode("n_total") is { } nullNodeNTotal && nullNodeNTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NTotal = null;
-            if (parseNode.GetChildNode("wall_s") is { } nullNodeWallS && nullNodeWallS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WallS = null;
+            if (parseNode.GetChildNode("fraction") is null) { _explicitNullValueFraction = default!; _explicitNullProperties?.Remove("fraction"); }
+            else if (parseNode.GetChildNode("fraction") is { } nullNodeFraction && nullNodeFraction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fraction = null;
+            if (parseNode.GetChildNode("n_sampled") is null) { _explicitNullValueNSampled = default!; _explicitNullProperties?.Remove("n_sampled"); }
+            else if (parseNode.GetChildNode("n_sampled") is { } nullNodeNSampled && nullNodeNSampled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NSampled = null;
+            if (parseNode.GetChildNode("n_total") is null) { _explicitNullValueNTotal = default!; _explicitNullProperties?.Remove("n_total"); }
+            else if (parseNode.GetChildNode("n_total") is { } nullNodeNTotal && nullNodeNTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NTotal = null;
+            if (parseNode.GetChildNode("wall_s") is null) { _explicitNullValueWallS = default!; _explicitNullProperties?.Remove("wall_s"); }
+            else if (parseNode.GetChildNode("wall_s") is { } nullNodeWallS && nullNodeWallS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WallS = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The `n_sampled` count over `n_total`.</summary>
-        public double? Fraction { get => _explicitNullValueFraction; set { _explicitNullValueFraction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fraction"); else _explicitNullProperties?.Remove("fraction"); } }
+        public double? Fraction { get => _explicitNullValueFraction; set { _explicitNullValueFraction = value; AdditionalData?.Remove("fraction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fraction"); else _explicitNullProperties?.Remove("fraction"); } }
         private double? _explicitNullValueFraction = default!;
         /// <summary>Sources the profile read.</summary>
-        public long? NSampled { get => _explicitNullValueNSampled; set { _explicitNullValueNSampled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_sampled"); else _explicitNullProperties?.Remove("n_sampled"); } }
+        public long? NSampled { get => _explicitNullValueNSampled; set { _explicitNullValueNSampled = value; AdditionalData?.Remove("n_sampled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_sampled"); else _explicitNullProperties?.Remove("n_sampled"); } }
         private long? _explicitNullValueNSampled = default!;
         /// <summary>Sources in the corpus.</summary>
-        public long? NTotal { get => _explicitNullValueNTotal; set { _explicitNullValueNTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_total"); else _explicitNullProperties?.Remove("n_total"); } }
+        public long? NTotal { get => _explicitNullValueNTotal; set { _explicitNullValueNTotal = value; AdditionalData?.Remove("n_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_total"); else _explicitNullProperties?.Remove("n_total"); } }
         private long? _explicitNullValueNTotal = default!;
         /// <summary>Seconds the sampling itself took.</summary>
-        public double? WallS { get => _explicitNullValueWallS; set { _explicitNullValueWallS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wall_s"); else _explicitNullProperties?.Remove("wall_s"); } }
+        public double? WallS { get => _explicitNullValueWallS; set { _explicitNullValueWallS = value; AdditionalData?.Remove("wall_s"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wall_s"); else _explicitNullProperties?.Remove("wall_s"); } }
         private double? _explicitNullValueWallS = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling"/> and sets the default values.

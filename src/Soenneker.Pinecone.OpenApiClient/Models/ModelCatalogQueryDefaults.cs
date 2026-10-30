@@ -18,9 +18,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("max_steps") is { } nullNodeMaxSteps && nullNodeMaxSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSteps = null;
-            if (parseNode.GetChildNode("thinking_level") is { } nullNodeThinkingLevel && nullNodeThinkingLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingLevel = null;
-            if (parseNode.GetChildNode("thinking_levels") is { } nullNodeThinkingLevels && nullNodeThinkingLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingLevels = null;
+            if (parseNode.GetChildNode("max_steps") is null) { _explicitNullValueMaxSteps = default!; _explicitNullProperties?.Remove("max_steps"); }
+            else if (parseNode.GetChildNode("max_steps") is { } nullNodeMaxSteps && nullNodeMaxSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSteps = null;
+            if (parseNode.GetChildNode("thinking_level") is null) { _explicitNullValueThinkingLevel = default!; _explicitNullProperties?.Remove("thinking_level"); }
+            else if (parseNode.GetChildNode("thinking_level") is { } nullNodeThinkingLevel && nullNodeThinkingLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingLevel = null;
+            if (parseNode.GetChildNode("thinking_levels") is null) { _explicitNullValueThinkingLevels = default!; _explicitNullProperties?.Remove("thinking_levels"); }
+            else if (parseNode.GetChildNode("thinking_levels") is { } nullNodeThinkingLevels && nullNodeThinkingLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingLevels = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Workflow selector → its agentic tool-loop step cap. Keyed by the same selectors `POST /query` accepts, since each runs a different loop.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaultsMaxSteps? MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_steps"); else _explicitNullProperties?.Remove("max_steps"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaultsMaxSteps? MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; AdditionalData?.Remove("max_steps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_steps"); else _explicitNullProperties?.Remove("max_steps"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaultsMaxSteps? _explicitNullValueMaxSteps = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaultsMaxSteps MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_steps"); else _explicitNullProperties?.Remove("max_steps"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaultsMaxSteps MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; AdditionalData?.Remove("max_steps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_steps"); else _explicitNullProperties?.Remove("max_steps"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogQueryDefaultsMaxSteps _explicitNullValueMaxSteps = default!;
 #endif
         /// <summary>The level a turn runs at when the request omits one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
+        public string? ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; AdditionalData?.Remove("thinking_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
         private string? _explicitNullValueThinkingLevel = default!;
 #nullable restore
 #else
-        public string ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
+        public string ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; AdditionalData?.Remove("thinking_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
         private string _explicitNullValueThinkingLevel = default!;
 #endif
         /// <summary>Every accepted `thinking_level`, ascending. A value outside this list is rejected with `400`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ThinkingLevels { get => _explicitNullValueThinkingLevels; set { _explicitNullValueThinkingLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_levels"); else _explicitNullProperties?.Remove("thinking_levels"); } }
+        public List<string>? ThinkingLevels { get => _explicitNullValueThinkingLevels; set { _explicitNullValueThinkingLevels = value; AdditionalData?.Remove("thinking_levels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_levels"); else _explicitNullProperties?.Remove("thinking_levels"); } }
         private List<string>? _explicitNullValueThinkingLevels = default!;
 #nullable restore
 #else
-        public List<string> ThinkingLevels { get => _explicitNullValueThinkingLevels; set { _explicitNullValueThinkingLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_levels"); else _explicitNullProperties?.Remove("thinking_levels"); } }
+        public List<string> ThinkingLevels { get => _explicitNullValueThinkingLevels; set { _explicitNullValueThinkingLevels = value; AdditionalData?.Remove("thinking_levels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_levels"); else _explicitNullProperties?.Remove("thinking_levels"); } }
         private List<string> _explicitNullValueThinkingLevels = default!;
 #endif
         /// <summary>

@@ -18,16 +18,26 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("artifact_reclaim") is { } nullNodeArtifactReclaim && nullNodeArtifactReclaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactReclaim = null;
-            if (parseNode.GetChildNode("corpus_groups") is { } nullNodeCorpusGroups && nullNodeCorpusGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorpusGroups = null;
-            if (parseNode.GetChildNode("edges") is { } nullNodeEdges && nullNodeEdges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Edges = null;
-            if (parseNode.GetChildNode("live_version") is { } nullNodeLiveVersion && nullNodeLiveVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveVersion = null;
-            if (parseNode.GetChildNode("manifest") is { } nullNodeManifest && nullNodeManifest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manifest = null;
-            if (parseNode.GetChildNode("redispatch_count") is { } nullNodeRedispatchCount && nullNodeRedispatchCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedispatchCount = null;
-            if (parseNode.GetChildNode("source_glossary") is { } nullNodeSourceGlossary && nullNodeSourceGlossary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceGlossary = null;
-            if (parseNode.GetChildNode("source_pointers") is { } nullNodeSourcePointers && nullNodeSourcePointers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcePointers = null;
-            if (parseNode.GetChildNode("source_removed") is { } nullNodeSourceRemoved && nullNodeSourceRemoved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceRemoved = null;
-            if (parseNode.GetChildNode("versions_stamped") is { } nullNodeVersionsStamped && nullNodeVersionsStamped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionsStamped = null;
+            if (parseNode.GetChildNode("artifact_reclaim") is null) { _explicitNullValueArtifactReclaim = default!; _explicitNullProperties?.Remove("artifact_reclaim"); }
+            else if (parseNode.GetChildNode("artifact_reclaim") is { } nullNodeArtifactReclaim && nullNodeArtifactReclaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactReclaim = null;
+            if (parseNode.GetChildNode("corpus_groups") is null) { _explicitNullValueCorpusGroups = default!; _explicitNullProperties?.Remove("corpus_groups"); }
+            else if (parseNode.GetChildNode("corpus_groups") is { } nullNodeCorpusGroups && nullNodeCorpusGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorpusGroups = null;
+            if (parseNode.GetChildNode("edges") is null) { _explicitNullValueEdges = default!; _explicitNullProperties?.Remove("edges"); }
+            else if (parseNode.GetChildNode("edges") is { } nullNodeEdges && nullNodeEdges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Edges = null;
+            if (parseNode.GetChildNode("live_version") is null) { _explicitNullValueLiveVersion = default!; _explicitNullProperties?.Remove("live_version"); }
+            else if (parseNode.GetChildNode("live_version") is { } nullNodeLiveVersion && nullNodeLiveVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveVersion = null;
+            if (parseNode.GetChildNode("manifest") is null) { _explicitNullValueManifest = default!; _explicitNullProperties?.Remove("manifest"); }
+            else if (parseNode.GetChildNode("manifest") is { } nullNodeManifest && nullNodeManifest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manifest = null;
+            if (parseNode.GetChildNode("redispatch_count") is null) { _explicitNullValueRedispatchCount = default!; _explicitNullProperties?.Remove("redispatch_count"); }
+            else if (parseNode.GetChildNode("redispatch_count") is { } nullNodeRedispatchCount && nullNodeRedispatchCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedispatchCount = null;
+            if (parseNode.GetChildNode("source_glossary") is null) { _explicitNullValueSourceGlossary = default!; _explicitNullProperties?.Remove("source_glossary"); }
+            else if (parseNode.GetChildNode("source_glossary") is { } nullNodeSourceGlossary && nullNodeSourceGlossary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceGlossary = null;
+            if (parseNode.GetChildNode("source_pointers") is null) { _explicitNullValueSourcePointers = default!; _explicitNullProperties?.Remove("source_pointers"); }
+            else if (parseNode.GetChildNode("source_pointers") is { } nullNodeSourcePointers && nullNodeSourcePointers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcePointers = null;
+            if (parseNode.GetChildNode("source_removed") is null) { _explicitNullValueSourceRemoved = default!; _explicitNullProperties?.Remove("source_removed"); }
+            else if (parseNode.GetChildNode("source_removed") is { } nullNodeSourceRemoved && nullNodeSourceRemoved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceRemoved = null;
+            if (parseNode.GetChildNode("versions_stamped") is null) { _explicitNullValueVersionsStamped = default!; _explicitNullProperties?.Remove("versions_stamped"); }
+            else if (parseNode.GetChildNode("versions_stamped") is { } nullNodeVersionsStamped && nullNodeVersionsStamped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionsStamped = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -35,81 +45,81 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Artifact swaps awaiting the next curate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim>? ArtifactReclaim { get => _explicitNullValueArtifactReclaim; set { _explicitNullValueArtifactReclaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_reclaim"); else _explicitNullProperties?.Remove("artifact_reclaim"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim>? ArtifactReclaim { get => _explicitNullValueArtifactReclaim; set { _explicitNullValueArtifactReclaim = value; AdditionalData?.Remove("artifact_reclaim"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_reclaim"); else _explicitNullProperties?.Remove("artifact_reclaim"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim>? _explicitNullValueArtifactReclaim = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim> ArtifactReclaim { get => _explicitNullValueArtifactReclaim; set { _explicitNullValueArtifactReclaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_reclaim"); else _explicitNullProperties?.Remove("artifact_reclaim"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim> ArtifactReclaim { get => _explicitNullValueArtifactReclaim; set { _explicitNullValueArtifactReclaim = value; AdditionalData?.Remove("artifact_reclaim"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_reclaim"); else _explicitNullProperties?.Remove("artifact_reclaim"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ArtifactReclaim> _explicitNullValueArtifactReclaim = default!;
 #endif
         /// <summary>The source groupings the corpus pass reduced over.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup>? CorpusGroups { get => _explicitNullValueCorpusGroups; set { _explicitNullValueCorpusGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corpus_groups"); else _explicitNullProperties?.Remove("corpus_groups"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup>? CorpusGroups { get => _explicitNullValueCorpusGroups; set { _explicitNullValueCorpusGroups = value; AdditionalData?.Remove("corpus_groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corpus_groups"); else _explicitNullProperties?.Remove("corpus_groups"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup>? _explicitNullValueCorpusGroups = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup> CorpusGroups { get => _explicitNullValueCorpusGroups; set { _explicitNullValueCorpusGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corpus_groups"); else _explicitNullProperties?.Remove("corpus_groups"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup> CorpusGroups { get => _explicitNullValueCorpusGroups; set { _explicitNullValueCorpusGroups = value; AdditionalData?.Remove("corpus_groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corpus_groups"); else _explicitNullProperties?.Remove("corpus_groups"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.CorpusGroup> _explicitNullValueCorpusGroups = default!;
 #endif
         /// <summary>Artifact ids each source contributed an edge to, keyed by source path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty? Edges { get => _explicitNullValueEdges; set { _explicitNullValueEdges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edges"); else _explicitNullProperties?.Remove("edges"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty? Edges { get => _explicitNullValueEdges; set { _explicitNullValueEdges = value; AdditionalData?.Remove("edges"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edges"); else _explicitNullProperties?.Remove("edges"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty? _explicitNullValueEdges = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty Edges { get => _explicitNullValueEdges; set { _explicitNullValueEdges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edges"); else _explicitNullProperties?.Remove("edges"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty Edges { get => _explicitNullValueEdges; set { _explicitNullValueEdges = value; AdditionalData?.Remove("edges"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edges"); else _explicitNullProperties?.Remove("edges"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateEdgesProperty _explicitNullValueEdges = default!;
 #endif
         /// <summary>The index version queries read.</summary>
-        public long? LiveVersion { get => _explicitNullValueLiveVersion; set { _explicitNullValueLiveVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("live_version"); else _explicitNullProperties?.Remove("live_version"); } }
+        public long? LiveVersion { get => _explicitNullValueLiveVersion; set { _explicitNullValueLiveVersion = value; AdditionalData?.Remove("live_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("live_version"); else _explicitNullProperties?.Remove("live_version"); } }
         private long? _explicitNullValueLiveVersion = default!;
         /// <summary>Per-source curate ledger, keyed by source path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty? _explicitNullValueManifest = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateManifestProperty _explicitNullValueManifest = default!;
 #endif
         /// <summary>How many times a curate on this context was killed and redispatched. The checkpointed run resumes rather than restarting.</summary>
-        public int? RedispatchCount { get => _explicitNullValueRedispatchCount; set { _explicitNullValueRedispatchCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redispatch_count"); else _explicitNullProperties?.Remove("redispatch_count"); } }
+        public int? RedispatchCount { get => _explicitNullValueRedispatchCount; set { _explicitNullValueRedispatchCount = value; AdditionalData?.Remove("redispatch_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("redispatch_count"); else _explicitNullProperties?.Remove("redispatch_count"); } }
         private int? _explicitNullValueRedispatchCount = default!;
         /// <summary>The glossary resume cursor, keyed by source path. `{}` for a context whose curates all ran to completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty? SourceGlossary { get => _explicitNullValueSourceGlossary; set { _explicitNullValueSourceGlossary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_glossary"); else _explicitNullProperties?.Remove("source_glossary"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty? SourceGlossary { get => _explicitNullValueSourceGlossary; set { _explicitNullValueSourceGlossary = value; AdditionalData?.Remove("source_glossary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_glossary"); else _explicitNullProperties?.Remove("source_glossary"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty? _explicitNullValueSourceGlossary = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty SourceGlossary { get => _explicitNullValueSourceGlossary; set { _explicitNullValueSourceGlossary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_glossary"); else _explicitNullProperties?.Remove("source_glossary"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty SourceGlossary { get => _explicitNullValueSourceGlossary; set { _explicitNullValueSourceGlossary = value; AdditionalData?.Remove("source_glossary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_glossary"); else _explicitNullProperties?.Remove("source_glossary"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceGlossaryProperty _explicitNullValueSourceGlossary = default!;
 #endif
         /// <summary>The resume cursor a redispatched curate writes, keyed by source path. `{}` for a context whose curates all ran to completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty? SourcePointers { get => _explicitNullValueSourcePointers; set { _explicitNullValueSourcePointers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_pointers"); else _explicitNullProperties?.Remove("source_pointers"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty? SourcePointers { get => _explicitNullValueSourcePointers; set { _explicitNullValueSourcePointers = value; AdditionalData?.Remove("source_pointers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_pointers"); else _explicitNullProperties?.Remove("source_pointers"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty? _explicitNullValueSourcePointers = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty SourcePointers { get => _explicitNullValueSourcePointers; set { _explicitNullValueSourcePointers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_pointers"); else _explicitNullProperties?.Remove("source_pointers"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty SourcePointers { get => _explicitNullValueSourcePointers; set { _explicitNullValueSourcePointers = value; AdditionalData?.Remove("source_pointers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_pointers"); else _explicitNullProperties?.Remove("source_pointers"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourcePointersProperty _explicitNullValueSourcePointers = default!;
 #endif
         /// <summary>Delete tombstones awaiting the next curate, keyed by source path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty? SourceRemoved { get => _explicitNullValueSourceRemoved; set { _explicitNullValueSourceRemoved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_removed"); else _explicitNullProperties?.Remove("source_removed"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty? SourceRemoved { get => _explicitNullValueSourceRemoved; set { _explicitNullValueSourceRemoved = value; AdditionalData?.Remove("source_removed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_removed"); else _explicitNullProperties?.Remove("source_removed"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty? _explicitNullValueSourceRemoved = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty SourceRemoved { get => _explicitNullValueSourceRemoved; set { _explicitNullValueSourceRemoved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_removed"); else _explicitNullProperties?.Remove("source_removed"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty SourceRemoved { get => _explicitNullValueSourceRemoved; set { _explicitNullValueSourceRemoved = value; AdditionalData?.Remove("source_removed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_removed"); else _explicitNullProperties?.Remove("source_removed"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.CurationStateSourceRemovedProperty _explicitNullValueSourceRemoved = default!;
 #endif
         /// <summary>Whether every index entry carries a version stamp, which is what lets a curate flip versions atomically.</summary>
-        public bool? VersionsStamped { get => _explicitNullValueVersionsStamped; set { _explicitNullValueVersionsStamped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("versions_stamped"); else _explicitNullProperties?.Remove("versions_stamped"); } }
+        public bool? VersionsStamped { get => _explicitNullValueVersionsStamped; set { _explicitNullValueVersionsStamped = value; AdditionalData?.Remove("versions_stamped"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("versions_stamped"); else _explicitNullProperties?.Remove("versions_stamped"); } }
         private bool? _explicitNullValueVersionsStamped = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurationState"/> and sets the default values.

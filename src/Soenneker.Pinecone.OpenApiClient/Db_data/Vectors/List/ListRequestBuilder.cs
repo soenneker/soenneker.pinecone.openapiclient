@@ -72,7 +72,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.List
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Pinecone.OpenApiClient.Db_data.Vectors.List.ListRequestBuilder.ListRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://unknown", "/db_data/vectors/list", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

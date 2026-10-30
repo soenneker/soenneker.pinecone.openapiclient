@@ -18,8 +18,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("by_tier") is { } nullNodeByTier && nullNodeByTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByTier = null;
-            if (parseNode.GetChildNode("default_tier") is { } nullNodeDefaultTier && nullNodeDefaultTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultTier = null;
+            if (parseNode.GetChildNode("by_tier") is null) { _explicitNullValueByTier = default!; _explicitNullProperties?.Remove("by_tier"); }
+            else if (parseNode.GetChildNode("by_tier") is { } nullNodeByTier && nullNodeByTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByTier = null;
+            if (parseNode.GetChildNode("default_tier") is null) { _explicitNullValueDefaultTier = default!; _explicitNullProperties?.Remove("default_tier"); }
+            else if (parseNode.GetChildNode("default_tier") is { } nullNodeDefaultTier && nullNodeDefaultTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultTier = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>One estimate per model tier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier? ByTier { get => _explicitNullValueByTier; set { _explicitNullValueByTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tier"); else _explicitNullProperties?.Remove("by_tier"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier? ByTier { get => _explicitNullValueByTier; set { _explicitNullValueByTier = value; AdditionalData?.Remove("by_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tier"); else _explicitNullProperties?.Remove("by_tier"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier? _explicitNullValueByTier = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier ByTier { get => _explicitNullValueByTier; set { _explicitNullValueByTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tier"); else _explicitNullProperties?.Remove("by_tier"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier ByTier { get => _explicitNullValueByTier; set { _explicitNullValueByTier = value; AdditionalData?.Remove("by_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tier"); else _explicitNullProperties?.Remove("by_tier"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier _explicitNullValueByTier = default!;
 #endif
         /// <summary>The tier the context&apos;s current `artifact_model` resolves to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultTier { get => _explicitNullValueDefaultTier; set { _explicitNullValueDefaultTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tier"); else _explicitNullProperties?.Remove("default_tier"); } }
+        public string? DefaultTier { get => _explicitNullValueDefaultTier; set { _explicitNullValueDefaultTier = value; AdditionalData?.Remove("default_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tier"); else _explicitNullProperties?.Remove("default_tier"); } }
         private string? _explicitNullValueDefaultTier = default!;
 #nullable restore
 #else
-        public string DefaultTier { get => _explicitNullValueDefaultTier; set { _explicitNullValueDefaultTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tier"); else _explicitNullProperties?.Remove("default_tier"); } }
+        public string DefaultTier { get => _explicitNullValueDefaultTier; set { _explicitNullValueDefaultTier = value; AdditionalData?.Remove("default_tier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tier"); else _explicitNullProperties?.Remove("default_tier"); } }
         private string _explicitNullValueDefaultTier = default!;
 #endif
         /// <summary>

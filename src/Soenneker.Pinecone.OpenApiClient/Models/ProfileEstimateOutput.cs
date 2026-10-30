@@ -18,11 +18,16 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cost") is { } nullNodeCost && nullNodeCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cost = null;
-            if (parseNode.GetChildNode("density") is { } nullNodeDensity && nullNodeDensity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Density = null;
-            if (parseNode.GetChildNode("g") is { } nullNodeG && nullNodeG.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) G = null;
-            if (parseNode.GetChildNode("sampling") is { } nullNodeSampling && nullNodeSampling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sampling = null;
-            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("cost") is null) { _explicitNullValueCost = default!; _explicitNullProperties?.Remove("cost"); }
+            else if (parseNode.GetChildNode("cost") is { } nullNodeCost && nullNodeCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cost = null;
+            if (parseNode.GetChildNode("density") is null) { _explicitNullValueDensity = default!; _explicitNullProperties?.Remove("density"); }
+            else if (parseNode.GetChildNode("density") is { } nullNodeDensity && nullNodeDensity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Density = null;
+            if (parseNode.GetChildNode("g") is null) { _explicitNullValueG = default!; _explicitNullProperties?.Remove("g"); }
+            else if (parseNode.GetChildNode("g") is { } nullNodeG && nullNodeG.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) G = null;
+            if (parseNode.GetChildNode("sampling") is null) { _explicitNullValueSampling = default!; _explicitNullProperties?.Remove("sampling"); }
+            else if (parseNode.GetChildNode("sampling") is { } nullNodeSampling && nullNodeSampling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sampling = null;
+            if (parseNode.GetChildNode("state") is null) { _explicitNullValueState = default!; _explicitNullProperties?.Remove("state"); }
+            else if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,51 +35,51 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Estimated token and time cost of the curate, one estimate per model tier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost? Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost? Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; AdditionalData?.Remove("cost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost? _explicitNullValueCost = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; AdditionalData?.Remove("cost"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost _explicitNullValueCost = default!;
 #endif
         /// <summary>Measured on the sampling window, not the full curate read-depth.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity? Density { get => _explicitNullValueDensity; set { _explicitNullValueDensity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("density"); else _explicitNullProperties?.Remove("density"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity? Density { get => _explicitNullValueDensity; set { _explicitNullValueDensity = value; AdditionalData?.Remove("density"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("density"); else _explicitNullProperties?.Remove("density"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity? _explicitNullValueDensity = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity Density { get => _explicitNullValueDensity; set { _explicitNullValueDensity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("density"); else _explicitNullProperties?.Remove("density"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity Density { get => _explicitNullValueDensity; set { _explicitNullValueDensity = value; AdditionalData?.Remove("density"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("density"); else _explicitNullProperties?.Remove("density"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputDensity _explicitNullValueDensity = default!;
 #endif
         /// <summary>Estimated distinct-artifact count with its uncertainty band. This is what drives the cost estimate, since extraction cost scales with it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG? G { get => _explicitNullValueG; set { _explicitNullValueG = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("g"); else _explicitNullProperties?.Remove("g"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG? G { get => _explicitNullValueG; set { _explicitNullValueG = value; AdditionalData?.Remove("g"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("g"); else _explicitNullProperties?.Remove("g"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG? _explicitNullValueG = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG G { get => _explicitNullValueG; set { _explicitNullValueG = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("g"); else _explicitNullProperties?.Remove("g"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG G { get => _explicitNullValueG; set { _explicitNullValueG = value; AdditionalData?.Remove("g"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("g"); else _explicitNullProperties?.Remove("g"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputG _explicitNullValueG = default!;
 #endif
         /// <summary>How much of the corpus the profile actually read. The estimate is extrapolated from this much, so a small `fraction` means a wide band.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling? Sampling { get => _explicitNullValueSampling; set { _explicitNullValueSampling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling"); else _explicitNullProperties?.Remove("sampling"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling? Sampling { get => _explicitNullValueSampling; set { _explicitNullValueSampling = value; AdditionalData?.Remove("sampling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling"); else _explicitNullProperties?.Remove("sampling"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling? _explicitNullValueSampling = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling Sampling { get => _explicitNullValueSampling; set { _explicitNullValueSampling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling"); else _explicitNullProperties?.Remove("sampling"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling Sampling { get => _explicitNullValueSampling; set { _explicitNullValueSampling = value; AdditionalData?.Remove("sampling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling"); else _explicitNullProperties?.Remove("sampling"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling _explicitNullValueSampling = default!;
 #endif
         /// <summary>How the run ended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private string _explicitNullValueState = default!;
 #endif
         /// <summary>

@@ -18,56 +18,61 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("added_version") is { } nullNodeAddedVersion && nullNodeAddedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddedVersion = null;
-            if (parseNode.GetChildNode("canonical_name") is { } nullNodeCanonicalName && nullNodeCanonicalName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanonicalName = null;
-            if (parseNode.GetChildNode("group_key") is { } nullNodeGroupKey && nullNodeGroupKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupKey = null;
-            if (parseNode.GetChildNode("membership_hash") is { } nullNodeMembershipHash && nullNodeMembershipHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembershipHash = null;
-            if (parseNode.GetChildNode("member_sources") is { } nullNodeMemberSources && nullNodeMemberSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberSources = null;
+            if (parseNode.GetChildNode("added_version") is null) { _explicitNullValueAddedVersion = default!; _explicitNullProperties?.Remove("added_version"); }
+            else if (parseNode.GetChildNode("added_version") is { } nullNodeAddedVersion && nullNodeAddedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddedVersion = null;
+            if (parseNode.GetChildNode("canonical_name") is null) { _explicitNullValueCanonicalName = default!; _explicitNullProperties?.Remove("canonical_name"); }
+            else if (parseNode.GetChildNode("canonical_name") is { } nullNodeCanonicalName && nullNodeCanonicalName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanonicalName = null;
+            if (parseNode.GetChildNode("group_key") is null) { _explicitNullValueGroupKey = default!; _explicitNullProperties?.Remove("group_key"); }
+            else if (parseNode.GetChildNode("group_key") is { } nullNodeGroupKey && nullNodeGroupKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupKey = null;
+            if (parseNode.GetChildNode("membership_hash") is null) { _explicitNullValueMembershipHash = default!; _explicitNullProperties?.Remove("membership_hash"); }
+            else if (parseNode.GetChildNode("membership_hash") is { } nullNodeMembershipHash && nullNodeMembershipHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembershipHash = null;
+            if (parseNode.GetChildNode("member_sources") is null) { _explicitNullValueMemberSources = default!; _explicitNullProperties?.Remove("member_sources"); }
+            else if (parseNode.GetChildNode("member_sources") is { } nullNodeMemberSources && nullNodeMemberSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberSources = null;
         }
 
         /// <summary>Index version the group was added in.</summary>
-        public long? AddedVersion { get => _explicitNullValueAddedVersion; set { _explicitNullValueAddedVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("added_version"); else _explicitNullProperties?.Remove("added_version"); } }
+        public long? AddedVersion { get => _explicitNullValueAddedVersion; set { _explicitNullValueAddedVersion = value; AdditionalData?.Remove("added_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("added_version"); else _explicitNullProperties?.Remove("added_version"); } }
         private long? _explicitNullValueAddedVersion = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The name the group&apos;s artifact is written under.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CanonicalName { get => _explicitNullValueCanonicalName; set { _explicitNullValueCanonicalName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_name"); else _explicitNullProperties?.Remove("canonical_name"); } }
+        public string? CanonicalName { get => _explicitNullValueCanonicalName; set { _explicitNullValueCanonicalName = value; AdditionalData?.Remove("canonical_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_name"); else _explicitNullProperties?.Remove("canonical_name"); } }
         private string? _explicitNullValueCanonicalName = default!;
 #nullable restore
 #else
-        public string CanonicalName { get => _explicitNullValueCanonicalName; set { _explicitNullValueCanonicalName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_name"); else _explicitNullProperties?.Remove("canonical_name"); } }
+        public string CanonicalName { get => _explicitNullValueCanonicalName; set { _explicitNullValueCanonicalName = value; AdditionalData?.Remove("canonical_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_name"); else _explicitNullProperties?.Remove("canonical_name"); } }
         private string _explicitNullValueCanonicalName = default!;
 #endif
         /// <summary>Stable identifier the reduce pass groups on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupKey { get => _explicitNullValueGroupKey; set { _explicitNullValueGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_key"); else _explicitNullProperties?.Remove("group_key"); } }
+        public string? GroupKey { get => _explicitNullValueGroupKey; set { _explicitNullValueGroupKey = value; AdditionalData?.Remove("group_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_key"); else _explicitNullProperties?.Remove("group_key"); } }
         private string? _explicitNullValueGroupKey = default!;
 #nullable restore
 #else
-        public string GroupKey { get => _explicitNullValueGroupKey; set { _explicitNullValueGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_key"); else _explicitNullProperties?.Remove("group_key"); } }
+        public string GroupKey { get => _explicitNullValueGroupKey; set { _explicitNullValueGroupKey = value; AdditionalData?.Remove("group_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_key"); else _explicitNullProperties?.Remove("group_key"); } }
         private string _explicitNullValueGroupKey = default!;
 #endif
         /// <summary>Hash of the membership. A change here means the group must be re-reduced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MembershipHash { get => _explicitNullValueMembershipHash; set { _explicitNullValueMembershipHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("membership_hash"); else _explicitNullProperties?.Remove("membership_hash"); } }
+        public string? MembershipHash { get => _explicitNullValueMembershipHash; set { _explicitNullValueMembershipHash = value; AdditionalData?.Remove("membership_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("membership_hash"); else _explicitNullProperties?.Remove("membership_hash"); } }
         private string? _explicitNullValueMembershipHash = default!;
 #nullable restore
 #else
-        public string MembershipHash { get => _explicitNullValueMembershipHash; set { _explicitNullValueMembershipHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("membership_hash"); else _explicitNullProperties?.Remove("membership_hash"); } }
+        public string MembershipHash { get => _explicitNullValueMembershipHash; set { _explicitNullValueMembershipHash = value; AdditionalData?.Remove("membership_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("membership_hash"); else _explicitNullProperties?.Remove("membership_hash"); } }
         private string _explicitNullValueMembershipHash = default!;
 #endif
         /// <summary>Source paths in the group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MemberSources { get => _explicitNullValueMemberSources; set { _explicitNullValueMemberSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_sources"); else _explicitNullProperties?.Remove("member_sources"); } }
+        public List<string>? MemberSources { get => _explicitNullValueMemberSources; set { _explicitNullValueMemberSources = value; AdditionalData?.Remove("member_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_sources"); else _explicitNullProperties?.Remove("member_sources"); } }
         private List<string>? _explicitNullValueMemberSources = default!;
 #nullable restore
 #else
-        public List<string> MemberSources { get => _explicitNullValueMemberSources; set { _explicitNullValueMemberSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_sources"); else _explicitNullProperties?.Remove("member_sources"); } }
+        public List<string> MemberSources { get => _explicitNullValueMemberSources; set { _explicitNullValueMemberSources = value; AdditionalData?.Remove("member_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_sources"); else _explicitNullProperties?.Remove("member_sources"); } }
         private List<string> _explicitNullValueMemberSources = default!;
 #endif
         /// <summary>

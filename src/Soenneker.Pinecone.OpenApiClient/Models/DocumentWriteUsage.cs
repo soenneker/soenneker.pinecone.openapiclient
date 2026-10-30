@@ -18,13 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("embed_total_tokens") is { } nullNodeEmbedTotalTokens && nullNodeEmbedTotalTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbedTotalTokens = null;
+            if (parseNode.GetChildNode("embed_total_tokens") is null) { _explicitNullValueEmbedTotalTokens = default!; _explicitNullProperties?.Remove("embed_total_tokens"); }
+            else if (parseNode.GetChildNode("embed_total_tokens") is { } nullNodeEmbedTotalTokens && nullNodeEmbedTotalTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbedTotalTokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The total number of tokens Pinecone embedded for the request, summed over every embedding call it made, dense and sparse, across all fields and models. Documents aren&apos;t deduplicated by `_id` within an upsert, so every entry&apos;s text is embedded and counted, including entries that repeat an `_id`.</summary>
-        public int? EmbedTotalTokens { get => _explicitNullValueEmbedTotalTokens; set { _explicitNullValueEmbedTotalTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_total_tokens"); else _explicitNullProperties?.Remove("embed_total_tokens"); } }
+        public int? EmbedTotalTokens { get => _explicitNullValueEmbedTotalTokens; set { _explicitNullValueEmbedTotalTokens = value; AdditionalData?.Remove("embed_total_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_total_tokens"); else _explicitNullProperties?.Remove("embed_total_tokens"); } }
         private int? _explicitNullValueEmbedTotalTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DocumentWriteUsage"/> and sets the default values.

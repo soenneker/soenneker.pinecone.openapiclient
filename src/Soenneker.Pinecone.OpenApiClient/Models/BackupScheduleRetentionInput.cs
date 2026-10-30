@@ -18,13 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("expire_after_days") is { } nullNodeExpireAfterDays && nullNodeExpireAfterDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpireAfterDays = null;
+            if (parseNode.GetChildNode("expire_after_days") is null) { _explicitNullValueExpireAfterDays = default!; _explicitNullProperties?.Remove("expire_after_days"); }
+            else if (parseNode.GetChildNode("expire_after_days") is { } nullNodeExpireAfterDays && nullNodeExpireAfterDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpireAfterDays = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of days to retain each backup created by this schedule. Must be at least 1 and no more than the service-configured maximum; a value outside that range is rejected with `400`.</summary>
-        public int? ExpireAfterDays { get => _explicitNullValueExpireAfterDays; set { _explicitNullValueExpireAfterDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expire_after_days"); else _explicitNullProperties?.Remove("expire_after_days"); } }
+        public int? ExpireAfterDays { get => _explicitNullValueExpireAfterDays; set { _explicitNullValueExpireAfterDays = value; AdditionalData?.Remove("expire_after_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expire_after_days"); else _explicitNullProperties?.Remove("expire_after_days"); } }
         private int? _explicitNullValueExpireAfterDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.BackupScheduleRetentionInput"/> and sets the default values.

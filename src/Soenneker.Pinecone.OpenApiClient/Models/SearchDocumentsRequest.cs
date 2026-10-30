@@ -18,10 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
-            if (parseNode.GetChildNode("include_fields") is { } nullNodeIncludeFields && nullNodeIncludeFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeFields = null;
-            if (parseNode.GetChildNode("score_by") is { } nullNodeScoreBy && nullNodeScoreBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoreBy = null;
-            if (parseNode.GetChildNode("top_k") is { } nullNodeTopK && nullNodeTopK.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopK = null;
+            if (parseNode.GetChildNode("filter") is null) { _explicitNullValueFilter = default!; _explicitNullProperties?.Remove("filter"); }
+            else if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
+            if (parseNode.GetChildNode("include_fields") is null) { _explicitNullValueIncludeFields = default!; _explicitNullProperties?.Remove("include_fields"); }
+            else if (parseNode.GetChildNode("include_fields") is { } nullNodeIncludeFields && nullNodeIncludeFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeFields = null;
+            if (parseNode.GetChildNode("score_by") is null) { _explicitNullValueScoreBy = default!; _explicitNullProperties?.Remove("score_by"); }
+            else if (parseNode.GetChildNode("score_by") is { } nullNodeScoreBy && nullNodeScoreBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoreBy = null;
+            if (parseNode.GetChildNode("top_k") is null) { _explicitNullValueTopK = default!; _explicitNullProperties?.Remove("top_k"); }
+            else if (parseNode.GetChildNode("top_k") is { } nullNodeTopK && nullNodeTopK.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopK = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,35 +33,35 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>A metadata filter expression to restrict the documents searched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty? _explicitNullValueFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequestFilterProperty _explicitNullValueFilter = default!;
 #endif
         /// <summary>The document fields to return on each match alongside `_id` and `_score`. When omitted or empty, no fields are returned. Pass `[&quot;*&quot;]` to return every field. A name the schema doesn&apos;t declare is read as a metadata key, and returns nothing for documents without that key.Naming a field whose schema sets `store_text: false` is rejected with `400`, since its text is not stored; `[&quot;*&quot;]` leaves such fields out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IncludeFields { get => _explicitNullValueIncludeFields; set { _explicitNullValueIncludeFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_fields"); else _explicitNullProperties?.Remove("include_fields"); } }
+        public List<string>? IncludeFields { get => _explicitNullValueIncludeFields; set { _explicitNullValueIncludeFields = value; AdditionalData?.Remove("include_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_fields"); else _explicitNullProperties?.Remove("include_fields"); } }
         private List<string>? _explicitNullValueIncludeFields = default!;
 #nullable restore
 #else
-        public List<string> IncludeFields { get => _explicitNullValueIncludeFields; set { _explicitNullValueIncludeFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_fields"); else _explicitNullProperties?.Remove("include_fields"); } }
+        public List<string> IncludeFields { get => _explicitNullValueIncludeFields; set { _explicitNullValueIncludeFields = value; AdditionalData?.Remove("include_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_fields"); else _explicitNullProperties?.Remove("include_fields"); } }
         private List<string> _explicitNullValueIncludeFields = default!;
 #endif
         /// <summary>The scoring clauses used to rank documents.One clause of any type is always valid. Several clauses can be combined only when every clause is `text` or `query_string`, and the server combines them into one ranking. A `dense_vector`, `sparse_vector`, `embed`, or `sparse_embed` clause must be the only clause.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>? ScoreBy { get => _explicitNullValueScoreBy; set { _explicitNullValueScoreBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score_by"); else _explicitNullProperties?.Remove("score_by"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>? ScoreBy { get => _explicitNullValueScoreBy; set { _explicitNullValueScoreBy = value; AdditionalData?.Remove("score_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score_by"); else _explicitNullProperties?.Remove("score_by"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod>? _explicitNullValueScoreBy = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod> ScoreBy { get => _explicitNullValueScoreBy; set { _explicitNullValueScoreBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score_by"); else _explicitNullProperties?.Remove("score_by"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod> ScoreBy { get => _explicitNullValueScoreBy; set { _explicitNullValueScoreBy = value; AdditionalData?.Remove("score_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score_by"); else _explicitNullProperties?.Remove("score_by"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod> _explicitNullValueScoreBy = default!;
 #endif
         /// <summary>The number of top-ranked documents to return.</summary>
-        public int? TopK { get => _explicitNullValueTopK; set { _explicitNullValueTopK = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_k"); else _explicitNullProperties?.Remove("top_k"); } }
+        public int? TopK { get => _explicitNullValueTopK; set { _explicitNullValueTopK = value; AdditionalData?.Remove("top_k"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_k"); else _explicitNullProperties?.Remove("top_k"); } }
         private int? _explicitNullValueTopK = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchDocumentsRequest"/> and sets the default values.

@@ -18,36 +18,41 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allow_archives") is { } nullNodeAllowArchives && nullNodeAllowArchives.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowArchives = null;
-            if (parseNode.GetChildNode("allowed_extensions") is { } nullNodeAllowedExtensions && nullNodeAllowedExtensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedExtensions = null;
-            if (parseNode.GetChildNode("max_file_bytes") is { } nullNodeMaxFileBytes && nullNodeMaxFileBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFileBytes = null;
-            if (parseNode.GetChildNode("remaining_bytes") is { } nullNodeRemainingBytes && nullNodeRemainingBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingBytes = null;
-            if (parseNode.GetChildNode("remaining_files") is { } nullNodeRemainingFiles && nullNodeRemainingFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingFiles = null;
+            if (parseNode.GetChildNode("allow_archives") is null) { _explicitNullValueAllowArchives = default!; _explicitNullProperties?.Remove("allow_archives"); }
+            else if (parseNode.GetChildNode("allow_archives") is { } nullNodeAllowArchives && nullNodeAllowArchives.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowArchives = null;
+            if (parseNode.GetChildNode("allowed_extensions") is null) { _explicitNullValueAllowedExtensions = default!; _explicitNullProperties?.Remove("allowed_extensions"); }
+            else if (parseNode.GetChildNode("allowed_extensions") is { } nullNodeAllowedExtensions && nullNodeAllowedExtensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedExtensions = null;
+            if (parseNode.GetChildNode("max_file_bytes") is null) { _explicitNullValueMaxFileBytes = default!; _explicitNullProperties?.Remove("max_file_bytes"); }
+            else if (parseNode.GetChildNode("max_file_bytes") is { } nullNodeMaxFileBytes && nullNodeMaxFileBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFileBytes = null;
+            if (parseNode.GetChildNode("remaining_bytes") is null) { _explicitNullValueRemainingBytes = default!; _explicitNullProperties?.Remove("remaining_bytes"); }
+            else if (parseNode.GetChildNode("remaining_bytes") is { } nullNodeRemainingBytes && nullNodeRemainingBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingBytes = null;
+            if (parseNode.GetChildNode("remaining_files") is null) { _explicitNullValueRemainingFiles = default!; _explicitNullProperties?.Remove("remaining_files"); }
+            else if (parseNode.GetChildNode("remaining_files") is { } nullNodeRemainingFiles && nullNodeRemainingFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainingFiles = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the run was permitted to expand archives.</summary>
-        public bool? AllowArchives { get => _explicitNullValueAllowArchives; set { _explicitNullValueAllowArchives = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_archives"); else _explicitNullProperties?.Remove("allow_archives"); } }
+        public bool? AllowArchives { get => _explicitNullValueAllowArchives; set { _explicitNullValueAllowArchives = value; AdditionalData?.Remove("allow_archives"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_archives"); else _explicitNullProperties?.Remove("allow_archives"); } }
         private bool? _explicitNullValueAllowArchives = default!;
         /// <summary>File extensions the run was allowed to ingest.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedExtensions { get => _explicitNullValueAllowedExtensions; set { _explicitNullValueAllowedExtensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_extensions"); else _explicitNullProperties?.Remove("allowed_extensions"); } }
+        public List<string>? AllowedExtensions { get => _explicitNullValueAllowedExtensions; set { _explicitNullValueAllowedExtensions = value; AdditionalData?.Remove("allowed_extensions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_extensions"); else _explicitNullProperties?.Remove("allowed_extensions"); } }
         private List<string>? _explicitNullValueAllowedExtensions = default!;
 #nullable restore
 #else
-        public List<string> AllowedExtensions { get => _explicitNullValueAllowedExtensions; set { _explicitNullValueAllowedExtensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_extensions"); else _explicitNullProperties?.Remove("allowed_extensions"); } }
+        public List<string> AllowedExtensions { get => _explicitNullValueAllowedExtensions; set { _explicitNullValueAllowedExtensions = value; AdditionalData?.Remove("allowed_extensions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_extensions"); else _explicitNullProperties?.Remove("allowed_extensions"); } }
         private List<string> _explicitNullValueAllowedExtensions = default!;
 #endif
         /// <summary>Upper bound on one stored object.</summary>
-        public long? MaxFileBytes { get => _explicitNullValueMaxFileBytes; set { _explicitNullValueMaxFileBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_file_bytes"); else _explicitNullProperties?.Remove("max_file_bytes"); } }
+        public long? MaxFileBytes { get => _explicitNullValueMaxFileBytes; set { _explicitNullValueMaxFileBytes = value; AdditionalData?.Remove("max_file_bytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_file_bytes"); else _explicitNullProperties?.Remove("max_file_bytes"); } }
         private long? _explicitNullValueMaxFileBytes = default!;
         /// <summary>Bytes left under the context&apos;s byte cap when the run started.</summary>
-        public long? RemainingBytes { get => _explicitNullValueRemainingBytes; set { _explicitNullValueRemainingBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_bytes"); else _explicitNullProperties?.Remove("remaining_bytes"); } }
+        public long? RemainingBytes { get => _explicitNullValueRemainingBytes; set { _explicitNullValueRemainingBytes = value; AdditionalData?.Remove("remaining_bytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_bytes"); else _explicitNullProperties?.Remove("remaining_bytes"); } }
         private long? _explicitNullValueRemainingBytes = default!;
         /// <summary>Files left under the context&apos;s file cap when the run started.</summary>
-        public long? RemainingFiles { get => _explicitNullValueRemainingFiles; set { _explicitNullValueRemainingFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_files"); else _explicitNullProperties?.Remove("remaining_files"); } }
+        public long? RemainingFiles { get => _explicitNullValueRemainingFiles; set { _explicitNullValueRemainingFiles = value; AdditionalData?.Remove("remaining_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining_files"); else _explicitNullProperties?.Remove("remaining_files"); } }
         private long? _explicitNullValueRemainingFiles = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ImportLimits"/> and sets the default values.

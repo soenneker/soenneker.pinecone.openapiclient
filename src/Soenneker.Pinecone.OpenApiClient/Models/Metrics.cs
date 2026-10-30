@@ -18,21 +18,24 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("alignment") is { } nullNodeAlignment && nullNodeAlignment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Alignment = null;
-            if (parseNode.GetChildNode("completeness") is { } nullNodeCompleteness && nullNodeCompleteness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completeness = null;
-            if (parseNode.GetChildNode("correctness") is { } nullNodeCorrectness && nullNodeCorrectness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Correctness = null;
+            if (parseNode.GetChildNode("alignment") is null) { _explicitNullValueAlignment = default!; _explicitNullProperties?.Remove("alignment"); }
+            else if (parseNode.GetChildNode("alignment") is { } nullNodeAlignment && nullNodeAlignment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Alignment = null;
+            if (parseNode.GetChildNode("completeness") is null) { _explicitNullValueCompleteness = default!; _explicitNullProperties?.Remove("completeness"); }
+            else if (parseNode.GetChildNode("completeness") is { } nullNodeCompleteness && nullNodeCompleteness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completeness = null;
+            if (parseNode.GetChildNode("correctness") is null) { _explicitNullValueCorrectness = default!; _explicitNullProperties?.Remove("correctness"); }
+            else if (parseNode.GetChildNode("correctness") is { } nullNodeCorrectness && nullNodeCorrectness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Correctness = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The harmonic mean of correctness and completeness.</summary>
-        public double? Alignment { get => _explicitNullValueAlignment; set { _explicitNullValueAlignment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alignment"); else _explicitNullProperties?.Remove("alignment"); } }
+        public double? Alignment { get => _explicitNullValueAlignment; set { _explicitNullValueAlignment = value; AdditionalData?.Remove("alignment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alignment"); else _explicitNullProperties?.Remove("alignment"); } }
         private double? _explicitNullValueAlignment = default!;
         /// <summary>The recall of the generated answer.</summary>
-        public double? Completeness { get => _explicitNullValueCompleteness; set { _explicitNullValueCompleteness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completeness"); else _explicitNullProperties?.Remove("completeness"); } }
+        public double? Completeness { get => _explicitNullValueCompleteness; set { _explicitNullValueCompleteness = value; AdditionalData?.Remove("completeness"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completeness"); else _explicitNullProperties?.Remove("completeness"); } }
         private double? _explicitNullValueCompleteness = default!;
         /// <summary>The precision of the generated answer.</summary>
-        public double? Correctness { get => _explicitNullValueCorrectness; set { _explicitNullValueCorrectness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("correctness"); else _explicitNullProperties?.Remove("correctness"); } }
+        public double? Correctness { get => _explicitNullValueCorrectness; set { _explicitNullValueCorrectness = value; AdditionalData?.Remove("correctness"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("correctness"); else _explicitNullProperties?.Remove("correctness"); } }
         private double? _explicitNullValueCorrectness = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.Metrics"/> and sets the default values.

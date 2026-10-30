@@ -18,7 +18,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("byoc") is { } nullNodeByoc && nullNodeByoc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Byoc = null;
+            if (parseNode.GetChildNode("byoc") is null) { _explicitNullValueByoc = default!; _explicitNullProperties?.Remove("byoc"); }
+            else if (parseNode.GetChildNode("byoc") is { } nullNodeByoc && nullNodeByoc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Byoc = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Configuration needed to create a workspace in a BYOC (Bring Your Own Cloud) environment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.WorkspaceByocSpec? Byoc { get => _explicitNullValueByoc; set { _explicitNullValueByoc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byoc"); else _explicitNullProperties?.Remove("byoc"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.WorkspaceByocSpec? Byoc { get => _explicitNullValueByoc; set { _explicitNullValueByoc = value; AdditionalData?.Remove("byoc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byoc"); else _explicitNullProperties?.Remove("byoc"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.WorkspaceByocSpec? _explicitNullValueByoc = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.WorkspaceByocSpec Byoc { get => _explicitNullValueByoc; set { _explicitNullValueByoc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byoc"); else _explicitNullProperties?.Remove("byoc"); } }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.WorkspaceByocSpec Byoc { get => _explicitNullValueByoc; set { _explicitNullValueByoc = value; AdditionalData?.Remove("byoc"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byoc"); else _explicitNullProperties?.Remove("byoc"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.WorkspaceByocSpec _explicitNullValueByoc = default!;
 #endif
         /// <summary>

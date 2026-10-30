@@ -18,13 +18,14 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("rerank_units") is { } nullNodeRerankUnits && nullNodeRerankUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerankUnits = null;
+            if (parseNode.GetChildNode("rerank_units") is null) { _explicitNullValueRerankUnits = default!; _explicitNullProperties?.Remove("rerank_units"); }
+            else if (parseNode.GetChildNode("rerank_units") is { } nullNodeRerankUnits && nullNodeRerankUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerankUnits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of rerank units consumed by this operation.</summary>
-        public int? RerankUnits { get => _explicitNullValueRerankUnits; set { _explicitNullValueRerankUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerank_units"); else _explicitNullProperties?.Remove("rerank_units"); } }
+        public int? RerankUnits { get => _explicitNullValueRerankUnits; set { _explicitNullValueRerankUnits = value; AdditionalData?.Remove("rerank_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerank_units"); else _explicitNullProperties?.Remove("rerank_units"); } }
         private int? _explicitNullValueRerankUnits = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RerankResultUsage"/> and sets the default values.

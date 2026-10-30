@@ -18,83 +18,93 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("failed") is { } nullNodeFailed && nullNodeFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failed = null;
-            if (parseNode.GetChildNode("imported_items") is { } nullNodeImportedItems && nullNodeImportedItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportedItems = null;
-            if (parseNode.GetChildNode("manifest_file") is { } nullNodeManifestFile && nullNodeManifestFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestFile = null;
-            if (parseNode.GetChildNode("manifest_object") is { } nullNodeManifestObject && nullNodeManifestObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestObject = null;
-            if (parseNode.GetChildNode("manifest_sample") is { } nullNodeManifestSample && nullNodeManifestSample.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestSample = null;
-            if (parseNode.GetChildNode("manifest_truncated") is { } nullNodeManifestTruncated && nullNodeManifestTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestTruncated = null;
-            if (parseNode.GetChildNode("output_files") is { } nullNodeOutputFiles && nullNodeOutputFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputFiles = null;
-            if (parseNode.GetChildNode("skipped") is { } nullNodeSkipped && nullNodeSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skipped = null;
-            if (parseNode.GetChildNode("skipped_items") is { } nullNodeSkippedItems && nullNodeSkippedItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedItems = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("failed") is null) { _explicitNullValueFailed = default!; _explicitNullProperties?.Remove("failed"); }
+            else if (parseNode.GetChildNode("failed") is { } nullNodeFailed && nullNodeFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failed = null;
+            if (parseNode.GetChildNode("imported_items") is null) { _explicitNullValueImportedItems = default!; _explicitNullProperties?.Remove("imported_items"); }
+            else if (parseNode.GetChildNode("imported_items") is { } nullNodeImportedItems && nullNodeImportedItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportedItems = null;
+            if (parseNode.GetChildNode("manifest_file") is null) { _explicitNullValueManifestFile = default!; _explicitNullProperties?.Remove("manifest_file"); }
+            else if (parseNode.GetChildNode("manifest_file") is { } nullNodeManifestFile && nullNodeManifestFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestFile = null;
+            if (parseNode.GetChildNode("manifest_object") is null) { _explicitNullValueManifestObject = default!; _explicitNullProperties?.Remove("manifest_object"); }
+            else if (parseNode.GetChildNode("manifest_object") is { } nullNodeManifestObject && nullNodeManifestObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestObject = null;
+            if (parseNode.GetChildNode("manifest_sample") is null) { _explicitNullValueManifestSample = default!; _explicitNullProperties?.Remove("manifest_sample"); }
+            else if (parseNode.GetChildNode("manifest_sample") is { } nullNodeManifestSample && nullNodeManifestSample.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestSample = null;
+            if (parseNode.GetChildNode("manifest_truncated") is null) { _explicitNullValueManifestTruncated = default!; _explicitNullProperties?.Remove("manifest_truncated"); }
+            else if (parseNode.GetChildNode("manifest_truncated") is { } nullNodeManifestTruncated && nullNodeManifestTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestTruncated = null;
+            if (parseNode.GetChildNode("output_files") is null) { _explicitNullValueOutputFiles = default!; _explicitNullProperties?.Remove("output_files"); }
+            else if (parseNode.GetChildNode("output_files") is { } nullNodeOutputFiles && nullNodeOutputFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputFiles = null;
+            if (parseNode.GetChildNode("skipped") is null) { _explicitNullValueSkipped = default!; _explicitNullProperties?.Remove("skipped"); }
+            else if (parseNode.GetChildNode("skipped") is { } nullNodeSkipped && nullNodeSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skipped = null;
+            if (parseNode.GetChildNode("skipped_items") is null) { _explicitNullValueSkippedItems = default!; _explicitNullProperties?.Remove("skipped_items"); }
+            else if (parseNode.GetChildNode("skipped_items") is { } nullNodeSkippedItems && nullNodeSkippedItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedItems = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Records that could not be ingested.</summary>
-        public long? Failed { get => _explicitNullValueFailed; set { _explicitNullValueFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed"); else _explicitNullProperties?.Remove("failed"); } }
+        public long? Failed { get => _explicitNullValueFailed; set { _explicitNullValueFailed = value; AdditionalData?.Remove("failed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed"); else _explicitNullProperties?.Remove("failed"); } }
         private long? _explicitNullValueFailed = default!;
         /// <summary>Records pulled from the provider.</summary>
-        public long? ImportedItems { get => _explicitNullValueImportedItems; set { _explicitNullValueImportedItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported_items"); else _explicitNullProperties?.Remove("imported_items"); } }
+        public long? ImportedItems { get => _explicitNullValueImportedItems; set { _explicitNullValueImportedItems = value; AdditionalData?.Remove("imported_items"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported_items"); else _explicitNullProperties?.Remove("imported_items"); } }
         private long? _explicitNullValueImportedItems = default!;
         /// <summary>Where the full manifest was written</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ManifestFile { get => _explicitNullValueManifestFile; set { _explicitNullValueManifestFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_file"); else _explicitNullProperties?.Remove("manifest_file"); } }
+        public string? ManifestFile { get => _explicitNullValueManifestFile; set { _explicitNullValueManifestFile = value; AdditionalData?.Remove("manifest_file"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_file"); else _explicitNullProperties?.Remove("manifest_file"); } }
         private string? _explicitNullValueManifestFile = default!;
 #nullable restore
 #else
-        public string ManifestFile { get => _explicitNullValueManifestFile; set { _explicitNullValueManifestFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_file"); else _explicitNullProperties?.Remove("manifest_file"); } }
+        public string ManifestFile { get => _explicitNullValueManifestFile; set { _explicitNullValueManifestFile = value; AdditionalData?.Remove("manifest_file"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_file"); else _explicitNullProperties?.Remove("manifest_file"); } }
         private string _explicitNullValueManifestFile = default!;
 #endif
         /// <summary>Object-store key of the full manifest</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ManifestObject { get => _explicitNullValueManifestObject; set { _explicitNullValueManifestObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_object"); else _explicitNullProperties?.Remove("manifest_object"); } }
+        public string? ManifestObject { get => _explicitNullValueManifestObject; set { _explicitNullValueManifestObject = value; AdditionalData?.Remove("manifest_object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_object"); else _explicitNullProperties?.Remove("manifest_object"); } }
         private string? _explicitNullValueManifestObject = default!;
 #nullable restore
 #else
-        public string ManifestObject { get => _explicitNullValueManifestObject; set { _explicitNullValueManifestObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_object"); else _explicitNullProperties?.Remove("manifest_object"); } }
+        public string ManifestObject { get => _explicitNullValueManifestObject; set { _explicitNullValueManifestObject = value; AdditionalData?.Remove("manifest_object"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_object"); else _explicitNullProperties?.Remove("manifest_object"); } }
         private string _explicitNullValueManifestObject = default!;
 #endif
         /// <summary>Bounded sample of the records that produced output</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry>? ManifestSample { get => _explicitNullValueManifestSample; set { _explicitNullValueManifestSample = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_sample"); else _explicitNullProperties?.Remove("manifest_sample"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry>? ManifestSample { get => _explicitNullValueManifestSample; set { _explicitNullValueManifestSample = value; AdditionalData?.Remove("manifest_sample"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_sample"); else _explicitNullProperties?.Remove("manifest_sample"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry>? _explicitNullValueManifestSample = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry> ManifestSample { get => _explicitNullValueManifestSample; set { _explicitNullValueManifestSample = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_sample"); else _explicitNullProperties?.Remove("manifest_sample"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry> ManifestSample { get => _explicitNullValueManifestSample; set { _explicitNullValueManifestSample = value; AdditionalData?.Remove("manifest_sample"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_sample"); else _explicitNullProperties?.Remove("manifest_sample"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry> _explicitNullValueManifestSample = default!;
 #endif
         /// <summary>Whether either sample was cut</summary>
-        public bool? ManifestTruncated { get => _explicitNullValueManifestTruncated; set { _explicitNullValueManifestTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_truncated"); else _explicitNullProperties?.Remove("manifest_truncated"); } }
+        public bool? ManifestTruncated { get => _explicitNullValueManifestTruncated; set { _explicitNullValueManifestTruncated = value; AdditionalData?.Remove("manifest_truncated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_truncated"); else _explicitNullProperties?.Remove("manifest_truncated"); } }
         private bool? _explicitNullValueManifestTruncated = default!;
         /// <summary>Files written into the source tree. Higher than `imported_items` when archives or multi-page documents expanded.</summary>
-        public long? OutputFiles { get => _explicitNullValueOutputFiles; set { _explicitNullValueOutputFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_files"); else _explicitNullProperties?.Remove("output_files"); } }
+        public long? OutputFiles { get => _explicitNullValueOutputFiles; set { _explicitNullValueOutputFiles = value; AdditionalData?.Remove("output_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_files"); else _explicitNullProperties?.Remove("output_files"); } }
         private long? _explicitNullValueOutputFiles = default!;
         /// <summary>Records passed over, e.g. an unsupported extension or a cap already reached.</summary>
-        public long? Skipped { get => _explicitNullValueSkipped; set { _explicitNullValueSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped"); else _explicitNullProperties?.Remove("skipped"); } }
+        public long? Skipped { get => _explicitNullValueSkipped; set { _explicitNullValueSkipped = value; AdditionalData?.Remove("skipped"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped"); else _explicitNullProperties?.Remove("skipped"); } }
         private long? _explicitNullValueSkipped = default!;
         /// <summary>Bounded sample of the skipped records</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry>? SkippedItems { get => _explicitNullValueSkippedItems; set { _explicitNullValueSkippedItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_items"); else _explicitNullProperties?.Remove("skipped_items"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry>? SkippedItems { get => _explicitNullValueSkippedItems; set { _explicitNullValueSkippedItems = value; AdditionalData?.Remove("skipped_items"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_items"); else _explicitNullProperties?.Remove("skipped_items"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry>? _explicitNullValueSkippedItems = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry> SkippedItems { get => _explicitNullValueSkippedItems; set { _explicitNullValueSkippedItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_items"); else _explicitNullProperties?.Remove("skipped_items"); } }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry> SkippedItems { get => _explicitNullValueSkippedItems; set { _explicitNullValueSkippedItems = value; AdditionalData?.Remove("skipped_items"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_items"); else _explicitNullProperties?.Remove("skipped_items"); } }
         private List<global::Soenneker.Pinecone.OpenApiClient.Models.ImportManifestEntry> _explicitNullValueSkippedItems = default!;
 #endif
         /// <summary>How the run ended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>
