@@ -59,6 +59,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Inference.Embed
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.Inference202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.Inference202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.Inference202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.EmbeddingsList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.EmbeddingsList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

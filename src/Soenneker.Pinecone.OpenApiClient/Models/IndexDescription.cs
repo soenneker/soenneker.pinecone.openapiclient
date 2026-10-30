@@ -12,42 +12,68 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IndexDescription : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dimension") is { } nullNodeDimension && nullNodeDimension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dimension = null;
+            if (parseNode.GetChildNode("indexFullness") is { } nullNodeIndexFullness && nullNodeIndexFullness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexFullness = null;
+            if (parseNode.GetChildNode("memoryFullness") is { } nullNodeMemoryFullness && nullNodeMemoryFullness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryFullness = null;
+            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("namespaces") is { } nullNodeNamespaces && nullNodeNamespaces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Namespaces = null;
+            if (parseNode.GetChildNode("storageFullness") is { } nullNodeStorageFullness && nullNodeStorageFullness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StorageFullness = null;
+            if (parseNode.GetChildNode("totalVectorCount") is { } nullNodeTotalVectorCount && nullNodeTotalVectorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalVectorCount = null;
+            if (parseNode.GetChildNode("vectorType") is { } nullNodeVectorType && nullNodeVectorType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VectorType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dimension of the indexed vectors. Not specified if `sparse` index.</summary>
-        public long? Dimension { get; set; }
+        public long? Dimension { get => _explicitNullValueDimension; set { _explicitNullValueDimension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension"); else _explicitNullProperties?.Remove("dimension"); } }
+        private long? _explicitNullValueDimension = default!;
         /// <summary>The fullness of the index, reported to a granularity of 1% and capped at `1.0`. Always `0` for indexes with on-demand read capacity.Serverless indexes scale automatically as needed, so index fullness  is relevant only for pod-based indexes.The index fullness result may be inaccurate during pod resizing; to get the status of a pod resizing process, use [`describe_index`](https://docs.pinecone.io/reference/api/2024-10/control-plane/describe_index).</summary>
-        public float? IndexFullness { get; set; }
+        public float? IndexFullness { get => _explicitNullValueIndexFullness; set { _explicitNullValueIndexFullness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("indexFullness"); else _explicitNullProperties?.Remove("indexFullness"); } }
+        private float? _explicitNullValueIndexFullness = default!;
         /// <summary>The amount of memory used by a dedicated index</summary>
-        public float? MemoryFullness { get; set; }
+        public float? MemoryFullness { get => _explicitNullValueMemoryFullness; set { _explicitNullValueMemoryFullness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memoryFullness"); else _explicitNullProperties?.Remove("memoryFullness"); } }
+        private float? _explicitNullValueMemoryFullness = default!;
         /// <summary>The metric used to measure similarity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Metric { get; set; }
+        public string? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private string? _explicitNullValueMetric = default!;
 #nullable restore
 #else
-        public string Metric { get; set; }
+        public string Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private string _explicitNullValueMetric = default!;
 #endif
         /// <summary>A mapping for each namespace in the index from the namespace name to a summary of its contents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty? Namespaces { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty? Namespaces { get => _explicitNullValueNamespaces; set { _explicitNullValueNamespaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("namespaces"); else _explicitNullProperties?.Remove("namespaces"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty? _explicitNullValueNamespaces = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty Namespaces { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty Namespaces { get => _explicitNullValueNamespaces; set { _explicitNullValueNamespaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("namespaces"); else _explicitNullProperties?.Remove("namespaces"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescriptionNamespacesProperty _explicitNullValueNamespaces = default!;
 #endif
         /// <summary>The amount of storage used by a dedicated index</summary>
-        public float? StorageFullness { get; set; }
+        public float? StorageFullness { get => _explicitNullValueStorageFullness; set { _explicitNullValueStorageFullness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storageFullness"); else _explicitNullProperties?.Remove("storageFullness"); } }
+        private float? _explicitNullValueStorageFullness = default!;
         /// <summary>The total number of vectors in the index, regardless of whether a metadata filter expression was passed</summary>
-        public long? TotalVectorCount { get; set; }
+        public long? TotalVectorCount { get => _explicitNullValueTotalVectorCount; set { _explicitNullValueTotalVectorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalVectorCount"); else _explicitNullProperties?.Remove("totalVectorCount"); } }
+        private long? _explicitNullValueTotalVectorCount = default!;
         /// <summary>The type of vectors stored in the index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VectorType { get; set; }
+        public string? VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vectorType"); else _explicitNullProperties?.Remove("vectorType"); } }
+        private string? _explicitNullValueVectorType = default!;
 #nullable restore
 #else
-        public string VectorType { get; set; }
+        public string VectorType { get => _explicitNullValueVectorType; set { _explicitNullValueVectorType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vectorType"); else _explicitNullProperties?.Remove("vectorType"); } }
+        private string _explicitNullValueVectorType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription"/> and sets the default values.
@@ -64,7 +90,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.IndexDescription(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,6 +125,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteFloatValue("storageFullness", StorageFullness);
             writer.WriteLongValue("totalVectorCount", TotalVectorCount);
             writer.WriteStringValue("vectorType", VectorType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

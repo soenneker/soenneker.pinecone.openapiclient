@@ -12,17 +12,32 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileEstimateOutputSampling : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("fraction") is { } nullNodeFraction && nullNodeFraction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fraction = null;
+            if (parseNode.GetChildNode("n_sampled") is { } nullNodeNSampled && nullNodeNSampled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NSampled = null;
+            if (parseNode.GetChildNode("n_total") is { } nullNodeNTotal && nullNodeNTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NTotal = null;
+            if (parseNode.GetChildNode("wall_s") is { } nullNodeWallS && nullNodeWallS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WallS = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The `n_sampled` count over `n_total`.</summary>
-        public double? Fraction { get; set; }
+        public double? Fraction { get => _explicitNullValueFraction; set { _explicitNullValueFraction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fraction"); else _explicitNullProperties?.Remove("fraction"); } }
+        private double? _explicitNullValueFraction = default!;
         /// <summary>Sources the profile read.</summary>
-        public long? NSampled { get; set; }
+        public long? NSampled { get => _explicitNullValueNSampled; set { _explicitNullValueNSampled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_sampled"); else _explicitNullProperties?.Remove("n_sampled"); } }
+        private long? _explicitNullValueNSampled = default!;
         /// <summary>Sources in the corpus.</summary>
-        public long? NTotal { get; set; }
+        public long? NTotal { get => _explicitNullValueNTotal; set { _explicitNullValueNTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_total"); else _explicitNullProperties?.Remove("n_total"); } }
+        private long? _explicitNullValueNTotal = default!;
         /// <summary>Seconds the sampling itself took.</summary>
-        public double? WallS { get; set; }
+        public double? WallS { get => _explicitNullValueWallS; set { _explicitNullValueWallS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wall_s"); else _explicitNullProperties?.Remove("wall_s"); } }
+        private double? _explicitNullValueWallS = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputSampling(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("n_sampled", NSampled);
             writer.WriteLongValue("n_total", NTotal);
             writer.WriteDoubleValue("wall_s", WallS);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

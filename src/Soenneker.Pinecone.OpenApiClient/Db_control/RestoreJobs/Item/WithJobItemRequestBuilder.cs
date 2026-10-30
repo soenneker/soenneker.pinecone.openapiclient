@@ -57,6 +57,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs.Item
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbControl202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.RestoreJobModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

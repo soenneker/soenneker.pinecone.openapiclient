@@ -12,24 +12,42 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NullableManifestAllOf1Optimize : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("eval_pass_rate_threshold") is { } nullNodeEvalPassRateThreshold && nullNodeEvalPassRateThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalPassRateThreshold = null;
+            if (parseNode.GetChildNode("latency_threshold_ms") is { } nullNodeLatencyThresholdMs && nullNodeLatencyThresholdMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatencyThresholdMs = null;
+            if (parseNode.GetChildNode("max_iterations") is { } nullNodeMaxIterations && nullNodeMaxIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxIterations = null;
+            if (parseNode.GetChildNode("min_group_size") is { } nullNodeMinGroupSize && nullNodeMinGroupSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinGroupSize = null;
+            if (parseNode.GetChildNode("schedule") is { } nullNodeSchedule && nullNodeSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Schedule = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Fraction of eval queries a candidate manifest must answer correctly to be considered ready. `1` demands all of them.</summary>
-        public double? EvalPassRateThreshold { get; set; }
+        public double? EvalPassRateThreshold { get => _explicitNullValueEvalPassRateThreshold; set { _explicitNullValueEvalPassRateThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_pass_rate_threshold"); else _explicitNullProperties?.Remove("eval_pass_rate_threshold"); } }
+        private double? _explicitNullValueEvalPassRateThreshold = default!;
         /// <summary>A query slower than this counts as a problem worth tuning for, as does any query that fell back from artifacts to chunks. `0` disables the latency test, leaving only fallback.</summary>
-        public int? LatencyThresholdMs { get; set; }
+        public int? LatencyThresholdMs { get => _explicitNullValueLatencyThresholdMs; set { _explicitNullValueLatencyThresholdMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latency_threshold_ms"); else _explicitNullProperties?.Remove("latency_threshold_ms"); } }
+        private int? _explicitNullValueLatencyThresholdMs = default!;
         /// <summary>How many candidate manifests the loop tries before stopping with its best.</summary>
-        public int? MaxIterations { get; set; }
+        public int? MaxIterations { get => _explicitNullValueMaxIterations; set { _explicitNullValueMaxIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_iterations"); else _explicitNullProperties?.Remove("max_iterations"); } }
+        private int? _explicitNullValueMaxIterations = default!;
         /// <summary>How many near-duplicate problem queries must cluster together before the loop tunes for them. Keeps a one-off slow query from triggering a manifest change.</summary>
-        public int? MinGroupSize { get; set; }
+        public int? MinGroupSize { get => _explicitNullValueMinGroupSize; set { _explicitNullValueMinGroupSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_group_size"); else _explicitNullProperties?.Remove("min_group_size"); } }
+        private int? _explicitNullValueMinGroupSize = default!;
         /// <summary>Cron expression the tuning loop runs on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Schedule { get; set; }
+        public string? Schedule { get => _explicitNullValueSchedule; set { _explicitNullValueSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule"); else _explicitNullProperties?.Remove("schedule"); } }
+        private string? _explicitNullValueSchedule = default!;
 #nullable restore
 #else
-        public string Schedule { get; set; }
+        public string Schedule { get => _explicitNullValueSchedule; set { _explicitNullValueSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule"); else _explicitNullProperties?.Remove("schedule"); } }
+        private string _explicitNullValueSchedule = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize"/> and sets the default values.
@@ -51,7 +69,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1Optimize(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +98,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteIntValue("max_iterations", MaxIterations);
             writer.WriteIntValue("min_group_size", MinGroupSize);
             writer.WriteStringValue("schedule", Schedule);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,56 +12,81 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RestoreInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("pack_filename") is { } nullNodePackFilename && nullNodePackFilename.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PackFilename = null;
+            if (parseNode.GetChildNode("pack_key") is { } nullNodePackKey && nullNodePackKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PackKey = null;
+            if (parseNode.GetChildNode("sample_queries") is { } nullNodeSampleQueries && nullNodeSampleQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleQueries = null;
+            if (parseNode.GetChildNode("target_context_id") is { } nullNodeTargetContextId && nullNodeTargetContextId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetContextId = null;
+            if (parseNode.GetChildNode("target_name") is { } nullNodeTargetName && nullNodeTargetName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetName = null;
+            if (parseNode.GetChildNode("target_slug") is { } nullNodeTargetSlug && nullNodeTargetSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetSlug = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The pack archive&apos;s file name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PackFilename { get; set; }
+        public string? PackFilename { get => _explicitNullValuePackFilename; set { _explicitNullValuePackFilename = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_filename"); else _explicitNullProperties?.Remove("pack_filename"); } }
+        private string? _explicitNullValuePackFilename = default!;
 #nullable restore
 #else
-        public string PackFilename { get; set; }
+        public string PackFilename { get => _explicitNullValuePackFilename; set { _explicitNullValuePackFilename = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_filename"); else _explicitNullProperties?.Remove("pack_filename"); } }
+        private string _explicitNullValuePackFilename = default!;
 #endif
         /// <summary>Object-store key of the pack being restored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PackKey { get; set; }
+        public string? PackKey { get => _explicitNullValuePackKey; set { _explicitNullValuePackKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_key"); else _explicitNullProperties?.Remove("pack_key"); } }
+        private string? _explicitNullValuePackKey = default!;
 #nullable restore
 #else
-        public string PackKey { get; set; }
+        public string PackKey { get => _explicitNullValuePackKey; set { _explicitNullValuePackKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_key"); else _explicitNullProperties?.Remove("pack_key"); } }
+        private string _explicitNullValuePackKey = default!;
 #endif
         /// <summary>Sample queries to seed the target with, taken from the pack. Absent on a pack that carried none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SampleQueries { get; set; }
+        public List<string>? SampleQueries { get => _explicitNullValueSampleQueries; set { _explicitNullValueSampleQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_queries"); else _explicitNullProperties?.Remove("sample_queries"); } }
+        private List<string>? _explicitNullValueSampleQueries = default!;
 #nullable restore
 #else
-        public List<string> SampleQueries { get; set; }
+        public List<string> SampleQueries { get => _explicitNullValueSampleQueries; set { _explicitNullValueSampleQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_queries"); else _explicitNullProperties?.Remove("sample_queries"); } }
+        private List<string> _explicitNullValueSampleQueries = default!;
 #endif
         /// <summary>The already-created context the pack is restored into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetContextId { get; set; }
+        public string? TargetContextId { get => _explicitNullValueTargetContextId; set { _explicitNullValueTargetContextId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_context_id"); else _explicitNullProperties?.Remove("target_context_id"); } }
+        private string? _explicitNullValueTargetContextId = default!;
 #nullable restore
 #else
-        public string TargetContextId { get; set; }
+        public string TargetContextId { get => _explicitNullValueTargetContextId; set { _explicitNullValueTargetContextId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_context_id"); else _explicitNullProperties?.Remove("target_context_id"); } }
+        private string _explicitNullValueTargetContextId = default!;
 #endif
         /// <summary>Human-readable label of the context being written into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetName { get; set; }
+        public string? TargetName { get => _explicitNullValueTargetName; set { _explicitNullValueTargetName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_name"); else _explicitNullProperties?.Remove("target_name"); } }
+        private string? _explicitNullValueTargetName = default!;
 #nullable restore
 #else
-        public string TargetName { get; set; }
+        public string TargetName { get => _explicitNullValueTargetName; set { _explicitNullValueTargetName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_name"); else _explicitNullProperties?.Remove("target_name"); } }
+        private string _explicitNullValueTargetName = default!;
 #endif
         /// <summary>URL-safe name of the context being written into.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetSlug { get; set; }
+        public string? TargetSlug { get => _explicitNullValueTargetSlug; set { _explicitNullValueTargetSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_slug"); else _explicitNullProperties?.Remove("target_slug"); } }
+        private string? _explicitNullValueTargetSlug = default!;
 #nullable restore
 #else
-        public string TargetSlug { get; set; }
+        public string TargetSlug { get => _explicitNullValueTargetSlug; set { _explicitNullValueTargetSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_slug"); else _explicitNullProperties?.Remove("target_slug"); } }
+        private string _explicitNullValueTargetSlug = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreInput"/> and sets the default values.
@@ -78,7 +103,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.RestoreInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -109,6 +134,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("target_context_id", TargetContextId);
             writer.WriteStringValue("target_name", TargetName);
             writer.WriteStringValue("target_slug", TargetSlug);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

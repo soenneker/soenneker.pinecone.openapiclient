@@ -12,35 +12,58 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectTaskStats : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("captured_at") is { } nullNodeCapturedAt && nullNodeCapturedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapturedAt = null;
+            if (parseNode.GetChildNode("tasks_active") is { } nullNodeTasksActive && nullNodeTasksActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TasksActive = null;
+            if (parseNode.GetChildNode("tasks_by_state") is { } nullNodeTasksByState && nullNodeTasksByState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TasksByState = null;
+            if (parseNode.GetChildNode("tasks_by_workflow") is { } nullNodeTasksByWorkflow && nullNodeTasksByWorkflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TasksByWorkflow = null;
+            if (parseNode.GetChildNode("tasks_cancelled") is { } nullNodeTasksCancelled && nullNodeTasksCancelled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TasksCancelled = null;
+            if (parseNode.GetChildNode("tasks_completed") is { } nullNodeTasksCompleted && nullNodeTasksCompleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TasksCompleted = null;
+            if (parseNode.GetChildNode("tasks_total") is { } nullNodeTasksTotal && nullNodeTasksTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TasksTotal = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the counters were read.</summary>
-        public DateTimeOffset? CapturedAt { get; set; }
+        public DateTimeOffset? CapturedAt { get => _explicitNullValueCapturedAt; set { _explicitNullValueCapturedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("captured_at"); else _explicitNullProperties?.Remove("captured_at"); } }
+        private DateTimeOffset? _explicitNullValueCapturedAt = default!;
         /// <summary>Tasks in a non-terminal state.</summary>
-        public int? TasksActive { get; set; }
+        public int? TasksActive { get => _explicitNullValueTasksActive; set { _explicitNullValueTasksActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_active"); else _explicitNullProperties?.Remove("tasks_active"); } }
+        private int? _explicitNullValueTasksActive = default!;
         /// <summary>Keyed by `TaskState`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByStateProperty? TasksByState { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByStateProperty? TasksByState { get => _explicitNullValueTasksByState; set { _explicitNullValueTasksByState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_by_state"); else _explicitNullProperties?.Remove("tasks_by_state"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByStateProperty? _explicitNullValueTasksByState = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByStateProperty TasksByState { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByStateProperty TasksByState { get => _explicitNullValueTasksByState; set { _explicitNullValueTasksByState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_by_state"); else _explicitNullProperties?.Remove("tasks_by_state"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByStateProperty _explicitNullValueTasksByState = default!;
 #endif
         /// <summary>Keyed by `Workflow`</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByWorkflowProperty? TasksByWorkflow { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByWorkflowProperty? TasksByWorkflow { get => _explicitNullValueTasksByWorkflow; set { _explicitNullValueTasksByWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_by_workflow"); else _explicitNullProperties?.Remove("tasks_by_workflow"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByWorkflowProperty? _explicitNullValueTasksByWorkflow = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByWorkflowProperty TasksByWorkflow { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByWorkflowProperty TasksByWorkflow { get => _explicitNullValueTasksByWorkflow; set { _explicitNullValueTasksByWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_by_workflow"); else _explicitNullProperties?.Remove("tasks_by_workflow"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStatsTasksByWorkflowProperty _explicitNullValueTasksByWorkflow = default!;
 #endif
         /// <summary>Runs stopped before they finished.</summary>
-        public int? TasksCancelled { get; set; }
+        public int? TasksCancelled { get => _explicitNullValueTasksCancelled; set { _explicitNullValueTasksCancelled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_cancelled"); else _explicitNullProperties?.Remove("tasks_cancelled"); } }
+        private int? _explicitNullValueTasksCancelled = default!;
         /// <summary>Tasks that finished successfully.</summary>
-        public int? TasksCompleted { get; set; }
+        public int? TasksCompleted { get => _explicitNullValueTasksCompleted; set { _explicitNullValueTasksCompleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_completed"); else _explicitNullProperties?.Remove("tasks_completed"); } }
+        private int? _explicitNullValueTasksCompleted = default!;
         /// <summary>Tasks the project has ever run.</summary>
-        public int? TasksTotal { get; set; }
+        public int? TasksTotal { get => _explicitNullValueTasksTotal; set { _explicitNullValueTasksTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks_total"); else _explicitNullProperties?.Remove("tasks_total"); } }
+        private int? _explicitNullValueTasksTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats"/> and sets the default values.
         /// </summary>
@@ -56,7 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteIntValue("tasks_cancelled", TasksCancelled);
             writer.WriteIntValue("tasks_completed", TasksCompleted);
             writer.WriteIntValue("tasks_total", TasksTotal);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,51 +12,85 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NullableManifestAllOf1CurateArtifacts : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artifact_model") is { } nullNodeArtifactModel && nullNodeArtifactModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactModel = null;
+            if (parseNode.GetChildNode("artifact_types") is { } nullNodeArtifactTypes && nullNodeArtifactTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactTypes = null;
+            if (parseNode.GetChildNode("edge_types") is { } nullNodeEdgeTypes && nullNodeEdgeTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EdgeTypes = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("extraction_window_chars") is { } nullNodeExtractionWindowChars && nullNodeExtractionWindowChars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtractionWindowChars = null;
+            if (parseNode.GetChildNode("max_artifacts_per_type") is { } nullNodeMaxArtifactsPerType && nullNodeMaxArtifactsPerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxArtifactsPerType = null;
+            if (parseNode.GetChildNode("max_doc_chars") is { } nullNodeMaxDocChars && nullNodeMaxDocChars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxDocChars = null;
+            if (parseNode.GetChildNode("max_mentions_per_artifact") is { } nullNodeMaxMentionsPerArtifact && nullNodeMaxMentionsPerArtifact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxMentionsPerArtifact = null;
+            if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("mention_context_chars") is { } nullNodeMentionContextChars && nullNodeMentionContextChars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MentionContextChars = null;
+            if (parseNode.GetChildNode("mention_max_chars") is { } nullNodeMentionMaxChars && nullNodeMentionMaxChars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MentionMaxChars = null;
+            if (parseNode.GetChildNode("min_doc_count") is { } nullNodeMinDocCount && nullNodeMinDocCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinDocCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Model tier that does the extraction. `standard` reads more carefully at a higher token cost.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ArtifactModel { get; set; }
+        public string? ArtifactModel { get => _explicitNullValueArtifactModel; set { _explicitNullValueArtifactModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_model"); else _explicitNullProperties?.Remove("artifact_model"); } }
+        private string? _explicitNullValueArtifactModel = default!;
 #nullable restore
 #else
-        public string ArtifactModel { get; set; }
+        public string ArtifactModel { get => _explicitNullValueArtifactModel; set { _explicitNullValueArtifactModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_model"); else _explicitNullProperties?.Remove("artifact_model"); } }
+        private string _explicitNullValueArtifactModel = default!;
 #endif
         /// <summary>What kinds of artifact to extract. Nothing is extracted until at least one is declared.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsArtifactTypesItem>? ArtifactTypes { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsArtifactTypesItem>? ArtifactTypes { get => _explicitNullValueArtifactTypes; set { _explicitNullValueArtifactTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_types"); else _explicitNullProperties?.Remove("artifact_types"); } }
+        private List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsArtifactTypesItem>? _explicitNullValueArtifactTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsArtifactTypesItem> ArtifactTypes { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsArtifactTypesItem> ArtifactTypes { get => _explicitNullValueArtifactTypes; set { _explicitNullValueArtifactTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_types"); else _explicitNullProperties?.Remove("artifact_types"); } }
+        private List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsArtifactTypesItem> _explicitNullValueArtifactTypes = default!;
 #endif
         /// <summary>Typed, directed relationships between artifact types, which turn the artifacts into a graph the agent can traverse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsEdgeTypesItem>? EdgeTypes { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsEdgeTypesItem>? EdgeTypes { get => _explicitNullValueEdgeTypes; set { _explicitNullValueEdgeTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edge_types"); else _explicitNullProperties?.Remove("edge_types"); } }
+        private List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsEdgeTypesItem>? _explicitNullValueEdgeTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsEdgeTypesItem> EdgeTypes { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsEdgeTypesItem> EdgeTypes { get => _explicitNullValueEdgeTypes; set { _explicitNullValueEdgeTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edge_types"); else _explicitNullProperties?.Remove("edge_types"); } }
+        private List<global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifactsEdgeTypesItem> _explicitNullValueEdgeTypes = default!;
 #endif
         /// <summary>Whether curate extracts artifacts at all.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Window size for walking a long source across several extraction calls, so its back half is covered rather than dropped. `0` opts out and reads only the head, up to `max_doc_chars`.</summary>
-        public int? ExtractionWindowChars { get; set; }
+        public int? ExtractionWindowChars { get => _explicitNullValueExtractionWindowChars; set { _explicitNullValueExtractionWindowChars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extraction_window_chars"); else _explicitNullProperties?.Remove("extraction_window_chars"); } }
+        private int? _explicitNullValueExtractionWindowChars = default!;
         /// <summary>How many artifacts one type may produce. Omit for no cap.</summary>
-        public int? MaxArtifactsPerType { get; set; }
+        public int? MaxArtifactsPerType { get => _explicitNullValueMaxArtifactsPerType; set { _explicitNullValueMaxArtifactsPerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_artifacts_per_type"); else _explicitNullProperties?.Remove("max_artifacts_per_type"); } }
+        private int? _explicitNullValueMaxArtifactsPerType = default!;
         /// <summary>Input cap for one extraction call, in characters. With windowing off this also caps how much of a source is read at all; everything beyond it is dropped.</summary>
-        public int? MaxDocChars { get; set; }
+        public int? MaxDocChars { get => _explicitNullValueMaxDocChars; set { _explicitNullValueMaxDocChars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_doc_chars"); else _explicitNullProperties?.Remove("max_doc_chars"); } }
+        private int? _explicitNullValueMaxDocChars = default!;
         /// <summary>How many mentions are fed into the pass that reduces them into one corpus-wide artifact.</summary>
-        public int? MaxMentionsPerArtifact { get; set; }
+        public int? MaxMentionsPerArtifact { get => _explicitNullValueMaxMentionsPerArtifact; set { _explicitNullValueMaxMentionsPerArtifact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_mentions_per_artifact"); else _explicitNullProperties?.Remove("max_mentions_per_artifact"); } }
+        private int? _explicitNullValueMaxMentionsPerArtifact = default!;
         /// <summary>Output cap for one extracted artifact, in tokens.</summary>
-        public int? MaxTokens { get; set; }
+        public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
+        private int? _explicitNullValueMaxTokens = default!;
         /// <summary>Cap on those mentions once concatenated, in characters. Applied after `max_mentions_per_artifact`.</summary>
-        public int? MentionContextChars { get; set; }
+        public int? MentionContextChars { get => _explicitNullValueMentionContextChars; set { _explicitNullValueMentionContextChars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mention_context_chars"); else _explicitNullProperties?.Remove("mention_context_chars"); } }
+        private int? _explicitNullValueMentionContextChars = default!;
         /// <summary>Cap on one recorded mention — what a single document says about the subject — in characters.</summary>
-        public int? MentionMaxChars { get; set; }
+        public int? MentionMaxChars { get => _explicitNullValueMentionMaxChars; set { _explicitNullValueMentionMaxChars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mention_max_chars"); else _explicitNullProperties?.Remove("mention_max_chars"); } }
+        private int? _explicitNullValueMentionMaxChars = default!;
         /// <summary>How many source documents must mention a corpus-scoped subject before it earns an artifact. Raise it to suppress one-off mentions. An artifact type may override it.</summary>
-        public int? MinDocCount { get; set; }
+        public int? MinDocCount { get => _explicitNullValueMinDocCount; set { _explicitNullValueMinDocCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_doc_count"); else _explicitNullProperties?.Remove("min_doc_count"); } }
+        private int? _explicitNullValueMinDocCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifacts"/> and sets the default values.
         /// </summary>
@@ -82,7 +116,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifacts CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifacts();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.NullableManifestAllOf1CurateArtifacts(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -125,6 +159,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteIntValue("mention_context_chars", MentionContextChars);
             writer.WriteIntValue("mention_max_chars", MentionMaxChars);
             writer.WriteIntValue("min_doc_count", MinDocCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

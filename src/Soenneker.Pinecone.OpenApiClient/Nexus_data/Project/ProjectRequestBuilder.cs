@@ -53,6 +53,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Project
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ProjectWithWorkspaces>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ProjectWithWorkspaces.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

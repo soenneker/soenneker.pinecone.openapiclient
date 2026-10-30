@@ -12,134 +12,202 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NexusData202607QueryRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artifacts_only") is { } nullNodeArtifactsOnly && nullNodeArtifactsOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsOnly = null;
+            if (parseNode.GetChildNode("ask") is { } nullNodeAsk && nullNodeAsk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ask = null;
+            if (parseNode.GetChildNode("background") is { } nullNodeBackground && nullNodeBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Background = null;
+            if (parseNode.GetChildNode("chunks_only") is { } nullNodeChunksOnly && nullNodeChunksOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunksOnly = null;
+            if (parseNode.GetChildNode("comparison_group") is { } nullNodeComparisonGroup && nullNodeComparisonGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComparisonGroup = null;
+            if (parseNode.GetChildNode("compose") is { } nullNodeCompose && nullNodeCompose.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compose = null;
+            if (parseNode.GetChildNode("guardrails") is { } nullNodeGuardrails && nullNodeGuardrails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Guardrails = null;
+            if (parseNode.GetChildNode("max_retrieved") is { } nullNodeMaxRetrieved && nullNodeMaxRetrieved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRetrieved = null;
+            if (parseNode.GetChildNode("max_retrieved_chars") is { } nullNodeMaxRetrievedChars && nullNodeMaxRetrievedChars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRetrievedChars = null;
+            if (parseNode.GetChildNode("max_steps") is { } nullNodeMaxSteps && nullNodeMaxSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSteps = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("pointers_only") is { } nullNodePointersOnly && nullNodePointersOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointersOnly = null;
+            if (parseNode.GetChildNode("previous_query_id") is { } nullNodePreviousQueryId && nullNodePreviousQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousQueryId = null;
+            if (parseNode.GetChildNode("retrieval_only") is { } nullNodeRetrievalOnly && nullNodeRetrievalOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetrievalOnly = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("shape") is { } nullNodeShape && nullNodeShape.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Shape = null;
+            if (parseNode.GetChildNode("stream") is { } nullNodeStream && nullNodeStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stream = null;
+            if (parseNode.GetChildNode("system_prompt") is { } nullNodeSystemPrompt && nullNodeSystemPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SystemPrompt = null;
+            if (parseNode.GetChildNode("thinking_level") is { } nullNodeThinkingLevel && nullNodeThinkingLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingLevel = null;
+            if (parseNode.GetChildNode("timeout_seconds") is { } nullNodeTimeoutSeconds && nullNodeTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeoutSeconds = null;
+            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+            if (parseNode.GetChildNode("workflow") is { } nullNodeWorkflow && nullNodeWorkflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workflow = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Retrieval-only, narrowed to artifacts</summary>
-        public bool? ArtifactsOnly { get; set; }
+        public bool? ArtifactsOnly { get => _explicitNullValueArtifactsOnly; set { _explicitNullValueArtifactsOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_only"); else _explicitNullProperties?.Remove("artifacts_only"); } }
+        private bool? _explicitNullValueArtifactsOnly = default!;
         /// <summary>The natural-language question</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ask { get; set; }
+        public string? Ask { get => _explicitNullValueAsk; set { _explicitNullValueAsk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask"); else _explicitNullProperties?.Remove("ask"); } }
+        private string? _explicitNullValueAsk = default!;
 #nullable restore
 #else
-        public string Ask { get; set; }
+        public string Ask { get => _explicitNullValueAsk; set { _explicitNullValueAsk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask"); else _explicitNullProperties?.Remove("ask"); } }
+        private string _explicitNullValueAsk = default!;
 #endif
         /// <summary>Fire-and-forget: 202 + in_progress query; poll GET /queries/{id}. Mutually exclusive with stream.</summary>
-        public bool? Background { get; set; }
+        public bool? Background { get => _explicitNullValueBackground; set { _explicitNullValueBackground = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("background"); else _explicitNullProperties?.Remove("background"); } }
+        private bool? _explicitNullValueBackground = default!;
         /// <summary>Retrieval-only, narrowed to chunks</summary>
-        public bool? ChunksOnly { get; set; }
+        public bool? ChunksOnly { get => _explicitNullValueChunksOnly; set { _explicitNullValueChunksOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks_only"); else _explicitNullProperties?.Remove("chunks_only"); } }
+        private bool? _explicitNullValueChunksOnly = default!;
         /// <summary>Client-generated id shared by the turns of one Compare run, so a query cap counts them as one action rather than several. Where the cap applies, a group is limited to 3 turns and a fourth is refused with `409`. Omit for a normal query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ComparisonGroup { get; set; }
+        public string? ComparisonGroup { get => _explicitNullValueComparisonGroup; set { _explicitNullValueComparisonGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_group"); else _explicitNullProperties?.Remove("comparison_group"); } }
+        private string? _explicitNullValueComparisonGroup = default!;
 #nullable restore
 #else
-        public string ComparisonGroup { get; set; }
+        public string ComparisonGroup { get => _explicitNullValueComparisonGroup; set { _explicitNullValueComparisonGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_group"); else _explicitNullProperties?.Remove("comparison_group"); } }
+        private string _explicitNullValueComparisonGroup = default!;
 #endif
         /// <summary>Set `false` to skip synthesis, the same as `retrieval_only`.</summary>
-        public bool? Compose { get; set; }
+        public bool? Compose { get => _explicitNullValueCompose; set { _explicitNullValueCompose = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compose"); else _explicitNullProperties?.Remove("compose"); } }
+        private bool? _explicitNullValueCompose = default!;
         /// <summary>Guardrails pinned to a new session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Guardrails { get; set; }
+        public string? Guardrails { get => _explicitNullValueGuardrails; set { _explicitNullValueGuardrails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrails"); else _explicitNullProperties?.Remove("guardrails"); } }
+        private string? _explicitNullValueGuardrails = default!;
 #nullable restore
 #else
-        public string Guardrails { get; set; }
+        public string Guardrails { get => _explicitNullValueGuardrails; set { _explicitNullValueGuardrails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guardrails"); else _explicitNullProperties?.Remove("guardrails"); } }
+        private string _explicitNullValueGuardrails = default!;
 #endif
         /// <summary>Cap the item count for retrieval-only turns</summary>
-        public long? MaxRetrieved { get; set; }
+        public long? MaxRetrieved { get => _explicitNullValueMaxRetrieved; set { _explicitNullValueMaxRetrieved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_retrieved"); else _explicitNullProperties?.Remove("max_retrieved"); } }
+        private long? _explicitNullValueMaxRetrieved = default!;
         /// <summary>Cap per-item verbatim text length for retrieval-only turns</summary>
-        public long? MaxRetrievedChars { get; set; }
+        public long? MaxRetrievedChars { get => _explicitNullValueMaxRetrievedChars; set { _explicitNullValueMaxRetrievedChars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_retrieved_chars"); else _explicitNullProperties?.Remove("max_retrieved_chars"); } }
+        private long? _explicitNullValueMaxRetrievedChars = default!;
         /// <summary>Cap the agent&apos;s tool-loop steps for this turn</summary>
-        public long? MaxSteps { get; set; }
+        public long? MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_steps"); else _explicitNullProperties?.Remove("max_steps"); } }
+        private long? _explicitNullValueMaxSteps = default!;
         /// <summary>A catalog model id from `GET /models`, or a tier name (`lite`, `standard`, `pro`) to let the deployment resolve one. New session only; pinned for the session&apos;s life.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Ordered fallback list, tried in turn. Takes precedence over `model`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Models { get; set; }
+        public List<string>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<string>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<string> Models { get; set; }
+        public List<string> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<string> _explicitNullValueModels = default!;
 #endif
         /// <summary>Skip synthesis; return just pointers in `output_json`</summary>
-        public bool? PointersOnly { get; set; }
+        public bool? PointersOnly { get => _explicitNullValuePointersOnly; set { _explicitNullValuePointersOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointers_only"); else _explicitNullProperties?.Remove("pointers_only"); } }
+        private bool? _explicitNullValuePointersOnly = default!;
         /// <summary>Continue the session this query belongs to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousQueryId { get; set; }
+        public string? PreviousQueryId { get => _explicitNullValuePreviousQueryId; set { _explicitNullValuePreviousQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_query_id"); else _explicitNullProperties?.Remove("previous_query_id"); } }
+        private string? _explicitNullValuePreviousQueryId = default!;
 #nullable restore
 #else
-        public string PreviousQueryId { get; set; }
+        public string PreviousQueryId { get => _explicitNullValuePreviousQueryId; set { _explicitNullValuePreviousQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_query_id"); else _explicitNullProperties?.Remove("previous_query_id"); } }
+        private string _explicitNullValuePreviousQueryId = default!;
 #endif
         /// <summary>Skip synthesis; return retrieved hits in `output_json`</summary>
-        public bool? RetrievalOnly { get; set; }
+        public bool? RetrievalOnly { get => _explicitNullValueRetrievalOnly; set { _explicitNullValueRetrievalOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retrieval_only"); else _explicitNullProperties?.Remove("retrieval_only"); } }
+        private bool? _explicitNullValueRetrievalOnly = default!;
         /// <summary>Context slugs/UUIDs. New session only; pinned for the session&apos;s life. A scope may not mix work and search contexts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Scope { get; set; }
+        public List<string>? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private List<string>? _explicitNullValueScope = default!;
 #nullable restore
 #else
-        public List<string> Scope { get; set; }
+        public List<string> Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private List<string> _explicitNullValueScope = default!;
 #endif
         /// <summary>Continue an existing session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get; set; }
+        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string? _explicitNullValueSessionId = default!;
 #nullable restore
 #else
-        public string SessionId { get; set; }
+        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>JSON Schema subset for structured output; result in output_json</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequestShapeProperty? Shape { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequestShapeProperty? Shape { get => _explicitNullValueShape; set { _explicitNullValueShape = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shape"); else _explicitNullProperties?.Remove("shape"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequestShapeProperty? _explicitNullValueShape = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequestShapeProperty Shape { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequestShapeProperty Shape { get => _explicitNullValueShape; set { _explicitNullValueShape = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shape"); else _explicitNullProperties?.Remove("shape"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequestShapeProperty _explicitNullValueShape = default!;
 #endif
         /// <summary>SSE streaming. Mutually exclusive with background.</summary>
-        public bool? Stream { get; set; }
+        public bool? Stream { get => _explicitNullValueStream; set { _explicitNullValueStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream"); else _explicitNullProperties?.Remove("stream"); } }
+        private bool? _explicitNullValueStream = default!;
         /// <summary>Instructions pinned to a new session</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SystemPrompt { get; set; }
+        public string? SystemPrompt { get => _explicitNullValueSystemPrompt; set { _explicitNullValueSystemPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_prompt"); else _explicitNullProperties?.Remove("system_prompt"); } }
+        private string? _explicitNullValueSystemPrompt = default!;
 #nullable restore
 #else
-        public string SystemPrompt { get; set; }
+        public string SystemPrompt { get => _explicitNullValueSystemPrompt; set { _explicitNullValueSystemPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system_prompt"); else _explicitNullProperties?.Remove("system_prompt"); } }
+        private string _explicitNullValueSystemPrompt = default!;
 #endif
         /// <summary>Gemini reasoning depth. Default `low`. Gemini-backed workflows only; ignored for `search_cc`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThinkingLevel { get; set; }
+        public string? ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
+        private string? _explicitNullValueThinkingLevel = default!;
 #nullable restore
 #else
-        public string ThinkingLevel { get; set; }
+        public string ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
+        private string _explicitNullValueThinkingLevel = default!;
 #endif
         /// <summary>May only LOWER the 15-minute (900s) cap</summary>
-        public long? TimeoutSeconds { get; set; }
+        public long? TimeoutSeconds { get => _explicitNullValueTimeoutSeconds; set { _explicitNullValueTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeout_seconds"); else _explicitNullProperties?.Remove("timeout_seconds"); } }
+        private long? _explicitNullValueTimeoutSeconds = default!;
         /// <summary>Tool names the turn may call. New session only; pinned for the session&apos;s life.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tools { get; set; }
+        public List<string>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<string>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<string> Tools { get; set; }
+        public List<string> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<string> _explicitNullValueTools = default!;
 #endif
         /// <summary>Search workflow for this turn. Ignored for work contexts, which always run the `work` runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Workflow { get; set; }
+        public string? Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private string? _explicitNullValueWorkflow = default!;
 #nullable restore
 #else
-        public string Workflow { get; set; }
+        public string Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private string _explicitNullValueWorkflow = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequest"/> and sets the default values.
@@ -156,7 +224,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.NexusData202607QueryRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -223,6 +291,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("timeout_seconds", TimeoutSeconds);
             writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
             writer.WriteStringValue("workflow", Workflow);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

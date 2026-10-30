@@ -36,7 +36,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat.Complet
         /// <summary>
         /// Chat with an assistant. This endpoint is based on the OpenAI Chat Completion API, a commonly used and adopted API. It is useful if you need inline citations or OpenAI-compatible responses, but has limited functionality compared to the standard chat interface.For guidance and examples, see [Chat with an assistant](https://docs.pinecone.io/guides/assistant/chat-with-assistant).
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ChatCompletionModel"/></returns>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">Represents a request to chat with an assistant.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -46,11 +46,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat.Complet
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.ChatCompletionModel?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream?> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Pinecone.OpenApiClient.Models.ChatCompletionModel> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Stream> PostAsync(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -61,8 +61,10 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Chat.Item.Chat.Complet
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ChatCompletionModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ChatCompletionModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Chat with an assistant. This endpoint is based on the OpenAI Chat Completion API, a commonly used and adopted API. It is useful if you need inline citations or OpenAI-compatible responses, but has limited functionality compared to the standard chat interface.For guidance and examples, see [Chat with an assistant](https://docs.pinecone.io/guides/assistant/chat-with-assistant).

@@ -12,7 +12,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskFileMetadata : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataArchived"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,13 +46,20 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadata();
             if("TaskFileMetadataArchived".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TaskFileMetadataArchived = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataArchived();
+                
             }
             else if("TaskFileMetadataLive".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TaskFileMetadataLive = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataLive();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("is_dir") != null && parseNode.GetChildNode("is_file") != null && parseNode.GetChildNode("size") != null && parseNode.GetChildNode("modified") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("kind") != null && parseNode.GetChildNode("size") != null && parseNode.GetChildNode("mode") != null && parseNode.GetChildNode("mtime") != null))();
+            if (result.TaskFileMetadataArchived == null && result.TaskFileMetadataLive == null && matchesUnionBranch0 && !matchesUnionBranch1) result.TaskFileMetadataArchived = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataArchived(), parseNode);
+            if (result.TaskFileMetadataArchived == null && result.TaskFileMetadataLive == null && matchesUnionBranch1 && !matchesUnionBranch0) result.TaskFileMetadataLive = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataLive(), parseNode);
+            if (result.TaskFileMetadataArchived == null && result.TaskFileMetadataLive == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,13 +83,20 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (TaskFileMetadataArchived == null && TaskFileMetadataLive == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (TaskFileMetadataArchived != null && TaskFileMetadataLive == null) { if (TaskFileMetadataArchived is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TaskFileMetadataArchived); return; }
+            if (TaskFileMetadataLive != null && TaskFileMetadataArchived == null) { if (TaskFileMetadataLive is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TaskFileMetadataLive); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(TaskFileMetadataArchived != null)
             {
+                if (TaskFileMetadataArchived is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataArchived>(null, TaskFileMetadataArchived);
             }
             else if(TaskFileMetadataLive != null)
             {
+                if (TaskFileMetadataLive is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TaskFileMetadataLive>(null, TaskFileMetadataLive);
             }
         }

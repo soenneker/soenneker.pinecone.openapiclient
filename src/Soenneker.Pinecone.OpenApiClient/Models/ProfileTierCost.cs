@@ -12,24 +12,37 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileTierCost : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("time_s") is { } nullNodeTimeS && nullNodeTimeS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeS = null;
+            if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Estimated wall-clock band for the curate, in seconds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS? TimeS { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS? TimeS { get => _explicitNullValueTimeS; set { _explicitNullValueTimeS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_s"); else _explicitNullProperties?.Remove("time_s"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS? _explicitNullValueTimeS = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS TimeS { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS TimeS { get => _explicitNullValueTimeS; set { _explicitNullValueTimeS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_s"); else _explicitNullProperties?.Remove("time_s"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS _explicitNullValueTimeS = default!;
 #endif
         /// <summary>The `point` estimate sits at G&apos;s midpoint and splits into input/output; `lo`/`hi` are band totals.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens? Tokens { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens? _explicitNullValueTokens = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens Tokens { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens _explicitNullValueTokens = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTimeS>("time_s", TimeS);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCostTokens>("tokens", Tokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

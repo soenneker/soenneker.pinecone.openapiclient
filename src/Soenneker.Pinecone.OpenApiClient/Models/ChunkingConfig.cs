@@ -12,23 +12,39 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChunkingConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("overlap") is { } nullNodeOverlap && nullNodeOverlap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Overlap = null;
+            if (parseNode.GetChildNode("respect_sections") is { } nullNodeRespectSections && nullNodeRespectSections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RespectSections = null;
+            if (parseNode.GetChildNode("strategy") is { } nullNodeStrategy && nullNodeStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Strategy = null;
+            if (parseNode.GetChildNode("target_size") is { } nullNodeTargetSize && nullNodeTargetSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetSize = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Tokens each chunk repeats from its predecessor, so a passage split across a boundary is still retrievable whole.</summary>
-        public int? Overlap { get; set; }
+        public int? Overlap { get => _explicitNullValueOverlap; set { _explicitNullValueOverlap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overlap"); else _explicitNullProperties?.Remove("overlap"); } }
+        private int? _explicitNullValueOverlap = default!;
         /// <summary>Never cut across a section boundary, even when that leaves a chunk short of `target_size`.</summary>
-        public bool? RespectSections { get; set; }
+        public bool? RespectSections { get => _explicitNullValueRespectSections; set { _explicitNullValueRespectSections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("respect_sections"); else _explicitNullProperties?.Remove("respect_sections"); } }
+        private bool? _explicitNullValueRespectSections = default!;
         /// <summary>Which structure the splitter cuts on — markdown headings, fixed-size windows, HTML elements, CSV rows, or code syntax. Pick the one that matches the corpus.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Strategy { get; set; }
+        public string? Strategy { get => _explicitNullValueStrategy; set { _explicitNullValueStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("strategy"); else _explicitNullProperties?.Remove("strategy"); } }
+        private string? _explicitNullValueStrategy = default!;
 #nullable restore
 #else
-        public string Strategy { get; set; }
+        public string Strategy { get => _explicitNullValueStrategy; set { _explicitNullValueStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("strategy"); else _explicitNullProperties?.Remove("strategy"); } }
+        private string _explicitNullValueStrategy = default!;
 #endif
         /// <summary>Chunk size the splitter aims for, in tokens. Smaller chunks retrieve more precisely; larger ones carry more surrounding context.</summary>
-        public int? TargetSize { get; set; }
+        public int? TargetSize { get => _explicitNullValueTargetSize; set { _explicitNullValueTargetSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_size"); else _explicitNullProperties?.Remove("target_size"); } }
+        private int? _explicitNullValueTargetSize = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig"/> and sets the default values.
         /// </summary>
@@ -48,7 +64,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ChunkingConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +91,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteBoolValue("respect_sections", RespectSections);
             writer.WriteStringValue("strategy", Strategy);
             writer.WriteIntValue("target_size", TargetSize);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

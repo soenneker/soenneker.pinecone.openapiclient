@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E7E38ACDEE7EDA5FFF28ADA2D641C5135187FFA1C9C50DE53A450C25163EAB3EE24043616C34630ADEA2EBEEE4C464C9048212DBCEA96EC7CAE6D68117C24591",
+  "descriptionHash": "C0704F48526D82AEDE1966ACFB058060B29A4C9FC950B2CEBA222CB72DBDB8D5EFD09B238E8333F0448B4A7F556C5AD5CCDA5F4480B87BA34EF4BE58E3FBE804",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.36.1",
+  "kiotaVersion": "1.37.0",
   "clientClassName": "PineconeOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Pinecone.OpenApiClient",

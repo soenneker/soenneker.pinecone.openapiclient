@@ -67,6 +67,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Oauth.Oauth.Token
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "501", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Pinecone.OpenApiClient.Models.OAuth202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.TokenResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.TokenResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

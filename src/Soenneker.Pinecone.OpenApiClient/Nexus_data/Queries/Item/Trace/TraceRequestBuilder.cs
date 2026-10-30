@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Queries.Item.Trace
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Trace>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Trace.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Trace>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Trace.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The per-turn debug trace (steps, tool calls, strategy, cost, rollup). Trace persistence is unconditional — every turn lands a trace blob — so this is available once the turn is terminal.

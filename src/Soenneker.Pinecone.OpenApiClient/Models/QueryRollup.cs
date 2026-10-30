@@ -12,44 +12,72 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QueryRollup : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_category") is { } nullNodeByCategory && nullNodeByCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByCategory = null;
+            if (parseNode.GetChildNode("cache_read_tokens") is { } nullNodeCacheReadTokens && nullNodeCacheReadTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadTokens = null;
+            if (parseNode.GetChildNode("cache_write_tokens") is { } nullNodeCacheWriteTokens && nullNodeCacheWriteTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheWriteTokens = null;
+            if (parseNode.GetChildNode("duration_ms") is { } nullNodeDurationMs && nullNodeDurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationMs = null;
+            if (parseNode.GetChildNode("n_steps") is { } nullNodeNSteps && nullNodeNSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NSteps = null;
+            if (parseNode.GetChildNode("n_tool_calls") is { } nullNodeNToolCalls && nullNodeNToolCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NToolCalls = null;
+            if (parseNode.GetChildNode("query_id") is { } nullNodeQueryId && nullNodeQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryId = null;
+            if (parseNode.GetChildNode("total_hits") is { } nullNodeTotalHits && nullNodeTotalHits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalHits = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Tool calls tallied by category.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory? ByCategory { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory? ByCategory { get => _explicitNullValueByCategory; set { _explicitNullValueByCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_category"); else _explicitNullProperties?.Remove("by_category"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory? _explicitNullValueByCategory = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory ByCategory { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory ByCategory { get => _explicitNullValueByCategory; set { _explicitNullValueByCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_category"); else _explicitNullProperties?.Remove("by_category"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollupByCategory _explicitNullValueByCategory = default!;
 #endif
         /// <summary>Input tokens served from the prompt cache.</summary>
-        public long? CacheReadTokens { get; set; }
+        public long? CacheReadTokens { get => _explicitNullValueCacheReadTokens; set { _explicitNullValueCacheReadTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_tokens"); else _explicitNullProperties?.Remove("cache_read_tokens"); } }
+        private long? _explicitNullValueCacheReadTokens = default!;
         /// <summary>Input tokens written into the prompt cache.</summary>
-        public long? CacheWriteTokens { get; set; }
+        public long? CacheWriteTokens { get => _explicitNullValueCacheWriteTokens; set { _explicitNullValueCacheWriteTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_write_tokens"); else _explicitNullProperties?.Remove("cache_write_tokens"); } }
+        private long? _explicitNullValueCacheWriteTokens = default!;
         /// <summary>Wall time for the whole turn.</summary>
-        public long? DurationMs { get; set; }
+        public long? DurationMs { get => _explicitNullValueDurationMs; set { _explicitNullValueDurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration_ms"); else _explicitNullProperties?.Remove("duration_ms"); } }
+        private long? _explicitNullValueDurationMs = default!;
         /// <summary>Reasoning steps the turn ran.</summary>
-        public long? NSteps { get; set; }
+        public long? NSteps { get => _explicitNullValueNSteps; set { _explicitNullValueNSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_steps"); else _explicitNullProperties?.Remove("n_steps"); } }
+        private long? _explicitNullValueNSteps = default!;
         /// <summary>How many calls the whole turn made.</summary>
-        public long? NToolCalls { get; set; }
+        public long? NToolCalls { get => _explicitNullValueNToolCalls; set { _explicitNullValueNToolCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_tool_calls"); else _explicitNullProperties?.Remove("n_tool_calls"); } }
+        private long? _explicitNullValueNToolCalls = default!;
         /// <summary>Event form only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QueryId { get; set; }
+        public string? QueryId { get => _explicitNullValueQueryId; set { _explicitNullValueQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_id"); else _explicitNullProperties?.Remove("query_id"); } }
+        private string? _explicitNullValueQueryId = default!;
 #nullable restore
 #else
-        public string QueryId { get; set; }
+        public string QueryId { get => _explicitNullValueQueryId; set { _explicitNullValueQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_id"); else _explicitNullProperties?.Remove("query_id"); } }
+        private string _explicitNullValueQueryId = default!;
 #endif
         /// <summary>Retrieved items across all calls, before dedup.</summary>
-        public long? TotalHits { get; set; }
+        public long? TotalHits { get => _explicitNullValueTotalHits; set { _explicitNullValueTotalHits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_hits"); else _explicitNullProperties?.Remove("total_hits"); } }
+        private long? _explicitNullValueTotalHits = default!;
         /// <summary>Event form only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public string Type { get; set; }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup"/> and sets the default values.
@@ -66,7 +94,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.QueryRollup(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,6 +131,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("query_id", QueryId);
             writer.WriteLongValue("total_hits", TotalHits);
             writer.WriteStringValue("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

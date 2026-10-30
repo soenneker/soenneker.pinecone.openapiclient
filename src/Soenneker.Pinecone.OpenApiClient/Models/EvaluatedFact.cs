@@ -12,24 +12,37 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluatedFact : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("entailment") is { } nullNodeEntailment && nullNodeEntailment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entailment = null;
+            if (parseNode.GetChildNode("fact") is { } nullNodeFact && nullNodeFact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fact = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The entailment of a fact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Entailment { get; set; }
+        public string? Entailment { get => _explicitNullValueEntailment; set { _explicitNullValueEntailment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entailment"); else _explicitNullProperties?.Remove("entailment"); } }
+        private string? _explicitNullValueEntailment = default!;
 #nullable restore
 #else
-        public string Entailment { get; set; }
+        public string Entailment { get => _explicitNullValueEntailment; set { _explicitNullValueEntailment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entailment"); else _explicitNullProperties?.Remove("entailment"); } }
+        private string _explicitNullValueEntailment = default!;
 #endif
         /// <summary>A fact</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact? Fact { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact? Fact { get => _explicitNullValueFact; set { _explicitNullValueFact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fact"); else _explicitNullProperties?.Remove("fact"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.Fact? _explicitNullValueFact = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact Fact { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.Fact Fact { get => _explicitNullValueFact; set { _explicitNullValueFact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fact"); else _explicitNullProperties?.Remove("fact"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.Fact _explicitNullValueFact = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.EvaluatedFact(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("entailment", Entailment);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.Fact>("fact", Fact);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

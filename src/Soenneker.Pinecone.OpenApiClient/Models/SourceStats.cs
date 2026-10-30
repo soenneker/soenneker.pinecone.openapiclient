@@ -12,25 +12,48 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SourceStats : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dir_count") is { } nullNodeDirCount && nullNodeDirCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DirCount = null;
+            if (parseNode.GetChildNode("file_count") is { } nullNodeFileCount && nullNodeFileCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileCount = null;
+            if (parseNode.GetChildNode("max_bytes_per_context") is { } nullNodeMaxBytesPerContext && nullNodeMaxBytesPerContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBytesPerContext = null;
+            if (parseNode.GetChildNode("max_bytes_per_file") is { } nullNodeMaxBytesPerFile && nullNodeMaxBytesPerFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBytesPerFile = null;
+            if (parseNode.GetChildNode("max_files_per_context") is { } nullNodeMaxFilesPerContext && nullNodeMaxFilesPerContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFilesPerContext = null;
+            if (parseNode.GetChildNode("total_size") is { } nullNodeTotalSize && nullNodeTotalSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalSize = null;
+            if (parseNode.GetChildNode("used_bytes") is { } nullNodeUsedBytes && nullNodeUsedBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedBytes = null;
+            if (parseNode.GetChildNode("used_files") is { } nullNodeUsedFiles && nullNodeUsedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedFiles = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Directories in the tree. Counts the ancestor prefixes of the stored objects, so a store with no standalone directories still reports one per level that holds a file.</summary>
-        public long? DirCount { get; set; }
+        public long? DirCount { get => _explicitNullValueDirCount; set { _explicitNullValueDirCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dir_count"); else _explicitNullProperties?.Remove("dir_count"); } }
+        private long? _explicitNullValueDirCount = default!;
         /// <summary>Files in the tree.</summary>
-        public long? FileCount { get; set; }
+        public long? FileCount { get => _explicitNullValueFileCount; set { _explicitNullValueFileCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_count"); else _explicitNullProperties?.Remove("file_count"); } }
+        private long? _explicitNullValueFileCount = default!;
         /// <summary>Total-byte cap for this context.</summary>
-        public long? MaxBytesPerContext { get; set; }
+        public long? MaxBytesPerContext { get => _explicitNullValueMaxBytesPerContext; set { _explicitNullValueMaxBytesPerContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_bytes_per_context"); else _explicitNullProperties?.Remove("max_bytes_per_context"); } }
+        private long? _explicitNullValueMaxBytesPerContext = default!;
         /// <summary>Upper bound on one stored object.</summary>
-        public long? MaxBytesPerFile { get; set; }
+        public long? MaxBytesPerFile { get => _explicitNullValueMaxBytesPerFile; set { _explicitNullValueMaxBytesPerFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_bytes_per_file"); else _explicitNullProperties?.Remove("max_bytes_per_file"); } }
+        private long? _explicitNullValueMaxBytesPerFile = default!;
         /// <summary>Upper bound on how many source objects may be staged.</summary>
-        public long? MaxFilesPerContext { get; set; }
+        public long? MaxFilesPerContext { get => _explicitNullValueMaxFilesPerContext; set { _explicitNullValueMaxFilesPerContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_files_per_context"); else _explicitNullProperties?.Remove("max_files_per_context"); } }
+        private long? _explicitNullValueMaxFilesPerContext = default!;
         /// <summary>Summed byte size of every file.</summary>
-        public long? TotalSize { get; set; }
+        public long? TotalSize { get => _explicitNullValueTotalSize; set { _explicitNullValueTotalSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_size"); else _explicitNullProperties?.Remove("total_size"); } }
+        private long? _explicitNullValueTotalSize = default!;
         /// <summary>Bytes counted against `max_bytes_per_context`.</summary>
-        public long? UsedBytes { get; set; }
+        public long? UsedBytes { get => _explicitNullValueUsedBytes; set { _explicitNullValueUsedBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_bytes"); else _explicitNullProperties?.Remove("used_bytes"); } }
+        private long? _explicitNullValueUsedBytes = default!;
         /// <summary>Files counted against `max_files_per_context`.</summary>
-        public long? UsedFiles { get; set; }
+        public long? UsedFiles { get => _explicitNullValueUsedFiles; set { _explicitNullValueUsedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_files"); else _explicitNullProperties?.Remove("used_files"); } }
+        private long? _explicitNullValueUsedFiles = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SourceStats"/> and sets the default values.
         /// </summary>
@@ -46,7 +69,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.SourceStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.SourceStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.SourceStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +104,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("total_size", TotalSize);
             writer.WriteLongValue("used_bytes", UsedBytes);
             writer.WriteLongValue("used_files", UsedFiles);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,24 +12,37 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExploreContextRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("guide") is { } nullNodeGuide && nullNodeGuide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Guide = null;
+            if (parseNode.GetChildNode("pinecone_api_key") is { } nullNodePineconeApiKey && nullNodePineconeApiKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PineconeApiKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>High-level guidance to steer the proposal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Guide { get; set; }
+        public string? Guide { get => _explicitNullValueGuide; set { _explicitNullValueGuide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guide"); else _explicitNullProperties?.Remove("guide"); } }
+        private string? _explicitNullValueGuide = default!;
 #nullable restore
 #else
-        public string Guide { get; set; }
+        public string Guide { get => _explicitNullValueGuide; set { _explicitNullValueGuide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("guide"); else _explicitNullProperties?.Remove("guide"); } }
+        private string _explicitNullValueGuide = default!;
 #endif
         /// <summary>Task-token override; normally not needed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PineconeApiKey { get; set; }
+        public string? PineconeApiKey { get => _explicitNullValuePineconeApiKey; set { _explicitNullValuePineconeApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinecone_api_key"); else _explicitNullProperties?.Remove("pinecone_api_key"); } }
+        private string? _explicitNullValuePineconeApiKey = default!;
 #nullable restore
 #else
-        public string PineconeApiKey { get; set; }
+        public string PineconeApiKey { get => _explicitNullValuePineconeApiKey; set { _explicitNullValuePineconeApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinecone_api_key"); else _explicitNullProperties?.Remove("pinecone_api_key"); } }
+        private string _explicitNullValuePineconeApiKey = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ExploreContextRequest"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ExploreContextRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ExploreContextRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ExploreContextRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("guide", Guide);
             writer.WriteStringValue("pinecone_api_key", PineconeApiKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

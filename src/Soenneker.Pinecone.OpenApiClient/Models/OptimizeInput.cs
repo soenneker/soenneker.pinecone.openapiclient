@@ -12,35 +12,58 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OptimizeInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("candidate_queries") is { } nullNodeCandidateQueries && nullNodeCandidateQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CandidateQueries = null;
+            if (parseNode.GetChildNode("eval_pass_rate_threshold") is { } nullNodeEvalPassRateThreshold && nullNodeEvalPassRateThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalPassRateThreshold = null;
+            if (parseNode.GetChildNode("max_iterations") is { } nullNodeMaxIterations && nullNodeMaxIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxIterations = null;
+            if (parseNode.GetChildNode("max_tool_turns") is { } nullNodeMaxToolTurns && nullNodeMaxToolTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxToolTurns = null;
+            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("optimize_timeout_seconds") is { } nullNodeOptimizeTimeoutSeconds && nullNodeOptimizeTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptimizeTimeoutSeconds = null;
+            if (parseNode.GetChildNode("retrieval_p90_latency_ms") is { } nullNodeRetrievalP90LatencyMs && nullNodeRetrievalP90LatencyMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetrievalP90LatencyMs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The queries the run tunes toward. Absent makes the run a no-op.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery>? CandidateQueries { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery>? CandidateQueries { get => _explicitNullValueCandidateQueries; set { _explicitNullValueCandidateQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidate_queries"); else _explicitNullProperties?.Remove("candidate_queries"); } }
+        private List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery>? _explicitNullValueCandidateQueries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery> CandidateQueries { get; set; }
+        public List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery> CandidateQueries { get => _explicitNullValueCandidateQueries; set { _explicitNullValueCandidateQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidate_queries"); else _explicitNullProperties?.Remove("candidate_queries"); } }
+        private List<global::Soenneker.Pinecone.OpenApiClient.Models.CandidateQuery> _explicitNullValueCandidateQueries = default!;
 #endif
         /// <summary>Pass rate an iteration must clear to count as ready.</summary>
-        public double? EvalPassRateThreshold { get; set; }
+        public double? EvalPassRateThreshold { get => _explicitNullValueEvalPassRateThreshold; set { _explicitNullValueEvalPassRateThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_pass_rate_threshold"); else _explicitNullProperties?.Remove("eval_pass_rate_threshold"); } }
+        private double? _explicitNullValueEvalPassRateThreshold = default!;
         /// <summary>Cap on candidate manifests tried.</summary>
-        public int? MaxIterations { get; set; }
+        public int? MaxIterations { get => _explicitNullValueMaxIterations; set { _explicitNullValueMaxIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_iterations"); else _explicitNullProperties?.Remove("max_iterations"); } }
+        private int? _explicitNullValueMaxIterations = default!;
         /// <summary>Cap on tool-loop turns per eval query.</summary>
-        public int? MaxToolTurns { get; set; }
+        public int? MaxToolTurns { get => _explicitNullValueMaxToolTurns; set { _explicitNullValueMaxToolTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tool_turns"); else _explicitNullProperties?.Remove("max_tool_turns"); } }
+        private int? _explicitNullValueMaxToolTurns = default!;
         /// <summary>Tier names or catalog ids, in preference order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Models { get; set; }
+        public List<string>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<string>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<string> Models { get; set; }
+        public List<string> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<string> _explicitNullValueModels = default!;
 #endif
         /// <summary>Runtime budget for the whole optimize.</summary>
-        public long? OptimizeTimeoutSeconds { get; set; }
+        public long? OptimizeTimeoutSeconds { get => _explicitNullValueOptimizeTimeoutSeconds; set { _explicitNullValueOptimizeTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optimize_timeout_seconds"); else _explicitNullProperties?.Remove("optimize_timeout_seconds"); } }
+        private long? _explicitNullValueOptimizeTimeoutSeconds = default!;
         /// <summary>The p90 latency bar an iteration must stay under.</summary>
-        public long? RetrievalP90LatencyMs { get; set; }
+        public long? RetrievalP90LatencyMs { get => _explicitNullValueRetrievalP90LatencyMs; set { _explicitNullValueRetrievalP90LatencyMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retrieval_p90_latency_ms"); else _explicitNullProperties?.Remove("retrieval_p90_latency_ms"); } }
+        private long? _explicitNullValueRetrievalP90LatencyMs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeInput"/> and sets the default values.
         /// </summary>
@@ -56,7 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("models", Models);
             writer.WriteLongValue("optimize_timeout_seconds", OptimizeTimeoutSeconds);
             writer.WriteLongValue("retrieval_p90_latency_ms", RetrievalP90LatencyMs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

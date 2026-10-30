@@ -12,24 +12,37 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileEstimateOutputCost : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_tier") is { } nullNodeByTier && nullNodeByTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByTier = null;
+            if (parseNode.GetChildNode("default_tier") is { } nullNodeDefaultTier && nullNodeDefaultTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultTier = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One estimate per model tier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier? ByTier { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier? ByTier { get => _explicitNullValueByTier; set { _explicitNullValueByTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tier"); else _explicitNullProperties?.Remove("by_tier"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier? _explicitNullValueByTier = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier ByTier { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier ByTier { get => _explicitNullValueByTier; set { _explicitNullValueByTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tier"); else _explicitNullProperties?.Remove("by_tier"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier _explicitNullValueByTier = default!;
 #endif
         /// <summary>The tier the context&apos;s current `artifact_model` resolves to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultTier { get; set; }
+        public string? DefaultTier { get => _explicitNullValueDefaultTier; set { _explicitNullValueDefaultTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tier"); else _explicitNullProperties?.Remove("default_tier"); } }
+        private string? _explicitNullValueDefaultTier = default!;
 #nullable restore
 #else
-        public string DefaultTier { get; set; }
+        public string DefaultTier { get => _explicitNullValueDefaultTier; set { _explicitNullValueDefaultTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tier"); else _explicitNullProperties?.Remove("default_tier"); } }
+        private string _explicitNullValueDefaultTier = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCost(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier>("by_tier", ByTier);
             writer.WriteStringValue("default_tier", DefaultTier);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Sessions.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.DeletedSession>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.DeletedSession.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.DeletedSession>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.DeletedSession.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// One session with its turns in conversation order.
@@ -71,6 +71,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Sessions.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.SessionWithQueries>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.SessionWithQueries.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

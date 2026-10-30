@@ -12,44 +12,82 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GroomMetricsOutput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artifact_bytes") is { } nullNodeArtifactBytes && nullNodeArtifactBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactBytes = null;
+            if (parseNode.GetChildNode("artifact_count") is { } nullNodeArtifactCount && nullNodeArtifactCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactCount = null;
+            if (parseNode.GetChildNode("artifact_files_deleted") is { } nullNodeArtifactFilesDeleted && nullNodeArtifactFilesDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactFilesDeleted = null;
+            if (parseNode.GetChildNode("artifact_files_written") is { } nullNodeArtifactFilesWritten && nullNodeArtifactFilesWritten.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactFilesWritten = null;
+            if (parseNode.GetChildNode("artifacts_pruned") is { } nullNodeArtifactsPruned && nullNodeArtifactsPruned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsPruned = null;
+            if (parseNode.GetChildNode("batches_consumed") is { } nullNodeBatchesConsumed && nullNodeBatchesConsumed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BatchesConsumed = null;
+            if (parseNode.GetChildNode("batches_staged") is { } nullNodeBatchesStaged && nullNodeBatchesStaged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BatchesStaged = null;
+            if (parseNode.GetChildNode("budget") is { } nullNodeBudget && nullNodeBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Budget = null;
+            if (parseNode.GetChildNode("duration_ms") is { } nullNodeDurationMs && nullNodeDurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationMs = null;
+            if (parseNode.GetChildNode("edges_added") is { } nullNodeEdgesAdded && nullNodeEdgesAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EdgesAdded = null;
+            if (parseNode.GetChildNode("facts_added") is { } nullNodeFactsAdded && nullNodeFactsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FactsAdded = null;
+            if (parseNode.GetChildNode("facts_distilled") is { } nullNodeFactsDistilled && nullNodeFactsDistilled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FactsDistilled = null;
+            if (parseNode.GetChildNode("facts_dropped_untyped") is { } nullNodeFactsDroppedUntyped && nullNodeFactsDroppedUntyped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FactsDroppedUntyped = null;
+            if (parseNode.GetChildNode("facts_merged") is { } nullNodeFactsMerged && nullNodeFactsMerged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FactsMerged = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total artifact size after the run.</summary>
-        public long? ArtifactBytes { get; set; }
+        public long? ArtifactBytes { get => _explicitNullValueArtifactBytes; set { _explicitNullValueArtifactBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_bytes"); else _explicitNullProperties?.Remove("artifact_bytes"); } }
+        private long? _explicitNullValueArtifactBytes = default!;
         /// <summary>Artifacts the context holds after the run.</summary>
-        public long? ArtifactCount { get; set; }
+        public long? ArtifactCount { get => _explicitNullValueArtifactCount; set { _explicitNullValueArtifactCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_count"); else _explicitNullProperties?.Remove("artifact_count"); } }
+        private long? _explicitNullValueArtifactCount = default!;
         /// <summary>How many were removed.</summary>
-        public long? ArtifactFilesDeleted { get; set; }
+        public long? ArtifactFilesDeleted { get => _explicitNullValueArtifactFilesDeleted; set { _explicitNullValueArtifactFilesDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_files_deleted"); else _explicitNullProperties?.Remove("artifact_files_deleted"); } }
+        private long? _explicitNullValueArtifactFilesDeleted = default!;
         /// <summary>How many were written.</summary>
-        public long? ArtifactFilesWritten { get; set; }
+        public long? ArtifactFilesWritten { get => _explicitNullValueArtifactFilesWritten; set { _explicitNullValueArtifactFilesWritten = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_files_written"); else _explicitNullProperties?.Remove("artifact_files_written"); } }
+        private long? _explicitNullValueArtifactFilesWritten = default!;
         /// <summary>Artifacts removed as superseded.</summary>
-        public long? ArtifactsPruned { get; set; }
+        public long? ArtifactsPruned { get => _explicitNullValueArtifactsPruned; set { _explicitNullValueArtifactsPruned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_pruned"); else _explicitNullProperties?.Remove("artifacts_pruned"); } }
+        private long? _explicitNullValueArtifactsPruned = default!;
         /// <summary>Batches actually consumed, capped by `budget`.</summary>
-        public long? BatchesConsumed { get; set; }
+        public long? BatchesConsumed { get => _explicitNullValueBatchesConsumed; set { _explicitNullValueBatchesConsumed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batches_consumed"); else _explicitNullProperties?.Remove("batches_consumed"); } }
+        private long? _explicitNullValueBatchesConsumed = default!;
         /// <summary>Batches available to consume.</summary>
-        public long? BatchesStaged { get; set; }
+        public long? BatchesStaged { get => _explicitNullValueBatchesStaged; set { _explicitNullValueBatchesStaged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batches_staged"); else _explicitNullProperties?.Remove("batches_staged"); } }
+        private long? _explicitNullValueBatchesStaged = default!;
         /// <summary>Fact batches the run was allowed to consume.</summary>
-        public long? Budget { get; set; }
+        public long? Budget { get => _explicitNullValueBudget; set { _explicitNullValueBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("budget"); else _explicitNullProperties?.Remove("budget"); } }
+        private long? _explicitNullValueBudget = default!;
         /// <summary>Wall time for the groom.</summary>
-        public long? DurationMs { get; set; }
+        public long? DurationMs { get => _explicitNullValueDurationMs; set { _explicitNullValueDurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration_ms"); else _explicitNullProperties?.Remove("duration_ms"); } }
+        private long? _explicitNullValueDurationMs = default!;
         /// <summary>New relationships recorded between artifacts.</summary>
-        public long? EdgesAdded { get; set; }
+        public long? EdgesAdded { get => _explicitNullValueEdgesAdded; set { _explicitNullValueEdgesAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edges_added"); else _explicitNullProperties?.Remove("edges_added"); } }
+        private long? _explicitNullValueEdgesAdded = default!;
         /// <summary>Distilled facts that were new.</summary>
-        public long? FactsAdded { get; set; }
+        public long? FactsAdded { get => _explicitNullValueFactsAdded; set { _explicitNullValueFactsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facts_added"); else _explicitNullProperties?.Remove("facts_added"); } }
+        private long? _explicitNullValueFactsAdded = default!;
         /// <summary>Facts extracted from the consumed batches.</summary>
-        public long? FactsDistilled { get; set; }
+        public long? FactsDistilled { get => _explicitNullValueFactsDistilled; set { _explicitNullValueFactsDistilled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facts_distilled"); else _explicitNullProperties?.Remove("facts_distilled"); } }
+        private long? _explicitNullValueFactsDistilled = default!;
         /// <summary>Facts discarded because they matched no declared artifact type.</summary>
-        public long? FactsDroppedUntyped { get; set; }
+        public long? FactsDroppedUntyped { get => _explicitNullValueFactsDroppedUntyped; set { _explicitNullValueFactsDroppedUntyped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facts_dropped_untyped"); else _explicitNullProperties?.Remove("facts_dropped_untyped"); } }
+        private long? _explicitNullValueFactsDroppedUntyped = default!;
         /// <summary>Distilled facts folded into a fact already held.</summary>
-        public long? FactsMerged { get; set; }
+        public long? FactsMerged { get => _explicitNullValueFactsMerged; set { _explicitNullValueFactsMerged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facts_merged"); else _explicitNullProperties?.Remove("facts_merged"); } }
+        private long? _explicitNullValueFactsMerged = default!;
         /// <summary>How the run ended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.GroomMetricsOutput"/> and sets the default values.
@@ -66,7 +104,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.GroomMetricsOutput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.GroomMetricsOutput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.GroomMetricsOutput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,6 +153,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("facts_dropped_untyped", FactsDroppedUntyped);
             writer.WriteLongValue("facts_merged", FactsMerged);
             writer.WriteStringValue("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,19 +12,32 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManagedDeployment : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cloud") is { } nullNodeCloud && nullNodeCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cloud = null;
+            if (parseNode.GetChildNode("deployment_type") is { } nullNodeDeploymentType && nullNodeDeploymentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentType = null;
+            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The public cloud where the index is hosted.Possible values: `gcp`, `aws`, or `azure`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cloud { get; set; }
+        public string? Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
+        private string? _explicitNullValueCloud = default!;
 #nullable restore
 #else
-        public string Cloud { get; set; }
+        public string Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
+        private string _explicitNullValueCloud = default!;
 #endif
         /// <summary>Identifies this as a managed (serverless) deployment. Must be `managed`.</summary>
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType? DeploymentType { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType? DeploymentType { get => _explicitNullValueDeploymentType; set { _explicitNullValueDeploymentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_type"); else _explicitNullProperties?.Remove("deployment_type"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType? _explicitNullValueDeploymentType = default!;
         /// <summary>The Pinecone environment hosting the index. Returned in responses; do not set it when creating an index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,10 +49,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The region where the index is hosted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Region { get; set; }
+        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string? _explicitNullValueRegion = default!;
 #nullable restore
 #else
-        public string Region { get; set; }
+        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string _explicitNullValueRegion = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeployment"/> and sets the default values.
@@ -56,7 +71,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeployment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeployment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeployment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +97,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("cloud", Cloud);
             writer.WriteEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType>("deployment_type", DeploymentType);
             writer.WriteStringValue("region", Region);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

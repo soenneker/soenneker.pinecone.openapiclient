@@ -62,7 +62,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Tasks
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.TaskList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.TaskList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.TaskList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.TaskList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Task records across the project, newest first. Filter by workflow, state, or context, and page with `limit` plus `page` or `offset`.

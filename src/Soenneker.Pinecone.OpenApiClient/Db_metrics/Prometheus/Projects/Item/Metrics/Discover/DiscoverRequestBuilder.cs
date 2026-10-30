@@ -57,6 +57,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_metrics.Prometheus.Projects.Item.M
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbMetrics202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Pinecone.OpenApiClient.Models.DbMetrics202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.DbMetrics202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.PrometheusTargetsItem.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

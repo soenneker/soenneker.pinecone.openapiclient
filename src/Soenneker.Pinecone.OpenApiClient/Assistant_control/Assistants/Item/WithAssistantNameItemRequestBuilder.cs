@@ -57,6 +57,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantControl202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -84,6 +86,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantControl202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantControl202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.Assistant>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.Assistant.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -105,7 +109,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_control.Assistants.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.UpdateAssistantResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete an existing assistant.For guidance and examples, see [Manage assistants](https://docs.pinecone.io/guides/assistant/manage-assistants#delete-an-assistant)

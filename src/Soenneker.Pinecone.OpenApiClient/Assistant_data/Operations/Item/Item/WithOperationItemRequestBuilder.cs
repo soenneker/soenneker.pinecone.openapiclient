@@ -57,6 +57,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Assistant_data.Operations.Item.Item
                 { "401", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.AssistantData202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.OperationModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.OperationModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

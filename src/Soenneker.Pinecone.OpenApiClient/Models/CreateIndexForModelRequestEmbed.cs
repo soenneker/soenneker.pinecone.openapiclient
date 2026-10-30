@@ -12,50 +12,74 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateIndexForModelRequestEmbed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dimension") is { } nullNodeDimension && nullNodeDimension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dimension = null;
+            if (parseNode.GetChildNode("field_map") is { } nullNodeFieldMap && nullNodeFieldMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldMap = null;
+            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("read_parameters") is { } nullNodeReadParameters && nullNodeReadParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadParameters = null;
+            if (parseNode.GetChildNode("write_parameters") is { } nullNodeWriteParameters && nullNodeWriteParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WriteParameters = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The dimension of embedding vectors produced for the index.</summary>
-        public int? Dimension { get; set; }
+        public int? Dimension { get => _explicitNullValueDimension; set { _explicitNullValueDimension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension"); else _explicitNullProperties?.Remove("dimension"); } }
+        private int? _explicitNullValueDimension = default!;
         /// <summary>Identifies the name of the text field from your document model that will be embedded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty? FieldMap { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty? FieldMap { get => _explicitNullValueFieldMap; set { _explicitNullValueFieldMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_map"); else _explicitNullProperties?.Remove("field_map"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty? _explicitNullValueFieldMap = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty FieldMap { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty FieldMap { get => _explicitNullValueFieldMap; set { _explicitNullValueFieldMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_map"); else _explicitNullProperties?.Remove("field_map"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedFieldMapProperty _explicitNullValueFieldMap = default!;
 #endif
         /// <summary>The distance metric to be used for similarity search. You can use &apos;euclidean&apos;, &apos;cosine&apos;, or &apos;dotproduct&apos;. If not specified, the metric will be defaulted according to the model. Cannot be updated once set.Possible values: `cosine`, `euclidean`, or `dotproduct`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Metric { get; set; }
+        public string? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private string? _explicitNullValueMetric = default!;
 #nullable restore
 #else
-        public string Metric { get; set; }
+        public string Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private string _explicitNullValueMetric = default!;
 #endif
         /// <summary>The name of the embedding model to use for the index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>The read parameters for the embedding model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty? ReadParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty? ReadParameters { get => _explicitNullValueReadParameters; set { _explicitNullValueReadParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_parameters"); else _explicitNullProperties?.Remove("read_parameters"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty? _explicitNullValueReadParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty ReadParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty ReadParameters { get => _explicitNullValueReadParameters; set { _explicitNullValueReadParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_parameters"); else _explicitNullProperties?.Remove("read_parameters"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty _explicitNullValueReadParameters = default!;
 #endif
         /// <summary>The write parameters for the embedding model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty? WriteParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty? WriteParameters { get => _explicitNullValueWriteParameters; set { _explicitNullValueWriteParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_parameters"); else _explicitNullProperties?.Remove("write_parameters"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty? _explicitNullValueWriteParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty WriteParameters { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty WriteParameters { get => _explicitNullValueWriteParameters; set { _explicitNullValueWriteParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_parameters"); else _explicitNullProperties?.Remove("write_parameters"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty _explicitNullValueWriteParameters = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed"/> and sets the default values.
@@ -72,7 +96,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,6 +127,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedReadParametersProperty>("read_parameters", ReadParameters);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbedWriteParametersProperty>("write_parameters", WriteParameters);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

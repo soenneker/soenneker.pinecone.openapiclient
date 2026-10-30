@@ -74,6 +74,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
                 { "403", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.RoleBindingList>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.RoleBindingList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -111,6 +112,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Admin.Admin.RoleBindings
                 { "409", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Pinecone.OpenApiClient.Models.ErrorResponse.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.RoleBinding.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

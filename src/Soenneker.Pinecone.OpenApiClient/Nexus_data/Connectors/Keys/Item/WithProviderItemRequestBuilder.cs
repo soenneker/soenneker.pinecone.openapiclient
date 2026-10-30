@@ -51,7 +51,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Connectors.Keys.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorView>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorView.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorView>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorView.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Link a key-based provider by supplying its API key directly, instead of running the OAuth flow.

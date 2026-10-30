@@ -7711,11 +7711,19 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatCompletionModel"
                 }
               },
               "text/event-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/StreamChatCompletionChunkModel"
                 }
               }
@@ -7875,11 +7883,19 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatModel"
                 }
               },
               "text/event-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/StreamChatChunkModel"
                 }
               }
@@ -21160,11 +21176,19 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Query"
                 }
               },
               "text/event-stream": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/QueryStream"
                 }
               }
@@ -21175,6 +21199,10 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "string",
+                  "format": "binary"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Query"
                 }
               }
@@ -24891,10 +24919,6 @@
         }
       },
       "MultiModalContentBlocksModel": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/MultiModalContentTextBlockModel"
@@ -24903,13 +24927,8 @@
             "$ref": "#/components/schemas/MultiModalContentImageBlockModel"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Represents a block in the multimodal content of a context snippet.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/MultiModalContentTextBlockModel",
@@ -25189,10 +25208,6 @@
         "description": "Represents a request to chat with an assistant."
       },
       "SnippetModel": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/TextSnippetModel"
@@ -25201,13 +25216,8 @@
             "$ref": "#/components/schemas/MultiModalSnippetModel"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Represents a part of a document that is relevant to the user query.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/TextSnippetModel",
@@ -25218,10 +25228,6 @@
         }
       },
       "StreamChatChunkModel": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/MessageStartModel"
@@ -25236,13 +25242,8 @@
             "$ref": "#/components/schemas/MessageEndModel"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Represents a chunk of a stream chat response.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "message_start": "#/components/schemas/MessageStartModel",
@@ -25325,10 +25326,6 @@
         "description": "Represents a text context snippet."
       },
       "TypedReferenceModel": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/TextReferenceModel"
@@ -25346,13 +25343,8 @@
             "$ref": "#/components/schemas/DocxReferenceModel"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Represents a reference for the information provided.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/TextReferenceModel",
@@ -26557,9 +26549,6 @@
         }
       },
       "IndexDeployment": {
-        "required": [
-          "deployment_type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/PodDeployment"
@@ -26571,13 +26560,8 @@
             "$ref": "#/components/schemas/ByocDeployment"
           }
         ],
-        "properties": {
-          "deployment_type": {
-            "type": "string"
-          }
-        },
         "description": "The deployment configuration of a Pinecone index. The \u0060deployment_type\u0060 field indicates which infrastructure model the index uses.\n\n- \u0060pod\u0060: Dedicated pod-based infrastructure. Suitable for workloads that require predictable performance.\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including full-text search indexes. Scales automatically; billed per usage.\n- \u0060byoc\u0060: Bring-your-own-compute. Runs in customer-managed infrastructure.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "deployment_type",
           "mapping": {
             "pod": "#/components/schemas/PodDeployment",
@@ -26590,9 +26574,6 @@
         }
       },
       "IndexDeploymentRequest": {
-        "required": [
-          "deployment_type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ManagedDeployment"
@@ -26601,13 +26582,8 @@
             "$ref": "#/components/schemas/ByocDeployment"
           }
         ],
-        "properties": {
-          "deployment_type": {
-            "type": "string"
-          }
-        },
         "description": "The deployment configuration for index creation. The \u0060deployment_type\u0060 field selects the infrastructure model. Defaults to \u0060managed\u0060 (serverless) in \u0060us-east-1\u0060 on \u0060aws\u0060 if omitted.\n\n- \u0060managed\u0060: Serverless infrastructure managed by Pinecone, including full-text search indexes.\n- \u0060byoc\u0060: Bring-your-own-compute.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "deployment_type",
           "mapping": {
             "managed": "#/components/schemas/ManagedDeployment",
@@ -27042,9 +27018,6 @@
         }
       },
       "ReadCapacity": {
-        "required": [
-          "mode"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ReadCapacityOnDemandSpec"
@@ -27053,13 +27026,8 @@
             "$ref": "#/components/schemas/ReadCapacityDedicatedSpec"
           }
         ],
-        "properties": {
-          "mode": {
-            "type": "string"
-          }
-        },
         "description": "By default the index will be created with read capacity mode \u0060OnDemand\u0060. If you prefer to allocate dedicated read nodes for your workload, you must specify mode \u0060Dedicated\u0060 and additional configurations for \u0060node_type\u0060 and \u0060scaling\u0060. BYOC indexes do not support \u0060OnDemand\u0060: a \u0060byoc\u0060 deployment must set \u0060mode: Dedicated\u0060 explicitly, since omitting \u0060read_capacity\u0060 defaults to \u0060OnDemand\u0060 and is rejected.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "mode",
           "mapping": {
             "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpec",
@@ -27276,9 +27244,6 @@
         }
       },
       "ReadCapacityPatch": {
-        "required": [
-          "mode"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ReadCapacityOnDemandSpec"
@@ -27287,13 +27252,8 @@
             "$ref": "#/components/schemas/ReadCapacityDedicatedPatchSpec"
           }
         ],
-        "properties": {
-          "mode": {
-            "type": "string"
-          }
-        },
         "description": "Read capacity changes for an existing managed or BYOC index. Switch to \u0060OnDemand\u0060, or set \u0060Dedicated\u0060 and change any subset of \u0060node_type\u0060, \u0060scaling\u0060, and \u0060manual\u0060 replicas/shards; fields you omit keep their current value. BYOC indexes do not support \u0060OnDemand\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "mode",
           "mapping": {
             "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpec",
@@ -27304,9 +27264,6 @@
         }
       },
       "ReadCapacityResponse": {
-        "required": [
-          "mode"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ReadCapacityOnDemandSpecResponse"
@@ -27315,13 +27272,8 @@
             "$ref": "#/components/schemas/ReadCapacityDedicatedSpecResponse"
           }
         ],
-        "properties": {
-          "mode": {
-            "type": "string"
-          }
-        },
         "description": "Response containing read capacity configuration",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "mode",
           "mapping": {
             "OnDemand": "#/components/schemas/ReadCapacityOnDemandSpecResponse",
@@ -27781,9 +27733,6 @@
       },
       "TypedIndexSchemaField": {
         "title": "Typed field",
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/DenseVectorField"
@@ -27810,13 +27759,8 @@
             "$ref": "#/components/schemas/BooleanField"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A schema field that carries a \u0060type\u0060 discriminator. This covers all field types in current use. See \u0060IndexSchemaField\u0060 for the full union that also includes legacy untyped fields.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "dense_vector": "#/components/schemas/DenseVectorField",
@@ -29438,9 +29382,6 @@
         }
       },
       "DocumentScoringMethod": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/DenseVectorScoring"
@@ -29461,13 +29402,8 @@
             "$ref": "#/components/schemas/SparseEmbedScoring"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A scoring clause that defines how documents are scored against a query. \u0060type\u0060 selects the scoring method and which other fields the clause takes.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "dense_vector": "#/components/schemas/DenseVectorScoring",
@@ -30544,10 +30480,6 @@
         }
       },
       "Embedding": {
-        "required": [
-          "vector_type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DenseEmbedding"
@@ -30556,13 +30488,8 @@
             "$ref": "#/components/schemas/SparseEmbedding"
           }
         ],
-        "properties": {
-          "vector_type": {
-            "type": "string"
-          }
-        },
         "description": "Embedding of a single input",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "vector_type",
           "mapping": {
             "dense": "#/components/schemas/DenseEmbedding",

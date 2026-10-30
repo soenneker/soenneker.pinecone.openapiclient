@@ -12,7 +12,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskInput : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateInput"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,16 +99,31 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.TaskInput();
-            result.CurateInput = new global::Soenneker.Pinecone.OpenApiClient.Models.CurateInput();
-            result.ExploreInput = new global::Soenneker.Pinecone.OpenApiClient.Models.ExploreInput();
-            result.GroomInput = new global::Soenneker.Pinecone.OpenApiClient.Models.GroomInput();
-            result.ImportInput = new global::Soenneker.Pinecone.OpenApiClient.Models.ImportInput();
-            result.OptimizeInput = new global::Soenneker.Pinecone.OpenApiClient.Models.OptimizeInput();
-            result.PackInput = new global::Soenneker.Pinecone.OpenApiClient.Models.PackInput();
-            result.ProfileInput = new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileInput();
-            result.RestoreInput = new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreInput();
-            result.SearchInput = new global::Soenneker.Pinecone.OpenApiClient.Models.SearchInput();
-            return result;
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("session_id") != null && parseNode.GetChildNode("query_id") != null && parseNode.GetChildNode("ask") != null && parseNode.GetChildNode("messages") != null && parseNode.GetChildNode("models") != null && parseNode.GetChildNode("tools") != null && parseNode.GetChildNode("shape") != null && parseNode.GetChildNode("instructions") != null && parseNode.GetChildNode("scope") != null && parseNode.GetChildNode("turn_timeout_seconds") != null && parseNode.GetChildNode("comparison_group") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("trigger") != null && parseNode.GetChildNode("force") != null && parseNode.GetChildNode("scope") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("include_traces") != null && parseNode.GetChildNode("slug") != null && parseNode.GetChildNode("context_id") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("pack_key") != null && parseNode.GetChildNode("pack_filename") != null && parseNode.GetChildNode("target_context_id") != null && parseNode.GetChildNode("target_slug") != null && parseNode.GetChildNode("target_name") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("guide") != null && parseNode.GetChildNode("trigger") != null))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("manifest") != null && parseNode.GetChildNode("trigger") != null))();
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.SearchInput = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.SearchInput(), parseNode);
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.CurateInput = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.CurateInput(), parseNode);
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.PackInput = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.PackInput(), parseNode);
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5) result.RestoreInput = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreInput(), parseNode);
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5) result.ExploreInput = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ExploreInput(), parseNode);
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.ProfileInput = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileInput(), parseNode);
+            if (result.CurateInput == null && result.ExploreInput == null && result.GroomInput == null && result.ImportInput == null && result.OptimizeInput == null && result.PackInput == null && result.ProfileInput == null && result.RestoreInput == null && result.SearchInput == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -123,6 +143,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CurateInput == null && ExploreInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CurateInput != null && ExploreInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (CurateInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CurateInput); return; }
+            if (ExploreInput != null && CurateInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (ExploreInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExploreInput); return; }
+            if (GroomInput != null && CurateInput == null && ExploreInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (GroomInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, GroomInput); return; }
+            if (ImportInput != null && CurateInput == null && ExploreInput == null && GroomInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (ImportInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ImportInput); return; }
+            if (OptimizeInput != null && CurateInput == null && ExploreInput == null && GroomInput == null && ImportInput == null && PackInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (OptimizeInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OptimizeInput); return; }
+            if (PackInput != null && CurateInput == null && ExploreInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && ProfileInput == null && RestoreInput == null && SearchInput == null) { if (PackInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PackInput); return; }
+            if (ProfileInput != null && CurateInput == null && ExploreInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && RestoreInput == null && SearchInput == null) { if (ProfileInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ProfileInput); return; }
+            if (RestoreInput != null && CurateInput == null && ExploreInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && SearchInput == null) { if (RestoreInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RestoreInput); return; }
+            if (SearchInput != null && CurateInput == null && ExploreInput == null && GroomInput == null && ImportInput == null && OptimizeInput == null && PackInput == null && ProfileInput == null && RestoreInput == null) { if (SearchInput is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SearchInput); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CurateInput>(null, CurateInput, ExploreInput, GroomInput, ImportInput, OptimizeInput, PackInput, ProfileInput, RestoreInput, SearchInput);
         }

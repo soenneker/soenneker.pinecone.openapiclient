@@ -12,62 +12,93 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RestoreRunningOutput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("knowledge_count") is { } nullNodeKnowledgeCount && nullNodeKnowledgeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KnowledgeCount = null;
+            if (parseNode.GetChildNode("pack_filename") is { } nullNodePackFilename && nullNodePackFilename.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PackFilename = null;
+            if (parseNode.GetChildNode("pack_size") is { } nullNodePackSize && nullNodePackSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PackSize = null;
+            if (parseNode.GetChildNode("sources_count") is { } nullNodeSourcesCount && nullNodeSourcesCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesCount = null;
+            if (parseNode.GetChildNode("stage_progress") is { } nullNodeStageProgress && nullNodeStageProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StageProgress = null;
+            if (parseNode.GetChildNode("started_at") is { } nullNodeStartedAt && nullNodeStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartedAt = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("target_context_id") is { } nullNodeTargetContextId && nullNodeTargetContextId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetContextId = null;
+            if (parseNode.GetChildNode("target_slug") is { } nullNodeTargetSlug && nullNodeTargetSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetSlug = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Knowledge files found in the pack. Present once it has been expanded.</summary>
-        public long? KnowledgeCount { get; set; }
+        public long? KnowledgeCount { get => _explicitNullValueKnowledgeCount; set { _explicitNullValueKnowledgeCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("knowledge_count"); else _explicitNullProperties?.Remove("knowledge_count"); } }
+        private long? _explicitNullValueKnowledgeCount = default!;
         /// <summary>The pack archive&apos;s file name. Absent on the staging report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PackFilename { get; set; }
+        public string? PackFilename { get => _explicitNullValuePackFilename; set { _explicitNullValuePackFilename = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_filename"); else _explicitNullProperties?.Remove("pack_filename"); } }
+        private string? _explicitNullValuePackFilename = default!;
 #nullable restore
 #else
-        public string PackFilename { get; set; }
+        public string PackFilename { get => _explicitNullValuePackFilename; set { _explicitNullValuePackFilename = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_filename"); else _explicitNullProperties?.Remove("pack_filename"); } }
+        private string _explicitNullValuePackFilename = default!;
 #endif
         /// <summary>Byte size of the pack archive. Present once it has been fetched.</summary>
-        public long? PackSize { get; set; }
+        public long? PackSize { get => _explicitNullValuePackSize; set { _explicitNullValuePackSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pack_size"); else _explicitNullProperties?.Remove("pack_size"); } }
+        private long? _explicitNullValuePackSize = default!;
         /// <summary>Source files found in the pack. Present once it has been expanded.</summary>
-        public long? SourcesCount { get; set; }
+        public long? SourcesCount { get => _explicitNullValueSourcesCount; set { _explicitNullValueSourcesCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_count"); else _explicitNullProperties?.Remove("sources_count"); } }
+        private long? _explicitNullValueSourcesCount = default!;
         /// <summary>How far the current phase has got. Absent on the first report, before any phase begins.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutputStageProgress? StageProgress { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutputStageProgress? StageProgress { get => _explicitNullValueStageProgress; set { _explicitNullValueStageProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stage_progress"); else _explicitNullProperties?.Remove("stage_progress"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutputStageProgress? _explicitNullValueStageProgress = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutputStageProgress StageProgress { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutputStageProgress StageProgress { get => _explicitNullValueStageProgress; set { _explicitNullValueStageProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stage_progress"); else _explicitNullProperties?.Remove("stage_progress"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutputStageProgress _explicitNullValueStageProgress = default!;
 #endif
         /// <summary>When the restore started. Present on the first report only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StartedAt { get; set; }
+        public string? StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
+        private string? _explicitNullValueStartedAt = default!;
 #nullable restore
 #else
-        public string StartedAt { get; set; }
+        public string StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
+        private string _explicitNullValueStartedAt = default!;
 #endif
         /// <summary>Always `running`. Which report this is shows in the keys it carries, not here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? State { get; set; }
+        public string? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private string? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public string State { get; set; }
+        public string State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private string _explicitNullValueState = default!;
 #endif
         /// <summary>The context the pack is restored into. Absent on the staging report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetContextId { get; set; }
+        public string? TargetContextId { get => _explicitNullValueTargetContextId; set { _explicitNullValueTargetContextId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_context_id"); else _explicitNullProperties?.Remove("target_context_id"); } }
+        private string? _explicitNullValueTargetContextId = default!;
 #nullable restore
 #else
-        public string TargetContextId { get; set; }
+        public string TargetContextId { get => _explicitNullValueTargetContextId; set { _explicitNullValueTargetContextId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_context_id"); else _explicitNullProperties?.Remove("target_context_id"); } }
+        private string _explicitNullValueTargetContextId = default!;
 #endif
         /// <summary>Slug of that target context. Absent from the unzip and staging reports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetSlug { get; set; }
+        public string? TargetSlug { get => _explicitNullValueTargetSlug; set { _explicitNullValueTargetSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_slug"); else _explicitNullProperties?.Remove("target_slug"); } }
+        private string? _explicitNullValueTargetSlug = default!;
 #nullable restore
 #else
-        public string TargetSlug { get; set; }
+        public string TargetSlug { get => _explicitNullValueTargetSlug; set { _explicitNullValueTargetSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_slug"); else _explicitNullProperties?.Remove("target_slug"); } }
+        private string _explicitNullValueTargetSlug = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutput"/> and sets the default values.
@@ -84,7 +115,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.RestoreRunningOutput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +152,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("state", State);
             writer.WriteStringValue("target_context_id", TargetContextId);
             writer.WriteStringValue("target_slug", TargetSlug);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

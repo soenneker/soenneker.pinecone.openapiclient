@@ -12,72 +12,103 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateIndexForModelRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cloud") is { } nullNodeCloud && nullNodeCloud.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cloud = null;
+            if (parseNode.GetChildNode("deletion_protection") is { } nullNodeDeletionProtection && nullNodeDeletionProtection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletionProtection = null;
+            if (parseNode.GetChildNode("embed") is { } nullNodeEmbed && nullNodeEmbed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embed = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("read_capacity") is { } nullNodeReadCapacity && nullNodeReadCapacity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadCapacity = null;
+            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+            if (parseNode.GetChildNode("schema") is { } nullNodeSchema && nullNodeSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Schema = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The public cloud where you would like your index hosted.Possible values: `gcp`, `aws`, or `azure`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cloud { get; set; }
+        public string? Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
+        private string? _explicitNullValueCloud = default!;
 #nullable restore
 #else
-        public string Cloud { get; set; }
+        public string Cloud { get => _explicitNullValueCloud; set { _explicitNullValueCloud = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cloud"); else _explicitNullProperties?.Remove("cloud"); } }
+        private string _explicitNullValueCloud = default!;
 #endif
         /// <summary>Whether [deletion protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection) is enabled/disabled for the index.Possible values: `disabled` or `enabled`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DeletionProtection { get; set; }
+        public string? DeletionProtection { get => _explicitNullValueDeletionProtection; set { _explicitNullValueDeletionProtection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_protection"); else _explicitNullProperties?.Remove("deletion_protection"); } }
+        private string? _explicitNullValueDeletionProtection = default!;
 #nullable restore
 #else
-        public string DeletionProtection { get; set; }
+        public string DeletionProtection { get => _explicitNullValueDeletionProtection; set { _explicitNullValueDeletionProtection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_protection"); else _explicitNullProperties?.Remove("deletion_protection"); } }
+        private string _explicitNullValueDeletionProtection = default!;
 #endif
         /// <summary>Specify the integrated embedding configuration for the legacy integrated index.Once set the model cannot be changed, but you can later update the embedding configuration of a legacy integrated index, including field map, read parameters, or write parameters.Refer to the [model guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models) for available models and model details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed? Embed { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed? Embed { get => _explicitNullValueEmbed; set { _explicitNullValueEmbed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed"); else _explicitNullProperties?.Remove("embed"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed? _explicitNullValueEmbed = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed Embed { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed Embed { get => _explicitNullValueEmbed; set { _explicitNullValueEmbed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed"); else _explicitNullProperties?.Remove("embed"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestEmbed _explicitNullValueEmbed = default!;
 #endif
         /// <summary>The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or &apos;-&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>By default the index will be created with read capacity mode `OnDemand`. If you prefer to allocate dedicated read nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`. BYOC indexes do not support `OnDemand`: a `byoc` deployment must set `mode: Dedicated` explicitly, since omitting `read_capacity` defaults to `OnDemand` and is rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity? ReadCapacity { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity? ReadCapacity { get => _explicitNullValueReadCapacity; set { _explicitNullValueReadCapacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_capacity"); else _explicitNullProperties?.Remove("read_capacity"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity? _explicitNullValueReadCapacity = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity ReadCapacity { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity ReadCapacity { get => _explicitNullValueReadCapacity; set { _explicitNullValueReadCapacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_capacity"); else _explicitNullProperties?.Remove("read_capacity"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity _explicitNullValueReadCapacity = default!;
 #endif
         /// <summary>The region where you would like your index to be created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Region { get; set; }
+        public string? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string? _explicitNullValueRegion = default!;
 #nullable restore
 #else
-        public string Region { get; set; }
+        public string Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private string _explicitNullValueRegion = default!;
 #endif
         /// <summary>Schema for the behavior of Pinecone&apos;s internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema? Schema { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema? Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema? _explicitNullValueSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema Schema { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema _explicitNullValueSchema = default!;
 #endif
         /// <summary>Custom user tags added to an index, at most 20 per index. Keys must be 80 characters or less and alphanumeric, &apos;_&apos;, or &apos;-&apos;. Values must be 120 characters or less and consist of printable ASCII characters or spaces. To unset a key, set the value to be an empty string. `null` in responses when the index has no tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags? Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags Tags { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags _explicitNullValueTags = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequest"/> and sets the default values.
@@ -95,7 +126,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -130,6 +161,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("region", Region);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.MetadataSchema>("schema", Schema);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexForModelRequestTags>("tags", Tags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

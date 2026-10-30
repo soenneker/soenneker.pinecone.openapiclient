@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Connectors.Oauth.Item.Star
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorOAuthStart>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorOAuthStart.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorOAuthStart>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ConnectorOAuthStart.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns an `authorize_url` for the user to open in a browser. The connector is persisted by the provider&apos;s OAuth redirect callback once the user approves access.

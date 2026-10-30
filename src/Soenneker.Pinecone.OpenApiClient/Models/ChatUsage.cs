@@ -12,27 +12,47 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatUsage : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_model") is { } nullNodeByModel && nullNodeByModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByModel = null;
+            if (parseNode.GetChildNode("cache_read_tokens") is { } nullNodeCacheReadTokens && nullNodeCacheReadTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadTokens = null;
+            if (parseNode.GetChildNode("cache_write_tokens") is { } nullNodeCacheWriteTokens && nullNodeCacheWriteTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheWriteTokens = null;
+            if (parseNode.GetChildNode("completion_tokens") is { } nullNodeCompletionTokens && nullNodeCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionTokens = null;
+            if (parseNode.GetChildNode("prompt_tokens") is { } nullNodePromptTokens && nullNodePromptTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptTokens = null;
+            if (parseNode.GetChildNode("total_tokens") is { } nullNodeTotalTokens && nullNodeTotalTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Keyed by the model the proxy actually dispatched to, so tier fallbacks are visible.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty? ByModel { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty? ByModel { get => _explicitNullValueByModel; set { _explicitNullValueByModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_model"); else _explicitNullProperties?.Remove("by_model"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty? _explicitNullValueByModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty ByModel { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty ByModel { get => _explicitNullValueByModel; set { _explicitNullValueByModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_model"); else _explicitNullProperties?.Remove("by_model"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsageByModelProperty _explicitNullValueByModel = default!;
 #endif
         /// <summary>Input served without re-billing.</summary>
-        public long? CacheReadTokens { get; set; }
+        public long? CacheReadTokens { get => _explicitNullValueCacheReadTokens; set { _explicitNullValueCacheReadTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_tokens"); else _explicitNullProperties?.Remove("cache_read_tokens"); } }
+        private long? _explicitNullValueCacheReadTokens = default!;
         /// <summary>Prompt tokens written into cache.</summary>
-        public long? CacheWriteTokens { get; set; }
+        public long? CacheWriteTokens { get => _explicitNullValueCacheWriteTokens; set { _explicitNullValueCacheWriteTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_write_tokens"); else _explicitNullProperties?.Remove("cache_write_tokens"); } }
+        private long? _explicitNullValueCacheWriteTokens = default!;
         /// <summary>Output tokens billed across every model.</summary>
-        public long? CompletionTokens { get; set; }
+        public long? CompletionTokens { get => _explicitNullValueCompletionTokens; set { _explicitNullValueCompletionTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_tokens"); else _explicitNullProperties?.Remove("completion_tokens"); } }
+        private long? _explicitNullValueCompletionTokens = default!;
         /// <summary>Input tokens billed across every model.</summary>
-        public long? PromptTokens { get; set; }
+        public long? PromptTokens { get => _explicitNullValuePromptTokens; set { _explicitNullValuePromptTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_tokens"); else _explicitNullProperties?.Remove("prompt_tokens"); } }
+        private long? _explicitNullValuePromptTokens = default!;
         /// <summary>Input plus output tokens across every model.</summary>
-        public long? TotalTokens { get; set; }
+        public long? TotalTokens { get => _explicitNullValueTotalTokens; set { _explicitNullValueTotalTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_tokens"); else _explicitNullProperties?.Remove("total_tokens"); } }
+        private long? _explicitNullValueTotalTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage"/> and sets the default values.
         /// </summary>
@@ -48,7 +68,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ChatUsage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +99,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("completion_tokens", CompletionTokens);
             writer.WriteLongValue("prompt_tokens", PromptTokens);
             writer.WriteLongValue("total_tokens", TotalTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

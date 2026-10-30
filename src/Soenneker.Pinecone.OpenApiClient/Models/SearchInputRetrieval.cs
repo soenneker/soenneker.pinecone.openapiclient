@@ -12,32 +12,58 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SearchInputRetrieval : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artifacts_only") is { } nullNodeArtifactsOnly && nullNodeArtifactsOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsOnly = null;
+            if (parseNode.GetChildNode("chunks_only") is { } nullNodeChunksOnly && nullNodeChunksOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunksOnly = null;
+            if (parseNode.GetChildNode("compose") is { } nullNodeCompose && nullNodeCompose.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compose = null;
+            if (parseNode.GetChildNode("max_retrieved") is { } nullNodeMaxRetrieved && nullNodeMaxRetrieved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRetrieved = null;
+            if (parseNode.GetChildNode("max_retrieved_chars") is { } nullNodeMaxRetrievedChars && nullNodeMaxRetrievedChars.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRetrievedChars = null;
+            if (parseNode.GetChildNode("max_steps") is { } nullNodeMaxSteps && nullNodeMaxSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSteps = null;
+            if (parseNode.GetChildNode("pointers_only") is { } nullNodePointersOnly && nullNodePointersOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointersOnly = null;
+            if (parseNode.GetChildNode("retrieval_only") is { } nullNodeRetrievalOnly && nullNodeRetrievalOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetrievalOnly = null;
+            if (parseNode.GetChildNode("thinking_level") is { } nullNodeThinkingLevel && nullNodeThinkingLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThinkingLevel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Narrow retrieval to artifacts. Null where the caller omitted it.</summary>
-        public bool? ArtifactsOnly { get; set; }
+        public bool? ArtifactsOnly { get => _explicitNullValueArtifactsOnly; set { _explicitNullValueArtifactsOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_only"); else _explicitNullProperties?.Remove("artifacts_only"); } }
+        private bool? _explicitNullValueArtifactsOnly = default!;
         /// <summary>Narrow retrieval to chunks. Null where the caller omitted it.</summary>
-        public bool? ChunksOnly { get; set; }
+        public bool? ChunksOnly { get => _explicitNullValueChunksOnly; set { _explicitNullValueChunksOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks_only"); else _explicitNullProperties?.Remove("chunks_only"); } }
+        private bool? _explicitNullValueChunksOnly = default!;
         /// <summary>Whether to synthesize an answer. Null where the caller omitted it.</summary>
-        public bool? Compose { get; set; }
+        public bool? Compose { get => _explicitNullValueCompose; set { _explicitNullValueCompose = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compose"); else _explicitNullProperties?.Remove("compose"); } }
+        private bool? _explicitNullValueCompose = default!;
         /// <summary>Cap on retrieved items. Null where the caller omitted it.</summary>
-        public long? MaxRetrieved { get; set; }
+        public long? MaxRetrieved { get => _explicitNullValueMaxRetrieved; set { _explicitNullValueMaxRetrieved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_retrieved"); else _explicitNullProperties?.Remove("max_retrieved"); } }
+        private long? _explicitNullValueMaxRetrieved = default!;
         /// <summary>Cap on per-item text length. Null where the caller omitted it.</summary>
-        public long? MaxRetrievedChars { get; set; }
+        public long? MaxRetrievedChars { get => _explicitNullValueMaxRetrievedChars; set { _explicitNullValueMaxRetrievedChars = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_retrieved_chars"); else _explicitNullProperties?.Remove("max_retrieved_chars"); } }
+        private long? _explicitNullValueMaxRetrievedChars = default!;
         /// <summary>Cap on the agent&apos;s tool-loop steps. Null where the caller omitted it.</summary>
-        public long? MaxSteps { get; set; }
+        public long? MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_steps"); else _explicitNullProperties?.Remove("max_steps"); } }
+        private long? _explicitNullValueMaxSteps = default!;
         /// <summary>Skip synthesis and return pointers only. Null where the caller omitted it.</summary>
-        public bool? PointersOnly { get; set; }
+        public bool? PointersOnly { get => _explicitNullValuePointersOnly; set { _explicitNullValuePointersOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointers_only"); else _explicitNullProperties?.Remove("pointers_only"); } }
+        private bool? _explicitNullValuePointersOnly = default!;
         /// <summary>Skip synthesis and return the hits. Null where the caller omitted it.</summary>
-        public bool? RetrievalOnly { get; set; }
+        public bool? RetrievalOnly { get => _explicitNullValueRetrievalOnly; set { _explicitNullValueRetrievalOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retrieval_only"); else _explicitNullProperties?.Remove("retrieval_only"); } }
+        private bool? _explicitNullValueRetrievalOnly = default!;
         /// <summary>Reasoning depth. Null where the caller omitted it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThinkingLevel { get; set; }
+        public string? ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
+        private string? _explicitNullValueThinkingLevel = default!;
 #nullable restore
 #else
-        public string ThinkingLevel { get; set; }
+        public string ThinkingLevel { get => _explicitNullValueThinkingLevel; set { _explicitNullValueThinkingLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking_level"); else _explicitNullProperties?.Remove("thinking_level"); } }
+        private string _explicitNullValueThinkingLevel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval"/> and sets the default values.
@@ -54,7 +80,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.SearchInputRetrieval(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -91,6 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteBoolValue("pointers_only", PointersOnly);
             writer.WriteBoolValue("retrieval_only", RetrievalOnly);
             writer.WriteStringValue("thinking_level", ThinkingLevel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

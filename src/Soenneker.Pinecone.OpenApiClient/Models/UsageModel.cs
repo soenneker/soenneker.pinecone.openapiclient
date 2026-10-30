@@ -12,15 +12,28 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UsageModel : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("completion_tokens") is { } nullNodeCompletionTokens && nullNodeCompletionTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionTokens = null;
+            if (parseNode.GetChildNode("prompt_tokens") is { } nullNodePromptTokens && nullNodePromptTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptTokens = null;
+            if (parseNode.GetChildNode("total_tokens") is { } nullNodeTotalTokens && nullNodeTotalTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For chat interactions, the number of tokens in the assistant&apos;s response.For context retrieval, this is always 0.</summary>
-        public int? CompletionTokens { get; set; }
+        public int? CompletionTokens { get => _explicitNullValueCompletionTokens; set { _explicitNullValueCompletionTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_tokens"); else _explicitNullProperties?.Remove("completion_tokens"); } }
+        private int? _explicitNullValueCompletionTokens = default!;
         /// <summary>For chat interactions, the number of tokens in the LLM request (message, context snippets, and system prompt).For context retrieval, the number of tokens in the LLM request used to generate search queries from the messages, plus the tokens in the retrieved context snippets.</summary>
-        public int? PromptTokens { get; set; }
+        public int? PromptTokens { get => _explicitNullValuePromptTokens; set { _explicitNullValuePromptTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_tokens"); else _explicitNullProperties?.Remove("prompt_tokens"); } }
+        private int? _explicitNullValuePromptTokens = default!;
         /// <summary>The total number of tokens used, equal to the sum of `prompt_tokens` and `completion_tokens`.</summary>
-        public int? TotalTokens { get; set; }
+        public int? TotalTokens { get => _explicitNullValueTotalTokens; set { _explicitNullValueTotalTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_tokens"); else _explicitNullProperties?.Remove("total_tokens"); } }
+        private int? _explicitNullValueTotalTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.UsageModel"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.UsageModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.UsageModel();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.UsageModel(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteIntValue("completion_tokens", CompletionTokens);
             writer.WriteIntValue("prompt_tokens", PromptTokens);
             writer.WriteIntValue("total_tokens", TotalTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

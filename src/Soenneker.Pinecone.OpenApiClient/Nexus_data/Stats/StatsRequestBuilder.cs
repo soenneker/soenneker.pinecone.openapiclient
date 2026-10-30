@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.Stats
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ProjectTaskStats.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Aggregate task counters across the whole project (all contexts), broken down by state and workflow. The per-context equivalent is `GET /contexts/{slug}/tasks/stats`.

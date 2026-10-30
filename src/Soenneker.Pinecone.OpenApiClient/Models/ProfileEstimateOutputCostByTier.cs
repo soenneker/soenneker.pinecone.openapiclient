@@ -12,32 +12,48 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProfileEstimateOutputCostByTier : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("lite") is { } nullNodeLite && nullNodeLite.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lite = null;
+            if (parseNode.GetChildNode("pro") is { } nullNodePro && nullNodePro.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pro = null;
+            if (parseNode.GetChildNode("standard") is { } nullNodeStandard && nullNodeStandard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Standard = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>What the curate would cost at one model tier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? Lite { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? Lite { get => _explicitNullValueLite; set { _explicitNullValueLite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lite"); else _explicitNullProperties?.Remove("lite"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? _explicitNullValueLite = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost Lite { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost Lite { get => _explicitNullValueLite; set { _explicitNullValueLite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lite"); else _explicitNullProperties?.Remove("lite"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost _explicitNullValueLite = default!;
 #endif
         /// <summary>What the curate would cost at one model tier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? Pro { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? Pro { get => _explicitNullValuePro; set { _explicitNullValuePro = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pro"); else _explicitNullProperties?.Remove("pro"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? _explicitNullValuePro = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost Pro { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost Pro { get => _explicitNullValuePro; set { _explicitNullValuePro = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pro"); else _explicitNullProperties?.Remove("pro"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost _explicitNullValuePro = default!;
 #endif
         /// <summary>What the curate would cost at one model tier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? Standard { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? Standard { get => _explicitNullValueStandard; set { _explicitNullValueStandard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("standard"); else _explicitNullProperties?.Remove("standard"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost? _explicitNullValueStandard = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost Standard { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost Standard { get => _explicitNullValueStandard; set { _explicitNullValueStandard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("standard"); else _explicitNullProperties?.Remove("standard"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost _explicitNullValueStandard = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ProfileEstimateOutputCostByTier(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost>("lite", Lite);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost>("pro", Pro);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ProfileTierCost>("standard", Standard);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

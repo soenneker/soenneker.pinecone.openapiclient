@@ -12,55 +12,98 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CurateManifestTuneOutputDelta : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artifacts_created") is { } nullNodeArtifactsCreated && nullNodeArtifactsCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsCreated = null;
+            if (parseNode.GetChildNode("artifacts_errored") is { } nullNodeArtifactsErrored && nullNodeArtifactsErrored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsErrored = null;
+            if (parseNode.GetChildNode("artifacts_reevaluated") is { } nullNodeArtifactsReevaluated && nullNodeArtifactsReevaluated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsReevaluated = null;
+            if (parseNode.GetChildNode("artifacts_screened") is { } nullNodeArtifactsScreened && nullNodeArtifactsScreened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsScreened = null;
+            if (parseNode.GetChildNode("artifacts_updated") is { } nullNodeArtifactsUpdated && nullNodeArtifactsUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactsUpdated = null;
+            if (parseNode.GetChildNode("chunks_created") is { } nullNodeChunksCreated && nullNodeChunksCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunksCreated = null;
+            if (parseNode.GetChildNode("chunks_screened") is { } nullNodeChunksScreened && nullNodeChunksScreened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunksScreened = null;
+            if (parseNode.GetChildNode("chunks_updated") is { } nullNodeChunksUpdated && nullNodeChunksUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunksUpdated = null;
+            if (parseNode.GetChildNode("corpus_artifacts") is { } nullNodeCorpusArtifacts && nullNodeCorpusArtifacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorpusArtifacts = null;
+            if (parseNode.GetChildNode("corpus_edges") is { } nullNodeCorpusEdges && nullNodeCorpusEdges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorpusEdges = null;
+            if (parseNode.GetChildNode("failed") is { } nullNodeFailed && nullNodeFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failed = null;
+            if (parseNode.GetChildNode("failed_sources") is { } nullNodeFailedSources && nullNodeFailedSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedSources = null;
+            if (parseNode.GetChildNode("failed_sources_file") is { } nullNodeFailedSourcesFile && nullNodeFailedSourcesFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedSourcesFile = null;
+            if (parseNode.GetChildNode("failed_sources_truncated") is { } nullNodeFailedSourcesTruncated && nullNodeFailedSourcesTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedSourcesTruncated = null;
+            if (parseNode.GetChildNode("images_skipped_no_vision") is { } nullNodeImagesSkippedNoVision && nullNodeImagesSkippedNoVision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImagesSkippedNoVision = null;
+            if (parseNode.GetChildNode("sources_content_truncated") is { } nullNodeSourcesContentTruncated && nullNodeSourcesContentTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesContentTruncated = null;
+            if (parseNode.GetChildNode("sources_skipped_unreadable") is { } nullNodeSourcesSkippedUnreadable && nullNodeSourcesSkippedUnreadable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesSkippedUnreadable = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-document artifacts written for the first time.</summary>
-        public long? ArtifactsCreated { get; set; }
+        public long? ArtifactsCreated { get => _explicitNullValueArtifactsCreated; set { _explicitNullValueArtifactsCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_created"); else _explicitNullProperties?.Remove("artifacts_created"); } }
+        private long? _explicitNullValueArtifactsCreated = default!;
         /// <summary>Extraction calls that failed outright.</summary>
-        public long? ArtifactsErrored { get; set; }
+        public long? ArtifactsErrored { get => _explicitNullValueArtifactsErrored; set { _explicitNullValueArtifactsErrored = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_errored"); else _explicitNullProperties?.Remove("artifacts_errored"); } }
+        private long? _explicitNullValueArtifactsErrored = default!;
         /// <summary>Artifacts re-extracted under the tuned manifest. Replaces the source counts a normal run reports.</summary>
-        public long? ArtifactsReevaluated { get; set; }
+        public long? ArtifactsReevaluated { get => _explicitNullValueArtifactsReevaluated; set { _explicitNullValueArtifactsReevaluated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_reevaluated"); else _explicitNullProperties?.Remove("artifacts_reevaluated"); } }
+        private long? _explicitNullValueArtifactsReevaluated = default!;
         /// <summary>Per-document artifacts rejected by the quality screen.</summary>
-        public long? ArtifactsScreened { get; set; }
+        public long? ArtifactsScreened { get => _explicitNullValueArtifactsScreened; set { _explicitNullValueArtifactsScreened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_screened"); else _explicitNullProperties?.Remove("artifacts_screened"); } }
+        private long? _explicitNullValueArtifactsScreened = default!;
         /// <summary>Per-document artifacts rewritten from changed sources.</summary>
-        public long? ArtifactsUpdated { get; set; }
+        public long? ArtifactsUpdated { get => _explicitNullValueArtifactsUpdated; set { _explicitNullValueArtifactsUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifacts_updated"); else _explicitNullProperties?.Remove("artifacts_updated"); } }
+        private long? _explicitNullValueArtifactsUpdated = default!;
         /// <summary>Chunks written for the first time.</summary>
-        public long? ChunksCreated { get; set; }
+        public long? ChunksCreated { get => _explicitNullValueChunksCreated; set { _explicitNullValueChunksCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks_created"); else _explicitNullProperties?.Remove("chunks_created"); } }
+        private long? _explicitNullValueChunksCreated = default!;
         /// <summary>Chunks rejected by the quality screen.</summary>
-        public long? ChunksScreened { get; set; }
+        public long? ChunksScreened { get => _explicitNullValueChunksScreened; set { _explicitNullValueChunksScreened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks_screened"); else _explicitNullProperties?.Remove("chunks_screened"); } }
+        private long? _explicitNullValueChunksScreened = default!;
         /// <summary>Chunks rewritten from changed sources.</summary>
-        public long? ChunksUpdated { get; set; }
+        public long? ChunksUpdated { get => _explicitNullValueChunksUpdated; set { _explicitNullValueChunksUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunks_updated"); else _explicitNullProperties?.Remove("chunks_updated"); } }
+        private long? _explicitNullValueChunksUpdated = default!;
         /// <summary>Artifacts written by the corpus-wide reduce pass.</summary>
-        public long? CorpusArtifacts { get; set; }
+        public long? CorpusArtifacts { get => _explicitNullValueCorpusArtifacts; set { _explicitNullValueCorpusArtifacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corpus_artifacts"); else _explicitNullProperties?.Remove("corpus_artifacts"); } }
+        private long? _explicitNullValueCorpusArtifacts = default!;
         /// <summary>Edges written by that pass.</summary>
-        public long? CorpusEdges { get; set; }
+        public long? CorpusEdges { get => _explicitNullValueCorpusEdges; set { _explicitNullValueCorpusEdges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corpus_edges"); else _explicitNullProperties?.Remove("corpus_edges"); } }
+        private long? _explicitNullValueCorpusEdges = default!;
         /// <summary>Sources that could not be re-evaluated.</summary>
-        public long? Failed { get; set; }
+        public long? Failed { get => _explicitNullValueFailed; set { _explicitNullValueFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed"); else _explicitNullProperties?.Remove("failed"); } }
+        private long? _explicitNullValueFailed = default!;
         /// <summary>Paths of the failed sources, capped in length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FailedSources { get; set; }
+        public List<string>? FailedSources { get => _explicitNullValueFailedSources; set { _explicitNullValueFailedSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_sources"); else _explicitNullProperties?.Remove("failed_sources"); } }
+        private List<string>? _explicitNullValueFailedSources = default!;
 #nullable restore
 #else
-        public List<string> FailedSources { get; set; }
+        public List<string> FailedSources { get => _explicitNullValueFailedSources; set { _explicitNullValueFailedSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_sources"); else _explicitNullProperties?.Remove("failed_sources"); } }
+        private List<string> _explicitNullValueFailedSources = default!;
 #endif
         /// <summary>Where the full failed-sources list was written when truncated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FailedSourcesFile { get; set; }
+        public string? FailedSourcesFile { get => _explicitNullValueFailedSourcesFile; set { _explicitNullValueFailedSourcesFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_sources_file"); else _explicitNullProperties?.Remove("failed_sources_file"); } }
+        private string? _explicitNullValueFailedSourcesFile = default!;
 #nullable restore
 #else
-        public string FailedSourcesFile { get; set; }
+        public string FailedSourcesFile { get => _explicitNullValueFailedSourcesFile; set { _explicitNullValueFailedSourcesFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_sources_file"); else _explicitNullProperties?.Remove("failed_sources_file"); } }
+        private string _explicitNullValueFailedSourcesFile = default!;
 #endif
         /// <summary>Whether failed_sources was capped and the full list spilled to a file.</summary>
-        public bool? FailedSourcesTruncated { get; set; }
+        public bool? FailedSourcesTruncated { get => _explicitNullValueFailedSourcesTruncated; set { _explicitNullValueFailedSourcesTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_sources_truncated"); else _explicitNullProperties?.Remove("failed_sources_truncated"); } }
+        private bool? _explicitNullValueFailedSourcesTruncated = default!;
         /// <summary>Images left unread because the configured model cannot see.</summary>
-        public long? ImagesSkippedNoVision { get; set; }
+        public long? ImagesSkippedNoVision { get => _explicitNullValueImagesSkippedNoVision; set { _explicitNullValueImagesSkippedNoVision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images_skipped_no_vision"); else _explicitNullProperties?.Remove("images_skipped_no_vision"); } }
+        private long? _explicitNullValueImagesSkippedNoVision = default!;
         /// <summary>Sources whose text was cut at the input cap.</summary>
-        public long? SourcesContentTruncated { get; set; }
+        public long? SourcesContentTruncated { get => _explicitNullValueSourcesContentTruncated; set { _explicitNullValueSourcesContentTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_content_truncated"); else _explicitNullProperties?.Remove("sources_content_truncated"); } }
+        private long? _explicitNullValueSourcesContentTruncated = default!;
         /// <summary>Sources no leg could read, skipped rather than failed.</summary>
-        public long? SourcesSkippedUnreadable { get; set; }
+        public long? SourcesSkippedUnreadable { get => _explicitNullValueSourcesSkippedUnreadable; set { _explicitNullValueSourcesSkippedUnreadable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_skipped_unreadable"); else _explicitNullProperties?.Remove("sources_skipped_unreadable"); } }
+        private long? _explicitNullValueSourcesSkippedUnreadable = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutputDelta"/> and sets the default values.
         /// </summary>
@@ -76,7 +119,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutputDelta CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutputDelta();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.CurateManifestTuneOutputDelta(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +172,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("images_skipped_no_vision", ImagesSkippedNoVision);
             writer.WriteLongValue("sources_content_truncated", SourcesContentTruncated);
             writer.WriteLongValue("sources_skipped_unreadable", SourcesSkippedUnreadable);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

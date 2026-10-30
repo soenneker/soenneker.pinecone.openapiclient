@@ -12,42 +12,63 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FetchDocumentsRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("filter") is { } nullNodeFilter && nullNodeFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filter = null;
+            if (parseNode.GetChildNode("ids") is { } nullNodeIds && nullNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ids = null;
+            if (parseNode.GetChildNode("include_fields") is { } nullNodeIncludeFields && nullNodeIncludeFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeFields = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("pagination_token") is { } nullNodePaginationToken && nullNodePaginationToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PaginationToken = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A metadata filter expression selecting the documents to fetch. Must not be empty; an empty filter is rejected rather than matching every document. Mutually exclusive with `ids`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequestFilterProperty? Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequestFilterProperty? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequestFilterProperty? _explicitNullValueFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequestFilterProperty Filter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequestFilterProperty Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequestFilterProperty _explicitNullValueFilter = default!;
 #endif
         /// <summary>A list of document IDs to fetch. Mutually exclusive with `filter`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Ids { get; set; }
+        public List<string>? Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        private List<string>? _explicitNullValueIds = default!;
 #nullable restore
 #else
-        public List<string> Ids { get; set; }
+        public List<string> Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        private List<string> _explicitNullValueIds = default!;
 #endif
         /// <summary>The document fields to return on each document. When omitted or empty, all fields are returned; `[&quot;*&quot;]` also returns every field. A name the schema doesn&apos;t declare is read as a metadata key, and returns nothing for documents without that key.Naming a field whose schema sets `store_text: false` is rejected with `400`, since its text is not stored; omitting `include_fields` or passing `[&quot;*&quot;]` leaves such fields out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IncludeFields { get; set; }
+        public List<string>? IncludeFields { get => _explicitNullValueIncludeFields; set { _explicitNullValueIncludeFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_fields"); else _explicitNullProperties?.Remove("include_fields"); } }
+        private List<string>? _explicitNullValueIncludeFields = default!;
 #nullable restore
 #else
-        public List<string> IncludeFields { get; set; }
+        public List<string> IncludeFields { get => _explicitNullValueIncludeFields; set { _explicitNullValueIncludeFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_fields"); else _explicitNullProperties?.Remove("include_fields"); } }
+        private List<string> _explicitNullValueIncludeFields = default!;
 #endif
         /// <summary>The maximum number of documents to return per page. Only applies to a fetch by `filter`; a fetch by `ids` is already bounded by `ids` and ignores an in-range value, but a value outside 1-10000 is rejected on either form. Defaults to 100.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>A pagination token from a previous fetch response, used to retrieve the next page of matching documents. Only valid together with `filter`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PaginationToken { get; set; }
+        public string? PaginationToken { get => _explicitNullValuePaginationToken; set { _explicitNullValuePaginationToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagination_token"); else _explicitNullProperties?.Remove("pagination_token"); } }
+        private string? _explicitNullValuePaginationToken = default!;
 #nullable restore
 #else
-        public string PaginationToken { get; set; }
+        public string PaginationToken { get => _explicitNullValuePaginationToken; set { _explicitNullValuePaginationToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagination_token"); else _explicitNullProperties?.Remove("pagination_token"); } }
+        private string _explicitNullValuePaginationToken = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequest"/> and sets the default values.
@@ -65,7 +86,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.FetchDocumentsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,6 +115,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("include_fields", IncludeFields);
             writer.WriteIntValue("limit", Limit);
             writer.WriteStringValue("pagination_token", PaginationToken);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

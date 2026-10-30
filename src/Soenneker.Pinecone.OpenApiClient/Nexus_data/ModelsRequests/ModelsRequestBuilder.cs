@@ -49,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Nexus_data.ModelsRequests
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalog.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// What the `model` field on `POST /query` draws from: the default, every catalog entry, the tier → model-id map, per-phase defaults, and the curate-capable ids. Only entries with `available: true` are selectable; the rest are rejected with `400`.

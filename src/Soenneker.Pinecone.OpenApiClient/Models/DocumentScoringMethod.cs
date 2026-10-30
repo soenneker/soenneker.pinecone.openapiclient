@@ -12,7 +12,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DocumentScoringMethod : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DenseVectorScoring"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,33 +74,48 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod();
             if("DenseVectorScoring".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DenseVectorScoring = new global::Soenneker.Pinecone.OpenApiClient.Models.DenseVectorScoring();
+                
             }
-            else if("embed".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("EmbedScoring".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EmbedScoring = new global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoring();
+                
             }
             else if("QueryStringScoring".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.QueryStringScoring = new global::Soenneker.Pinecone.OpenApiClient.Models.QueryStringScoring();
+                
             }
             else if("SparseEmbedScoring".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SparseEmbedScoring = new global::Soenneker.Pinecone.OpenApiClient.Models.SparseEmbedScoring();
+                
             }
             else if("SparseVectorScoring".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SparseVectorScoring = new global::Soenneker.Pinecone.OpenApiClient.Models.SparseVectorScoring();
+                
             }
-            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("TextScoring".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TextScoring = new global::Soenneker.Pinecone.OpenApiClient.Models.TextScoring();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("dense_vector".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("values") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("sparse_vector".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("sparse_values") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("text".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("query") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("query_string".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("query") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("embed".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("query") != null))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("sparse_embed".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("query") != null))();
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.DenseVectorScoring = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DenseVectorScoring(), parseNode);
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.SparseVectorScoring = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.SparseVectorScoring(), parseNode);
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5) result.TextScoring = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.TextScoring(), parseNode);
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5) result.QueryStringScoring = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.QueryStringScoring(), parseNode);
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5) result.EmbedScoring = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoring(), parseNode);
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.SparseEmbedScoring = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.SparseEmbedScoring(), parseNode);
+            if (result.DenseVectorScoring == null && result.EmbedScoring == null && result.QueryStringScoring == null && result.SparseEmbedScoring == null && result.SparseVectorScoring == null && result.TextScoring == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -135,29 +155,44 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (DenseVectorScoring == null && EmbedScoring == null && QueryStringScoring == null && SparseEmbedScoring == null && SparseVectorScoring == null && TextScoring == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DenseVectorScoring != null && EmbedScoring == null && QueryStringScoring == null && SparseEmbedScoring == null && SparseVectorScoring == null && TextScoring == null) { if (DenseVectorScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DenseVectorScoring); return; }
+            if (EmbedScoring != null && DenseVectorScoring == null && QueryStringScoring == null && SparseEmbedScoring == null && SparseVectorScoring == null && TextScoring == null) { if (EmbedScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, EmbedScoring); return; }
+            if (QueryStringScoring != null && DenseVectorScoring == null && EmbedScoring == null && SparseEmbedScoring == null && SparseVectorScoring == null && TextScoring == null) { if (QueryStringScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, QueryStringScoring); return; }
+            if (SparseEmbedScoring != null && DenseVectorScoring == null && EmbedScoring == null && QueryStringScoring == null && SparseVectorScoring == null && TextScoring == null) { if (SparseEmbedScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SparseEmbedScoring); return; }
+            if (SparseVectorScoring != null && DenseVectorScoring == null && EmbedScoring == null && QueryStringScoring == null && SparseEmbedScoring == null && TextScoring == null) { if (SparseVectorScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SparseVectorScoring); return; }
+            if (TextScoring != null && DenseVectorScoring == null && EmbedScoring == null && QueryStringScoring == null && SparseEmbedScoring == null && SparseVectorScoring == null) { if (TextScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TextScoring); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(DenseVectorScoring != null)
             {
+                if (DenseVectorScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DenseVectorScoring>(null, DenseVectorScoring);
             }
             else if(EmbedScoring != null)
             {
+                if (EmbedScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoring>(null, EmbedScoring);
             }
             else if(QueryStringScoring != null)
             {
+                if (QueryStringScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.QueryStringScoring>(null, QueryStringScoring);
             }
             else if(SparseEmbedScoring != null)
             {
+                if (SparseEmbedScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseEmbedScoring>(null, SparseEmbedScoring);
             }
             else if(SparseVectorScoring != null)
             {
+                if (SparseVectorScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SparseVectorScoring>(null, SparseVectorScoring);
             }
             else if(TextScoring != null)
             {
+                if (TextScoring is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.TextScoring>(null, TextScoring);
             }
         }

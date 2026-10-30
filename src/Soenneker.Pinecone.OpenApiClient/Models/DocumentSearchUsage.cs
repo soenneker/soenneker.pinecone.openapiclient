@@ -12,15 +12,28 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DocumentSearchUsage : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("egress_bytes") is { } nullNodeEgressBytes && nullNodeEgressBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EgressBytes = null;
+            if (parseNode.GetChildNode("embed_total_tokens") is { } nullNodeEmbedTotalTokens && nullNodeEmbedTotalTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbedTotalTokens = null;
+            if (parseNode.GetChildNode("read_units") is { } nullNodeReadUnits && nullNodeReadUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadUnits = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billed egress for this response, in bytes. Measured on the encoded response payload.</summary>
-        public long? EgressBytes { get; set; }
+        public long? EgressBytes { get => _explicitNullValueEgressBytes; set { _explicitNullValueEgressBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("egress_bytes"); else _explicitNullProperties?.Remove("egress_bytes"); } }
+        private long? _explicitNullValueEgressBytes = default!;
         /// <summary>The number of tokens Pinecone embedded for the query text of an `embed` or `sparse_embed` scoring method. Present only when the search embedded query text.</summary>
-        public int? EmbedTotalTokens { get; set; }
+        public int? EmbedTotalTokens { get => _explicitNullValueEmbedTotalTokens; set { _explicitNullValueEmbedTotalTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_total_tokens"); else _explicitNullProperties?.Remove("embed_total_tokens"); } }
+        private int? _explicitNullValueEmbedTotalTokens = default!;
         /// <summary>The number of read units consumed by this operation.</summary>
-        public int? ReadUnits { get; set; }
+        public int? ReadUnits { get => _explicitNullValueReadUnits; set { _explicitNullValueReadUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_units"); else _explicitNullProperties?.Remove("read_units"); } }
+        private int? _explicitNullValueReadUnits = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DocumentSearchUsage"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.DocumentSearchUsage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.DocumentSearchUsage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DocumentSearchUsage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("egress_bytes", EgressBytes);
             writer.WriteIntValue("embed_total_tokens", EmbedTotalTokens);
             writer.WriteIntValue("read_units", ReadUnits);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

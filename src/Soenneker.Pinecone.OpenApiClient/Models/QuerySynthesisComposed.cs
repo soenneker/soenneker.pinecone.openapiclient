@@ -12,52 +12,83 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class QuerySynthesisComposed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("answer_preview") is { } nullNodeAnswerPreview && nullNodeAnswerPreview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnswerPreview = null;
+            if (parseNode.GetChildNode("ms") is { } nullNodeMs && nullNodeMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ms = null;
+            if (parseNode.GetChildNode("query_id") is { } nullNodeQueryId && nullNodeQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryId = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("tokens_in") is { } nullNodeTokensIn && nullNodeTokensIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokensIn = null;
+            if (parseNode.GetChildNode("tokens_in_cached") is { } nullNodeTokensInCached && nullNodeTokensInCached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokensInCached = null;
+            if (parseNode.GetChildNode("tokens_in_cache_write") is { } nullNodeTokensInCacheWrite && nullNodeTokensInCacheWrite.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokensInCacheWrite = null;
+            if (parseNode.GetChildNode("tokens_in_fresh") is { } nullNodeTokensInFresh && nullNodeTokensInFresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokensInFresh = null;
+            if (parseNode.GetChildNode("tokens_out") is { } nullNodeTokensOut && nullNodeTokensOut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokensOut = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Leading characters of the answer, for a progress display that has no full text yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AnswerPreview { get; set; }
+        public string? AnswerPreview { get => _explicitNullValueAnswerPreview; set { _explicitNullValueAnswerPreview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer_preview"); else _explicitNullProperties?.Remove("answer_preview"); } }
+        private string? _explicitNullValueAnswerPreview = default!;
 #nullable restore
 #else
-        public string AnswerPreview { get; set; }
+        public string AnswerPreview { get => _explicitNullValueAnswerPreview; set { _explicitNullValueAnswerPreview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer_preview"); else _explicitNullProperties?.Remove("answer_preview"); } }
+        private string _explicitNullValueAnswerPreview = default!;
 #endif
         /// <summary>Wall time of the completion.</summary>
-        public long? Ms { get; set; }
+        public long? Ms { get => _explicitNullValueMs; set { _explicitNullValueMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ms"); else _explicitNullProperties?.Remove("ms"); } }
+        private long? _explicitNullValueMs = default!;
         /// <summary>Event form only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QueryId { get; set; }
+        public string? QueryId { get => _explicitNullValueQueryId; set { _explicitNullValueQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_id"); else _explicitNullProperties?.Remove("query_id"); } }
+        private string? _explicitNullValueQueryId = default!;
 #nullable restore
 #else
-        public string QueryId { get; set; }
+        public string QueryId { get => _explicitNullValueQueryId; set { _explicitNullValueQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_id"); else _explicitNullProperties?.Remove("query_id"); } }
+        private string _explicitNullValueQueryId = default!;
 #endif
         /// <summary>How synthesis ended, e.g. `completed`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>The completion&apos;s input tokens.</summary>
-        public long? TokensIn { get; set; }
+        public long? TokensIn { get => _explicitNullValueTokensIn; set { _explicitNullValueTokensIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens_in"); else _explicitNullProperties?.Remove("tokens_in"); } }
+        private long? _explicitNullValueTokensIn = default!;
         /// <summary>Input tokens served from the prompt cache.</summary>
-        public long? TokensInCached { get; set; }
+        public long? TokensInCached { get => _explicitNullValueTokensInCached; set { _explicitNullValueTokensInCached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens_in_cached"); else _explicitNullProperties?.Remove("tokens_in_cached"); } }
+        private long? _explicitNullValueTokensInCached = default!;
         /// <summary>Input tokens written into the prompt cache.</summary>
-        public long? TokensInCacheWrite { get; set; }
+        public long? TokensInCacheWrite { get => _explicitNullValueTokensInCacheWrite; set { _explicitNullValueTokensInCacheWrite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens_in_cache_write"); else _explicitNullProperties?.Remove("tokens_in_cache_write"); } }
+        private long? _explicitNullValueTokensInCacheWrite = default!;
         /// <summary>Input tokens neither cached nor cache-written.</summary>
-        public long? TokensInFresh { get; set; }
+        public long? TokensInFresh { get => _explicitNullValueTokensInFresh; set { _explicitNullValueTokensInFresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens_in_fresh"); else _explicitNullProperties?.Remove("tokens_in_fresh"); } }
+        private long? _explicitNullValueTokensInFresh = default!;
         /// <summary>The completion&apos;s output tokens.</summary>
-        public long? TokensOut { get; set; }
+        public long? TokensOut { get => _explicitNullValueTokensOut; set { _explicitNullValueTokensOut = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens_out"); else _explicitNullProperties?.Remove("tokens_out"); } }
+        private long? _explicitNullValueTokensOut = default!;
         /// <summary>Event form only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public string Type { get; set; }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed"/> and sets the default values.
@@ -74,7 +105,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.QuerySynthesisComposed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -113,6 +144,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteLongValue("tokens_in_fresh", TokensInFresh);
             writer.WriteLongValue("tokens_out", TokensOut);
             writer.WriteStringValue("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

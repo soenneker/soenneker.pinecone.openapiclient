@@ -11,24 +11,37 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReadCapacityDedicatedPatchSpec : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dedicated") is { } nullNodeDedicated && nullNodeDedicated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dedicated = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Changes to the dedicated read capacity of an index. Every field is optional; omitted fields keep their current value. `scaling` and `manual` go together and must be sent as a pair: `scaling: Manual` without `manual` is rejected, and a `manual` block without `scaling: Manual` is not accepted by this schema (the service would silently ignore it). An index moving from `OnDemand` to `Dedicated` must supply `node_type`, `scaling`, and `manual`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig? Dedicated { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig? Dedicated { get => _explicitNullValueDedicated; set { _explicitNullValueDedicated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedicated"); else _explicitNullProperties?.Remove("dedicated"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig? _explicitNullValueDedicated = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig Dedicated { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig Dedicated { get => _explicitNullValueDedicated; set { _explicitNullValueDedicated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedicated"); else _explicitNullProperties?.Remove("dedicated"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig _explicitNullValueDedicated = default!;
 #endif
         /// <summary>Must be `Dedicated`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Mode { get; set; }
+        public string? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private string? _explicitNullValueMode = default!;
 #nullable restore
 #else
-        public string Mode { get; set; }
+        public string Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private string _explicitNullValueMode = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchSpec"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public static global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchSpec CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchSpec();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchSpec(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityDedicatedPatchConfig>("dedicated", Dedicated);
             writer.WriteStringValue("mode", Mode);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
