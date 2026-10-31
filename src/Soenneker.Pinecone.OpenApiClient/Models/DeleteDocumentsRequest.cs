@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestByFilter"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestById"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestWholeNamespace"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf1"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf2"/>, <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeleteDocumentsRequest : IComposedTypeWrapper, IParsable
@@ -18,29 +18,29 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestByFilter"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestByFilter? DeleteDocumentsRequestByFilter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf1? DeleteDocumentsRequestAnyOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestByFilter DeleteDocumentsRequestByFilter { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf1 DeleteDocumentsRequestAnyOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestById"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestById? DeleteDocumentsRequestById { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf2? DeleteDocumentsRequestAnyOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestById DeleteDocumentsRequestById { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf2 DeleteDocumentsRequestAnyOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestWholeNamespace"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestWholeNamespace? DeleteDocumentsRequestWholeNamespace { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf3? DeleteDocumentsRequestAnyOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestWholeNamespace DeleteDocumentsRequestWholeNamespace { get; set; }
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf3 DeleteDocumentsRequestAnyOf3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -56,18 +56,18 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("ids") && (!shapeMembers1.ContainsKey("delete_all") || (((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)) && ((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean literal2 && literal2.GetValue() == false))))))) && !((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject5 || (shapeObject5.GetValue() is var shapeMembers6 && (shapeMembers6.ContainsKey("filter")))))))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("filter") && (!shapeMembers1.ContainsKey("delete_all") || (((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)) && ((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean literal2 && literal2.GetValue() == false))))))) && !((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject5 || (shapeObject5.GetValue() is var shapeMembers6 && (shapeMembers6.ContainsKey("ids")))))))();
-            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("delete_all") && (!shapeMembers1.ContainsKey("delete_all") || (((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)) && ((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean literal2 && literal2.GetValue() == true))))))) && !((((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject7 || (shapeObject7.GetValue() is var shapeMembers8 && (shapeMembers8.ContainsKey("ids"))))) || ((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject9 || (shapeObject9.GetValue() is var shapeMembers10 && (shapeMembers10.ContainsKey("filter")))))))))();
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("ids") || (((shapeMembers1["ids"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("filter") || (((shapeMembers1["filter"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("delete_all") || (((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean))))))) && ((((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject8 || (shapeObject8.GetValue() is var shapeMembers9 && (shapeMembers9.ContainsKey("ids") && (!shapeMembers9.ContainsKey("delete_all") || (((shapeMembers9["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)) && ((shapeMembers9["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean literal10 && literal10.GetValue() == false))))))) && !((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject13 || (shapeObject13.GetValue() is var shapeMembers14 && (shapeMembers14.ContainsKey("filter")))))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("ids") || (((shapeMembers1["ids"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("filter") || (((shapeMembers1["filter"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("delete_all") || (((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean))))))) && ((((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject8 || (shapeObject8.GetValue() is var shapeMembers9 && (shapeMembers9.ContainsKey("filter") && (!shapeMembers9.ContainsKey("delete_all") || (((shapeMembers9["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)) && ((shapeMembers9["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean literal10 && literal10.GetValue() == false))))))) && !((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject13 || (shapeObject13.GetValue() is var shapeMembers14 && (shapeMembers14.ContainsKey("ids")))))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("ids") || (((shapeMembers1["ids"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("filter") || (((shapeMembers1["filter"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("delete_all") || (((shapeMembers1["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean))))))) && ((((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject8 || (shapeObject8.GetValue() is var shapeMembers9 && (shapeMembers9.ContainsKey("delete_all") && (!shapeMembers9.ContainsKey("delete_all") || (((shapeMembers9["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)) && ((shapeMembers9["delete_all"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean literal10 && literal10.GetValue() == true))))))) && !((((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject15 || (shapeObject15.GetValue() is var shapeMembers16 && (shapeMembers16.ContainsKey("ids"))))) || ((unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject17 || (shapeObject17.GetValue() is var shapeMembers18 && (shapeMembers18.ContainsKey("filter")))))))))))();
             int matchingUnionBranches = 0;
             if (matchesUnionBranch0) matchingUnionBranches++;
             if (matchesUnionBranch1) matchingUnionBranches++;
             if (matchesUnionBranch2) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.DeleteDocumentsRequestByFilter == null && result.DeleteDocumentsRequestById == null && result.DeleteDocumentsRequestWholeNamespace == null;
-            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.DeleteDocumentsRequestById = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestById(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.DeleteDocumentsRequestByFilter = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestByFilter(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.DeleteDocumentsRequestWholeNamespace = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestWholeNamespace(), parseNode);
-            if (result.DeleteDocumentsRequestByFilter == null && result.DeleteDocumentsRequestById == null && result.DeleteDocumentsRequestWholeNamespace == null) result.UnrecognizedValue = unionPayload;
+            bool noSelectedUnionBranch = result.DeleteDocumentsRequestAnyOf1 == null && result.DeleteDocumentsRequestAnyOf2 == null && result.DeleteDocumentsRequestAnyOf3 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.DeleteDocumentsRequestAnyOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.DeleteDocumentsRequestAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf2(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.DeleteDocumentsRequestAnyOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf3(), parseNode);
+            if (result.DeleteDocumentsRequestAnyOf1 == null && result.DeleteDocumentsRequestAnyOf2 == null && result.DeleteDocumentsRequestAnyOf3 == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -78,9 +78,9 @@ return result;
         {
             if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
 
-            if(DeleteDocumentsRequestByFilter != null || DeleteDocumentsRequestById != null || DeleteDocumentsRequestWholeNamespace != null)
+            if(DeleteDocumentsRequestAnyOf1 != null || DeleteDocumentsRequestAnyOf2 != null || DeleteDocumentsRequestAnyOf3 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DeleteDocumentsRequestByFilter, DeleteDocumentsRequestById, DeleteDocumentsRequestWholeNamespace);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DeleteDocumentsRequestAnyOf1, DeleteDocumentsRequestAnyOf2, DeleteDocumentsRequestAnyOf3);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -91,17 +91,17 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (DeleteDocumentsRequestByFilter == null && DeleteDocumentsRequestById == null && DeleteDocumentsRequestWholeNamespace == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DeleteDocumentsRequestAnyOf1 == null && DeleteDocumentsRequestAnyOf2 == null && DeleteDocumentsRequestAnyOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
             int selectedUnionBranches = 0;
-            if (DeleteDocumentsRequestByFilter != null) selectedUnionBranches++;
-            if (DeleteDocumentsRequestById != null) selectedUnionBranches++;
-            if (DeleteDocumentsRequestWholeNamespace != null) selectedUnionBranches++;
-            if (DeleteDocumentsRequestByFilter != null && selectedUnionBranches == 1) { if (DeleteDocumentsRequestByFilter is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeleteDocumentsRequestByFilter); return; }
-            if (DeleteDocumentsRequestById != null && selectedUnionBranches == 1) { if (DeleteDocumentsRequestById is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeleteDocumentsRequestById); return; }
-            if (DeleteDocumentsRequestWholeNamespace != null && selectedUnionBranches == 1) { if (DeleteDocumentsRequestWholeNamespace is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeleteDocumentsRequestWholeNamespace); return; }
+            if (DeleteDocumentsRequestAnyOf1 != null) selectedUnionBranches++;
+            if (DeleteDocumentsRequestAnyOf2 != null) selectedUnionBranches++;
+            if (DeleteDocumentsRequestAnyOf3 != null) selectedUnionBranches++;
+            if (DeleteDocumentsRequestAnyOf1 != null && selectedUnionBranches == 1) { if (DeleteDocumentsRequestAnyOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeleteDocumentsRequestAnyOf1); return; }
+            if (DeleteDocumentsRequestAnyOf2 != null && selectedUnionBranches == 1) { if (DeleteDocumentsRequestAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeleteDocumentsRequestAnyOf2); return; }
+            if (DeleteDocumentsRequestAnyOf3 != null && selectedUnionBranches == 1) { if (DeleteDocumentsRequestAnyOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeleteDocumentsRequestAnyOf3); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestByFilter>(null, DeleteDocumentsRequestByFilter, DeleteDocumentsRequestById, DeleteDocumentsRequestWholeNamespace);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteDocumentsRequestAnyOf1>(null, DeleteDocumentsRequestAnyOf1, DeleteDocumentsRequestAnyOf2, DeleteDocumentsRequestAnyOf3);
         }
     }
 }

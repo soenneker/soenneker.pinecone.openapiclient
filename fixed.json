@@ -1392,6 +1392,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "API key created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyWithSecret"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -3634,6 +3645,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Service account created. Role bindings are not returned here; use \u0060GET /admin/role-bindings\u0060 to list them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAccountWithSecret"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -5610,6 +5632,41 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The export was accepted and durably recorded. It has not run yet.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostUsageExport"
+                },
+                "examples": {
+                  "accepted": {
+                    "summary": "Export accepted",
+                    "value": {
+                      "created_at": "2026-09-02T14:31:07Z",
+                      "data_available_through": null,
+                      "download_url": null,
+                      "download_url_expires_at": null,
+                      "error": null,
+                      "file_expired": false,
+                      "file_expires_at": null,
+                      "finished_at": null,
+                      "format": "zip",
+                      "id": "9f2c1a4e-8b3d-4c5f-a1b2-c3d4e5f6a7b8",
+                      "period_end": "2026-09-01",
+                      "period_start": "2026-08-01",
+                      "row_count": null,
+                      "size_bytes": null,
+                      "started_at": null,
+                      "status": "Pending",
+                      "updated_at": "2026-09-02T14:31:07Z"
+                    }
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -6761,6 +6818,27 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "File upload accepted. Processing has started.",
+            "headers": {
+              "Location": {
+                "description": "URL to the operation resource for polling status.",
+                "style": "simple",
+                "schema": {
+                  "type": "string",
+                  "example": "/operations/test-assistant/op-1234-abcd"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationModel"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -7100,6 +7178,27 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "File upload has been accepted for processing. The file will be created if it doesn\u0027t exist, or replaced if it already exists. The operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "URL to the operation resource for polling status.",
+                "style": "simple",
+                "schema": {
+                  "type": "string",
+                  "example": "/operations/test-assistant/op-1234-abcd"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationModel"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -7247,6 +7346,27 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The request to delete the file has been accepted. The deletion will be processed asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "URL to the operation resource for polling status.",
+                "style": "simple",
+                "schema": {
+                  "type": "string",
+                  "example": "/operations/test-assistant/op-1234-abcd"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperationModel"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -7711,19 +7831,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatCompletionModel"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/StreamChatCompletionChunkModel"
                 }
               }
@@ -7883,19 +7997,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/ChatModel"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/StreamChatChunkModel"
                 }
               }
@@ -8819,6 +8927,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The index has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndexModel"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -10640,6 +10759,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The index has successfully been created for the embedding model.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IndexModel"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -11397,6 +11527,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The request to create the index has been accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateIndexFromBackupResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -12780,6 +12921,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The collection has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModel"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -15798,6 +15950,57 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The documents were successfully accepted for upsert.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertDocumentsResponse"
+                },
+                "examples": {
+                  "without_embedding": {
+                    "summary": "An upsert that embedded no text, which reports no usage",
+                    "value": {
+                      "upserted_count": 2
+                    }
+                  },
+                  "with_embedding": {
+                    "summary": "An upsert that embedded text, reporting the tokens it consumed",
+                    "value": {
+                      "upserted_count": 2,
+                      "usage": {
+                        "embed_total_tokens": 24
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "links": {
+              "FetchUpsertedDocument": {
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1fetch/post",
+                "parameters": {
+                  "namespace": "$request.path.namespace"
+                },
+                "description": "Look up a document that was just upserted."
+              },
+              "DeleteUpsertedDocument": {
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1delete/post",
+                "parameters": {
+                  "namespace": "$request.path.namespace"
+                },
+                "description": "Delete a document that was just upserted."
+              },
+              "ListUpsertedDocuments": {
+                "operationRef": "#/paths/~1db_data_2026-07~1namespaces~1%7Bnamespace%7D~1documents~1list/post",
+                "parameters": {
+                  "namespace": "$request.path.namespace"
+                },
+                "description": "List the namespace a document was just written to."
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -16370,6 +16573,29 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The delete request was successfully accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteDocumentsResponse"
+                },
+                "examples": {
+                  "by_filter": {
+                    "summary": "A filtered delete, reporting how many documents the filter matched",
+                    "value": {
+                      "matched_records": 42
+                    }
+                  },
+                  "by_ids": {
+                    "summary": "A delete by ID or \u0060delete_all\u0060, which reports no count",
+                    "value": {}
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -16544,6 +16770,37 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The update request was successfully accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDocumentsResponse"
+                },
+                "examples": {
+                  "by_filter": {
+                    "summary": "A filtered update, reporting how many documents the filter matched",
+                    "value": {
+                      "matched_records": 42
+                    }
+                  },
+                  "by_ids": {
+                    "summary": "A per-ID update, which reports no count",
+                    "value": {}
+                  },
+                  "by_ids_with_embedding": {
+                    "summary": "A per-ID update that set a field with integrated embedding, reporting the tokens it consumed",
+                    "value": {
+                      "usage": {
+                        "embed_total_tokens": 12
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         },
         "security": [
@@ -17865,6 +18122,37 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "The workspace create request has been accepted. The workspace is being provisioned asynchronously and starts in the \u0060Initializing\u0060 state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceModel"
+                },
+                "examples": {
+                  "initializing-workspace": {
+                    "summary": "A workspace that is being created",
+                    "value": {
+                      "created_at": "2026-06-01T00:00:00Z",
+                      "host": "production-c01b5b5.wksp.aws-us-east-1-b921.byoc.pinecone.io",
+                      "name": "production",
+                      "spec": {
+                        "byoc": {
+                          "environment": "aws-us-east-1-b921.byoc"
+                        }
+                      },
+                      "status": {
+                        "ready": false,
+                        "state": "Initializing"
+                      },
+                      "updated_at": "2026-06-01T00:00:00Z"
+                    }
+                  }
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -21176,19 +21464,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Query"
                 }
-              },
+              }
+            },
+            "x-client-original-non-json-content": {
               "text/event-stream": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/QueryStream"
                 }
               }
@@ -21199,10 +21481,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
-                },
-                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Query"
                 }
               }
@@ -30102,39 +30380,17 @@
         "description": "The response for the \u0060fetch_documents\u0060 operation."
       },
       "DeleteDocumentsRequest": {
-        "type": "object",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/DeleteDocumentsRequestById"
+            "$ref": "#/components/schemas/DeleteDocumentsRequestAnyOf1"
           },
           {
-            "$ref": "#/components/schemas/DeleteDocumentsRequestByFilter"
+            "$ref": "#/components/schemas/DeleteDocumentsRequestAnyOf2"
           },
           {
-            "$ref": "#/components/schemas/DeleteDocumentsRequestWholeNamespace"
+            "$ref": "#/components/schemas/DeleteDocumentsRequestAnyOf3"
           }
         ],
-        "properties": {
-          "ids": {
-            "maxItems": 1000,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "maxLength": 512,
-              "minLength": 1,
-              "pattern": "^[\\x01-\\x7F]\u002B$",
-              "type": "string"
-            },
-            "description": "A list of document IDs to delete. Mutually exclusive with \u0060filter\u0060 and \u0060delete_all\u0060."
-          },
-          "filter": {
-            "$ref": "#/components/schemas/DeleteDocumentsRequestFilterProperty"
-          },
-          "delete_all": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, delete all documents in the namespace. Mutually exclusive with \u0060ids\u0060 and \u0060filter\u0060. \u0060false\u0060 is treated as if the field were omitted."
-          }
-        },
         "description": "The request for the \u0060delete_documents\u0060 operation. Exactly one of \u0060ids\u0060, \u0060filter\u0060, or \u0060delete_all\u0060 must be specified."
       },
       "DeleteDocumentsResponse": {
@@ -30221,23 +30477,7 @@
             }
           },
           {
-            "title": "By filter",
-            "required": [
-              "filter"
-            ],
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/UpdateDocumentsRequestByFilterAnyOf1"
-              },
-              {
-                "$ref": "#/components/schemas/UpdateDocumentsRequestByFilterAnyOf2"
-              }
-            ],
-            "not": {
-              "required": [
-                "documents"
-              ]
-            }
+            "$ref": "#/components/schemas/UpdateDocumentsRequestAnyOf2"
           }
         ],
         "properties": {
@@ -42145,6 +42385,163 @@
         ],
         "type": "boolean",
         "description": "Whether the field is indexed and can be used in filters. Must be present and must be \u0060true\u0060: omitting it, or sending \u0060false\u0060 or \u0060null\u0060, is rejected with \u0060Field \u0027\u003Cname\u003E\u0027 is set to filterable: false. Only filterable: true is supported.\u0060 To leave a field unindexed, omit it from \u0060fields\u0060 entirely."
+      },
+      "DeleteDocumentsRequestAnyOf1": {
+        "allOf": [
+          {
+            "title": "By ID",
+            "required": [
+              "ids"
+            ],
+            "type": "object",
+            "not": {
+              "required": [
+                "filter"
+              ]
+            },
+            "properties": {
+              "delete_all": {
+                "$ref": "#/components/schemas/DeleteDocumentsRequestByIdDeleteAll"
+              }
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "ids": {
+            "maxItems": 1000,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x01-\\x7F]\u002B$",
+              "type": "string"
+            },
+            "description": "A list of document IDs to delete. Mutually exclusive with \u0060filter\u0060 and \u0060delete_all\u0060."
+          },
+          "filter": {
+            "$ref": "#/components/schemas/DeleteDocumentsRequestFilterProperty"
+          },
+          "delete_all": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, delete all documents in the namespace. Mutually exclusive with \u0060ids\u0060 and \u0060filter\u0060. \u0060false\u0060 is treated as if the field were omitted."
+          }
+        }
+      },
+      "DeleteDocumentsRequestAnyOf2": {
+        "allOf": [
+          {
+            "title": "By filter",
+            "required": [
+              "filter"
+            ],
+            "type": "object",
+            "not": {
+              "required": [
+                "ids"
+              ]
+            },
+            "properties": {
+              "delete_all": {
+                "$ref": "#/components/schemas/DeleteDocumentsRequestByFilterDeleteAll"
+              }
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "ids": {
+            "maxItems": 1000,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x01-\\x7F]\u002B$",
+              "type": "string"
+            },
+            "description": "A list of document IDs to delete. Mutually exclusive with \u0060filter\u0060 and \u0060delete_all\u0060."
+          },
+          "filter": {
+            "$ref": "#/components/schemas/DeleteDocumentsRequestFilterProperty"
+          },
+          "delete_all": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, delete all documents in the namespace. Mutually exclusive with \u0060ids\u0060 and \u0060filter\u0060. \u0060false\u0060 is treated as if the field were omitted."
+          }
+        }
+      },
+      "DeleteDocumentsRequestAnyOf3": {
+        "allOf": [
+          {
+            "title": "Whole namespace",
+            "required": [
+              "delete_all"
+            ],
+            "type": "object",
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "ids"
+                  ]
+                },
+                {
+                  "required": [
+                    "filter"
+                  ]
+                }
+              ]
+            },
+            "properties": {
+              "delete_all": {
+                "$ref": "#/components/schemas/DeleteDocumentsRequestWholeNamespaceDeleteAll"
+              }
+            }
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "ids": {
+            "maxItems": 1000,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^[\\x01-\\x7F]\u002B$",
+              "type": "string"
+            },
+            "description": "A list of document IDs to delete. Mutually exclusive with \u0060filter\u0060 and \u0060delete_all\u0060."
+          },
+          "filter": {
+            "$ref": "#/components/schemas/DeleteDocumentsRequestFilterProperty"
+          },
+          "delete_all": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, delete all documents in the namespace. Mutually exclusive with \u0060ids\u0060 and \u0060filter\u0060. \u0060false\u0060 is treated as if the field were omitted."
+          }
+        }
+      },
+      "UpdateDocumentsRequestAnyOf2": {
+        "title": "By filter",
+        "required": [
+          "filter"
+        ],
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/UpdateDocumentsRequestByFilterAnyOf1"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateDocumentsRequestByFilterAnyOf2"
+          }
+        ],
+        "not": {
+          "required": [
+            "documents"
+          ]
+        }
       },
       "TaskOutputAnyOf21": {
         "title": "Other",
