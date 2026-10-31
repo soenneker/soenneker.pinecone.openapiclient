@@ -6,8 +6,10 @@ internal static class OpenApiServiceRoutes
     private static readonly global::System.Collections.Generic.HashSet<string> KnownServers = new(global::System.StringComparer.OrdinalIgnoreCase) { "https://api.example.com", "https://api.example.com/api", "https://api.pinecone.io", "https://api.pinecone.io/assistant", "https://login.pinecone.io", "https://prod-1-data.ke.pinecone.io", "https://prod-1-data.ke.pinecone.io/assistant", "https://prod-eu-data.ke.pinecone.io", "https://prod-eu-data.ke.pinecone.io/assistant", "https://unknown" };
     internal static string Resolve(string template, string? configuredBaseUrl, string server, string path, bool rawUrl)
     {
-        var queryMatch = global::System.Text.RegularExpressions.Regex.Match(template, @"\{[?&]|\?");
-        int query = queryMatch.Success ? queryMatch.Index : -1;
+        int query = template.IndexOf('?');
+        if (query > 0 && template[query - 1] == '{') query--;
+        int continuation = template.IndexOf("{&", global::System.StringComparison.Ordinal);
+        if (continuation >= 0 && (query < 0 || continuation < query)) query = continuation;
         string suffix = query >= 0 ? template.Substring(query) : "";
         bool useService = server.Length > 0 && (string.IsNullOrEmpty(configuredBaseUrl) || KnownServers.Contains(configuredBaseUrl.TrimEnd('/')));
         if (useService && !rawUrl && server.Contains('{'))
