@@ -40,6 +40,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607CancelBulkImport401PlainResponseSchemaError">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,6 +55,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607CancelBulkImport401PlainResponseSchemaError.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607CancelBulkImport200Response>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607CancelBulkImport200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -65,6 +67,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607DescribeBulkImport401PlainResponseSchemaError">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,6 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.Item
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607DescribeBulkImport401PlainResponseSchemaError.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Pinecone.OpenApiClient.Models.RpcStatus.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.ImportModel>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.ImportModel.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);

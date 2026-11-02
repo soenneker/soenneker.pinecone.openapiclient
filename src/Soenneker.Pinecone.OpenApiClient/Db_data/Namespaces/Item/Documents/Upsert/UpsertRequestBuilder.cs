@@ -41,6 +41,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.Documents.Ups
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607ErrorResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607UpsertDocuments401PlainResponseSchemaError">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607ErrorResponse">When receiving a 409 status code</exception>
         /// <exception cref="global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607ErrorResponse">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -57,6 +58,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Namespaces.Item.Documents.Ups
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607ErrorResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607UpsertDocuments401PlainResponseSchemaError.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607ErrorResponse.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607ErrorResponse.CreateFromDiscriminatorValue },
             };
