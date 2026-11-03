@@ -10562,7 +10562,7 @@
           "Manage Indexes"
         ],
         "summary": "Convert an index into a document index",
-        "description": "Convert a serverless vector index into a new document index, read and written through the Documents API.\n\nThe source index is not changed and keeps serving reads and writes. The conversion copies a snapshot of the source taken when the job starts, the same way a backup does: writes made to the source after that point are not carried into the new index.\n\nThe new index takes the \u0060schema\u0060 in the request. Each source record becomes a document with the same ID, mapped by convention:\n\n- The record\u0027s dense vector fills the schema\u0027s one \u0060dense_vector\u0060 field, or the \u0060string\u0060 field with \u0060embed\u0060.\n- The record\u0027s sparse vector fills the schema\u0027s one \u0060sparse_vector\u0060 field, or the \u0060string\u0060 field with \u0060sparse_embed\u0060. A dense index whose records also carry sparse values needs a sparse field too: a record whose sparse values have nowhere to go is one the new index cannot take, so \u0060error_mode\u0060 decides whether it fails the conversion or is skipped.\n- For a records index with integrated embedding (created with create-for-model), the vectors fill the \u0060string\u0060 field named like the source\u0027s embedded text field, declared with \u0060embed\u0060 (or \u0060sparse_embed\u0060) using the source\u0027s model. The vectors carry over, so the text is not embedded again.\n- Each \u0060string\u0060 field with \u0060full_text_search\u0060 is filled from the record\u0027s metadata key of the same name.\n- All other metadata is carried over unchanged and stays filterable.\n\nThe schema must be able to hold the source\u0027s vectors: its dense field has the source\u0027s dimension and metric, and a legacy integrated index (created with create-for-model) needs \u0060embed\u0060 / \u0060sparse_embed\u0060 fields that use its models. A schema made only of the reserved \u0060_values\u0060 / \u0060_sparse_values\u0060 fields is rejected, because it describes a vector index rather than a document index.\n\nThe request returns once the new index is created in the \u0060Initializing\u0060 state and the conversion job is queued. Track the job with [Describe a conversion job](https://docs.pinecone.io/reference/api/2026-07/control-plane/describe_conversion_job). When the job completes, the index becomes \u0060Ready\u0060. If the job fails or is cancelled, the index is left in the \u0060InitializationFailed\u0060 state; delete it to free its name.\n\nThe new index is created in the source\u0027s cloud and region, and is encrypted with the source\u0027s CMEK key when the source has one. Pod-based and BYOC indexes cannot be converted, and neither can an index that already has a document schema.",
+        "description": "Convert a serverless vector index or legacy integrated index into a new document index. The source index isn\u0027t changed, and the new index holds a snapshot of the source taken when the job starts.\n\nThe request returns once the new index is created in the \u0060Initializing\u0060 state. Track the job with [Describe a conversion job](https://docs.pinecone.io/reference/api/2026-07/control-plane/describe_conversion_job). If the job fails or is canceled, the index is left in the \u0060InitializationFailed\u0060 state with no usable data. Delete it to free its name. A job that fails because of your data is charged for the data it read, and a canceled job isn\u0027t charged.\n\nFor how source records map to the schema, see [Convert an index](https://docs.pinecone.io/guides/index-data/convert-an-index).",
         "operationId": "DbControl202607ConvertIndex",
         "parameters": [
           {
@@ -10758,7 +10758,7 @@
             }
           },
           "403": {
-            "description": "Forbidden. Possible causes: the API key lacks the permission to create indexes, the project\u0027s index quota is exhausted, or index conversion is not enabled for the organization.",
+            "description": "Forbidden. Possible causes: the API key lacks the permission to create indexes, the project\u0027s index quota is exhausted, or the organization is on the Starter or Builder plan, where index conversion isn\u0027t available.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10785,12 +10785,12 @@
                       "status": 403
                     }
                   },
-                  "not-enabled": {
-                    "summary": "Conversion not enabled",
+                  "plan-not-supported": {
+                    "summary": "Plan doesn\u0027t include conversion",
                     "value": {
                       "error": {
-                        "code": "FORBIDDEN",
-                        "message": "Index conversion is not enabled for this organization. Contact Pinecone support to request access."
+                        "code": "PERMISSION_DENIED",
+                        "message": "Index conversion isn\u0027t available on the Starter plan. Upgrade to Standard or Enterprise to convert indexes: https://app.pinecone.io/organizations/-/settings/billing/plans"
                       },
                       "status": 403
                     }
