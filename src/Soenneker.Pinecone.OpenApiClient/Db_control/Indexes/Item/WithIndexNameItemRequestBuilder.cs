@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedules;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.Backups;
+using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.ConvertNamespace;
 using Soenneker.Pinecone.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item
         public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedules.BackupSchedulesRequestBuilder BackupSchedules
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.BackupSchedules.BackupSchedulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The convert property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.ConvertNamespace.ConvertRequestBuilder Convert
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.ConvertNamespace.ConvertRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.Item.WithIndexNameItemRequestBuilder"/> and sets the default values.

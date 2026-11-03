@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// .
+    /// The query to search with. Set `top_k` and one of `inputs`, `vector`, or `id`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SearchRecordsRequestQuery : IAdditionalDataHolder, IParsable

@@ -65,12 +65,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Schema for the behavior of Pinecone&apos;s internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema? Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
-        private global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema? _explicitNullValueSchema = default!;
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema? Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema? _explicitNullValueSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
-        private global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema _explicitNullValueSchema = default!;
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema _explicitNullValueSchema = default!;
 #endif
         /// <summary>The total size of the namespace&apos;s data, in bytes, as a 64-bit integer serialized as a decimal string. Approximate: data written before size tracking reads as 0, and recently deleted data may still be counted; compaction converges the value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -110,7 +110,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "indexed_fields", n => { IndexedFields = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionIndexedFields>(global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionIndexedFields.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "record_count", n => { RecordCount = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema.CreateFromDiscriminatorValue); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema.CreateFromDiscriminatorValue); } },
                 { "size_bytes", n => { SizeBytes = n.GetStringValue(); } },
             };
         }
@@ -124,7 +124,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionIndexedFields>("indexed_fields", IndexedFields);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("record_count", RecordCount);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.NamespaceDescriptionSchema>("schema", Schema);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema>("schema", Schema);
             writer.WriteStringValue("size_bytes", SizeBytes);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

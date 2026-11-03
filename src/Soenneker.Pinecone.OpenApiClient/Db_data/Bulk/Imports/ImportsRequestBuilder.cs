@@ -47,7 +47,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports
         {
         }
         /// <summary>
-        /// List all recent and ongoing import operations.By default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list` returns up to that number of imports instead. Whenever there are additional IDs to return, the response includes `pagination.next`, a token you pass as `paginationToken` to get the next batch of imports. When the response has no `pagination`, there are no more imports to return.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
+        /// List all recent and ongoing import operations.By default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list_imports` returns up to that number of imports instead. Whenever there are additional imports to return, the response includes `pagination.next`, a token you pass as `paginationToken` to get the next batch of imports. When the response has no `pagination`, there are no more imports to return.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.ListImportsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -103,7 +103,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports
             return await RequestAdapter.SendAsync<global::Soenneker.Pinecone.OpenApiClient.Models.StartImportResponse>(requestInfo, global::Soenneker.Pinecone.OpenApiClient.Models.StartImportResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List all recent and ongoing import operations.By default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list` returns up to that number of imports instead. Whenever there are additional IDs to return, the response includes `pagination.next`, a token you pass as `paginationToken` to get the next batch of imports. When the response has no `pagination`, there are no more imports to return.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
+        /// List all recent and ongoing import operations.By default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list_imports` returns up to that number of imports instead. Whenever there are additional imports to return, the response includes `pagination.next`, a token you pass as `paginationToken` to get the next batch of imports. When the response has no `pagination`, there are no more imports to return.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -153,7 +153,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports
             return new global::Soenneker.Pinecone.OpenApiClient.Db_data.Bulk.Imports.ImportsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// List all recent and ongoing import operations.By default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list` returns up to that number of imports instead. Whenever there are additional IDs to return, the response includes `pagination.next`, a token you pass as `paginationToken` to get the next batch of imports. When the response has no `pagination`, there are no more imports to return.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
+        /// List all recent and ongoing import operations.By default, `list_imports` returns up to 100 imports per page. If the `limit` parameter is set, `list_imports` returns up to that number of imports instead. Whenever there are additional imports to return, the response includes `pagination.next`, a token you pass as `paginationToken` to get the next batch of imports. When the response has no `pagination`, there are no more imports to return.For guidance and examples, see [Import data](https://docs.pinecone.io/guides/index-data/import-data).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ImportsRequestBuilderGetQueryParameters 

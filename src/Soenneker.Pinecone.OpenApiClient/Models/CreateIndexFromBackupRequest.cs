@@ -20,6 +20,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("deletion_protection") is null) { _explicitNullValueDeletionProtection = default!; _explicitNullProperties?.Remove("deletion_protection"); }
             else if (parseNode.GetChildNode("deletion_protection") is { } nullNodeDeletionProtection && nullNodeDeletionProtection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletionProtection = null;
+            if (parseNode.GetChildNode("deployment") is null) { _explicitNullValueDeployment = default!; _explicitNullProperties?.Remove("deployment"); }
+            else if (parseNode.GetChildNode("deployment") is { } nullNodeDeployment && nullNodeDeployment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deployment = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("read_capacity") is null) { _explicitNullValueReadCapacity = default!; _explicitNullProperties?.Remove("read_capacity"); }
@@ -40,6 +42,16 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public string DeletionProtection { get => _explicitNullValueDeletionProtection; set { _explicitNullValueDeletionProtection = value; AdditionalData?.Remove("deletion_protection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_protection"); else _explicitNullProperties?.Remove("deletion_protection"); } }
         private string _explicitNullValueDeletionProtection = default!;
 #endif
+        /// <summary>Where to create the index. Defaults to the cloud and region, or the BYOC environment, the backup was taken in.- `managed`: A serverless index in the given cloud and region. The cloud must match the backup&apos;s cloud.- `byoc`: A BYOC index. The environment must be the one the backup was taken in.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest? Deployment { get => _explicitNullValueDeployment; set { _explicitNullValueDeployment = value; AdditionalData?.Remove("deployment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment"); else _explicitNullProperties?.Remove("deployment"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest? _explicitNullValueDeployment = default!;
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest Deployment { get => _explicitNullValueDeployment; set { _explicitNullValueDeployment = value; AdditionalData?.Remove("deployment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment"); else _explicitNullProperties?.Remove("deployment"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest _explicitNullValueDeployment = default!;
+#endif
         /// <summary>The name of the index. Resource name must be 1-45 characters long, start and end with an alphanumeric character, and consist only of lower case alphanumeric characters or &apos;-&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,7 +62,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>By default the index will be created with read capacity mode `OnDemand`. If you prefer to allocate dedicated read nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`. BYOC indexes do not support `OnDemand`: a `byoc` deployment must set `mode: Dedicated` explicitly, since omitting `read_capacity` defaults to `OnDemand` and is rejected.</summary>
+        /// <summary>By default the index will be created with read capacity mode `OnDemand`, for managed and BYOC indexes alike. If you prefer to allocate dedicated read nodes for your workload, you must specify mode `Dedicated` and additional configurations for `node_type` and `scaling`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity? ReadCapacity { get => _explicitNullValueReadCapacity; set { _explicitNullValueReadCapacity = value; AdditionalData?.Remove("read_capacity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_capacity"); else _explicitNullProperties?.Remove("read_capacity"); } }
@@ -97,6 +109,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deletion_protection", n => { DeletionProtection = n.GetStringValue(); } },
+                { "deployment", n => { Deployment = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest>(global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "read_capacity", n => { ReadCapacity = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>(global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags.CreateFromDiscriminatorValue); } },
@@ -110,6 +123,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("deletion_protection", DeletionProtection);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.RestoreDeploymentRequest>("deployment", Deployment);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacity>("read_capacity", ReadCapacity);
             writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateIndexFromBackupRequestTags>("tags", Tags);

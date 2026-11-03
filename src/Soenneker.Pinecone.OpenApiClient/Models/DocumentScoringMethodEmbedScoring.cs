@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// Score by dense vector similarity to `query`, which Pinecone embeds with the model and read parameters of the named field&apos;s `embed` configuration. Name exactly one `string` field that declares `embed`, with `fields` or `field`. `values` and `sparse_values` are rejected.
+    /// Score by dense vector similarity to `query`, which Pinecone embeds with the model and read parameters of the named field&apos;s `embed` configuration. Set `parameters` to override the field&apos;s read parameters for this search. Name exactly one `string` field that declares `embed`, with `fields` or `field`. `values` and `sparse_values` are rejected.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DocumentScoringMethodEmbedScoring : global::Soenneker.Pinecone.OpenApiClient.Models.DocumentScoringMethod, IParsable
@@ -23,6 +23,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             else if (parseNode.GetChildNode("field") is { } nullNodeField && nullNodeField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Field = null;
             if (parseNode.GetChildNode("fields") is null) { _explicitNullValueFields = default!; _explicitNullProperties?.Remove("fields"); }
             else if (parseNode.GetChildNode("fields") is { } nullNodeFields && nullNodeFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fields = null;
+            if (parseNode.GetChildNode("parameters") is null) { _explicitNullValueParameters = default!; _explicitNullProperties?.Remove("parameters"); }
+            else if (parseNode.GetChildNode("parameters") is { } nullNodeParameters && nullNodeParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Parameters = null;
             if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
             else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
         }
@@ -46,6 +48,16 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
 #else
         public List<string> Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fields"); else _explicitNullProperties?.Remove("fields"); } }
         private List<string> _explicitNullValueFields = default!;
+#endif
+        /// <summary>Model parameters for embedding the query in this search. They override the field&apos;s `read_parameters`. Only `task_type` can be set, and `GET /models` lists the models that accept it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty? Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty? _explicitNullValueParameters = default!;
+#nullable restore
+#else
+        public global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty _explicitNullValueParameters = default!;
 #endif
         /// <summary>The text to embed and score against. Leading and trailing whitespace is trimmed; a query that is empty after trimming is rejected. At most 10,000 bytes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,6 +89,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             {
                 { "field", n => { Field = n.GetStringValue(); } },
                 { "fields", n => { Fields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetStringValue(); } },
             };
         }
@@ -90,6 +103,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             base.Serialize(writer);
             writer.WriteStringValue("field", Field);
             writer.WriteCollectionOfPrimitiveValues<string>("fields", Fields);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty>("parameters", Parameters);
             writer.WriteStringValue("query", Query);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with using delete_all=True. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata).
+    /// If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with `deleteAll`. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeleteRequestFilterProperty : IAdditionalDataHolder, IParsable

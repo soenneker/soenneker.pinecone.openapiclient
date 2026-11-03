@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Pinecone.OpenApiClient.Db_control.BackupSchedules;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Backups;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Collections;
+using Soenneker.Pinecone.OpenApiClient.Db_control.ConversionJobs;
 using Soenneker.Pinecone.OpenApiClient.Db_control.Indexes;
 using Soenneker.Pinecone.OpenApiClient.Db_control.RestoreJobs;
 using System.Collections.Generic;
@@ -33,6 +34,11 @@ namespace Soenneker.Pinecone.OpenApiClient.Db_control
         public global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.CollectionsRequestBuilder Collections
         {
             get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.Collections.CollectionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The conversionJobs property</summary>
+        public global::Soenneker.Pinecone.OpenApiClient.Db_control.ConversionJobs.ConversionJobsRequestBuilder ConversionJobs
+        {
+            get => new global::Soenneker.Pinecone.OpenApiClient.Db_control.ConversionJobs.ConversionJobsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The indexes property</summary>
         public global::Soenneker.Pinecone.OpenApiClient.Db_control.Indexes.IndexesRequestBuilder Indexes

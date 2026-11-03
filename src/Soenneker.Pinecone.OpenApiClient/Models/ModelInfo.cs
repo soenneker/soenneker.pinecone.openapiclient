@@ -36,6 +36,8 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             else if (parseNode.GetChildNode("supported_dimensions") is { } nullNodeSupportedDimensions && nullNodeSupportedDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedDimensions = null;
             if (parseNode.GetChildNode("supported_metrics") is null) { _explicitNullValueSupportedMetrics = default!; _explicitNullProperties?.Remove("supported_metrics"); }
             else if (parseNode.GetChildNode("supported_metrics") is { } nullNodeSupportedMetrics && nullNodeSupportedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedMetrics = null;
+            if (parseNode.GetChildNode("supported_on") is null) { _explicitNullValueSupportedOn = default!; _explicitNullProperties?.Remove("supported_on"); }
+            else if (parseNode.GetChildNode("supported_on") is { } nullNodeSupportedOn && nullNodeSupportedOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedOn = null;
             if (parseNode.GetChildNode("supported_parameters") is null) { _explicitNullValueSupportedParameters = default!; _explicitNullProperties?.Remove("supported_parameters"); }
             else if (parseNode.GetChildNode("supported_parameters") is { } nullNodeSupportedParameters && nullNodeSupportedParameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedParameters = null;
             if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
@@ -115,6 +117,16 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public List<string> SupportedMetrics { get => _explicitNullValueSupportedMetrics; set { _explicitNullValueSupportedMetrics = value; AdditionalData?.Remove("supported_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_metrics"); else _explicitNullProperties?.Remove("supported_metrics"); } }
         private List<string> _explicitNullValueSupportedMetrics = default!;
 #endif
+        /// <summary>The APIs and index types this model works with.- `standalone_inference`: The Inference API (`/embed`, `/rerank`).- `integrated_index`: A legacy integrated index created with `create-for-model`.- `document_index`: An `embed` or `sparse_embed` field in a document index schema.Omitted when not set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SupportedOn { get => _explicitNullValueSupportedOn; set { _explicitNullValueSupportedOn = value; AdditionalData?.Remove("supported_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_on"); else _explicitNullProperties?.Remove("supported_on"); } }
+        private List<string>? _explicitNullValueSupportedOn = default!;
+#nullable restore
+#else
+        public List<string> SupportedOn { get => _explicitNullValueSupportedOn; set { _explicitNullValueSupportedOn = value; AdditionalData?.Remove("supported_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_on"); else _explicitNullProperties?.Remove("supported_on"); } }
+        private List<string> _explicitNullValueSupportedOn = default!;
+#endif
         /// <summary>List of parameters supported by the model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -179,6 +191,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
                 { "short_description", n => { ShortDescription = n.GetStringValue(); } },
                 { "supported_dimensions", n => { SupportedDimensions = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "supported_metrics", n => { SupportedMetrics = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "supported_on", n => { SupportedOn = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "supported_parameters", n => { SupportedParameters = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "vector_type", n => { VectorType = n.GetStringValue(); } },
@@ -200,6 +213,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             writer.WriteStringValue("short_description", ShortDescription);
             writer.WriteCollectionOfPrimitiveValues<int?>("supported_dimensions", SupportedDimensions);
             writer.WriteCollectionOfPrimitiveValues<string>("supported_metrics", SupportedMetrics);
+            writer.WriteCollectionOfPrimitiveValues<string>("supported_on", SupportedOn);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter>("supported_parameters", SupportedParameters);
             writer.WriteStringValue("type", Type);
             writer.WriteStringValue("vector_type", VectorType);

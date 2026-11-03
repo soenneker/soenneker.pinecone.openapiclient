@@ -52,7 +52,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public global::Soenneker.Pinecone.OpenApiClient.Models.PatchIndexDeploymentRequest Deployment { get => _explicitNullValueDeployment; set { _explicitNullValueDeployment = value; AdditionalData?.Remove("deployment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment"); else _explicitNullProperties?.Remove("deployment"); } }
         private global::Soenneker.Pinecone.OpenApiClient.Models.PatchIndexDeploymentRequest _explicitNullValueDeployment = default!;
 #endif
-        /// <summary>Read capacity changes for an existing managed or BYOC index. Switch to `OnDemand`, or set `Dedicated` and change any subset of `node_type`, `scaling`, and `manual` replicas/shards; fields you omit keep their current value. BYOC indexes do not support `OnDemand`.</summary>
+        /// <summary>Read capacity changes for an existing managed or BYOC index. Switch to `OnDemand`, or set `Dedicated` and change any subset of `node_type`, `scaling`, and `manual` replicas/shards; fields you omit keep their current value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.ReadCapacityPatch? ReadCapacity { get => _explicitNullValueReadCapacity; set { _explicitNullValueReadCapacity = value; AdditionalData?.Remove("read_capacity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_capacity"); else _explicitNullProperties?.Remove("read_capacity"); } }

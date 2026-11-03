@@ -46,7 +46,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>The timestamp when the operation was created, in ISO 8601 format.</summary>
         public DateTimeOffset? CreatedOn { get => _explicitNullValueCreatedOn; set { _explicitNullValueCreatedOn = value; AdditionalData?.Remove("created_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_on"); else _explicitNullProperties?.Remove("created_on"); } }
         private DateTimeOffset? _explicitNullValueCreatedOn = default!;
-        /// <summary>A message describing the error that caused the operation to fail.Present only when status is `Failed`.</summary>
+        /// <summary>A message describing the error that caused the operation to fail. Present only when status is `Failed`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; AdditionalData?.Remove("error_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }
@@ -76,7 +76,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
-        /// <summary>The number of ingestion units consumed by this operation.Present only when status is `Completed` for file ingestion operations.</summary>
+        /// <summary>The number of ingestion units consumed by this operation. Present only when status is `Completed` for file ingestion operations.</summary>
         public double? IngestionUnits { get => _explicitNullValueIngestionUnits; set { _explicitNullValueIngestionUnits = value; AdditionalData?.Remove("ingestion_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingestion_units"); else _explicitNullProperties?.Remove("ingestion_units"); } }
         private double? _explicitNullValueIngestionUnits = default!;
         /// <summary>The kind of action represented by this operation, such as uploading or deleting a file.</summary>

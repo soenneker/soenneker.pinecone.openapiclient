@@ -33,7 +33,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>This indicates that all vectors in the index namespace should be deleted. Cannot be combined with `ids`.</summary>
         public bool? DeleteAll { get => _explicitNullValueDeleteAll; set { _explicitNullValueDeleteAll = value; AdditionalData?.Remove("deleteAll"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleteAll"); else _explicitNullProperties?.Remove("deleteAll"); } }
         private bool? _explicitNullValueDeleteAll = default!;
-        /// <summary>If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with using delete_all=True. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata).</summary>
+        /// <summary>If specified, the metadata filter here will be used to select the vectors to delete. This is mutually exclusive with `deleteAll`. See [Delete data](https://docs.pinecone.io/guides/manage-data/delete-data#delete-records-by-metadata).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty? Filter { get => _explicitNullValueFilter; set { _explicitNullValueFilter = value; AdditionalData?.Remove("filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter"); else _explicitNullProperties?.Remove("filter"); } }

@@ -39,12 +39,12 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Schema for the behavior of Pinecone&apos;s internal metadata index. By default, all metadata is indexed; when `schema` is present, only fields which are present in the `fields` object with a `filterable: true` are indexed. Note that `filterable: false` is not currently supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema? Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
-        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema? _explicitNullValueSchema = default!;
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema? Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema? _explicitNullValueSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
-        private global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema _explicitNullValueSchema = default!;
+        public global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; AdditionalData?.Remove("schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema _explicitNullValueSchema = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequest"/> and sets the default values.
@@ -72,7 +72,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema.CreateFromDiscriminatorValue); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema>(global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -83,7 +83,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchema>("schema", Schema);
+            writer.WriteObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DbData202607MetadataSchema>("schema", Schema);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

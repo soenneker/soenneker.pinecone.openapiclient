@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.Pinecone.OpenApiClient.Models
 {
     /// <summary>
-    /// A map of metadata field names to their configuration. The field name must be a valid metadata field name. The field name must be unique. At most 50 fields may be declared.Field names may not begin with `$`, which introduces a filter operator. When declared at index creation, names beginning with `_` are also rejected (reserved for internal use).
+    /// Model parameters for embedding the query in this search. They override the field&apos;s `read_parameters`. Only `task_type` can be set, and `GET /models` lists the models that accept it.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateNamespaceRequestSchemaFieldsProperty : IAdditionalDataHolder, IParsable
+    public partial class EmbedScoringParametersProperty : IAdditionalDataHolder, IParsable
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -23,21 +23,21 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchemaFieldsProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty"/> and sets the default values.
         /// </summary>
-        public CreateNamespaceRequestSchemaFieldsProperty()
+        public EmbedScoringParametersProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchemaFieldsProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchemaFieldsProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.CreateNamespaceRequestSchemaFieldsProperty(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Pinecone.OpenApiClient.Models.EmbedScoringParametersProperty(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
