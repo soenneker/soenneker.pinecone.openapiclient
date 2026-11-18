@@ -93,7 +93,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "sparse_indices", n => { SparseIndices = n.GetCollectionOfPrimitiveValues<long?>()?.AsList(); } },
                 { "sparse_tokens", n => { SparseTokens = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

@@ -94,7 +94,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.SearchCompletionsFilterProperty.CreateFromDiscriminatorValue); } },
                 { "messages", n => { Messages = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel>(global::Soenneker.Pinecone.OpenApiClient.Models.MessageModel.CreateFromDiscriminatorValue)?.AsList(); } },

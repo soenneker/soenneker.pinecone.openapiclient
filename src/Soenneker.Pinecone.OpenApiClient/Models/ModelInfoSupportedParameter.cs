@@ -120,7 +120,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "allowed_values", n => { AllowedValues = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_allowed_values>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameter.ModelInfoSupportedParameter_allowed_values.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "default", n => { Default = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelInfoSupportedParameterDefault.CreateFromDiscriminatorValue); } },

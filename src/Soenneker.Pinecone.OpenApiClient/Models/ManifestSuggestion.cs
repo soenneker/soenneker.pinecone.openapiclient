@@ -79,7 +79,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "explored_at", n => { ExploredAt = n.GetDateTimeOffsetValue(); } },
                 { "matches", n => { Matches = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.TemplateMatch>(global::Soenneker.Pinecone.OpenApiClient.Models.TemplateMatch.CreateFromDiscriminatorValue)?.AsList(); } },

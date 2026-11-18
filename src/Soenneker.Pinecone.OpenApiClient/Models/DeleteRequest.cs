@@ -87,7 +87,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "deleteAll", n => { DeleteAll = n.GetBoolValue(); } },
                 { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.DeleteRequestFilterProperty.CreateFromDiscriminatorValue); } },

@@ -84,7 +84,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "by_model", n => { ByModel = n.GetObjectValue<global::Soenneker.Pinecone.OpenApiClient.Models.CurateUsageByModelProperty>(global::Soenneker.Pinecone.OpenApiClient.Models.CurateUsageByModelProperty.CreateFromDiscriminatorValue); } },
                 { "completion_tokens", n => { CompletionTokens = n.GetLongValue(); } },

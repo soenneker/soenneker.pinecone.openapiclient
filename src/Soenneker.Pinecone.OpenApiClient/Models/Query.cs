@@ -288,7 +288,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(22)
             {
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.Citation>(global::Soenneker.Pinecone.OpenApiClient.Models.Citation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "comparison", n => { Comparison = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.QueryComparisonMember>(global::Soenneker.Pinecone.OpenApiClient.Models.QueryComparisonMember.CreateFromDiscriminatorValue)?.AsList(); } },

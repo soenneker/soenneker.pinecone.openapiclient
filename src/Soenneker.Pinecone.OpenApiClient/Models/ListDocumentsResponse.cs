@@ -93,7 +93,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord>(global::Soenneker.Pinecone.OpenApiClient.Models.ListedDocumentRecord.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "namespace", n => { Namespace = n.GetStringValue(); } },

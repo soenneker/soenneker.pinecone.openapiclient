@@ -82,7 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "cloud", n => { Cloud = n.GetStringValue(); } },
                 { "deployment_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Pinecone.OpenApiClient.Models.ManagedDeploymentType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDeploymentType = default; _explicitNullProperties?.Remove("deployment_type"); AdditionalData["deployment_type"] = unknown; } else { DeploymentType = parsed; AdditionalData.Remove("deployment_type"); } } },

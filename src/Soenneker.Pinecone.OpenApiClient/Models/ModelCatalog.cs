@@ -117,7 +117,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "default", n => { Default = n.GetStringValue(); } },
                 { "models", n => { Models = n.GetCollectionOfObjectValues<global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem>(global::Soenneker.Pinecone.OpenApiClient.Models.ModelCatalogModelsItem.CreateFromDiscriminatorValue)?.AsList(); } },

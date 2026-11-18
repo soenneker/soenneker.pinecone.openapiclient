@@ -82,7 +82,7 @@ namespace Soenneker.Pinecone.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "eval_pass_rate_threshold", n => { EvalPassRateThreshold = n.GetDoubleValue(); } },
                 { "latency_threshold_ms", n => { LatencyThresholdMs = n.GetIntValue(); } },
