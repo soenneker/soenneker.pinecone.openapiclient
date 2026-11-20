@@ -2,7 +2,7 @@
   "descriptionHash": "9CD09D34DEE36AC86DF5EA397018B925CDA74EE47F3F7A0AF5E9E2F1178311F34527CC57524C53849E3EC5215E8FAFCA328F9E5123B9D93309C33BF0641D3B76",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.38.0",
+  "kiotaVersion": "1.39.0",
   "clientClassName": "PineconeOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Pinecone.OpenApiClient",
